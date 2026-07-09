@@ -11,18 +11,42 @@ at all.
 
 ## Design principles
 1. Three layers: static classroom vocab → per-session (student/teacher name) →
-   per-lesson (target words, on-screen characters, target sentences).
+   per-lesson (target words, on-screen characters, phonics letters, target sentences).
 2. Everything specific is a placeholder filled by the backend at class start —
-   the same moment it fills {{name}} in the prompts. Nothing hardcoded.
+   the same moment it fills {{name}} in the prompts. Nothing hardcoded. This includes
+   the child's native language ({{nativeLanguage}}) — students can be from anywhere.
 3. Boost hierarchy = cost of mishearing:
-   student name (10) > lesson target words (6) > characters (4) > teacher name (3).
-   Nothing above 10.
-4. Describe the speaker honestly in `general` (short, mispronounced, 1-5 word
-   utterances) — helps ASR priors more than rules do.
+   student name (10) > lesson words (6) > phonics letters (5) > characters (4) >
+   teacher name (3). Nothing above 10.
+4. Describe the speaker and environment honestly in `general` (short, mispronounced,
+   syllabified utterances; home environment with background voices) — helps ASR
+   priors more than rules do.
 5. Never fix the child's grammar in transcription — the teacher prompts rely on
    hearing "I is Heidi" as-is so they can recast it.
-6. Age numbers (one..ten, "I am five") live in the static layer — every warm-up
-   asks for them.
+6. Never hallucinate: silence/noise/unintelligible → return nothing. The teacher's
+   silence-escalation ladder depends on silences actually arriving as silences.
+7. Keep letters as letters (phonics answers: "A!", "buh!") — no autocorrect to words.
+8. Keep vocal play and onomatopoeia ("meow", "rawr", "poof") — the teacher prompts
+   deliberately elicit these, and CATCH-ing them is the rapport strategy.
+9. Join stretched/syllabified attempts ("a... pple" → "apple") — core word-teaching loop.
+10. Transcribe only the primary child speaker; ignore background adult coaching.
+
+## Scenarios accounted for
+- Any native language (placeholder, not hardcoded Mandarin)
+- ASR hallucination on silence/noise (breaks the silence ladder if unhandled)
+- Parents/siblings/TV in the background
+- Child repeats teacher, stretched or syllable by syllable
+- Phonics: bare letter names and letter sounds as answers
+- Onomatopoeia and vocal play the teacher itself teaches
+- Casual yes/no variants (yeah/yep/nah/uh-huh/uh-uh)
+- Ages and counting (numbers one-ten static)
+- Singing/humming during song segments
+
+## Deliberately NOT in the config
+- Echo cancellation: TTS leakage vs. the child legitimately repeating the teacher
+  cannot be separated at text level — needs AEC in the audio pipeline.
+- Profanity/content filtering: transcribe faithfully; the teacher prompt's
+  off-limits-topics rule does the redirecting. Filtering at ASR blinds the teacher.
 
 ## Config template
 
@@ -31,21 +55,28 @@ context:
   general:
     - key: setting
       value: One-on-one online English lesson. The speaker is a child aged 4-6 with
-        very limited English. Utterances are short (often 1-5 words), slowly spoken,
-        and may be mispronounced. Expect single words, names, numbers, and simple
-        phrases rather than full sentences.
+        very limited English, usually at home on a tablet. Utterances are short
+        (often 1-5 words), slowly spoken, and may be mispronounced, stretched, or
+        broken into syllables. Expect single words, names, letters, numbers, simple
+        phrases, laughter, singing, and playful sounds rather than full sentences.
+        Background voices (parents, siblings, TV) may be present.
     - key: language
-      value: Prioritize English transcription. The child may mix in Mandarin; transcribe
-        Mandarin as Mandarin when it clearly is, but interpret ambiguous sounds as
-        English. Never translate between the two languages.
+      value: Prioritize English transcription. The child's native language is
+        {{nativeLanguage}}; they may mix it with English. Transcribe native-language
+        speech as that language when it clearly is, but interpret ambiguous sounds
+        as English. Never translate between languages.
     - key: instructions
       value: The child is talking to their teacher, {{teacherName}}. The child's own
         name is {{studentName}} — when an utterance sounds close to this name
-        (especially answering "What is your name?"), prefer transcribing it as
-        {{studentName}}. Never replace a person's name with another word. Transcribe
-        numbers spoken as ages ("five", "six") as words, not corrected or expanded.
-        Do not fix the child's grammar in transcription — write what was said
-        (e.g. keep "I is Heidi" style utterances as spoken).
+        (especially after "What is your name?"), prefer transcribing it as
+        {{studentName}}. Never replace a person's name with another word.
+        Transcribe only the primary child speaker; ignore background adult speech.
+        If audio is silence, noise, or unintelligible, return nothing — never guess
+        or invent words. Do not fix the child's grammar — write what was said.
+        Join stretched or syllabified word attempts into the intended word
+        ("a... pple" → "apple"). Keep single letter names and letter sounds as
+        letters ("A", "B") — do not expand them into words. Keep playful sounds
+        and interjections as heard ("meow", "wow", "uh-oh", "haha").
 
   terms:
     # --- Layer 1: static kid-classroom vocabulary ---
@@ -54,7 +85,12 @@ context:
     - bye
     - goodbye
     - yes
+    - yeah
+    - yep
     - no
+    - nah
+    - uh-huh
+    - uh-uh
     - okay
     - thank you
     - sorry
@@ -67,6 +103,15 @@ context:
     - yucky
     - mom
     - dad
+    - wow
+    - yay
+    - uh-oh
+    - meow
+    - woof
+    - moo
+    - rawr
+    - boom
+    - poof
     - one
     - two
     - three
@@ -81,8 +126,9 @@ context:
     - "{{studentName}}"
     - "{{teacherName}}"
     # --- Layer 3: per-lesson ---
-    - "{{lessonWords}}"        # e.g. apple, ...
-    - "{{lessonCharacters}}"   # e.g. Chef Boo
+    - "{{lessonWords}}"        # target vocabulary, e.g. apple
+    - "{{lessonCharacters}}"   # on-screen characters, e.g. Chef Boo
+    - "{{lessonLetters}}"      # phonics targets, e.g. A
 
   phrases:
     # --- Layer 1: static ---
@@ -106,6 +152,8 @@ speech_context:
       boost: 10
     - phrases: ["{{lessonWords}}"]
       boost: 6
+    - phrases: ["{{lessonLetters}}"]
+      boost: 5
     - phrases: ["{{lessonCharacters}}"]
       boost: 4
     - phrases: ["{{teacherName}}"]
@@ -113,10 +161,14 @@ speech_context:
 ```
 
 ## Implementation notes
-- {{lessonWords}} / {{lessonPhrases}} / {{lessonCharacters}} must expand to one
-  entry per word/phrase, not a comma-joined string — speech adaptation APIs treat
-  each phrase as a separate bias entry.
+- {{lessonWords}} / {{lessonPhrases}} / {{lessonCharacters}} / {{lessonLetters}}
+  must expand to one entry per item, not a comma-joined string — speech adaptation
+  APIs treat each phrase as a separate bias entry.
+- {{nativeLanguage}} comes from the account locale; if unknown, fall back to
+  "their native language, whichever it is".
 - If a lesson genuinely features Dino as an on-screen character, it enters via
   {{lessonCharacters}} for that lesson only, at boost 4.
 - Expect residual misrecognition with 4-year-olds regardless; the teacher prompts
   are the second line of defense (unusable answer → kind catch → move on).
+- Separately from this config: ask about AEC (acoustic echo cancellation) in the
+  audio pipeline so avatar TTS doesn't get transcribed as the child.
