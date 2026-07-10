@@ -11,7 +11,10 @@ at all.
 
 ## Design principles
 1. Three layers: static classroom vocab → per-session (student/teacher name) →
-   per-lesson (target words, on-screen characters, phonics letters, target sentences).
+   per-lesson, DERIVED from the lesson's existing knowledge-point field (词汇/句型/
+   拼读 → speakable surface forms; skill/can-do knowledge points excluded — the ASR
+   list is "what might come out of the child's mouth", not "what the lesson teaches").
+   Do not maintain a parallel word list; derive it so it can't drift from the lesson.
 2. Everything specific is a placeholder filled by the backend at class start —
    the same moment it fills {{name}} in the prompts. Nothing hardcoded. This includes
    the child's native language ({{nativeLanguage}}) — students can be from anywhere.
@@ -125,10 +128,16 @@ context:
     # --- Layer 2: per-session ---
     - "{{studentName}}"
     - "{{teacherName}}"
-    # --- Layer 3: per-lesson ---
-    - "{{lessonWords}}"        # target vocabulary, e.g. apple
-    - "{{lessonCharacters}}"   # on-screen characters, e.g. Chef Boo
-    - "{{lessonLetters}}"      # phonics targets, e.g. A
+    # --- Layer 3: derived from the lesson's knowledge-point field ---
+    # Mapping by knowledge-point type (one entry per item, deduped, cap ~20,
+    # prefer 本课新授 over review items, dedupe against Layer 1):
+    #   词汇类   → the word itself                (boost 6)
+    #   句型类   → full target sentence as phrase (boost 5)
+    #   拼读/字母 → letter names                   (boost 5)
+    #   技能/理解类 (can-do, grammar concepts)     → EXCLUDED, child never says these
+    - "{{lessonKnowledgeSpeech.words}}"
+    - "{{lessonKnowledgeSpeech.letters}}"
+    - "{{lessonCharacters}}"   # on-screen characters (from lesson resources), e.g. Chef Boo
 
   phrases:
     # --- Layer 1: static ---
@@ -144,15 +153,17 @@ context:
     - Thank you!
     # --- Layer 2/3: injected ---
     - "My name is {{studentName}}."
-    - "{{lessonPhrases}}"      # this lesson's target sentences
+    - "{{lessonKnowledgeSpeech.sentences}}"  # 句型类知识点 → target sentences
 
 speech_context:
   entries:
     - phrases: ["{{studentName}}", "My name is {{studentName}}"]
       boost: 10
-    - phrases: ["{{lessonWords}}"]
+    - phrases: ["{{lessonKnowledgeSpeech.words}}"]
       boost: 6
-    - phrases: ["{{lessonLetters}}"]
+    - phrases: ["{{lessonKnowledgeSpeech.sentences}}"]
+      boost: 5
+    - phrases: ["{{lessonKnowledgeSpeech.letters}}"]
       boost: 5
     - phrases: ["{{lessonCharacters}}"]
       boost: 4
@@ -161,9 +172,12 @@ speech_context:
 ```
 
 ## Implementation notes
-- {{lessonWords}} / {{lessonPhrases}} / {{lessonCharacters}} / {{lessonLetters}}
-  must expand to one entry per item, not a comma-joined string — speech adaptation
-  APIs treat each phrase as a separate bias entry.
+- {{lessonKnowledgeSpeech.*}} / {{lessonCharacters}} must expand to one entry per
+  item, not a comma-joined string — speech adaptation APIs treat each phrase as a
+  separate bias entry.
+- {{lessonKnowledgeSpeech.*}} is derived from the lesson's knowledge-point field at
+  class-start; no separate list to maintain. Cap ~20 items (what the child is
+  expected to SAY this lesson); prefer 新授 over review; drop skill/can-do points.
 - {{nativeLanguage}} comes from the account locale; if unknown, fall back to
   "their native language, whichever it is".
 - If a lesson genuinely features Dino as an on-screen character, it enters via
