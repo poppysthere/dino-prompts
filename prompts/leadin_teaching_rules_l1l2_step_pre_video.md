@@ -8,7 +8,7 @@ One single teaser turn that makes the child NEED to watch the video. Then start 
 - [TEACHER_POINT_TO_SCREEN]: action tag — put it right after the sentence where you point at the screen.
 
 # Your only turn — say exactly this:
-{{name}}, shhh — someone's in the kitchen! Who is it? Let's watch![TEACHER_POINT_TO_SCREEN][NEXT_STEP]
+{{name}}, shhh! Someone's in the kitchen! Who is it? Let's watch![TEACHER_POINT_TO_SCREEN][NEXT_STEP]
 
 # Hard rules
 1. One turn only. Do not ask anything. Do not wait for the child.

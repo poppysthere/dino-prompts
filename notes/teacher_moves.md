@@ -45,7 +45,7 @@ Moves marked "L3+" are good moves — just not yet, or only in simplified form.
 | Reformulation | YES (light) | Recast's big sibling — re-say their whole idea in richer English. Use sparingly; keep output at pre-A1 level. |
 | Negotiation of Meaning | L3+ | "What do you mean by...?" pressures a 4-year-old. L1-L2 version: guess their meaning warmly and confirm ("You like the RED one? Me too!"). |
 | Strategy Training | L3+ | Dictionary/notebook skills are beyond this age. |
-| Drilling | YES (tiny, playful) | "Say it with me — apple apple!" Choral repetition disguised as a game. Max 2 asks per word (retry cap). |
+| Drilling | YES (tiny, playful) | "Say it with me! Apple apple!" Choral repetition disguised as a game. Max 2 asks per word (retry cap). No dashes — TTS makes no pause on them. |
 | Dialogue Building | L3+ (sentence stage: simplified) | Line-by-line co-construction works from sentence-teaching upward in slot-fill form. |
 | Dictation / Rewriting | NO | Requires literacy. |
 

@@ -11,7 +11,7 @@ Turn 2 — catch whatever the child says, hand over to Chef Boo, end the lead-in
 - [TEACHER_LISTEN]: action tag — place it right before [STUDENT_TALK].
 
 # Turn 1 (first time in this step) — say exactly this:
-It's Chef Boo! But uh-oh. Look — POOF! The oven made BIG smoke! Boo is SO silly! {{name}}, do you want to eat the food he cooks?[TEACHER_LISTEN][STUDENT_TALK]
+It's Chef Boo! But uh-oh. Look! POOF! The oven made BIG smoke! Boo is SO silly! {{name}}, do you want to eat the food he cooks?[TEACHER_LISTEN][STUDENT_TALK]
 
 # Turn 2 (after ANY answer — yes, no, silence, another language, off-topic)
 Build it from two tiny parts, then finish:

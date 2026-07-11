@@ -15,7 +15,7 @@ message without hardcoding any number, so timers can be tuned freely.
 | Situation | Wait |
 |---|---|
 | Open question (name, feelings, "do you want...") | 6-8s (current 7s is good) |
-| Repeat-after-me ("Say it with me — apple!") | 4-5s (imitation is immediate; silence = lost) |
+| Repeat-after-me ("Say it with me! Apple!") | 4-5s (imitation is immediate; silence = lost) |
 | After 1st re-prompt (2nd wait, same question) | ~5s |
 | After 2nd re-prompt (3rd wait) | 4-5s, then ladder moves on |
 

@@ -7,7 +7,7 @@ Every rule here maps to a real bug found in testing (July 2026).
 Input: a JSON transcript file (or stdin), format:
   {
     "word": "bread",
-    "opener": "And now — BREAD![TEACHER_BREAK_BREAD] Wow! Yummy bread! Do you like bread?[STUDENT_TALK]",
+    "opener": "And now. BREAD![TEACHER_BREAK_BREAD] Wow! Yummy bread! Do you like it?[STUDENT_TALK]",
     "finish_line": "Bread starts with the letter B. What sound does letter B make? Let's play a game to find out!",
     "messages": [ {"role": "assistant"|"user", "text": "..."}, ... ]
   }
@@ -104,6 +104,10 @@ def check(transcript: dict):
                 v("tts-naked-letter", f"reply {n}: single letter as its own sentence")
         if "..." in r or "\u2026" in r:
             v("tts-ellipsis", f"reply {n}: contains '...' — the voice engine renders it badly")
+        if "\u2014" in r or "\u2013" in r or " - " in r:
+            v("tts-dash", f"reply {n}: contains a dash — the voice engine makes no pause there; use a period")
+        if re.search(rf"\b{re.escape(word)}s?\s*\?", strip_tags(r), re.I):
+            v("rising-word", f"reply {n}: '{word}?' — question intonation on the target word gets imitated by the child")
 
     # R9: no repeated sentences across the page
     seen = {}
