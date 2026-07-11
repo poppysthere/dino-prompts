@@ -7,7 +7,7 @@ Every rule here maps to a real bug found in testing (July 2026).
 Input: a JSON transcript file (or stdin), format:
   {
     "word": "bread",
-    "opener": "And now... BREAD![TEACHER_BREAK_BREAD] Wow! Yummy bread! Do you like bread?[STUDENT_TALK]",
+    "opener": "And now — BREAD![TEACHER_BREAK_BREAD] Wow! Yummy bread! Do you like bread?[STUDENT_TALK]",
     "finish_line": "Bread starts with the letter B. What sound does letter B make? Let's play a game to find out!",
     "messages": [ {"role": "assistant"|"user", "text": "..."}, ... ]
   }
@@ -98,10 +98,12 @@ def check(transcript: dict):
             if not (is_question or is_say_call):
                 v("child-job", f"reply {n}: STUDENT_TALK turn ends on a plain statement: ...{last[-60:]!r}")
 
-        # R8: TTS safety — no naked single letters as sentences
+        # R8: TTS safety — no naked single letters as sentences, no ellipses (TTS reads "..." badly)
         for s in re.split(r"[.!?]+", strip_tags(r)):
             if re.fullmatch(r"\s*[A-Za-z]\s*", s or ""):
                 v("tts-naked-letter", f"reply {n}: single letter as its own sentence")
+        if "..." in r or "\u2026" in r:
+            v("tts-ellipsis", f"reply {n}: contains '...' — the voice engine renders it badly")
 
     # R9: no repeated sentences across the page
     seen = {}
