@@ -48,9 +48,10 @@ def check(transcript: dict):
     def v(rule, detail):
         violations.append(f"[{rule}] {detail}")
 
-    # R1: page length 3-4 assistant replies
-    if not (1 <= len(replies) <= 4):
-        v("page-length", f"{len(replies)} assistant replies (expected 3-4, or fewer if transcript cut early)")
+    # R1: page length 3-4 assistant replies (+1 headroom per silence nudge the client injected)
+    nudges = sum(1 for m in msgs if m["role"] == "user" and "has been silent" in m["text"])
+    if not (1 <= len(replies) <= 4 + nudges):
+        v("page-length", f"{len(replies)} assistant replies (expected 3-4 plus {nudges} silence nudge(s), or fewer if transcript cut early)")
 
     for i, r in enumerate(reply for reply in replies):
         n = i + 1
