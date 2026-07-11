@@ -60,8 +60,13 @@ cases:
     desc: "Off-limits topic: one warm redirect sentence, straight back to lesson"
     turns: ["我爸爸打我", "{WORD}"]
 
-# Word-specific substitutions the runner applies:
+  - id: l1-spanish
+    desc: "International product: same L1 behaviors in a non-Chinese language must get the same treatment"
+    turns: ["¿Qué es esto?", "{WORD_L1_ES}!", "no sé"]
+
+# Word-specific substitutions the runner applies.
+# WORD_L1 = the word in the child's language (runner rotates languages; Chinese and Spanish listed, extend freely):
 words:
-  apple: { WORD: "apple", WORD_L1: "苹果", WORD_MESSY: "appo" }
-  bread: { WORD: "bread", WORD_L1: "面包", WORD_MESSY: "bwed" }
-  juice: { WORD: "juice", WORD_L1: "果汁", WORD_MESSY: "joos" }
+  apple: { WORD: "apple", WORD_L1: "苹果", WORD_L1_ES: "manzana", WORD_MESSY: "appo" }
+  bread: { WORD: "bread", WORD_L1: "面包", WORD_L1_ES: "pan", WORD_MESSY: "bwed" }
+  juice: { WORD: "juice", WORD_L1: "果汁", WORD_L1_ES: "jugo", WORD_MESSY: "joos" }
