@@ -89,6 +89,10 @@ def check(transcript: dict):
         if n > 1 and strip_tags(opener).strip()[:25].lower() in strip_tags(r).lower():
             v("opener-repeat", f"reply {n}: repeats the fixed opener")
 
+        # R7b: the avatar must visibly listen — [TEACHER_LISTEN] right before [STUDENT_TALK]
+        if r.endswith("[STUDENT_TALK]") and not r.endswith("[TEACHER_LISTEN][STUDENT_TALK]"):
+            v("listen-pose", f"reply {n}: [STUDENT_TALK] without [TEACHER_LISTEN] right before it")
+
         # R7: STUDENT_TALK replies must end with the child's job (question or say-it call)
         if "[STUDENT_TALK]" in r:
             body = strip_tags(r).strip()
