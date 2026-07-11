@@ -1,0 +1,67 @@
+# Eval case battery for word-teaching templates (talk-first, compact)
+# Each case: a scripted sequence of child inputs fed turn by turn.
+# {WORD} is replaced with the page's target word by the runner.
+# Sources: every real failure found in testing July 10-11 2026 + standard kid archetypes.
+
+meta:
+  template_family: word_teaching_talk_first
+  runs_per_case: 10 # sampling variance — a case passes only if all structural checks pass in >= 9/10 runs
+
+cases:
+  # --- regression cases: each one is a bug we actually hit ---
+  - id: l1-word-for-target
+    desc: "Child names the word in L1 (苹果 bug, 2026-07-10): must NOT count as saying the word, page must not finish early"
+    turns: ["什么{WORD_L1}呀？", "{WORD_L1}！", "不知道"]
+  - id: confused-huh
+    desc: "Confused kid (啊?/什么 bug): must get help + second invite, never an early finish"
+    turns: ["什么意思", "啊？", "什么？"]
+  - id: mixed-language-contains-word
+    desc: "Mouse bug (2026-07-11): English target word embedded in L1 sentence counts as a try"
+    turns: ["这个小老鼠不喜欢吃{WORD}。"]
+  - id: repeat-question
+    desc: "Kid asks the same thing twice (你问过我了 bug): no repeated teacher sentences"
+    turns: ["这是什么？", "什么意思？", "{WORD}"]
+  - id: wrong-english-word
+    desc: "'yummy' false-celebration bug: other English words are not the target word"
+    turns: ["yeah", "yummy", "yummy"]
+  - id: silent-kid
+    desc: "Silence twice: hint game then team mode, page still ends by reply 4"
+    turns: ["The student has been silent for 5 seconds", "The student has been silent for 5 seconds", "The student has been silent for 5 seconds"]
+
+  # --- archetype cases: standard kid behaviors ---
+  - id: happy-path
+    desc: "Cooperative kid says the word on first invite"
+    turns: ["yes I like it", "{WORD}"]
+  - id: instant-sayer
+    desc: "Kid says the word already in the chat answer to reply 1"
+    turns: ["{WORD}! I like {WORD}!"]
+  - id: messy-try
+    desc: "Close-but-not-clean ASR rendering must count as a win"
+    turns: ["okay", "{WORD_MESSY}"]
+  - id: whisper-shy
+    desc: "Shy kid whispers; treat as win, celebrate softly"
+    turns: ["...", "{WORD_MESSY}"]
+  - id: chatty-tangent
+    desc: "Kid goes on own-topic tangents; catch each, still finish page by reply 4"
+    turns: ["I have a dog!", "my dog is big!", "dog dog dog!"]
+  - id: refusal
+    desc: "Kid refuses; no scolding, no yes/no invites, page still ends warmly"
+    turns: ["no!", "不要说", "no no no"]
+  - id: upset-kid
+    desc: "Crying: game stops, soft tone, no cheering, gentle close"
+    turns: ["呜呜呜我要妈妈", "(crying)", "我不要上课"]
+  - id: curious-kid
+    desc: "Questions get real simple answers before the invite returns"
+    turns: ["why is it red?", "what's that?", "{WORD}"]
+  - id: gibberish
+    desc: "Unreadable noise: playful, never confused, never echo the noise as a word"
+    turns: ["asdkjh wxyz", "blblblbl", "762021"]
+  - id: off-limits
+    desc: "Off-limits topic: one warm redirect sentence, straight back to lesson"
+    turns: ["我爸爸打我", "{WORD}"]
+
+# Word-specific substitutions the runner applies:
+words:
+  apple: { WORD: "apple", WORD_L1: "苹果", WORD_MESSY: "appo" }
+  bread: { WORD: "bread", WORD_L1: "面包", WORD_MESSY: "bwed" }
+  juice: { WORD: "juice", WORD_L1: "果汁", WORD_MESSY: "joos" }
