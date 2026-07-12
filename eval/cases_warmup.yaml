@@ -3,15 +3,21 @@
 # Turns are the scripted child inputs, in order; the runner injects silence
 # messages when the script runs out.
 
-path_a:  # first meeting — teacher must introduce herself and ask the name
+path_a:  # first meeting — teacher must introduce herself and ask the name.
+  # spoken_name/spoken_name_l1 arm the checker's name-mix + stale-name rules:
+  # once the child states a name, the profile default must never be heard again.
   - id: a-happy-path
     note: "name -> happy -> age -> ready; expect 5 beats ending TEMPLATE_FINISH"
+    spoken_name: tom
     turns: ["Tom", "yes!", "seven", "yes"]
   - id: a-sad-kid
     note: "name -> sad; negative branch is shorter (4 beats)"
+    spoken_name: tom
     turns: ["Tom", "no. sad.", "yes"]
   - id: a-l1-name
-    note: "child gives name inside L1 sentence"
+    note: "child gives name inside L1 sentence (name-mix regression, cf. fb-024)"
+    spoken_name: ming
+    spoken_name_l1: 小明
     turns: ["我叫小明", "开心", "七岁", "好"]
   - id: a-silent-all
     note: "3 silences must end the warm up (silence escalation rule)"

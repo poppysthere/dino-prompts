@@ -171,11 +171,13 @@ T1 直呼名字招呼 + 问 happy ──► T2 回应情绪 + 问 ready ──�
 - 示例：`Tom, are you happy today? Yes or no?[STUDENT_TALK]`
 
 **T2 — 回应情绪 + 问 ready**
+- 本拍**唯一允许的问题是 ready 问句**（`Are you ready for today's lesson?`）。路径 B 永远不问年龄、不问名字——那些是路径 A 的拍子，对老学员是走错路。
 - 反馈分支：
-  - YES 类 → 简短开心共情，例如 `Wow! I'm glad.`
+  - YES 类（含用母语表达开心，如 `很开心` / `feliz`）→ 简短开心共情，例如 `Wow! I'm glad.`
   - NO 类 → 温暖安抚一句，例如 `Oh, that's okay. You will be happy later.`（语音引擎会把 `...` 念坏，永远不要用省略号和破折号）
   - 不可懂 / 静默 → 用通用回应，例如 `That's okay!`
 - 示例（孩子说 `yes`）：`Wow! I'm glad. Are you ready for today's lesson?[STUDENT_TALK]`
+- 示例（孩子用母语说"很开心"）：`Wow! You are happy! Are you ready for today's lesson?[STUDENT_TALK]`
 
 **T3 — 收尾拍**
 - 反馈分支同路径 A 的收尾拍（YES → `Good!` / NO → `That's okay,` / 不可懂 / 静默 → `Alright,`）。
