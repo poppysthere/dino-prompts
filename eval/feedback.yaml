@@ -1,0 +1,108 @@
+# Human classroom feedback log — the third eye of the eval loop.
+#
+# Every observation from real on-device testing lands here. Each item either:
+#   - becomes a checker rule / regression case (status: encoded),
+#   - is fixed in templates or process (status: fixed),
+#   - or stays open (status: open) — open items are fed to the LLM judge as extra
+#     watch items, so machine review keeps looking for what humans noticed.
+#
+# Humans stay on the approve button: no template change ships without a human
+# reading the diff, and device findings (TTS sound, animations, ASR) can only
+# come from here — no transcript eval can hear them.
+
+items:
+  - id: fb-001
+    date: 2026-07-10
+    page: apple
+    observation: "Teacher ignored 不知道 and echoed 'appo' the child never said; only evaluation category reached the model, not the transcript"
+    severity: high
+    status: fixed
+    encoded_as: "talk-first redesign ([STUDENT_TALK] only); hard rule 5 echo-only; cases confused-huh, l1-word-for-target"
+
+  - id: fb-002
+    date: 2026-07-10
+    page: apple
+    observation: "TTS cannot pronounce word fragments like 'pple'; naked letters sound broken"
+    severity: high
+    status: encoded
+    encoded_as: "checker tts-naked-letter; hard rule 4 whole words only"
+
+  - id: fb-003
+    date: 2026-07-11
+    page: all
+    observation: "TTS makes NO pause on a dash; words run together. Use a period for a pause"
+    severity: high
+    status: encoded
+    encoded_as: "checker tts-dash; hard rule 8; common rules output format 3"
+
+  - id: fb-004
+    date: 2026-07-11
+    page: all
+    observation: "TTS reads '...' aloud / sounds broken"
+    severity: high
+    status: encoded
+    encoded_as: "checker tts-ellipsis; swept from all fixed lines"
+
+  - id: fb-005
+    date: 2026-07-11
+    page: word pages
+    observation: "Say-it invites ending 'word?' teach rising intonation — the child imitates the question tone exactly. Real questions (Do you like bread?) are fine"
+    severity: medium
+    status: encoded
+    encoded_as: "checker rising-word (say/copy/repeat + word? only); hard rule 8"
+
+  - id: fb-006
+    date: 2026-07-11
+    page: all
+    observation: "TEACHER_LISTEN missing when waiting for the child — avatar did not show listening pose on opener turns"
+    severity: medium
+    status: encoded
+    encoded_as: "checker listen-pose; openers now end [TEACHER_LISTEN][STUDENT_TALK]"
+
+  - id: fb-007
+    date: 2026-07-11
+    page: sentence node
+    observation: "Wrap-up template pasted at node level got prepended to every sentence step; model ran wrap-up instead of sentence_1 and emitted NEXT_STEP on a step that only accepts STUDENT_TALK/TEMPLATE_FINISH — class stuck in a repeat loop"
+    severity: high
+    status: open
+    encoded_as: "guard line added to wrap-up template; PROCESS: paste checklist — one template per step slot; ask dev if client can ignore invalid control tags with a re-prompt"
+
+  - id: fb-008
+    date: 2026-07-11
+    page: word pages
+    observation: "Client silence nudges inject extra teacher turns; page ran 5 replies instead of 3-4"
+    severity: low
+    status: open
+    encoded_as: "checker allows +1 per nudge; dev message asks for client force-finish cap at 6 (notes/dev_message_log_mining.md)"
+
+  - id: fb-009
+    date: 2026-07-11
+    page: word pages
+    observation: "Wrong-guess game too confusing at this level; fill-the-gap trails off weirdly in TTS. Approved games: count-down, say-it-big, chant, avatar action reward. Game words must be super super simple"
+    severity: medium
+    status: fixed
+    encoded_as: "game box trimmed in all word templates"
+
+  - id: fb-010
+    date: 2026-07-11
+    page: bread
+    observation: "Model repeated 'You know it!' two replies in a row when a silence nudge arrived"
+    severity: low
+    status: open
+    encoded_as: "watch item for judge: no repeated praise phrases in consecutive replies"
+
+  - id: fb-011
+    date: 2026-07-11
+    page: sentence_0
+    observation: "Child asked for an example (你给个例子); model gave the same 'Boo says: I like bread! I like bread!' sentence twice in a row"
+    severity: low
+    status: open
+    encoded_as: "watch item for judge: consecutive replies must differ in wording even when re-modeling the target line"
+
+  - id: fb-012
+    date: 2026-07-12
+    page: word pages
+    observation: "Across a whole class, the three word pages must not feel identical — same game in the same slot every page reads as a script"
+    severity: low
+    status: open
+    encoded_as: "watch item for judge: variety across the page (cannot see across pages yet — needs whole-lesson transcripts)"

@@ -130,7 +130,8 @@ def check(transcript: dict):
 
     # R11: false celebration — "Yes!"-style cheer in a finish turn requires a word-try in any prior user msg
     user_texts = " ".join(m["text"].lower() for m in msgs if m["role"] == "user")
-    said_word = word in user_texts  # generous variants need the LLM judge; exact match is the mechanical floor
+    accepted = [word] + [v.lower() for v in transcript.get("accept_variants", [])]
+    said_word = any(v in user_texts for v in accepted)  # exact word + known messy ASR variants; other variants need the LLM judge
     for i, r in enumerate(replies):
         if "[TEMPLATE_FINISH]" in r and re.search(r"\byou said it\b|\byes!\b", r, re.I) and not said_word:
             v("false-celebration", f"reply {i+1}: celebrates 'you said it' but no user message contains '{word}' "

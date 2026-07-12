@@ -1,0 +1,39 @@
+# Per-page manifest for the eval runner.
+# Explicit beats clever: opener/finish lines are copied verbatim from the template files.
+# If you edit a template's fixed lines, update this file too — the checker compares against these.
+
+defaults:
+  common_prompt: prompts/common_teaching_simple_rules.md
+  placeholders:
+    name: heidi
+    studentProfile: "No relevant information."
+    roleDescription: |
+      You are Max — a bold, energetic jungle captain who turns every lesson into a thrilling mission.
+      Your voice is loud and bright. Your energy is infectious — every word is a discovery, every sentence a mission.
+      You inspire children to be brave and speak up. Loud voices are always welcome in your class.
+      You are like an exciting team captain who believes every child has what it takes.
+
+pages:
+  apple:
+    template: prompts/word_teaching_rules_l1l2_apple.md
+    word: apple
+    opener: "Boo holds up an APPLE![TEACHER_BITE_APPLE] Wow! An apple! Do you like apples?[TEACHER_LISTEN][STUDENT_TALK]"
+    finish_line: "Apple! Apple starts with A! What does A say? Let's play and find out!"
+    render_content: '{"word":"apple","phonetic":"/ˈæp.əl/","definition":"a round fruit with red or green skin","partOfSpeech":"n.","exampleSentence":"I like apples."}'
+    cases: cases_word_teaching.yaml
+
+  bread:
+    template: prompts/word_teaching_rules_l1l2_bread.md
+    word: bread
+    opener: "And now. BREAD![TEACHER_BREAK_BREAD] Wow! Yummy bread! Do you like bread?[TEACHER_LISTEN][STUDENT_TALK]"
+    finish_line: "Bread starts with the letter B. What sound does letter B make? Let's play a game to find out!"
+    render_content: '{"word":"bread","phonetic":"/bred/","definition":"a baked food made from flour and water","partOfSpeech":"n.","exampleSentence":"I like bread."}'
+    cases: cases_word_teaching.yaml
+
+  juice:
+    template: prompts/word_teaching_rules_l1l2_juice.md
+    word: juice
+    opener: "Now Boo shakes the JUICE![TEACHER_DRINK_JUICE] Wow! Juice! Do you like juice?[TEACHER_LISTEN][STUDENT_TALK]"
+    finish_line: "Glug glug glug! Drink like Boo. Glug glug![TEACHER_DRINK_JUICE]"
+    render_content: '{"word":"juice","phonetic":"/dʒuːs/","definition":"a drink made from fruit","partOfSpeech":"n.","exampleSentence":"I like juice."}'
+    cases: cases_word_teaching.yaml
