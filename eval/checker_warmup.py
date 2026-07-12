@@ -9,7 +9,9 @@ Transcript JSON:
   {
     "family": "warmup",
     "is_first_meet": true|false,
-    "student_name": "heidi",
+    "student_name": "heidi",          # the profile/default name
+    "spoken_name": "Lily",            # optional: name the child states during the case
+    "max_beats": 7,                   # optional: override the per-path beat budget (L1 warm-up is longer)
     "case": "...",
     "messages": [ {"role": "assistant"|"user", "text": "..."}, ... ]
   }
@@ -61,9 +63,27 @@ def check(transcript: dict):
     # Beat budget: path A positive = 5, path B = 3; +1 per silence nudge;
     # +1 slack for a child-derail (their own question etc. costs one extra beat).
     nudges = sum(1 for m in msgs if m["role"] == "user" and "has been silent" in m["text"])
-    max_beats = (5 if first_meet else 3) + nudges + 1
+    max_beats = transcript.get("max_beats") or ((5 if first_meet else 3) + nudges + 1)
     if len(replies) > max_beats:
         v("beat-budget", f"{len(replies)} teacher beats (max {max_beats} for this path incl. {nudges} silence nudge(s) + 1 slack)")
+
+    # Name handling (prod bug 2026-07-12: "Lily! Hi, rosa." — spoken name must WIN,
+    # the default/profile name must disappear, never both in one reply).
+    spoken = transcript.get("spoken_name", "").lower()
+    if spoken and name and spoken != name:
+        child_said_name = False
+        beat_no = 0
+        for m in msgs:
+            if m["role"] == "user":
+                if spoken in m["text"].lower() or transcript.get("spoken_name_l1", "") and transcript["spoken_name_l1"] in m["text"]:
+                    child_said_name = True
+                continue
+            beat_no += 1
+            low = strip_tags(m["text"]).lower()
+            if spoken in low and name in low:
+                v("name-mix", f"beat {beat_no}: both the spoken name '{spoken}' and the default name '{name}' in one reply")
+            elif child_said_name and name in low:
+                v("stale-name", f"beat {beat_no}: still says default name '{name}' after the child said their name is '{spoken}'")
 
     silence_streak = 0
     last_user = None
@@ -94,9 +114,13 @@ def check(transcript: dict):
             v("english-only", f"beat {n}: contains non-English characters")
 
         # one question per beat; the finish beat may contain no question at all.
-        # "Yes or no?" is a choice-prompt attached to the real question (the
-        # silence rule prescribes it), not a second question.
-        nq = body.count("?") - len(re.findall(r"yes\s+or\s+no\s*\?", body, re.I))
+        # Not counted as questions: "Yes or no?" choice-prompts (the silence rule
+        # prescribes them) and 1-2 word echo interjections ("Hmm?", "A cat?").
+        segments = re.split(r"(?<=[.!?])\s+", body.strip())
+        nq = sum(1 for s in segments
+                 if s.endswith("?")
+                 and len(s.rstrip("?").split()) >= 3
+                 and not re.fullmatch(r"yes\s+or\s+no\s*\?", s.strip(), re.I))
         if nq > 1:
             v("one-question", f"beat {n}: {nq} questions in one beat")
         if "[TEMPLATE_FINISH]" in r and nq > 0:

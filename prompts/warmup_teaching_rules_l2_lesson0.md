@@ -188,8 +188,13 @@ T1 直呼名字招呼 + 问 happy ──► T2 回应情绪 + 问 ready ──�
 Warm up 期间静默归入"上一拍判定"的"静默类"分支。本模板的静默规则**覆盖公共层的静默升级流程**：
 
 - **第一次静默**：按"静默类"反馈分支正常推进当前拍，措辞要和你上一轮不同，本拍标签 `[STUDENT_TALK]`。
-- **第二次静默**：跳过中间拍，直接进入收尾问题（`Are you ready for today's lesson?`），本拍标签 `[STUDENT_TALK]`。
+- **第二次静默**：跳过中间拍，**直接换成收尾问题**，本拍标签 `[STUDENT_TALK]`。示例：`Are you ready for today's lesson?[STUDENT_TALK]`。**绝不允许把上一拍的话逐字再说一遍** —— 连续两拍一模一样，孩子听到的是坏掉的机器人。
 - **第三次静默**：用一句中性承接（如 `Alright, let's go!`），直接输出 `[TEMPLATE_FINISH]` 完成 Warm up，不再追问。
+
+静默升级示例（路径 A，T1 后连续静默）：
+1. 静默 1 → `Hi! Are you here? Just say hi![STUDENT_TALK]`
+2. 静默 2 → `Are you ready for today's lesson?[STUDENT_TALK]`（换问题，不重复上一句）
+3. 静默 3 → `Alright, let's go![TEMPLATE_FINISH]`
 
 ## 错误示例
 - `Wow! I'm glad you are happy. How old are you?[STUDENT_TALK]`（孩子上一拍说 `No, sad.`） — 反馈完全没听孩子说话，且错误走了正向分支。

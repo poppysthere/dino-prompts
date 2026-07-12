@@ -200,3 +200,19 @@ items:
     severity: low
     status: encoded
     encoded_as: "checker_warmup beat-budget has +1 derail slack"
+
+  - id: fb-024
+    date: 2026-07-12
+    page: warmup L1 (prod log + live battery)
+    observation: "PROD BUG: child said their name is Lily (莉莉) but teacher answered 'Lily! Hi, rosa.' and kept calling them rosa all class — the common layer's 'call them ONLY <studentName>, every time' rule fought the spoken name. Reproduced in the harness: 'Hi, rosa! Lily! I hear your name.' then rosa in every later beat"
+    severity: high
+    status: fixed
+    encoded_as: "common layers (L1+L2): '# Name handling' block — studentName is the DEFAULT, a clearly spoken name WINS and replaces it, never two names in one reply; L1 warm-up checklist rule 4 + rosa/Lily example; checker_warmup name-mix + stale-name rules; cases l1-name-mix-cn/en (old rules fail, new rules pass live)"
+
+  - id: fb-025
+    date: 2026-07-12
+    page: warmup L2 (live battery)
+    observation: "On the second consecutive silence the model repeated its retry line word-for-word instead of switching to the ready question — sounds like a broken robot"
+    severity: medium
+    status: fixed
+    encoded_as: "silence-escalation section now has an explicit 3-step example and a never-repeat-verbatim ban; checker_warmup no-repeat-beat caught it"
