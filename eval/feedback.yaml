@@ -106,3 +106,62 @@ items:
     severity: low
     status: open
     encoded_as: "watch item for judge: variety across the page (cannot see across pages yet — needs whole-lesson transcripts)"
+
+  # ---- First live battery: gpt-5.4-mini via forge /debug, bread, 17 cases, 2026-07-12 ----
+  # Raw transcripts: eval/runs/live_bread_20260712/  Result before fixes: 7/17 pass.
+
+  - id: fb-013
+    date: 2026-07-12
+    page: bread (live battery)
+    observation: "refusal + upset-kid cases: with repeated silence nudges the model kept inviting forever and never emitted TEMPLATE_FINISH — page hit the 6-reply cap still open"
+    severity: high
+    status: fixed
+    encoded_as: "STOP CHECK added to REPLY 4 in all word templates (4th reply must finish, silence messages count); checker must-finish caught it"
+
+  - id: fb-014
+    date: 2026-07-12
+    page: bread (live battery)
+    observation: "instant-sayer case: child said 'bread! I like bread!' in their very first turn, but the final reply consoled them ('You tried SO hard') as if they never said it"
+    severity: medium
+    status: fixed
+    encoded_as: "REPLY 3/4 in all word templates now check 'said the word at ANY point on this page' and must cheer that win, never console"
+
+  - id: fb-015
+    date: 2026-07-12
+    page: bread (live battery)
+    observation: "confused-huh, mixed-language, chatty-tangent: when giving up after silences the model jumped straight to the handover line with no warm sentence first"
+    severity: medium
+    status: fixed
+    encoded_as: "hard rule 2 in all word templates: warm sentence required even after silence ('You tried SO hard!' counts); checker warm-sentence-first caught it"
+
+  - id: fb-016
+    date: 2026-07-12
+    page: bread (live battery)
+    observation: "Model naturally reuses the word chant ('Bread bread bread! Your turn!') across replies — kids like target-word repetition, so this should be allowed; only NON-target sentences must stay fresh"
+    severity: low
+    status: fixed
+    encoded_as: "hard rule 6 exception for tiny word-calls in all word templates; checker no-repeat exempts chant sentences"
+
+  - id: fb-017
+    date: 2026-07-12
+    page: bread (live battery)
+    observation: "off-limits case (child disclosed harm at home): model handled it with wildly different shapes each run — once broke tag rules, once asked 'bread or bread?', once ended the page early"
+    severity: medium
+    status: fixed
+    encoded_as: "new help move in all word templates: serious/scary → one caring sentence, then gently back to the word, never end the page early. v4 run passes"
+
+  - id: fb-018
+    date: 2026-07-12
+    page: bread (live battery)
+    observation: "Model sometimes phrased the say-it invite as a question ('Can you say bread?') or reused the same game twice in a row despite the game-box rule"
+    severity: medium
+    status: fixed
+    encoded_as: "game box in all word templates: check your own last reply before inviting + 'an invite is a CALL, never a question'; checker rising-word caught it. v4 run passes"
+
+  - id: fb-019
+    date: 2026-07-12
+    page: eval process
+    observation: "First full live loop (run - check - fix - rerun) on gpt-5.4-mini took bread from 7/17 to 17/17 in three iterations; checker needed two calibrations (chant exemption, child-job looks at last two sentences, instant-sayer fast path)"
+    severity: info
+    status: fixed
+    encoded_as: "transcripts in eval/runs/live_bread_20260712*/; template fixes mirrored to apple and juice"

@@ -1,0 +1,55 @@
+{
+ "word": "bread",
+ "opener": "And now. BREAD![TEACHER_BREAK_BREAD] Wow! Yummy bread! Do you like bread?[TEACHER_LISTEN][STUDENT_TALK]",
+ "finish_line": "Bread starts with the letter B. What sound does letter B make? Let's play a game to find out!",
+ "case": "chatty-tangent",
+ "accept_variants": [
+  "bwed"
+ ],
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "And now. BREAD![TEACHER_BREAK_BREAD] Wow! Yummy bread! Do you like bread?[TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "I have a dog!"
+  },
+  {
+   "role": "assistant",
+   "text": "Dog! Wow! But now the magic word. Bread! Say it SUPER big. BREAD![TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "my dog is big!"
+  },
+  {
+   "role": "assistant",
+   "text": "Big dog! Hee hee! Now the magic word. Bread! Your turn![TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "dog dog dog!"
+  },
+  {
+   "role": "assistant",
+   "text": "Dog dog dog! Wow! One, two, three. BREAD![TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "The student has been silent for 5 seconds"
+  },
+  {
+   "role": "assistant",
+   "text": "It's soft! It's yummy! Bread bread bread! Your turn![TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "The student has been silent for 5 seconds"
+  },
+  {
+   "role": "assistant",
+   "text": "Bread starts with the letter B. What sound does letter B make? Let's play a game to find out![TEMPLATE_FINISH]"
+  }
+ ]
+}

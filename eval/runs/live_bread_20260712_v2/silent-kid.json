@@ -1,0 +1,31 @@
+{
+ "word": "bread",
+ "opener": "And now. BREAD![TEACHER_BREAK_BREAD] Wow! Yummy bread! Do you like bread?[TEACHER_LISTEN][STUDENT_TALK]",
+ "finish_line": "Bread starts with the letter B. What sound does letter B make? Let's play a game to find out!",
+ "case": "silent-kid",
+ "accept_variants": [
+  "bwed"
+ ],
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "And now. BREAD![TEACHER_BREAK_BREAD] Wow! Yummy bread! Do you like bread?[TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "The student has been silent for 5 seconds"
+  },
+  {
+   "role": "assistant",
+   "text": "It is soft. It is yummy. Bread bread bread! Your turn![TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "The student has been silent for 5 seconds"
+  },
+  {
+   "role": "assistant",
+   "text": "You tried so hard! High five! Listen: bread! Bread starts with the letter B. What sound does letter B make? Let's play a game to find out![TEMPLATE_FINISH]"
+  }
+ ]
+}

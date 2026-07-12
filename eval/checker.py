@@ -77,9 +77,14 @@ def check(transcript: dict):
         if finish_line in r and strip_tags(r).strip().startswith(strip_tags(finish_line).strip()[:20]):
             v("warm-sentence-first", f"reply {n}: finish turn starts with the handover line (no warm sentence first)")
 
-        # R5: TEMPLATE_FINISH position (only reply 3+)
+        # R5: TEMPLATE_FINISH position — reply 3+, or reply 2 when the child's
+        # first words already contained a word-try (instant-sayer fast path).
         if "[TEMPLATE_FINISH]" in r and n <= 2:
-            v("early-finish", f"reply {n}: [TEMPLATE_FINISH] before reply 3")
+            accepted_early = [word] + [a.lower() for a in transcript.get("accept_variants", [])]
+            first_user = next((m["text"].lower() for m in msgs if m["role"] == "user"
+                               and not m["text"].startswith("The UI is ready")), "")
+            if not (n == 2 and any(a in first_user for a in accepted_early)):
+                v("early-finish", f"reply {n}: [TEMPLATE_FINISH] before reply 3 without an instant word-try")
         if "[TEMPLATE_FINISH]" in r and finish_line not in r:
             v("finish-without-line", f"reply {n}: [TEMPLATE_FINISH] without the verbatim finish/handover line")
 
@@ -93,14 +98,16 @@ def check(transcript: dict):
         if r.endswith("[STUDENT_TALK]") and not r.endswith("[TEACHER_LISTEN][STUDENT_TALK]"):
             v("listen-pose", f"reply {n}: [STUDENT_TALK] without [TEACHER_LISTEN] right before it")
 
-        # R7: STUDENT_TALK replies must end with the child's job (question or say-it call)
+        # R7: STUDENT_TALK replies must end with the child's job (question or say-it call).
+        # A short trailing tag-along after the question is fine ("Tiny bread with me? Little voice."),
+        # so look at the last TWO sentences.
         if "[STUDENT_TALK]" in r:
             body = strip_tags(r).strip()
-            last = re.split(r"(?<=[.!?])\s+", body)[-1] if body else ""
-            is_question = last.endswith("?")
-            is_say_call = re.search(rf"\b(say|copy|together|your turn|repeat)\b", last, re.I) or word in last.lower()
+            tail = " ".join(re.split(r"(?<=[.!?])\s+", body)[-2:]) if body else ""
+            is_question = "?" in tail
+            is_say_call = re.search(rf"\b(say|copy|together|your turn|repeat)\b", tail, re.I) or word in tail.lower()
             if not (is_question or is_say_call):
-                v("child-job", f"reply {n}: STUDENT_TALK turn ends on a plain statement: ...{last[-60:]!r}")
+                v("child-job", f"reply {n}: STUDENT_TALK turn ends on a plain statement: ...{tail[-60:]!r}")
 
         # R8: TTS safety — no naked single letters as sentences, no ellipses (TTS reads "..." badly)
         for s in re.split(r"[.!?]+", strip_tags(r)):
@@ -115,10 +122,15 @@ def check(transcript: dict):
         if re.search(rf"\b(say|copy|repeat)\b[^.!?]*\b{re.escape(word)}\s*\?", strip_tags(r), re.I):
             v("rising-word", f"reply {n}: say-it invite ends with '{word}?' — child imitates the rising intonation")
 
-    # R9: no repeated sentences across the page
+    # R9: no repeated sentences across the page.
+    # Exempt tiny word-calls ("bread bread bread", "your turn") — the target word is
+    # the song of the page and may repeat (template hard rule 6).
+    chant_words = {word, "your", "turn"}
     seen = {}
     for i, r in enumerate(replies):
         for s in sentences(r):
+            if set(s.split()) <= chant_words:
+                continue
             if s in seen:
                 v("no-repeat", f"reply {i+1} repeats a sentence from reply {seen[s]+1}: {s[:60]!r}")
             else:

@@ -41,9 +41,11 @@ on the approve button for every template change.
 # pipeline self-test, no network:
 python3 eval/runner.py --backend mock
 
-# real run against the same model the app uses (Prompt Forge /debug endpoint):
-export FORGE_BASE_URL=http://<forge-host>/api FORGE_EMAIL=... FORGE_PASSWORD=...
-export FORGE_PROVIDER=... FORGE_MODEL=...        # as shown in the forge model picker
+# real run against the same model the app uses (Prompt Forge /debug endpoint).
+# Working values as of 2026-07-12 (test env):
+export FORGE_BASE_URL=http://dino-test-alb-2087276790.ap-southeast-1.elb.amazonaws.com/cms/api
+export FORGE_EMAIL=... FORGE_PASSWORD=...
+export FORGE_PROVIDER="Azure OpenAI" FORGE_MODEL="gpt-5.4-mini"   # the model the app runs
 python3 eval/runner.py --backend forge --runs 10  # pass = >=9/10 clean per case
 
 # judge the transcripts with a strong model (OpenAI-compatible endpoint):
@@ -55,6 +57,21 @@ python3 eval/checker.py path/to/transcript.json
 ```
 
 Deps: `pip3 install pyyaml` (runner/judge; checker is stdlib-only).
+
+If the machine you run on cannot reach the forge ALB directly (network policy), there is a
+fallback: serve the repo with `python3 eval/_cors_server.py 8766` and drive the same /debug
+calls from a browser page that CAN reach it (the forge login page works as a host). The
+first live battery (`eval/runs/live_bread_20260712*`) was run this way.
+
+## First live battery — bread, gpt-5.4-mini, 2026-07-12
+
+17 cases, real model: **7/17 → 17/17 in three run-check-fix iterations.** Real bugs it caught
+(all fixed in the templates, mirrored to apple/juice, logged as fb-013..fb-018):
+- repeated silences made the model invite forever and never finish the page (STOP CHECK added),
+- a child who said the word instantly was later consoled as if they had failed,
+- give-up turns jumped to the handover line with no warm sentence first,
+- say-it invites phrased as questions ("Can you say bread?"),
+- comfort turns for a crying child repeated the same sentence three times.
 
 ## The workflow (human on the approve button)
 

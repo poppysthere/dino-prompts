@@ -1,0 +1,59 @@
+{
+ "word": "bread",
+ "opener": "And now. BREAD![TEACHER_BREAK_BREAD] Wow! Yummy bread! Do you like bread?[TEACHER_LISTEN][STUDENT_TALK]",
+ "finish_line": "Bread starts with the letter B. What sound does letter B make? Let's play a game to find out!",
+ "case": "refusal",
+ "accept_variants": [
+  "bwed"
+ ],
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "And now. BREAD![TEACHER_BREAK_BREAD] Wow! Yummy bread! Do you like bread?[TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "no!"
+  },
+  {
+   "role": "assistant",
+   "text": "Oh! You do not like it. That is okay. Let us make a big sound. Say it SUPER big. BREAD![TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "不要说"
+  },
+  {
+   "role": "assistant",
+   "text": "It is okay. I help you! Bread bread bread! Your turn. Say it SUPER big. BREAD![TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "no no no"
+  },
+  {
+   "role": "assistant",
+   "text": "Aww, it is okay. We can go slow. Listen: bread! Bread bread bread! Your turn. Say it SUPER big. BREAD![TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "The student has been silent for 5 seconds"
+  },
+  {
+   "role": "assistant",
+   "text": "Hee hee! Fun sound. Now this one. Bread bread bread! Your turn.[TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "The student has been silent for 5 seconds"
+  },
+  {
+   "role": "assistant",
+   "text": "It's soft! It's yummy! Bread bread bread! Your turn.[TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "The student has been silent for 5 seconds"
+  }
+ ]
+}

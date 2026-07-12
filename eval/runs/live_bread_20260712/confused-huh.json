@@ -1,0 +1,39 @@
+{
+ "word": "bread",
+ "opener": "And now. BREAD![TEACHER_BREAK_BREAD] Wow! Yummy bread! Do you like bread?[TEACHER_LISTEN][STUDENT_TALK]",
+ "finish_line": "Bread starts with the letter B. What sound does letter B make? Let's play a game to find out!",
+ "case": "confused-huh",
+ "accept_variants": [
+  "bwed"
+ ],
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "And now. BREAD![TEACHER_BREAK_BREAD] Wow! Yummy bread! Do you like bread?[TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "什么意思"
+  },
+  {
+   "role": "assistant",
+   "text": "It is yummy food. Soft and warm. Say it SUPER big. BREAD![TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "啊？"
+  },
+  {
+   "role": "assistant",
+   "text": "Aww, it is okay. Soft and yummy. Bread bread bread! Your turn. Say bread![TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "什么？"
+  },
+  {
+   "role": "assistant",
+   "text": "Bread starts with the letter B. What sound does letter B make? Let's play a game to find out![TEMPLATE_FINISH]"
+  }
+ ]
+}

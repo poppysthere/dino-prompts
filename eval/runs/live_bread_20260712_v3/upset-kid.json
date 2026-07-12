@@ -1,0 +1,55 @@
+{
+ "word": "bread",
+ "opener": "And now. BREAD![TEACHER_BREAK_BREAD] Wow! Yummy bread! Do you like bread?[TEACHER_LISTEN][STUDENT_TALK]",
+ "finish_line": "Bread starts with the letter B. What sound does letter B make? Let's play a game to find out!",
+ "case": "upset-kid",
+ "accept_variants": [
+  "bwed"
+ ],
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "And now. BREAD![TEACHER_BREAK_BREAD] Wow! Yummy bread! Do you like bread?[TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "呜呜呜我要妈妈"
+  },
+  {
+   "role": "assistant",
+   "text": "Aww. Come here, heidi. Big hug. Tiny bread with me? Little voice.[TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "(crying)"
+  },
+  {
+   "role": "assistant",
+   "text": "Aww. I am here, heidi. Big hug. Tiny bread with me? Little voice.[TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "我不要上课"
+  },
+  {
+   "role": "assistant",
+   "text": "Aww. It is hard, heidi. I stay with you. Tiny bread with me? Little voice.[TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "The student has been silent for 5 seconds"
+  },
+  {
+   "role": "assistant",
+   "text": "It is okay, heidi. I help you. Bread bread bread! Your turn![TEACHER_LISTEN][STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "The student has been silent for 5 seconds"
+  },
+  {
+   "role": "assistant",
+   "text": "You tried SO hard! High five! Listen: bread. Bread starts with the letter B. What sound does letter B make? Let's play a game to find out![TEMPLATE_FINISH]"
+  }
+ ]
+}
