@@ -1,0 +1,169 @@
+#!/usr/bin/env python3
+"""Mechanical rule checker for Warm Up (state machine) transcripts.
+
+Encodes the hard rules of the L2 warm-up template (originals/warmup_l2_lesson0_original.md):
+path dispatch on isFirstMeet, path-B forbidden phrases, one question per beat,
+silence escalation, no invisible-action requests, tag discipline, TTS safety.
+
+Transcript JSON:
+  {
+    "family": "warmup",
+    "is_first_meet": true|false,
+    "student_name": "heidi",
+    "case": "...",
+    "messages": [ {"role": "assistant"|"user", "text": "..."}, ... ]
+  }
+
+Usage: python3 checker_warmup.py transcript.json   (exit 0 = pass)
+"""
+import json
+import re
+import sys
+import unicodedata
+
+ALLOWED_CONTROL = ["[STUDENT_TALK]", "[TEMPLATE_FINISH]"]
+FORBIDDEN_TAGS = ["[NEXT_STEP]", "[WORD_EVALUATION]", "[TEACHER_TALK]"]
+
+# Path B (returning student) — first-meeting phrases are forbidden the whole warm-up.
+PATH_B_FORBIDDEN = [
+    r"what\s+is\s+your\s+name", r"what'?s\s+your\s+name", r"tell\s+me\s+your\s+name",
+    r"may\s+i\s+know\s+your\s+name",
+    r"\bi'?m\s+teacher\b", r"\bmy\s+name\s+is\b", r"let\s+me\s+introduce",
+    r"nice\s+to\s+meet\s+you",
+    r"how\s+old\s+are\s+you",
+]
+
+# The teacher cannot see the child — no requests for visible actions.
+INVISIBLE_ACTIONS = [
+    r"\bwave\b", r"thumbs\s+up", r"big\s+smile", r"touch\s+your",
+    r"show\s+me\s+your", r"clap\s+your\s+hands.*\?",
+]
+
+
+def has_cjk(text: str) -> bool:
+    return any("CJK" in unicodedata.name(ch, "") for ch in text)
+
+
+def strip_tags(text: str) -> str:
+    return re.sub(r"\[[A-Z_]+\]", "", text)
+
+
+def check(transcript: dict):
+    first_meet = bool(transcript["is_first_meet"])
+    name = transcript.get("student_name", "").lower()
+    msgs = transcript["messages"]
+    replies = [m["text"].strip() for m in msgs if m["role"] == "assistant"]
+    violations = []
+
+    def v(rule, detail):
+        violations.append(f"[{rule}] {detail}")
+
+    # Beat budget: path A positive = 5, path B = 3; +1 per silence nudge;
+    # +1 slack for a child-derail (their own question etc. costs one extra beat).
+    nudges = sum(1 for m in msgs if m["role"] == "user" and "has been silent" in m["text"])
+    max_beats = (5 if first_meet else 3) + nudges + 1
+    if len(replies) > max_beats:
+        v("beat-budget", f"{len(replies)} teacher beats (max {max_beats} for this path incl. {nudges} silence nudge(s) + 1 slack)")
+
+    silence_streak = 0
+    last_user = None
+    for m in msgs:
+        if m["role"] == "user":
+            last_user = m["text"]
+            if "has been silent" in m["text"]:
+                silence_streak += 1
+            else:
+                silence_streak = 0
+            continue
+
+        r = m["text"].strip()
+        n = sum(1 for x in msgs[: msgs.index(m) + 1] if x["role"] == "assistant")
+        body = strip_tags(r)
+
+        # tags: exactly one allowed control tag, at the very end; forbidden tags never
+        found = [t for t in ALLOWED_CONTROL if t in r]
+        if len(found) != 1:
+            v("one-control-tag", f"beat {n}: control tags found: {found or 'none'}")
+        elif not r.endswith(found[0]):
+            v("tag-at-end", f"beat {n}: does not end with {found[0]}")
+        for t in FORBIDDEN_TAGS:
+            if t in r:
+                v("forbidden-tag", f"beat {n}: uses {t} — warm up may not")
+
+        if has_cjk(r):
+            v("english-only", f"beat {n}: contains non-English characters")
+
+        # one question per beat; the finish beat may contain no question at all.
+        # "Yes or no?" is a choice-prompt attached to the real question (the
+        # silence rule prescribes it), not a second question.
+        nq = body.count("?") - len(re.findall(r"yes\s+or\s+no\s*\?", body, re.I))
+        if nq > 1:
+            v("one-question", f"beat {n}: {nq} questions in one beat")
+        if "[TEMPLATE_FINISH]" in r and nq > 0:
+            v("no-question-on-finish", f"beat {n}: finish beat still asks a question")
+
+        # path B forbidden phrases (the prod bug this template exists to prevent)
+        if not first_meet:
+            for pat in PATH_B_FORBIDDEN:
+                if re.search(pat, body, re.I):
+                    v("path-b-forbidden", f"beat {n}: first-meeting phrase {pat!r} with a returning student")
+            if n == 1 and name and name not in body.lower():
+                v("path-b-name", f"beat 1: returning student not greeted by name '{name}'")
+            if n == 1 and not re.search(r"\bagain\b|\bback\b", body, re.I):
+                v("path-b-again", "beat 1: no 'again/back' (seeing-you-again wording) for a returning student")
+        else:
+            if n == 1 and not re.search(r"\bname\b", body, re.I):
+                v("path-a-ask-name", "beat 1: first meeting but the teacher never asks the name")
+            if n == 1 and name and name in body.lower():
+                v("path-a-name-leak", f"beat 1: says '{name}' before the child ever gave it")
+
+        for pat in INVISIBLE_ACTIONS:
+            if re.search(pat, body, re.I):
+                v("invisible-action", f"beat {n}: asks for an action the teacher cannot see ({pat!r})")
+
+        # silence escalation: after the 3rd consecutive silence the beat MUST finish
+        if last_user is not None and silence_streak >= 3 and "[TEMPLATE_FINISH]" not in r:
+            v("silence-escalation", f"beat {n}: 3rd consecutive silence but warm up still not finished")
+
+        # TTS safety (same device findings as the word pages)
+        if "..." in r or "\u2026" in r:
+            v("tts-ellipsis", f"beat {n}: contains '...'")
+        if "\u2014" in r or "\u2013" in r or " - " in r:
+            v("tts-dash", f"beat {n}: contains a dash")
+
+        # STUDENT_TALK beats must end with the child's job (question or say-it call)
+        if "[STUDENT_TALK]" in r:
+            tail = " ".join(re.split(r"(?<=[.!?])\s+", body.strip())[-2:])
+            if "?" not in tail and not re.search(r"\b(say|your turn)\b", tail, re.I):
+                v("child-job", f"beat {n}: STUDENT_TALK beat ends on a plain statement: ...{tail[-60:]!r}")
+
+    # the warm up must actually finish
+    if replies and "[TEMPLATE_FINISH]" not in replies[-1]:
+        v("must-finish", "last beat does not end the warm up with [TEMPLATE_FINISH] (transcript may be cut early — verify)")
+
+    # no two identical beats (word-for-word repeats read as a stuck teacher)
+    seen = {}
+    for i, r in enumerate(replies):
+        key = strip_tags(r).strip().lower()
+        if key in seen:
+            v("no-repeat-beat", f"beat {i+1} is word-for-word identical to beat {seen[key]+1}")
+        else:
+            seen[key] = i
+
+    return violations
+
+
+def main():
+    raw = open(sys.argv[1]).read() if len(sys.argv) > 1 else sys.stdin.read()
+    violations = check(json.loads(raw))
+    if violations:
+        print(f"FAIL — {len(violations)} violation(s):")
+        for vi in violations:
+            print("  " + vi)
+        sys.exit(1)
+    print("PASS — all warm-up structural checks OK")
+    sys.exit(0)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,36 @@
+{
+ "family": "warmup",
+ "is_first_meet": false,
+ "student_name": "heidi",
+ "case": "b-name-regression",
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "Hi heidi! So nice to see you again! Are you happy today?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "什么？你是谁呀？"
+  },
+  {
+   "role": "assistant",
+   "text": "Hi heidi! I am Max! Are you happy today?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "哦。开心。"
+  },
+  {
+   "role": "assistant",
+   "text": "Wow, heidi! I am glad you are happy. Are you ready for today's lesson?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "yes"
+  },
+  {
+   "role": "assistant",
+   "text": "Good! Let's go![TEMPLATE_FINISH]"
+  }
+ ]
+}

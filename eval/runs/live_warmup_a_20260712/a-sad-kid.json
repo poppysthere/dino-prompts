@@ -1,0 +1,36 @@
+{
+ "family": "warmup",
+ "is_first_meet": true,
+ "student_name": "test_user",
+ "case": "a-sad-kid",
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "Hi test_user! Great to see you again! Are you happy today?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "Tom"
+  },
+  {
+   "role": "assistant",
+   "text": "Hi Tom! What a lovely name! How are you? Are you happy?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "no. sad."
+  },
+  {
+   "role": "assistant",
+   "text": "Oh, sorry to hear that. You will be happy later. Are you ready for today's lesson?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "yes"
+  },
+  {
+   "role": "assistant",
+   "text": "Good! Let's go![TEMPLATE_FINISH]"
+  }
+ ]
+}

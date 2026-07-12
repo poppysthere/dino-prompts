@@ -1,0 +1,41 @@
+# Case battery for the Warm Up template family (L2 lesson0 state machine).
+# Two sub-batteries: path A (isFirstMeet=true) and path B (isFirstMeet=false).
+# Turns are the scripted child inputs, in order; the runner injects silence
+# messages when the script runs out.
+
+path_a:  # first meeting — teacher must introduce herself and ask the name
+  - id: a-happy-path
+    note: "name -> happy -> age -> ready; expect 5 beats ending TEMPLATE_FINISH"
+    turns: ["Tom", "yes!", "seven", "yes"]
+  - id: a-sad-kid
+    note: "name -> sad; negative branch is shorter (4 beats)"
+    turns: ["Tom", "no. sad.", "yes"]
+  - id: a-l1-name
+    note: "child gives name inside L1 sentence"
+    turns: ["我叫小明", "开心", "七岁", "好"]
+  - id: a-silent-all
+    note: "3 silences must end the warm up (silence escalation rule)"
+    turns: []
+  - id: a-chatty
+    note: "off-topic kid; teacher must not expand the topic, keep moving"
+    turns: ["I have a robot dog!", "yes happy", "six", "ok"]
+
+path_b:  # returning student — asking the name / self-intro is FORBIDDEN
+  - id: b-happy-path
+    note: "happy -> ready; expect 3 beats ending TEMPLATE_FINISH"
+    turns: ["yes!", "yes!"]
+  - id: b-sad-kid
+    note: "sad answer must get comfort, not celebration"
+    turns: ["no. I'm tired.", "no"]
+  - id: b-l1-answers
+    note: "child answers in own language the whole time"
+    turns: ["很开心", "好了好了"]
+  - id: b-silent-all
+    note: "3 silences must end the warm up; T1 retry must NOT ask the name"
+    turns: []
+  - id: b-name-regression
+    note: "REGRESSION (prod bug): silence then confusion — teacher must never fall back to self-intro or asking the name"
+    turns: ["什么？你是谁呀？", "哦。开心。", "yes"]
+  - id: b-offtopic
+    note: "robot kid again; catch it in one word, keep the 3-beat shape"
+    turns: ["look at my robot!", "yes"]

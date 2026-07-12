@@ -165,3 +165,38 @@ items:
     severity: info
     status: fixed
     encoded_as: "transcripts in eval/runs/live_bread_20260712*/; template fixes mirrored to apple and juice"
+
+  # ---- New family: Warm Up L2 lesson0 (state machine, isFirstMeet paths), 2026-07-12 ----
+  # Baseline on the ORIGINAL template: 4/11. After fixes: 11/11.
+
+  - id: fb-020
+    date: 2026-07-12
+    page: warmup L2 (live battery)
+    observation: "CRITICAL reverse path bug: with isFirstMeet=true and studentName=test_user, ALL 5 first-meeting cases greeted 'Hi test_user! Great to see you again!' — no self-intro, no name question. The common layer's 'call them ONLY <studentName>' rule plus the template's own test_user example beat the path dispatch"
+    severity: high
+    status: fixed
+    encoded_as: "template: path-A override of the common name rule (never say studentName in path A T1) + removed the test_user path-B example + reverse-bug entry in 错误示例; checker path-a-ask-name / path-a-name-leak"
+
+  - id: fb-021
+    date: 2026-07-12
+    page: warmup L2 (live battery)
+    observation: "Template's own T2 example ('How are you? Are you happy?') has two questions, violating its own one-question rule — model copied it verbatim"
+    severity: medium
+    status: fixed
+    encoded_as: "T2 examples rewritten to one question; checker one-question ('Yes or no?' choice-prompt exempted)"
+
+  - id: fb-022
+    date: 2026-07-12
+    page: warmup L2 (live battery)
+    observation: "Template example 'Oh... That's okay.' contains an ellipsis — same TTS problem as fb-004, now in the L2 original"
+    severity: medium
+    status: fixed
+    encoded_as: "example rewritten; checker_warmup tts-ellipsis/tts-dash"
+
+  - id: fb-023
+    date: 2026-07-12
+    page: warmup L2 (live battery)
+    observation: "Child derail (asking 'who are you?') costs one extra beat over the 3-beat path-B plan — acceptable, model recovered well; budget should allow +1"
+    severity: low
+    status: encoded
+    encoded_as: "checker_warmup beat-budget has +1 derail slack"
