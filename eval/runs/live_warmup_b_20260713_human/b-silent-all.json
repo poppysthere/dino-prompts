@@ -1,0 +1,36 @@
+{
+ "family": "warmup",
+ "is_first_meet": false,
+ "student_name": "heidi",
+ "case": "b-silent-all",
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "Hi Heidi! So nice to see you again! Are you happy today?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "The student has been silent for 5 seconds"
+  },
+  {
+   "role": "assistant",
+   "text": "Hi Heidi! Are you here? Just say hi![STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "The student has been silent for 5 seconds"
+  },
+  {
+   "role": "assistant",
+   "text": "Are you happy today, Heidi? Yes or no?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "The student has been silent for 5 seconds"
+  },
+  {
+   "role": "assistant",
+   "text": "Alright, we go slow. I am with you. Let's go![TEMPLATE_FINISH]"
+  }
+ ]
+}

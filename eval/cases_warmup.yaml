@@ -45,3 +45,6 @@ path_b:  # returning student — asking the name / self-intro is FORBIDDEN
   - id: b-offtopic
     note: "robot kid again; catch it in one word, keep the 3-beat shape"
     turns: ["look at my robot!", "yes"]
+  - id: b-yeah-no-notready
+    note: "REGRESSION (device 2026-07-13): ASR glued 'Yeah. No.' — last word wins (NO branch, no 'mixed feeling' talk); 'not ready' close must catch the child, not brush them off"
+    turns: ["Yeah. No.", "Not ready."]

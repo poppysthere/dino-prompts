@@ -236,7 +236,23 @@ items:
   - id: fb-028
     date: 2026-07-13
     page: warmup L2 (device test)
-    observation: "'Oh, a mixed feeling!' is lovely pedagogy but 'mixed feeling' may be above A1 comprehension for a 5-7yo; watch whether abstract reaction words confuse kids on device"
+    observation: "'Oh, a mixed feeling!' is lovely pedagogy but 'mixed feeling' may be above A1 comprehension for a 5-7yo"
     severity: low
-    status: open
-    encoded_as: "watch item for judge: reaction words must themselves be A1-simple"
+    status: fixed
+    encoded_as: "core constraint: reaction words must themselves be A1-simple; 'mixed feeling' added as a written bad example"
+
+  - id: fb-029
+    date: 2026-07-13
+    page: warmup L2 (device test)
+    observation: "Child said only 'No' but ASR delivered 'Yeah. No.' — a phantom Yeah (likely AEC leak or noise). Model treated it as 'mixed feelings' instead of a no"
+    severity: medium
+    status: fixed
+    encoded_as: "template rule: contradictory answers = last word wins (self-correction); regression case b-yeah-no-notready; dev note added to notes/dev_message_log_mining.md to investigate the phantom Yeah"
+
+  - id: fb-030
+    date: 2026-07-13
+    page: warmup L2 (device test)
+    observation: "HUMAN FEEDBACK: 'Not ready.' answered with 'That's okay, let's go!' feels robotic and dismissive — too AI. Wants a native experienced kids-tutor: validate the feeling, then a tiny ritual to become ready"
+    severity: high
+    status: fixed
+    encoded_as: "close beats rewritten in the template: canned one-word feedback (Good!/That's okay,/Alright,) replaced with react-then-ritual branches ('Not ready yet! Okay. One BIG breath. Whooooo! Now we go, together!'); '像真人老师，不像机器' section added; full path B battery re-passes 7/7 live"
