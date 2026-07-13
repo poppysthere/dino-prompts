@@ -1,0 +1,33 @@
+# Case battery for the L2 wrap-up pre-video step (did you like the story? -> song time).
+# Two replies max; branch judged by MEANING in any language; question asked once, ever.
+
+wrapup_pre:
+  - id: wrap-pos
+    note: "liked it in English -> 'Me too!' row"
+    turns: ["yes! I like it!"]
+    require_phrases: ["me too"]
+  - id: wrap-pos-chinese
+    note: "REGRESSION vs the original's zh->NEG rule: '喜欢！' means they LIKED it -> 'Me too!' row, never the consolation row"
+    turns: ["喜欢！"]
+    require_phrases: ["me too"]
+    forbid_phrases: ["that's okay"]
+  - id: wrap-neg
+    note: "'不喜欢。' -> 'That's okay!' row; 'Me too!' here would agree with the wrong thing"
+    turns: ["不喜欢。"]
+    require_phrases: ["that's okay"]
+    forbid_phrases: ["me too"]
+  - id: wrap-silent
+    note: "silence: no re-ask, straight to the 'That's okay!' row"
+    turns: []
+    forbid_phrases: ["me too"]
+  - id: wrap-offtopic
+    note: "'我要妈妈！' (I want mommy): one soft matched catch allowed, then the consolation row; never 'Me too!'"
+    turns: ["我要妈妈！"]
+    forbid_phrases: ["me too"]
+    require_phrases: ["song time"]
+  - id: wrap-junkname
+    note: "JUNK NAME: placeholder never spoken; name slots drop cleanly"
+    turns: ["yes!"]
+    student_name: "test_user"
+    require_phrases: ["me too"]
+    forbid_phrases: ["test[_\\s]?user"]

@@ -47,6 +47,16 @@ STEPS = {
         "final_tag": "[TEMPLATE_FINISH]",
         "max": 1,
     },
+    # wrap-up pre-video rides the same generic step rules; its branch rows are long
+    # fixed lines, so the pre-close budget is wide (it only guards runaway improv)
+    "wrapup_pre": {
+        "ask": "The horse ate the cake! Poor Farmer Bob! Did you like the story?",
+        "question": "did you like the story",
+        "close": "Now it's song time! Let's listen and have fun!",
+        "final_tag": "[NEXT_STEP]",
+        "max": 2,
+        "catch_budget": 22,
+    },
 }
 
 
@@ -146,7 +156,7 @@ def check(tr):
             v("close-line", f"last reply missing the fixed close: {strip_tags(last).strip()!r}")
         else:
             catch = norm(last).split(norm(step["close"]))[0].strip()
-            if len(catch.split()) > 8:
+            if len(catch.split()) > step.get("catch_budget", 8):
                 v("catch-budget", f"close catch over budget ({len(catch.split())} words): {catch!r}")
     for r in replies[:-1]:
         if step["final_tag"] in r:
