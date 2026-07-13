@@ -2,7 +2,7 @@
  "family": "warmup",
  "is_first_meet": true,
  "student_name": "test_user",
- "case": "l1-sad",
+ "case": "l1-silent",
  "messages": [
   {
    "role": "assistant",
@@ -10,24 +10,20 @@
   },
   {
    "role": "user",
-   "text": "Tom"
+   "text": "The student has been silent for 5 seconds"
   },
   {
    "role": "assistant",
-   "text": "Hi Tom! Nice to meet you! Are you happy today?[STUDENT_TALK]"
+   "text": "Hi, my friend. I am Kim. What is your name?[STUDENT_TALK]"
   },
   {
    "role": "user",
-   "text": "sad."
+   "text": "The student has been silent for 5 seconds"
   },
   {
    "role": "assistant",
-   "text": "Aww, you are sad today. BIG hug! We play soft today. Let's go, together.[TEMPLATE_FINISH]"
+   "text": "Okay, I say it: GO! Let's play![TEMPLATE_FINISH]"
   }
  ],
- "spoken_name": "tom",
- "max_beats": 4,
- "forbid_phrases": [
-  "say\\s+go"
- ]
+ "max_beats": 4
 }

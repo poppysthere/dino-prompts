@@ -2,7 +2,7 @@
  "family": "warmup",
  "is_first_meet": true,
  "student_name": "test_user",
- "case": "a-sad-kid",
+ "case": "a-l1-name",
  "messages": [
   {
    "role": "assistant",
@@ -10,20 +10,21 @@
   },
   {
    "role": "user",
-   "text": "Tom"
+   "text": "我叫小明"
   },
   {
    "role": "assistant",
-   "text": "Hi Tom, what a lovely name! Are you happy today?[STUDENT_TALK]"
+   "text": "Hi Xiao Ming, what a lovely name! Are you happy today?[STUDENT_TALK]"
   },
   {
    "role": "user",
-   "text": "no. sad."
+   "text": "开心"
   },
   {
    "role": "assistant",
-   "text": "Aww, sad. One big breath. Whoosh! Now we go, together![TEMPLATE_FINISH]"
+   "text": "Happy! Yay, me too! Adventure time! Let's go![TEMPLATE_FINISH]"
   }
  ],
- "spoken_name": "tom"
+ "spoken_name": "ming",
+ "spoken_name_l1": "小明"
 }

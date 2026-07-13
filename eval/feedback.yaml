@@ -328,3 +328,11 @@ items:
     severity: medium
     status: fixed
     encoded_as: "prompt: shy-kid rule + example in L1 template (make them the FRIEND, no pressure, never 'Is it hard'); regression l1-idk-name passes live ('Hee hee, that is okay! You are my friend.'). dev items added: barge-in on silence-triggered closes, warm-up first-question no-speech timeout to 15s (kid spoke at second 24), investigate step reopening after TEMPLATE_FINISH. Ladder length intentionally unchanged"
+
+  - id: fb-040
+    date: 2026-07-13
+    page: warmup (both templates) — DESIGN PRINCIPLE
+    observation: "HUMAN FEEDBACK (standing rule, international product): never encode a behavior against one native language's phrases. 不知道 is just the test language — 'I don't know' in ANY language must get the same shy-kid treatment. All such rules are MEANING rules, not phrase lists"
+    severity: medium
+    status: fixed
+    encoded_as: "idk-to-name rule rewritten in both templates as an explicit meaning rule with multi-language examples (不知道/no sé/몰라/je sais pas); new l1-idk-name-es case proves it in Spanish live ('No sé.' -> 'You are my friend', 'sí, feliz!' -> big launch). PRINCIPLE for future prompt work: every L1-speech rule must be written meaning-first and eval'd in at least one language other than Chinese"

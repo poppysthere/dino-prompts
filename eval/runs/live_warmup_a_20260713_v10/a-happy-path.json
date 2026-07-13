@@ -2,7 +2,7 @@
  "family": "warmup",
  "is_first_meet": true,
  "student_name": "test_user",
- "case": "a-chatty",
+ "case": "a-happy-path",
  "messages": [
   {
    "role": "assistant",
@@ -10,19 +10,20 @@
   },
   {
    "role": "user",
-   "text": "I have a robot dog!"
+   "text": "Tom"
   },
   {
    "role": "assistant",
-   "text": "A robot dog! Wow, that is SO cool! Are you happy today?[STUDENT_TALK]"
+   "text": "Hi Tom, what a lovely name! Are you happy today?[STUDENT_TALK]"
   },
   {
    "role": "user",
-   "text": "yes happy"
+   "text": "yes!"
   },
   {
    "role": "assistant",
    "text": "Happy! Yay, me too! Adventure time! Let's go![TEMPLATE_FINISH]"
   }
- ]
+ ],
+ "spoken_name": "tom"
 }

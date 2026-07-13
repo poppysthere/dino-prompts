@@ -91,6 +91,12 @@ l1:
     require_phrases: ["friend"]
     forbid_phrases: ["is it hard", "say\\s+go"]
     max_beats: 4
+  - id: l1-idk-name-es
+    note: "LANGUAGE-AGNOSTIC check (international product): same shy-kid move for Spanish 'No sé.' — the rule is meaning-based, never a Chinese phrase list; happy answer in Spanish rides the joy out"
+    turns: ["No sé.", "sí, feliz!"]
+    require_phrases: ["friend"]
+    forbid_phrases: ["is it hard"]
+    max_beats: 4
   - id: l1-name-revert
     note: "REGRESSION (device 2026-07-13, Zhang Zhihua/Tommy): after the child states their name, the profile default is DEAD — a later greeting must not resurrect it, and the name must be in English letters"
     spoken_name: zhihua
