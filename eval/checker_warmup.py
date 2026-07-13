@@ -13,6 +13,7 @@ Transcript JSON:
     "spoken_name": "Lily",            # optional: name the child states during the case
     "max_beats": 7,                   # optional: override the per-path beat budget (L1 warm-up is longer)
     "forbid_phrases": ["\\bape\\b"],  # optional: regexes that must not appear in any teacher reply
+    "require_phrases": ["huide|heidi"] # optional: regexes that must appear in at least one teacher reply
     "case": "...",
     "messages": [ {"role": "assistant"|"user", "text": "..."}, ... ]
   }
@@ -172,6 +173,12 @@ def check(transcript: dict):
             tail = " ".join(re.split(r"(?<=[.!?])\s+", body.strip())[-2:])
             if "?" not in tail and not re.search(r"\b(say|your turn)\b", tail, re.I):
                 v("child-job", f"beat {n}: STUDENT_TALK beat ends on a plain statement: ...{tail[-60:]!r}")
+
+    # case-specific required phrases (e.g. the child's name attempt must be echoed back)
+    all_teacher = " ".join(strip_tags(r) for r in replies)
+    for pat in transcript.get("require_phrases", []):
+        if not re.search(pat, all_teacher, re.I):
+            v("require-phrase", f"no teacher reply contains required phrase {pat!r}")
 
     # the warm up must actually finish
     if replies and "[TEMPLATE_FINISH]" not in replies[-1]:

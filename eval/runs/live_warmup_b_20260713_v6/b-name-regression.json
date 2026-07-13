@@ -1,0 +1,28 @@
+{
+ "family": "warmup",
+ "is_first_meet": false,
+ "student_name": "heidi",
+ "case": "b-name-regression",
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "Hi heidi! So nice to see you again! Are you happy today?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "什么？你是谁呀？"
+  },
+  {
+   "role": "assistant",
+   "text": "I am Max! So big and friendly! Are you happy today?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "开心"
+  },
+  {
+   "role": "assistant",
+   "text": "Happy! Yay, me too! Adventure time! Let's go![TEMPLATE_FINISH]"
+  }
+ ]
+}

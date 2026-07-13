@@ -28,9 +28,10 @@ path_a:  # first meeting — teacher must introduce herself and ask the name.
     note: "off-topic kid; teacher must not expand the topic, keep the 3-beat shape"
     turns: ["I have a robot dog!", "yes happy"]
   - id: a-garbled-name
-    note: "REGRESSION (device 2026-07-13): garbled name 'appe' was reshaped to 'Ape! Hee hee!' (mocking); sad 'no' then got a party launch. Name must be accepted warmly, close must go soft"
-    turns: ["appe", "no"]
-    forbid_phrases: ["\\bape\\b", "say\\s+go"]
+    note: "REGRESSION (device 2026-07-13 x2): garbled name must be USED as a name (child 'huide' repeated it when unheard), never reshaped into a word or laughed at, and the sad close stays soft"
+    turns: ["huide", "no"]
+    require_phrases: ["huide|heidi"]
+    forbid_phrases: ["\\bape\\b"]
 
 path_b:  # returning student — asking the name / self-intro is FORBIDDEN
   - id: b-happy-path
@@ -64,8 +65,9 @@ l1:
     turns: ["Lily!", "happy!"]
     max_beats: 4
   - id: l1-garbled-name
-    note: "REGRESSION (device 2026-07-13, teacher Kim): 'appe' -> 'Ape! Hee hee!' mocked the name; then sad 'no' got 'Say GO! Off we fly!'. Accept name warmly, close soft"
-    turns: ["appe", "no"]
+    note: "REGRESSION (device 2026-07-13 x2, teacher Kim): 'appe' -> 'Ape! Hee hee!' mocked the name; the overcorrected fix then DROPPED the name ('huide' got 'Nice to meet you!' twice, child repeated themselves). Name must be echoed as a name, close soft"
+    turns: ["huide", "no"]
+    require_phrases: ["huide|heidi"]
     forbid_phrases: ["\\bape\\b", "say\\s+go"]
     max_beats: 4
   - id: l1-sad

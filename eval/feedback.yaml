@@ -288,3 +288,11 @@ items:
     severity: high
     status: fixed
     encoded_as: "L1 template: name-is-never-a-toy rule (garbled name -> warm accept, no echo, no laugh; mirrored into L2 B2), energy-follows-theirs section (mood-matched FINISH branches: big launch only for happy, soft statement close for sad, no GO-chant), anti-staccato rule (one warm whole sentence, not fragments), warmer GREET example, 2-rung silence override. checker: forbid_phrases support; new cases a-garbled-name + l1 battery (5 cases). All 18 warm-up cases pass live"
+
+  - id: fb-035
+    date: 2026-07-13
+    page: warmup L1 (device test, teacher Kim)
+    observation: "HUMAN FEEDBACK: the fb-034 fix overcorrected — 'accept warmly WITHOUT echoing' made the teacher drop the child's name entirely. Device: child said 'huide' (=Heidi), got a nameless 'Nice to meet you!', repeated 'huid', got the IDENTICAL line again. PROCESS RULE from user: behavior changes beyond the explicit request need user sign-off first"
+    severity: high
+    status: fixed
+    encoded_as: "both warm-up templates: whatever the child answers to the name question IS their name — greet WITH it ('Hi Huide!'), even if ASR spells it oddly; only pure noise/silence falls back to 'Nice to meet you!'; the only guards kept from fb-034 are no-reshaping-into-words and no-laughing. checker: require_phrases support; garbled-name cases now use real device input 'huide' and REQUIRE the name echo. Also: bare 'no' close must say 'not happy', never a feeling the child did not say ('a little tired' bleed from example). All batteries pass live (L1 5/5, L2 13/13)"

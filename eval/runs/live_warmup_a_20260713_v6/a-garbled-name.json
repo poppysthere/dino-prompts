@@ -1,0 +1,34 @@
+{
+ "family": "warmup",
+ "is_first_meet": true,
+ "student_name": "test_user",
+ "case": "a-garbled-name",
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "Hi! I'm teacher Max. So nice to see you! What is your name?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "huide"
+  },
+  {
+   "role": "assistant",
+   "text": "Hi Huide, what a lovely name! Are you happy today?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "no"
+  },
+  {
+   "role": "assistant",
+   "text": "Aww, not happy today. One big breath. Whoooo! Now we go, together![TEMPLATE_FINISH]"
+  }
+ ],
+ "forbid_phrases": [
+  "\\bape\\b"
+ ],
+ "require_phrases": [
+  "huide|heidi"
+ ]
+}

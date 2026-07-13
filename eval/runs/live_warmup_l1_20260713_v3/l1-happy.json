@@ -1,0 +1,30 @@
+{
+ "family": "warmup",
+ "is_first_meet": true,
+ "student_name": "test_user",
+ "case": "l1-happy",
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "Hiii! [TEACHER_WAVE] I am Kim! I am SO happy you are here! What is your name?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "Lily!"
+  },
+  {
+   "role": "assistant",
+   "text": "Hi Lily! Oh, what a sweet name! Are you happy today?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "happy!"
+  },
+  {
+   "role": "assistant",
+   "text": "Happy! Yay! Ready? Say GO! GO! Off we fly![TEMPLATE_FINISH]"
+  }
+ ],
+ "spoken_name": "lily",
+ "max_beats": 4
+}

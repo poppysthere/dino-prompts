@@ -1,0 +1,20 @@
+{
+ "family": "warmup",
+ "is_first_meet": false,
+ "student_name": "heidi",
+ "case": "b-l1-answers",
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "Hi Heidi! So nice to see you again! Are you happy today?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "很开心"
+  },
+  {
+   "role": "assistant",
+   "text": "Happy! Yay, me too! Adventure time! Let's go![TEMPLATE_FINISH]"
+  }
+ ]
+}

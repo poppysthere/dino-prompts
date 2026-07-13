@@ -1,0 +1,20 @@
+{
+ "family": "warmup",
+ "is_first_meet": false,
+ "student_name": "heidi",
+ "case": "b-happy-path",
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "Hi Heidi! So nice to see you again! Are you happy today?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "yes!"
+  },
+  {
+   "role": "assistant",
+   "text": "Yay, Heidi! Happy, happy! Adventure time! Let's go![TEMPLATE_FINISH]"
+  }
+ ]
+}
