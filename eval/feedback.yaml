@@ -385,3 +385,10 @@ items:
     severity: medium
     status: fixed
     encoded_as: "both step templates got a '# Lesson content (fixed for this demo class)' block (Farmer Bob birthday / cake gone + Mouse) with an explicit 'ignore <renderContent> even if it describes something else'. Verified live with the ACTUAL mismatched prod renderContent injected: 10/10 cases green, zero content leaks (no Pip/Toto/cow in any teacher line). NOTE: demo-only — real lessons should go back to renderContent as the story source"
+  - id: fb-048
+    date: 2026-07-13
+    page: word teaching L2 cow (new port)
+    observation: "USER REQUEST: port the original Chinese cow state-machine, keep action tags, DROP [WORD_EVALUATION] ('too many problems'), make it personal like a native teacher. Original had TTS traps (Hmmmm, Hahaha, a dash, 'can you say: moo moo' rising-intonation) and no junk-name guard"
+    severity: medium
+    status: fixed
+    encoded_as: "new word_teaching_rules_l2_cow.md: same skeleton (MEET -> try, max 1 retry -> moo -> cake wonder -> close) but all waits are [TEACHER_LISTEN][STUDENT_TALK] with generous self-judging (any English-sounding try counts; own-language cow word = knowing, not saying; a moo is a moo in any language); one catch sentence allowed at retry + close; spoiler guard (never confirm any culprit, never say 'horse'); junk-name guard; TTS fixes (Hmm., Ha ha, no dash, invites never questions). checker_cow.py + cases_word_cow.yaml (6 cases: happy/retry/l1-word/silent/offtopic/junkname) — 6/6 green live first run"

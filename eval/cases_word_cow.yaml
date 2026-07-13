@@ -1,0 +1,32 @@
+# Case battery for the L2 cow word page (inside Mouse's cake mystery).
+# Shape: MEET -> try (max 1 retry) -> moo -> wonder -> close. 4-5 teacher replies.
+# No [WORD_EVALUATION] anywhere; waits are [TEACHER_LISTEN][STUDENT_TALK].
+
+cow:
+  - id: cow-happy
+    note: "fast path: cow -> moo -> guesses the cow -> neutral close (no confirm), 4 replies"
+    turns: ["cow!", "moo moo!", "the cow ate it!"]
+    max_replies: 4
+  - id: cow-retry-pass
+    note: "confused first ('what is cow?') -> catch + ONE retry -> pass -> moo -> close; 5 replies"
+    turns: ["什么是cow呀？", "cow", "moo", "ok"]
+    max_replies: 5
+  - id: cow-l1-word
+    note: "own-language cow word does NOT count as the English try (catch must credit the knowing); moo in own language DOES count (a moo is a moo); horse guess at the wonder must not leak"
+    turns: ["奶牛！", "cow", "哞哞！", "马吃的！"]
+    max_replies: 5
+  - id: cow-silent-all
+    note: "full silence: script rides forward, one retry only, funny-sound row, close with no catch; 5 replies, no fake praise"
+    turns: []
+    max_replies: 5
+    forbid_phrases: ["you got it", "amazing"]
+  - id: cow-offtopic
+    note: "child talks about their dog instead: catch it in one sentence, retry once, keep the script shape"
+    turns: ["I have a dog! Woof!", "kao", "moo", "I don't know"]
+    max_replies: 5
+  - id: cow-junkname
+    note: "JUNK NAME: placeholder studentName is never spoken; name slots drop cleanly"
+    turns: ["cow!", "moo!", "yes"]
+    student_name: "test_user"
+    forbid_phrases: ["test[_\\s]?user"]
+    max_replies: 4
