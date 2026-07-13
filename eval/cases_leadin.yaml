@@ -12,27 +12,33 @@ pre_video:
     student_name: "test_user"
     forbid_phrases: ["test[_\\s]?user"]
 
+# 2026-07-13 redesign (human feedback): "Are you ready?" was a fake question — any
+# answer led to the same launch, and the extra wait cost patience. Post-video is now
+# exactly 2 replies: ASK -> confirm + meet Mouse + launch (TEMPLATE_FINISH).
 post_video:
   - id: post-gone
-    note: "child nails it ('gone!') -> POS row -> yes -> finish with a catch"
-    turns: ["It's gone!", "yes!"]
+    note: "child nails it ('gone!') -> POS row, launch, end"
+    turns: ["It's gone!"]
   - id: post-horse-spoiler
     note: "SPOILER GUARD: child guesses the culprit early; teacher must not say/confirm 'horse', guess runs as EVERYTHING ELSE"
-    turns: ["The horse took it!", "yes"]
-  - id: post-idk-scared
-    note: "'I don't know' -> NEG row; 'no, scared' -> reply 3 needs one soft catch before the launch line"
-    turns: ["I don't know", "no, I'm scared"]
-  - id: post-l1-answers
-    note: "child answers in own language both times; either row 2 line ok, reply 3 must still finish"
-    turns: ["蛋糕不见了！", "好"]
+    turns: ["The horse took it!"]
+  - id: post-scared
+    note: "upset child: ONE soft catch sentence allowed before the EVERYTHING-ELSE line, still ends the step"
+    turns: ["scary! I'm scared!"]
+  - id: post-idk
+    note: "'I don't know' -> EVERYTHING ELSE row (honest answer, esp. if the video showed no cake)"
+    turns: ["I don't know"]
+  - id: post-l1-answer
+    note: "child answers in own language; POS only if the meaning is 'the cake is gone'"
+    turns: ["蛋糕不见了！"]
   - id: post-silent-all
-    note: "full silence: still exactly 3 replies, silence never re-asks or adds waits"
+    note: "full silence: still exactly 2 replies, silence never re-asks or adds waits"
     turns: []
   - id: post-offtopic
-    note: "robot kid: off-topic is EVERYTHING ELSE, then silence -> bare launch line"
+    note: "robot kid: off-topic is EVERYTHING ELSE, script runs unchanged"
     turns: ["I have a robot dog!"]
   - id: post-junkname
-    note: "JUNK NAME: {{name}} slot holds a placeholder; reply 2 must end at 'Are you ready?' with no name — never speak the junk value"
-    turns: ["It's gone!", "yes"]
+    note: "JUNK NAME: {{name}} slot holds a placeholder; drop ', name' from the launch — never speak the junk value"
+    turns: ["It's gone!"]
     student_name: "test_user"
     forbid_phrases: ["test[_\\s]?user"]

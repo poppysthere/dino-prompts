@@ -371,3 +371,10 @@ items:
     severity: high
     status: fixed
     encoded_as: "both lead-in templates: name slot rule now names junk explicitly (number/ID/placeholder -> drop the slot, never speak the value) + bad example with the prod line; checker_leadin supports forbid_phrases; new pre-junkname and post-junkname cases run with studentName=test_user. 9/9 lead-in cases green live (name dropped cleanly in both)"
+  - id: fb-046
+    date: 2026-07-13
+    page: lead-in post-video — DESIGN PRINCIPLE
+    observation: "HUMAN FEEDBACK on live prod run: 'do you really need to ask are you ready? I won't know what to say' — the ready-question was a FAKE question (yes -> go, no -> go, silence -> go) that cost a whole extra wait. Same lesson as warm-up retention: never wait on a question whose answer cannot change what happens next. Same prod log also exposed a video/script mismatch (renderContent described Pip/Toto farm animals, script asked about a cake) and a stale common layer pasted in the lead-in template instance"
+    severity: high
+    status: fixed
+    encoded_as: "post-video redesigned 3 -> 2 replies: ASK (the real mystery question) then confirm + meet Mouse + launch in one TEMPLATE_FINISH turn; reply-2 lines trimmed (single 'Oh no!', no 'Woohoo!', no ready-question); upset child gets ONE soft catch sentence before the line. Checker rewritten for the 2-reply shape (two-replies, no-question-finish, catch budget). 8/8 post-video cases green live. Video/script mismatch + stale common layer are paste/data issues, flagged to user"

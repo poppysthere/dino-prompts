@@ -13,10 +13,10 @@ import unicodedata
 
 ASK_LINE = "Oh no! The cake! Where is the cake?"
 POS_LINE = ("Yes! The cake is GONE! Look! This is Mouse! Mouse wants to help us! "
-            "Woohoo! Let's go find that cake! Are you ready")
-NEG_LINE = ("The cake! The cake is gone! Oh no! Oh no! Look! This is Mouse! "
-            "Mouse wants to help us! Woohoo! Let's go find that cake! Are you ready")
-LAUNCH_LINE = "Let's GO! Come on!"
+            "Let's go find that cake")
+NEG_LINE = ("The cake is gone! Oh no! Look! This is Mouse! "
+            "Mouse wants to help us! Let's go find that cake")
+SOFT_CATCH_MAX = 6  # words allowed before the NEG line for an upset child
 PRE_LINE = ("look! This is Farmer Bob! Today is Farmer Bob's birthday! "
             "A big big party! On the farm! Let's go! Come on!")
 POSITIVE_SIGNALS = ["gone", "missing", "lost", "not here", "no cake", "can't see",
@@ -80,9 +80,9 @@ def check(path):
                 v("no-question", "pre-video must not ask anything")
         return out
 
-    # post_video
-    if len(replies) != 3:
-        v("three-replies", f"post-video must be exactly 3 replies, got {len(replies)}")
+    # post_video: exactly 2 replies (ASK -> confirm+launch), no ready-wait
+    if len(replies) != 2:
+        v("two-replies", f"post-video must be exactly 2 replies, got {len(replies)}")
 
     if replies:
         if norm(replies[0]) != ASK_LINE.lower():
@@ -93,11 +93,18 @@ def check(path):
     if len(replies) >= 2:
         r2, n2 = replies[1], norm(replies[1])
         is_pos = n2.startswith(norm(POS_LINE))
-        is_neg = n2.startswith(norm(NEG_LINE))
+        neg_at = n2.find(norm(NEG_LINE))
+        is_neg = neg_at >= 0
         if not (is_pos or is_neg):
             v("script-row2", f"reply 2 matches neither POS nor NEG script line: {strip_tags(r2).strip()!r}")
-        if "[STUDENT_TALK]" not in r2:
-            v("tag-row2", "reply 2 must wait with [STUDENT_TALK]")
+        if is_neg and neg_at > 0:
+            catch = n2[:neg_at].strip()
+            if len(catch.split()) > SOFT_CATCH_MAX:
+                v("catch-budget", f"reply 2 soft catch over budget ({len(catch.split())} words): {catch!r}")
+        if "[TEMPLATE_FINISH]" not in r2:
+            v("must-finish", "reply 2 does not end the step with [TEMPLATE_FINISH]")
+        if "?" in strip_tags(r2):
+            v("no-question-finish", "reply 2 asks a question ('are you ready?' wait was cut); it must launch and end")
         # classification: POS row only if the child's first answer carried a positive signal
         first = users[1].lower() if len(users) > 1 else ""  # users[0] is the UI-ready message
         if not first.startswith("the student has been silent"):
@@ -106,19 +113,6 @@ def check(path):
                 v("row2-classify", f"reply 2 took POS row but child answer had no 'gone' signal: {first!r}")
         elif is_pos:
             v("row2-classify", "reply 2 took POS row on silence")
-
-    if len(replies) >= 3:
-        r3 = replies[2]
-        if "[TEMPLATE_FINISH]" not in r3:
-            v("must-finish", "reply 3 does not end the step with [TEMPLATE_FINISH]")
-        if LAUNCH_LINE.lower() not in norm(r3):
-            v("launch-line", f"reply 3 missing the fixed launch line: {strip_tags(r3).strip()!r}")
-        else:
-            catch = norm(r3).split(LAUNCH_LINE.lower())[0].strip()
-            if len(catch.split()) > 8:
-                v("catch-budget", f"reply 3 catch is over budget ({len(catch.split())} words): {catch!r}")
-        if "?" in strip_tags(r3):
-            v("no-question-finish", "reply 3 asks a question; it must launch and end")
 
     # spoiler guard: the culprit's name must never be spoken by the teacher
     for n, r in enumerate(replies, 1):
