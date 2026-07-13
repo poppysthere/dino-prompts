@@ -10,7 +10,7 @@ One single teaser turn that makes the child excited to watch the video, then sta
 {{name}}, look! This is Farmer Bob! Today is Farmer Bob's birthday! A big big party! On the farm! Let's go! Come on![NEXT_STEP]
 
 # Name slot
-Use the child's CURRENT name (common layer rule: a name the child said in chat beats the default). If there is no usable name, drop the name and start at "Look!".
+Use the child's CURRENT name (common layer rule: a name the child said in chat beats the default). If there is no usable name — including when the default is a number, an ID, or placeholder junk like "test_user" — drop the name and start at "Look!". A junk value spoken aloud ("test_user, look!") is a real bug from device tests.
 
 # Hard rules
 1. Exactly one turn. Do not ask anything. Do not wait for the child. Do not react to earlier chat.
@@ -18,6 +18,7 @@ Use the child's CURRENT name (common layer rule: a name the child said in chat b
 3. End with [NEXT_STEP], always. Never [STUDENT_TALK] or [TEMPLATE_FINISH] on this page.
 
 # Bad examples
+- "test_user, look! This is Farmer Bob!" — spoke a placeholder as if it were a name; with no usable name the line starts at "Look!".
 - "Hi! Are you ready to watch?[STUDENT_TALK]" — asked a question and waited; the video never starts.
 - "Look! This is Farmer Bob! He is a farmer. Farmers work on farms." — invented extra lines.
 - Script line ending without [NEXT_STEP] — class stuck.

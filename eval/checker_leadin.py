@@ -63,6 +63,9 @@ def check(path):
             v("tts-stretched", f"reply {n}: stretched spelling {m.group(0)!r} (voice engine cannot say it)")
         for m in re.finditer(r"\b(hee[\s-]?hee|tee[\s-]?hee|hehe)\b", strip_tags(r), re.I):
             v("tts-giggle", f"reply {n}: giggle spelling {m.group(0)!r} (voice engine breaks; use 'Ha ha!')")
+        for pat in tr.get("forbid_phrases", []):
+            if re.search(pat, strip_tags(r), re.I):
+                v("forbid-phrase", f"reply {n}: contains forbidden phrase {pat!r}")
 
     if step == "pre_video":
         if len(replies) != 1:

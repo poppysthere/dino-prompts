@@ -6,6 +6,11 @@ pre_video:
   - id: pre-clean
     note: "single turn, verbatim script, ends NEXT_STEP, nothing else"
     turns: []
+  - id: pre-junkname
+    note: "JUNK NAME (prod: rewards page said 'test_user, look!'): {{name}} slot holds a placeholder; drop the name, start at 'Look!' — never speak the junk value"
+    turns: []
+    student_name: "test_user"
+    forbid_phrases: ["test[_\\s]?user"]
 
 post_video:
   - id: post-gone
@@ -26,3 +31,8 @@ post_video:
   - id: post-offtopic
     note: "robot kid: off-topic is EVERYTHING ELSE, then silence -> bare launch line"
     turns: ["I have a robot dog!"]
+  - id: post-junkname
+    note: "JUNK NAME: {{name}} slot holds a placeholder; reply 2 must end at 'Are you ready?' with no name — never speak the junk value"
+    turns: ["It's gone!", "yes"]
+    student_name: "test_user"
+    forbid_phrases: ["test[_\\s]?user"]

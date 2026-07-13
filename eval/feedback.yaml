@@ -364,3 +364,10 @@ items:
     severity: high
     status: fixed
     encoded_as: "all 'Hee hee' removed from every template ('Ha ha' where a laugh fits, plain warm words where it doesn't); common layers output-format rule 5: written giggles (hee hee/teehee/hehe) banned, laugh as 'Ha ha!' or put warmth in words; tts-giggle rule added to all three checkers. Full 24-case battery green live (two one-off flakes re-ran clean 3/3). NOTE: 'Ha ha' itself is assumed safe — if a device test says otherwise, drop written laughter entirely"
+  - id: fb-045
+    date: 2026-07-13
+    page: lead-in pre/post video
+    observation: "prod rewards transcript ('test_user, look!') showed scripted name slots speak junk placeholders verbatim — the lead-in script lines had the same hole: the name-slot rule only covered 'no usable name', not junk defaults"
+    severity: high
+    status: fixed
+    encoded_as: "both lead-in templates: name slot rule now names junk explicitly (number/ID/placeholder -> drop the slot, never speak the value) + bad example with the prod line; checker_leadin supports forbid_phrases; new pre-junkname and post-junkname cases run with studentName=test_user. 9/9 lead-in cases green live (name dropped cleanly in both)"
