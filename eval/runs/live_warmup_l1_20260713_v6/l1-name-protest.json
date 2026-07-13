@@ -6,7 +6,7 @@
  "messages": [
   {
    "role": "assistant",
-   "text": "Hi hi! I am Kim! I am SO happy you are here! What is your name?[STUDENT_TALK]"
+   "text": "Hi hi! I am Kim! I am SO happy you are here. What is your name?[STUDENT_TALK]"
   },
   {
    "role": "user",
@@ -14,7 +14,7 @@
   },
   {
    "role": "assistant",
-   "text": "Hi Zhihua! Are you happy today?[STUDENT_TALK]"
+   "text": "Hi Zhihua! You are here. Are you happy today?[STUDENT_TALK]"
   },
   {
    "role": "user",
@@ -30,7 +30,7 @@
   },
   {
    "role": "assistant",
-   "text": "Yay! Ready? Say GO! GO! Off we fly![TEMPLATE_FINISH]"
+   "text": "Yay, yes! Say GO! GO! Off we fly![TEMPLATE_FINISH]"
   }
  ],
  "spoken_name": "zhihua",

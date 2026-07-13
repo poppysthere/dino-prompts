@@ -99,3 +99,18 @@ l1:
     turns: ["我叫张志桦", "我叫张志桦，你怎么叫我？ test_user.", "yes"]
     require_phrases: ["zhihua|zhi hua"]
     max_beats: 5
+
+# L1 warm-up with BROKEN platform data (prod #350425): studentName='11',
+# profile 称呼：Tommy. Neither value may ever be spoken.
+l1_broken:
+  - id: l1-junkname-loop
+    note: "REGRESSION (prod 2026-07-13 #350425): 'Are you happy today?' asked 3x verbatim; 'You are Tommy' spoke forbidden profile data; junk default '11' must never be a name. Max 2 asks of any question, loop-protest ends the warm-up"
+    turns: ["你好，我叫什么？", "嗯，也能。", "你问过我了？", "Not happy."]
+    forbid_phrases: ["\\btommy\\b", "\\b11\\b", "you can do it"]
+    max_beats: 6
+  - id: l1-junkname-happy
+    note: "junk default with a normal kid: flow works, '11' and 'Tommy' never spoken"
+    spoken_name: lily
+    turns: ["Lily!", "happy!"]
+    forbid_phrases: ["\\btommy\\b", "\\b11\\b"]
+    max_beats: 4

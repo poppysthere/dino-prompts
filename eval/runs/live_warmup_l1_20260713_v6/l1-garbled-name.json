@@ -14,7 +14,7 @@
   },
   {
    "role": "assistant",
-   "text": "Hi Huide! Nice to meet you! Are you happy today?[STUDENT_TALK]"
+   "text": "Hi Huide! So nice to meet you! Are you happy today?[STUDENT_TALK]"
   },
   {
    "role": "user",
@@ -22,7 +22,7 @@
   },
   {
    "role": "assistant",
-   "text": "Aww, you are not happy today. BIG hug! We play soft today. Let's go, together.[TEMPLATE_FINISH]"
+   "text": "Aww, you are not happy today. Big hug. We play soft today. Let's go, together.[TEMPLATE_FINISH]"
   }
  ],
  "max_beats": 4,

@@ -312,3 +312,11 @@ items:
     severity: high
     status: fixed
     encoded_as: "common layers: once a spoken name exists the default is DEAD (never say it again, even reacting to greetings); a child repeating a name YOU called them while confused is a PROTEST, not a new name (apologize + use their name). L1 template: both moments added as bad examples. New regression cases l1-name-revert + l1-name-protest (live: 'Hello hello, Zhihua!' and 'Oops, sorry! Zhihua!'). Dev items logged: ASR final debounce/merge; rewards-page template must carry the updated common layer / romanized name. All 20 warm-up cases pass live"
+
+  - id: fb-038
+    date: 2026-07-13
+    page: warmup L1 (prod #350425, classId 7621620001)
+    observation: "PROD LOG: 'Are you happy today?' asked 3x verbatim — even directly after the child said 你问过我了 (you already asked) and the teacher apologized. Also: 'You are Tommy' spoke forbidden profile data (studentName was junk value '11'); 'Yay, you can do it! Great work' celebrated an unclear answer containing nothing"
+    severity: high
+    status: fixed
+    encoded_as: "L1 checklist rules rewritten: any checklist question max 2 asks ever (2nd must be new easier words), loop-protest (你问过我了) = apologize 2 words + move forward/close; junk studentName ('11', IDs, test_user) = NO name, never spoken (guard added to both common layers); child asking their own name gets 'YOU tell me!', never profile data. checker: question-loop rule (same normalized question 3+ beats). New l1_broken battery with the real prod data (studentName=11, profile Tommy). Dev item: studentName field carried an ID, not the child's 称呼. All 22 warm-up cases pass live"

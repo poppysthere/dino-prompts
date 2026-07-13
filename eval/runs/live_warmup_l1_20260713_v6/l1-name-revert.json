@@ -22,7 +22,7 @@
   },
   {
    "role": "assistant",
-   "text": "Hello hello, Zhihua! Are you happy today?[STUDENT_TALK]"
+   "text": "Hello, Zhihua! Are you happy today?[STUDENT_TALK]"
   },
   {
    "role": "user",
@@ -30,7 +30,7 @@
   },
   {
    "role": "assistant",
-   "text": "Zhihua, are you happy today?[STUDENT_TALK]"
+   "text": "Zhihua, are you happy today? [STUDENT_TALK]"
   },
   {
    "role": "user",

@@ -6,7 +6,7 @@
  "messages": [
   {
    "role": "assistant",
-   "text": "Hi Heidi! So nice to see you again! Are you happy today?[STUDENT_TALK]"
+   "text": "Hi heidi! So nice to see you again! Are you happy today?[STUDENT_TALK]"
   },
   {
    "role": "user",
@@ -14,7 +14,7 @@
   },
   {
    "role": "assistant",
-   "text": "Wow, a robot! So cool! Is it big?[STUDENT_TALK]"
+   "text": "Wow, robot! That is SO cool! Are you happy too?[STUDENT_TALK]"
   },
   {
    "role": "user",
@@ -22,7 +22,7 @@
   },
   {
    "role": "assistant",
-   "text": "Hi Heidi! Are you here? Just say hi![STUDENT_TALK]"
+   "text": "Hi heidi! Are you here? Just say hi![STUDENT_TALK]"
   },
   {
    "role": "user",
@@ -30,7 +30,7 @@
   },
   {
    "role": "assistant",
-   "text": "Okay, we go slow. I am with you. Let's go![TEMPLATE_FINISH]"
+   "text": "That's okay! We go slow, together. Let's go![TEMPLATE_FINISH]"
   }
  ]
 }

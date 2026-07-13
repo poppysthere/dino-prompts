@@ -1,0 +1,42 @@
+{
+ "family": "warmup",
+ "is_first_meet": true,
+ "student_name": "11",
+ "case": "l1-junkname-loop",
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "Hi hi! I am Max! I am SO happy you are here! What is your name?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "你好，我叫什么？"
+  },
+  {
+   "role": "assistant",
+   "text": "Hee hee, YOU tell me! What is your name?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "嗯，也能。"
+  },
+  {
+   "role": "assistant",
+   "text": "Hmm! Are you happy today? Yes or no?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "你问过我了？"
+  },
+  {
+   "role": "assistant",
+   "text": "Oops, sorry! Okay, we play now. Let's go![TEMPLATE_FINISH]"
+  }
+ ],
+ "max_beats": 6,
+ "forbid_phrases": [
+  "\\btommy\\b",
+  "\\b11\\b",
+  "you can do it"
+ ]
+}

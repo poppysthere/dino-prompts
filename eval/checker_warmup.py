@@ -177,6 +177,18 @@ def check(transcript: dict):
             if "?" not in tail and not re.search(r"\b(say|your turn)\b", tail, re.I):
                 v("child-job", f"beat {n}: STUDENT_TALK beat ends on a plain statement: ...{tail[-60:]!r}")
 
+    # question loop (prod bug 2026-07-13 #350425: "Are you happy today?" asked 3x):
+    # the same normalized question sentence in 3+ beats is a broken-robot loop.
+    from collections import Counter
+    qnorm = []
+    for r in replies:
+        segs = re.split(r"(?<=[.!?])\s+", strip_tags(r).strip())
+        q = next((s for s in reversed(segs) if s.strip().endswith("?")), None)
+        qnorm.append(re.sub(r"[^a-z ]", "", q.lower()).strip() if q else None)
+    for q, cnt in Counter(q for q in qnorm if q).items():
+        if cnt >= 3:
+            v("question-loop", f"the question {q!r} is asked {cnt} times in one warm-up")
+
     # case-specific required phrases (e.g. the child's name attempt must be echoed back)
     all_teacher = " ".join(strip_tags(r) for r in replies)
     for pat in transcript.get("require_phrases", []):

@@ -6,7 +6,7 @@
  "messages": [
   {
    "role": "assistant",
-   "text": "Hi heidi! So nice to see you again! Are you happy today?[STUDENT_TALK]"
+   "text": "Hi Heidi! So nice to see you again! Are you happy today?[STUDENT_TALK]"
   },
   {
    "role": "user",
@@ -14,7 +14,7 @@
   },
   {
    "role": "assistant",
-   "text": "Yay, heidi! Me too! Adventure time! Let's go![TEMPLATE_FINISH]"
+   "text": "Yay, Heidi! Me too! Adventure time! Let's go![TEMPLATE_FINISH]"
   }
  ]
 }

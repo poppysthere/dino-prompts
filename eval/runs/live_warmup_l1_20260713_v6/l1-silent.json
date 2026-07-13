@@ -6,7 +6,7 @@
  "messages": [
   {
    "role": "assistant",
-   "text": "Hi hi! I am Kim! I am SO happy you are here! What is your name?[STUDENT_TALK]"
+   "text": "Hi hi! I am Kim. I am SO happy you are here! What is your name?[STUDENT_TALK]"
   },
   {
    "role": "user",
@@ -14,7 +14,7 @@
   },
   {
    "role": "assistant",
-   "text": "Hi, my little friend. I am Kim. What is your name?[STUDENT_TALK]"
+   "text": "Hi, my friend. I am Kim. What is your name?[STUDENT_TALK]"
   },
   {
    "role": "user",
@@ -22,7 +22,7 @@
   },
   {
    "role": "assistant",
-   "text": "Okay, I say it. Go! Let's play![TEMPLATE_FINISH]"
+   "text": "Okay, I say it: GO! Let's play![TEMPLATE_FINISH]"
   }
  ],
  "max_beats": 4

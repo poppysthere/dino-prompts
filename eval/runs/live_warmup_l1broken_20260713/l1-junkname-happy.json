@@ -1,0 +1,34 @@
+{
+ "family": "warmup",
+ "is_first_meet": true,
+ "student_name": "11",
+ "case": "l1-junkname-happy",
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "Hi hi! I am Max! I am SO happy you are here! What is your name?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "Lily!"
+  },
+  {
+   "role": "assistant",
+   "text": "Lily! Hi, Lily! Are you happy today?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "happy!"
+  },
+  {
+   "role": "assistant",
+   "text": "Yay, happy! Ready? Say GO! GO! Off we fly![TEMPLATE_FINISH]"
+  }
+ ],
+ "spoken_name": "lily",
+ "max_beats": 4,
+ "forbid_phrases": [
+  "\\btommy\\b",
+  "\\b11\\b"
+ ]
+}
