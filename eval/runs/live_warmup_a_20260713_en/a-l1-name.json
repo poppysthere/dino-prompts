@@ -1,0 +1,46 @@
+{
+ "family": "warmup",
+ "is_first_meet": true,
+ "student_name": "test_user",
+ "case": "a-l1-name",
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "Hi! I'm teacher Max. So nice to see you! What is your name?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "我叫小明"
+  },
+  {
+   "role": "assistant",
+   "text": "Hi Xiao Ming, what a lovely name! Are you happy today?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "开心"
+  },
+  {
+   "role": "assistant",
+   "text": "Wow! I am glad you are happy. How old are you?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "七岁"
+  },
+  {
+   "role": "assistant",
+   "text": "Wow, you are 7! 7 is a great age! Are you ready for today's lesson?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "好"
+  },
+  {
+   "role": "assistant",
+   "text": "YES! I love it! Adventure time! Let's go![TEMPLATE_FINISH]"
+  }
+ ],
+ "spoken_name": "ming",
+ "spoken_name_l1": "小明"
+}

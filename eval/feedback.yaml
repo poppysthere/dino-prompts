@@ -255,4 +255,12 @@ items:
     observation: "HUMAN FEEDBACK: 'Not ready.' answered with 'That's okay, let's go!' feels robotic and dismissive — too AI. Wants a native experienced kids-tutor: validate the feeling, then a tiny ritual to become ready"
     severity: high
     status: fixed
-    encoded_as: "close beats rewritten in the template: canned one-word feedback (Good!/That's okay,/Alright,) replaced with react-then-ritual branches ('Not ready yet! Okay. One BIG breath. Whooooo! Now we go, together!'); '像真人老师，不像机器' section added; full path B battery re-passes 7/7 live"
+    encoded_as: "close beats rewritten in the template: canned one-word feedback (Good!/That's okay,/Alright,) replaced with react-then-ritual branches ('Not ready yet! Okay. One BIG breath. Whooooo! Now we go, together!'); real-teacher section added; full path B battery re-passes 7/7 live"
+
+  - id: fb-031
+    date: 2026-07-13
+    page: warmup L2 (process)
+    observation: "PROCESS RULE REINFORCED: working templates are ALWAYS full English (team standard; the model follows English instructions better). The L2 warm-up had been onboarded keeping the original's Chinese — wrong. Chinese originals live in originals/ only"
+    severity: medium
+    status: fixed
+    encoded_as: "warmup_teaching_rules_l2_lesson0.md rewritten fully in English with identical rules; both-path battery 12/12 live on the English version; new-family onboarding checklist = save original, TRANSLATE to English, then baseline"
