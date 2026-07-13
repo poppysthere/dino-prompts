@@ -21,6 +21,7 @@ WORDS = {
     "word_cat": {
         "meet": "Mouse sees a cat! A CAT! Cat! Say it with me. Cat!",
         "retry": "Let's go together. Cat. Cat. One more time. Cat!",
+        "close_tag": "[TEACHER_SHOW_MUSCLE]",
     },
 }
 CLOSE_LINE = "Let's keep looking. Come on, Mouse!"
@@ -70,6 +71,8 @@ def check(tr):
             v("rising-invite", f"reply {n}: 'can you say' — say-it invites must not be questions")
         if re.search(r"\bhorse\b", body, re.I):
             v("spoiler", f"reply {n}: teacher says the culprit ('horse')")
+        if r.rstrip().endswith("[STUDENT_TALK]") and not r.rstrip().endswith("[TEACHER_LISTEN][STUDENT_TALK]"):
+            v("listen-pose", f"reply {n}: wait without the listening pose (must end [TEACHER_LISTEN][STUDENT_TALK])")
         for pat in tr.get("forbid_phrases", []):
             if re.search(pat, body, re.I):
                 v("forbid-phrase", f"reply {n}: contains forbidden phrase {pat!r}")
@@ -110,6 +113,8 @@ def check(tr):
     last = replies[-1]
     if "[TEMPLATE_FINISH]" not in last:
         v("must-finish", "last reply does not end the page with [TEMPLATE_FINISH]")
+    if word.get("close_tag") and word["close_tag"] not in last:
+        v("close-action", f"last reply missing the close action tag {word['close_tag']}")
     if norm(CLOSE_LINE) not in norm(last):
         v("close-line", f"last reply missing the fixed close: {strip_tags(last).strip()!r}")
     else:
