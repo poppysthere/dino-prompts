@@ -1,4 +1,6 @@
-# Case battery for the Lead-in template family (Farmer Bob / cake mystery).
+# Case battery for the L2 Lead-in template (Farmer Bob / cake mystery).
+# L1 demo lesson has a DIFFERENT script — separate template + battery pending (waiting on L1 original).
+# Structural rules (fixed script, 2 replies, spoiler + junk-name guards) are shared by design.
 # pre_video: one scripted teaser turn ending [NEXT_STEP] — no child input at all.
 # post_video: exactly 3 replies (ASK -> POS/NEG -> FINISH); silences never add replies.
 
