@@ -32,6 +32,13 @@ cow:
       2: ["you got it", "yes! cow"]
     require_phrases: ["\\bno\\b"]
     max_replies: 5
+  - id: cow-word-again-idk
+    note: "parity with cat regression: child says 'Cow.' at the moo invite (practicing) — praise the COW, no fake 'real cows'/'funny sound'; 'I don't know, what do you think?' at the wonder gets answered, never 'maybe'"
+    turns: ["cow!", "Cow.", "我也不知道，你觉得呢？"]
+    reply_forbid:
+      3: ["real cows", "i love it", "funny sound"]
+    forbid_phrases: ["\\bmaybe\\b"]
+    max_replies: 4
   - id: cow-junkname
     note: "JUNK NAME: placeholder studentName is never spoken; name slots drop cleanly"
     turns: ["cow!", "moo!", "yes"]

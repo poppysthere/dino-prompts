@@ -34,6 +34,13 @@ cat:
       2: ["you got it", "yes! cat"]
     require_phrases: ["\\bno\\b"]
     max_replies: 5
+  - id: cat-word-again-idk
+    note: "REGRESSION (prod 2026-07-13 #352886): child says 'Cat.' at the meow invite (practicing, not mooing) — praise the CAT, never 'we sound like real cats' or 'funny sound'; then '我也不知道呀，你觉得呢？' at the wonder — answer their question ('I don't know too!'), never 'maybe'"
+    turns: ["cat!", "Cat.", "我也不知道呀，你觉得呢？"]
+    reply_forbid:
+      3: ["real cats", "i love it", "funny sound"]
+    forbid_phrases: ["\\bmaybe\\b"]
+    max_replies: 4
   - id: cat-junkname
     note: "JUNK NAME: placeholder studentName is never spoken; name slots drop cleanly"
     turns: ["cat!", "meow!", "yes"]
