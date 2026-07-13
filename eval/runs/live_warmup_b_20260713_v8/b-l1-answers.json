@@ -2,7 +2,7 @@
  "family": "warmup",
  "is_first_meet": false,
  "student_name": "heidi",
- "case": "b-happy-path",
+ "case": "b-l1-answers",
  "messages": [
   {
    "role": "assistant",
@@ -10,11 +10,11 @@
   },
   {
    "role": "user",
-   "text": "yes!"
+   "text": "很开心"
   },
   {
    "role": "assistant",
-   "text": "Yay, Heidi! Happy is GREAT! Adventure time! Let's go![TEMPLATE_FINISH]"
+   "text": "Happy! Yay, me too! Adventure time! Let's go![TEMPLATE_FINISH]"
   }
  ]
 }

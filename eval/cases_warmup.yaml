@@ -85,3 +85,17 @@ l1:
     note: "2 silences -> close; retry never repeats word for word"
     turns: []
     max_beats: 4
+  - id: l1-name-revert
+    note: "REGRESSION (device 2026-07-13, Zhang Zhihua/Tommy): after the child states their name, the profile default is DEAD — a later greeting must not resurrect it, and the name must be in English letters"
+    spoken_name: zhihua
+    spoken_name_l1: 张志桦
+    turns: ["我叫张志桦", "老师，你好"]
+    require_phrases: ["zhihua|zhi hua"]
+    max_beats: 5
+  - id: l1-name-protest
+    note: "REGRESSION (device 2026-07-13): child protests the wrong name ('你怎么叫我？test_user') — that is a complaint, not a new name; teacher must return to the child's own name"
+    spoken_name: zhihua
+    spoken_name_l1: 张志桦
+    turns: ["我叫张志桦", "我叫张志桦，你怎么叫我？ test_user.", "yes"]
+    require_phrases: ["zhihua|zhi hua"]
+    max_beats: 5

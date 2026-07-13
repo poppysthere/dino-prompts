@@ -14,7 +14,7 @@
   },
   {
    "role": "assistant",
-   "text": "Wow! A robot dog! That is SO cool. Are you happy today?[STUDENT_TALK]"
+   "text": "Wow, a robot dog! That is SO cool! Are you happy today?[STUDENT_TALK]"
   },
   {
    "role": "user",
@@ -22,7 +22,7 @@
   },
   {
    "role": "assistant",
-   "text": "Yay! Happy with a robot dog! Me too! Let's go![TEMPLATE_FINISH]"
+   "text": "Happy! Yay, me too! Adventure time! Let's go![TEMPLATE_FINISH]"
   }
  ]
 }

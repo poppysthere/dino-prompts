@@ -2,11 +2,11 @@
  "family": "warmup",
  "is_first_meet": true,
  "student_name": "test_user",
- "case": "a-sad-kid",
+ "case": "a-happy-path",
  "messages": [
   {
    "role": "assistant",
-   "text": "Hi! I’m teacher Max. So nice to see you! What is your name?[STUDENT_TALK]"
+   "text": "Hi! I'm teacher Max. So nice to see you! What is your name?[STUDENT_TALK]"
   },
   {
    "role": "user",
@@ -18,11 +18,11 @@
   },
   {
    "role": "user",
-   "text": "no. sad."
+   "text": "yes!"
   },
   {
    "role": "assistant",
-   "text": "Aww, sad. One big breath. Whoosh! Now we go, together.[TEMPLATE_FINISH]"
+   "text": "Yay, Tom! Me too! Adventure time! Let's go![TEMPLATE_FINISH]"
   }
  ],
  "spoken_name": "tom"

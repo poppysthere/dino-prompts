@@ -2,7 +2,7 @@
  "family": "warmup",
  "is_first_meet": false,
  "student_name": "heidi",
- "case": "b-l1-answers",
+ "case": "b-name-regression",
  "messages": [
   {
    "role": "assistant",
@@ -10,7 +10,15 @@
   },
   {
    "role": "user",
-   "text": "很开心"
+   "text": "什么？你是谁呀？"
+  },
+  {
+   "role": "assistant",
+   "text": "Oops, sorry! Heidi! Are you happy today?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "开心"
   },
   {
    "role": "assistant",

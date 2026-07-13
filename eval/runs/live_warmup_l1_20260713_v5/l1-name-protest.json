@@ -1,0 +1,42 @@
+{
+ "family": "warmup",
+ "is_first_meet": true,
+ "student_name": "test_user",
+ "case": "l1-name-protest",
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "Hi hi! I am Kim! I am SO happy you are here! What is your name?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "我叫张志桦"
+  },
+  {
+   "role": "assistant",
+   "text": "Hi Zhihua! Are you happy today?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "我叫张志桦，你怎么叫我？ test_user."
+  },
+  {
+   "role": "assistant",
+   "text": "Oops, sorry! Zhihua! Are you happy today?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "yes"
+  },
+  {
+   "role": "assistant",
+   "text": "Yay! Ready? Say GO! GO! Off we fly![TEMPLATE_FINISH]"
+  }
+ ],
+ "spoken_name": "zhihua",
+ "spoken_name_l1": "张志桦",
+ "max_beats": 5,
+ "require_phrases": [
+  "zhihua|zhi hua"
+ ]
+}

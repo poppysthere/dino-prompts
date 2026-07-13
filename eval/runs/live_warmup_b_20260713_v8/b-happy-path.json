@@ -2,7 +2,7 @@
  "family": "warmup",
  "is_first_meet": false,
  "student_name": "heidi",
- "case": "b-offtopic",
+ "case": "b-happy-path",
  "messages": [
   {
    "role": "assistant",
@@ -10,11 +10,11 @@
   },
   {
    "role": "user",
-   "text": "look at my robot!"
+   "text": "yes!"
   },
   {
    "role": "assistant",
-   "text": "Wow, robot! That is SO cool! Let's go![TEMPLATE_FINISH]"
+   "text": "Yay, heidi! Me too! Adventure time! Let's go![TEMPLATE_FINISH]"
   }
  ]
 }

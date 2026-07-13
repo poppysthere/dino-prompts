@@ -6,7 +6,7 @@
  "messages": [
   {
    "role": "assistant",
-   "text": "Hi hi! [TEACHER_WAVE] I am Kim! I am SO happy you are here! What is your name?[STUDENT_TALK]"
+   "text": "Hi hi! I am Kim! I am SO happy you are here! What is your name?[STUDENT_TALK]"
   },
   {
    "role": "user",
@@ -14,7 +14,7 @@
   },
   {
    "role": "assistant",
-   "text": "Hi Lily! Are you happy today?[STUDENT_TALK]"
+   "text": "Lily! Hi Lily! Are you happy today?[STUDENT_TALK]"
   },
   {
    "role": "user",
@@ -22,7 +22,7 @@
   },
   {
    "role": "assistant",
-   "text": "Dino is here! He sleeps. Shh! Do you like Dino?[STUDENT_TALK]"
+   "text": "Dino is here! He is SO cute! Do you like Dino?[STUDENT_TALK]"
   },
   {
    "role": "user",
@@ -30,7 +30,7 @@
   },
   {
    "role": "assistant",
-   "text": "Happy! Yay! Ready? Say GO! GO! Off we fly![TEMPLATE_FINISH]"
+   "text": "Yay! Happy! Say GO! GO! Off we fly![TEMPLATE_FINISH]"
   }
  ],
  "spoken_name": "lily",

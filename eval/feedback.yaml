@@ -304,3 +304,11 @@ items:
     severity: high
     status: fixed
     encoded_as: "all stretched spellings removed from both common layers + both warm-up templates (Hi hi! / BIG hug! / Whoosh! / real words in CAPS); output-format rule 4 added to common layers: dictionary words only, emphasis via CAPS; tts-stretched rule (3+ repeated letters) added to checker_warmup, checker_leadin, checker.py; all 18 warm-up cases re-pass live"
+
+  - id: fb-037
+    date: 2026-07-13
+    page: warmup L1 (device test, Zhang Zhihua / Tommy)
+    observation: "HUMAN FEEDBACK: child said 我叫张志桦, teacher used Zhang Zhihua once, then RESURRECTED the profile default ('Hello, Tommy!') a turn later; when the child protested (你怎么叫我？Tommy) the model adopted 'Tommy' from the protest as the new name. Also seen: two teacher replies fired 1s apart (ASR final double-trigger), and the next page spoke the raw Chinese script 张志桦 to TTS"
+    severity: high
+    status: fixed
+    encoded_as: "common layers: once a spoken name exists the default is DEAD (never say it again, even reacting to greetings); a child repeating a name YOU called them while confused is a PROTEST, not a new name (apologize + use their name). L1 template: both moments added as bad examples. New regression cases l1-name-revert + l1-name-protest (live: 'Hello hello, Zhihua!' and 'Oops, sorry! Zhihua!'). Dev items logged: ASR final debounce/merge; rewards-page template must carry the updated common layer / romanized name. All 20 warm-up cases pass live"
