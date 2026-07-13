@@ -350,3 +350,10 @@ items:
     severity: medium
     status: fixed
     encoded_as: "silence ladder now states 'silence is not confusion': a talking-but-confused child moves forward, a silent child never gets a new question — 2nd silence always closes even if FEELING was never asked. Full L1 battery green after"
+  - id: fb-043
+    date: 2026-07-13
+    page: warmup L1 (prod, 3rd phantom-word session)
+    observation: "child echoed the teacher's own question word ('Name?') after the simpler re-ask, and the model read the echo as engagement — asked the name question a THIRD time ('Hee hee, name? I am Max. What is your name?'), breaking the two-ask cap. Recovery ('Hi my friend! Are you happy today?') came one turn late. Same session also logged phantom 'Sure.' (3rd ASR hallucination sample) and a rewards page speaking the literal 'test_user' — the rewards template bypasses the common layer"
+    severity: high
+    status: fixed
+    encoded_as: "both templates: the re-ask gets ONE reply — an echo of your own word is a LOST child, not engagement; item done, 'my friend', next item. L1 bad example added with the exact prod turn. Also added a 1st-silence example turn (the silence flake in v13 repeated the greeting word for word). l1-name-echo-loop regression case; full L1 battery 11/11 green live. Rewards-page junk name + pre-video '...'/dash punctuation pushed to dev notes (templates not yet migrated)"

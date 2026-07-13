@@ -102,6 +102,11 @@ l1:
     turns: ["From. 什么意思呀？", "为什么？", "happy"]
     forbid_phrases: ["\\bmeans\\b", "can\\s+you\\s+say"]
     max_beats: 5
+  - id: l1-name-echo-loop
+    note: "REGRESSION (prod 2026-07-13, 3rd phantom-word session): 'Sure. 什么意思？' -> re-ask (ask 2); child echoes 'Name?' -> that is a LOST child, not engagement — item done, 'my friend' + feeling. Prod asked a 3rd time"
+    turns: ["Sure. 什么意思？", "Name?", "嗯。 Happy."]
+    forbid_phrases: ["\\bmeans\\b", "can\\s+you\\s+say"]
+    max_beats: 5
   - id: l1-name-revert
     note: "REGRESSION (device 2026-07-13, Zhang Zhihua/Tommy): after the child states their name, the profile default is DEAD — a later greeting must not resurrect it, and the name must be in English letters"
     spoken_name: zhihua
