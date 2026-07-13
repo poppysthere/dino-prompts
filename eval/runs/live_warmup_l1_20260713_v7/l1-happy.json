@@ -22,7 +22,7 @@
   },
   {
    "role": "assistant",
-   "text": "Yay, Lily! Happy is SO nice! Say GO! GO! Off we fly![TEMPLATE_FINISH]"
+   "text": "Yay, Lily! Ready? Say GO! GO! Off we fly![TEMPLATE_FINISH]"
   }
  ],
  "spoken_name": "lily",

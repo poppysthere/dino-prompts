@@ -320,3 +320,11 @@ items:
     severity: high
     status: fixed
     encoded_as: "L1 checklist rules rewritten: any checklist question max 2 asks ever (2nd must be new easier words), loop-protest (你问过我了) = apologize 2 words + move forward/close; junk studentName ('11', IDs, test_user) = NO name, never spoken (guard added to both common layers); child asking their own name gets 'YOU tell me!', never profile data. checker: question-loop rule (same normalized question 3+ beats). New l1_broken battery with the real prod data (studentName=11, profile Tommy). Dev item: studentName field carried an ID, not the child's 称呼. All 22 warm-up cases pass live"
+
+  - id: fb-039
+    date: 2026-07-13
+    page: warmup L1 (device test, silence race)
+    observation: "DEVICE LOG analysis (user-approved scope a+b): (1) child said 不知道 at the exact second the 2-silence close fired — close talked over the child, then a SECOND warm-up session reopened after TEMPLATE_FINISH; (2) 不知道 to the name question got the common-layer task line 'Is it hard? I help you!' — wrong register for a shy kid put on the spot"
+    severity: medium
+    status: fixed
+    encoded_as: "prompt: shy-kid rule + example in L1 template (make them the FRIEND, no pressure, never 'Is it hard'); regression l1-idk-name passes live ('Hee hee, that is okay! You are my friend.'). dev items added: barge-in on silence-triggered closes, warm-up first-question no-speech timeout to 15s (kid spoke at second 24), investigate step reopening after TEMPLATE_FINISH. Ladder length intentionally unchanged"

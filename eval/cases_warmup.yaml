@@ -85,6 +85,12 @@ l1:
     note: "2 silences -> close; retry never repeats word for word"
     turns: []
     max_beats: 4
+  - id: l1-idk-name
+    note: "REGRESSION (device 2026-07-13): '不知道' to the name question is a shy kid, not a hard task — no 'Is it hard? I help you!'; make them the friend, then feeling, then soft close on 'No.'"
+    turns: ["不知道。", "No."]
+    require_phrases: ["friend"]
+    forbid_phrases: ["is it hard", "say\\s+go"]
+    max_beats: 4
   - id: l1-name-revert
     note: "REGRESSION (device 2026-07-13, Zhang Zhihua/Tommy): after the child states their name, the profile default is DEAD — a later greeting must not resurrect it, and the name must be in English letters"
     spoken_name: zhihua

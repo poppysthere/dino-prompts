@@ -14,7 +14,7 @@
   },
   {
    "role": "assistant",
-   "text": "Hi Zhihua! Are you happy today?[STUDENT_TALK]"
+   "text": "Hi Zhang Zhihua! Are you happy today?[STUDENT_TALK]"
   },
   {
    "role": "user",
@@ -22,7 +22,7 @@
   },
   {
    "role": "assistant",
-   "text": "Hello, Zhihua! Are you happy today?[STUDENT_TALK]"
+   "text": "Hello hello, Zhihua! Are you happy today?[STUDENT_TALK]"
   },
   {
    "role": "user",
@@ -30,7 +30,7 @@
   },
   {
    "role": "assistant",
-   "text": "Zhihua, are you happy today? [STUDENT_TALK]"
+   "text": "Hmm, Zhihua, are you happy? Yes or no?[STUDENT_TALK]"
   },
   {
    "role": "user",
