@@ -357,3 +357,10 @@ items:
     severity: high
     status: fixed
     encoded_as: "both templates: the re-ask gets ONE reply — an echo of your own word is a LOST child, not engagement; item done, 'my friend', next item. L1 bad example added with the exact prod turn. Also added a 1st-silence example turn (the silence flake in v13 repeated the greeting word for word). l1-name-echo-loop regression case; full L1 battery 11/11 green live. Rewards-page junk name + pre-video '...'/dash punctuation pushed to dev notes (templates not yet migrated)"
+  - id: fb-044
+    date: 2026-07-13
+    page: all templates (HUMAN FEEDBACK, device test)
+    observation: "TTS renders 'Hee hee' broken — same family as stretched spellings. It was our single most-used giggle (14+ spots across common layers, warm-ups, word and sentence pages)"
+    severity: high
+    status: fixed
+    encoded_as: "all 'Hee hee' removed from every template ('Ha ha' where a laugh fits, plain warm words where it doesn't); common layers output-format rule 5: written giggles (hee hee/teehee/hehe) banned, laugh as 'Ha ha!' or put warmth in words; tts-giggle rule added to all three checkers. Full 24-case battery green live (two one-off flakes re-ran clean 3/3). NOTE: 'Ha ha' itself is assumed safe — if a device test says otherwise, drop written laughter entirely"

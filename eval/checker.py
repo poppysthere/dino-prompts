@@ -74,6 +74,8 @@ def check(transcript: dict):
         # TTS: stretched spellings are non-words the avatar cannot pronounce
         for m in re.finditer(r"[A-Za-z]*([A-Za-z])\1{2,}[A-Za-z]*", strip_tags(r)):
             v("tts-stretched", f"reply {n}: stretched spelling {m.group(0)!r} (voice engine cannot say it)")
+        for m in re.finditer(r"\b(hee[\s-]?hee|tee[\s-]?hee|hehe)\b", strip_tags(r), re.I):
+            v("tts-giggle", f"reply {n}: giggle spelling {m.group(0)!r} (voice engine breaks; use 'Ha ha!')")
 
         # R4: finish line placement
         if finish_line in r and "[TEMPLATE_FINISH]" not in r:

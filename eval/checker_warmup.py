@@ -177,6 +177,10 @@ def check(transcript: dict):
         for m in re.finditer(r"[A-Za-z]*([A-Za-z])\1{2,}[A-Za-z]*", body):
             v("tts-stretched", f"beat {n}: stretched spelling {m.group(0)!r} (voice engine cannot say it)")
 
+        # written giggles ("hee hee", "teehee", "hehe") sound broken; only "ha ha" is safe
+        for m in re.finditer(r"\b(hee[\s-]?hee|tee[\s-]?hee|hehe)\b", body, re.I):
+            v("tts-giggle", f"beat {n}: giggle spelling {m.group(0)!r} (voice engine breaks; use 'Ha ha!')")
+
         # STUDENT_TALK beats must end with the child's job (question or say-it call)
         if "[STUDENT_TALK]" in r:
             tail = " ".join(re.split(r"(?<=[.!?])\s+", body.strip())[-2:])
