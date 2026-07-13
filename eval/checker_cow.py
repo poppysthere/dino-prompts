@@ -63,6 +63,18 @@ def check(tr):
             if re.search(pat, body, re.I):
                 v("forbid-phrase", f"reply {n}: contains forbidden phrase {pat!r}")
 
+    for idx, pats in (tr.get("reply_forbid") or {}).items():
+        i = int(idx)
+        if i <= len(replies):
+            for pat in pats:
+                if re.search(pat, strip_tags(replies[i - 1]), re.I):
+                    v("reply-forbid", f"reply {i}: contains forbidden phrase {pat!r}")
+
+    all_teacher = " ".join(strip_tags(r) for r in replies)
+    for pat in tr.get("require_phrases", []):
+        if not re.search(pat, all_teacher, re.I):
+            v("require-phrase", f"no teacher reply contains required phrase {pat!r}")
+
     if not replies:
         v("empty", "no teacher replies at all")
         return out

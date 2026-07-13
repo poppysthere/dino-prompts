@@ -24,6 +24,14 @@ cow:
     note: "child talks about their dog instead: catch it in one sentence, retry once, keep the script shape"
     turns: ["I have a dog! Woof!", "kao", "moo", "I don't know"]
     max_replies: 5
+  - id: cow-agree-no
+    note: "REGRESSION (prod 2026-07-13 #352593): '好。' is agreement, NOT a cow try — no fake 'you got it'; and 'No.' to the wonder must be sided with ('No? Ha ha, okay!'), never answered with 'maybe'"
+    turns: ["好。", "cow", "moo moo", "No."]
+    forbid_phrases: ["\\bmaybe\\b"]
+    reply_forbid:
+      2: ["you got it", "yes! cow"]
+    require_phrases: ["\\bno\\b"]
+    max_replies: 5
   - id: cow-junkname
     note: "JUNK NAME: placeholder studentName is never spoken; name slots drop cleanly"
     turns: ["cow!", "moo!", "yes"]
