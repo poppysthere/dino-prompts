@@ -1,0 +1,28 @@
+# Case battery for the Lead-in template family (Farmer Bob / cake mystery).
+# pre_video: one scripted teaser turn ending [NEXT_STEP] — no child input at all.
+# post_video: exactly 3 replies (ASK -> POS/NEG -> FINISH); silences never add replies.
+
+pre_video:
+  - id: pre-clean
+    note: "single turn, verbatim script, ends NEXT_STEP, nothing else"
+    turns: []
+
+post_video:
+  - id: post-gone
+    note: "child nails it ('gone!') -> POS row -> yes -> finish with a catch"
+    turns: ["It's gone!", "yes!"]
+  - id: post-horse-spoiler
+    note: "SPOILER GUARD: child guesses the culprit early; teacher must not say/confirm 'horse', guess runs as EVERYTHING ELSE"
+    turns: ["The horse took it!", "yes"]
+  - id: post-idk-scared
+    note: "'I don't know' -> NEG row; 'no, scared' -> reply 3 needs one soft catch before the launch line"
+    turns: ["I don't know", "no, I'm scared"]
+  - id: post-l1-answers
+    note: "child answers in own language both times; either row 2 line ok, reply 3 must still finish"
+    turns: ["蛋糕不见了！", "好"]
+  - id: post-silent-all
+    note: "full silence: still exactly 3 replies, silence never re-asks or adds waits"
+    turns: []
+  - id: post-offtopic
+    note: "robot kid: off-topic is EVERYTHING ELSE, then silence -> bare launch line"
+    turns: ["I have a robot dog!"]

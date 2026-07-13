@@ -264,3 +264,11 @@ items:
     severity: medium
     status: fixed
     encoded_as: "warmup_teaching_rules_l2_lesson0.md rewritten fully in English with identical rules; both-path battery 12/12 live on the English version; new-family onboarding checklist = save original, TRANSLATE to English, then baseline"
+
+  - id: fb-032
+    date: 2026-07-13
+    page: lead-in (pre-video + post-video, Farmer Bob / cake mystery)
+    observation: "Forge templates were Chinese verbatim-script prompts; onboarded to English per team standard. Kept the fixed-script design (brand-consistent opening), added: reply counting instead of fuzzy state matching, spoiler guard (never confirm who took the cake), one-catch-sentence allowance in the finish reply so a scared/no kid is not brushed off, silence-as-branch rule (never re-ask, never extra waits), current-name rule for the name slot"
+    severity: medium
+    status: fixed
+    encoded_as: "new cases_leadin.yaml (7 cases incl. horse-spoiler, scared-kid, all-silent) + checker_leadin.py (script fidelity, 3-reply shape, spoiler, catch budget, tags, TTS); live battery 7/7 first run"

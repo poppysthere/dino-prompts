@@ -1,0 +1,32 @@
+{
+ "family": "leadin",
+ "step": "post_video",
+ "student_name": "heidi",
+ "case": "post-offtopic",
+ "messages": [
+  {
+   "role": "user",
+   "text": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet."
+  },
+  {
+   "role": "assistant",
+   "text": "Oh no! The cake! Where is the cake?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "I have a robot dog!"
+  },
+  {
+   "role": "assistant",
+   "text": "The cake! The cake is gone! Oh no! Oh no! Look! This is Mouse! Mouse wants to help us! Woohoo! Let's go find that cake! Are you ready, heidi?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "The student has been silent for 5 seconds"
+  },
+  {
+   "role": "assistant",
+   "text": "Let's GO! Come on![TEMPLATE_FINISH]"
+  }
+ ]
+}
