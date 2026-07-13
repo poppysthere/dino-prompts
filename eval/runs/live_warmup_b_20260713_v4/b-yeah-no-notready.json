@@ -1,0 +1,20 @@
+{
+ "family": "warmup",
+ "is_first_meet": false,
+ "student_name": "heidi",
+ "case": "b-yeah-no-notready",
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "Hi Heidi! So nice to see you again! Are you happy today?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "Yeah. No."
+  },
+  {
+   "role": "assistant",
+   "text": "Oh, no. A little sad today. Big breath. We go together.[TEMPLATE_FINISH]"
+  }
+ ]
+}

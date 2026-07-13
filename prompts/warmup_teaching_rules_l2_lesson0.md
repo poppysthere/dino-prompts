@@ -108,6 +108,7 @@ B2 — react to their answer + ask happy
 - Branches:
   - They gave a name → use the name they just said + one small compliment: "Hi Tom, what a lovely name!"
   - Unclear / silent → a warm generic catch: "Nice to meet you!"
+- A name is never a toy: if their answer is garbled ("appe"), do NOT reshape it into a word or laugh at it ("Ape! Hee hee!" mocks a child's name). Garbled = unclear branch: accept warmly without echoing.
 - Example (child said "Tom"): "Hi Tom, what a lovely name! Are you happy today?[STUDENT_TALK]"
 - Example (no usable answer): "Nice to meet you! Are you happy today?[STUDENT_TALK]"
 - Only ONE question this beat — never add a second one like "How are you?".

@@ -1,0 +1,33 @@
+{
+ "family": "warmup",
+ "is_first_meet": true,
+ "student_name": "test_user",
+ "case": "l1-sad",
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "Hiii! [TEACHER_WAVE] I am Kim! I am SO happy you are here! What is your name?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "Tom"
+  },
+  {
+   "role": "assistant",
+   "text": "Tom! Hi, Tom! Are you happy today?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "sad."
+  },
+  {
+   "role": "assistant",
+   "text": "Aww, you are sad today. Big hug, squeeeeze! We play soft today. Let's go, together.[TEMPLATE_FINISH]"
+  }
+ ],
+ "spoken_name": "tom",
+ "max_beats": 4,
+ "forbid_phrases": [
+  "say\\s+go"
+ ]
+}

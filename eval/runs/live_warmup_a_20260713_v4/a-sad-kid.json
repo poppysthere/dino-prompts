@@ -1,0 +1,29 @@
+{
+ "family": "warmup",
+ "is_first_meet": true,
+ "student_name": "test_user",
+ "case": "a-sad-kid",
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "Hi! I'm teacher Max. So nice to see you! What is your name?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "Tom"
+  },
+  {
+   "role": "assistant",
+   "text": "Hi Tom, what a lovely name! Are you happy today?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "no. sad."
+  },
+  {
+   "role": "assistant",
+   "text": "Aww, sad. I am here with you. One big breath. Whoooo! Let's go, together![TEMPLATE_FINISH]"
+  }
+ ],
+ "spoken_name": "tom"
+}

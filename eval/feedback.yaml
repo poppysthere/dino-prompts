@@ -280,3 +280,11 @@ items:
     severity: high
     status: fixed
     encoded_as: "L2 template: path A 5->3 beats (age + ready-wait cut, readiness folded into the close), path B 3->2, silence ladder 3->2 rungs. L1 template: checklist name+feeling only, launch inside FINISH turn, 3-4 turns total, 1 FOLLOW max. checker: beat budgets updated, age-question + ready-wait rules added, 2-silence escalation. Found during rerun: model echoed a Chinese name in Chinese script -> common layers now require names in English letters (Xiao Ming). Live battery 12/12"
+
+  - id: fb-034
+    date: 2026-07-13
+    page: warmup L1 (device test, teacher Kim)
+    observation: "HUMAN FEEDBACK: 'looks motionless, not care, does not feel like a real person'. Transcript: (1) garbled name 'appe' reshaped to 'Ape! Hee hee, ape!' — mocked the child's name; (2) sad 'no' answered in chopped fragments ('Oh, not happy. Aww. Big hug.'); (3) party launch 'Say GO! GO! Off we fly!' yelled at the sad child"
+    severity: high
+    status: fixed
+    encoded_as: "L1 template: name-is-never-a-toy rule (garbled name -> warm accept, no echo, no laugh; mirrored into L2 B2), energy-follows-theirs section (mood-matched FINISH branches: big launch only for happy, soft statement close for sad, no GO-chant), anti-staccato rule (one warm whole sentence, not fragments), warmer GREET example, 2-rung silence override. checker: forbid_phrases support; new cases a-garbled-name + l1 battery (5 cases). All 18 warm-up cases pass live"

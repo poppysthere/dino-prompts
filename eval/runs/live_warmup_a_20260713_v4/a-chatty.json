@@ -1,0 +1,28 @@
+{
+ "family": "warmup",
+ "is_first_meet": true,
+ "student_name": "test_user",
+ "case": "a-chatty",
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "Hi! I'm teacher Max. So nice to see you! What is your name?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "I have a robot dog!"
+  },
+  {
+   "role": "assistant",
+   "text": "Wow, a robot dog! That is SOOO cool! Are you happy today?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "yes happy"
+  },
+  {
+   "role": "assistant",
+   "text": "Happy! Yay, me too! Adventure time! Let's go![TEMPLATE_FINISH]"
+  }
+ ]
+}

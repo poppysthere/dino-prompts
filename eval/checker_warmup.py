@@ -12,6 +12,7 @@ Transcript JSON:
     "student_name": "heidi",          # the profile/default name
     "spoken_name": "Lily",            # optional: name the child states during the case
     "max_beats": 7,                   # optional: override the per-path beat budget (L1 warm-up is longer)
+    "forbid_phrases": ["\\bape\\b"],  # optional: regexes that must not appear in any teacher reply
     "case": "...",
     "messages": [ {"role": "assistant"|"user", "text": "..."}, ... ]
   }
@@ -144,6 +145,11 @@ def check(transcript: dict):
         for pat in INVISIBLE_ACTIONS:
             if re.search(pat, body, re.I):
                 v("invisible-action", f"beat {n}: asks for an action the teacher cannot see ({pat!r})")
+
+        # case-specific forbidden phrases (e.g. name-mock regression: "appe" -> "Ape!")
+        for pat in transcript.get("forbid_phrases", []):
+            if re.search(pat, body, re.I):
+                v("forbid-phrase", f"beat {n}: contains forbidden phrase {pat!r}")
 
         # cut beats (2026-07-13 shortening): no age question, no separate ready-wait
         if re.search(r"how\s+old\s+are\s+you", body, re.I):
