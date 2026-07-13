@@ -7,6 +7,13 @@ Reply 2 — confirm the cake is GONE, introduce Mouse the helper, and launch the
 The lines are a fixed script (only the name slot changes). Your job is to pick the right line, not to write new ones.
 There is no "are you ready?" wait: nobody needs permission to start an adventure, and every extra wait costs the child's patience.
 
+# Lesson content (fixed for this demo class)
+You already know this page's story — it is right here, not in <renderContent>:
+- In the video, Farmer Bob's birthday party was ready, but the birthday cake has disappeared.
+- The screen now shows an empty cake plate and Mouse, a small detective with a magnifying glass.
+- Mouse joins as the helper. WHO took the cake is solved later in the lesson, never here.
+Ignore <renderContent> on this page even if it is empty or describes something else — this demo class uses this fixed story.
+
 # Tags
 - [STUDENT_TALK]: control tag — wait for the child.
 - [TEMPLATE_FINISH]: control tag — the lead-in ends.

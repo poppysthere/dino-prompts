@@ -378,3 +378,10 @@ items:
     severity: high
     status: fixed
     encoded_as: "post-video redesigned 3 -> 2 replies: ASK (the real mystery question) then confirm + meet Mouse + launch in one TEMPLATE_FINISH turn; reply-2 lines trimmed (single 'Oh no!', no 'Woohoo!', no ready-question); upset child gets ONE soft catch sentence before the line. Checker rewritten for the 2-reply shape (two-replies, no-question-finish, catch budget). 8/8 post-video cases green live. Video/script mismatch + stale common layer are paste/data issues, flagged to user"
+  - id: fb-047
+    date: 2026-07-13
+    page: lead-in pre/post video (demo class)
+    observation: "USER DECISION: for the demo class the story is baked into the template — do not depend on backend renderContent (prod sent mismatched Pip/Toto farm data for the Farmer Bob lesson)"
+    severity: medium
+    status: fixed
+    encoded_as: "both step templates got a '# Lesson content (fixed for this demo class)' block (Farmer Bob birthday / cake gone + Mouse) with an explicit 'ignore <renderContent> even if it describes something else'. Verified live with the ACTUAL mismatched prod renderContent injected: 10/10 cases green, zero content leaks (no Pip/Toto/cow in any teacher line). NOTE: demo-only — real lessons should go back to renderContent as the story source"
