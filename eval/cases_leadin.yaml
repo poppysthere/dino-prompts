@@ -2,7 +2,7 @@
 # L1 demo lesson has a DIFFERENT script — separate template + battery pending (waiting on L1 original).
 # Structural rules (fixed script, 2 replies, spoiler + junk-name guards) are shared by design.
 # pre_video: one scripted teaser turn ending [NEXT_STEP] — no child input at all.
-# post_video: exactly 3 replies (ASK -> POS/NEG -> FINISH); silences never add replies.
+# post_video: exactly 2 replies (ASK -> confirm + launch); silences never add replies.
 
 pre_video:
   - id: pre-clean
