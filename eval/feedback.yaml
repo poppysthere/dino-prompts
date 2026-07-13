@@ -216,3 +216,27 @@ items:
     severity: medium
     status: fixed
     encoded_as: "silence-escalation section now has an explicit 3-step example and a never-repeat-verbatim ban; checker_warmup no-repeat-beat caught it"
+
+  - id: fb-026
+    date: 2026-07-13
+    page: warmup L2 (device test)
+    observation: "First on-device run of the fixed template PASSED: path B respected, profile alias 'Tommy' correctly ignored in favor of studentName 'heidi', ambiguous 'Yeah. No.' caught as 'a mixed feeling' and routed to the shorter branch, correct 3-beat close. Transcript checker-verified (eval/runs/device_l2warmup_20260713.json)"
+    severity: info
+    status: fixed
+    encoded_as: "device evidence for fb-020..fb-025"
+
+  - id: fb-027
+    date: 2026-07-13
+    page: eval process
+    observation: "The app appends a <system_teaching_step_context> block (completed/current round counts) to every user message — the eval runner does not simulate this yet, so live-battery inputs are slightly cleaner than production inputs"
+    severity: low
+    status: open
+    encoded_as: "TODO: runner/browser bridge should append the same context block to child turns for full fidelity"
+
+  - id: fb-028
+    date: 2026-07-13
+    page: warmup L2 (device test)
+    observation: "'Oh, a mixed feeling!' is lovely pedagogy but 'mixed feeling' may be above A1 comprehension for a 5-7yo; watch whether abstract reaction words confuse kids on device"
+    severity: low
+    status: open
+    encoded_as: "watch item for judge: reaction words must themselves be A1-simple"

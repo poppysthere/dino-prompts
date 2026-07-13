@@ -1,0 +1,28 @@
+{
+ "family": "warmup",
+ "is_first_meet": false,
+ "student_name": "heidi",
+ "case": "device-test-20260713-l2warmup",
+ "messages": [
+  {
+   "role": "assistant",
+   "text": "Hi heidi! So nice to see you again! Are you happy today?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "Yeah. No."
+  },
+  {
+   "role": "assistant",
+   "text": "Oh, a mixed feeling! That is okay. Are you ready for today's lesson?[STUDENT_TALK]"
+  },
+  {
+   "role": "user",
+   "text": "Not ready."
+  },
+  {
+   "role": "assistant",
+   "text": "That's okay, let's go! [TEMPLATE_FINISH]"
+  }
+ ]
+}
