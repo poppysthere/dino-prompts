@@ -272,3 +272,11 @@ items:
     severity: medium
     status: fixed
     encoded_as: "new cases_leadin.yaml (7 cases incl. horse-spoiler, scared-kid, all-silent) + checker_leadin.py (script fidelity, 3-reply shape, spoiler, catch budget, tags, TTS); live battery 7/7 first run"
+
+  - id: fb-033
+    date: 2026-07-13
+    page: warmup (both templates)
+    observation: "HUMAN FEEDBACK + retention data: warm-up too long, kids quit before the video/practice part. Old flow held children through up to 4 listen-waits (name, happy, age, ready) before anything fun"
+    severity: high
+    status: fixed
+    encoded_as: "L2 template: path A 5->3 beats (age + ready-wait cut, readiness folded into the close), path B 3->2, silence ladder 3->2 rungs. L1 template: checklist name+feeling only, launch inside FINISH turn, 3-4 turns total, 1 FOLLOW max. checker: beat budgets updated, age-question + ready-wait rules added, 2-silence escalation. Found during rerun: model echoed a Chinese name in Chinese script -> common layers now require names in English letters (Xiao Ming). Live battery 12/12"

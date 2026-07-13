@@ -32,7 +32,6 @@ PATH_B_FORBIDDEN = [
     r"may\s+i\s+know\s+your\s+name",
     r"\bi'?m\s+teacher\b", r"\bmy\s+name\s+is\b", r"let\s+me\s+introduce",
     r"nice\s+to\s+meet\s+you",
-    r"how\s+old\s+are\s+you",
 ]
 
 # The teacher cannot see the child — no requests for visible actions.
@@ -60,10 +59,11 @@ def check(transcript: dict):
     def v(rule, detail):
         violations.append(f"[{rule}] {detail}")
 
-    # Beat budget: path A positive = 5, path B = 3; +1 per silence nudge;
+    # Beat budget (shortened 2026-07-13, retention data: kids quit before the video):
+    # path A = 3 beats, path B = 2; +1 per silence nudge;
     # +1 slack for a child-derail (their own question etc. costs one extra beat).
     nudges = sum(1 for m in msgs if m["role"] == "user" and "has been silent" in m["text"])
-    max_beats = transcript.get("max_beats") or ((5 if first_meet else 3) + nudges + 1)
+    max_beats = transcript.get("max_beats") or ((3 if first_meet else 2) + nudges + 1)
     if len(replies) > max_beats:
         v("beat-budget", f"{len(replies)} teacher beats (max {max_beats} for this path incl. {nudges} silence nudge(s) + 1 slack)")
 
@@ -145,9 +145,15 @@ def check(transcript: dict):
             if re.search(pat, body, re.I):
                 v("invisible-action", f"beat {n}: asks for an action the teacher cannot see ({pat!r})")
 
-        # silence escalation: after the 3rd consecutive silence the beat MUST finish
-        if last_user is not None and silence_streak >= 3 and "[TEMPLATE_FINISH]" not in r:
-            v("silence-escalation", f"beat {n}: 3rd consecutive silence but warm up still not finished")
+        # cut beats (2026-07-13 shortening): no age question, no separate ready-wait
+        if re.search(r"how\s+old\s+are\s+you", body, re.I):
+            v("age-question", f"beat {n}: asks the age — cut from the warm up (kids quit when the opening drags)")
+        if re.search(r"are\s+you\s+ready", body, re.I) and "[STUDENT_TALK]" in r:
+            v("ready-wait", f"beat {n}: parks on a separate 'are you ready' wait — readiness belongs inside the close")
+
+        # silence escalation (2-rung ladder): after the 2nd consecutive silence the beat MUST finish
+        if last_user is not None and silence_streak >= 2 and "[TEMPLATE_FINISH]" not in r:
+            v("silence-escalation", f"beat {n}: 2nd consecutive silence but warm up still not finished")
 
         # TTS safety (same device findings as the word pages)
         if "..." in r or "\u2026" in r:
