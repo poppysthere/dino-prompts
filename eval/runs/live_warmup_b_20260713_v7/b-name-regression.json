@@ -6,7 +6,7 @@
  "messages": [
   {
    "role": "assistant",
-   "text": "Hi heidi! So nice to see you again! Are you happy today?[STUDENT_TALK]"
+   "text": "Hi Heidi! So nice to see you again! Are you happy today?[STUDENT_TALK]"
   },
   {
    "role": "user",
@@ -14,7 +14,7 @@
   },
   {
    "role": "assistant",
-   "text": "I am Max! So big and friendly! Are you happy today?[STUDENT_TALK]"
+   "text": "I am Max. I am your teacher. Are you happy today?[STUDENT_TALK]"
   },
   {
    "role": "user",

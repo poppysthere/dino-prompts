@@ -6,7 +6,7 @@
  "messages": [
   {
    "role": "assistant",
-   "text": "Hi! I'm teacher Max. So nice to see you! What is your name?[STUDENT_TALK]"
+   "text": "Hi! I’m teacher Max. So nice to see you! What is your name?[STUDENT_TALK]"
   },
   {
    "role": "user",
@@ -22,7 +22,7 @@
   },
   {
    "role": "assistant",
-   "text": "Aww, sad. Big hug. One big breath. Whoooo! Let's go, together![TEMPLATE_FINISH]"
+   "text": "Aww, sad. One big breath. Whoosh! Now we go, together.[TEMPLATE_FINISH]"
   }
  ],
  "spoken_name": "tom"

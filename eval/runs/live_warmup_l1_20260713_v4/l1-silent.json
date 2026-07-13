@@ -6,7 +6,7 @@
  "messages": [
   {
    "role": "assistant",
-   "text": "Hiii! I am Kim. I am SO happy you are here! What is your name?[STUDENT_TALK]"
+   "text": "Hi hi! I am Kim. I am SO happy you are here! What is your name?[STUDENT_TALK]"
   },
   {
    "role": "user",
@@ -14,7 +14,7 @@
   },
   {
    "role": "assistant",
-   "text": "Hiii, test_user. I am Kim. What is your name?[STUDENT_TALK]"
+   "text": "Hi, test_user! I am Kim. Are you happy today?[STUDENT_TALK]"
   },
   {
    "role": "user",

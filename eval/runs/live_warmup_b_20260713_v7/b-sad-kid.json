@@ -2,7 +2,7 @@
  "family": "warmup",
  "is_first_meet": false,
  "student_name": "heidi",
- "case": "b-happy-path",
+ "case": "b-sad-kid",
  "messages": [
   {
    "role": "assistant",
@@ -10,11 +10,11 @@
   },
   {
    "role": "user",
-   "text": "yes!"
+   "text": "no. I'm tired."
   },
   {
    "role": "assistant",
-   "text": "Yay, Heidi! Happy, happy! Adventure time! Let's go![TEMPLATE_FINISH]"
+   "text": "Aww, tired. Big yawn! One BIG breath. Whoosh! Now we go, together![TEMPLATE_FINISH]"
   }
  ]
 }

@@ -71,6 +71,10 @@ def check(transcript: dict):
         if has_cjk(r):
             v("english-only", f"reply {n}: contains non-English characters")
 
+        # TTS: stretched spellings are non-words the avatar cannot pronounce
+        for m in re.finditer(r"[A-Za-z]*([A-Za-z])\1{2,}[A-Za-z]*", strip_tags(r)):
+            v("tts-stretched", f"reply {n}: stretched spelling {m.group(0)!r} (voice engine cannot say it)")
+
         # R4: finish line placement
         if finish_line in r and "[TEMPLATE_FINISH]" not in r:
             v("finish-line-leak", f"reply {n}: finish/handover line without [TEMPLATE_FINISH]")

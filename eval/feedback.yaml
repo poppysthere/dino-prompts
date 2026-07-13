@@ -296,3 +296,11 @@ items:
     severity: high
     status: fixed
     encoded_as: "both warm-up templates: whatever the child answers to the name question IS their name — greet WITH it ('Hi Huide!'), even if ASR spells it oddly; only pure noise/silence falls back to 'Nice to meet you!'; the only guards kept from fb-034 are no-reshaping-into-words and no-laughing. checker: require_phrases support; garbled-name cases now use real device input 'huide' and REQUIRE the name echo. Also: bare 'no' close must say 'not happy', never a feeling the child did not say ('a little tired' bleed from example). All batteries pass live (L1 5/5, L2 13/13)"
+
+  - id: fb-036
+    date: 2026-07-13
+    page: warmup L1 (device test)
+    observation: "HUMAN FEEDBACK: the avatar cannot pronounce 'Hiiii' — stretched spellings are non-words the TTS chokes on (same class as the '...' finding). Grep found the prompts themselves seeding them: common-layer fun toolbox ('SOOOO', 'BIIIG', 'Squeeeeze!', 'brrrrr'), L1 greet example ('Hiii!'), L2 breath ritual ('Whooooo!')"
+    severity: high
+    status: fixed
+    encoded_as: "all stretched spellings removed from both common layers + both warm-up templates (Hi hi! / BIG hug! / Whoosh! / real words in CAPS); output-format rule 4 added to common layers: dictionary words only, emphasis via CAPS; tts-stretched rule (3+ repeated letters) added to checker_warmup, checker_leadin, checker.py; all 18 warm-up cases re-pass live"

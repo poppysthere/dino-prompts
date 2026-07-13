@@ -167,6 +167,9 @@ def check(transcript: dict):
             v("tts-ellipsis", f"beat {n}: contains '...'")
         if "\u2014" in r or "\u2013" in r or " - " in r:
             v("tts-dash", f"beat {n}: contains a dash")
+        # stretched spellings ("Hiiii", "squeeeeze") — the avatar cannot pronounce non-words
+        for m in re.finditer(r"[A-Za-z]*([A-Za-z])\1{2,}[A-Za-z]*", body):
+            v("tts-stretched", f"beat {n}: stretched spelling {m.group(0)!r} (voice engine cannot say it)")
 
         # STUDENT_TALK beats must end with the child's job (question or say-it call)
         if "[STUDENT_TALK]" in r:

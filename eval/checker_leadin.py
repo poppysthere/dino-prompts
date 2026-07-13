@@ -59,6 +59,8 @@ def check(path):
             v("english-only", f"reply {n}: contains non-English characters")
         if "..." in r or "…" in r or re.search(r"\w\s*[-–—]\s*\w", strip_tags(r)):
             v("tts-safety", f"reply {n}: ellipsis or dash (voice engine breaks)")
+        for m in re.finditer(r"[A-Za-z]*([A-Za-z])\1{2,}[A-Za-z]*", strip_tags(r)):
+            v("tts-stretched", f"reply {n}: stretched spelling {m.group(0)!r} (voice engine cannot say it)")
 
     if step == "pre_video":
         if len(replies) != 1:
