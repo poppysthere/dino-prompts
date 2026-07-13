@@ -97,6 +97,11 @@ l1:
     require_phrases: ["friend"]
     forbid_phrases: ["is it hard"]
     max_beats: 4
+  - id: l1-asr-phantom-word
+    note: "REGRESSION (prod 2026-07-13 #350750, classId 7640050001): ASR glued a phantom 'From.' onto 什么意思呀 — teacher lectured about 'from' ('From means start... Can you say from?'). Confusion = re-ask simpler; warm-up never teaches words"
+    turns: ["From. 什么意思呀？", "为什么？", "happy"]
+    forbid_phrases: ["\\bmeans\\b", "can\\s+you\\s+say"]
+    max_beats: 5
   - id: l1-name-revert
     note: "REGRESSION (device 2026-07-13, Zhang Zhihua/Tommy): after the child states their name, the profile default is DEAD — a later greeting must not resurrect it, and the name must be in English letters"
     spoken_name: zhihua

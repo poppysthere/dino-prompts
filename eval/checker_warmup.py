@@ -152,6 +152,12 @@ def check(transcript: dict):
             if re.search(pat, body, re.I):
                 v("forbid-phrase", f"beat {n}: contains forbidden phrase {pat!r}")
 
+        # word-teaching leak (prod #350750: 'From means start... Can you say from?'):
+        # the warm-up never explains words or assigns repeat-tasks
+        for pat in [r"\bmeans\b", r"can\s+you\s+say", r"repeat\s+after\s+me"]:
+            if re.search(pat, body, re.I):
+                v("word-teach-leak", f"beat {n}: warm-up is teaching vocabulary ({pat!r})")
+
         # cut beats (2026-07-13 shortening): no age question, no separate ready-wait
         if re.search(r"how\s+old\s+are\s+you", body, re.I):
             v("age-question", f"beat {n}: asks the age — cut from the warm up (kids quit when the opening drags)")

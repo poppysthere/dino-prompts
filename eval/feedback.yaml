@@ -336,3 +336,17 @@ items:
     severity: medium
     status: fixed
     encoded_as: "idk-to-name rule rewritten in both templates as an explicit meaning rule with multi-language examples (不知道/no sé/몰라/je sais pas); new l1-idk-name-es case proves it in Spanish live ('No sé.' -> 'You are my friend', 'sí, feliz!' -> big launch). PRINCIPLE for future prompt work: every L1-speech rule must be written meaning-first and eval'd in at least one language other than Chinese"
+  - id: fb-041
+    date: 2026-07-13
+    page: warmup L1 (prod #350750, classId 7640050001)
+    observation: "ASR hallucinated a phantom 'From.' in front of the child's 什么意思呀 and the teacher turned the warm-up into a vocabulary lecture: 'From! ...From means start... Can you say from?' — violated the common layer's 'never say X means Y' hard rule and gave a repeat-task in the opening. The child's real meaning was 'I did not understand your question'"
+    severity: high
+    status: fixed
+    encoded_as: "both templates: 'what does it mean?' in any language = confusion about YOUR question (re-ask simpler, counts as 2nd ask; still confused -> item done, 'my friend', next item), and a lone gluon English word nobody said is ASR noise, never a topic; L1 example turns show the 2-beat recovery; checker word-teach-leak rule (means / can you say / repeat after me); l1-asr-phantom-word regression case. ALSO removed 'Big smile!' from both common layers' rule 5.4 example — the model was quoting it back ('Great big smile'), which trips the invisible-action rule: never put a forbidden pattern inside a prompt example"
+  - id: fb-042
+    date: 2026-07-13
+    page: warmup L1 (eval l1-silent flake)
+    observation: "after teaching 'confused child -> move to next item', a fully SILENT child got a new question on the 2nd silence (Are you happy today? into silence) instead of closing — the confusion-recovery rule bled into the silence ladder"
+    severity: medium
+    status: fixed
+    encoded_as: "silence ladder now states 'silence is not confusion': a talking-but-confused child moves forward, a silent child never gets a new question — 2nd silence always closes even if FEELING was never asked. Full L1 battery green after"
