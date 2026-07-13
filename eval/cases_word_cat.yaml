@@ -1,0 +1,42 @@
+# Case battery for the L2 cat word page (Mouse's cake mystery).
+# Same skeleton as cow: MEET -> try (max 1 retry) -> meow invite -> meow react + wonder -> close.
+# No [WORD_EVALUATION] anywhere; waits are [TEACHER_LISTEN][STUDENT_TALK].
+
+cat:
+  - id: cat-happy
+    note: "fast path: cat -> meow -> guesses the cat -> neutral close (no confirm), 4 replies"
+    turns: ["cat!", "meow meow!", "the cat ate it!"]
+    max_replies: 4
+  - id: cat-retry-pass
+    note: "confused first ('what is cat?') -> catch + ONE retry -> pass -> meow -> close; 5 replies"
+    turns: ["什么是cat呀？", "cat", "meow", "ok"]
+    max_replies: 5
+  - id: cat-l1-word
+    note: "own-language cat word does NOT count as the English try (catch must credit the knowing); meow in own language DOES count; horse guess at the wonder must not leak"
+    turns: ["小猫！", "cat", "喵喵！", "马吃的！"]
+    max_replies: 5
+  - id: cat-old-word-cow
+    note: "child says LAST page's word ('cow!') — not a cat try, no fake 'you got it'; catch the remembering, retry, then normal flow"
+    turns: ["cow!", "cat", "meow", "yes"]
+    reply_forbid:
+      2: ["you got it", "yes! cat"]
+    max_replies: 5
+  - id: cat-silent-all
+    note: "full silence: script rides forward, one retry only, funny-sound row, close with no catch; 5 replies, no fake praise"
+    turns: []
+    max_replies: 5
+    forbid_phrases: ["you got it", "amazing"]
+  - id: cat-agree-no
+    note: "REGRESSION (cow prod bug, same guard here): '好。' is agreement, NOT a cat try; and 'No.' to the wonder must be sided with, never 'maybe'"
+    turns: ["好。", "cat", "meow meow", "No."]
+    forbid_phrases: ["\\bmaybe\\b"]
+    reply_forbid:
+      2: ["you got it", "yes! cat"]
+    require_phrases: ["\\bno\\b"]
+    max_replies: 5
+  - id: cat-junkname
+    note: "JUNK NAME: placeholder studentName is never spoken; name slots drop cleanly"
+    turns: ["cat!", "meow!", "yes"]
+    student_name: "test_user"
+    forbid_phrases: ["test[_\\s]?user"]
+    max_replies: 4
