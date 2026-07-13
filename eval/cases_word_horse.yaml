@@ -12,6 +12,23 @@ horse:
     note: "ASR mishears horse as 'house' — counts as a try, celebrate row fires"
     turns: ["house!", "neigh!", "no"]
     max_replies: 4
+  - id: horse-of-course-asr
+    note: "REGRESSION (prod 2026-07-13 #353094): ASR writes the child's 'horse' as 'Of course.' — it counts as the try, celebrate row fires, NO retry loop"
+    turns: ["Of course.", "neigh neigh!", "yes"]
+    reply_forbid:
+      2: ["one more time", "you said yes"]
+    max_replies: 4
+  - id: horse-agree-loop
+    note: "REGRESSION (prod #353094 shape): stubborn agreement every turn — retry happens ONCE, then the script rides forward to the close; never 'you said yes again'"
+    turns: ["好的好的", "好。", "好。", "好。"]
+    forbid_phrases: ["you said yes", "you agree"]
+    max_replies: 5
+  - id: horse-nainai-asr
+    note: "REGRESSION (prod #353094): child's neigh neigh comes through Chinese ASR as '奶奶' — counts as the neigh, celebrate row, never 'funny sound' or a backward retry"
+    turns: ["horse!", "奶奶。", "no"]
+    reply_forbid:
+      3: ["funny sound", "one more time"]
+    max_replies: 4
   - id: horse-retry-pass
     note: "confused first ('what is horse?') -> catch + ONE retry -> pass -> neigh -> close; 5 replies"
     turns: ["什么是horse呀？", "horse", "neigh", "ok"]

@@ -1,0 +1,125 @@
+# Case battery for the L2 sentence-teaching trail (Mouse's three bags -> reveal).
+# Steps run as separate jobs: sent_intro / sent_cow / sent_cat / sent_horse / sent_reveal.
+# Reveal cases use `seed` = prior chat (the mystery question + the child's answer).
+
+sent_intro:
+  - id: intro-line
+    note: "one fixed line, ends [NEXT_STEP], no waiting"
+    turns: []
+  - id: intro-junkname
+    note: "JUNK NAME: placeholder never spoken, slot drops"
+    turns: []
+    student_name: "test_user"
+    forbid_phrases: ["test[_\\s]?user"]
+
+sent_cow:
+  - id: s0-pass
+    note: "fast path: full sentence -> celebrate + advance; 2 replies"
+    turns: ["it's a cow"]
+    max_replies: 2
+  - id: s0-word-only
+    note: "word-only try: warm catch + ONE retry, then full sentence -> high five; no early celebrate"
+    turns: ["cow!", "it's a cow"]
+    reply_forbid:
+      2: ["belongs"]
+    max_replies: 3
+  - id: s0-agree-silent
+    note: "'好。' is agreement, not a try (no celebrate); then silence rides to the 'That's okay' close"
+    turns: ["好。"]
+    reply_forbid:
+      2: ["belongs", "you got it"]
+    max_replies: 3
+  - id: s0-silent-all
+    note: "full silence: retry once, then close; no fake praise"
+    turns: []
+    forbid_phrases: ["you got it", "amazing", "high five"]
+    max_replies: 3
+
+sent_cat:
+  - id: s1-pass
+    note: "fast path: full sentence -> celebrate + advance; 2 replies"
+    turns: ["it's a cat"]
+    max_replies: 2
+  - id: s1-old-sentence
+    note: "child repeats LAST bag's sentence ('it's a cow') — lovely remembering, NOT this line: catch + retry, no celebrate"
+    turns: ["it's a cow", "it's a cat"]
+    reply_forbid:
+      2: ["fish belongs"]
+    max_replies: 3
+  - id: s1-silent-all
+    note: "full silence: retry once, then 'Come on!' close"
+    turns: []
+    forbid_phrases: ["you got it", "amazing"]
+    max_replies: 3
+
+sent_horse:
+  - id: s2-pass-guess
+    note: "full sentence -> question; guesses the horse (CORRECTLY) -> teacher only teases, video does the reveal"
+    turns: ["it's a horse", "the horse ate it!"]
+    forbid_phrases: ["\\bthe horse ate\\b", "\\byes\\b[^.!?]*\\bhorse\\b"]
+    max_replies: 3
+  - id: s2-ofcourse-asr
+    note: "REGRESSION (prod #353094): ASR writes the child's sentence as \"It's of course.\" — counts as the try, no retry loop"
+    turns: ["It's of course.", "the cat"]
+    reply_forbid:
+      2: ["you said yes", "let's say it together"]
+    max_replies: 3
+  - id: s2-agree-retry-idk
+    note: "'好。' = agreement -> catch + ONE retry; pass -> question; 'I don't know, what do you think?' answered, never 'maybe'"
+    turns: ["好。", "it's a horse", "我也不知道呀，你觉得呢？"]
+    forbid_phrases: ["\\bmaybe\\b"]
+    max_replies: 4
+  - id: s2-silent-all
+    note: "full silence: retry once, question comes anyway, close with no catch"
+    turns: []
+    forbid_phrases: ["you got it", "amazing"]
+    max_replies: 4
+
+sent_reveal:
+  - id: reveal-hit
+    note: "child guessed horse -> HIT line with the name and 'you knew it'"
+    seed:
+      - role: assistant
+        text: "Great job![TEACHER_THUMBS_UP] Hmm, heidi! Who ate the cake? The cow? The cat? Or the horse?[TEACHER_LISTEN][STUDENT_TALK]"
+      - role: user
+        text: "the horse!"
+    turns: []
+    require_phrases: ["you knew it"]
+  - id: reveal-hit-chinese
+    note: "guess in Chinese ('马吃的！') still counts as horse — meaning, not the English word"
+    seed:
+      - role: assistant
+        text: "Great job![TEACHER_THUMBS_UP] Hmm, heidi! Who ate the cake? The cow? The cat? Or the horse?[TEACHER_LISTEN][STUDENT_TALK]"
+      - role: user
+        text: "马吃的！"
+    turns: []
+    require_phrases: ["you knew it"]
+  - id: reveal-miss
+    note: "child guessed cat -> MISS line; never mock, never name their animal"
+    seed:
+      - role: assistant
+        text: "Great job![TEACHER_THUMBS_UP] Hmm, heidi! Who ate the cake? The cow? The cat? Or the horse?[TEACHER_LISTEN][STUDENT_TALK]"
+      - role: user
+        text: "the cat!"
+    turns: []
+    forbid_phrases: ["you knew it", "\\bcat\\b", "\\bwrong\\b"]
+  - id: reveal-miss-silent
+    note: "child was silent at the question -> MISS line"
+    seed:
+      - role: assistant
+        text: "It's a horse! Off we go! Hmm, heidi! Who ate the cake? The cow? The cat? Or the horse?[TEACHER_LISTEN][STUDENT_TALK]"
+      - role: user
+        text: "The student has been silent for 5 seconds"
+    turns: []
+    forbid_phrases: ["you knew it"]
+  - id: reveal-hit-junkname
+    note: "JUNK NAME on the HIT line: 'you knew it' fires but the placeholder is never spoken"
+    seed:
+      - role: assistant
+        text: "Great job![TEACHER_THUMBS_UP] Hmm! Who ate the cake? The cow? The cat? Or the horse?[TEACHER_LISTEN][STUDENT_TALK]"
+      - role: user
+        text: "horse! horse!"
+    turns: []
+    student_name: "test_user"
+    require_phrases: ["you knew it"]
+    forbid_phrases: ["test[_\\s]?user"]
