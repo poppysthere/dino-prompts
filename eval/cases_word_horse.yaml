@@ -1,0 +1,55 @@
+# Case battery for the L2 horse word page (Mouse's cake mystery — the CULPRIT page).
+# Same skeleton: MEET -> try (max 1 retry) -> neigh invite -> neigh react + wonder -> close.
+# Extra stake here: the horse DID eat the cake, and the teacher must never confirm it.
+
+horse:
+  - id: horse-happy
+    note: "fast path: horse -> neigh -> guesses the horse (CORRECTLY!) -> teacher still only teases; 4 replies"
+    turns: ["horse!", "neigh neigh!", "the horse ate it!"]
+    forbid_phrases: ["\\bthe horse ate\\b", "\\byes\\b[^.!?]*\\bhorse\\b[^.!?]*\\bate\\b"]
+    max_replies: 4
+  - id: horse-house-asr
+    note: "ASR mishears horse as 'house' — counts as a try, celebrate row fires"
+    turns: ["house!", "neigh!", "no"]
+    max_replies: 4
+  - id: horse-retry-pass
+    note: "confused first ('what is horse?') -> catch + ONE retry -> pass -> neigh -> close; 5 replies"
+    turns: ["什么是horse呀？", "horse", "neigh", "ok"]
+    max_replies: 5
+  - id: horse-l1-word
+    note: "own-language horse word does NOT count (catch credits the knowing); neigh in own language DOES count; correct culprit guess in Chinese must not be confirmed"
+    turns: ["小马！", "horse", "咴咴！", "马吃的！"]
+    forbid_phrases: ["\\bthe horse ate\\b"]
+    max_replies: 5
+  - id: horse-old-word-cat
+    note: "child says an EARLIER page's word ('cat!') — not a horse try, no fake 'you got it'; catch the remembering, retry, then normal flow"
+    turns: ["cat!", "horse", "neigh", "yes"]
+    reply_forbid:
+      2: ["you got it", "yes! horse"]
+    max_replies: 5
+  - id: horse-silent-all
+    note: "full silence: script rides forward, one retry only, funny-sound row, close with no catch; 5 replies, no fake praise"
+    turns: []
+    max_replies: 5
+    forbid_phrases: ["you got it", "amazing"]
+  - id: horse-agree-no
+    note: "REGRESSION (cow/cat prod bugs, same guards here): '好。' is agreement, NOT a try; 'No.' to the wonder is sided with, never 'maybe'"
+    turns: ["好。", "horse", "neigh neigh", "No."]
+    forbid_phrases: ["\\bmaybe\\b"]
+    reply_forbid:
+      2: ["you got it", "yes! horse"]
+    require_phrases: ["\\bno\\b"]
+    max_replies: 5
+  - id: horse-word-again-idk
+    note: "REGRESSION (cat prod #352886, same guards): 'Horse.' at the neigh invite = practicing, praise the WORD; 'I don't know, what do you think?' gets answered, never 'maybe'"
+    turns: ["horse!", "Horse.", "我也不知道呀，你觉得呢？"]
+    reply_forbid:
+      3: ["real horses", "i love it", "funny sound"]
+    forbid_phrases: ["\\bmaybe\\b"]
+    max_replies: 4
+  - id: horse-junkname
+    note: "JUNK NAME: placeholder studentName is never spoken; name slots drop cleanly"
+    turns: ["horse!", "neigh!", "yes"]
+    student_name: "test_user"
+    forbid_phrases: ["test[_\\s]?user"]
+    max_replies: 4

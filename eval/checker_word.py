@@ -17,14 +17,25 @@ WORDS = {
     "word_cow": {
         "meet": "Mouse sees a cow! A COW! Cow! Say it with me. Cow!",
         "retry": "Let's go together. Cow. Cow. One more time. Cow!",
+        "close": "Let's keep looking. Come on, Mouse!",
+        "spoiler": r"\bhorse\b",  # culprit word banned on non-horse pages
     },
     "word_cat": {
         "meet": "Mouse sees a cat! A CAT! Cat! Say it with me. Cat!",
         "retry": "Let's go together. Cat. Cat. One more time. Cat!",
+        "close": "Let's keep looking. Come on, Mouse!",
         "close_tag": "[TEACHER_SHOW_MUSCLE]",
+        "spoiler": r"\bhorse\b",
+    },
+    "word_horse": {
+        "meet": "Mouse sees a horse! A HORSE! Horse! Say it with me. Horse!",
+        "retry": "Let's go together. Horse. Horse. One more time. Horse!",
+        "close": "Let's go find out!",
+        "close_tag": "[TEACHER_RIDE_HORSE]",
+        # teacher says "horse" all page, but must never CONFIRM the culprit
+        "spoiler": r"(?:\byes\b|\byou got it\b|\bright\b|\bcorrect\b)[^.!?]*\bhorse\b[^.!?]*\b(?:ate|did)\b|\bthe horse ate\b",
     },
 }
-CLOSE_LINE = "Let's keep looking. Come on, Mouse!"
 WONDER = "who ate the cake"
 
 
@@ -69,8 +80,8 @@ def check(tr):
             v("tts-giggle", f"reply {n}: giggle spelling {m.group(0)!r} (use 'Ha ha!')")
         if re.search(r"can\s+you\s+say", body, re.I):
             v("rising-invite", f"reply {n}: 'can you say' — say-it invites must not be questions")
-        if re.search(r"\bhorse\b", body, re.I):
-            v("spoiler", f"reply {n}: teacher says the culprit ('horse')")
+        if word.get("spoiler") and re.search(word["spoiler"], body, re.I):
+            v("spoiler", f"reply {n}: culprit leak (matched {word['spoiler']!r})")
         if r.rstrip().endswith("[STUDENT_TALK]") and not r.rstrip().endswith("[TEACHER_LISTEN][STUDENT_TALK]"):
             v("listen-pose", f"reply {n}: wait without the listening pose (must end [TEACHER_LISTEN][STUDENT_TALK])")
         for pat in tr.get("forbid_phrases", []):
@@ -115,10 +126,10 @@ def check(tr):
         v("must-finish", "last reply does not end the page with [TEMPLATE_FINISH]")
     if word.get("close_tag") and word["close_tag"] not in last:
         v("close-action", f"last reply missing the close action tag {word['close_tag']}")
-    if norm(CLOSE_LINE) not in norm(last):
+    if norm(word["close"]) not in norm(last):
         v("close-line", f"last reply missing the fixed close: {strip_tags(last).strip()!r}")
     else:
-        catch = norm(last).split(norm(CLOSE_LINE))[0].strip()
+        catch = norm(last).split(norm(word["close"]))[0].strip()
         if len(catch.split()) > 8:
             v("catch-budget", f"close catch over budget ({len(catch.split())} words): {catch!r}")
     for r in replies[:-1]:
