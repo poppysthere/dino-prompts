@@ -70,30 +70,43 @@ Prompt 我会继续优化，但这三条属于"模型哪怕万分之一概率犯
 1. **`language` 里的 "interpret ambiguous sounds as English" 就是在命令模型瞎猜**，和 `instructions` 里的 "no guessing" 直接打架。孩子说中文时句首第一个音节往往轻、含糊，正好命中 "ambiguous"，于是被强行转成英文小词，后面再正常转中文——三个幻听全在中文句子开头，"Sure. 什么意思？" 就是 什(shén) 被解了两次。改成：模糊音**宁可丢弃也不猜**（新文案见下）。
 2. **terms 里的 yeah/yep/nah/uh-uh 建议删掉**（yes/no 保留）：这些词声学上太短，boost 之后噪声很容易误命中；第一例幻听 "Yeah" 本身就是 boost 词。误报的 yes/no 会直接翻转课堂分支，是代价最高的错误。
 3. **name 指令引用了一个从来没传进去的名字**："transcribe any sound matching this name" 但配置里根本没有孩子的名字。应把真实 studentName 插进 context 和 speech_context boost（像 Dino 一样）——但仅当它是真人名时（"11"/"test_user" 不注入，呼应 studentName 取数 bug）。
-4. 小项：phrases 里 "My name is ..." 去掉字面 "..."；setting 里 "Expect single words..." 需要配一句反向约束（宁少勿多）。
+4. **母语不能写死成中文**（产品是国际化的）：现配置里 "The child's native language is Chinese" 应改成模板变量，由客户端按账号 locale 注入（如 {{nativeLanguage}} = "Chinese" / "Spanish" / "Korean"）。母语未知时用通用写法（"the child may mix English with their own language"）。指令里的反幻听例子同理，写成"孩子自己语言的第一个音节"而不是"中文的第一个音节"。
+5. 小项：phrases 里 "My name is ..." 去掉字面 "..."；setting 里 "Expect single words..." 需要配一句反向约束（宁少勿多）。
 
-建议替换的两段（英文原文，可直接粘）：
+建议替换的两段（英文原文，{{nativeLanguage}} 由客户端注入，可直接粘）：
 
 ```
 - key: language
   value: >-
-    Prioritize English transcription. The child's native language is Chinese and they
-    often mix the two. Transcribe Chinese speech as Chinese and English speech as
-    English. If a sound is too unclear to confidently assign to either language, omit
-    it entirely — transcribe only what was clearly spoken. Never translate.
+    Prioritize English transcription. The child's native language is {{nativeLanguage}}
+    and they often mix it with English. Transcribe {{nativeLanguage}} speech as
+    {{nativeLanguage}} and English speech as English. If a sound is too unclear to
+    confidently assign to either language, omit it entirely — transcribe only what was
+    clearly spoken. Never translate.
 - key: instructions
   value: >-
     The child speaks to their teacher. Only transcribe the child's primary voice;
     ignore background adult talking. Return blank output for silent, noisy, or
     unrecognizable audio — no guessing or making up words. Never prepend or append
     words that were not clearly spoken: a breath, a lip smack, or the first syllable
-    of a Chinese word is NOT a short English word ("yeah", "sure", "from"). When in
-    doubt, output less, not more. Do not fix the child's grammar; write speech
-    verbatim. Combine split or stretched word attempts into the full target word
-    ("a... pple" -> "apple"). Keep single letter names and letter sounds as raw
-    letters ("A", "B"). Retain playful noises and interjections exactly as heard:
-    "meow", "wow", "uh-oh", "haha".
+    of a word in the child's own language is NOT a short English word ("yeah", "sure",
+    "from"). When in doubt, output less, not more. Do not fix the child's grammar;
+    write speech verbatim. Combine split or stretched word attempts into the full
+    target word ("a... pple" -> "apple"). Keep single letter names and letter sounds
+    as raw letters ("A", "B"). Retain playful noises and interjections exactly as
+    heard: "meow", "wow", "uh-oh", "haha".
 ```
+
+母语未知/未填时的兜底版 `language`：
+
+```
+    Prioritize English transcription. The child may mix English with their own native
+    language. Transcribe each language as itself. If a sound is too unclear to
+    confidently assign to a language, omit it entirely — transcribe only what was
+    clearly spoken. Never translate.
+```
+
+另外顶层 `asr.language: en-US` 也一样：如果引擎支持按市场传主语言或多语言自动检测，应随账号 locale 走，不要全球写死 en-US + 中文 context。
 
 验证方式：拿三条幻听样本的原始音频，用旧/新配置各跑一遍对比——改完 phantom 应消失，正常句子不受影响。
 | 07-13 | 奖励页直接念了 studentName 的占位值："test_user, look! Today we have three rewards." | 热身/lead-in 的模板都有"垃圾名不念"的兜底，但**奖励页（rewards）模板没走 common 层**，名字槽是裸插值；请把 rewards 模板也接上 common 层的 name 规则，或客户端在 studentName 非人名时传空 |
