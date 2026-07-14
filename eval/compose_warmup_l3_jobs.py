@@ -20,13 +20,19 @@ ROLE = (
     "Your voice is loud and bright. You inspire children to be brave and speak up."
 )
 
-def compose(is_first_meet: bool, name: str) -> str:
+TOMMY_PROFILE = (
+    "基础信息: 称呼：Tommy\n"
+    '行为画像: {"summary": "A shy but engaged learner", "personality": "Shy yet engaged; prefers a gentle tone."}'
+)
+
+
+def compose(is_first_meet: bool, name: str, profile: str = "No relevant information.") -> str:
     common = (ROOT / "prompts/l3/common_teaching_simple_rules_l3.md").read_text()
     tmpl = (ROOT / "prompts/l3/warmup_teaching_rules_l3.md").read_text()
     mapping = {
         "roleDescription": ROLE,
         "renderContent": "Warm up stage. No lesson content yet.",
-        "studentProfile": "No relevant information.",
+        "studentProfile": profile,
         "name": name,
         "isFirstMeet": "true" if is_first_meet else "false",
     }
@@ -40,14 +46,17 @@ def main():
     battery = yaml.safe_load((ROOT / "eval/cases_warmup_l3.yaml").read_text())
     jobs = []
     groups = [
-        ("path_a", True, "heidi", "heidi"),
-        ("path_b", False, "tom", "tom"),
+        ("path_a", True, "heidi", "heidi", None),
+        ("path_a_extra", True, "heidi", "heidi", None),
+        ("path_b", False, "tom", "tom", None),
+        # real name + profile carrying a stale 称呼 (prod 7710190001)
+        ("path_b_heidi", False, "heidi", "heidi", TOMMY_PROFILE),
         # junk default: prompt sees test_user, checker sees no default name
         # (the whole point is that the junk value must never be heard).
-        ("l3_broken", False, "test_user", ""),
+        ("l3_broken", False, "test_user", "", None),
     ]
-    for group, first_meet, prompt_name, checker_name in groups:
-        system = compose(first_meet, prompt_name)
+    for group, first_meet, prompt_name, checker_name, profile in groups:
+        system = compose(first_meet, prompt_name, profile or "No relevant information.")
         for case in battery.get(group, []):
             jobs.append({
                 "id": case["id"],

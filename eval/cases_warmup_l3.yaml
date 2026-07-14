@@ -33,6 +33,14 @@ path_a:  # first meeting — introduce yourself, ask the name
     note: "2-rung silence ladder: one re-invite, then a warm close; never a third wait"
     turns: []
 
+path_a_extra:  # first meeting — real-person moves (recast, feed the line)
+  - id: a3-recast-grammar
+    note: "REGRESSION CLASS (user feedback 2026-07-14): broken grammar ('I is Mia') gets a RECAST ('Oh, you're Mia!'), never a correction lecture"
+    spoken_name: mia
+    turns: ["I is Mia.", "I is happy."]
+    require_phrases: ["\\bmia\\b"]
+    forbid_phrases: ["repeat after me", "say i am", "not correct", "\\bwrong\\b"]
+
 path_b:  # returning student — name question / self-intro forbidden the whole warm-up
   - id: b3-happy-path
     note: "mood -> close; exactly 2 beats ending TEMPLATE_FINISH"
@@ -51,6 +59,32 @@ path_b:  # returning student — name question / self-intro forbidden the whole 
   - id: b3-silent-all
     note: "2-rung ladder; the re-invite stays path B (name greet or no name, never 'what's your name')"
     turns: []
+  - id: b3-answer-first
+    note: "REGRESSION (prod 7710190001): child asks the teacher's own question back ('Are you happy today?') — answer it like a person FIRST, then retake the turn"
+    turns: ["Are you happy today? Hi.", "good"]
+    require_phrases: ["(i am|i'm|me\\?)[^.!?]*(happy|great|good)"]
+    max_beats: 4
+  - id: b3-stuck-kid
+    note: "REGRESSION (prod 7710190001): '你说什么呀？/说啥？' is a STUCK kid — feed the line ('You can say, good. Or, tired.'), never bark 'just say one word' / degrade to 'just say hi. Hi?'"
+    turns: ["你说什么呀？", "说啥？ One word."]
+    require_phrases: ["you can say"]
+    forbid_phrases: ["just say one word", "just say hi. hi\\?"]
+    max_beats: 5
+  - id: b3-word-salad
+    note: "REGRESSION (prod 7710190001): off-topic word ('猫。 Cow. 猫。') gets a playful catch with its sound, then the launch — never a flat brush-off"
+    turns: ["猫。 Cow. 猫。"]
+    require_phrases: ["cat|meow|cow|moo"]
+
+# Real name + messy profile: studentName=heidi with the profile carrying 称呼：Tommy.
+# REGRESSION (prod 7710190001): the model hid the real name and greeted "my friend" —
+# a lowercase real name is NOT junk, and profile names are never spoken.
+path_b_heidi:
+  - id: b3-real-name-heidi
+    note: "greet 'Heidi' by name (lowercase real name is not junk); 'Tommy' from the profile never spoken"
+    turns: ["I'm good!"]
+    require_phrases: ["\\bheidi\\b"]
+    forbid_phrases: ["\\btommy\\b"]
+    max_beats: 3
 
 # Broken platform data: studentName is junk — never spoken on either path.
 # (The ORIGINAL L3 draft literally showed 'Hi test_user!' as a good example;

@@ -36,6 +36,15 @@ PATH_B_FORBIDDEN = [
     r"nice\s+to\s+meet\s+you",
 ]
 
+# Registered avatar animations (notes/teacher_actions.md) — anything else is
+# an invented tag the client cannot render (run 6: model produced [TEACHER_SALUTE]).
+KNOWN_ACTIONS = {
+    "[TEACHER_WAVE]", "[TEACHER_THUMBS_UP]", "[TEACHER_APPLAUD]", "[TEACHER_HIGH_FIVE]",
+    "[TEACHER_POINT_TO_SCREEN]", "[TEACHER_SHOW_MUSCLE]", "[TEACHER_LISTEN]", "[TEACHER_JUMP]",
+    "[TEACHER_COW_HORNS]", "[TEACHER_CAT_PAWS]", "[TEACHER_RIDE_HORSE]",
+    "[TEACHER_DRINK_JUICE]", "[TEACHER_BREAK_BREAD]", "[TEACHER_BITE_APPLE]",
+}
+
 # The teacher cannot see the child — no requests for visible actions.
 INVISIBLE_ACTIONS = [
     r"\bwave\b", r"thumbs\s+up", r"big\s+smile", r"touch\s+your",
@@ -111,6 +120,9 @@ def check(transcript: dict):
         for t in FORBIDDEN_TAGS:
             if t in r:
                 v("forbidden-tag", f"beat {n}: uses {t} — warm up may not")
+        for t in re.findall(r"\[TEACHER_[A-Z_]+\]", r):
+            if t not in KNOWN_ACTIONS:
+                v("unknown-action", f"beat {n}: {t} is not a registered avatar action (see notes/teacher_actions.md)")
 
         if has_cjk(r):
             v("english-only", f"beat {n}: contains non-English characters")
@@ -126,13 +138,16 @@ def check(transcript: dict):
         if nq > 1:
             v("one-question", f"beat {n}: {nq} questions in one beat")
         if "[TEMPLATE_FINISH]" in r and nq > 0:
-            # L3 (7-9): ONE short rhetorical echo at the START of the close is human
-            # ("You won? No WAY!...") — but the close must never END on a question.
+            # L3 (7-9): ONE rhetorical echo is human, but only as the OPENING
+            # segment ("You won? No WAY!..."). A real question buried later in
+            # the close is a fake ask the teacher never waits for (run 6,
+            # b3-answer-first: "...How are you today? Alright, let's go!").
             is_l3 = transcript.get("family") == "warmup_l3"
-            leading_echo = (segments and segments[0].endswith("?")
-                            and len(segments[0].rstrip("?").split()) <= 6)
-            ends_on_q = segments and segments[-1].strip().endswith("?")
-            if not (is_l3 and nq == 1 and leading_echo and not ends_on_q):
+            q_idxs = [i for i, s in enumerate(segments)
+                      if s.endswith("?") and len(s.rstrip("?").split()) >= 3]
+            opening_echo_only = (q_idxs == [0]
+                                 and len(segments[0].rstrip("?").split()) <= 8)
+            if not (is_l3 and nq == 1 and opening_echo_only):
                 v("no-question-on-finish", f"beat {n}: finish beat still asks a question")
 
         # path B forbidden phrases (the prod bug this template exists to prevent)
