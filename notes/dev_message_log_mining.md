@@ -112,3 +112,7 @@ Prompt 我会继续优化，但这三条属于"模型哪怕万分之一概率犯
 验证方式：拿三条幻听样本的原始音频，用旧/新配置各跑一遍对比——改完 phantom 应消失，正常句子不受影响。
 | 07-13 | 奖励页直接念了 studentName 的占位值："test_user, look! Today we have three rewards." | 热身/lead-in 的模板都有"垃圾名不念"的兜底，但**奖励页（rewards）模板没走 common 层**，名字槽是裸插值；请把 rewards 模板也接上 common 层的 name 规则，或客户端在 studentName 非人名时传空 |
 | 07-13 | 同一节课 pre-video 台词 "my friend... shhh — someone's in the kitchen!" 用了 "..." 和 "—" | 这两个符号 TTS 念出来是破音（我们的 prompt 规范里明确禁用）；这个 lesson 的 pre-video 模板还是旧版，**建议排进模板迁移清单**（Farmer Bob 那节已经迁完，可以照抄结构） |
+| 07-14 | class 7680580001：lead-in 台词 "Oh no! The cake! Where is the cake?" 在 01:14 和 01:25 连播两遍，中间无学生输入 | 疑似客户端静默计时器重放同一行而不是推进；请查 lead-in 步内 nudge 的重触发逻辑 |
+| 07-14 | 同一节课：孩子说 cow 三次全被 ASR 写成 "How?"（带问号），导致模板判成疑问词、连发 6 次 retry；模板侧已加白名单兜底 | 根治在 ASR：每个教学步把**本课目标词**（cow/cat/horse + moo/meow/neigh）加进 speech_context/phrases 提权，"How?" 就会正确落成 "cow" |
+| 07-14 | 同一节课 03:55 孩子答 "知道。"——上下文明显是 "不知道" 被截掉了 "不"（此前 07-13 也有同样样本） | "不知道→知道" 意义反转是高频截断 bug，建议在 ASR 侧核查首字丢失（VAD 起点过晚?），模板侧已做兜底（孤立 "知道" 按 "不知道" 处理） |
+

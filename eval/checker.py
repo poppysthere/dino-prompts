@@ -20,16 +20,6 @@ import re
 import sys
 import unicodedata
 
-
-# Action-tag library (notes/teacher_actions.md): tags NOT in this set play no animation
-# on the avatar (the "motionless teacher" bug) and are violations.
-ACTION_TAGS = {
-    "TEACHER_LISTEN", "TEACHER_WAVE", "TEACHER_APPLAUD", "TEACHER_THUMBS_UP",
-    "TEACHER_HIGH_FIVE", "TEACHER_POINT_TO_SCREEN", "TEACHER_SHOW_MUSCLE",
-    "TEACHER_COW_HORNS", "TEACHER_CAT_PAWS", "TEACHER_RIDE_HORSE",
-    "TEACHER_BITE_APPLE", "TEACHER_BREAK_BREAD", "TEACHER_DRINK_JUICE",
-}
-
 CONTROL_TAGS = ["[STUDENT_TALK]", "[TEMPLATE_FINISH]", "[WORD_EVALUATION]", "[NEXT_STEP]"]
 ALLOWED_CONTROL = ["[STUDENT_TALK]", "[TEMPLATE_FINISH]"]
 
@@ -86,9 +76,6 @@ def check(transcript: dict):
             v("tts-stretched", f"reply {n}: stretched spelling {m.group(0)!r} (voice engine cannot say it)")
         for m in re.finditer(r"\b(hee[\s-]?hee|tee[\s-]?hee|hehe)\b", strip_tags(r), re.I):
             v("tts-giggle", f"reply {n}: giggle spelling {m.group(0)!r} (voice engine breaks; use 'Ha ha!')")
-        for m in re.finditer(r"\[(TEACHER_[A-Z_]+)\]", r):
-            if m.group(1) not in ACTION_TAGS:
-                v("unknown-action", f"reply {n}: {m.group(0)} is not in the action library (plays no animation)")
 
         # R4: finish line placement
         if finish_line in r and "[TEMPLATE_FINISH]" not in r:

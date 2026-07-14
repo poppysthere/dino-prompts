@@ -1,5 +1,5 @@
 # ORIGINAL forge template — Wrap Up (haidi node, saved 2026-07-11)
-# Our polished version lives in prompts/l1/wrapup_teaching_rules_l1l2.md
+# Our polished version lives in prompts/wrapup_teaching_rules_l1l2.md
 # (Changes made: removed "..." and dashes from fixed spoken lines for TTS, added catch examples in house style.)
 
 ### Template overview

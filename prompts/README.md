@@ -13,6 +13,23 @@ prompts/
   l6/   (future)
 ```
 
+## Size discipline (防止 prompt 越修越长)
+
+Cases live in the eval battery (`eval/cases_*.yaml`, unbounded); templates stay within the
+budgets enforced by `eval/lint_templates.py`. When fixing a bug, work down this ladder and
+stop at the first rung that fixes it:
+
+1. **Data fix** — add a word to an existing list (a mishear whitelist, an agreement-word list).
+2. **Generalize** — rewrite ONE existing rule so it covers the whole bug class. Never add a
+   sibling rule that overlaps an existing one.
+3. **Example swap** — replace the weakest existing example; the example count never grows.
+4. **Add text** (last resort) — something else of equal size must be deleted, and only if the
+   battery proves rungs 1-3 failed.
+
+Every fix, whichever rung, still gets its regression case in the battery — cases are free,
+prompt lines are not. Monthly compaction: try deleting suspect lines; battery stays green =
+the line was dead weight.
+
 Notes:
 - Files named `_l1l2_` live in `l1/`: they are the current L1 lesson (the name is
   historical — L2 has since gotten its own demo templates in `l2/`).

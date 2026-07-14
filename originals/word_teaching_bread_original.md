@@ -1,6 +1,6 @@
 # ORIGINAL forge template — word teaching: bread (haidi node, saved 2026-07-11)
 # Kept verbatim for reference: action tags, fixed lines, and structure the client/developers know.
-# Our rewritten talk-first version lives in prompts/l1/word_teaching_rules_l1l2_bread.md
+# Our rewritten talk-first version lives in prompts/word_teaching_rules_l1l2_bread.md
 
 # 模板说明
 单词教学页固定逐字流程：教学目标词 `bread`。严格按当前 state 输出，禁止跨词复用、改写或补充逐字稿外内容。

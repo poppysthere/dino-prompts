@@ -3,7 +3,7 @@
 # If you edit a template's fixed lines, update this file too — the checker compares against these.
 
 defaults:
-  common_prompt: prompts/l1/common_teaching_simple_rules.md
+  common_prompt: prompts/common_teaching_simple_rules.md
   placeholders:
     name: heidi
     studentProfile: "No relevant information."
@@ -15,7 +15,7 @@ defaults:
 
 pages:
   apple:
-    template: prompts/l1/word_teaching_rules_l1l2_apple.md
+    template: prompts/word_teaching_rules_l1l2_apple.md
     word: apple
     opener: "Boo holds up an APPLE![TEACHER_BITE_APPLE] Wow! An apple! Do you like apples?[TEACHER_LISTEN][STUDENT_TALK]"
     finish_line: "Apple! Apple starts with A! What does A say? Let's play and find out!"
@@ -23,7 +23,7 @@ pages:
     cases: cases_word_teaching.yaml
 
   bread:
-    template: prompts/l1/word_teaching_rules_l1l2_bread.md
+    template: prompts/word_teaching_rules_l1l2_bread.md
     word: bread
     opener: "And now. BREAD![TEACHER_BREAK_BREAD] Wow! Yummy bread! Do you like bread?[TEACHER_LISTEN][STUDENT_TALK]"
     finish_line: "Bread starts with the letter B. What sound does letter B make? Let's play a game to find out!"
@@ -31,7 +31,7 @@ pages:
     cases: cases_word_teaching.yaml
 
   juice:
-    template: prompts/l1/word_teaching_rules_l1l2_juice.md
+    template: prompts/word_teaching_rules_l1l2_juice.md
     word: juice
     opener: "Now Boo shakes the JUICE![TEACHER_DRINK_JUICE] Wow! Juice! Do you like juice?[TEACHER_LISTEN][STUDENT_TALK]"
     finish_line: "Glug glug glug! Drink like Boo. Glug glug![TEACHER_DRINK_JUICE]"

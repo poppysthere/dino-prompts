@@ -45,3 +45,32 @@ cow:
     student_name: "test_user"
     forbid_phrases: ["test[_\\s]?user"]
     max_replies: 4
+
+  # REGRESSION (prod 2026-07-14 #7680580001): child said cow, ASR wrote "How?" — six retry
+  # loops fired. "How?" after a say-it call IS cow; retry happens once, ever.
+  - id: cow-how-asr
+    note: "Lisa's class replay: 什么→retry, How?=cow celebrate, moo, lone 知道 = truncated 不知道"
+    turns:
+      - "嗯。 什么？"
+      - "How?"
+      - "哞哞！"
+      - "知道。"
+    max_replies: 5
+    reply_forbid:
+      "3": ["one more time", "let's go together"]
+      "5": ["know\\. ?ha", "\\bmaybe\\b"]
+    require_phrases: ["don't know too"]
+
+  # REGRESSION (same class): agreement then "How?" — forward only, never a second retry
+  - id: cow-how-loop
+    note: "什么→retry, 好=agreement rides beat 3, How? at moo invite = practicing the word"
+    turns:
+      - "什么？"
+      - "好。"
+      - "How?"
+      - "不知道。"
+    max_replies: 5
+    reply_forbid:
+      "3": ["one more time", "let's go together"]
+      "4": ["one more time", "real cows", "funny sound"]
+

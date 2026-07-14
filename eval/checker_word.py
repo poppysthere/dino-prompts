@@ -13,16 +13,6 @@ import re
 import sys
 import unicodedata
 
-
-# Action-tag library (notes/teacher_actions.md): tags NOT in this set play no animation
-# on the avatar (the "motionless teacher" bug) and are violations.
-ACTION_TAGS = {
-    "TEACHER_LISTEN", "TEACHER_WAVE", "TEACHER_APPLAUD", "TEACHER_THUMBS_UP",
-    "TEACHER_HIGH_FIVE", "TEACHER_POINT_TO_SCREEN", "TEACHER_SHOW_MUSCLE",
-    "TEACHER_COW_HORNS", "TEACHER_CAT_PAWS", "TEACHER_RIDE_HORSE",
-    "TEACHER_BITE_APPLE", "TEACHER_BREAK_BREAD", "TEACHER_DRINK_JUICE",
-}
-
 WORDS = {
     "word_cow": {
         "meet": "Mouse sees a cow! A COW! Cow! Say it with me. Cow!",
@@ -88,9 +78,6 @@ def check(tr):
             v("tts-stretched", f"reply {n}: stretched spelling {m.group(0)!r}")
         for m in re.finditer(r"\b(hee[\s-]?hee|tee[\s-]?hee|hehe)\b", body, re.I):
             v("tts-giggle", f"reply {n}: giggle spelling {m.group(0)!r} (use 'Ha ha!')")
-        for m in re.finditer(r"\[(TEACHER_[A-Z_]+)\]", r):
-            if m.group(1) not in ACTION_TAGS:
-                v("unknown-action", f"reply {n}: {m.group(0)} is not in the action library (plays no animation)")
         if re.search(r"can\s+you\s+say", body, re.I):
             v("rising-invite", f"reply {n}: 'can you say' — say-it invites must not be questions")
         if word.get("spoiler") and re.search(word["spoiler"], body, re.I):

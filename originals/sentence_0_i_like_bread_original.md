@@ -1,5 +1,5 @@
 # ORIGINAL forge template — sentence teaching step 3: sentence_0 "I like bread." (haidi node, saved 2026-07-11)
-# Our rewritten talk-first version lives in prompts/l1/sentence_teaching_rules_l1l2_i_like_bread.md
+# Our rewritten talk-first version lives in prompts/sentence_teaching_rules_l1l2_i_like_bread.md
 # NOTE: this step ends with [NEXT_STEP] (step 4 follows), NOT [TEMPLATE_FINISH].
 
 # 模板说明
