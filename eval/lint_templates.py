@@ -5,7 +5,7 @@ Every fix must fit the budget: fold new knowledge into existing rules/lists,
 swap examples one-in-one-out, never append case after case. If this lint fails,
 the fix goes back for compaction, not the budget up.
 
-Only L2 is linted for now (L1 is frozen in production).
+L2 and L3 are linted (L1 is frozen in production).
 Exit 0 = all within budget, 1 = over budget.
 """
 import pathlib
@@ -24,12 +24,18 @@ BUDGETS = {
     "word_teaching_rules_l2_cow.md": (100, 1850),
     "word_teaching_rules_l2_cat.md": (102, 1900),
     "word_teaching_rules_l2_horse.md": (105, 2100),
+    # L3 (7-9, A1+): started lean on purpose — keep it that way.
+    "common_teaching_simple_rules_l3.md": (95, 1500),
+    "warmup_teaching_rules_l3.md": (85, 1200),
 }
 
 
 def main():
     bad = 0
-    for f in sorted((ROOT / "prompts" / "l2").glob("*.md")):
+    files = []
+    for level in ("l2", "l3"):
+        files += sorted((ROOT / "prompts" / level).glob("*.md"))
+    for f in files:
         text = f.read_text()
         lines = len(text.splitlines())
         words = len(text.split())

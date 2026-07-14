@@ -126,7 +126,14 @@ def check(transcript: dict):
         if nq > 1:
             v("one-question", f"beat {n}: {nq} questions in one beat")
         if "[TEMPLATE_FINISH]" in r and nq > 0:
-            v("no-question-on-finish", f"beat {n}: finish beat still asks a question")
+            # L3 (7-9): ONE short rhetorical echo at the START of the close is human
+            # ("You won? No WAY!...") — but the close must never END on a question.
+            is_l3 = transcript.get("family") == "warmup_l3"
+            leading_echo = (segments and segments[0].endswith("?")
+                            and len(segments[0].rstrip("?").split()) <= 6)
+            ends_on_q = segments and segments[-1].strip().endswith("?")
+            if not (is_l3 and nq == 1 and leading_echo and not ends_on_q):
+                v("no-question-on-finish", f"beat {n}: finish beat still asks a question")
 
         # path B forbidden phrases (the prod bug this template exists to prevent)
         if not first_meet:

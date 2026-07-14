@@ -1,0 +1,68 @@
+# Case battery for the L3 warm-up (warmup_teaching_rules_l3.md +
+# common_teaching_simple_rules_l3.md, ages 7-9, A1+).
+# Same shortened shape as L2: path A = 3 beats (name -> mood -> close),
+# path B = 2 beats (mood -> close). Silence ladder is 2 rungs.
+# Checker: checker_warmup.py (structure is identical; only the voice is older).
+
+path_a:  # first meeting — introduce yourself, ask the name
+  - id: a3-happy-path
+    note: "name -> good mood -> close; exactly 3 beats, no age question, no ready-wait"
+    spoken_name: leo
+    turns: ["Leo", "I'm good!"]
+  - id: a3-reason-answer
+    note: "7-9 kids answer with reasons; the close must react to the REASON (the match), not a bare 'good!'"
+    spoken_name: mia
+    turns: ["Mia", "I'm happy because I won my football match!"]
+    require_phrases: ["football|match|won|win"]
+  - id: a3-sad-kid
+    note: "sad answer with a cause -> close must touch the cause softly, never celebrate"
+    spoken_name: leo
+    turns: ["Leo", "I'm sad. My dog is sick."]
+    require_phrases: ["\\bdog\\b"]
+    forbid_phrases: ["let's jump", "that's what I like"]
+  - id: a3-l1-name
+    note: "name given inside an L1 sentence -> romanized, default name dead"
+    spoken_name: ming
+    spoken_name_l1: 小明
+    turns: ["我叫小明", "开心"]
+  - id: a3-idk-name
+    note: "LANGUAGE-AGNOSTIC shy kid: 'no sé' to the name question = move on without the name, never a lecture"
+    turns: ["No sé.", "good"]
+    forbid_phrases: ["is it hard", "\\bmeans\\b"]
+  - id: a3-silent-all
+    note: "2-rung silence ladder: one re-invite, then a warm close; never a third wait"
+    turns: []
+
+path_b:  # returning student — name question / self-intro forbidden the whole warm-up
+  - id: b3-happy-path
+    note: "mood -> close; exactly 2 beats ending TEMPLATE_FINISH"
+    turns: ["I'm great!"]
+  - id: b3-chatty
+    note: "big kid brings their own story; catch THEIR thing in the close, keep the 2-beat shape"
+    turns: ["I'm good! I got a new bike and I rode it to school!"]
+    require_phrases: ["\\bbike\\b|\\brode\\b"]
+  - id: b3-tired-kid
+    note: "'tired' gets a soft close, no blast-off energy"
+    turns: ["Tired. I had a test today."]
+    forbid_phrases: ["let's jump", "that's what I like"]
+  - id: b3-who-are-you
+    note: "REGRESSION (L2 prod bug class): 'who are you?' must never trigger self-intro or a name question on path B"
+    turns: ["什么？你是谁呀？", "happy"]
+  - id: b3-silent-all
+    note: "2-rung ladder; the re-invite stays path B (name greet or no name, never 'what's your name')"
+    turns: []
+
+# Broken platform data: studentName is junk — never spoken on either path.
+# (The ORIGINAL L3 draft literally showed 'Hi test_user!' as a good example;
+# these cases pin the opposite.)
+l3_broken:
+  - id: b3-junkname
+    note: "REGRESSION: <studentName>=test_user on path B -> greet without a name, junk never spoken"
+    turns: ["I'm good!"]
+    forbid_phrases: ["test[_\\s]?user"]
+    max_beats: 3
+  - id: b3-junkname-silent
+    note: "junk name + silence: re-invite without a name, close on 2nd silence"
+    turns: []
+    forbid_phrases: ["test[_\\s]?user"]
+    max_beats: 3

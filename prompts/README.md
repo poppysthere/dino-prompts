@@ -7,7 +7,7 @@ folders are for OUR navigation only, so moving files never breaks the Forge mapp
 prompts/
   l1/   Level 1 (ages 4-6, CEFR pre-A1) — teacher Kim / Max, Boo the dino, apple-bread-juice lesson
   l2/   Level 2 (ages 5-7, A1) — Mouse's cake mystery demo, cow-cat-horse lesson
-  l3/   (future)
+  l3/   Level 3 (ages 7-9, A1+) — big-kid voice (no baby-talk); common layer + warm-up so far
   l4/   (future)
   l5/   (future)
   l6/   (future)
