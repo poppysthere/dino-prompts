@@ -4,6 +4,10 @@ The shared playbook for all stage templates. When writing or revising a template
 from here instead of inventing new ones — consistency across stages makes the teacher feel
 like one person.
 
+Companion file: `notes/teacher_actions.md` — the action-tag library (动作库). Moves are the
+recipes (how the teacher handles the classroom); action tags are the ingredients (what the
+avatar's body does). Templates cook from both.
+
 Sources:
 - `docs/AI_TEACHER_MODEL_TAG.pdf` — full teacher-move taxonomy (the master reference)
 - Internal design doc "AI Teaching Prompt System Design" (31 Mar 2026) — decision rules, timing numbers
