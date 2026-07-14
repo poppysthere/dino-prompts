@@ -10,8 +10,8 @@ the latest reviewed text so changes are diffable and recoverable.
 
 | File | Prompt Forge code | Used by |
 |---|---|---|
-| `prompts/common_teaching_simple_rules.md` | `common_teaching_simple_rules` | Prepended to all lesson stage templates (公共规则) |
-| `prompts/warmup_teaching_rules_l1l2.md` | `warmup_teaching_rules_l1l2` | Warm-Up stage, Level 1-2 (ages 4-6, CEFR pre-A1) |
+| `prompts/l1/common_teaching_simple_rules.md` | `common_teaching_simple_rules` | Prepended to all lesson stage templates (公共规则) |
+| `prompts/l1/warmup_teaching_rules_l1l2.md` | `warmup_teaching_rules_l1l2` | Warm-Up stage, Level 1-2 (ages 4-6, CEFR pre-A1) |
 
 ## Placeholders
 

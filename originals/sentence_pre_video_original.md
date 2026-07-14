@@ -1,5 +1,5 @@
 # ORIGINAL forge template — sentence teaching step 1: pre-video intro (haidi node, saved 2026-07-11)
-# Our rewritten version lives in prompts/sentence_teaching_rules_l1l2_pre_video.md
+# Our rewritten version lives in prompts/l1/sentence_teaching_rules_l1l2_pre_video.md
 # Step structure: step1 sentence-video-intro (pre-video) → step2 sentence-video (video) → step3 sentence_0 ("I like bread.") → step4 sentence_1 ("I don't like apples.")
 
 # 模板说明

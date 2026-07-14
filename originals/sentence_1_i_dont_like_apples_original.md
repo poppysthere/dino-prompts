@@ -1,5 +1,5 @@
 # ORIGINAL forge template — sentence teaching step 4: sentence_1 "I don't like apples." (haidi node, saved 2026-07-11)
-# Our rewritten talk-first version lives in prompts/sentence_teaching_rules_l1l2_i_dont_like_apples.md
+# Our rewritten talk-first version lives in prompts/l1/sentence_teaching_rules_l1l2_i_dont_like_apples.md
 # NOTE: this is the last step — ends with [TEMPLATE_FINISH].
 
 # 模板说明
