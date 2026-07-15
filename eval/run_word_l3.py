@@ -26,6 +26,11 @@ UI_READY = ("The UI is ready. Continue the lesson from where you left off,"
             "or start if nothing has begun yet.")
 FAMILY_FILES = {
     "word_l3_climb": "prompts/l3/word_teaching_rules_l3_climb.md",
+    "word_l3_jump": "prompts/l3/word_teaching_rules_l3_jump.md",
+}
+FAMILY_RENDER = {
+    "word_l3_climb": "Word teaching: climb. Dino and Mia see a tall wall.",
+    "word_l3_jump": "Word teaching: jump. Dino and Mia see some rocks in the water.",
 }
 DEFAULT_NAME = "tom"
 
@@ -36,7 +41,7 @@ def compose(family: str, name: str) -> str:
     text = common.rstrip() + "\n\n" + tmpl.rstrip()
     for k, val in {
         "roleDescription": ROLE,
-        "renderContent": "Word teaching: climb. Dino and Mia see a tall wall.",
+        "renderContent": FAMILY_RENDER[family],
         "studentProfile": "No relevant information.",
         "name": name,
     }.items():

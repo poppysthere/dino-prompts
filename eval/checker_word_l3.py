@@ -30,6 +30,16 @@ WORDS = {
         "close_core": "let's climb with dino and mia! climb, climb, climb! up we go!",
         "action": "[TEACHER_CLIMB]",
     },
+    "word_l3_jump": {
+        "word": "jump",
+        "try_re": r"\b(jump\w*|junk|dump|jamp)\b",
+        "ask_core": ("look! dino and mia see some rocks in the water. they go up and over! "
+                     "this is jump. say it with me. jump!"),
+        "retry_re": r"jump over a rock\W+jump up high",
+        "bare_retry_re": r"one more time",
+        "close_core": "let's jump with dino and mia! jump, jump, jump! over we go!",
+        "action": "[TEACHER_JUMP]",
+    },
 }
 
 KNOWN_ACTIONS = {

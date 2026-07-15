@@ -1,4 +1,4 @@
-# Case battery for L3 word pages (ASK -> one retry -> close). Family: word_l3_climb.
+# Case battery for L3 word pages (ASK -> one retry -> close). Families: word_l3_climb, word_l3_jump.
 # [WORD_EVALUATION] is replaced by self-judged [TEACHER_LISTEN][STUDENT_TALK] waits,
 # same as the L2 word pages. "Great job" ONLY after a real English try.
 
@@ -51,5 +51,57 @@ word_l3_climb:
   - id: climb-cant
     note: "'我不会说' = a stuck kid -> kind catch ('Tricky one? We do it together!'), retry, then pass"
     turns: ["我不会说。", "climb"]
+    require_phrases: ["great job"]
+    forbid_phrases: ["just say"]
+
+word_l3_jump:
+  - id: jump-pass
+    note: "happy path: child says the word -> PASS close, 2 replies"
+    turns: ["Jump!"]
+    require_phrases: ["great job"]
+  - id: jump-junk-asr
+    note: "ASR mishear class ('Junk.' right after the say-it call IS jump) -> PASS, never a topic"
+    turns: ["Junk."]
+    require_phrases: ["great job"]
+    forbid_phrases: ["trash", "garbage"]
+  - id: jump-agree-retry
+    note: "'好。' is agreement, NOT a try -> catch + guided retry, praise only after the real try"
+    turns: ["好。", "Jump!"]
+    require_phrases: ["jump over a rock", "great job"]
+  - id: jump-agree-loop
+    note: "agreement after the retry too -> SOFT close now; the retry happens ONCE, ever; no fake praise"
+    turns: ["好。", "嗯。"]
+    forbid_phrases: ["great job"]
+  - id: jump-own-language
+    note: "own-language jump ('跳！') = understood but not a try -> warm catch, retry, then pass"
+    turns: ["跳！", "jump"]
+    require_phrases: ["great job"]
+  - id: jump-question
+    note: "'什么意思？' -> SHOW the word with the action, never explain 'X means Y'"
+    turns: ["什么意思？", "jump"]
+    require_phrases: ["great job"]
+    forbid_phrases: ["\\bmeans\\b"]
+  - id: jump-story
+    note: "'I jump on my bed!' contains a real jump — a try AND a story; echo the story, PASS close, never the retry"
+    turns: ["I jump on my bed!"]
+    require_phrases: ["great job", "bed|no way"]
+    forbid_phrases: ["one more time"]
+  - id: jump-nearmiss
+    note: "REGRESSION CLASS (prod #357245): ASR noise then 'Jam.' — a brave near-miss gets 'SO close!', never a shrug and never fake praise"
+    turns: ["Champ time.", "Jam."]
+    require_phrases: ["so close"]
+    forbid_phrases: ["great job", "that's okay"]
+  - id: jump-silent-all
+    note: "fully silent page: ASK -> guided retry (no catch) -> SOFT close; silence never earns 'Great job'"
+    turns: []
+    forbid_phrases: ["great job"]
+  - id: jump-junkname
+    note: "JUNK NAME: <studentName>=test_user -> drop the name slot everywhere, never speak it"
+    turns: ["Jump!"]
+    student_name: "test_user"
+    forbid_phrases: ["test[_\\s]?user"]
+  - id: jump-cant
+    note: "'我不会说' = a stuck kid -> kind catch, retry, then pass"
+    turns: ["我不会说。", "jump"]
     require_phrases: ["great job"]
     forbid_phrases: ["just say"]
