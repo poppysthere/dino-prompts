@@ -1,0 +1,87 @@
+# Case battery for the L1 足球课 warm-up (warmup_teaching_rules_l1_soccer.md +
+# common_teaching_simple_rules_l1_soccer.md, ages 4-6, pre-A1).
+# World Cup festival special. Same shortened shape as L2/L3:
+# path A = 3 beats (name -> happy -> close), path B = 2 beats (happy -> close).
+# Silence ladder is 2 rungs. Checker: checker_warmup.py.
+
+path_a:  # first meeting — introduce yourself, ask the name
+  - id: a1-happy-path
+    note: "name -> happy -> close; exactly 3 beats, no age question, no ready-wait; the close kicks off the soccer game"
+    spoken_name: tom
+    turns: ["Tom", "yes!"]
+    require_phrases: ["soccer|ball|game|play"]
+  - id: a1-sad-kid
+    note: "sad answer -> soft close, no YAY, no GO-chant blast at a sad 4 year old"
+    spoken_name: tom
+    turns: ["Tom", "不开心。"]
+    forbid_phrases: ["\\byay\\b", "one, two, three, go"]
+  - id: a1-l1-name
+    note: "name given inside an L1 sentence -> romanized, default name dead"
+    spoken_name: ming
+    spoken_name_l1: 小明
+    turns: ["我叫小明", "开心！"]
+  - id: a1-idk-name
+    note: "shy kid: '不知道' to the name question = move on as friends, never a task or a lecture"
+    turns: ["不知道。", "yes"]
+    forbid_phrases: ["is it hard", "\\bmeans\\b"]
+  - id: a1-recast-grammar
+    note: "REGRESSION CLASS: broken grammar ('Me is Lily.') gets a warm RECAST, never a correction"
+    spoken_name: lily
+    turns: ["Me is Lily.", "happy!"]
+    require_phrases: ["\\blily\\b"]
+    forbid_phrases: ["repeat after me", "say i am", "not correct", "\\bwrong\\b"]
+  - id: a1-silent-all
+    note: "2-rung silence ladder: one re-invite, then a warm close; never a third wait"
+    turns: []
+
+path_b:  # returning student — name question / self-intro forbidden the whole warm-up
+  - id: b1-happy-path
+    note: "happy -> close; exactly 2 beats ending TEMPLATE_FINISH, game-day energy"
+    turns: ["yes!"]
+    require_phrases: ["soccer|ball|game|play"]
+  - id: b1-sad-kid
+    note: "'No. Sad.' gets the soft branch: their word caught, no YAY blast"
+    turns: ["No. Sad."]
+    forbid_phrases: ["\\byay\\b", "one, two, three, go"]
+  - id: b1-stuck-kid
+    note: "REGRESSION (prod class): '你说什么呀？' is a STUCK kid — feed the words ('You can say, yes. Or, no.'), never 'just say one word'"
+    turns: ["你说什么呀？", "嗯。"]
+    require_phrases: ["you can say"]
+    forbid_phrases: ["just say one word"]
+    max_beats: 4
+  - id: b1-word-salad
+    note: "off-topic word ('猫。') gets a playful catch with its sound, then the kick-off — never a flat brush-off"
+    turns: ["猫。"]
+    require_phrases: ["cat|meow"]
+  - id: b1-answer-first
+    note: "REGRESSION (prod class): child asks the teacher's question back — answer like a person FIRST, then retake the turn"
+    turns: ["Are you happy?", "yes!"]
+    require_phrases: ["(i am|i'm|me\\?)[^.!?]*(happy|great|good)"]
+    max_beats: 4
+  - id: b1-silent-all
+    note: "2-rung ladder; the re-invite stays path B (never 'what's your name')"
+    turns: []
+
+# Real name + messy profile: studentName=heidi with the profile carrying 称呼：Tommy.
+path_b_heidi:
+  - id: b1-real-name-heidi
+    note: "greet 'Heidi' by name (lowercase real name is not junk); 'Tommy' from the profile never spoken"
+    turns: ["yes!"]
+    require_phrases: ["\\bheidi\\b"]
+    forbid_phrases: ["\\btommy\\b"]
+    max_beats: 3
+
+# Broken platform data: studentName is junk — never spoken on either path.
+# (The ORIGINAL L1 draft literally showed 'Hi test_user!' as a good example;
+# these cases pin the opposite.)
+l1_broken:
+  - id: b1-junkname
+    note: "REGRESSION: <studentName>=test_user on path B -> greet without a name, junk never spoken"
+    turns: ["yes!"]
+    forbid_phrases: ["test[_\\s]?user"]
+    max_beats: 3
+  - id: b1-junkname-silent
+    note: "junk name + silence: re-invite without a name, close on 2nd silence"
+    turns: []
+    forbid_phrases: ["test[_\\s]?user"]
+    max_beats: 3

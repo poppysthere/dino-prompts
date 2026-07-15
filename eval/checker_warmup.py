@@ -139,11 +139,11 @@ def check(transcript: dict):
         if nq > 1:
             v("one-question", f"beat {n}: {nq} questions in one beat")
         if "[TEMPLATE_FINISH]" in r and nq > 0:
-            # L3 (7-9): ONE rhetorical echo is human, but only as the OPENING
-            # segment ("You won? No WAY!..."). A real question buried later in
-            # the close is a fake ask the teacher never waits for (run 6,
-            # b3-answer-first: "...How are you today? Alright, let's go!").
-            is_l3 = transcript.get("family") == "warmup_l3"
+            # L3 (7-9) and L1 (4-6): ONE rhetorical echo is human, but only as
+            # the OPENING segment ("You won? No WAY!..." / "You are happy? YAY!").
+            # A real question buried later in the close is a fake ask the teacher
+            # never waits for (run 6, b3-answer-first).
+            is_l3 = transcript.get("family") in ("warmup_l3", "warmup_l1")
             q_idxs = [i for i, s in enumerate(segments)
                       if s.endswith("?") and len(s.rstrip("?").split()) >= 3]
             opening_echo_only = (q_idxs == [0]
