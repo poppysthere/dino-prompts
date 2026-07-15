@@ -24,6 +24,9 @@ word_soccer_goal:
     note: "fully silent page: exactly 5 replies, no praise, warm close"
     turns: []
     forbid_phrases: ["great job|you got it|well done"]
+  - id: goal-lost-kid
+    note: "REGRESSION (device #360356): '这是什么？' and '我不懂' got 'That is okay! GOAL! GOAL!' twice verbatim — a lost child gets a real answer and a NEW tiny scene, never the same sentence again, and the page ends by reply 5"
+    turns: ["Good!", "嗯，这是什么？", "我不懂。", "我不懂，不明白。"]
   - id: goal-junkname
     note: "<studentName>=test_user -> never spoken"
     student_name: test_user
@@ -41,6 +44,10 @@ word_soccer_team:
   - id: team-own-language
     note: "own-language word -> 'you know it! in English now' + retry, no translation"
     turns: ["队伍！", "team!", "TEAM!", "yes"]
+  - id: team-question-loop
+    note: "REGRESSION (device #360356): child asked '还要再读吗？' and '你一直说you and me干什么呀？' and got drilled, never answered — every question gets a real tiny answer, no sentence ever repeats, page closes by reply 5"
+    turns: ["说什么呀？", "Team.", "还要再读吗？", "我不知道。"]
+    forbid_phrases: ["oops, sorry"]
   - id: team-after-goal-page
     note: "REGRESSION CLASS: the goal page just closed in history; this page's word is team — goal never spoken here"
     turns: ["Team!", "TEAM!", "yes"]
@@ -69,3 +76,7 @@ word_soccer_comeon:
   - id: comeon-story
     note: "child brings their thing ('我有足球！') -> tiny echo, then the retry, never a lecture"
     turns: ["我有足球！", "come on!", "COME ON!", "嗯"]
+  - id: comeon-wonder-lost
+    note: "REGRESSION (device #360356): the wonder said 'cheer', the child heard 'chair' and got lost, then the play invite came BACK twice — wonder uses owned words only, and a lost child at the wonder gets the close, never a re-invite"
+    turns: ["Come on!", "Come on, team.", "我不知道什么是'chair'。"]
+    forbid_phrases: ["shout with me!?\\s*$"]

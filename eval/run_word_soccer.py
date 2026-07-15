@@ -32,7 +32,7 @@ FAMILY_WORD = {
 FAMILY_RENDER = {
     "word_soccer_goal": (
         "word: Goal!  imageDesc: A soccer ball flies into the goal net. "
-        "Kids jump and cheer with arms up.  sound: GOAL!  scene: World Cup festival."
+        "Kids jump up, arms up, big smiles.  sound: GOAL!  scene: World Cup festival."
     ),
     "word_soccer_team": (
         "word: team  imageDesc: Kids in the same color shirts stand together, "

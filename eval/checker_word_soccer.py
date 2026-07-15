@@ -23,9 +23,11 @@ KNOWN_ACTIONS = {
 }
 FORBIDDEN_TAGS = ["[WORD_EVALUATION]", "[NEXT_STEP]", "[TEACHER_TALK]"]
 # Device bug #360001: sports-announcer talk a pre-A1 child cannot picture.
+# Device bug #360356: the wonder used "cheer" — the child heard "chair" and
+# was lost for the rest of the page. Grown-up nouns are out with the rest.
 ANNOUNCER_TALK = [r"team\s+up", r"match\s+is\s+on", r"goal\s+or\s+no\s+goal",
                   r"we\s+will\s+see", r"\bmatch\b", r"\bversus\b", r"\bcompete\b",
-                  r"\bchampionship\b", r"\bscore\b"]
+                  r"\bchampionship\b", r"\bscore\b", r"\bcheer", r"\bchampion\b"]
 AGREEMENT_ONLY = re.compile(r"^(好|好的|ok|okay|yes|嗯|恩)[。.!！]?$", re.I)
 PRAISE = re.compile(r"great job|you got it|well done|you know it", re.I)
 
@@ -144,6 +146,25 @@ def check(tr):
 
     if retry_like > 1:
         v("one-retry", f"{retry_like} retry-shaped replies (the retry happens once, ever)")
+
+    # THE HUMAN RULE: never the same CONTENT sentence twice on one page
+    # (device bug #360356: "That is okay! GOAL! GOAL!" sent twice, the MEET
+    # line re-read verbatim at a confused kid). Ritual call formulas and
+    # word-shouts/praise stubs repeat freely — at this age ritual is a hug.
+    # "shout with me" stays OUT: it marks the play invite, which is once-ever.
+    rituals = {"say it with me", "one more time", "yes or no"}
+    seen = {}
+    for n, r in enumerate(replies, 1):
+        for s in re.split(r"(?<=[.!?])\s+", strip_tags(r).strip()):
+            key = re.sub(r"[^a-z0-9\s]", "", s.lower()).strip()
+            bare = re.sub(rf"\b{re.escape(word.rstrip('!'))}\b", "", key)
+            bare = re.sub(r"\s+", " ", bare).strip()
+            if len(bare.split()) < 3 or bare in rituals:
+                continue
+            if key in seen:
+                v("no-repeat", f"reply {n} repeats a sentence from reply {seen[key]}: {s.strip()!r}")
+            else:
+                seen[key] = n
 
     all_teacher = " ".join(strip_tags(r) for r in replies)
     if word.rstrip("!") not in all_teacher.lower():
