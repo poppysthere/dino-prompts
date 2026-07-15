@@ -1,0 +1,57 @@
+# Case battery for the 足球课 generic word-teaching page (ages 4-6, pre-A1).
+# One template (word_teaching_rules_l1_soccer.md), three lesson words from the
+# Forge instances: Goal! / team / Come on!  Checker: checker_word_soccer.py
+# (structural — the lines are generated from word + imageDesc).
+# Flow: MEET -> (retry once) -> PLAY invite -> play react + tiny wonder -> close.
+
+word_soccer_goal:
+  - id: goal-pass
+    note: "happy path: try -> celebrate + shout play -> wonder -> close; max 4 replies"
+    turns: ["Goal!", "GOAL! GOAL!", "yes!"]
+    require_phrases: ["\\bgoal\\b"]
+  - id: goal-asr
+    note: "'go!' right after the invite is machine-written goal — generous pass, never a retry"
+    turns: ["Go!", "goal", "no"]
+    forbid_phrases: ["one more time"]
+  - id: goal-agree-retry
+    note: "REGRESSION CLASS: '好。' is agreement, not a try — no 'Great job', one guided retry"
+    turns: ["好。", "goal", "GOAL!", "yes"]
+  - id: goal-question
+    note: "child asks what it is -> SHOW it tiny (never 'means'), then the retry"
+    turns: ["什么意思呀？", "goal!", "goal", "嗯"]
+    forbid_phrases: ["\\bmeans\\b"]
+  - id: goal-silent-all
+    note: "fully silent page: exactly 5 replies, no praise, warm close"
+    turns: []
+    forbid_phrases: ["great job|you got it|well done"]
+  - id: goal-junkname
+    note: "<studentName>=test_user -> never spoken"
+    student_name: test_user
+    turns: ["goal", "GOAL!", "yes"]
+    forbid_phrases: ["test[_\\s]?user"]
+
+word_soccer_team:
+  - id: team-pass
+    note: "idea word: shown friend-sized ('one team'), never announcer talk (device #360001 word!)"
+    turns: ["Team!", "team team!", "yes!"]
+    require_phrases: ["\\bteam\\b"]
+  - id: team-cant
+    note: "'不会' -> comfort catch, guided retry, soft path"
+    turns: ["不会。", "team", "team!", "no"]
+  - id: team-own-language
+    note: "own-language word -> 'you know it! in English now' + retry, no translation"
+    turns: ["队伍！", "team!", "TEAM!", "yes"]
+
+word_soccer_comeon:
+  - id: comeon-pass
+    note: "a shout, not a thing: never 'I see a come on' — the moment is made and shouted"
+    turns: ["Come on!", "COME ON!", "yes!"]
+    require_phrases: ["come on"]
+    forbid_phrases: ["i\\s+see\\s+a\\s+come"]
+  - id: comeon-asr
+    note: "'camon' is machine-written Come on! — generous pass"
+    turns: ["Camon!", "come on", "yes"]
+    forbid_phrases: ["one more time"]
+  - id: comeon-story
+    note: "child brings their thing ('我有足球！') -> tiny echo, then the retry, never a lecture"
+    turns: ["我有足球！", "come on!", "COME ON!", "嗯"]

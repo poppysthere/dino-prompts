@@ -13,6 +13,7 @@ Three backends, selected with EVAL_BACKEND (or --backend):
 """
 import json
 import os
+import socket
 import time
 import urllib.error
 import urllib.request
@@ -38,7 +39,8 @@ def _post_json(url: str, payload: dict, headers: dict) -> dict:
         try:
             with urllib.request.urlopen(req, timeout=90) as resp:
                 return json.loads(resp.read().decode())
-        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as e:
+        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError,
+                socket.timeout) as e:  # socket.timeout != TimeoutError before 3.10
             code = getattr(e, "code", None)
             if code is not None and code not in (400, 429, 500, 502, 503, 504):
                 raise

@@ -35,6 +35,7 @@ BUDGETS = {
     "warmup_teaching_rules_l1_soccer.md": (100, 1450),
     "leadin_teaching_rules_l1_soccer_step_pre_video.md": (40, 600),
     "leadin_teaching_rules_l1_soccer_step_post_video.md": (55, 900),
+    "word_teaching_rules_l1_soccer.md": (100, 1700),
 }
 
 
