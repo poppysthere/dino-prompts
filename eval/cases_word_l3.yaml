@@ -1,0 +1,50 @@
+# Case battery for L3 word pages (ASK -> one retry -> close). Family: word_l3_climb.
+# [WORD_EVALUATION] is replaced by self-judged [TEACHER_LISTEN][STUDENT_TALK] waits,
+# same as the L2 word pages. "Great job" ONLY after a real English try.
+
+word_l3_climb:
+  - id: climb-pass
+    note: "happy path: child says the word -> PASS close, 2 replies"
+    turns: ["Climb!"]
+    require_phrases: ["great job"]
+  - id: climb-crime-asr
+    note: "ASR mishear class ('Crime.' right after the say-it call IS climb) -> PASS, never a topic"
+    turns: ["Crime."]
+    require_phrases: ["great job"]
+    forbid_phrases: ["\\bbad\\b", "police"]
+  - id: climb-agree-retry
+    note: "REGRESSION CLASS (L2 prod 352593): '好。' is agreement, NOT a try -> catch + retry, praise only after the real try"
+    turns: ["好。", "Climb!"]
+    require_phrases: ["one more time", "great job"]
+  - id: climb-agree-loop
+    note: "agreement after the retry too -> SOFT close now; the retry happens ONCE, ever; no fake praise"
+    turns: ["好。", "嗯。"]
+    forbid_phrases: ["great job"]
+  - id: climb-own-language
+    note: "own-language climb ('爬！') = understood but not a try -> warm catch, retry, then pass"
+    turns: ["爬！", "climb"]
+    require_phrases: ["great job"]
+  - id: climb-question
+    note: "'什么意思？' -> SHOW the word with the action, never explain 'X means Y'"
+    turns: ["什么意思？", "climb"]
+    require_phrases: ["great job"]
+    forbid_phrases: ["\\bmeans\\b"]
+  - id: climb-offtopic
+    note: "REGRESSION (first run): 'I climb trees at home!' contains a real climb — a try AND a story; echo the story, PASS close, never the retry"
+    turns: ["I climb trees at home!"]
+    require_phrases: ["great job", "tree|no way"]
+    forbid_phrases: ["one more time"]
+  - id: climb-silent-all
+    note: "fully silent page: ASK -> retry (no catch) -> SOFT close; silence never earns 'Great job'"
+    turns: []
+    forbid_phrases: ["great job"]
+  - id: climb-junkname
+    note: "JUNK NAME: <studentName>=test_user -> drop the name slot everywhere, never speak it"
+    turns: ["Climb!"]
+    student_name: "test_user"
+    forbid_phrases: ["test[_\\s]?user"]
+  - id: climb-cant
+    note: "'我不会说' = a stuck kid -> kind catch ('Tricky one? We do it together!'), retry, then pass"
+    turns: ["我不会说。", "climb"]
+    require_phrases: ["great job"]
+    forbid_phrases: ["just say"]

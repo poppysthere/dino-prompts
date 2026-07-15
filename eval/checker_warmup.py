@@ -43,6 +43,7 @@ KNOWN_ACTIONS = {
     "[TEACHER_POINT_TO_SCREEN]", "[TEACHER_SHOW_MUSCLE]", "[TEACHER_LISTEN]", "[TEACHER_JUMP]",
     "[TEACHER_COW_HORNS]", "[TEACHER_CAT_PAWS]", "[TEACHER_RIDE_HORSE]",
     "[TEACHER_DRINK_JUICE]", "[TEACHER_BREAK_BREAD]", "[TEACHER_BITE_APPLE]",
+    "[TEACHER_CLIMB]",
 }
 
 # The teacher cannot see the child — no requests for visible actions.

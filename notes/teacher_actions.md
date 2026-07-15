@@ -5,7 +5,7 @@ HOW the teacher handles the classroom. Action tags are the ingredients — WHAT 
 body actually does. When writing or fixing a prompt, cook from this pantry only:
 
 1. **Templates may only use tags registered here.** Every tag maps to a real client-side
-   animation. An invented tag (e.g. `[TEACHER_JUMP]`) plays NOTHING on the avatar — the
+   animation. An invented tag (e.g. `[TEACHER_SALUTE]`) plays NOTHING on the avatar — the
    teacher talks about jumping while standing still, which is exactly the "motionless,
    doesn't feel like a real person" bug we fight. Checkers now flag unregistered tags.
 2. **If the avatar can't show it, the words can't claim it.** No "Big smile!" or "watch me
@@ -40,6 +40,7 @@ body actually does. When writing or fixing a prompt, cook from this pantry only:
 | `[TEACHER_HIGH_FIVE]` | Raises palm for high five | Shared-win moment, "we did it together" | high |
 | `[TEACHER_POINT_TO_SCREEN]` | Points at the screen | Handover to video/song, "look!" moments | medium |
 | `[TEACHER_SHOW_MUSCLE]` | Flexes arm | "You're so strong/brave!", confidence boost, cat-page close | medium |
+| `[TEACHER_JUMP]` | Jumps once | Blast-off launches, countdown closes (L3+ originals use it) | high |
 
 ### Word-specific (signature action of the page — use at model + celebrate beats)
 
@@ -51,6 +52,7 @@ body actually does. When writing or fixing a prompt, cook from this pantry only:
 | `[TEACHER_BITE_APPLE]` | Bites an imaginary apple | apple |
 | `[TEACHER_BREAK_BREAD]` | Breaks imaginary bread | bread |
 | `[TEACHER_DRINK_JUICE]` | Drinks imaginary juice | juice |
+| `[TEACHER_CLIMB]` | Climbing gesture, hands up | climb (L3 Dino & Mia) |
 
 The word page's signature action is its Physical Demonstration move (see teacher_moves.md
 section 1): it fires when the teacher MODELS the word and when the child nails it —
