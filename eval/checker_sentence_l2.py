@@ -74,6 +74,14 @@ STEPS = {
         "final_tag": "[NEXT_STEP]",
         "max": 4,
     },
+    "wrapup_l3_pre": {
+        "ask": ("Dino and Mia meet the unicorn! Look! The unicorn's family and friends are here too! "
+                "They are all so happy. Did you like the adventure?"),
+        "close": "Unicorns, friends, and a big adventure! Now it's SONG TIME! Let's sing together!",
+        "final_tag": "[NEXT_STEP]",
+        "max": 2,
+        "catch_budget": 12,
+    },
     "sent_l3_piece_of_cake": {
         "ask": ("Wow! The unicorn can fly! Mia is flying in the sky! So easy for her! "
                 "Mia says. Piece of cake! Say it with me. Piece of cake!"),

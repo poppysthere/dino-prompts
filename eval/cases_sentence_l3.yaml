@@ -156,3 +156,48 @@ sent_l3_piece_of_cake:
     reply_forbid:
       1: ["great job", "yes!"]
     max_replies: 2
+
+wrapup_l3_pre:
+  - id: l3w-pos
+    note: "positive answer -> 'Me too!' class catch + fixed SONG TIME launch; 2 replies, no extra question"
+    turns: ["Yes! It was fun!"]
+    require_phrases: ["me too", "song time"]
+    max_replies: 2
+  - id: l3w-favorite
+    note: "child names a favorite ('I like the unicorn!') -> echo THEIR thing, never a shrug"
+    turns: ["I like the unicorn!"]
+    require_phrases: ["unicorn\\?|mine too", "song time"]
+    forbid_phrases: ["that's okay"]
+    max_replies: 2
+  - id: l3w-neg
+    note: "'不喜欢。' is a NO -> honest warm take ('You still did GREAT today!'), never a flipped 'Me too!'"
+    turns: ["不喜欢。"]
+    require_phrases: ["song time"]
+    forbid_phrases: ["me too"]
+    max_replies: 2
+  - id: l3w-askback
+    note: "child asks BACK ('Did YOU like it?') -> answer like a person ('ME? I LOVED it!'), then launch"
+    turns: ["Did YOU like it?"]
+    require_phrases: ["loved it|me\\?", "song time"]
+    max_replies: 2
+  - id: l3w-silent
+    note: "silence -> 'You did great today!' + launch; never pretend they answered, never 'Me too'"
+    turns: []
+    require_phrases: ["song time"]
+    forbid_phrases: ["me too"]
+    max_replies: 2
+  - id: l3w-junkname
+    note: "JUNK NAME: placeholder never spoken, slot drops"
+    turns: ["Yes!"]
+    student_name: "test_user"
+    forbid_phrases: ["test[_\\s]?user"]
+    max_replies: 2
+  - id: l3w-fresh-start
+    note: "REGRESSION CLASS (prod #358147): piece-of-cake chat sits above -> after UI-ready the first reply is the wrap-up ASK, never the launch"
+    seed:
+      - role: assistant
+        text: "Piece of cake! YES! Great job, tom![TEACHER_THUMBS_UP] When something is SUPER easy, you say. Piece of cake! Flying? Piece of cake![TEMPLATE_FINISH]"
+    turns: ["Yes!"]
+    reply_forbid:
+      1: ["song time"]
+    max_replies: 2

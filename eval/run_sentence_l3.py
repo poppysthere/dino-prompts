@@ -30,6 +30,7 @@ FAMILY_FILES = {
     "sent_l3_i_can_climb": "prompts/l3/sentence_teaching_rules_l3_step_i_can_climb.md",
     "sent_l3_can_you_fly": "prompts/l3/sentence_teaching_rules_l3_step_can_you_fly.md",
     "sent_l3_piece_of_cake": "prompts/l3/sentence_teaching_rules_l3_step_piece_of_cake.md",
+    "wrapup_l3_pre": "prompts/l3/wrapup_teaching_rules_l3_step_pre_video.md",
 }
 FAMILY_RENDER = {
     "sent_l3_intro": "Sentence trail intro before the adventure video.",
@@ -37,6 +38,7 @@ FAMILY_RENDER = {
     "sent_l3_i_can_climb": "Sentence teaching: I can climb. Mia climbs the wall.",
     "sent_l3_can_you_fly": "Sentence teaching: Can you fly? A unicorn appears.",
     "sent_l3_piece_of_cake": "Sentence teaching: Piece of cake! Mia flies with the unicorn.",
+    "wrapup_l3_pre": "Wrap up: Dino, Mia and the unicorn's family celebrate. A song video comes next.",
 }
 DEFAULT_NAME = "tom"
 
@@ -91,6 +93,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", default=os.environ.get("FORGE_MODEL", "gpt-5-mini"))
     ap.add_argument("--only", help="run a single case id")
+    ap.add_argument("--family", help="run only cases of one family")
     args = ap.parse_args()
 
     os.environ.setdefault("FORGE_BASE_URL",
@@ -103,6 +106,8 @@ def main():
     RUNS.mkdir(parents=True, exist_ok=True)
     paths = []
     for family, cases in battery.items():
+        if args.family and family != args.family:
+            continue
         for case in cases:
             if args.only and case["id"] != args.only:
                 continue
