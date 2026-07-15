@@ -100,6 +100,21 @@ def check(tr):
 
         if n == 1 and word.rstrip("!") not in body.lower():
             v("meet-word", f"reply 1 never says the target word {word!r}")
+        # wrong-word guard (real device bug: the Come on! page taught goal —
+        # examples + goal-heavy history outvoted renderContent). Mentioning
+        # the goal as a place in the picture is fine; TEACHING another lesson
+        # word (say-it call, "This is X", doubled shout) is not. "come on" is
+        # everyday encouragement, so only goal/team are cross-checked.
+        for other in ("goal", "team"):
+            if other == word:
+                continue
+            teach_pats = [
+                rf"(say (it )?with me|one more time|shout with me|together)\W*{other}\b",
+                rf"this is\W*{other}\b",
+                rf"\b{other}\W+{other}\b",
+            ]
+            if any(re.search(p, body, re.I) for p in teach_pats):
+                v("wrong-word", f"reply {n}: teaches {other!r} on a {word!r} page")
 
         # at most ONE real question per reply ("Yes or no?" choice tails are free)
         segs = re.split(r"(?<=[.!?])\s+", body.strip())

@@ -41,6 +41,13 @@ word_soccer_team:
   - id: team-own-language
     note: "own-language word -> 'you know it! in English now' + retry, no translation"
     turns: ["队伍！", "team!", "TEAM!", "yes"]
+  - id: team-after-goal-page
+    note: "REGRESSION CLASS: the goal page just closed in history; this page's word is team — goal never spoken here"
+    turns: ["Team!", "TEAM!", "yes"]
+    require_phrases: ["\\bteam\\b"]
+    seed:
+      - {role: assistant, text: "Yes! In the goal! Goal! We did it, tom![TEACHER_HIGH_FIVE] Nice work![TEMPLATE_FINISH]"}
+      - {role: user, text: "耶！"}
 
 word_soccer_comeon:
   - id: comeon-pass
@@ -48,6 +55,13 @@ word_soccer_comeon:
     turns: ["Come on!", "COME ON!", "yes!"]
     require_phrases: ["come on"]
     forbid_phrases: ["i\\s+see\\s+a\\s+come"]
+  - id: comeon-after-goal-leadin
+    note: "REGRESSION (device: first word page taught goal): history is full of GOAL shouts from the lead-in; renderContent says Come on! — the page must teach Come on!, goal never spoken"
+    turns: ["Come on!", "COME ON!", "yes!"]
+    require_phrases: ["come on"]
+    seed:
+      - {role: assistant, text: "WOW! What a kick! The ball goes UP, UP to the goal! Now WE play! Come on![TEMPLATE_FINISH]"}
+      - {role: user, text: "GOAL!"}
   - id: comeon-asr
     note: "'camon' is machine-written Come on! — generous pass"
     turns: ["Camon!", "come on", "yes"]
