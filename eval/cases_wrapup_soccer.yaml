@@ -1,0 +1,36 @@
+# Case battery for the 足球课 wrap-up (ages 4-6, pre-A1).
+# Template: prompts/festival/wrapup_teaching_rules_l1_soccer.md (branch on currentStep).
+# Checker: checker_wrapup_soccer.py. One reply per step, no questions, no waits.
+
+pre_video:
+  - id: wrp-pre-basic
+    note: "praise + 1-2 learned words + watch line -> [NEXT_STEP]"
+    student_name: tom
+    require_phrases: ["\\btom\\b"]
+  - id: wrp-pre-junkname
+    note: "<studentName>=test_user -> no name spoken, warmth without it"
+    student_name: test_user
+    forbid_phrases: ["test[_\\s]?user"]
+  - id: wrp-pre-history
+    note: "child asked for more games right before; one tiny catch at most, the beat still runs, no chat"
+    student_name: tom
+    seed:
+      - {role: assistant, text: "Yes! Friends! Team! We did it, tom![TEACHER_HIGH_FIVE] Nice work![TEMPLATE_FINISH]"}
+      - {role: user, text: "我还想玩！还有游戏吗？"}
+
+post_video:
+  - id: wrp-post-basic
+    note: "proud close + goodbye -> [TEMPLATE_FINISH], no questions"
+    student_name: tom
+    require_phrases: ["see\\s+you|bye"]
+  - id: wrp-post-junkname
+    note: "junk name never spoken in the goodbye"
+    student_name: test_user
+    forbid_phrases: ["test[_\\s]?user"]
+  - id: wrp-post-bye-first
+    note: "child says 拜拜 during the video; tiny bye-echo allowed, then the close, never a chat"
+    student_name: tom
+    seed:
+      - {role: assistant, text: "WOW, tom! You did GREAT today![TEACHER_APPLAUD] You said Goal! You said team! Now, one last look! Let's watch![NEXT_STEP]"}
+      - {role: user, text: "拜拜！"}
+    require_phrases: ["see\\s+you|bye"]
