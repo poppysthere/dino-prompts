@@ -39,12 +39,12 @@ GROUPS = {
 }
 
 
-def compose(is_first_meet: bool, name: str, profile: str) -> str:
+def compose(is_first_meet: bool, name: str, profile: str, role: str = ROLE) -> str:
     common = (ROOT / "prompts/festival/common_teaching_simple_rules_l1_soccer.md").read_text()
     tmpl = (ROOT / "prompts/festival/warmup_teaching_rules_l1_soccer.md").read_text()
     text = common.rstrip() + "\n\n" + tmpl.rstrip()
     for k, val in {
-        "roleDescription": ROLE,
+        "roleDescription": role,
         "renderContent": "Warm up stage. Special World Cup festival soccer lesson. No lesson content yet.",
         "studentProfile": profile,
         "name": name,
@@ -56,7 +56,8 @@ def compose(is_first_meet: bool, name: str, profile: str) -> str:
 
 def run_case(backend, group, case):
     first_meet, prompt_name, checker_name, profile = GROUPS[group]
-    system = compose(first_meet, prompt_name, profile or "No relevant information.")
+    system = compose(first_meet, prompt_name, profile or "No relevant information.",
+                     case.get("role", ROLE))
     messages = [{"role": "user", "content": UI_READY}]
     transcript = []
     turns, ti = case.get("turns", []), 0

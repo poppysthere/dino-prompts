@@ -10,6 +10,13 @@ path_a:  # first meeting — introduce yourself, ask the name
     spoken_name: tom
     turns: ["Tom", "yes!"]
     require_phrases: ["soccer|ball|game|play"]
+  - id: a1-role-name
+    note: "REGRESSION (device): the teacher's name comes from roleDescription — 'Coach Leo' in the template's B1 line is only an example, never copied when the role says Coach Kim"
+    role: "You are Coach Kim, a warm, playful soccer coach who makes every class feel like a happy game day. Your voice is bright and kind. You cheer for every little try."
+    spoken_name: tom
+    turns: ["Tom", "yes!"]
+    require_phrases: ["\\bkim\\b"]
+    forbid_phrases: ["\\bleo\\b"]
   - id: a1-sad-kid
     note: "sad answer -> soft close, no YAY, no GO-chant blast at a sad 4 year old"
     spoken_name: tom
