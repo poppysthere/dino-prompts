@@ -5,8 +5,8 @@ Every fix must fit the budget: fold new knowledge into existing rules/lists,
 swap examples one-in-one-out, never append case after case. If this lint fails,
 the fix goes back for compaction, not the budget up.
 
-L2 and L3 are linted, plus the new L1 足球课 (soccer festival) pair — the
-legacy _l1l2_ files are frozen in production and stay unlinted.
+L2, L3 and the festival lessons are linted — the legacy L1 _l1l2_ files are
+frozen in production and stay unlinted.
 Exit 0 = all within budget, 1 = over budget.
 """
 import pathlib
@@ -30,7 +30,7 @@ BUDGETS = {
     "warmup_teaching_rules_l3.md": (85, 1200),
     "leadin_teaching_rules_l3_step_pre_video.md": (40, 600),
     "leadin_teaching_rules_l3_step_post_video.md": (65, 1000),
-    # L1 足球课 (World Cup soccer festival, 4-6, pre-A1) — new pair, keep lean.
+    # Festival: 足球课 (World Cup soccer, 4-6, pre-A1) — new pair, keep lean.
     "common_teaching_simple_rules_l1_soccer.md": (95, 1450),
     "warmup_teaching_rules_l1_soccer.md": (100, 1450),
 }
@@ -41,7 +41,7 @@ def main():
     files = []
     for level in ("l2", "l3"):
         files += sorted((ROOT / "prompts" / level).glob("*.md"))
-    files += sorted((ROOT / "prompts/l1").glob("*_l1_soccer.md"))
+    files += sorted((ROOT / "prompts/festival").glob("*.md"))
     for f in files:
         text = f.read_text()
         lines = len(text.splitlines())

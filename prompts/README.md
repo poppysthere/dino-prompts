@@ -1,17 +1,20 @@
 # Prompt templates, organized by level
 
-One folder per level. The filename (minus `.md`) is the template name in Prompt Forge —
-folders are for OUR navigation only, so moving files never breaks the Forge mapping.
+One folder per level, plus one for festival specials. The filename (minus `.md`) is the
+template name in Prompt Forge — folders are for OUR navigation only, so moving files never
+breaks the Forge mapping.
 
 ```
 prompts/
-  l1/   Level 1 (ages 4-6, CEFR pre-A1) — teacher Kim / Max, Boo the dino, apple-bread-juice lesson;
-        plus the 足球课 World Cup festival special (`*_l1_soccer.md`: its own common layer + warm-up)
-  l2/   Level 2 (ages 5-7, A1) — Mouse's cake mystery demo, cow-cat-horse lesson
-  l3/   Level 3 (ages 7-9, A1+) — big-kid voice (no baby-talk); common layer + warm-up so far
-  l4/   (future)
-  l5/   (future)
-  l6/   (future)
+  l1/        Level 1 (ages 4-6, CEFR pre-A1) — teacher Kim / Max, Boo the dino, apple-bread-juice lesson
+  l2/        Level 2 (ages 5-7, A1) — Mouse's cake mystery demo, cow-cat-horse lesson
+  l3/        Level 3 (ages 7-9, A1+) — big-kid voice (no baby-talk); common layer + warm-up so far
+  l4/        (future)
+  l5/        (future)
+  l6/        (future)
+  festival/  Festival topic lessons, one set per event. Filenames keep the level marker
+             (`*_l1_soccer.md` = 足球课 World Cup special, taught at L1 age/CEFR): each set
+             carries its OWN common layer, independent of the regular level folders.
 ```
 
 ## Size discipline (防止 prompt 越修越长)

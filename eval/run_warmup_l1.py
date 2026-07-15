@@ -40,8 +40,8 @@ GROUPS = {
 
 
 def compose(is_first_meet: bool, name: str, profile: str) -> str:
-    common = (ROOT / "prompts/l1/common_teaching_simple_rules_l1_soccer.md").read_text()
-    tmpl = (ROOT / "prompts/l1/warmup_teaching_rules_l1_soccer.md").read_text()
+    common = (ROOT / "prompts/festival/common_teaching_simple_rules_l1_soccer.md").read_text()
+    tmpl = (ROOT / "prompts/festival/warmup_teaching_rules_l1_soccer.md").read_text()
     text = common.rstrip() + "\n\n" + tmpl.rstrip()
     for k, val in {
         "roleDescription": ROLE,
