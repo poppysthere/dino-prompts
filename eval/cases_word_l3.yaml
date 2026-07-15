@@ -157,3 +157,15 @@ word_l3_fly:
     turns: ["我不会说。", "fly"]
     require_phrases: ["well done"]
     forbid_phrases: ["just say"]
+  - id: fly-question-at-close
+    note: "REGRESSION (prod #358249): after the retry the child asks '我要说一整个句子吗？' (whole sentence?) -> answer tiny ('Just one word!') THEN the close; never bulldoze the question, never praise"
+    turns: ["怎么说呀，这个单词。", "我要说一整个句子吗？"]
+    require_phrases: ["one word"]
+    forbid_phrases: ["well done"]
+  - id: fly-fresh-start
+    note: "REGRESSION CLASS (prod #358147): previous page's chat sits above -> after UI-ready the first reply is the ASK, never a close or praise for a child who hasn't spoken"
+    seed:
+      - role: assistant
+        text: "Jump! YES! Great job, tom![TEACHER_APPLAUD] One, two, three! Let's jump with Dino and Mia! Jump, jump, jump! Over we go![TEACHER_JUMP][TEMPLATE_FINISH]"
+    turns: ["Fly!"]
+    require_phrases: ["well done"]

@@ -84,10 +84,25 @@ sent_l3_can_you_fly:
     forbid_phrases: ["can't really", "people can't", "no, you"]
     max_replies: 3
   - id: l3s2-askback
-    note: "child asks BACK ('Can YOU fly?') at the real question: answer them first, then the close"
+    note: "REGRESSION (prod #358144): child asks BACK ('Can YOU fly?') at the real question — ANSWER them ('Me? Not yet!'), never 'Me neither' (answers a no they never said)"
     turns: ["Can you fly?", "Can YOU fly?"]
-    require_phrases: ["me\\?|not yet|me neither"]
+    require_phrases: ["not yet|i wish"]
+    forbid_phrases: ["me neither"]
     max_replies: 3
+  - id: l3s2-offtopic-banana
+    note: "REGRESSION (prod #358133): '妈妈，我要吃香蕉。' -> fun matched catch (never bland 'I hear you'), then the SCRIPTED retry, question, close"
+    turns: ["妈妈，我要吃香蕉。", "Can you fly?", "No, I can't!"]
+    require_phrases: ["small pieces"]
+    reply_forbid:
+      2: ["i hear you"]
+    max_replies: 4
+  - id: l3s2-answered-at-retry
+    note: "REGRESSION (prod #358138): child ANSWERS ('No, I can't!') right after the retry -> question row comes, NEVER a second retry or 'ask it with me'"
+    turns: ["好。", "No, I can't!", "No!"]
+    require_phrases: ["small pieces", "the question is for you"]
+    reply_forbid:
+      3: ["ask it with me", "small pieces", "say it with me"]
+    max_replies: 4
   - id: l3s2-retry-path
     note: "'好。' = agreement -> guided retry -> line said -> real question -> answer -> close; question asked ONCE"
     turns: ["好。", "Can you fly?", "No!"]
@@ -128,3 +143,16 @@ sent_l3_piece_of_cake:
     turns: []
     forbid_phrases: ["great job", "\\bmeans\\b"]
     max_replies: 3
+  - id: l3s3-fresh-start
+    note: "REGRESSION (prod #358147): previous step's chat sits above -> after UI-ready the first reply is the ASK, never the PASS close for a child who hasn't spoken"
+    seed:
+      - role: assistant
+        text: "That's okay! Now the question is for YOU, tom. Can you fly?[TEACHER_LISTEN][STUDENT_TALK]"
+      - role: user
+        text: "No! I can't fly!"
+      - role: assistant
+        text: "Me neither! Ha ha! I want to fly with a unicorn too![NEXT_STEP]"
+    turns: ["Piece of cake!"]
+    reply_forbid:
+      1: ["great job", "yes!"]
+    max_replies: 2

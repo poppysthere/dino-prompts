@@ -54,7 +54,10 @@ def compose(family: str, name: str) -> str:
 def run_case(backend, family, case):
     prompt_name = case.get("student_name", DEFAULT_NAME)
     system = compose(family, prompt_name)
-    messages = [{"role": "user", "content": UI_READY}]
+    # seed = chat from a PAST step (kept in the API conversation, but NOT in the
+    # saved transcript: the checker judges only this page's replies)
+    messages = [{"role": m["role"], "content": m["text"]} for m in case.get("seed", [])]
+    messages.append({"role": "user", "content": UI_READY})
     transcript = []
     turns, ti = case.get("turns", []), 0
     for _ in range(5):
