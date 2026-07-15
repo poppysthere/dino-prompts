@@ -38,13 +38,13 @@ DEFAULT_NAME = "tom"
 STOP_TAGS = ("[TEMPLATE_FINISH]", "[NEXT_STEP]")
 
 
-def compose(step: str, name: str) -> str:
+def compose(step: str, name: str, render: str = RENDER) -> str:
     common = (ROOT / "prompts/festival/common_teaching_simple_rules_l1_soccer.md").read_text()
     tmpl = (ROOT / STEP_FILES[step]).read_text()
     text = common.rstrip() + "\n\n" + tmpl.rstrip()
     for k, val in {
         "roleDescription": ROLE,
-        "renderContent": RENDER,
+        "renderContent": render,
         "studentProfile": "No relevant information.",
         "name": name,
     }.items():
@@ -54,7 +54,7 @@ def compose(step: str, name: str) -> str:
 
 def run_case(backend, step, case):
     prompt_name = case.get("student_name", DEFAULT_NAME)
-    system = compose(step, prompt_name)
+    system = compose(step, prompt_name, case.get("render", RENDER))
     # seed = chat from a PAST step (in the API conversation, not the transcript)
     messages = [{"role": m["role"], "content": m["text"]} for m in case.get("seed", [])]
     messages.append({"role": "user", "content": UI_READY})

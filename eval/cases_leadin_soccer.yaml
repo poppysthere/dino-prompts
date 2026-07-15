@@ -36,3 +36,8 @@ post_video:
       - {role: assistant, text: "Tom! Look! Soccer time! It's the World Cup! A big big soccer party! Let's watch! Come on![TEACHER_POINT_TO_SCREEN][NEXT_STEP]"}
       - {role: user, text: "我想喝水。"}
     require_phrases: ["goal|ball|kick|soccer"]
+  - id: soc-post-bugs
+    note: "REGRESSION (device #360001): bugs-soccer video produced announcer talk ('Tiny bugs team up! The big match is on! Goal or no goal!') — the hook must be tiny seen-things ('The bugs play ball! Kick, kick!') and the launch personal ('Now WE play!')"
+    student_name: tom
+    render: "nextTopic: soccer (World Cup festival lesson). videoDescribe: Tiny bugs play soccer at the World Cup. A little bug kicks the ball high toward the goal. characterRole: Bug players."
+    require_phrases: ["bug|ball|kick"]

@@ -37,6 +37,12 @@ IDK_SIGNALS = ["don't know", "dont know", "不知道", "no sé", "no se"]
 # (feel + hook + go), never waits, never asks.
 PRE_LINE_SOCCER = ("look! soccer time! it's the world cup! "
                    "a big big soccer party! let's watch! come on!")
+# Device bug #360001: "Tiny bugs team up! The big match is on! Goal or no goal!"
+# — sports-announcer talk a pre-A1 child cannot picture. Words must be tiny
+# and the launch must put the CHILD in the game.
+ANNOUNCER_TALK = [r"team\s+up", r"match\s+is\s+on", r"goal\s+or\s+no\s+goal",
+                  r"we\s+will\s+see", r"\bmatch\b", r"\bversus\b", r"\bcompete\b",
+                  r"kick[\s-]?off\b", r"\bchampionship\b"]
 
 
 def has_cjk(t):
@@ -181,6 +187,11 @@ def check_post_soccer(tr, replies, users, v, out):
         for pat in [r"\bmeans\b", r"say\s+it\s+with\s+me", r"can\s+you\s+say", r"repeat\s+after"]:
             if re.search(pat, body, re.I):
                 v("no-teaching", f"lead-in is teaching ({pat!r})")
+        for pat in ANNOUNCER_TALK:
+            if re.search(pat, body, re.I):
+                v("kid-words", f"announcer talk a pre-A1 child cannot picture ({pat!r}): {body.strip()!r}")
+        if not re.search(r"\b(we|you|let's|let us)\b", body, re.I):
+            v("personal", f"the reply never puts the child in the game (no we/you/let's): {body.strip()!r}")
     return out
 
 
