@@ -105,3 +105,55 @@ word_l3_jump:
     turns: ["我不会说。", "jump"]
     require_phrases: ["great job"]
     forbid_phrases: ["just say"]
+
+word_l3_fly:
+  - id: fly-pass
+    note: "happy path: child says the word -> PASS close ('Well done' on this page), 2 replies"
+    turns: ["Fly!"]
+    require_phrases: ["well done"]
+  - id: fly-fry-asr
+    note: "ASR mishear class ('Fry.' right after the say-it call IS fly) -> PASS, never a topic"
+    turns: ["Fry."]
+    require_phrases: ["well done"]
+    forbid_phrases: ["food", "cook"]
+  - id: fly-agree-retry
+    note: "'好。' is agreement, NOT a try -> catch + guided retry, praise only after the real try"
+    turns: ["好。", "Fly!"]
+    require_phrases: ["fly like a bird", "well done"]
+  - id: fly-agree-loop
+    note: "agreement after the retry too -> SOFT close now; the retry happens ONCE, ever; no fake praise"
+    turns: ["好。", "嗯。"]
+    forbid_phrases: ["well done"]
+  - id: fly-own-language
+    note: "own-language fly ('飞！') = understood but not a try -> warm catch, retry, then pass"
+    turns: ["飞！", "fly"]
+    require_phrases: ["well done"]
+  - id: fly-question
+    note: "'什么意思？' -> SHOW the word with the action, never explain 'X means Y'"
+    turns: ["什么意思？", "fly"]
+    require_phrases: ["well done"]
+    forbid_phrases: ["\\bmeans\\b"]
+  - id: fly-story
+    note: "'I fly a kite!' contains a real fly — a try AND a story; echo the story, PASS close, never the retry"
+    turns: ["I fly a kite!"]
+    require_phrases: ["well done", "kite|no way"]
+    forbid_phrases: ["one more time"]
+  - id: fly-nearmiss
+    note: "REGRESSION CLASS (prod #357245): ASR noise then 'Flow.' — a brave near-miss gets 'SO close!', never a shrug and never fake praise"
+    turns: ["5 o'clock.", "Flow."]
+    require_phrases: ["so close"]
+    forbid_phrases: ["well done", "that's okay"]
+  - id: fly-silent-all
+    note: "fully silent page: ASK -> guided retry (no catch) -> SOFT close; silence never earns 'Well done'"
+    turns: []
+    forbid_phrases: ["well done"]
+  - id: fly-junkname
+    note: "JUNK NAME: <studentName>=test_user -> drop the name slot everywhere, never speak it"
+    turns: ["Fly!"]
+    student_name: "test_user"
+    forbid_phrases: ["test[_\\s]?user"]
+  - id: fly-cant
+    note: "'我不会说' = a stuck kid -> kind catch, retry, then pass"
+    turns: ["我不会说。", "fly"]
+    require_phrases: ["well done"]
+    forbid_phrases: ["just say"]

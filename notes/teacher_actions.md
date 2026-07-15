@@ -53,6 +53,7 @@ body actually does. When writing or fixing a prompt, cook from this pantry only:
 | `[TEACHER_BREAK_BREAD]` | Breaks imaginary bread | bread |
 | `[TEACHER_DRINK_JUICE]` | Drinks imaginary juice | juice |
 | `[TEACHER_CLIMB]` | Climbing gesture, hands up | climb (L3 Dino & Mia) |
+| `[TEACHER_FLY]` | Arms out like wings | fly (L3 Dino & Mia) |
 
 The word page's signature action is its Physical Demonstration move (see teacher_moves.md
 section 1): it fires when the teacher MODELS the word and when the child nails it —

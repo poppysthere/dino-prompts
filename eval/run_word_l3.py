@@ -27,10 +27,12 @@ UI_READY = ("The UI is ready. Continue the lesson from where you left off,"
 FAMILY_FILES = {
     "word_l3_climb": "prompts/l3/word_teaching_rules_l3_climb.md",
     "word_l3_jump": "prompts/l3/word_teaching_rules_l3_jump.md",
+    "word_l3_fly": "prompts/l3/word_teaching_rules_l3_fly.md",
 }
 FAMILY_RENDER = {
     "word_l3_climb": "Word teaching: climb. Dino and Mia see a tall wall.",
     "word_l3_jump": "Word teaching: jump. Dino and Mia see some rocks in the water.",
+    "word_l3_fly": "Word teaching: fly. Dino and Mia are with a unicorn, high in the sky.",
 }
 DEFAULT_NAME = "tom"
 

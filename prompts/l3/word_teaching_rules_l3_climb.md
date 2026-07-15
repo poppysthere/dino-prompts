@@ -27,7 +27,7 @@ Listen! Climb a tree! Climb a wall![TEACHER_CLIMB] Up, up, up! Your turn. Climb!
 
 BEAT 3 — only if beat 2 was the retry. The retry line is spoken at most ONCE on the whole page; whatever the child says now, the page ends NOW:
 - They tried climb → the PASS close (same line as beat 2's).
-- A close try ("Club.", "Clime.") → they nearly have it; open the SOFT close with "SO close!" instead of "That's okay!" — a brave near-miss is never met with a shrug.
+- A close try ("Club.", "Clime.") → they nearly have it; say the SOFT close, swapping its opening "That's okay!" for "SO close!" — the rest of the close is unchanged and the page still ends NOW. "SO close!" NEVER restarts the retry.
 - ANYTHING else (agreement, silence, a question, no matter what) → the SOFT close — no "Great job", no name, never fake praise:
 That's okay! Climb![TEACHER_CLIMB] Hands and feet, up, up, up! Let's climb with Dino and Mia! Climb, climb, climb! Up we go![TEMPLATE_FINISH]
 
@@ -56,6 +56,8 @@ Child: "5 o'clock." (machine noise) → You (the only retry): "Listen! Climb a t
 - Child: "好。" → "YES! Great job!" — the child said OKAY, not climb; fake praise.
 - "Together now. Climb. One more time. Climb!" — a bare repeat (real log #357245); repetition without help teaches nothing. The retry always carries the tiny contexts: climb a tree, climb a wall.
 - Child: "Club." → "That's okay!" — a shrug at a near-miss (real log #357245); one sound off earns "SO close!".
+- Child (after the retry): "Club." → "SO close! Listen! Climb a tree!..." — spoke the retry AGAIN; "SO close!" opens the CLOSE, the retry is used up.
+- Child: "I climb trees at home!" → echo + retry — WRONG: climb was SAID; a try inside a story is a PASS, echo it and close.
 - "Climb means go up with your hands and feet." — talking ABOUT the word; show it with the action instead.
 - "Can you say climb?" — a say-it invite must never be a question; the voice rises and the child copies the rising sound. Invites end on a happy call: "Climb!"
 - Beat 2 retry, then beat 3 retry again — there is only ONE retry, ever.

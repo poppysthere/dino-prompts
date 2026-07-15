@@ -40,6 +40,16 @@ WORDS = {
         "close_core": "let's jump with dino and mia! jump, jump, jump! over we go!",
         "action": "[TEACHER_JUMP]",
     },
+    "word_l3_fly": {
+        "word": "fly",
+        "try_re": r"\b(fly\w*|flie\w*|fry|flight)\b",
+        "ask_core": ("look! dino and mia are with a unicorn! they go high in the sky. "
+                     "this is fly. say it with me. fly!"),
+        "retry_re": r"fly like a bird\W+fly like a plane",
+        "bare_retry_re": r"one more time|say with me",
+        "close_core": "let's fly with dino and mia! fly, fly, fly! here we go!",
+        "action": "[TEACHER_FLY]",
+    },
 }
 
 KNOWN_ACTIONS = {
@@ -47,7 +57,7 @@ KNOWN_ACTIONS = {
     "[TEACHER_POINT_TO_SCREEN]", "[TEACHER_SHOW_MUSCLE]", "[TEACHER_LISTEN]", "[TEACHER_JUMP]",
     "[TEACHER_COW_HORNS]", "[TEACHER_CAT_PAWS]", "[TEACHER_RIDE_HORSE]",
     "[TEACHER_DRINK_JUICE]", "[TEACHER_BREAK_BREAD]", "[TEACHER_BITE_APPLE]",
-    "[TEACHER_CLIMB]",
+    "[TEACHER_CLIMB]", "[TEACHER_FLY]",
 }
 AGREEMENT_RE = r"^\s*(好|好的|ok|okay|yes|嗯|恩)\s*[。.!！]?\s*$"
 
@@ -116,8 +126,8 @@ def check(path):
         for pat in tr.get("forbid_phrases", []):
             if re.search(pat, strip_tags(r), re.I):
                 v("forbid-phrase", f"reply {n}: contains forbidden phrase {pat!r}")
-        # praise guard: "great job" only right after a real English try
-        if re.search(r"great job", r, re.I):
+        # praise guard: big praise only right after a real English try
+        if re.search(r"great job|well done", r, re.I):
             h = heard[n - 1] or ""
             if h.startswith("The student has been silent") or not re.search(cfg["try_re"], h, re.I):
                 v("fake-praise", f"reply {n}: praises a try the child never made (heard: {h!r})")
