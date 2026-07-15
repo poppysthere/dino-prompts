@@ -1,0 +1,130 @@
+# Case battery for the L3 sentence trail (Dino & Mia: climb/jump/fly adventure).
+# Steps run as separate jobs: sent_l3_intro / sent_l3_can_you_climb /
+# sent_l3_i_can_climb / sent_l3_can_you_fly / sent_l3_piece_of_cake.
+# Guided retries build the line in small pieces — bare repeats are template bugs.
+
+sent_l3_intro:
+  - id: l3s-intro-line
+    note: "one fixed line, ends [NEXT_STEP], no waiting"
+    turns: []
+  - id: l3s-intro-junkname
+    note: "JUNK NAME: placeholder never spoken, slot drops"
+    turns: []
+    student_name: "test_user"
+    forbid_phrases: ["test[_\\s]?user"]
+
+sent_l3_can_you_climb:
+  - id: l3s0-pass
+    note: "fast path: full question -> celebrate + real examples (Can you jump? Can you swim?) + advance; 2 replies"
+    turns: ["Can you climb?"]
+    require_phrases: ["can you jump"]
+    forbid_phrases: ["\\bblank\\b", "___"]
+    max_replies: 2
+  - id: l3s0-word-only
+    note: "word-only try: warm catch + ONE guided retry (small pieces), then full line -> celebrate"
+    turns: ["Climb!", "Can you climb?"]
+    require_phrases: ["small pieces"]
+    reply_forbid:
+      2: ["you're doing great"]
+    max_replies: 3
+  - id: l3s0-answered-instead
+    note: "'Yes I can!' ANSWERS the question instead of asking it — smart kid, catch it, retry; no fake celebrate"
+    turns: ["Yes I can!", "Can you climb?"]
+    reply_forbid:
+      2: ["you're doing great", "now you can ask"]
+    max_replies: 3
+  - id: l3s0-agree-silent
+    note: "'好。' is agreement, not a try; then silence rides to the close; no fake praise"
+    turns: ["好。"]
+    reply_forbid:
+      2: ["you're doing great"]
+      3: ["you're doing great"]
+    max_replies: 3
+  - id: l3s0-silent-all
+    note: "full silence: guided retry once, then 'That's okay' close"
+    turns: []
+    forbid_phrases: ["you're doing great", "great job"]
+    max_replies: 3
+
+sent_l3_i_can_climb:
+  - id: l3s1-pass
+    note: "fast path: full line -> celebrate with real examples (I can climb! I can jump!); 2 replies"
+    turns: ["I can climb!"]
+    require_phrases: ["i can jump"]
+    forbid_phrases: ["\\bblank\\b", "___"]
+    max_replies: 2
+  - id: l3s1-own-cando
+    note: "'I can swim!' IS an 'I can' sentence — the whole point; tiny echo + PASS, never the retry"
+    turns: ["I can swim!"]
+    require_phrases: ["swim"]
+    forbid_phrases: ["small pieces"]
+    max_replies: 2
+  - id: l3s1-old-line
+    note: "child repeats LAST page's question ('Can you climb?') — lovely remembering, not this line: catch + retry"
+    turns: ["Can you climb?", "I can climb!"]
+    require_phrases: ["small pieces"]
+    reply_forbid:
+      2: ["up you go"]
+    max_replies: 3
+  - id: l3s1-silent-all
+    note: "full silence: guided retry once, then 'That's okay' close; no fake praise"
+    turns: []
+    forbid_phrases: ["up you go", "great job"]
+    max_replies: 3
+
+sent_l3_can_you_fly:
+  - id: l3s2-pass-no
+    note: "line said -> real question -> child says NO: matched reaction (never correct, never canned), then fixed close"
+    turns: ["Can you fly?", "No! I can't fly!"]
+    forbid_phrases: ["well, i hope i can fly too"]
+    max_replies: 3
+  - id: l3s2-pass-yes-fantasy
+    note: "child says YES I CAN FLY: play along, never kill the dream"
+    turns: ["Can you fly?", "Yes! I can fly!"]
+    forbid_phrases: ["can't really", "people can't", "no, you"]
+    max_replies: 3
+  - id: l3s2-askback
+    note: "child asks BACK ('Can YOU fly?') at the real question: answer them first, then the close"
+    turns: ["Can you fly?", "Can YOU fly?"]
+    require_phrases: ["me\\?|not yet|me neither"]
+    max_replies: 3
+  - id: l3s2-retry-path
+    note: "'好。' = agreement -> guided retry -> line said -> real question -> answer -> close; question asked ONCE"
+    turns: ["好。", "Can you fly?", "No!"]
+    require_phrases: ["small pieces"]
+    max_replies: 4
+  - id: l3s2-silent-all
+    note: "full silence rides forward: retry, question anyway, close with no catch; no fake praise"
+    turns: []
+    forbid_phrases: ["great job", "you got it"]
+    max_replies: 4
+
+sent_l3_piece_of_cake:
+  - id: l3s3-pass
+    note: "fast path: line said -> celebrate + the fun-way teach, NEVER the word 'means'; ends the trail"
+    turns: ["Piece of cake!"]
+    require_phrases: ["super easy"]
+    forbid_phrases: ["\\bmeans\\b"]
+    max_replies: 2
+  - id: l3s3-cake-question
+    note: "'Where is the cake?' — fair question! Catch (no real cake, no 'means'), guided retry, then pass"
+    turns: ["Where is the cake?", "Piece of cake!"]
+    require_phrases: ["small bites"]
+    forbid_phrases: ["\\bmeans\\b"]
+    max_replies: 3
+  - id: l3s3-agree-loop
+    note: "agreement twice -> soft close, no fake praise, trail still ends"
+    turns: ["好。", "嗯。"]
+    forbid_phrases: ["great job", "\\bmeans\\b"]
+    max_replies: 3
+  - id: l3s3-junkname
+    note: "JUNK NAME: placeholder never spoken on the celebrate line"
+    turns: ["Piece of cake!"]
+    student_name: "test_user"
+    forbid_phrases: ["test[_\\s]?user"]
+    max_replies: 2
+  - id: l3s3-silent-all
+    note: "full silence: guided retry once, then 'That's okay' close; no fake praise"
+    turns: []
+    forbid_phrases: ["great job", "\\bmeans\\b"]
+    max_replies: 3

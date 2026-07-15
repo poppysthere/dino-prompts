@@ -47,6 +47,40 @@ STEPS = {
         "final_tag": "[TEMPLATE_FINISH]",
         "max": 1,
     },
+    # --- L3 sentence trail (Dino & Mia): intro -> Can you climb? -> I can climb.
+    # --- -> Can you fly? (+ real question) -> Piece of cake! (TEMPLATE_FINISH)
+    "sent_l3_intro": {
+        "fixed": "Climb, jump, fly. You know them ALL! What will happen to Dino and Mia next? Let's find out!",
+        "final_tag": "[NEXT_STEP]",
+        "max": 1,
+    },
+    "sent_l3_can_you_climb": {
+        "ask": "Look! Dino asks Mia. Can you climb? It's a question! Say it with me. Can you climb?",
+        "retry": "Small pieces! Can you. Climb. All together now! Can you climb?",
+        "final_tag": "[NEXT_STEP]",
+        "max": 3,
+    },
+    "sent_l3_i_can_climb": {
+        "ask": "Look! Mia is climbing up! She says. I can climb.",
+        "retry": "Small pieces! I can. Climb. All together now! I can climb!",
+        "final_tag": "[NEXT_STEP]",
+        "max": 3,
+    },
+    "sent_l3_can_you_fly": {
+        "ask": "Look! A unicorn! Dino asks. Can you fly? Say it with me. Can you fly?",
+        "retry": "Small pieces! Can you. Fly. All together now! Can you fly?",
+        "question": "the question is for you",
+        "close": "I want to fly with a unicorn too!",
+        "final_tag": "[NEXT_STEP]",
+        "max": 4,
+    },
+    "sent_l3_piece_of_cake": {
+        "ask": ("Wow! The unicorn can fly! Mia is flying in the sky! So easy for her! "
+                "Mia says. Piece of cake! Say it with me. Piece of cake!"),
+        "retry": "Small bites! Piece of. Cake. All together now! Piece of cake!",
+        "final_tag": "[TEMPLATE_FINISH]",
+        "max": 3,
+    },
     # wrap-up pre-video rides the same generic step rules; its branch rows are long
     # fixed lines, so the pre-close budget is wide (it only guards runaway improv)
     "wrapup_pre": {
@@ -70,6 +104,12 @@ def strip_tags(t):
 
 def norm(t):
     return re.sub(r"\s+", " ", strip_tags(t)).strip().lower()
+
+
+def script_norm(t):
+    # for script-line matching only: '!' vs '.' is a model wobble, not a bug
+    # (TTS-safety rules still catch dashes/ellipses separately)
+    return re.sub(r"\s+", " ", re.sub(r"[.!?,]", " ", norm(t))).strip()
 
 
 def control_tags(t):
@@ -129,15 +169,15 @@ def check(tr):
     if len(replies) > n_max:
         v("too-long", f"{len(replies)} replies (max {n_max})")
 
-    if step.get("fixed") and norm(step["fixed"]) not in norm(replies[0]):
+    if step.get("fixed") and script_norm(step["fixed"]) not in script_norm(replies[0]):
         v("script-fixed", f"reply 1 deviates from the fixed line: {strip_tags(replies[0]).strip()!r}")
-    if step.get("ask") and norm(step["ask"]) not in norm(replies[0]):
+    if step.get("ask") and script_norm(step["ask"]) not in script_norm(replies[0]):
         v("script-ask", f"reply 1 deviates from the ASK line: {strip_tags(replies[0]).strip()!r}")
     if step.get("must_contain") and norm(step["must_contain"]) not in norm(replies[0]):
         v("script-reveal", f"reply 1 missing {step['must_contain']!r}: {strip_tags(replies[0]).strip()!r}")
 
     if step.get("retry"):
-        retries = sum(1 for r in replies if norm(step["retry"]) in norm(r))
+        retries = sum(1 for r in replies if script_norm(step["retry"]) in script_norm(r))
         if retries > 1:
             v("retry-once", f"the retry call appears {retries} times (max 1, ever)")
 
