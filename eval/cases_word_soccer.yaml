@@ -80,6 +80,9 @@ word_soccer_comeon:
   - id: comeon-story
     note: "child brings their thing ('我有足球！') -> tiny echo, then the retry, never a lecture"
     turns: ["我有足球！", "come on!", "COME ON!", "嗯"]
+  - id: comeon-whatsay
+    note: "REGRESSION (device 22:50 run): '要我说什么呀？' (what do I say?) got bare shouting, then another invite-shaped wait — the question is ANSWERED ('Nothing more! We play!') and the page moves on"
+    turns: ["Come on.", "COME ON!", "要我说什么呀？"]
   - id: comeon-optout
     note: "REGRESSION (device 22:00 run): child said '我不想说了' and got two MORE invites — an opt-out ends all asking instantly; warm words, wonder or close, never another invite"
     turns: ["Come on! Blah blah blah.", "好忙。", "我不想说了。"]

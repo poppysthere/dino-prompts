@@ -91,6 +91,19 @@ def check(tr):
                 v("forbidden-tag", f"reply {n}: uses {t}")
         if "[STUDENT_TALK]" in r and "[TEACHER_LISTEN]" not in r:
             v("listen", f"reply {n}: waits without [TEACHER_LISTEN]")
+        # A WAIT is a JOB (device bug: "Yes! Great job! You and me. One
+        # team!" + wait — the lost child said the word again and again).
+        # A waiting reply must end holding a job: a question, a say-it/
+        # shout call, or a call ending on the target word ("...Goal!").
+        segs_all = [s for s in re.split(r"(?<=[.!?])\s+", body.strip()) if s.strip()]
+        last_seg = re.sub(r"[^a-z\s']", "", segs_all[-1].lower()).strip() if segs_all else ""
+        if "[STUDENT_TALK]" in r and not (
+            "?" in body
+            or re.search(r"\bsay\b|shout\s+with\s+me|one\s+more\s+time"
+                         r"|your\s+turn|try\s+again|with\s+me", body, re.I)
+            or last_seg.endswith(word.rstrip("!"))
+        ):
+            v("wait-job", f"reply {n}: waits but hands the child no job: {body.strip()!r}")
         for t in re.findall(r"\[TEACHER_[A-Z_]+\]", r):
             if t not in KNOWN_ACTIONS:
                 v("unknown-action", f"reply {n}: {t} is not a registered avatar action")
@@ -144,12 +157,12 @@ def check(tr):
                  and not re.fullmatch(r"yes\s+or\s+no\s*\?", s.strip(), re.I))
         if nq > 1:
             v("one-question", f"reply {n}: {nq} real questions in one reply")
-        # the close asks nothing — except the template's tiny opening echo
-        # ("No? Ha ha, okay!"), max 2 words, as the very first segment
+        # the close asks no REAL question — tiny rhetorical echoes ("No?",
+        # "Chair?", max 2 words) are a warm catch, not a wait
         if "[TEMPLATE_FINISH]" in r and "?" in body:
-            q_idxs = [j for j, s in enumerate(segs) if s.endswith("?")]
-            echo_ok = q_idxs == [0] and len(segs[0].rstrip("?").split()) <= 2
-            if not echo_ok:
+            real_qs = [s for s in segs if s.endswith("?")
+                       and len(s.rstrip("?").split()) >= 3]
+            if real_qs:
                 v("no-question-finish", f"reply {n}: the close still asks: {body.strip()!r}")
 
         # fake praise: agreement-only child answer must not be celebrated
@@ -176,8 +189,9 @@ def check(tr):
     # (device bug #360356: "That is okay! GOAL! GOAL!" sent twice, the MEET
     # line re-read verbatim at a confused kid). Ritual call formulas and
     # word-shouts/praise stubs repeat freely — at this age ritual is a hug.
-    # "shout with me" stays OUT: it marks the play invite, which is once-ever.
-    rituals = {"say it with me", "one more time", "yes or no"}
+    # Repeated invites are caught by the invite budget, so all ritual call
+    # formulas are exempt here.
+    rituals = {"say it with me", "one more time", "shout with me", "yes or no"}
     seen = {}
     for n, r in enumerate(replies, 1):
         for s in re.split(r"(?<=[.!?])\s+", strip_tags(r).strip()):
