@@ -35,9 +35,10 @@ BUDGETS = {
     "warmup_teaching_rules_l1_soccer.md": (100, 1450),
     "leadin_teaching_rules_l1_soccer_step_pre_video.md": (40, 600),
     "leadin_teaching_rules_l1_soccer_step_post_video.md": (55, 900),
-    # Raised 1700 -> 1950 for the HUMAN RULE doctrine + device #360356 bad
-    # examples (answer-first, no-repeat, 5-reply cap) — deliberate, not creep.
-    "word_teaching_rules_l1_soccer.md": (100, 1950),
+    # Raised 1700 -> 1950 -> 2100 across two device-bug rounds (#360356 and
+    # the 22:00 opt-out run): HUMAN RULE, invite budget, opt-out doctrine.
+    # Deliberate recalibration, not creep — trim before raising again.
+    "word_teaching_rules_l1_soccer.md": (100, 2100),
     "wrapup_teaching_rules_l1_soccer.md": (75, 1100),
 }
 

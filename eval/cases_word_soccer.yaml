@@ -44,6 +44,10 @@ word_soccer_team:
   - id: team-own-language
     note: "own-language word -> 'you know it! in English now' + retry, no translation"
     turns: ["队伍！", "team!", "TEAM!", "yes"]
+  - id: team-meaning-question
+    note: "REGRESSION (device 22:00 run): 'Team是什么意思？' got 'You can say, no.' — a nonsense menu; the meaning question is answered by SHOWING (you and me together), then the one retry"
+    turns: ["不能。 Team是什么意思？", "Team.", "TEAM!", "我不知道。"]
+    forbid_phrases: ["you can say, no", "\\bmeans\\b"]
   - id: team-question-loop
     note: "REGRESSION (device #360356): child asked '还要再读吗？' and '你一直说you and me干什么呀？' and got drilled, never answered — every question gets a real tiny answer, no sentence ever repeats, page closes by reply 5"
     turns: ["说什么呀？", "Team.", "还要再读吗？", "我不知道。"]
@@ -76,6 +80,10 @@ word_soccer_comeon:
   - id: comeon-story
     note: "child brings their thing ('我有足球！') -> tiny echo, then the retry, never a lecture"
     turns: ["我有足球！", "come on!", "COME ON!", "嗯"]
+  - id: comeon-optout
+    note: "REGRESSION (device 22:00 run): child said '我不想说了' and got two MORE invites — an opt-out ends all asking instantly; warm words, wonder or close, never another invite"
+    turns: ["Come on! Blah blah blah.", "好忙。", "我不想说了。"]
+    forbid_phrases: ["one more time"]
   - id: comeon-wonder-lost
     note: "REGRESSION (device #360356): the wonder said 'cheer', the child heard 'chair' and got lost, then the play invite came BACK twice — wonder uses owned words only, and a lost child at the wonder gets the close, never a re-invite"
     turns: ["Come on!", "Come on, team.", "我不知道什么是'chair'。"]

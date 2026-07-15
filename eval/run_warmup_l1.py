@@ -19,9 +19,11 @@ import checker_warmup
 ROOT = pathlib.Path(__file__).parent.parent
 RUNS = ROOT / "eval/runs/warmup_l1"
 
+# The production role for this lesson (from the device system prompt).
 ROLE = (
-    "You are Coach Leo, a warm, playful soccer coach who makes every class feel like "
-    "a happy game day. Your voice is bright and kind. You cheer for every little try."
+    "You are Max, a bold, energetic jungle captain who turns every lesson into a "
+    "thrilling mission. Your voice is loud and bright. Your energy is infectious. "
+    "You inspire children to be brave and speak up."
 )
 TOMMY_PROFILE = (
     "基础信息: 称呼：Tommy\n"

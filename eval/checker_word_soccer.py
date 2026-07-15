@@ -30,6 +30,21 @@ ANNOUNCER_TALK = [r"team\s+up", r"match\s+is\s+on", r"goal\s+or\s+no\s+goal",
                   r"\bchampionship\b", r"\bscore\b", r"\bcheer", r"\bchampion\b"]
 AGREEMENT_ONLY = re.compile(r"^(好|好的|ok|okay|yes|嗯|恩)[。.!！]?$", re.I)
 PRAISE = re.compile(r"great job|you got it|well done|you know it", re.I)
+# An invite asks the child's MOUTH for the word: an invite phrase with the
+# target word right after it ("One more time. Goal!"). An invite phrase
+# ALONE can be a legitimate answer-echo ("还要再读吗？" -> "Yes! One more
+# time!") and is not counted. Budget: meet + one retry + one celebration
+# shout = 3 invites max, and NONE after the child opts out ("我不想说了"
+# device bug: two more invites followed).
+INVITE_PHRASE = (r"(say\s+it|one\s+more\s+time|shout\s+with\s+me|your\s+turn"
+                 r"|say\s+with\s+me|try\s+again)")
+OPT_OUT = re.compile(r"不想说|不说了|不要说|不念|no\s+more|stop\s+it|i\s+don'?t\s+want", re.I)
+
+
+def is_invite(body, word):
+    w = word.rstrip("!")
+    return re.search(INVITE_PHRASE + r"[^.!?]{0,20}[.!?,:\s]+\W{0,3}" + re.escape(w),
+                     body, re.I) is not None
 
 
 def has_cjk(t):
@@ -53,10 +68,14 @@ def check(tr):
         v("must-finish", "last reply does not end the page with [TEMPLATE_FINISH]")
 
     retry_like = 0
+    invites = 0
+    opted_out = False
     last_user = None
     for i, m in enumerate(msgs):
         if m["role"] == "user":
             last_user = m["text"]
+            if OPT_OUT.search(last_user):
+                opted_out = True
             continue
         r = m["text"].strip()
         n = sum(1 for x in msgs[: i + 1] if x["role"] == "assistant")
@@ -139,6 +158,10 @@ def check(tr):
 
         if re.search(r"one\s+more\s+time|let'?s\s+go\s+together|try\s+again", body, re.I):
             retry_like += 1
+        if is_invite(body, word):
+            invites += 1
+            if opted_out:
+                v("opt-out", f"reply {n}: still invites after the child opted out: {body.strip()!r}")
 
         for pat in tr.get("forbid_phrases", []):
             if re.search(pat, body, re.I):
@@ -146,6 +169,8 @@ def check(tr):
 
     if retry_like > 1:
         v("one-retry", f"{retry_like} retry-shaped replies (the retry happens once, ever)")
+    if invites > 3:
+        v("invite-budget", f"{invites} invite-shaped replies (max: meet + one retry + one celebration shout)")
 
     # THE HUMAN RULE: never the same CONTENT sentence twice on one page
     # (device bug #360356: "That is okay! GOAL! GOAL!" sent twice, the MEET
