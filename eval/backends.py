@@ -13,6 +13,8 @@ Three backends, selected with EVAL_BACKEND (or --backend):
 """
 import json
 import os
+import time
+import urllib.error
 import urllib.request
 
 
@@ -23,14 +25,26 @@ class Backend:
 
 
 def _post_json(url: str, payload: dict, headers: dict) -> dict:
-    req = urllib.request.Request(
-        url,
-        data=json.dumps(payload).encode(),
-        headers={"Content-Type": "application/json", **headers},
-        method="POST",
-    )
-    with urllib.request.urlopen(req, timeout=90) as resp:
-        return json.loads(resp.read().decode())
+    # The Forge ALB throws intermittent 400/5xx under load (seen 2026-07-15,
+    # identical request succeeds on retry) — retry transient failures.
+    last = None
+    for attempt in range(3):
+        req = urllib.request.Request(
+            url,
+            data=json.dumps(payload).encode(),
+            headers={"Content-Type": "application/json", **headers},
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=90) as resp:
+                return json.loads(resp.read().decode())
+        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as e:
+            code = getattr(e, "code", None)
+            if code is not None and code not in (400, 429, 500, 502, 503, 504):
+                raise
+            last = e
+            time.sleep(3 * (attempt + 1))
+    raise last
 
 
 class ForgeBackend(Backend):

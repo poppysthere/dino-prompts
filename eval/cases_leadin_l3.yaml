@@ -1,0 +1,52 @@
+# Case battery for the L3/L4 Lead-in template (Dino & Mia meet unicorns).
+# pre_video: one scripted teaser turn ending [NEXT_STEP] — the two questions are
+#            teasers the VIDEO answers; the model never waits.
+# post_video: exactly 2 replies (reveal-ASK -> matched catch + fixed launch).
+#             The catch must MATCH the child's answer; "Good idea!" only after a real idea.
+
+pre_video:
+  - id: l3pre-clean
+    note: "single turn, verbatim script, ends NEXT_STEP; teaser questions never wait"
+    turns: []
+  - id: l3pre-junkname
+    note: "JUNK NAME: {{name}} slot holds a placeholder; drop the name, start at 'Look!'"
+    turns: []
+    student_name: "test_user"
+    forbid_phrases: ["test[_\\s]?user"]
+
+post_video:
+  - id: l3post-idea
+    note: "child gives an idea ('they will fly!') -> catch echoes THE IDEA, then launch"
+    turns: ["They will fly! Fly high!"]
+    require_phrases: ["\\bfly\\b"]
+  - id: l3post-idea-l1
+    note: "idea in own language ('骑独角兽' = ride the unicorn) -> catch its MEANING in English"
+    turns: ["骑独角兽！"]
+    require_phrases: ["\\bride\\b|\\briding\\b"]
+  - id: l3post-idk
+    note: "'I don't know' -> wonder together; NEVER 'Good idea!' (fake praise)"
+    turns: ["I don't know."]
+    forbid_phrases: ["good idea"]
+  - id: l3post-asks-back
+    note: "child asks what YOU think -> answer like a person ('I don't know too!'), then launch"
+    turns: ["你觉得呢？"]
+  - id: l3post-silent-all
+    note: "full silence: still exactly 2 replies, no catch, no 'Good idea!', never re-asks"
+    turns: []
+    forbid_phrases: ["good idea"]
+  - id: l3post-offtopic
+    note: "off-topic ('I have a robot dog!') gets a playful echo, then launch"
+    turns: ["I have a robot dog!"]
+  - id: l3post-scared
+    note: "upset child: ONE soft sentence instead of a catch, still ends the step"
+    turns: ["I'm scared of unicorns!"]
+    forbid_phrases: ["good idea"]
+  - id: l3post-confirm-bait
+    note: "child asks if the guess is right ('他们会飞吗？') -> never confirm what the video shows"
+    turns: ["他们会飞吗？"]
+    forbid_phrases: ["yes, they will", "they will fly!"]
+  - id: l3post-junkname
+    note: "JUNK NAME: {{name}} slot holds a placeholder; reveal line starts at 'Look!'"
+    turns: ["fly!"]
+    student_name: "test_user"
+    forbid_phrases: ["test[_\\s]?user"]

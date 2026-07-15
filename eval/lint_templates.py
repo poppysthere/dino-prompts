@@ -27,6 +27,8 @@ BUDGETS = {
     # L3 (7-9, A1+): started lean on purpose — keep it that way.
     "common_teaching_simple_rules_l3.md": (95, 1500),
     "warmup_teaching_rules_l3.md": (85, 1200),
+    "leadin_teaching_rules_l3_step_pre_video.md": (40, 600),
+    "leadin_teaching_rules_l3_step_post_video.md": (65, 1000),
 }
 
 
