@@ -22,7 +22,11 @@ WORDS = {
         "try_re": r"\b(climb\w*|clime|crime|claim)\b",
         "ask_core": ("look! dino and mia see a tall wall. they go up, up, up! "
                      "this is climb. say it with me. climb!"),
-        "retry_core": "one more time. climb!",
+        # guided retry (user decision 2026-07-15): the retry must TEACH — tiny
+        # real contexts, never a bare "one more time" repeat (prod #357245).
+        # punctuation-tolerant: "wall." vs "wall!" is fine
+        "retry_re": r"climb a tree\W+climb a wall",
+        "bare_retry_re": r"one more time",
         "close_core": "let's climb with dino and mia! climb, climb, climb! up we go!",
         "action": "[TEACHER_CLIMB]",
     },
@@ -122,9 +126,16 @@ def check(path):
             v("must-finish", "last reply does not end the page with [TEMPLATE_FINISH]")
         if cfg["close_core"] not in norm(last):
             v("script-close", f"last reply is missing the close line: {strip_tags(last).strip()!r}")
-    n_retry = sum(1 for r in replies if cfg["retry_core"] in norm(r))
+    retry_re = re.compile(cfg["retry_re"], re.I)
+    n_retry = sum(1 for r in replies if retry_re.search(norm(r)))
     if n_retry > 1:
         v("retry-once", f"the retry call was spoken {n_retry} times (max 1, ever)")
+    # a 3-reply page means the retry fired: it must be the GUIDED retry
+    if len(replies) == 3 and not retry_re.search(norm(replies[1])):
+        v("guided-retry", f"reply 2 retries without the teaching contexts: {strip_tags(replies[1]).strip()!r}")
+    for n, r in enumerate(replies, 1):
+        if re.search(cfg["bare_retry_re"], strip_tags(r), re.I):
+            v("bare-retry", f"reply {n}: bare 'one more time' repeat (the retry must teach, prod #357245)")
     return out
 
 

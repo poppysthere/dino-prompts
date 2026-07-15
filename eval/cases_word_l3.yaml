@@ -13,9 +13,9 @@ word_l3_climb:
     require_phrases: ["great job"]
     forbid_phrases: ["\\bbad\\b", "police"]
   - id: climb-agree-retry
-    note: "REGRESSION CLASS (L2 prod 352593): '好。' is agreement, NOT a try -> catch + retry, praise only after the real try"
+    note: "REGRESSION CLASS (L2 prod 352593): '好。' is agreement, NOT a try -> catch + guided retry, praise only after the real try"
     turns: ["好。", "Climb!"]
-    require_phrases: ["one more time", "great job"]
+    require_phrases: ["climb a tree", "great job"]
   - id: climb-agree-loop
     note: "agreement after the retry too -> SOFT close now; the retry happens ONCE, ever; no fake praise"
     turns: ["好。", "嗯。"]
@@ -34,8 +34,13 @@ word_l3_climb:
     turns: ["I climb trees at home!"]
     require_phrases: ["great job", "tree|no way"]
     forbid_phrases: ["one more time"]
+  - id: climb-nearmiss
+    note: "REGRESSION (prod #357245): ASR noise then 'Club.' — a brave near-miss gets 'SO close!', never a shrug ('That's okay') and never fake 'Great job'"
+    turns: ["5 o'clock.", "Club."]
+    require_phrases: ["so close"]
+    forbid_phrases: ["great job", "that's okay"]
   - id: climb-silent-all
-    note: "fully silent page: ASK -> retry (no catch) -> SOFT close; silence never earns 'Great job'"
+    note: "fully silent page: ASK -> guided retry (no catch) -> SOFT close; silence never earns 'Great job'"
     turns: []
     forbid_phrases: ["great job"]
   - id: climb-junkname
