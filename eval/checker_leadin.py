@@ -32,6 +32,12 @@ ASK_L3 = ("look! unicorns! dino and mia meet some unicorns! "
 LAUNCH_L3 = "let's watch and find out!"
 IDK_SIGNALS = ["don't know", "dont know", "不知道", "no sé", "no se"]
 
+# --- Festival: 足球课 World Cup special (ages 4-6, pre-A1) ---
+# pre-video is a fixed no-question hype line; post-video is ONE reply
+# (feel + hook + go), never waits, never asks.
+PRE_LINE_SOCCER = ("look! soccer time! it's the world cup! "
+                   "a big big soccer party! let's watch! come on!")
+
 
 def has_cjk(t):
     return any(unicodedata.category(c) == "Lo" and "CJK" in unicodedata.name(c, "") for c in t)
@@ -94,6 +100,11 @@ def check(path):
             if family == "leadin_l3":
                 if PRE_LINE_L3 not in norm(r):
                     v("script", f"pre-video reply deviates from the fixed script: {strip_tags(r).strip()!r}")
+            elif family == "leadin_l1_soccer":
+                if PRE_LINE_SOCCER not in norm(r):
+                    v("script", f"pre-video reply deviates from the fixed script: {strip_tags(r).strip()!r}")
+                if "?" in strip_tags(r):
+                    v("no-question", "pre-video must not ask anything")
             else:
                 if PRE_LINE.lower() not in norm(r):
                     v("script", f"pre-video reply deviates from the fixed script: {strip_tags(r).strip()!r}")
@@ -103,6 +114,8 @@ def check(path):
 
     if family == "leadin_l3":
         return check_post_l3(tr, replies, users, v, out)
+    if family == "leadin_l1_soccer":
+        return check_post_soccer(tr, replies, users, v, out)
 
     # post_video: exactly 2 replies (ASK -> confirm+launch), no ready-wait
     if len(replies) != 2:
@@ -143,6 +156,31 @@ def check(path):
         if re.search(rf"\b{CULPRIT}\b", r, re.I):
             v("spoiler", f"reply {n}: teacher says the culprit ({CULPRIT!r})")
 
+    return out
+
+
+def check_post_soccer(tr, replies, users, v, out):
+    """足球课 post-video: ONE reply (feel + hook + go), no waits, no questions."""
+    if len(replies) != 1:
+        v("one-reply", f"post-video must be exactly 1 reply, got {len(replies)}")
+    if replies:
+        r = replies[0]
+        body = strip_tags(r)
+        if "[TEMPLATE_FINISH]" not in r:
+            v("must-finish", "the reply does not end the lead-in with [TEMPLATE_FINISH]")
+        if "[STUDENT_TALK]" in r or "[NEXT_STEP]" in r:
+            v("no-wait", "post-video must never wait or start another video")
+        if "?" in body:
+            v("no-question", f"post-video asks a question nobody waits for: {body.strip()!r}")
+        sents = [s for s in re.split(r"(?<=[.!])\s+", body.strip()) if s.strip()]
+        if len(sents) > 8:
+            v("size", f"reply has {len(sents)} bursts (max 6 tiny ones + slack)")
+        long = [s for s in sents if len(s.split()) > 9]
+        if long:
+            v("size", f"sentence over the tiny-kid budget: {long[0]!r}")
+        for pat in [r"\bmeans\b", r"say\s+it\s+with\s+me", r"can\s+you\s+say", r"repeat\s+after"]:
+            if re.search(pat, body, re.I):
+                v("no-teaching", f"lead-in is teaching ({pat!r})")
     return out
 
 

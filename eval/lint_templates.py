@@ -30,9 +30,11 @@ BUDGETS = {
     "warmup_teaching_rules_l3.md": (85, 1200),
     "leadin_teaching_rules_l3_step_pre_video.md": (40, 600),
     "leadin_teaching_rules_l3_step_post_video.md": (65, 1000),
-    # Festival: 足球课 (World Cup soccer, 4-6, pre-A1) — new pair, keep lean.
+    # Festival: 足球课 (World Cup soccer, 4-6, pre-A1) — keep lean.
     "common_teaching_simple_rules_l1_soccer.md": (95, 1450),
     "warmup_teaching_rules_l1_soccer.md": (100, 1450),
+    "leadin_teaching_rules_l1_soccer_step_pre_video.md": (40, 600),
+    "leadin_teaching_rules_l1_soccer_step_post_video.md": (55, 900),
 }
 
 

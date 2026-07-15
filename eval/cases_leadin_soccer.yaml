@@ -1,0 +1,38 @@
+# Case battery for the 足球课 (World Cup soccer festival) lead-in, ages 4-6, pre-A1.
+# Templates: prompts/festival/leadin_teaching_rules_l1_soccer_step_{pre,post}_video.md
+# Checker: checker_leadin.py, family leadin_l1_soccer.
+# pre-video = one fixed hype line ending [NEXT_STEP], no questions.
+# post-video = ONE reply (feel + hook + go) ending [TEMPLATE_FINISH], no waits, no questions.
+
+pre_video:
+  - id: soc-pre-name
+    note: "happy path: the fixed line with the child's name, ends [NEXT_STEP]"
+    student_name: tom
+    require_phrases: ["\\btom\\b"]
+  - id: soc-pre-junkname
+    note: "REGRESSION CLASS: <studentName>=test_user -> line starts at 'Look!', junk never spoken"
+    student_name: test_user
+    forbid_phrases: ["test[_\\s]?user"]
+  - id: soc-pre-history
+    note: "chat from the past step must not change the fixed line or add reactions"
+    student_name: tom
+    seed:
+      - {role: assistant, text: "Good! Let's go![TEMPLATE_FINISH]"}
+      - {role: user, text: "我还想玩刚才的游戏！"}
+
+post_video:
+  - id: soc-post-basic
+    note: "one reply: feel + hook from videoDescribe + go; no question, no wait"
+    student_name: tom
+    require_phrases: ["goal|ball|kick|soccer"]
+  - id: soc-post-junkname
+    note: "junk default name never spoken in the close"
+    student_name: test_user
+    forbid_phrases: ["test[_\\s]?user"]
+  - id: soc-post-history
+    note: "REGRESSION CLASS (step-boundary): child talked during the video step; the post-video reply still runs its one scripted-shape turn, never answers with a wait"
+    student_name: tom
+    seed:
+      - {role: assistant, text: "Tom! Look! Soccer time! It's the World Cup! A big big soccer party! Let's watch! Come on![TEACHER_POINT_TO_SCREEN][NEXT_STEP]"}
+      - {role: user, text: "我想喝水。"}
+    require_phrases: ["goal|ball|kick|soccer"]
