@@ -31,6 +31,10 @@ path_a:  # first meeting — introduce yourself, ask the name
     note: "shy kid: '不知道' to the name question = move on as friends, never a task or a lecture"
     turns: ["不知道。", "yes"]
     forbid_phrases: ["is it hard", "\\bmeans\\b"]
+  - id: a1-babble-loop
+    note: "REGRESSION (device 15:33 run): babble got echoed ('My friend, your DUDU!'), then 'Are you happy today?' was asked THREE times, twice verbatim, plus a Path B 'Good to see you again!' on a first meeting — the counter law: reply 2 = happy question, reply 3 = close, whatever the child says"
+    turns: ["爸爸爸，我的嘟嘟。", "Name. Hi.", "I don't know.", "I don't know."]
+    forbid_phrases: ["dudu", "\\bagain\\b"]
   - id: a1-name-budget
     note: "REGRESSION (device 10:43 run): 'good afternoon' then '我不知道' got THREE name asks and a nonsense menu ('You can say, hi. Or, yes.') — one re-ask max, then 'my friend' and the happy question"
     turns: ["Um, good afternoon.", "我不知道。", "Hi."]
@@ -68,7 +72,7 @@ path_b:  # returning student — name question / self-intro forbidden the whole 
   - id: b1-answer-first
     note: "REGRESSION (prod class): child asks the teacher's question back — answer like a person FIRST, then retake the turn"
     turns: ["Are you happy?", "yes!"]
-    require_phrases: ["(i am|i'm|me\\?)[^.!?]*(happy|great|good)"]
+    require_phrases: ["(i am|i'm|\\bme\\b)[^.!?]{0,16}(happy|great|good)"]
     max_beats: 4
   - id: b1-silent-all
     note: "2-rung ladder; the re-invite stays path B (never 'what's your name')"

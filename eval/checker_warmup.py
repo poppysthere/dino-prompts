@@ -104,6 +104,25 @@ def check(transcript: dict):
                     if norm in seen_sents and seen_sents[norm] != bn:
                         v("sentence-repeat", f"beat {bn}: repeats {s!r} (first said beat {seen_sents[norm]})")
                     seen_sents.setdefault(norm, bn)
+        # the happy question specifically (device bug: asked four times,
+        # reworded or not): ONE ask, plus at most one re-ask and only right
+        # after a real confusion turn (the page's sanctioned exception) —
+        # never after silence or an answer
+        CONFUSED = re.compile(r"你说什么|说什么呀|什么呀|听不懂|再说|what did you say|huh", re.I)
+        happy_beats, last_u, bn = [], "", 0
+        for m in msgs:
+            if m["role"] == "user":
+                last_u = m["text"]
+                continue
+            bn += 1
+            if re.search(r"\b(are\s+)?you\s+happy\b[^.!]*\?", strip_tags(m["text"]), re.I):
+                happy_beats.append((bn, last_u))
+        for bn, prev in happy_beats[1:]:
+            if not CONFUSED.search(prev):
+                v("happy-once", f"beat {bn}: happy question re-asked after {prev!r} "
+                                f"(first asked beat {happy_beats[0][0]}) — only a confusion turn may re-ask, once")
+        if len(happy_beats) > 2:
+            v("happy-once", f"happy question asked {len(happy_beats)} times — one ask + one confusion re-ask max")
 
     # Name handling (prod bug 2026-07-12: "Lily! Hi, rosa." — spoken name must WIN,
     # the default/profile name must disappear, never both in one reply).
@@ -191,6 +210,9 @@ def check(transcript: dict):
         else:
             if n == 1 and not re.search(r"\bname\b", body, re.I):
                 v("path-a-ask-name", "beat 1: first meeting but the teacher never asks the name")
+            # device bug 15:33: "Good to see you again!" to a brand-new student
+            if re.search(r"\bagain\b|you'?re\s+back|welcome\s+back", body, re.I):
+                v("path-a-reunion", f"beat {n}: reunion wording on a FIRST meeting: {body.strip()!r}")
             if n == 1 and name and name in body.lower():
                 v("path-a-name-leak", f"beat 1: says '{name}' before the child ever gave it")
 
