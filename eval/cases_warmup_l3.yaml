@@ -32,6 +32,13 @@ path_a:  # first meeting — introduce yourself, ask the name
   - id: a3-silent-all
     note: "2-rung silence ladder: one re-invite, then a warm close; never a third wait"
     turns: []
+  - id: a3-role-name
+    note: "REGRESSION (L1 Coach Leo / Coach Max bug class): the intro name is the BARE # Role name — role says Kim, so 'I'm Kim!', never 'Max' from a template example and never a title like 'teacher Kim'"
+    role: "You are Kim, a warm, playful big-sister teacher who makes every class feel like an adventure with a friend. Your voice is bright and kind. You cheer for every little try."
+    spoken_name: leo
+    turns: ["Leo", "I'm good!"]
+    require_phrases: ["\\bkim\\b"]
+    forbid_phrases: ["\\bmax\\b", "(teacher|coach|miss|ms\\.?) kim"]
 
 path_a_extra:  # first meeting — real-person moves (recast, feed the line)
   - id: a3-recast-grammar
