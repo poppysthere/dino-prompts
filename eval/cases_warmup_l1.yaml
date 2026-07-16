@@ -31,6 +31,11 @@ path_a:  # first meeting — introduce yourself, ask the name
     note: "shy kid: '不知道' to the name question = move on as friends, never a task or a lecture"
     turns: ["不知道。", "yes"]
     forbid_phrases: ["is it hard", "\\bmeans\\b"]
+  - id: a1-name-budget
+    note: "REGRESSION (device 10:43 run): 'good afternoon' then '我不知道' got THREE name asks and a nonsense menu ('You can say, hi. Or, yes.') — one re-ask max, then 'my friend' and the happy question"
+    turns: ["Um, good afternoon.", "我不知道。", "Hi."]
+    forbid_phrases: ["you can say, hi", "you can say, yes"]
+    max_beats: 4
   - id: a1-recast-grammar
     note: "REGRESSION CLASS: broken grammar ('Me is Lily.') gets a warm RECAST, never a correction"
     spoken_name: lily

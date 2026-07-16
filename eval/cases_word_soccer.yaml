@@ -3,7 +3,8 @@
 # Forge instances: Goal! / team / Come on!  Checker: checker_word_soccer.py
 # (structural — the lines are generated from word + imageDesc).
 # Flow: MEET -> (retry only if needed) -> wonder chat -> close.
-# Two say-invites max, ever; after them every wait ends on a real question.
+# Two say-invites max, ever. ONE question total (the wonder), asked once:
+# whatever the child replies to it, the next teacher reply is the close.
 
 word_soccer_goal:
   - id: goal-pass
@@ -32,6 +33,10 @@ word_soccer_goal:
   - id: goal-lost-kid
     note: "REGRESSION (device #360356): '这是什么？' and '我不懂' got 'That is okay! GOAL! GOAL!' twice verbatim — a lost child gets a real answer and a NEW tiny scene, never the same sentence again, and the page ends by reply 5"
     turns: ["Good!", "嗯，这是什么？", "我不懂。", "我不懂，不明白。"]
+  - id: goal-goat
+    note: "REGRESSION (device 10:43 run): '嗯，goat。' after the goal call got 'That is close!' and more asking — goat IS machine-eared goal; it passes, wonder, close"
+    turns: ["嗯，goat。", "我不知道。"]
+    forbid_phrases: ["one more time", "try again"]
   - id: goal-junkname
     note: "<studentName>=test_user -> never spoken"
     student_name: test_user
@@ -57,6 +62,9 @@ word_soccer_team:
     note: "REGRESSION (device #360356): child asked '还要再读吗？' and '你一直说you and me干什么呀？' and got drilled, never answered — every question gets a real tiny answer, no sentence ever repeats, page closes by reply 5"
     turns: ["说什么呀？", "Team.", "还要再读吗？", "我不知道。"]
     forbid_phrases: ["oops, sorry"]
+  - id: team-asked-already
+    note: "REGRESSION (device 10:43 run): the wonder got re-asked until the child said '你问过我了？' — after the wonder's answer the page CLOSES; a question at the close gets a tiny answer inside the close, never a new question"
+    turns: ["屁。", "Team!", "你问过我了？"]
   - id: team-after-goal-page
     note: "REGRESSION CLASS: the goal page just closed in history; this page's word is team — goal never spoken here"
     turns: ["Team!", "TEAM!", "yes"]
@@ -88,6 +96,9 @@ word_soccer_comeon:
   - id: comeon-echo
     note: "REGRESSION (device 07:30 run): child passed, then kept echoing 'Come on!' because every wait ended on the word — four shout rounds. After the celebration the wonder comes; a re-said word gets 'Ha ha! You love it!', never a new shout"
     turns: ["Come on!", "Come on!", "Come on!"]
+  - id: comeon-bored
+    note: "REGRESSION (device 10:43 run): at the wonder the child said '什么呀，没意思。' (boring!) and got 'Big hug. Is the ball big?' then the same question three more times — boredom IS the answer: catch it warm and CLOSE"
+    turns: ["Come on.", "什么呀，没意思。"]
   - id: comeon-whatsay
     note: "REGRESSION (device 22:50 run): '要我说什么呀？' (what do I say?) got bare shouting, then another invite-shaped wait — the question is ANSWERED ('Nothing more! We play!') and the page moves on"
     turns: ["Come on.", "COME ON!", "要我说什么呀？"]

@@ -91,6 +91,7 @@ def check(tr):
     retry_like = 0
     invites = 0
     opted_out = False
+    wonder_asked = False
     last_user = None
     for i, m in enumerate(msgs):
         if m["role"] == "user":
@@ -116,11 +117,19 @@ def check(tr):
         # question (device echo-loop bug: waits ending on the bare word made
         # the child echo forever).
         if "[STUDENT_TALK]" in r:
+            # ONE-QUESTION LAW: once the wonder is out and the child has had
+            # their turn, the next reply is the close — never another wait
+            # (real bug: "Is the ball big?" four rounds, "你问过我了？…干嘛一直问？")
+            if wonder_asked:
+                v("second-question", f"reply {n}: still waiting after the wonder "
+                                     f"— the reply after its answer is the close: {body.strip()!r}")
             inv = is_invite(body, word)
             if inv and n > 2:
                 v("invite-late", f"reply {n}: still asks for the word after the two invites: {body.strip()!r}")
             if not inv and "?" not in body:
                 v("wait-job", f"reply {n}: waits but hands the child no job: {body.strip()!r}")
+            if not inv:
+                wonder_asked = True
             if inv:
                 invites += 1
                 if opted_out:
@@ -194,13 +203,15 @@ def check(tr):
         nq = sum(1 for s in segs if real_question(s))
         if nq > 1:
             v("one-question", f"reply {n}: {nq} real questions in one reply")
-        # the close asks no REAL question — tiny rhetorical echoes ("No?",
-        # "Chair?") and short echoes of the child's own words ("You don't
-        # know chair?" answered in the same breath) are a warm catch, not
-        # a wait
+        # the close asks no REAL question. A short question OPENING the close
+        # is a warm catch ("You don't know? That's okay." — echoing a CJK
+        # answer leaves no shared tokens, so length+position stand in for
+        # the echo test); a question later or last is a dangling re-ask.
         if "[TEMPLATE_FINISH]" in r and "?" in body:
-            if any(real_question(s) for s in segs) or re.search(
-                    r"yes\s+or\s+no\s*\?", body, re.I):
+            qs = [(i, s) for i, s in enumerate(segs) if real_question(s)]
+            qs = [(i, s) for i, s in qs
+                  if not (i == 0 and len(re.findall(r"[a-z]+", s.lower())) <= 4)]
+            if qs or re.search(r"yes\s+or\s+no\s*\?", body, re.I):
                 v("no-question-finish", f"reply {n}: the close still asks: {body.strip()!r}")
 
         # fake praise: agreement-only child answer must not be celebrated
