@@ -31,11 +31,12 @@ ANNOUNCER_TALK = [r"team\s+up", r"match\s+is\s+on", r"goal\s+or\s+no\s+goal",
 AGREEMENT_ONLY = re.compile(r"^(好|好的|ok|okay|yes|嗯|恩)[。.!！]?$", re.I)
 PRAISE = re.compile(r"great job|you got it|well done|you know it", re.I)
 # An invite asks the child's MOUTH for the word: an invite phrase with the
-# target word right after it ("One more time. Goal!"). An invite phrase
+# target word right after it ("One more time. Goal!"), OR a wait whose last
+# words are the bare word as a call ("...Come on! Come on!" — the child WILL
+# echo it; real device echo-loop bug ran four rounds). An invite phrase
 # ALONE can be a legitimate answer-echo ("还要再读吗？" -> "Yes! One more
-# time!") and is not counted. Budget: meet + one retry + one celebration
-# shout = 3 invites max, and NONE after the child opts out ("我不想说了"
-# device bug: two more invites followed).
+# time!") and is not counted. Budget: TWO invites (meet + one retry), both
+# in the first two replies, and NONE after the child opts out.
 INVITE_PHRASE = (r"(say\s+it|one\s+more\s+time|shout\s+with\s+me|your\s+turn"
                  r"|say\s+with\s+me|try\s+again)")
 OPT_OUT = re.compile(r"不想说|不说了|不要说|不念|no\s+more|stop\s+it|i\s+don'?t\s+want", re.I)
@@ -43,8 +44,17 @@ OPT_OUT = re.compile(r"不想说|不说了|不要说|不念|no\s+more|stop\s+it|
 
 def is_invite(body, word):
     w = word.rstrip("!")
-    return re.search(INVITE_PHRASE + r"[^.!?]{0,20}[.!?,:\s]+\W{0,3}" + re.escape(w),
-                     body, re.I) is not None
+    # invite phrase and the word in either order, close together
+    # ("Say it with me. Goal!" / model variant "Team! Say it!")
+    if re.search(INVITE_PHRASE + r"[^.!?]{0,20}[.!?,:\s]+\W{0,3}" + re.escape(w),
+                 body, re.I):
+        return True
+    if re.search(re.escape(w) + r"\W{0,3}\s*" + INVITE_PHRASE, body, re.I):
+        return True
+    # ends on the word as a call, with no question to answer instead
+    tail = re.sub(r"[^a-z\s']", " ", body.lower()).split()
+    wl = w.lower().split()
+    return "?" not in body and len(tail) >= len(wl) and tail[-len(wl):] == wl
 
 
 def has_cjk(t):
@@ -62,8 +72,8 @@ def check(tr):
     out = []
     v = lambda rule, msg: out.append(f"[{rule}] {msg}")
 
-    if len(replies) > 5:
-        v("beat-budget", f"{len(replies)} teacher replies (max 5: meet, retry, play, wonder, close)")
+    if len(replies) > 4:
+        v("beat-budget", f"{len(replies)} teacher replies (max 4: meet, retry, wonder, close)")
     if replies and "[TEMPLATE_FINISH]" not in replies[-1]:
         v("must-finish", "last reply does not end the page with [TEMPLATE_FINISH]")
 
@@ -91,19 +101,19 @@ def check(tr):
                 v("forbidden-tag", f"reply {n}: uses {t}")
         if "[STUDENT_TALK]" in r and "[TEACHER_LISTEN]" not in r:
             v("listen", f"reply {n}: waits without [TEACHER_LISTEN]")
-        # A WAIT is a JOB (device bug: "Yes! Great job! You and me. One
-        # team!" + wait — the lost child said the word again and again).
-        # A waiting reply must end holding a job: a question, a say-it/
-        # shout call, or a call ending on the target word ("...Goal!").
-        segs_all = [s for s in re.split(r"(?<=[.!?])\s+", body.strip()) if s.strip()]
-        last_seg = re.sub(r"[^a-z\s']", "", segs_all[-1].lower()).strip() if segs_all else ""
-        if "[STUDENT_TALK]" in r and not (
-            "?" in body
-            or re.search(r"\bsay\b|shout\s+with\s+me|one\s+more\s+time"
-                         r"|your\s+turn|try\s+again|with\s+me", body, re.I)
-            or last_seg.endswith(word.rstrip("!"))
-        ):
-            v("wait-job", f"reply {n}: waits but hands the child no job: {body.strip()!r}")
+        # A WAIT is a JOB, and after the two invites the only job is a real
+        # question (device echo-loop bug: waits ending on the bare word made
+        # the child echo forever).
+        if "[STUDENT_TALK]" in r:
+            inv = is_invite(body, word)
+            if inv and n > 2:
+                v("invite-late", f"reply {n}: still asks for the word after the two invites: {body.strip()!r}")
+            if not inv and "?" not in body:
+                v("wait-job", f"reply {n}: waits but hands the child no job: {body.strip()!r}")
+            if inv:
+                invites += 1
+                if opted_out:
+                    v("opt-out", f"reply {n}: still invites after the child opted out: {body.strip()!r}")
         for t in re.findall(r"\[TEACHER_[A-Z_]+\]", r):
             if t not in KNOWN_ACTIONS:
                 v("unknown-action", f"reply {n}: {t} is not a registered avatar action")
@@ -150,19 +160,33 @@ def check(tr):
             if any(re.search(p, body, re.I) for p in teach_pats):
                 v("wrong-word", f"reply {n}: teaches {other!r} on a {word!r} page")
 
-        # at most ONE real question per reply ("Yes or no?" choice tails are free)
+        # at most ONE real question per reply. "Yes or no?" choice tails and
+        # tiny echoes of the child's own words ("You say yes?") are free.
+        child_words = set(re.findall(r"[a-z]{3,}", (last_user or "").lower()))
+
+        def real_question(s):
+            if not s.endswith("?"):
+                return False
+            if re.fullmatch(r"yes\s+or\s+no\s*\?", s.strip(), re.I):
+                return False
+            toks = re.findall(r"[a-z]+", s.lower())
+            if len(toks) <= 2:
+                return False
+            if len(toks) <= 6 and child_words & set(t for t in toks if len(t) >= 3):
+                return False
+            return True
+
         segs = re.split(r"(?<=[.!?])\s+", body.strip())
-        nq = sum(1 for s in segs if s.endswith("?")
-                 and len(s.rstrip("?").split()) >= 3
-                 and not re.fullmatch(r"yes\s+or\s+no\s*\?", s.strip(), re.I))
+        nq = sum(1 for s in segs if real_question(s))
         if nq > 1:
             v("one-question", f"reply {n}: {nq} real questions in one reply")
         # the close asks no REAL question — tiny rhetorical echoes ("No?",
-        # "Chair?", max 2 words) are a warm catch, not a wait
+        # "Chair?") and short echoes of the child's own words ("You don't
+        # know chair?" answered in the same breath) are a warm catch, not
+        # a wait
         if "[TEMPLATE_FINISH]" in r and "?" in body:
-            real_qs = [s for s in segs if s.endswith("?")
-                       and len(s.rstrip("?").split()) >= 3]
-            if real_qs:
+            if any(real_question(s) for s in segs) or re.search(
+                    r"yes\s+or\s+no\s*\?", body, re.I):
                 v("no-question-finish", f"reply {n}: the close still asks: {body.strip()!r}")
 
         # fake praise: agreement-only child answer must not be celebrated
@@ -171,10 +195,6 @@ def check(tr):
 
         if re.search(r"one\s+more\s+time|let'?s\s+go\s+together|try\s+again", body, re.I):
             retry_like += 1
-        if is_invite(body, word):
-            invites += 1
-            if opted_out:
-                v("opt-out", f"reply {n}: still invites after the child opted out: {body.strip()!r}")
 
         for pat in tr.get("forbid_phrases", []):
             if re.search(pat, body, re.I):
@@ -182,8 +202,8 @@ def check(tr):
 
     if retry_like > 1:
         v("one-retry", f"{retry_like} retry-shaped replies (the retry happens once, ever)")
-    if invites > 3:
-        v("invite-budget", f"{invites} invite-shaped replies (max: meet + one retry + one celebration shout)")
+    if invites > 2:
+        v("invite-budget", f"{invites} invite-shaped replies (max 2: the meet call + one retry)")
 
     # THE HUMAN RULE: never the same CONTENT sentence twice on one page
     # (device bug #360356: "That is okay! GOAL! GOAL!" sent twice, the MEET

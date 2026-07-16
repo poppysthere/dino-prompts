@@ -2,17 +2,22 @@
 # One template (word_teaching_rules_l1_soccer.md), three lesson words from the
 # Forge instances: Goal! / team / Come on!  Checker: checker_word_soccer.py
 # (structural — the lines are generated from word + imageDesc).
-# Flow: MEET -> (retry once) -> PLAY invite -> play react + tiny wonder -> close.
+# Flow: MEET -> (retry only if needed) -> wonder chat -> close.
+# Two say-invites max, ever; after them every wait ends on a real question.
 
 word_soccer_goal:
   - id: goal-pass
-    note: "happy path: try -> celebrate + shout play -> wonder -> close; max 4 replies"
+    note: "happy path: try -> celebrate + wonder in one reply -> close; max 4 replies"
     turns: ["Goal!", "GOAL! GOAL!", "yes!"]
     require_phrases: ["\\bgoal\\b"]
   - id: goal-asr
     note: "'go!' right after the invite is machine-written goal — generous pass, never a retry"
     turns: ["Go!", "goal", "no"]
     forbid_phrases: ["one more time"]
+  - id: goal-good-mishear
+    note: "REGRESSION (device 07:30 run): 'Good.' then 'God.' right after the goal call got three drills — machine-written goal; a pass (or at worst ONE warm retry) and never a 'Good try!' mislabel. Structural guards cap the invites"
+    turns: ["Good.", "yes"]
+    forbid_phrases: ["good try"]
   - id: goal-agree-retry
     note: "REGRESSION CLASS: '好。' is agreement, not a try — no 'Great job', one guided retry"
     turns: ["好。", "goal", "GOAL!", "yes"]
@@ -21,7 +26,7 @@ word_soccer_goal:
     turns: ["什么意思呀？", "goal!", "goal", "嗯"]
     forbid_phrases: ["\\bmeans\\b"]
   - id: goal-silent-all
-    note: "fully silent page: exactly 5 replies, no praise, warm close"
+    note: "fully silent page: exactly 4 replies, no praise, warm close"
     turns: []
     forbid_phrases: ["great job|you got it|well done"]
   - id: goal-lost-kid
@@ -80,6 +85,9 @@ word_soccer_comeon:
   - id: comeon-story
     note: "child brings their thing ('我有足球！') -> tiny echo, then the retry, never a lecture"
     turns: ["我有足球！", "come on!", "COME ON!", "嗯"]
+  - id: comeon-echo
+    note: "REGRESSION (device 07:30 run): child passed, then kept echoing 'Come on!' because every wait ended on the word — four shout rounds. After the celebration the wonder comes; a re-said word gets 'Ha ha! You love it!', never a new shout"
+    turns: ["Come on!", "Come on!", "Come on!"]
   - id: comeon-whatsay
     note: "REGRESSION (device 22:50 run): '要我说什么呀？' (what do I say?) got bare shouting, then another invite-shaped wait — the question is ANSWERED ('Nothing more! We play!') and the page moves on"
     turns: ["Come on.", "COME ON!", "要我说什么呀？"]
