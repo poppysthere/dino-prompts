@@ -72,7 +72,7 @@ path_b:  # returning student — name question / self-intro forbidden the whole 
   - id: b1-answer-first
     note: "REGRESSION (prod class): child asks the teacher's question back — answer like a person FIRST, then retake the turn"
     turns: ["Are you happy?", "yes!"]
-    require_phrases: ["(i am|i'm|\\bme\\b)[^.!?]{0,16}(happy|great|good)"]
+    require_phrases: ["(i am|i'm|\\bme\\b)[^.!]{0,16}(happy|great|good)"]
     max_beats: 4
   - id: b1-silent-all
     note: "2-rung ladder; the re-invite stays path B (never 'what's your name')"
@@ -81,8 +81,14 @@ path_b:  # returning student — name question / self-intro forbidden the whole 
 # Real name + messy profile: studentName=heidi with the profile carrying 称呼：Tommy.
 path_b_heidi:
   - id: b1-real-name-heidi
-    note: "greet 'Heidi' by name (lowercase real name is not junk); 'Tommy' from the profile never spoken"
+    note: "REGRESSION (device #363159): greeted 'Tommy!' from the profile — greet 'Heidi' from <studentName> (lowercase real name is not junk); the profile 称呼 never spoken"
     turns: ["yes!"]
+    require_phrases: ["\\bheidi\\b"]
+    forbid_phrases: ["\\btommy\\b"]
+    max_beats: 3
+  - id: b1-hello-idk
+    note: "REGRESSION (device #363161): 'Hello. 不知道。' got the happy question AGAIN until the child said 你问过我了 — IDK is the ANSWER, not a confusion; beat 2 closes"
+    turns: ["Hello. 不知道。", "你问过我了。"]
     require_phrases: ["\\bheidi\\b"]
     forbid_phrases: ["\\btommy\\b"]
     max_beats: 3

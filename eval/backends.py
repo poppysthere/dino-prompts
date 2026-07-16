@@ -73,10 +73,18 @@ class ForgeBackend(Backend):
             "providerName": self.provider,
             "modelName": self.model,
         }
-        res = _post_json(f"{self.base}/debug", payload, {"Authorization": self.token})
-        if res.get("code") != 200:
-            raise RuntimeError(f"forge /debug failed: {res}")
-        return res["data"]["content"]
+        # Forge surfaces its own upstream failures as a NORMAL 200 reply whose
+        # content starts with "调用失败" ("call failed", seen 2026-07-16:
+        # "channel not registered to an event loop") — retry those too.
+        for attempt in range(4):
+            res = _post_json(f"{self.base}/debug", payload, {"Authorization": self.token})
+            if res.get("code") != 200:
+                raise RuntimeError(f"forge /debug failed: {res}")
+            content = res["data"]["content"]
+            if not content.strip().startswith("调用失败"):
+                return content
+            time.sleep(5 * (attempt + 1))
+        raise RuntimeError(f"forge /debug kept failing upstream: {content!r}")
 
 
 class OpenAIBackend(Backend):
