@@ -74,10 +74,36 @@ def check(transcript: dict):
     # Beat budget (shortened 2026-07-13, retention data: kids quit before the video):
     # path A = 3 beats, path B = 2; +1 per silence nudge;
     # +1 slack for a child-derail (their own question etc. costs one extra beat).
+    # warmup_l1 (soccer) runs THE COUNTER LAW (2026-07-16, device bug: the same
+    # question three times): silence never adds a beat, only the page's one
+    # confusion/greeting exception does.
     nudges = sum(1 for m in msgs if m["role"] == "user" and "has been silent" in m["text"])
-    max_beats = transcript.get("max_beats") or ((3 if first_meet else 2) + nudges + 1)
+    if transcript.get("family") == "warmup_l1":
+        max_beats = transcript.get("max_beats") or ((3 if first_meet else 2) + 1)
+    else:
+        max_beats = transcript.get("max_beats") or ((3 if first_meet else 2) + nudges + 1)
     if len(replies) > max_beats:
         v("beat-budget", f"{len(replies)} teacher beats (max {max_beats} for this path incl. {nudges} silence nudge(s) + 1 slack)")
+
+    # THE COUNTER LAW's repeat guard (device bug: "That's okay! You're my
+    # friend! Are you happy today?" twice, verbatim): no content sentence,
+    # and no QUESTION even reworded, appears in two different replies.
+    if transcript.get("family") == "warmup_l1":
+        seen_sents, seen_qs = {}, {}
+        for bn, rep in enumerate(replies, 1):
+            for s in re.split(r"(?<=[.!?])\s+", strip_tags(rep).strip()):
+                s = s.strip()
+                norm = re.sub(r"[^a-z' ]", "", s.lower()).strip()
+                if len(norm.split()) < 3:
+                    continue
+                if s.endswith("?"):
+                    if norm in seen_qs and seen_qs[norm] != bn:
+                        v("question-repeat", f"beat {bn}: re-asks {s!r} (first asked beat {seen_qs[norm]})")
+                    seen_qs.setdefault(norm, bn)
+                else:
+                    if norm in seen_sents and seen_sents[norm] != bn:
+                        v("sentence-repeat", f"beat {bn}: repeats {s!r} (first said beat {seen_sents[norm]})")
+                    seen_sents.setdefault(norm, bn)
 
     # Name handling (prod bug 2026-07-12: "Lily! Hi, rosa." — spoken name must WIN,
     # the default/profile name must disappear, never both in one reply).
@@ -158,7 +184,9 @@ def check(transcript: dict):
                     v("path-b-forbidden", f"beat {n}: first-meeting phrase {pat!r} with a returning student")
             if n == 1 and name and name not in body.lower():
                 v("path-b-name", f"beat 1: returning student not greeted by name '{name}'")
-            if n == 1 and not re.search(r"\bagain\b|\bback\b", body, re.I):
+            # Only with a REAL name: junk-name greetings ("Hi, my friend!")
+            # are warm without it, and the model drops it there (flaky).
+            if n == 1 and name and not re.search(r"\bagain\b|\bback\b", body, re.I):
                 v("path-b-again", "beat 1: no 'again/back' (seeing-you-again wording) for a returning student")
         else:
             if n == 1 and not re.search(r"\bname\b", body, re.I):
