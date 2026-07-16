@@ -57,6 +57,17 @@ def is_invite(body, word):
     return "?" not in body and len(tail) >= len(wl) and tail[-len(wl):] == wl
 
 
+def names_the_shout(body, word):
+    # "That is COME ON!" (real device bug) — a phrase-shout named like a
+    # thing on a shelf. Only phrase words ("come on"); "that is a goal"
+    # pointing at the net is legitimate human speech.
+    if " " not in word.strip():
+        return False
+    w = re.escape(word.rstrip("!"))
+    return re.search(rf"(this|that|it)\s+is\s+(a\s+|the\s+)?\W{{0,3}}{w}\b",
+                     body, re.I) is not None
+
+
 def has_cjk(t):
     return any(unicodedata.category(c) == "Lo" and "CJK" in unicodedata.name(c, "") for c in t)
 
@@ -133,6 +144,9 @@ def check(tr):
         for pat in [r"\bmeans\b", r"\bspell", r"\bletter\b", r"repeat\s+after\s+me"]:
             if re.search(pat, body, re.I):
                 v("no-teaching", f"reply {n}: talks ABOUT the word ({pat!r})")
+        if names_the_shout(body, word):
+            v("names-the-shout", f"reply {n}: names a shout like a thing "
+                                 f"('That is {word}!' is not human speech): {body.strip()!r}")
         # request-shaped only: describing the PICTURE ("Friends wave.") is fine
         for pat in [r"show\s+me", r"let\s+me\s+see", r"(can|do|will)\s+you\s+(wave|smile|clap)"]:
             if re.search(pat, body, re.I):
