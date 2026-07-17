@@ -32,6 +32,13 @@ path_a:  # first meeting — teacher must introduce herself and ask the name.
     turns: ["huide", "no"]
     require_phrases: ["huide|heidi"]
     forbid_phrases: ["\\bape\\b"]
+  - id: a-role-name
+    note: "REGRESSION (device #365995 bug class: a Leo role said 'I'm Kim', copied from a template example): B1's name is the BARE role-description name — role says Kim, so 'I'm Kim!', never Max/Leo from an example, never a title"
+    role: "You are Kim, a warm, playful big-sister teacher who makes every class feel like a happy game. Your voice is bright and kind. You cheer for every little try."
+    spoken_name: sam
+    turns: ["Sam", "yes!"]
+    require_phrases: ["\\bkim\\b"]
+    forbid_phrases: ["\\bmax\\b", "\\bleo\\b", "(teacher|coach|miss|ms\\.?) kim"]
 
 path_b:  # returning student — asking the name / self-intro is FORBIDDEN
   - id: b-happy-path
