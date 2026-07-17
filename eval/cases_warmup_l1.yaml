@@ -35,6 +35,9 @@ path_a:  # first meeting — introduce yourself, ask the name
     note: "REGRESSION (device 15:33 run): babble got echoed ('My friend, your DUDU!'), then 'Are you happy today?' was asked THREE times, twice verbatim, plus a Path B 'Good to see you again!' on a first meeting — the counter law: reply 2 = happy question, reply 3 = close, whatever the child says"
     turns: ["爸爸爸，我的嘟嘟。", "Name. Hi.", "I don't know.", "I don't know."]
     forbid_phrases: ["dudu", "\\bagain\\b"]
+  - id: a1-double-babble
+    note: "REGRESSION (device 23:13 screenshot): two babble turns got 'Are you happy today?' three times, near-verbatim — two-ask cap: any re-ask is in NEW words, and after two asks the page closes"
+    turns: ["hkajshd", "jksnjkd"]
   - id: a1-name-budget
     note: "REGRESSION (device 10:43 run): 'good afternoon' then '我不知道' got THREE name asks and a nonsense menu ('You can say, hi. Or, yes.') — one re-ask max, then 'my friend' and the happy question"
     turns: ["Um, good afternoon.", "我不知道。", "Hi."]

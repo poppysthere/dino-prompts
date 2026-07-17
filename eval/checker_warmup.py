@@ -115,7 +115,10 @@ def check(transcript: dict):
                 last_u = m["text"]
                 continue
             bn += 1
-            if re.search(r"\b(are\s+)?you\s+happy\b[^.!]*\?", strip_tags(m["text"]), re.I):
+            # counts reworded variants too ("Happy today, yes or no?") —
+            # device 23:13 screenshot: three asks would have slipped through
+            if re.search(r"\b(are\s+)?you\s+happy\b[^.!]*\?|\bhappy\s+today\b[^.!?]*\?",
+                         strip_tags(m["text"]), re.I):
                 happy_beats.append((bn, last_u))
         for bn, prev in happy_beats[1:]:
             if not CONFUSED.search(prev):
