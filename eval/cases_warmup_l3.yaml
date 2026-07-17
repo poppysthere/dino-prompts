@@ -33,12 +33,19 @@ path_a:  # first meeting — introduce yourself, ask the name
     note: "2-rung silence ladder: one re-invite, then a warm close; never a third wait"
     turns: []
   - id: a3-role-name
-    note: "REGRESSION (L1 Coach Leo / Coach Max bug class): the intro name is the BARE # Role name — role says Kim, so 'I'm Kim!', never 'Max' from a template example and never a title like 'teacher Kim'"
+    note: "REGRESSION (device #365995: a Leo role said 'I'm Kim', copied from the example): the intro name is the BARE # Role name — role says Kim, so 'I'm Kim!', never Max or Leo from an example, never a title like 'teacher Kim'"
     role: "You are Kim, a warm, playful big-sister teacher who makes every class feel like an adventure with a friend. Your voice is bright and kind. You cheer for every little try."
-    spoken_name: leo
-    turns: ["Leo", "I'm good!"]
+    spoken_name: sam
+    turns: ["Sam", "I'm good!"]
     require_phrases: ["\\bkim\\b"]
-    forbid_phrases: ["\\bmax\\b", "(teacher|coach|miss|ms\\.?) kim"]
+    forbid_phrases: ["\\bmax\\b", "\\bleo\\b", "(teacher|coach|miss|ms\\.?) kim"]
+  - id: a3-role-name-leo
+    note: "REGRESSION (device #365995, the exact role): role says Leo, so 'I'm Leo!' — never Kim from the B1 example (the model copied the example line word for word on a real device)"
+    role: "You are Leo — a playful, funny big brother who makes learning English feel exactly like hanging out with your best friend. Your tone is light, funny, and full of energy."
+    spoken_name: sam
+    turns: ["Sam", "I'm good!"]
+    require_phrases: ["\\bleo\\b"]
+    forbid_phrases: ["\\bkim\\b", "\\bmax\\b", "(teacher|coach|mr\\.?) leo"]
 
 path_a_extra:  # first meeting — real-person moves (recast, feed the line)
   - id: a3-recast-grammar
