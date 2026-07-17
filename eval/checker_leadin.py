@@ -32,6 +32,16 @@ ASK_L3 = ("look! unicorns! dino and mia meet some unicorns! "
 LAUNCH_L3 = "let's watch and find out!"
 IDK_SIGNALS = ["don't know", "dont know", "不知道", "no sé", "no se"]
 
+# --- L5 lesson (Mike arrives in Tomorrow Town, meets Zoe; ages 11-12, A2+) ---
+# Same 2-reply shape as L3; the catch budget is wider (preteens give real
+# predictions worth echoing) and "Good guess!" joins "Good idea!" as fake
+# praise after silence/IDK (the original script said it to EVERY answer).
+PRE_LINE_L5 = ("look! mike is in tomorrow town. he has just arrived. what will he see? "
+               "what will happen next? let's watch and find out!")
+ASK_L5 = ("look! mike meets zoe in tomorrow town. tomorrow town has many robots. "
+          "zoe wants to show mike around. what robots do you think mike will see?")
+LAUNCH_L5 = "let's see what zoe shows mike first!"
+
 # --- Festival: 足球课 World Cup special (ages 4-6, pre-A1) ---
 # pre-video is a fixed no-question hype line; post-video is ONE reply
 # (feel + hook + go), never waits, never asks.
@@ -106,6 +116,9 @@ def check(path):
             if family == "leadin_l3":
                 if PRE_LINE_L3 not in norm(r):
                     v("script", f"pre-video reply deviates from the fixed script: {strip_tags(r).strip()!r}")
+            elif family == "leadin_l5":
+                if PRE_LINE_L5 not in norm(r):
+                    v("script", f"pre-video reply deviates from the fixed script: {strip_tags(r).strip()!r}")
             elif family == "leadin_l1_soccer":
                 if PRE_LINE_SOCCER not in norm(r):
                     v("script", f"pre-video reply deviates from the fixed script: {strip_tags(r).strip()!r}")
@@ -120,6 +133,10 @@ def check(path):
 
     if family == "leadin_l3":
         return check_post_l3(tr, replies, users, v, out)
+    if family == "leadin_l5":
+        return check_post_l3(tr, replies, users, v, out,
+                             ask=ASK_L5, launch=LAUNCH_L5,
+                             praise=r"good\s+(idea|guess)", catch_max=SOFT_CATCH_MAX + 4)
     if family == "leadin_l1_soccer":
         return check_post_soccer(tr, replies, users, v, out)
 
@@ -195,14 +212,16 @@ def check_post_soccer(tr, replies, users, v, out):
     return out
 
 
-def check_post_l3(tr, replies, users, v, out):
-    """L3/L4 post-video: reveal-ASK -> matched catch + fixed launch (2 replies)."""
+def check_post_l3(tr, replies, users, v, out,
+                  ask=ASK_L3, launch=LAUNCH_L3,
+                  praise=r"good\s+idea", catch_max=SOFT_CATCH_MAX + 2):
+    """L3/L4 and L5 post-video: reveal-ASK -> matched catch + fixed launch (2 replies)."""
     if len(replies) != 2:
         v("two-replies", f"post-video must be exactly 2 replies, got {len(replies)}")
 
     if replies:
         n1 = norm(replies[0])
-        if not n1.endswith(ASK_L3):
+        if not n1.endswith(ask):
             v("script-ask", f"reply 1 is not the ASK line: {strip_tags(replies[0]).strip()!r}")
         if "[STUDENT_TALK]" not in replies[0]:
             v("tag-ask", "reply 1 must wait with [STUDENT_TALK]")
@@ -211,14 +230,14 @@ def check_post_l3(tr, replies, users, v, out):
         r2, n2 = replies[1], norm(replies[1])
         if "[TEMPLATE_FINISH]" not in r2:
             v("must-finish", "reply 2 does not end the step with [TEMPLATE_FINISH]")
-        launch_at = n2.find(LAUNCH_L3)
+        launch_at = n2.find(launch)
         if launch_at < 0:
             v("script-launch", f"reply 2 is missing the launch line: {strip_tags(r2).strip()!r}")
         else:
             catch = n2[:launch_at].strip()
-            if len(catch.split()) > SOFT_CATCH_MAX + 2:
+            if len(catch.split()) > catch_max:
                 v("catch-budget", f"reply 2 catch over budget ({len(catch.split())} words): {catch!r}")
-            after = n2[launch_at + len(LAUNCH_L3):].strip()
+            after = n2[launch_at + len(launch):].strip()
             if after:
                 v("script-launch", f"reply 2 has text after the launch line: {after!r}")
             # ONE short rhetorical echo ("Fly together? Maybe!") is human;
@@ -229,8 +248,8 @@ def check_post_l3(tr, replies, users, v, out):
         first = users[1].lower() if len(users) > 1 else ""  # users[0] is the UI-ready message
         silent = first.startswith("the student has been silent")
         idk = any(s in first for s in IDK_SIGNALS)
-        if (silent or idk) and re.search(r"good\s+idea", n2):
-            v("fake-praise", "reply 2 says 'Good idea!' but the child gave no idea (silence / 'I don't know')")
+        if (silent or idk) and re.search(praise, n2):
+            v("fake-praise", "reply 2 gives praise but the student gave no idea (silence / 'I don't know')")
         if silent and launch_at > 0:
             v("catch-on-silence", f"reply 2 puts a catch before the launch on a silent child: {n2[:launch_at].strip()!r}")
 

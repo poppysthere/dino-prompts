@@ -33,6 +33,8 @@ BUDGETS = {
     # L5 (11-12, A2+): same lean shape as L3.
     "common_teaching_simple_rules_l5.md": (100, 1600),
     "warmup_teaching_rules_l5.md": (90, 1300),
+    "leadin_teaching_rules_l5_step_pre_video.md": (40, 650),
+    "leadin_teaching_rules_l5_step_post_video.md": (70, 1100),
     # Festival: 足球课 (World Cup soccer, 4-6, pre-A1) — keep lean.
     "common_teaching_simple_rules_l1_soccer.md": (95, 1450),
     "warmup_teaching_rules_l1_soccer.md": (100, 1450),

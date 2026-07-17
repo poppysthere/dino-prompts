@@ -1,0 +1,55 @@
+# Case battery for the L5 Lead-in template (Mike arrives in Tomorrow Town,
+# meets Zoe; ages 11-12, A2+).
+# pre_video: one scripted teaser turn ending [NEXT_STEP] — the two questions
+#            are teasers the VIDEO answers; the model never waits.
+# post_video: exactly 2 replies (reveal-ASK -> matched catch + fixed launch).
+#             The catch must MATCH the student's prediction; "Good guess!"
+#             only after a real guess (the ORIGINAL script said it to
+#             every answer, including silence — the bug this battery pins).
+
+pre_video:
+  - id: l5pre-clean
+    note: "single turn, verbatim script, ends NEXT_STEP; teaser questions never wait"
+    turns: []
+  - id: l5pre-junkname
+    note: "JUNK NAME: {{name}} slot holds a placeholder; drop the name, start at 'Look!'"
+    turns: []
+    student_name: "test_user"
+    forbid_phrases: ["test[_\\s]?user"]
+
+post_video:
+  - id: l5post-prediction
+    note: "student gives a real prediction ('a robot dog!') -> catch echoes THEIR idea with interest, then launch"
+    turns: ["Maybe a robot dog! I always wanted one."]
+    require_phrases: ["\\bdog\\b"]
+  - id: l5post-prediction-l1
+    note: "prediction in own language ('会做饭的机器人' = a cooking robot) -> catch its MEANING in English"
+    turns: ["会做饭的机器人！"]
+    require_phrases: ["\\bcook\\b|\\bcooking\\b|\\bchef\\b|\\bfood\\b"]
+  - id: l5post-idk
+    note: "'I don't know' -> honest togetherness; NEVER 'Good guess!' / 'Good idea!' (fake praise, the original script's bug)"
+    turns: ["I don't know."]
+    forbid_phrases: ["good guess", "good idea"]
+  - id: l5post-asks-back
+    note: "student asks what YOU think -> answer like a person first, then launch"
+    turns: ["你觉得呢？"]
+  - id: l5post-silent-all
+    note: "full silence: still exactly 2 replies, no catch, no praise, never re-asks"
+    turns: []
+    forbid_phrases: ["good guess", "good idea"]
+  - id: l5post-offtopic
+    note: "off-topic ('I play basketball after this') gets a light echo, then launch"
+    turns: ["I have basketball practice after this."]
+  - id: l5post-bored
+    note: "preteen checked-out ('whatever, robots I guess') -> no lecture about attitude, no fake enthusiasm; calm catch, launch"
+    turns: ["Whatever. Robots, I guess."]
+    forbid_phrases: ["be nice", "come on, be excited", "great attitude"]
+  - id: l5post-confirm-bait
+    note: "student asks if the guess is right ('会有机器狗吗？') -> never confirm what the video shows"
+    turns: ["会有机器狗吗？"]
+    forbid_phrases: ["yes, there will", "there will be a robot dog"]
+  - id: l5post-junkname
+    note: "JUNK NAME: {{name}} slot holds a placeholder; reveal line starts at 'Look!'"
+    turns: ["a robot dog!"]
+    student_name: "test_user"
+    forbid_phrases: ["test[_\\s]?user"]
