@@ -1,0 +1,115 @@
+# Case battery for the L5 warm-up (warmup_teaching_rules_l5.md +
+# common_teaching_simple_rules_l5.md, ages 11-12, A2+).
+# Same shape as L3: path A = 3 beats (name -> how's it going -> close),
+# path B = 2 beats (how's it going -> close). Silence ladder is 2 rungs.
+# Checker: checker_warmup.py, family warmup_l5 (adds the register guard:
+# "Are you happy?" and kid-talk are violations at this age).
+
+path_a:  # first meeting — introduce yourself, ask the name
+  - id: a5-happy-path
+    note: "name -> good answer -> close; exactly 3 beats, no age question, no ready-wait, no 'are you happy'"
+    spoken_name: leo
+    turns: ["Leo", "Pretty good actually."]
+  - id: a5-reason-answer
+    note: "preteens answer with real content; the close must react to THEIR thing (the game), not a generic 'nice'"
+    spoken_name: mia
+    turns: ["Mia", "I'm good, we won our basketball game at lunch."]
+    require_phrases: ["basketball|game|won|win"]
+  - id: a5-bad-day
+    note: "bad day with a cause -> close names the cause, low-key, no digging, never celebrates"
+    spoken_name: leo
+    turns: ["Leo", "Not great. I failed my math test."]
+    require_phrases: ["math|test"]
+    forbid_phrases: ["glad you", "why did you fail", "what happened"]
+  - id: a5-l1-name
+    note: "name given inside an L1 sentence -> romanized, default name dead"
+    spoken_name: ming
+    spoken_name_l1: 小明
+    turns: ["我叫小明", "还行吧"]
+  - id: a5-idk-name
+    note: "LANGUAGE-AGNOSTIC shy kid: 'no sé' to the name question = move on without the name, never a lecture"
+    turns: ["No sé.", "good"]
+    forbid_phrases: ["is it hard", "\\bmeans\\b"]
+  - id: a5-silent-all
+    note: "2-rung silence ladder: one re-invite, then a close; never a third wait"
+    turns: []
+  - id: a5-role-name
+    note: "REGRESSION (Coach Leo / Coach Max bug class): the intro name is the BARE # Role name — role says Kim, so 'I'm Kim', never 'Max' from a template example and never a title like 'teacher Kim'"
+    role: "You are Kim, a sharp, warm mentor who talks to students like capable young people. Your humor is dry and kind. You make English feel like a conversation, not a class."
+    spoken_name: leo
+    turns: ["Leo", "Pretty good."]
+    require_phrases: ["\\bkim\\b"]
+    forbid_phrases: ["\\bmax\\b", "(teacher|coach|miss|ms\\.?|mr\\.?) kim"]
+
+path_a_extra:  # first meeting — real-person moves (recast, answer first)
+  - id: a5-recast-grammar
+    note: "REGRESSION CLASS: broken grammar ('I goed to the game') gets a RECAST ('You went? Nice.'), never a correction lecture — public correction stings twice as hard at 12"
+    spoken_name: mia
+    turns: ["Mia", "I goed to the park with my brother yesterday."]
+    require_phrases: ["\\bwent\\b|\\bpark\\b"]
+    forbid_phrases: ["repeat after me", "say i went", "not correct", "\\bwrong\\b"]
+  - id: a5-askback
+    note: "student turns the question around ('How are YOU?') — answer like a person FIRST, then retake the turn"
+    spoken_name: tom
+    turns: ["Tom", "And how are you?", "good"]
+    require_phrases: ["me\\?|can'?t complain|i'?m\\s+(good|great|well|doing)"]
+    max_beats: 4
+
+path_b:  # returning student — name question / self-intro forbidden the whole warm-up
+  - id: b5-happy-path
+    note: "answer -> close; exactly 2 beats ending TEMPLATE_FINISH"
+    turns: ["Pretty good."]
+  - id: b5-chatty
+    note: "preteen brings a story; catch THEIR thing in the close, keep the 2-beat shape"
+    turns: ["Good! I just got a new phone and my mom let me install one game."]
+    require_phrases: ["\\bphone\\b|\\bgame\\b"]
+  - id: b5-flat-fine
+    note: "the monosyllabic 'Fine.' is NORMAL at this age — take it and close, no digging, no 'just fine?', no mood interrogation"
+    turns: ["Fine."]
+    forbid_phrases: ["just fine\\?", "only fine", "\\bwhy\\b", "what's wrong", "are you sure"]
+  - id: b5-tired-kid
+    note: "'tired, long day' gets a low-key close that names their thing, no pep-rally energy"
+    turns: ["Tired. School was so long today."]
+    require_phrases: ["\\bschool\\b|\\blong\\b|\\btired\\b"]
+    forbid_phrases: ["glad you", "cheer up"]
+  - id: b5-who-are-you
+    note: "REGRESSION (prod bug class): 'who are you?' must never trigger self-intro or a name question on path B"
+    turns: ["什么？你是谁呀？", "okay good"]
+  - id: b5-silent-all
+    note: "2-rung ladder; the re-invite stays path B (never 'what's your name')"
+    turns: []
+  - id: b5-stuck-kid
+    note: "REGRESSION (prod bug class): '你说什么呀？' is a STUCK student — feed the line ('You can say, pretty good. Or, long day.'), never bark 'just say one word'"
+    turns: ["你说什么呀？", "Pretty good."]
+    require_phrases: ["you can say"]
+    forbid_phrases: ["just say one word"]
+    max_beats: 4
+  - id: b5-sarcasm
+    note: "preteen sass ('This class again?') gets humor back, never hurt feelings, never a lecture about attitude"
+    turns: ["Ugh, this class again?", "fine, okay"]
+    forbid_phrases: ["that's not nice", "be polite", "don't say that"]
+    max_beats: 4
+
+# Real name + messy profile: studentName=heidi with the profile carrying 称呼：Tommy.
+# REGRESSION (device bug): the model greeted "Tommy!" from the profile —
+# a lowercase real name is NOT junk, and profile names are never spoken.
+path_b_heidi:
+  - id: b5-real-name-heidi
+    note: "greet 'Heidi' by name (lowercase real name is not junk); 'Tommy' from the profile never spoken"
+    turns: ["Pretty good."]
+    require_phrases: ["\\bheidi\\b"]
+    forbid_phrases: ["\\btommy\\b"]
+    max_beats: 3
+
+# Broken platform data: studentName is junk — never spoken on either path.
+l5_broken:
+  - id: b5-junkname
+    note: "REGRESSION: <studentName>=test_user on path B -> greet without a name, junk never spoken"
+    turns: ["Pretty good."]
+    forbid_phrases: ["test[_\\s]?user"]
+    max_beats: 3
+  - id: b5-junkname-silent
+    note: "junk name + silence: re-invite without a name, close on 2nd silence"
+    turns: []
+    forbid_phrases: ["test[_\\s]?user"]
+    max_beats: 3

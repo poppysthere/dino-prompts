@@ -188,11 +188,14 @@ def check(transcript: dict):
             # the OPENING segment ("You won? No WAY!..." / "You are happy? YAY!").
             # A real question buried later in the close is a fake ask the teacher
             # never waits for (run 6, b3-answer-first).
-            is_l3 = transcript.get("family") in ("warmup_l3", "warmup_l1")
+            is_l3 = transcript.get("family") in ("warmup_l3", "warmup_l1", "warmup_l5")
             q_idxs = [i for i, s in enumerate(segments)
                       if s.endswith("?") and len(s.rstrip("?").split()) >= 3]
+            # L5 recast-echoes carry the student's whole sentence — allow the
+            # level's 12-word sentence budget; younger levels stay at 8.
+            echo_cap = 12 if transcript.get("family") == "warmup_l5" else 8
             opening_echo_only = (q_idxs == [0]
-                                 and len(segments[0].rstrip("?").split()) <= 8)
+                                 and len(segments[0].rstrip("?").split()) <= echo_cap)
             if not (is_l3 and nq == 1 and opening_echo_only):
                 v("no-question-on-finish", f"beat {n}: finish beat still asks a question")
 
@@ -208,7 +211,7 @@ def check(transcript: dict):
             if n == 1 and name and not re.search(r"\bagain\b|\bback\b", body, re.I):
                 v("path-b-again", "beat 1: no 'again/back' (seeing-you-again wording) for a returning student")
         else:
-            if n == 1 and not re.search(r"\bname\b", body, re.I):
+            if n == 1 and not re.search(r"\bname\b|call\s+you|who\s+are\s+you", body, re.I):
                 v("path-a-ask-name", "beat 1: first meeting but the teacher never asks the name")
             # device bug 15:33: "Good to see you again!" to a brand-new student
             if re.search(r"\bagain\b|you'?re\s+back|welcome\s+back", body, re.I):
@@ -230,6 +233,14 @@ def check(transcript: dict):
         for pat in [r"\bmeans\b", r"can\s+you\s+say", r"repeat\s+after\s+me"]:
             if re.search(pat, body, re.I):
                 v("word-teach-leak", f"beat {n}: warm-up is teaching vocabulary ({pat!r})")
+
+        # register guard (L5, ages 11-12): kindergarten phrasing and kid-talk
+        # lose a preteen instantly — "Are you happy?" is the canonical offender.
+        if transcript.get("family") == "warmup_l5":
+            for pat in [r"are\s+you\s+happy", r"\blittle\s+one\b", r"\bsweetie\b",
+                        r"\bmeow\b", r"\bta[\s-]?da\b", r"good\s+job\s+saying"]:
+                if re.search(pat, body, re.I):
+                    v("register", f"beat {n}: kid-talk for an 11-12 year old ({pat!r})")
 
         # cut beats (2026-07-13 shortening): no age question, no separate ready-wait
         if re.search(r"how\s+old\s+are\s+you", body, re.I):

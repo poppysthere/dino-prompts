@@ -30,6 +30,9 @@ BUDGETS = {
     "warmup_teaching_rules_l3.md": (85, 1200),
     "leadin_teaching_rules_l3_step_pre_video.md": (40, 600),
     "leadin_teaching_rules_l3_step_post_video.md": (65, 1000),
+    # L5 (11-12, A2+): same lean shape as L3.
+    "common_teaching_simple_rules_l5.md": (100, 1600),
+    "warmup_teaching_rules_l5.md": (90, 1300),
     # Festival: 足球课 (World Cup soccer, 4-6, pre-A1) — keep lean.
     "common_teaching_simple_rules_l1_soccer.md": (95, 1450),
     "warmup_teaching_rules_l1_soccer.md": (100, 1450),
@@ -46,7 +49,7 @@ BUDGETS = {
 def main():
     bad = 0
     files = []
-    for level in ("l2", "l3"):
+    for level in ("l2", "l3", "l5"):
         files += sorted((ROOT / "prompts" / level).glob("*.md"))
     files += sorted((ROOT / "prompts/festival").glob("*.md"))
     for f in files:
