@@ -34,7 +34,7 @@ UI_READY = ("The UI is ready. Continue the lesson from where you left off,"
 # (group -> is_first_meet, prompt name, checker name)
 GROUPS = {
     "path_a": (True, "heidi", "heidi"),
-    "path_b": (False, "tom", "tom"),
+    "path_b": (False, "nina", "nina"),
 }
 
 

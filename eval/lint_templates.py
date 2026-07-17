@@ -27,21 +27,23 @@ BUDGETS = {
     "word_teaching_rules_l2_horse.md": (105, 2100),
     # L3 (7-9, A1+): started lean on purpose — keep it that way.
     "common_teaching_simple_rules_l3.md": (95, 1500),
-    # Warm-up budgets raised +50 (2026-07-17, device #365995: a Leo role said
-    # "I'm Kim", copied verbatim from the single B1 example): B1 now carries
-    # TWO contrasting role->name examples so blind copying is impossible.
-    # Deliberate recalibration, not creep — trim before raising again.
-    "warmup_teaching_rules_l3.md": (85, 1250),
+    # Warm-up budgets raised twice on 2026-07-17 (devices #365995 and #366244:
+    # the production model copies example lines verbatim — a Leo role said
+    # "I'm Kim", then a heidii student was greeted "Tom!"): both the teacher
+    # name and the Path B student name now carry TWO contrasting examples so
+    # blind copying is impossible. Deliberate recalibration, not creep —
+    # trim before raising again.
+    "warmup_teaching_rules_l3.md": (90, 1300),
     "leadin_teaching_rules_l3_step_pre_video.md": (40, 600),
     "leadin_teaching_rules_l3_step_post_video.md": (65, 1000),
     # L5 (11-12, A2+): same lean shape as L3.
     "common_teaching_simple_rules_l5.md": (100, 1600),
-    "warmup_teaching_rules_l5.md": (90, 1350),  # +50, see warmup_l3 note
+    "warmup_teaching_rules_l5.md": (95, 1400),  # raised twice, see warmup_l3 note
     "leadin_teaching_rules_l5_step_pre_video.md": (40, 650),
     "leadin_teaching_rules_l5_step_post_video.md": (70, 1100),
     # Festival: 足球课 (World Cup soccer, 4-6, pre-A1) — keep lean.
     "common_teaching_simple_rules_l1_soccer.md": (95, 1450),
-    "warmup_teaching_rules_l1_soccer.md": (100, 1500),  # +50, see warmup_l3 note
+    "warmup_teaching_rules_l1_soccer.md": (100, 1550),  # raised twice, see warmup_l3 note
     "leadin_teaching_rules_l1_soccer_step_pre_video.md": (40, 600),
     "leadin_teaching_rules_l1_soccer_step_post_video.md": (55, 900),
     # Raised 1700 -> 1950 -> 2100 across two device-bug rounds (#360356 and

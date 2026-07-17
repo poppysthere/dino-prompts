@@ -57,6 +57,8 @@ path_a_extra:  # first meeting — real-person moves (recast, feed the line)
 
 path_b:  # returning student — name question / self-intro forbidden the whole warm-up
   - id: b3-happy-path
+    note_names: "REGRESSION guard (device #366244 bug class): example names (Tom/Lucy/Deniz) never spoken; greeting uses <studentName>"
+    forbid_phrases: ["\\btom\\b", "\\blucy\\b", "\\bdeniz\\b"]
     note: "mood -> close; exactly 2 beats ending TEMPLATE_FINISH"
     turns: ["I'm great!"]
   - id: b3-chatty

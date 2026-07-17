@@ -52,6 +52,8 @@ path_a:  # first meeting — introduce yourself, ask the name
 
 path_b:  # returning student — name question / self-intro forbidden the whole warm-up
   - id: b1-happy-path
+    note_names: "REGRESSION guard (device #366244: greeted 'Tom!' copied from the template example while <studentName>=heidii): the example names must never be spoken"
+    forbid_phrases: ["\\btom\\b", "\\blucy\\b", "\\bdeniz\\b"]
     note: "happy -> close; exactly 2 beats ending TEMPLATE_FINISH, game-day energy"
     turns: ["yes!"]
     require_phrases: ["soccer|ball|game|play"]

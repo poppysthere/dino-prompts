@@ -37,7 +37,7 @@ UI_READY = ("The UI is ready. Continue the lesson from where you left off,"
 GROUPS = {
     "path_a": (True, "heidi", "heidi", None),
     "path_a_extra": (True, "heidi", "heidi", None),
-    "path_b": (False, "tom", "tom", None),
+    "path_b": (False, "nina", "nina", None),
     "path_b_heidi": (False, "heidi", "heidi", TOMMY_PROFILE),
     "l3_broken": (False, "test_user", "", None),
 }

@@ -42,6 +42,8 @@ path_a:  # first meeting — teacher must introduce herself and ask the name.
 
 path_b:  # returning student — asking the name / self-intro is FORBIDDEN
   - id: b-happy-path
+    note_names: "REGRESSION guard (device #366244 bug class): example names (Tom/Lucy) never spoken; greeting uses <studentName>"
+    forbid_phrases: ["\\btom\\b", "\\blucy\\b"]
     note: "happy -> close; expect exactly 2 beats ending TEMPLATE_FINISH"
     turns: ["yes!"]
   - id: b-sad-kid
