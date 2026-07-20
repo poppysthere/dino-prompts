@@ -69,7 +69,7 @@ post_video:
   - id: post-askback
     note: "child asks the teacher who it is — the teacher wonders WITH them, never invents an answer"
     turns: ["你说是谁呀？", "big"]
-    require_phrases: ["i don't know|me neither|no idea"]
+    require_phrases: ["i don.t know|me neither|no idea"]  # dot: models emit curly apostrophes
   - id: post-silent-all
     note: "fully silent child — three replies, no catches, page closes on the mystery"
     turns: []

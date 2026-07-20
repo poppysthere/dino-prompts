@@ -98,7 +98,10 @@ def check(path):
             v("tag-last", f"reply {n}: text after the control tag")
         if has_cjk(r):
             v("english-only", f"reply {n}: contains non-English characters")
-        if "..." in r or "…" in r or re.search(r"\w\s*[-–—]\s*\w", strip_tags(r)):
+        # "Ta-da!" is in the common layer's own toolbox; hyphenated
+        # interjections are single TTS-safe words, not pause-breaking dashes.
+        dashable = re.sub(r"\b(ta-da|ding-dong|high-five)\b", "x", strip_tags(r), flags=re.I)
+        if "..." in r or "…" in r or re.search(r"\w\s*[-–—]\s*\w", dashable):
             v("tts-safety", f"reply {n}: ellipsis or dash (voice engine breaks)")
         for m in re.finditer(r"[A-Za-z]*([A-Za-z])\1{2,}[A-Za-z]*", strip_tags(r)):
             v("tts-stretched", f"reply {n}: stretched spelling {m.group(0)!r} (voice engine cannot say it)")
