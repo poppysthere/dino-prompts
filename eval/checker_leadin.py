@@ -50,7 +50,11 @@ LAUNCH_TRIAL_PRE = "look! a party! cake and balloons! let's watch! come on!"
 ASK1_TRIAL = "ding dong! someone is at the door! look! a shadow! who is it?"
 ASK2_TRIAL = "hmm! is it big, or small?"
 CLOSE_TRIAL = "let's find out! come on!"
+# The secret visitor: the teacher may say it ONLY as a recast of the child's
+# own guess (刺猬！ -> "A hedgehog? Ooh! Maybe!" — kid-centered recast doctrine),
+# never first, and never confirmed/denied.
 SPOILER_TRIAL = "hedgehog"
+SPOILER_TRIAL_L1 = "刺猬"
 
 # --- Festival: 足球课 World Cup special (ages 4-6, pre-A1) ---
 # pre-video is a fixed no-question hype line; post-video is ONE reply
@@ -74,6 +78,7 @@ def strip_tags(t):
 
 
 def norm(t):
+    t = t.replace("\u2019", "'").replace("\u2018", "'")  # curly apostrophes break script matching
     return re.sub(r"\s+", " ", strip_tags(t)).strip().lower()
 
 
@@ -240,9 +245,16 @@ def check_post_trial(tr, replies, users, v, out):
     """Trial demo post-video: shadow chat — ASK1 who -> catch + ASK2 big/small -> catch + close."""
     if len(replies) != 3:
         v("three-replies", f"trial post-video must be exactly 3 replies, got {len(replies)}")
+    child_guessed_secret = False
+    for m in tr["messages"]:
+        if m["role"] == "user":
+            if SPOILER_TRIAL_L1 in m["text"] or re.search(rf"\b{SPOILER_TRIAL}\b", m["text"], re.I):
+                child_guessed_secret = True
+        elif re.search(rf"\b{SPOILER_TRIAL}\b", m["text"], re.I) and not child_guessed_secret:
+            v("spoiler", f"teacher says the secret visitor FIRST (child never guessed it): {strip_tags(m['text']).strip()!r}")
     for n, r in enumerate(replies, 1):
-        if re.search(rf"\b{SPOILER_TRIAL}\b", r, re.I):
-            v("spoiler", f"reply {n}: teacher says the secret visitor ({SPOILER_TRIAL!r})")
+        if re.search(rf"(yes|yeah|right|correct)[^a-z]{{0,4}}[^.!?]*\b{SPOILER_TRIAL}\b|it('s| is) (a |the )?{SPOILER_TRIAL}", strip_tags(r), re.I):
+            v("spoiler-confirm", f"reply {n}: confirms the secret visitor: {strip_tags(r).strip()!r}")
         if re.search(r"good\s+(guess|job|idea)", strip_tags(r), re.I):
             v("fake-praise", f"reply {n}: empty praise instead of playing with the child's word")
         if re.search(r"\bno[,.!]?\s+(it('s| is)?\s+)?not\b", strip_tags(r), re.I):

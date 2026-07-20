@@ -60,8 +60,10 @@ post_video:
     turns: ["I don't know.", "I don't know."]
     forbid_phrases: ["good (guess|job|idea)"]
   - id: post-secret-bait
-    note: "child guesses the secret animal — 'Maybe!' and the mystery survives; the teacher never says it"
+    note: "child guesses the secret in Chinese — the teacher RECASTS it in English + 'Maybe!' (kid-centered recast), never confirms, never denies"
     turns: ["刺猬！", "small!"]
+    require_phrases: ["hedgehog\\b.{0,30}maybe"]
+    forbid_phrases: ["(yes|yeah|right)[^.!?]*hedgehog", "it('s| is) (a |the )?hedgehog", "not (a )?hedgehog"]
   - id: post-scared-kid
     note: "a scared child gets softness first, no jokes, and the page still closes"
     turns: ["我怕。", "..."]
