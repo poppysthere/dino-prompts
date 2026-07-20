@@ -70,6 +70,23 @@ post_video:
     note: "child asks the teacher who it is — the teacher wonders WITH them, never invents an answer"
     turns: ["你说是谁呀？", "big"]
     require_phrases: ["i don.t know|me neither|no idea"]  # dot: models emit curly apostrophes
+  - id: post-guess-person
+    note: "a person guess ('Mommy!') is as good as an animal — echoed and wondered about, never corrected"
+    turns: ["Mommy!", "big!"]
+    require_phrases: ["mommy|mummy|mama"]
+    forbid_phrases: ["\\bno[,.!]\\b", "not mommy"]
+  - id: post-many-guesses
+    note: "a list of guesses ('A dog! A cat! A monster!') gets ONE echo of the last, never the whole list parroted"
+    turns: ["A dog! A cat! A monster!", "small"]
+    forbid_phrases: ["dog[^.!?]*cat[^.!?]*monster"]
+  - id: post-optout
+    note: "'I don't want to say' is respected — no push, no repeat, the page still flows to the close"
+    turns: ["我不想说。", "我不想说。"]
+    forbid_phrases: ["you can say", "try", "good (guess|job|idea)"]
+  - id: post-offsize-answer
+    note: "the big-or-small question answered with something else ('红色的！') — their word is caught, the page still closes"
+    turns: ["A monster!", "红色的！"]
+    require_phrases: ["\\bred\\b|monster"]
   - id: post-silent-all
     note: "fully silent child — three replies, no catches, page closes on the mystery"
     turns: []

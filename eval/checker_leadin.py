@@ -47,7 +47,7 @@ LAUNCH_L5 = "let's see what zoe shows mike first!"
 # post-video is a 3-reply shadow-guessing chat. The visitor (hedgehog) is a
 # SECRET the teacher must never say — the lesson reveals it later.
 LAUNCH_TRIAL_PRE = "look! a party! cake and balloons! let's watch! come on!"
-ASK1_TRIAL = "ding dong! look at the door! a shadow! who is it?"
+ASK1_TRIAL = "ding dong! someone is at the door! look! a shadow! who is it?"
 ASK2_TRIAL = "hmm! is it big, or small?"
 CLOSE_TRIAL = "let's find out! come on!"
 SPOILER_TRIAL = "hedgehog"
@@ -278,8 +278,10 @@ def check_post_trial(tr, replies, users, v, out):
                 v("catch-budget", f"reply 3 catch over budget ({len(catch.split())} words): {catch!r}")
             if n3[at + len(CLOSE_TRIAL):].strip():
                 v("script-close", "reply 3 has text after the close line")
+            # template allows a 3-word echo max at the close — a longer question
+            # shape here is a re-asked dead question ("is it big, or small?")
             qs = [s for s in re.split(r"(?<=[?])\s+", catch) if s.endswith("?")]
-            if len(qs) > 1 or any(len(q.rstrip("?").split()) > 5 for q in qs):
+            if len(qs) > 1 or any(len(q.rstrip("?").split()) > 3 for q in qs):
                 v("no-question-finish", f"reply 3 catch asks a real question: {catch!r}")
             second = users[2].lower() if len(users) > 2 else ""
             if second.startswith("the student has been silent") and catch:
