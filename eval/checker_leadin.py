@@ -47,7 +47,13 @@ LAUNCH_L5 = "let's see what zoe shows mike first!"
 # post-video is a 3-reply shadow-guessing chat. The visitor (hedgehog) is a
 # SECRET the teacher must never say — the lesson reveals it later.
 LAUNCH_TRIAL_PRE = "look! a party! cake and balloons! let's watch! come on!"
-ASK1_TRIAL = "ding dong! someone is at the door! look! a shadow! who is it?"
+# B1 ends with a fed menu: a pre-A1 child cannot answer a bare "who?" —
+# "A cat? A dog?" hands them words to echo (device bug #367710: "什么？"
+# got the whole line repeated verbatim instead of help). Tail check plus
+# every load-bearing sentence present ("Someone is at the door!" gets
+# dropped by models, so it is checked separately).
+ASK1_TRIAL = "a shadow! who is it? a cat? a dog? guess!"
+ASK1_TRIAL_PARTS = ("ding dong", "someone is at the door", "a shadow")
 ASK2_TRIAL = "hmm! is it big, or small?"
 CLOSE_TRIAL = "let's find out! come on!"
 # The secret visitor: the teacher may say it ONLY as a recast of the child's
@@ -252,6 +258,18 @@ def check_post_trial(tr, replies, users, v, out):
                 child_guessed_secret = True
         elif re.search(rf"\b{SPOILER_TRIAL}\b", m["text"], re.I) and not child_guessed_secret:
             v("spoiler", f"teacher says the secret visitor FIRST (child never guessed it): {strip_tags(m['text']).strip()!r}")
+    # Say-nothing-twice law (device bug #367711: the who-line repeated verbatim
+    # to a confused child, then "A mystery! Ooh!" twice): no sentence of 3+
+    # words appears in two different replies.
+    seen_sents = {}
+    for n, r in enumerate(replies, 1):
+        for s in re.split(r"(?<=[.!?])\s+", strip_tags(r).strip()):
+            ns = re.sub(r"[^a-z' ]", "", s.lower()).strip()
+            if len(ns.split()) < 3:
+                continue
+            if ns in seen_sents and seen_sents[ns] != n:
+                v("sentence-repeat", f"reply {n}: repeats {s.strip()!r} (first said in reply {seen_sents[ns]})")
+            seen_sents.setdefault(ns, n)
     for n, r in enumerate(replies, 1):
         if re.search(rf"(yes|yeah|right|correct)[^a-z]{{0,4}}[^.!?]*\b{SPOILER_TRIAL}\b|it('s| is) (a |the )?{SPOILER_TRIAL}", strip_tags(r), re.I):
             v("spoiler-confirm", f"reply {n}: confirms the secret visitor: {strip_tags(r).strip()!r}")
@@ -260,8 +278,12 @@ def check_post_trial(tr, replies, users, v, out):
         if re.search(r"\bno[,.!]?\s+(it('s| is)?\s+)?not\b", strip_tags(r), re.I):
             v("no-deny", f"reply {n}: denies a guess (the teacher does not know who it is)")
     if replies:
-        if not norm(replies[0]).endswith(ASK1_TRIAL):
+        n1 = norm(replies[0])
+        if not n1.endswith(ASK1_TRIAL):
             v("script-ask1", f"reply 1 does not end with the who-is-it line: {strip_tags(replies[0]).strip()!r}")
+        for part in ASK1_TRIAL_PARTS:
+            if part not in n1:
+                v("script-ask1-drop", f"reply 1 dropped {part!r} from the B1 script (real test bug)")
         if "[STUDENT_TALK]" not in replies[0]:
             v("tag-ask1", "reply 1 must wait with [STUDENT_TALK]")
     if len(replies) >= 2:

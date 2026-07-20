@@ -64,6 +64,14 @@ post_video:
     turns: ["刺猬！", "small!"]
     require_phrases: ["hedgehog\\b.{0,30}maybe"]
     forbid_phrases: ["(yes|yeah|right)[^.!?]*hedgehog", "it('s| is) (a |the )?hedgehog", "not (a )?hedgehog"]
+  - id: post-confused
+    note: "REGRESSION (device #367710-15): '什么？' then '我听不懂' got the who-line repeated verbatim, then 'A mystery! Ooh!' twice — a lost child gets comfort + the two-choice ask, and nothing is ever said twice"
+    turns: ["什么？", "我听不懂。"]
+    require_phrases: ["it'?s okay"]
+  - id: post-menu-echo
+    note: "shy kid echoes a word from B1's fed menu ('Cat.') — that IS a guess: recast + Maybe, never 'that is not an answer'"
+    turns: ["Cat.", "small"]
+    require_phrases: ["\\bcat\\b[^.!?]{0,16}(maybe|meow)|a cat\\?"]
   - id: post-scared-kid
     note: "a scared child gets softness first, no jokes, and the page still closes"
     turns: ["我怕。", "..."]
@@ -71,7 +79,7 @@ post_video:
   - id: post-askback
     note: "child asks the teacher who it is — the teacher wonders WITH them, never invents an answer"
     turns: ["你说是谁呀？", "big"]
-    require_phrases: ["i don.t know|me neither|no idea"]  # dot: models emit curly apostrophes
+    require_phrases: ["i do(n.t| not) know|me neither|no idea"]  # dot: curly apostrophes; "do not" is a fine spoken form too
   - id: post-guess-person
     note: "a person guess ('Mommy!') is as good as an animal — echoed and wondered about, never corrected"
     turns: ["Mommy!", "big!"]

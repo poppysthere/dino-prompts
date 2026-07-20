@@ -55,7 +55,10 @@ BUDGETS = {
     # contact with the product, keep lean. render_content_* is data, not prompt.
     "common_teaching_simple_rules_l1_trial.md": (110, 1600),
     "leadin_teaching_rules_trial_step_pre_video.md": (60, 850),
-    "leadin_teaching_rules_trial_step_post_video.md": (70, 1000),
+    # Raised 1000 -> 1100 (device #367710-15: verbatim who-line repeat to a
+    # confused child, doubled catches): menu-fed ask, confusion branch, and
+    # the say-nothing-twice law. Recalibration, not creep.
+    "leadin_teaching_rules_trial_step_post_video.md": (70, 1100),
     "render_content_trial_leadin.md": (30, 400),
 }
 
