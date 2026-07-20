@@ -42,6 +42,16 @@ ASK_L5 = ("look! mike meets zoe in tomorrow town. tomorrow town has many robots.
           "zoe wants to show mike around. what robots do you think mike will see?")
 LAUNCH_L5 = "let's see what zoe shows mike first!"
 
+# --- Trial: 新手引导体验课 demo lesson (Fox's birthday party; ages 4-6, pre-A1) ---
+# pre-video REPLACES the warm-up (hi + one tiny question + launch, 2 replies);
+# post-video is a 3-reply shadow-guessing chat. The visitor (hedgehog) is a
+# SECRET the teacher must never say — the lesson reveals it later.
+LAUNCH_TRIAL_PRE = "look! a party! cake and balloons! let's watch! come on!"
+ASK1_TRIAL = "ding dong! look at the door! a shadow! who is it?"
+ASK2_TRIAL = "hmm! is it big, or small?"
+CLOSE_TRIAL = "let's find out! come on!"
+SPOILER_TRIAL = "hedgehog"
+
 # --- Festival: 足球课 World Cup special (ages 4-6, pre-A1) ---
 # pre-video is a fixed no-question hype line; post-video is ONE reply
 # (feel + hook + go), never waits, never asks.
@@ -104,6 +114,9 @@ def check(path):
 
     family = tr.get("family", "leadin_l2")
 
+    if family == "leadin_trial" and step == "pre_video":
+        return check_pre_trial(tr, replies, users, v, out)
+
     if step == "pre_video":
         if len(replies) != 1:
             v("one-turn", f"pre-video must be exactly 1 reply, got {len(replies)}")
@@ -139,6 +152,8 @@ def check(path):
                              praise=r"good\s+(idea|guess)", catch_max=SOFT_CATCH_MAX + 4)
     if family == "leadin_l1_soccer":
         return check_post_soccer(tr, replies, users, v, out)
+    if family == "leadin_trial":
+        return check_post_trial(tr, replies, users, v, out)
 
     # post_video: exactly 2 replies (ASK -> confirm+launch), no ready-wait
     if len(replies) != 2:
@@ -179,6 +194,93 @@ def check(path):
         if re.search(rf"\b{CULPRIT}\b", r, re.I):
             v("spoiler", f"reply {n}: teacher says the culprit ({CULPRIT!r})")
 
+    return out
+
+
+def check_pre_trial(tr, replies, users, v, out):
+    """Trial demo pre-video: B1 hello + one tiny question (waits), B2 catch + fixed launch."""
+    if len(replies) != 2:
+        v("two-replies", f"trial pre-video must be exactly 2 replies, got {len(replies)}")
+    if replies:
+        r1, b1 = replies[0], strip_tags(replies[0])
+        if "[STUDENT_TALK]" not in r1:
+            v("tag-b1", "reply 1 must wait with [STUDENT_TALK]")
+        if b1.count("?") != 1:
+            v("one-question", f"reply 1 needs exactly ONE tiny question, got {b1.count('?')}: {b1.strip()!r}")
+        if re.search(r"your\s+name|你叫什么", b1, re.I):
+            v("no-name-ask", "the demo never asks the child's name")
+    if len(replies) >= 2:
+        r2, n2 = replies[1], norm(replies[1])
+        if "[NEXT_STEP]" not in r2:
+            v("next-step", "reply 2 does not start the video with [NEXT_STEP] (class stuck)")
+        if "[STUDENT_TALK]" in r2:
+            v("no-wait", "reply 2 must launch, never wait again")
+        at = n2.find(LAUNCH_TRIAL_PRE)
+        if at < 0:
+            v("script-launch", f"reply 2 is missing the fixed launch: {strip_tags(r2).strip()!r}")
+        else:
+            catch = n2[:at].strip()
+            if len(catch.split()) > 8:
+                v("catch-budget", f"reply 2 catch over budget ({len(catch.split())} words): {catch!r}")
+            if n2[at + len(LAUNCH_TRIAL_PRE):].strip():
+                v("script-launch", "reply 2 has text after the launch line")
+            qs = [s for s in re.split(r"(?<=[?])\s+", catch) if s.endswith("?")]
+            if len(qs) > 1 or any(len(q.rstrip("?").split()) > 3 for q in qs):
+                v("no-question-launch", f"reply 2 catch asks a real question: {catch!r}")
+            first = users[1].lower() if len(users) > 1 else ""
+            if first.startswith("the student has been silent") and catch:
+                v("catch-on-silence", f"reply 2 puts a catch before the launch on a silent child: {catch!r}")
+    return out
+
+
+def check_post_trial(tr, replies, users, v, out):
+    """Trial demo post-video: shadow chat — ASK1 who -> catch + ASK2 big/small -> catch + close."""
+    if len(replies) != 3:
+        v("three-replies", f"trial post-video must be exactly 3 replies, got {len(replies)}")
+    for n, r in enumerate(replies, 1):
+        if re.search(rf"\b{SPOILER_TRIAL}\b", r, re.I):
+            v("spoiler", f"reply {n}: teacher says the secret visitor ({SPOILER_TRIAL!r})")
+        if re.search(r"good\s+(guess|job|idea)", strip_tags(r), re.I):
+            v("fake-praise", f"reply {n}: empty praise instead of playing with the child's word")
+        if re.search(r"\bno[,.!]?\s+(it('s| is)?\s+)?not\b", strip_tags(r), re.I):
+            v("no-deny", f"reply {n}: denies a guess (the teacher does not know who it is)")
+    if replies:
+        if not norm(replies[0]).endswith(ASK1_TRIAL):
+            v("script-ask1", f"reply 1 does not end with the who-is-it line: {strip_tags(replies[0]).strip()!r}")
+        if "[STUDENT_TALK]" not in replies[0]:
+            v("tag-ask1", "reply 1 must wait with [STUDENT_TALK]")
+    if len(replies) >= 2:
+        n2 = norm(replies[1])
+        if not n2.endswith(ASK2_TRIAL):
+            v("script-ask2", f"reply 2 does not end with the big-or-small line: {strip_tags(replies[1]).strip()!r}")
+        else:
+            catch = n2[: n2.rfind(ASK2_TRIAL)].strip()
+            if len(catch.split()) > 10:
+                v("catch-budget", f"reply 2 catch over budget ({len(catch.split())} words): {catch!r}")
+            first = users[1].lower() if len(users) > 1 else ""
+            if first.startswith("the student has been silent") and catch:
+                v("catch-on-silence", f"reply 2 puts a catch before the ask on a silent child: {catch!r}")
+        if "[STUDENT_TALK]" not in replies[1]:
+            v("tag-ask2", "reply 2 must wait with [STUDENT_TALK]")
+    if len(replies) >= 3:
+        r3, n3 = replies[2], norm(replies[2])
+        if "[TEMPLATE_FINISH]" not in r3:
+            v("must-finish", "reply 3 does not end the lead-in with [TEMPLATE_FINISH]")
+        at = n3.find(CLOSE_TRIAL)
+        if at < 0:
+            v("script-close", f"reply 3 is missing the close line: {strip_tags(r3).strip()!r}")
+        else:
+            catch = n3[:at].strip()
+            if len(catch.split()) > 10:
+                v("catch-budget", f"reply 3 catch over budget ({len(catch.split())} words): {catch!r}")
+            if n3[at + len(CLOSE_TRIAL):].strip():
+                v("script-close", "reply 3 has text after the close line")
+            qs = [s for s in re.split(r"(?<=[?])\s+", catch) if s.endswith("?")]
+            if len(qs) > 1 or any(len(q.rstrip("?").split()) > 5 for q in qs):
+                v("no-question-finish", f"reply 3 catch asks a real question: {catch!r}")
+            second = users[2].lower() if len(users) > 2 else ""
+            if second.startswith("the student has been silent") and catch:
+                v("catch-on-silence", f"reply 3 puts a catch before the close on a silent child: {catch!r}")
     return out
 
 

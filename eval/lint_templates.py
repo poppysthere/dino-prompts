@@ -51,6 +51,12 @@ BUDGETS = {
     # Deliberate recalibration, not creep — trim before raising again.
     "word_teaching_rules_l1_soccer.md": (100, 2100),
     "wrapup_teaching_rules_l1_soccer.md": (75, 1100),
+    # Trial: 新手引导体验课 demo (Fox's birthday party, 4-6, pre-A1) — first
+    # contact with the product, keep lean. render_content_* is data, not prompt.
+    "common_teaching_simple_rules_l1_trial.md": (110, 1600),
+    "leadin_teaching_rules_trial_step_pre_video.md": (60, 850),
+    "leadin_teaching_rules_trial_step_post_video.md": (70, 1000),
+    "render_content_trial_leadin.md": (30, 400),
 }
 
 
@@ -60,6 +66,7 @@ def main():
     for level in ("l2", "l3", "l5"):
         files += sorted((ROOT / "prompts" / level).glob("*.md"))
     files += sorted((ROOT / "prompts/festival").glob("*.md"))
+    files += sorted((ROOT / "prompts/trial").glob("*.md"))
     for f in files:
         text = f.read_text()
         lines = len(text.splitlines())
