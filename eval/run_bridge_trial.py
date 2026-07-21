@@ -36,9 +36,16 @@ STOP_TAGS = ("[TEMPLATE_FINISH]", "[NEXT_STEP]")
 HEDGEHOG_TAIL = [
     {"role": "assistant", "text": "Hedgehog! Good job! Well done![TEACHER_APPLAUD][TEMPLATE_FINISH]"},
 ]
-PRE_TEASE = {"role": "assistant",
-             "text": ("The hedgehog is IN! But look![TEACHER_POINT_TO_SCREEN] ANOTHER shadow! "
-                      "Who is it THIS time? Let's watch! Come on![NEXT_STEP]")}
+# Condensed pre-video game for post cases that don't seed their own.
+PRE_TEASE = [
+    {"role": "assistant",
+     "text": ("The hedgehog is IN! But look![TEACHER_POINT_TO_SCREEN] ANOTHER shadow! "
+              "Who is it THIS time? Guess![STUDENT_TALK]")},
+    {"role": "user", "text": "A cat!"},
+    {"role": "assistant", "text": "A cat? Ooh! Maybe! Is it tall, or short?[STUDENT_TALK]"},
+    {"role": "user", "text": "Tall!"},
+    {"role": "assistant", "text": "Tall? Ooh! Maybe! Let's watch! Come on![NEXT_STEP]"},
+]
 
 
 def render_content() -> str:
@@ -66,7 +73,7 @@ def run_case(backend, step, case):
     system = compose(step, prompt_name)
     seed = HEDGEHOG_TAIL + case.get("seed", [])
     if step == "post_video" and not any(m["role"] == "assistant" for m in case.get("seed", [])):
-        seed = seed + [PRE_TEASE]
+        seed = seed + PRE_TEASE
     messages = [{"role": m["role"], "content": m["text"]} for m in seed]
     messages.append({"role": "user", "content": UI_READY})
     # Seeded ASSISTANT beats (earlier pages / the pre-video tease) stay out of

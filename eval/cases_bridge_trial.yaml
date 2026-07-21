@@ -1,35 +1,49 @@
 # Case battery: 新手引导体验课 trial demo — the shadow bridge (second shadow -> flamingo video).
-# The wrap-up template is REPURPOSED here as a mystery bridge: pre-video is one
-# tease reply + [NEXT_STEP]; the video reveals the flamingo; post-video is one
-# cheer reply + [TEMPLATE_FINISH]. No goodbye anywhere — the class continues.
+# The wrap-up template is REPURPOSED here as a mystery bridge: pre-video is the
+# guessing game round two (tease+who -> catch+tall-or-short -> catch+launch,
+# 3 replies, the child gets two guess turns); the video reveals the flamingo;
+# post-video is one cheer reply + [TEMPLATE_FINISH]. No goodbye anywhere.
 # Run: python3 eval/run_bridge_trial.py
 
 pre_video:
   - id: bridge-pre-happy
-    note: "fresh UI-ready — one tease reply: another shadow, screen-shout, launch; flamingo stays secret"
-    turns: []
-    require_phrases: ["shadow"]
+    note: "child guesses an elephant then tall — recast + wonder each time, flamingo stays secret"
+    turns:
+      - "大象！"
+      - "Tall!"
+    require_phrases: ["elephant", "shadow"]
     forbid_phrases: ["flamingo", "wrap", "bye"]
-  - id: bridge-pre-guess
-    note: "child guessed the secret ('火烈鸟！') right before — recast in English + Maybe, still never confirmed, still launches"
-    seed:
-      - role: user
-        text: "火烈鸟！"
-    turns: []
+  - id: bridge-pre-secret-guess
+    note: "child guesses the secret ('火烈鸟！') — recast in English + Maybe, never confirmed, game goes on"
+    turns:
+      - "火烈鸟！"
+      - "Tall!"
     require_phrases: ["flamingo\\b.{0,30}maybe"]
     forbid_phrases: ["(yes|yeah|right)[^.!?]*flamingo", "it('s| is) (a |the )?flamingo"]
-  - id: bridge-pre-chatty
-    note: "child asks where the hedgehog went — tiny catch first, then the tease and launch"
-    seed:
-      - role: user
-        text: "刺猬呢？"
+  - id: bridge-pre-idk
+    note: "'I don't know' is an answer, owned together — not confusion, no re-ask of the who-line"
+    turns:
+      - "不知道。"
+      - "Short?"
+    require_phrases: ["i do(n't| not) know|no idea|me too"]
+    forbid_phrases: ["flamingo"]
+  - id: bridge-pre-lost
+    note: "lost child ('我听不懂') gets comfort + the two-choice hint, never the dead who-line again"
+    turns:
+      - "我听不懂。"
+      - "Tall."
+    forbid_phrases: ["flamingo"]
+  - id: bridge-pre-silent
+    note: "silent both turns — no catch before the asks, game still reaches the launch"
     turns: []
     require_phrases: ["shadow"]
     forbid_phrases: ["flamingo"]
   - id: bridge-pre-junk-name
     note: "junk booking name is never spoken"
     student_name: test_user
-    turns: []
+    turns:
+      - "A cat!"
+      - "Short!"
     forbid_phrases: ["test_user", "flamingo"]
 
 post_video:
@@ -39,12 +53,16 @@ post_video:
     require_phrases: ["flamingo"]
     forbid_phrases: ["repeat after me"]
   - id: bridge-post-guessed-before
-    note: "child guessed flamingo in the pre-video chat — their win comes first ('You said it!')"
+    note: "child guessed flamingo during the game — their win comes first ('You said it!')"
     seed:
       - role: user
         text: "火烈鸟！"
       - role: assistant
-        text: "A flamingo? Ooh! Maybe! ANOTHER shadow! Who is it THIS time? Let's watch! Come on![NEXT_STEP]"
+        text: "A flamingo? Ooh! Maybe! Is it tall, or short?[STUDENT_TALK]"
+      - role: user
+        text: "Tall!"
+      - role: assistant
+        text: "Tall? Ooh! Maybe! Let's watch! Come on![NEXT_STEP]"
     turns: []
     require_phrases: ["(you said it|you were right|you knew|you guessed)"]
   - id: bridge-post-junk-name

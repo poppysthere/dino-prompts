@@ -286,35 +286,80 @@ def check_pre_trial(tr, replies, users, v, out):
 BRIDGE_SECRET = "flamingo"
 BRIDGE_SECRET_L1 = "火烈鸟"
 GOODBYE = r"\bbye\b|bye-bye|see you|next time|wrap up"
+# pre-video is the guessing game round two: tease+who (wait) -> catch+tall-or-
+# short (wait) -> catch+launch. Same 3-reply shape as the trial lead-in post,
+# with a tall/short hint (a flamingo!) instead of big/small.
+ASK1_BRIDGE = "who is it this time? guess!"
+# "Is it tall, or short?" and the shorter "Tall or short?" are the same
+# teaching move — both hand the child two words to grab.
+ASK2_BRIDGE_RE = r"(is it )?tall,? or short\?$"
+CLOSE_BRIDGE = "let's watch! come on!"
 
 
 def check_pre_bridge(tr, replies, users, v, out):
-    """Trial shadow bridge pre-video: ONE reply — second-shadow tease + [NEXT_STEP].
-    The visitor (flamingo) is a secret until the video plays."""
-    if len(replies) != 1:
-        v("one-reply", f"bridge pre-video must be exactly 1 reply, got {len(replies)}")
+    """Trial shadow bridge pre-video: 3 replies — the second-shadow guessing
+    game ending in [NEXT_STEP]. The visitor (flamingo) is a secret until the
+    video plays: recast-only, never volunteered, never confirmed."""
+    if len(replies) != 3:
+        v("three-replies", f"bridge pre-video is tease -> hint -> launch (3 replies), got {len(replies)}")
     child_said_secret = any(
         m["role"] == "user" and (BRIDGE_SECRET_L1 in m["text"]
                                  or re.search(rf"\b{BRIDGE_SECRET}\b", m["text"], re.I))
         for m in tr["messages"])
     for n, r in enumerate(replies, 1):
         body = strip_tags(r)
-        if "[NEXT_STEP]" not in r:
-            v("next-step", "the tease does not launch the video with [NEXT_STEP] (class stuck)")
-        if "[STUDENT_TALK]" in r or "[TEMPLATE_FINISH]" in r:
-            v("no-wait", "the bridge never waits and never finishes at pre-video")
         if re.search(rf"\b{BRIDGE_SECRET}\b", body, re.I) and not child_said_secret:
-            v("spoiler", f"teacher says the secret visitor before the video: {body.strip()!r}")
-        if not re.search(r"shadow", body, re.I):
-            v("tease", f"the tease never shows the new shadow: {body.strip()!r}")
-        # Sanctioned: the tiny who-question screen-shout, plus at most one
-        # recast echo ("A flamingo?"). Anything bigger is a real ask nobody
-        # will wait for.
-        qs = [s for s in re.split(r"(?<=[.!?])\s+", body) if s.rstrip().endswith("?")]
-        if len(qs) > 2 or any(len(q.rstrip(" ?").split()) > 6 for q in qs):
-            v("no-question", f"more than tiny screen-shout questions: {body.strip()!r}")
+            v("spoiler", f"reply {n} says the secret visitor before the video: {body.strip()!r}")
+        if child_said_secret and re.search(
+                rf"(yes|yeah|right|correct)[^.!?]*\b{BRIDGE_SECRET}\b|it('s| is) (a |the )?{BRIDGE_SECRET}",
+                body, re.I):
+            v("spoiler", f"reply {n} CONFIRMS the secret guess: {body.strip()!r}")
         if re.search(GOODBYE, body, re.I):
-            v("not-a-wrapup", f"goodbye words on a bridge page: {body.strip()!r}")
+            v("not-a-wrapup", f"reply {n} has goodbye words on a bridge page: {body.strip()!r}")
+        if n > 1 and re.search(r"who\s+is\s+it", body, re.I):
+            v("dead-line-repeat", f"reply {n} re-runs the dead who-ask: {body.strip()!r}")
+    if replies:
+        n1 = norm(replies[0])
+        if not n1.endswith(ASK1_BRIDGE):
+            v("script-ask1", f"reply 1 does not end with the who-is-it tease: {strip_tags(replies[0]).strip()!r}")
+        if "shadow" not in n1:
+            v("tease", f"reply 1 never shows the new shadow: {strip_tags(replies[0]).strip()!r}")
+        if "[STUDENT_TALK]" not in replies[0]:
+            v("tag-ask1", "reply 1 must give the child the guess turn with [STUDENT_TALK]")
+    if len(replies) >= 2:
+        n2 = norm(replies[1])
+        m2 = re.search(ASK2_BRIDGE_RE, n2)
+        if not m2:
+            v("script-ask2", f"reply 2 does not end with the tall-or-short hint: {strip_tags(replies[1]).strip()!r}")
+        else:
+            catch = n2[: m2.start()].strip()
+            if len(catch.split()) > 10:
+                v("catch-budget", f"reply 2 catch over budget ({len(catch.split())} words): {catch!r}")
+            first = users[1].lower() if len(users) > 1 else ""
+            if first.startswith("the student has been silent") and catch:
+                v("catch-on-silence", f"reply 2 puts a catch before the ask on a silent child: {catch!r}")
+            elif first and not first.startswith("the student has been silent") and not catch:
+                v("missing-catch", "reply 2 ignores the child's guess — no catch before the hint ask")
+        if "[STUDENT_TALK]" not in replies[1]:
+            v("tag-ask2", "reply 2 must wait with [STUDENT_TALK]")
+    if len(replies) >= 3:
+        r3, n3 = replies[2], norm(replies[2])
+        if "[NEXT_STEP]" not in r3:
+            v("next-step", "reply 3 does not launch the video with [NEXT_STEP] (class stuck)")
+        if "[STUDENT_TALK]" in r3 or "[TEMPLATE_FINISH]" in r3:
+            v("no-wait", "reply 3 must launch, not wait or finish")
+        at = n3.find(CLOSE_BRIDGE)
+        if at < 0:
+            v("script-launch", f"reply 3 is missing the launch line: {strip_tags(r3).strip()!r}")
+        else:
+            catch = n3[:at].strip()
+            if len(catch.split()) > 10:
+                v("catch-budget", f"reply 3 catch over budget ({len(catch.split())} words): {catch!r}")
+            if n3[at + len(CLOSE_BRIDGE):].strip():
+                v("script-launch", "reply 3 has text after the launch line")
+            qs = [s for s in re.split(r"(?<=[?])\s+", catch) if s.endswith("?")]
+            if len(qs) > 1 or any(len(q.rstrip("?").split()) > 3 for q in qs):
+                v("no-question-finish", f"reply 3 catch asks a real question: {catch!r}")
     return out
 
 
