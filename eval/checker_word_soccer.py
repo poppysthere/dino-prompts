@@ -284,6 +284,11 @@ def check(tr):
         if not opted_out and not re.search(r"\bhedge\b[\s.!,]+\bhog\b", all_teacher, re.I):
             v("syllable-ladder", "the split 'Hedge. Hog.' never appears "
                                  "(the ladder is the page's scaffold)")
+        # The lesson continues (the flamingo bridge is next): the close must
+        # hand the class back to the story, not just stop.
+        if replies and not re.search(r"back\s+to\s+the\s+party", strip_tags(replies[-1]), re.I):
+            v("party-handoff", "the close never hands back to the story "
+                               "('Let's go back to the party!')")
         # Letter chunks are broken sound: only whole real words may be spoken.
         for n, r in enumerate(replies, 1):
             body = strip_tags(r)

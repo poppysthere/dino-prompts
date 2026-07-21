@@ -76,8 +76,10 @@ BUDGETS = {
     # (no door re-opening, "You say" call, piece handling, kid-sized close,
     # clap-only-in-reply-2, no close at reply 1). Then -> 2070 (user doctrine,
     # round #368532): the call became "Repeat after me. Hedgehog!" and the
-    # can-you-say ban. Deliberate recalibrations, not creep.
-    "word_teaching_rules_trial_hedgehog.md": (105, 2070),
+    # can-you-say ban. Then -> 2140: the close gained the party handoff
+    # ("Let's go back to the party!") because the flamingo bridge follows.
+    # Deliberate recalibrations, not creep.
+    "word_teaching_rules_trial_hedgehog.md": (105, 2140),
     "render_content_trial_word_hedgehog.md": (15, 250),
     # Shadow bridge: the repurposed wrap-up (second shadow -> flamingo reveal).
     # Grew 1000 -> 1450 when the user made pre-video a real guess game
