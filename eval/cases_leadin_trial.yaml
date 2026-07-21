@@ -75,6 +75,13 @@ post_video:
     note: "REGRESSION (device #367710-15): '什么？' then '我听不懂' got the who-line repeated verbatim, then 'A mystery! Ooh!' twice — a lost child gets comfort + the two-choice ask, and nothing is ever said twice"
     turns: ["什么？", "我听不懂。"]
     require_phrases: ["it'?s okay"]
+  - id: post-confused-2
+    note: "REGRESSION (device, second report): another confusion phrasing ('你说什么呀？') — the who-line must stay dead, the child gets comfort + the two-choice ask"
+    turns: ["你说什么呀？", "不知道。"]
+    require_phrases: ["it'?s okay|okay!"]
+  - id: post-say-again
+    note: "child asks to REPEAT ('再说一遍') — a human repeats SIMPLER, never the same speech verbatim; the two-choice ask IS the simpler version"
+    turns: ["再说一遍。", "big!"]
   - id: post-menu-echo
     note: "shy kid echoes a word from B1's fed menu ('Cat.') — that IS a guess: recast + Maybe, never 'that is not an answer'"
     turns: ["Cat.", "small"]

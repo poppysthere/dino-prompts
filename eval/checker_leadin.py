@@ -290,6 +290,12 @@ def check_post_trial(tr, replies, users, v, out):
             if ns in seen_sents and seen_sents[ns] != n:
                 v("sentence-repeat", f"reply {n}: repeats {s.strip()!r} (first said in reply {seen_sents[ns]})")
             seen_sents.setdefault(ns, n)
+    # The who-line lives in reply 1 ONLY (device bug: it was re-said word for
+    # word to a confused child instead of helping). "Ding dong" / "who is it"
+    # anywhere later = the robot bug, even partially.
+    for n, r in enumerate(replies[1:], 2):
+        if re.search(r"ding\s+dong|who is it|someone is at the door", strip_tags(r), re.I):
+            v("dead-line-repeat", f"reply {n}: brings back the who-line ('Ding dong' / 'Who is it') — it exists once, in reply 1 only: {strip_tags(r).strip()!r}")
     for n, r in enumerate(replies, 1):
         if re.search(rf"(yes|yeah|right|correct)[^a-z]{{0,4}}[^.!?]*\b{SPOILER_TRIAL}\b|it('s| is) (a |the )?{SPOILER_TRIAL}", strip_tags(r), re.I):
             v("spoiler-confirm", f"reply {n}: confirms the secret visitor: {strip_tags(r).strip()!r}")
