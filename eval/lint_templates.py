@@ -65,6 +65,11 @@ BUDGETS = {
     # (IDK ignored, scared kid closed early) from the live battery. Not creep.
     "leadin_teaching_rules_trial_step_post_video.md": (70, 1150),
     "render_content_trial_leadin.md": (30, 400),
+    # The hedgehog reveal page: inherits the soccer word page's HUMAN RULE +
+    # invite budget doctrine, plus the syllable-ladder section. Sized like
+    # word_teaching_rules_l1_soccer minus the multi-word genericity.
+    "word_teaching_rules_trial_hedgehog.md": (105, 2000),
+    "render_content_trial_word_hedgehog.md": (15, 250),
 }
 
 

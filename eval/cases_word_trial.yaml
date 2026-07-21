@@ -1,0 +1,98 @@
+# Case battery — 新手引导体验课 trial demo, word page: HEDGEHOG (the reveal).
+# Ages 4-6, pre-A1. Structure: REVEAL -> second ask (retry OR clap game) ->
+# wonder -> close. Two asks max, one question, 4 replies max.
+# Run: python3 eval/run_word_trial.py
+
+word_trial_hedgehog:
+  - id: hh-pass
+    note: happy path — tries the word, clap game, wonder, close
+    turns:
+      - "Hedgehog!"
+      - "Hedge! Hog! Hedgehog!"
+      - "yes!"
+    require_phrases:
+      - "hedge\\W+hog"          # the clap game / syllable ladder
+      - "(yes|wow|great|nice)"  # real celebration for a real try
+
+  - id: hh-guessed-before
+    note: the child guessed the hedgehog in the lead-in — the reveal is THEIR win
+    seed:
+      - role: assistant
+        text: "Oh! Ding dong! Someone is at the door! Look! A shadow! Who is it? A cat? A dog? Guess![TEACHER_LISTEN][STUDENT_TALK]"
+      - role: user
+        text: "刺猬！"
+      - role: assistant
+        text: "A hedgehog? Ooh! Maybe! Is it big, or small?[TEACHER_LISTEN][STUDENT_TALK]"
+      - role: user
+        text: "small!"
+      - role: assistant
+        text: "Small! Ooh! Let's peek![NEXT_STEP]"
+    turns:
+      - "Hedgehog!"
+      - "Hedge! Hog!"
+      - "yes!"
+    require_phrases:
+      - "(you said it|you were right|you got it|you knew|you guessed)"
+
+  - id: hh-syllable-try
+    note: one syllable alone counts as a try — generous ears, no retry
+    turns:
+      - "Hog!"
+      - "Hedgehog!"
+      - "no"
+    forbid_phrases:
+      - "one more time"
+
+  - id: hh-cn-word
+    note: own-language word means they understood — recast to English, then the retry
+    turns:
+      - "刺猬！"
+      - "hedgehog"
+      - "yes"
+    require_phrases:
+      - "in english"
+
+  - id: hh-agreement
+    note: 好 is agreement, not a try — no praise, run the retry
+    turns:
+      - "好。"
+      - "hedgehog"
+      - "yes!"
+
+  - id: hh-question
+    note: "child asks what it is — answer by showing, never 'means', then the retry"
+    turns:
+      - "这是什么呀？"
+      - "hedge hog"
+      - "小小的。"
+
+  - id: hh-scared
+    note: spikes are scary — soft catch first, he is a friend
+    turns:
+      - "有刺！我怕！"
+      - "hedgehog"
+      - "yes"
+    require_phrases:
+      - "friend"
+
+  - id: hh-optout
+    note: opt-out at the meet call is sacred — no more asks, wonder, close
+    turns:
+      - "我不想说了。"
+      - "嗯。"
+
+  - id: hh-silent
+    note: fully silent page — exactly 4 replies, no fake praise
+    turns: []
+    forbid_phrases:
+      - "great job"
+
+  - id: hh-junk-name
+    note: junk default name is never spoken
+    student_name: "test_user"
+    turns:
+      - "Hedgehog!"
+      - "Hedge! Hog!"
+      - "yes"
+    forbid_phrases:
+      - "test_user"

@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-"""Structural checker for the 足球课 generic word-teaching page (ages 4-6, pre-A1).
+"""Structural checker for the generated word-teaching pages (ages 4-6, pre-A1):
+the 足球课 words (goal/team/come on) and the trial demo's hedgehog reveal.
 
 Unlike the L2/L3 word pages, the lines are GENERATED from renderContent
 (word + imageDesc), so this checker validates shape and language, not scripts:
 beat budget, tag discipline, say-it calls, kid-words, fake praise, TTS safety.
+family "word_trial" adds the syllable-ladder rules (whole real words, never
+letter chunks) and the reveal payoff.
 
 Transcript JSON:
   {"family":"word_soccer","word":"goal","case":"...","student_name":"tom",
@@ -140,7 +143,9 @@ def check(tr):
 
         if has_cjk(r):
             v("english-only", f"reply {n}: contains non-English characters")
-        if "..." in r or "…" in r or re.search(r"\w\s*[-–—]\s*\w", body):
+        # hyphenated interjections the voice engine says fine are whitelisted
+        dash_body = re.sub(r"\b(ta-da|ding-dong)\b", " ", body, flags=re.I)
+        if "..." in r or "…" in r or re.search(r"\w\s*[-–—]\s*\w", dash_body):
             v("tts-safety", f"reply {n}: ellipsis or dash")
         for s in re.finditer(r"[A-Za-z]*([A-Za-z])\1{2,}[A-Za-z]*", body):
             v("tts-stretched", f"reply {n}: stretched spelling {s.group(0)!r}")
@@ -253,6 +258,20 @@ def check(tr):
     all_teacher = " ".join(strip_tags(r) for r in replies)
     if word.rstrip("!") not in all_teacher.lower():
         v("word-taught", f"the target word {word!r} never appears")
+
+    if tr.get("family") == "word_trial":
+        # The syllable ladder is the page's trick: the word broken into its
+        # two REAL-word halves ("Hedge. Hog.") must appear somewhere — it is
+        # the clap game on the pass path and the retry scaffold otherwise.
+        # Exception: an opt-out ends all asks, so the ladder may never come.
+        if not opted_out and not re.search(r"\bhedge\b[\s.!,]+\bhog\b", all_teacher, re.I):
+            v("syllable-ladder", "the split 'Hedge. Hog.' never appears "
+                                 "(the ladder is the page's scaffold)")
+        # Letter chunks are broken sound: only whole real words may be spoken.
+        for n, r in enumerate(replies, 1):
+            for m in re.finditer(r"\b(hed|ge|hetch|hodge)\b", strip_tags(r), re.I):
+                v("broken-chunk", f"reply {n}: letter chunk {m.group(0)!r} "
+                                  f"is not a real word the voice engine can say")
     for pat in tr.get("require_phrases", []):
         if not re.search(pat, all_teacher, re.I):
             v("require-phrase", f"no reply contains required phrase {pat!r}")
