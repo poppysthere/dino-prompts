@@ -26,6 +26,17 @@ pre_video:
     student_name: lily
     turns: ["hi!", "yes!"]
     require_phrases: ["\\blily\\b"]
+  - id: pre-greet-var
+    note: "REGRESSION (device #368067-75): child greets in their own words ('Good morning. Hi.') — that IS the hi-back win; never the greeting again, word for word"
+    turns: ["Good morning. Hi.", "No."]
+    require_phrases: ["are you happy"]
+  - id: pre-tommy-profile
+    note: "REGRESSION (device #368067): profile 称呼 says Tommy, <studentName> says heidi — greet heidi, the profile nickname is dead data"
+    student_name: heidi
+    profile: tommy
+    turns: ["hi", "yes"]
+    require_phrases: ["\\bheidi\\b"]
+    forbid_phrases: ["\\btommy\\b"]
   - id: pre-lost-kid
     note: "child is lost at the hello ('什么？') — B2 FEEDS the line ('You can say, hi Max!'), the echo is celebrated, launch"
     turns: ["什么？", "hi Max!"]

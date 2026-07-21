@@ -55,8 +55,10 @@ BUDGETS = {
     # contact with the product, keep lean. render_content_* is data, not prompt.
     "common_teaching_simple_rules_l1_trial.md": (110, 1600),
     # Raised 850 -> 950: page grew from 2 to 3 beats (hello-only small win,
-    # then celebrate/feed, then launch) per product decision. Not creep.
-    "leadin_teaching_rules_trial_step_pre_video.md": (60, 950),
+    # then celebrate/feed, then launch) per product decision. Then -> 1050
+    # (device #368067-75): greeting-once law + profile-nickname guard, both
+    # real device bugs ported from the warm-up family. Not creep.
+    "leadin_teaching_rules_trial_step_pre_video.md": (65, 1050),
     # Raised 1000 -> 1100 (device #367710-15: verbatim who-line repeat to a
     # confused child, doubled catches): menu-fed ask, confusion branch, and
     # the say-nothing-twice law. Then -> 1150: missing-catch bad examples

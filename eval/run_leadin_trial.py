@@ -38,6 +38,14 @@ STEP_FILES = {
 }
 DEFAULT_NAME = "nina"
 STOP_TAGS = ("[TEMPLATE_FINISH]", "[NEXT_STEP]")
+# Real device trap (#368067): the booking profile carries a stale 称呼
+# nickname that must never win over <studentName>.
+TOMMY_PROFILE = (
+    "基础信息: 称呼：Tommy\n"
+    '行为画像: {"summary": "A shy yet participative learner who prefers slow, '
+    'friendly instruction.", "personality": "Shy but engaged; prefers gentle, '
+    'patient tutors."}'
+)
 
 
 def render_content() -> str:
@@ -46,14 +54,14 @@ def render_content() -> str:
     return "\n".join(l for l in raw.splitlines() if not l.startswith("#")).strip()
 
 
-def compose(step: str, name: str, role: str) -> str:
+def compose(step: str, name: str, role: str, profile: str) -> str:
     common = (ROOT / "prompts/trial/common_teaching_simple_rules_l1_trial.md").read_text()
     tmpl = (ROOT / STEP_FILES[step]).read_text()
     text = common.rstrip() + "\n\n" + tmpl.rstrip()
     for k, val in {
         "roleDescription": role,
         "renderContent": render_content(),
-        "studentProfile": "No relevant information.",
+        "studentProfile": profile,
         "name": name,
     }.items():
         text = text.replace("{{" + k + "}}", val)
@@ -63,7 +71,8 @@ def compose(step: str, name: str, role: str) -> str:
 def run_case(backend, step, case):
     prompt_name = case.get("student_name", DEFAULT_NAME)
     role = ROLES[case.get("role", "max")]
-    system = compose(step, prompt_name, role)
+    profile = TOMMY_PROFILE if case.get("profile") == "tommy" else "No relevant information."
+    system = compose(step, prompt_name, role, profile)
     messages = [{"role": m["role"], "content": m["text"]} for m in case.get("seed", [])]
     messages.append({"role": "user", "content": UI_READY})
     transcript = []

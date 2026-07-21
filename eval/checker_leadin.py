@@ -224,6 +224,11 @@ def check_pre_trial(tr, replies, users, v, out):
             v("hello-only", f"reply 1 is the hello ONLY — the small win — no question yet: {b1.strip()!r}")
         if re.search(r"your\s+name|你叫什么", b1, re.I):
             v("no-name-ask", "the demo never asks the child's name")
+    # The greeting/self-intro lives in reply 1 ONLY (device bug #368067-75:
+    # "Hi hi Tommy! I'm Max!" re-said verbatim after the child said hi).
+    for n, r in enumerate(replies[1:], 2):
+        if re.search(r"\bI'?m\s+[A-Z][a-z]+\b|\bhi\s+hi\b|\bhello\s+hello\b", strip_tags(r)):
+            v("dead-greeting", f"reply {n}: re-greets or re-introduces — the greeting exists once, in reply 1 only: {strip_tags(r).strip()!r}")
     if len(replies) >= 2:
         r2, b2 = replies[1], strip_tags(replies[1])
         if "[STUDENT_TALK]" not in r2:
