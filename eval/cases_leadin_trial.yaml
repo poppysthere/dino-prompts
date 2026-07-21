@@ -1,48 +1,55 @@
 # Case battery: 新手引导体验课 trial demo lead-in (Fox's birthday party, ages 4-6, pre-A1).
-# pre_video: B1 hello + one tiny question -> B2 catch + fixed launch [NEXT_STEP].
+# pre_video: B1 hello ONLY (small win) -> B2 celebrate + one tiny question,
+#   or the fed line for a lost/silent kid -> B3 catch + fixed launch [NEXT_STEP].
 # post_video: shadow chat — who is it? -> big or small? -> close [TEMPLATE_FINISH].
 # The visitor (hedgehog) is a SECRET: the teacher must never say it.
 
 pre_video:
   - id: pre-happy-path
-    note: "brand-new child says yes — B2 catches the happy and launches the video"
-    turns: ["yes!"]
+    note: "child says hi back (the small win) then yes — celebrated, one tiny question, launch"
+    turns: ["hi!", "yes!"]
     require_phrases: ["\\bmax\\b", "let's watch"]
     forbid_phrases: ["your name", "\\bkim\\b", "\\bleo\\b"]
   - id: pre-role-name-kim
     note: "REGRESSION (bug class #365995): role says Kim — the intro name comes from # Role, never copied from the Max example"
     role: kim
-    turns: ["yes"]
+    turns: ["hi", "yes"]
     require_phrases: ["\\bkim\\b"]
     forbid_phrases: ["\\bmax\\b", "\\bleo\\b", "(coach|teacher)\\s+(kim|max)"]
   - id: pre-junk-name
     note: "trial students often have placeholder names — never speak test_user, still warm"
     student_name: test_user
-    turns: ["yes"]
+    turns: ["hi", "yes"]
     forbid_phrases: ["test_user"]
   - id: pre-real-name
     note: "a real booking name is greeted in B1"
     student_name: lily
-    turns: ["yes!"]
+    turns: ["hi!", "yes!"]
     require_phrases: ["\\blily\\b"]
+  - id: pre-lost-kid
+    note: "child is lost at the hello ('什么？') — B2 FEEDS the line ('You can say, hi Max!'), the echo is celebrated, launch"
+    turns: ["什么？", "hi Max!"]
+    require_phrases: ["you can say[^.!?]{0,12}hi"]
+    forbid_phrases: ["are you happy"]
   - id: pre-sad-kid
-    note: "child says no/sad — soft catch first, video still launches (it IS the help)"
-    turns: ["no. 不开心。"]
-    forbid_phrases: ["glad you are happy", "yay"]
+    note: "child answers the happy question with no/sad — soft catch, video still launches (it IS the help)"
+    turns: ["hi", "no. 不开心。"]
+    forbid_phrases: ["glad you are happy", "yay! look"]
   - id: pre-askback
     note: "child asks the question back — answer like a person first, then launch"
-    turns: ["Are YOU happy?"]
+    turns: ["hi", "Are YOU happy?"]
     require_phrases: ["me\\?[^.!?]{0,16}(happy|great|good)"]
   - id: pre-l1-answer
     note: "child answers in Chinese — react to the meaning in English, never echo the script"
-    turns: ["我很开心！"]
-    forbid_phrases: ["开心"]
+    turns: ["你好！", "我很开心！"]
+    forbid_phrases: ["开心", "你好"]
   - id: pre-silent
-    note: "silent child — B2 launches with NO catch; the video is the help, not more words"
+    note: "silent child — B2 feeds the line ('You can say, hi Max!'), B3 launches with NO catch"
     turns: []
+    require_phrases: ["you can say"]
   - id: pre-babble
-    note: "babble is not parsed as meaning — a tiny 'that's okay' catch, then launch"
-    turns: ["hkajshd"]
+    note: "babble is not parsed as meaning — never parroted, page still flows to the launch"
+    turns: ["hkajshd", "hkajshd"]
     forbid_phrases: ["hkajshd"]
 
 post_video:

@@ -212,38 +212,58 @@ def check(path):
 
 
 def check_pre_trial(tr, replies, users, v, out):
-    """Trial demo pre-video: B1 hello + one tiny question (waits), B2 catch + fixed launch."""
-    if len(replies) != 2:
-        v("two-replies", f"trial pre-video must be exactly 2 replies, got {len(replies)}")
+    """Trial demo pre-video: B1 hello only (small win) -> B2 celebrate + one tiny
+    question, or the fed line for a lost/silent child -> B3 catch + fixed launch."""
+    if len(replies) != 3:
+        v("three-replies", f"trial pre-video must be exactly 3 replies, got {len(replies)}")
     if replies:
         r1, b1 = replies[0], strip_tags(replies[0])
         if "[STUDENT_TALK]" not in r1:
             v("tag-b1", "reply 1 must wait with [STUDENT_TALK]")
-        if b1.count("?") != 1:
-            v("one-question", f"reply 1 needs exactly ONE tiny question, got {b1.count('?')}: {b1.strip()!r}")
+        if "?" in b1:
+            v("hello-only", f"reply 1 is the hello ONLY — the small win — no question yet: {b1.strip()!r}")
         if re.search(r"your\s+name|你叫什么", b1, re.I):
             v("no-name-ask", "the demo never asks the child's name")
     if len(replies) >= 2:
-        r2, n2 = replies[1], norm(replies[1])
-        if "[NEXT_STEP]" not in r2:
-            v("next-step", "reply 2 does not start the video with [NEXT_STEP] (class stuck)")
-        if "[STUDENT_TALK]" in r2:
-            v("no-wait", "reply 2 must launch, never wait again")
-        at = n2.find(LAUNCH_TRIAL_PRE)
+        r2, b2 = replies[1], strip_tags(replies[1])
+        if "[STUDENT_TALK]" not in r2:
+            v("tag-b2", "reply 2 must wait with [STUDENT_TALK]")
+        if b2.count("?") > 1:
+            v("one-question", f"reply 2 asks more than one question: {b2.strip()!r}")
+        second = users[1].lower() if len(users) > 1 else ""
+        if second.startswith("the student has been silent") and "you can say" not in b2.lower():
+            v("feed-on-silence", f"a silent child gets the fed line ('You can say, hi ...'), got: {b2.strip()!r}")
+    if len(replies) >= 3:
+        r3, n3 = replies[2], norm(replies[2])
+        if "[NEXT_STEP]" not in r3:
+            v("next-step", "reply 3 does not start the video with [NEXT_STEP] (class stuck)")
+        if "[STUDENT_TALK]" in r3:
+            v("no-wait", "reply 3 must launch, never wait again")
+        at = n3.find(LAUNCH_TRIAL_PRE)
         if at < 0:
-            v("script-launch", f"reply 2 is missing the fixed launch: {strip_tags(r2).strip()!r}")
+            v("script-launch", f"reply 3 is missing the fixed launch: {strip_tags(r3).strip()!r}")
         else:
-            catch = n2[:at].strip()
+            catch = n3[:at].strip()
             if len(catch.split()) > 8:
-                v("catch-budget", f"reply 2 catch over budget ({len(catch.split())} words): {catch!r}")
-            if n2[at + len(LAUNCH_TRIAL_PRE):].strip():
-                v("script-launch", "reply 2 has text after the launch line")
+                v("catch-budget", f"reply 3 catch over budget ({len(catch.split())} words): {catch!r}")
+            if n3[at + len(LAUNCH_TRIAL_PRE):].strip():
+                v("script-launch", "reply 3 has text after the launch line")
             qs = [s for s in re.split(r"(?<=[?])\s+", catch) if s.endswith("?")]
             if len(qs) > 1 or any(len(q.rstrip("?").split()) > 3 for q in qs):
-                v("no-question-launch", f"reply 2 catch asks a real question: {catch!r}")
-            first = users[1].lower() if len(users) > 1 else ""
-            if first.startswith("the student has been silent") and catch:
-                v("catch-on-silence", f"reply 2 puts a catch before the launch on a silent child: {catch!r}")
+                v("no-question-launch", f"reply 3 catch asks a real question: {catch!r}")
+            last = users[2].lower() if len(users) > 2 else ""
+            if last.startswith("the student has been silent") and catch:
+                v("catch-on-silence", f"reply 3 puts a catch before the launch on a silent child: {catch!r}")
+    # Nothing said twice (same law as the post-video page).
+    seen_sents = {}
+    for n, r in enumerate(replies, 1):
+        for s in re.split(r"(?<=[.!?])\s+", strip_tags(r).strip()):
+            ns = re.sub(r"[^a-z' ]", "", s.lower()).strip()
+            if len(ns.split()) < 3:
+                continue
+            if ns in seen_sents and seen_sents[ns] != n:
+                v("sentence-repeat", f"reply {n}: repeats {s.strip()!r} (first said in reply {seen_sents[ns]})")
+            seen_sents.setdefault(ns, n)
     return out
 
 
@@ -297,6 +317,8 @@ def check_post_trial(tr, replies, users, v, out):
             first = users[1].lower() if len(users) > 1 else ""
             if first.startswith("the student has been silent") and catch:
                 v("catch-on-silence", f"reply 2 puts a catch before the ask on a silent child: {catch!r}")
+            elif first and not first.startswith("the student has been silent") and not catch:
+                v("missing-catch", "reply 2 ignores the child's answer — no catch before the ask (real test bug: 'Mommy!' got no echo)")
         if "[STUDENT_TALK]" not in replies[1]:
             v("tag-ask2", "reply 2 must wait with [STUDENT_TALK]")
     if len(replies) >= 3:
@@ -320,6 +342,8 @@ def check_post_trial(tr, replies, users, v, out):
             second = users[2].lower() if len(users) > 2 else ""
             if second.startswith("the student has been silent") and catch:
                 v("catch-on-silence", f"reply 3 puts a catch before the close on a silent child: {catch!r}")
+            elif second and not second.startswith("the student has been silent") and not catch:
+                v("missing-catch", "reply 3 ignores the child's answer — no catch before the close")
     return out
 
 
