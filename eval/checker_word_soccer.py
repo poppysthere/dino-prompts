@@ -32,7 +32,7 @@ ANNOUNCER_TALK = [r"team\s+up", r"match\s+is\s+on", r"goal\s+or\s+no\s+goal",
                   r"we\s+will\s+see", r"\bmatch\b", r"\bversus\b", r"\bcompete\b",
                   r"\bchampionship\b", r"\bscore\b", r"\bcheer", r"\bchampion\b"]
 AGREEMENT_ONLY = re.compile(r"^(好|好的|ok|okay|yes|嗯|恩)[。.!！]?$", re.I)
-PRAISE = re.compile(r"great job|you got it|well done|you know it", re.I)
+PRAISE = re.compile(r"great job|good job|you got it|well done|you know it", re.I)
 # An invite asks the child's MOUTH for the word: an invite phrase with the
 # target word right after it ("One more time. Goal!"), OR a wait whose last
 # words are the bare word as a call ("...Come on! Come on!" — the child WILL
@@ -40,8 +40,11 @@ PRAISE = re.compile(r"great job|you got it|well done|you know it", re.I)
 # ALONE can be a legitimate answer-echo ("还要再读吗？" -> "Yes! One more
 # time!") and is not counted. Budget: TWO invites (meet + one retry), both
 # in the first two replies, and NONE after the child opts out.
+# "you say" only counts with punctuation right after — the call shape
+# "You say. Hedgehog!" — so the personal wonder "Do you say Come on! to
+# your friends?" stays a question, not an invite.
 INVITE_PHRASE = (r"(say\s+it|one\s+more\s+time|shout\s+with\s+me|your\s+turn"
-                 r"|say\s+with\s+me|try\s+again)")
+                 r"|say\s+with\s+me|try\s+again|you\s+say\s*[.!]|clap\s+it)")
 OPT_OUT = re.compile(r"不想说|不说了|不要说|不念|no\s+more|stop\s+it|i\s+don'?t\s+want", re.I)
 
 
@@ -219,8 +222,17 @@ def check(tr):
             if qs or re.search(r"yes\s+or\s+no\s*\?", body, re.I):
                 v("no-question-finish", f"reply {n}: the close still asks: {body.strip()!r}")
 
-        # fake praise: agreement-only child answer must not be celebrated
-        if last_user is not None and AGREEMENT_ONLY.match(last_user.strip()) and PRAISE.search(body):
+        # fake praise: agreement-only child answer must not be celebrated.
+        # Exception: the CLOSE may praise the page's work ("Good job! Well
+        # done!") as long as the child really spoke at some point — a "yes"
+        # at the wonder is an answer, not agreement to an ask. A fully
+        # silent page earns no praise anywhere, close included.
+        child_spoke = any(x["role"] == "user"
+                          and not x["text"].startswith("The student has been silent")
+                          for x in msgs[: i + 1])
+        closing = "[TEMPLATE_FINISH]" in r and child_spoke
+        if (last_user is not None and AGREEMENT_ONLY.match(last_user.strip())
+                and PRAISE.search(body) and not closing):
             v("fake-praise", f"reply {n}: praises a child who only agreed: {body.strip()!r}")
 
         if re.search(r"one\s+more\s+time|let'?s\s+go\s+together|try\s+again", body, re.I):
@@ -269,9 +281,26 @@ def check(tr):
                                  "(the ladder is the page's scaffold)")
         # Letter chunks are broken sound: only whole real words may be spoken.
         for n, r in enumerate(replies, 1):
-            for m in re.finditer(r"\b(hed|ge|hetch|hodge)\b", strip_tags(r), re.I):
+            body = strip_tags(r)
+            for m in re.finditer(r"\b(hed|ge|hetch|hodge)\b", body, re.I):
                 v("broken-chunk", f"reply {n}: letter chunk {m.group(0)!r} "
                                   f"is not a real word the voice engine can say")
+            # Device #368306: the teacher re-opened a door the reveal video
+            # already opened. The word page starts FACING the hedgehog.
+            if re.search(r"door\s+opens|open\s+the\s+door|ta-?da|^ready\b", body, re.I):
+                v("door-reopened", f"reply {n}: re-opens the door the video "
+                                   f"already opened: {body.strip()!r}")
+            # Turn-taking voice cannot say anything WITH the child.
+            if re.search(r"say\s+(it\s+)?with\s+me", body, re.I):
+                v("with-me-call", f"reply {n}: 'say it with me' is impossible "
+                                  f"turn-taking speech; the call is 'You say.'")
+            # Kid-friendly close + screen data stays on the screen.
+            if re.search(r"we\s+did\s+it", body, re.I):
+                v("kid-words", f"reply {n}: 'we did it' is not owned at 4; "
+                               f"use 'Good job! Well done!'")
+            if re.search(r"\bspines?\b|small\s+animal\s+with", body, re.I):
+                v("screen-data", f"reply {n}: reads grown-up renderContent data "
+                                 f"aloud: {body.strip()!r}")
     for pat in tr.get("require_phrases", []):
         if not re.search(pat, all_teacher, re.I):
             v("require-phrase", f"no reply contains required phrase {pat!r}")

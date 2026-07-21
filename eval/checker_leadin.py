@@ -55,7 +55,7 @@ LAUNCH_TRIAL_PRE = "look! a party! cake and balloons! let's watch! come on!"
 ASK1_TRIAL = "a shadow! who is it? a cat? a dog? guess!"
 ASK1_TRIAL_PARTS = ("ding dong", "someone is at the door", "a shadow")
 ASK2_TRIAL = "hmm! is it big, or small?"
-CLOSE_TRIAL = "let's find out! come on!"
+CLOSE_TRIAL = "let's open the door! come on!"
 # The secret visitor: the teacher may say it ONLY as a recast of the child's
 # own guess (刺猬！ -> "A hedgehog? Ooh! Maybe!" — kid-centered recast doctrine),
 # never first, and never confirmed/denied.

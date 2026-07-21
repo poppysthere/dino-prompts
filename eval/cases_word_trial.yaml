@@ -1,50 +1,59 @@
-# Case battery — 新手引导体验课 trial demo, word page: HEDGEHOG (the reveal).
-# Ages 4-6, pre-A1. Structure: REVEAL -> second ask (retry OR clap game) ->
-# wonder -> close. Two asks max, one question, 4 replies max.
+# Case battery — 新手引导体验课 trial demo, word page: HEDGEHOG.
+# Ages 4-6, pre-A1. The reveal VIDEO played before this page: the teacher faces
+# the hedgehog, never re-opens the door (device #368306). Structure: MEET ->
+# second ask (piece/ladder retry OR clap game) -> wonder -> close.
 # Run: python3 eval/run_word_trial.py
 
 word_trial_hedgehog:
   - id: hh-pass
-    note: happy path — tries the word, clap game, wonder, close
+    note: happy path — whole word, clap-along rolls into the wonder, close (3 replies)
     turns:
       - "Hedgehog!"
-      - "Hedge! Hog! Hedgehog!"
       - "yes!"
     require_phrases:
-      - "hedge\\W+hog"          # the clap game / syllable ladder
-      - "(yes|wow|great|nice)"  # real celebration for a real try
+      - "hedge\\W+hog"                 # the clap-along / syllable ladder
+      - "(good job|well done|yes|wow)" # real, kid-sized celebration
 
   - id: hh-guessed-before
     note: the child guessed the hedgehog in the lead-in — the reveal is THEIR win
     seed:
       - role: assistant
-        text: "Oh! Ding dong! Someone is at the door! Look! A shadow! Who is it? A cat? A dog? Guess![TEACHER_LISTEN][STUDENT_TALK]"
+        text: "Oh! Ding dong! Someone is at the door! A shadow! Who is it? A cat? A dog? Guess![STUDENT_TALK]"
       - role: user
         text: "刺猬！"
       - role: assistant
-        text: "A hedgehog? Ooh! Maybe! Is it big, or small?[TEACHER_LISTEN][STUDENT_TALK]"
+        text: "A hedgehog? Ooh! Maybe! Hmm! Is it big, or small?[STUDENT_TALK]"
       - role: user
         text: "small!"
       - role: assistant
-        text: "Small! Ooh! Let's peek![NEXT_STEP]"
+        text: "Small? Tiny tiny! Ha ha! Let's open the door! Come on![TEMPLATE_FINISH]"
     turns:
       - "Hedgehog!"
-      - "Hedge! Hog!"
       - "yes!"
     require_phrases:
       - "(you said it|you were right|you got it|you knew|you guessed)"
 
-  - id: hh-syllable-try
-    note: one syllable alone counts as a try — generous ears, no retry
+  - id: hh-piece
+    note: real device shape (#368310) — "Had." is a PIECE; echo their sound, then the ladder
     turns:
-      - "Hog!"
+      - "Had."
       - "Hedgehog!"
-      - "no"
+      - "yes!"
+    require_phrases:
+      - "(had|so close|almost)"   # their sound comes back, honestly
+      - "one more time"           # the ladder retry, not fake full-word praise
+
+  - id: hh-greet-mid
+    note: device #368308 — child says Hi after the meet call; greet tiny, never re-read reply 1
+    turns:
+      - "Hi."
+      - "hedgehog"
+      - "yes"
     forbid_phrases:
-      - "one more time"
+      - "say it with me"
 
   - id: hh-cn-word
-    note: own-language word means they understood — recast to English, then the retry
+    note: own-language word means they understood — recast to English, then the ladder
     turns:
       - "刺猬！"
       - "hedgehog"
@@ -53,21 +62,21 @@ word_trial_hedgehog:
       - "in english"
 
   - id: hh-agreement
-    note: 好 is agreement, not a try — no praise, run the retry
+    note: 好 is agreement, not a try — no praise, run the ladder
     turns:
       - "好。"
       - "hedgehog"
       - "yes!"
 
   - id: hh-question
-    note: "child asks what it is — answer by showing, never 'means', then the retry"
+    note: "child asks what it is — answer by showing, never 'means', then the ladder"
     turns:
       - "这是什么呀？"
       - "hedge hog"
       - "小小的。"
 
   - id: hh-scared
-    note: spikes are scary — soft catch first, he is a friend
+    note: spikes are scary — soft catch first, he is a friend, gentle ladder still comes
     turns:
       - "有刺！我怕！"
       - "hedgehog"
@@ -85,6 +94,7 @@ word_trial_hedgehog:
     note: fully silent page — exactly 4 replies, no fake praise
     turns: []
     forbid_phrases:
+      - "good job"
       - "great job"
 
   - id: hh-junk-name
@@ -92,7 +102,6 @@ word_trial_hedgehog:
     student_name: "test_user"
     turns:
       - "Hedgehog!"
-      - "Hedge! Hog!"
       - "yes"
     forbid_phrases:
       - "test_user"
