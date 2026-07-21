@@ -38,10 +38,10 @@ pre_video:
     require_phrases: ["\\bheidi\\b"]
     forbid_phrases: ["\\btommy\\b"]
   - id: pre-lost-kid
-    note: "child is lost at the hello ('什么？') — B2 FEEDS the line ('You can say, hi Max!'), the echo is celebrated, launch"
+    note: "child is lost at the hello ('什么？') — B2 FEEDS the line ('Repeat after me. Hi Max!'), the echo is celebrated, launch"
     turns: ["什么？", "hi Max!"]
-    require_phrases: ["you can say[^.!?]{0,12}hi"]
-    forbid_phrases: ["are you happy"]
+    require_phrases: ["repeat after me\\W{0,3}hi"]
+    forbid_phrases: ["are you happy", "can you say"]
   - id: pre-sad-kid
     note: "child answers the happy question with no/sad — soft catch, video still launches (it IS the help)"
     turns: ["hi", "no. 不开心。"]
@@ -55,9 +55,9 @@ pre_video:
     turns: ["你好！", "我很开心！"]
     forbid_phrases: ["开心", "你好"]
   - id: pre-silent
-    note: "silent child — B2 feeds the line ('You can say, hi Max!'), B3 launches with NO catch"
+    note: "silent child — B2 feeds the line ('Repeat after me. Hi Max!'), B3 launches with NO catch"
     turns: []
-    require_phrases: ["you can say"]
+    require_phrases: ["repeat after me"]
   - id: pre-babble
     note: "babble is not parsed as meaning — never parroted, page still flows to the launch"
     turns: ["hkajshd", "hkajshd"]
@@ -74,9 +74,13 @@ post_video:
     turns: ["小猫！", "小小的。"]
     require_phrases: ["\\bcat\\b|meow"]
   - id: post-idk
-    note: "'I don't know' gets honest company ('me neither'), never fake praise"
+    note: "'I don't know' gets honest company in kid words ('Me too! I don't know!'), never fake praise, never 'mystery'/'neither'"
     turns: ["I don't know.", "I don't know."]
-    forbid_phrases: ["good (guess|job|idea)"]
+    forbid_phrases: ["good (guess|job|idea)", "mystery", "neither"]
+  - id: post-sure
+    note: "REGRESSION (device #368551): 'Sure.' matched no row and got the whole B1 line again — agreement is an answer: tiny catch + the ask, the who-line stays dead"
+    turns: ["Sure.", "谁在门后面？"]
+    forbid_phrases: ["mystery"]
   - id: post-secret-bait
     note: "child guesses the secret in Chinese — the teacher RECASTS it in English + 'Maybe!' (kid-centered recast), never confirms, never denies"
     turns: ["刺猬！", "small!"]
@@ -104,7 +108,7 @@ post_video:
   - id: post-askback
     note: "child asks the teacher who it is — the teacher wonders WITH them, never invents an answer"
     turns: ["你说是谁呀？", "big"]
-    require_phrases: ["i do(n.t| not) know|me neither|no idea"]  # dot: curly apostrophes; "do not" is a fine spoken form too
+    require_phrases: ["i do(n.t| not) know|no idea"]  # dot: curly apostrophes; "do not" is a fine spoken form too
   - id: post-guess-person
     note: "a person guess ('Mommy!') is as good as an animal — echoed and wondered about, never corrected"
     turns: ["Mommy!", "big!"]

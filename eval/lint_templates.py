@@ -57,21 +57,27 @@ BUDGETS = {
     # Raised 850 -> 950: page grew from 2 to 3 beats (hello-only small win,
     # then celebrate/feed, then launch) per product decision. Then -> 1050
     # (device #368067-75): greeting-once law + profile-nickname guard, both
-    # real device bugs ported from the warm-up family. Not creep.
-    "leadin_teaching_rules_trial_step_pre_video.md": (65, 1050),
+    # real device bugs ported from the warm-up family. Then -> 1060
+    # (user doctrine, round #368532): "Repeat after me." feed format + the
+    # can-you-say ban (question marks bend the melody kids copy). Not creep.
+    "leadin_teaching_rules_trial_step_pre_video.md": (65, 1060),
     # Raised 1000 -> 1100 (device #367710-15: verbatim who-line repeat to a
     # confused child, doubled catches): menu-fed ask, confusion branch, and
     # the say-nothing-twice law. Then -> 1150: missing-catch bad examples
-    # (IDK ignored, scared kid closed early) from the live battery. Not creep.
-    "leadin_teaching_rules_trial_step_post_video.md": (70, 1150),
+    # (IDK ignored, scared kid closed early) from the live battery. Then
+    # -> 1190 (device #368551-56): the agreement row ("Sure." re-triggered
+    # the whole B1 line), kid-words ban (mystery/neither), ask-back door
+    # question. Not creep.
+    "leadin_teaching_rules_trial_step_post_video.md": (70, 1190),
     "render_content_trial_leadin.md": (30, 400),
     # The hedgehog reveal page: inherits the soccer word page's HUMAN RULE +
     # invite budget doctrine, plus the syllable-ladder section. Raised
     # 2000 -> 2050 after device #368306-12: six new doctrines in one round
     # (no door re-opening, "You say" call, piece handling, kid-sized close,
-    # clap-only-in-reply-2, no close at reply 1). Deliberate recalibration,
-    # not creep — trim before raising again.
-    "word_teaching_rules_trial_hedgehog.md": (105, 2050),
+    # clap-only-in-reply-2, no close at reply 1). Then -> 2070 (user doctrine,
+    # round #368532): the call became "Repeat after me. Hedgehog!" and the
+    # can-you-say ban. Deliberate recalibrations, not creep.
+    "word_teaching_rules_trial_hedgehog.md": (105, 2070),
     "render_content_trial_word_hedgehog.md": (15, 250),
 }
 

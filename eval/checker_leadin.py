@@ -236,8 +236,14 @@ def check_pre_trial(tr, replies, users, v, out):
         if b2.count("?") > 1:
             v("one-question", f"reply 2 asks more than one question: {b2.strip()!r}")
         second = users[1].lower() if len(users) > 1 else ""
-        if second.startswith("the student has been silent") and "you can say" not in b2.lower():
-            v("feed-on-silence", f"a silent child gets the fed line ('You can say, hi ...'), got: {b2.strip()!r}")
+        if (second.startswith("the student has been silent")
+                and not re.search(r"repeat after me|you can say", b2, re.I)):
+            v("feed-on-silence", f"a silent child gets the fed line ('Repeat after me. Hi ...'), got: {b2.strip()!r}")
+    # A fed line must never be a question: "Can you say hi?" bends the melody
+    # the child copies (user doctrine, device round #368532+).
+    for n, r in enumerate(replies, 1):
+        if re.search(r"can\s+you\s+say", strip_tags(r), re.I):
+            v("feed-question", f"reply {n}: 'Can you say ...?' — the feed is 'Repeat after me.' plus the words, never a question")
     if len(replies) >= 3:
         r3, n3 = replies[2], norm(replies[2])
         if "[NEXT_STEP]" not in r3:
@@ -308,6 +314,11 @@ def check_post_trial(tr, replies, users, v, out):
             v("fake-praise", f"reply {n}: empty praise instead of playing with the child's word")
         if re.search(r"\bno[,.!]?\s+(it('s| is)?\s+)?not\b", strip_tags(r), re.I):
             v("no-deny", f"reply {n}: denies a guess (the teacher does not know who it is)")
+        # Words a 4 year old does not own (device #368554: "A mystery! Maybe!"
+        # answered a child who asked a real question).
+        for w in (r"\bmystery\b", r"\bneither\b"):
+            if re.search(w, strip_tags(r), re.I):
+                v("kid-words", f"reply {n}: {w!r} is not a word a 4 year old owns: {strip_tags(r).strip()!r}")
     if replies:
         n1 = norm(replies[0])
         if not n1.endswith(ASK1_TRIAL):

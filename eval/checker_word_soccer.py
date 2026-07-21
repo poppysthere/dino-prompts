@@ -44,7 +44,8 @@ PRAISE = re.compile(r"great job|good job|you got it|well done|you know it", re.I
 # "You say. Hedgehog!" — so the personal wonder "Do you say Come on! to
 # your friends?" stays a question, not an invite.
 INVITE_PHRASE = (r"(say\s+it|one\s+more\s+time|shout\s+with\s+me|your\s+turn"
-                 r"|say\s+with\s+me|try\s+again|you\s+say\s*[.!]|clap\s+it)")
+                 r"|say\s+with\s+me|try\s+again|you\s+say\s*[.!]|clap\s+it"
+                 r"|repeat\s+after\s+me)")
 OPT_OUT = re.compile(r"不想说|不说了|不要说|不念|no\s+more|stop\s+it|i\s+don'?t\s+want", re.I)
 
 
@@ -158,7 +159,11 @@ def check(tr):
         for pat in ANNOUNCER_TALK:
             if re.search(pat, body, re.I):
                 v("kid-words", f"reply {n}: announcer talk ({pat!r}): {body.strip()!r}")
-        for pat in [r"\bmeans\b", r"\bspell", r"\bletter\b", r"repeat\s+after\s+me"]:
+        # "Repeat after me." is the sanctioned call format (user doctrine,
+        # round #368532): it ends on the word so the child copies the right
+        # melody. "Can you say X?" is banned instead — the question mark
+        # bends the words into a rising sound.
+        for pat in [r"\bmeans\b", r"\bspell", r"\bletter\b", r"can\s+you\s+say"]:
             if re.search(pat, body, re.I):
                 v("no-teaching", f"reply {n}: talks ABOUT the word ({pat!r})")
         if names_the_shout(body, word):
