@@ -131,6 +131,11 @@ def check(path):
     if family == "leadin_trial" and step == "pre_video":
         return check_pre_trial(tr, replies, users, v, out)
 
+    if family == "bridge_trial":
+        if step == "pre_video":
+            return check_pre_bridge(tr, replies, users, v, out)
+        return check_post_bridge(tr, replies, users, v, out)
+
     if step == "pre_video":
         if len(replies) != 1:
             v("one-turn", f"pre-video must be exactly 1 reply, got {len(replies)}")
@@ -275,6 +280,64 @@ def check_pre_trial(tr, replies, users, v, out):
             if ns in seen_sents and seen_sents[ns] != n:
                 v("sentence-repeat", f"reply {n}: repeats {s.strip()!r} (first said in reply {seen_sents[ns]})")
             seen_sents.setdefault(ns, n)
+    return out
+
+
+BRIDGE_SECRET = "flamingo"
+BRIDGE_SECRET_L1 = "火烈鸟"
+GOODBYE = r"\bbye\b|bye-bye|see you|next time|wrap up"
+
+
+def check_pre_bridge(tr, replies, users, v, out):
+    """Trial shadow bridge pre-video: ONE reply — second-shadow tease + [NEXT_STEP].
+    The visitor (flamingo) is a secret until the video plays."""
+    if len(replies) != 1:
+        v("one-reply", f"bridge pre-video must be exactly 1 reply, got {len(replies)}")
+    child_said_secret = any(
+        m["role"] == "user" and (BRIDGE_SECRET_L1 in m["text"]
+                                 or re.search(rf"\b{BRIDGE_SECRET}\b", m["text"], re.I))
+        for m in tr["messages"])
+    for n, r in enumerate(replies, 1):
+        body = strip_tags(r)
+        if "[NEXT_STEP]" not in r:
+            v("next-step", "the tease does not launch the video with [NEXT_STEP] (class stuck)")
+        if "[STUDENT_TALK]" in r or "[TEMPLATE_FINISH]" in r:
+            v("no-wait", "the bridge never waits and never finishes at pre-video")
+        if re.search(rf"\b{BRIDGE_SECRET}\b", body, re.I) and not child_said_secret:
+            v("spoiler", f"teacher says the secret visitor before the video: {body.strip()!r}")
+        if not re.search(r"shadow", body, re.I):
+            v("tease", f"the tease never shows the new shadow: {body.strip()!r}")
+        # Sanctioned: the tiny who-question screen-shout, plus at most one
+        # recast echo ("A flamingo?"). Anything bigger is a real ask nobody
+        # will wait for.
+        qs = [s for s in re.split(r"(?<=[.!?])\s+", body) if s.rstrip().endswith("?")]
+        if len(qs) > 2 or any(len(q.rstrip(" ?").split()) > 6 for q in qs):
+            v("no-question", f"more than tiny screen-shout questions: {body.strip()!r}")
+        if re.search(GOODBYE, body, re.I):
+            v("not-a-wrapup", f"goodbye words on a bridge page: {body.strip()!r}")
+    return out
+
+
+def check_post_bridge(tr, replies, users, v, out):
+    """Trial shadow bridge post-video: ONE reply — cheer the flamingo reveal +
+    [TEMPLATE_FINISH]. No goodbye (not a wrap-up), no teaching, no waits."""
+    if len(replies) != 1:
+        v("one-reply", f"bridge post-video must be exactly 1 reply, got {len(replies)}")
+    for n, r in enumerate(replies, 1):
+        body = strip_tags(r)
+        if "[TEMPLATE_FINISH]" not in r:
+            v("must-finish", "the reveal cheer does not end with [TEMPLATE_FINISH]")
+        if "[STUDENT_TALK]" in r or "[NEXT_STEP]" in r:
+            v("no-wait", "the bridge post-video never waits and never starts a video")
+        if not re.search(rf"\b{BRIDGE_SECRET}\b", body, re.I):
+            v("reveal", f"the reveal never names the flamingo: {body.strip()!r}")
+        if re.search(GOODBYE, body, re.I):
+            v("not-a-wrapup", f"goodbye words on a bridge page — the class is not over: {body.strip()!r}")
+        if re.search(r"repeat\s+after\s+me|say\s+it|one\s+more\s+time", body, re.I):
+            v("no-teaching", "say-calls belong to the word page, not the bridge")
+        qs = [s for s in re.split(r"(?<=[?])\s+", body) if s.endswith("?")]
+        if len(qs) > 1 or any(len(q.rstrip("?").split()) > 3 for q in qs):
+            v("no-question", f"a real question nobody waits for: {body.strip()!r}")
     return out
 
 

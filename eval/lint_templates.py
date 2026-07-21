@@ -79,6 +79,10 @@ BUDGETS = {
     # can-you-say ban. Deliberate recalibrations, not creep.
     "word_teaching_rules_trial_hedgehog.md": (105, 2070),
     "render_content_trial_word_hedgehog.md": (15, 250),
+    # Shadow bridge: the repurposed wrap-up (second shadow tease -> flamingo
+    # reveal). Two one-beat steps, so it stays small.
+    "shadow_bridge_rules_trial_flamingo.md": (75, 1000),
+    "render_content_trial_shadow_flamingo.md": (15, 250),
 }
 
 

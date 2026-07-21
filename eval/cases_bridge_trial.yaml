@@ -1,0 +1,55 @@
+# Case battery: 新手引导体验课 trial demo — the shadow bridge (second shadow -> flamingo video).
+# The wrap-up template is REPURPOSED here as a mystery bridge: pre-video is one
+# tease reply + [NEXT_STEP]; the video reveals the flamingo; post-video is one
+# cheer reply + [TEMPLATE_FINISH]. No goodbye anywhere — the class continues.
+# Run: python3 eval/run_bridge_trial.py
+
+pre_video:
+  - id: bridge-pre-happy
+    note: "fresh UI-ready — one tease reply: another shadow, screen-shout, launch; flamingo stays secret"
+    turns: []
+    require_phrases: ["shadow"]
+    forbid_phrases: ["flamingo", "wrap", "bye"]
+  - id: bridge-pre-guess
+    note: "child guessed the secret ('火烈鸟！') right before — recast in English + Maybe, still never confirmed, still launches"
+    seed:
+      - role: user
+        text: "火烈鸟！"
+    turns: []
+    require_phrases: ["flamingo\\b.{0,30}maybe"]
+    forbid_phrases: ["(yes|yeah|right)[^.!?]*flamingo", "it('s| is) (a |the )?flamingo"]
+  - id: bridge-pre-chatty
+    note: "child asks where the hedgehog went — tiny catch first, then the tease and launch"
+    seed:
+      - role: user
+        text: "刺猬呢？"
+    turns: []
+    require_phrases: ["shadow"]
+    forbid_phrases: ["flamingo"]
+  - id: bridge-pre-junk-name
+    note: "junk booking name is never spoken"
+    student_name: test_user
+    turns: []
+    forbid_phrases: ["test_user", "flamingo"]
+
+post_video:
+  - id: bridge-post-happy
+    note: "the reveal cheer — flamingo named loud, no goodbye, no question, page ends"
+    turns: []
+    require_phrases: ["flamingo"]
+    forbid_phrases: ["repeat after me"]
+  - id: bridge-post-guessed-before
+    note: "child guessed flamingo in the pre-video chat — their win comes first ('You said it!')"
+    seed:
+      - role: user
+        text: "火烈鸟！"
+      - role: assistant
+        text: "A flamingo? Ooh! Maybe! ANOTHER shadow! Who is it THIS time? Let's watch! Come on![NEXT_STEP]"
+    turns: []
+    require_phrases: ["(you said it|you were right|you knew|you guessed)"]
+  - id: bridge-post-junk-name
+    note: "junk booking name is never spoken at the reveal either"
+    student_name: test_user
+    turns: []
+    require_phrases: ["flamingo"]
+    forbid_phrases: ["test_user"]
