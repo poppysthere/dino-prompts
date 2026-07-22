@@ -79,7 +79,8 @@ BUDGETS = {
     # can-you-say ban. Then -> 2140: the close gained the party handoff
     # ("Let's go back to the party!") because the flamingo bridge follows.
     # Deliberate recalibrations, not creep.
-    "word_teaching_rules_trial_hedgehog.md": (105, 2140),
+    # +40: hallucinated-try bad example (silent child celebrated, live flake).
+    "word_teaching_rules_trial_hedgehog.md": (105, 2185),
     "render_content_trial_word_hedgehog.md": (15, 250),
     # Shadow bridge: the repurposed wrap-up (second shadow -> flamingo reveal).
     # Grew 1000 -> 1450 when the user made pre-video a real guess game
@@ -96,6 +97,13 @@ BUDGETS = {
     # skipped the flamingo cheer (caught by the split battery). +~130 words.
     "bridge_teaching_rules_trial_step_post_video.md": (60, 1130),
     "render_content_trial_shadow_flamingo.md": (15, 250),
+    # Flamingo word page: hedgehog's sibling. Same doctrine load plus the
+    # giraffe-secret rows and the half-chunk (never echo "mingo") rule.
+    # Then +~110 words: three live battery bugs hardened (uncredited bridge
+    # win, "Repeat after me" re-used as the retry call, dead ask resurrected
+    # after opt-out) — each got a rule tightening + bad example.
+    "word_teaching_rules_trial_flamingo.md": (105, 2320),
+    "render_content_trial_word_flamingo.md": (15, 250),
 }
 
 

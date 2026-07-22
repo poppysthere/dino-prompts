@@ -1,7 +1,9 @@
-# Case battery — 新手引导体验课 trial demo, word page: HEDGEHOG.
-# Ages 4-6, pre-A1. The reveal VIDEO played before this page: the teacher faces
-# the hedgehog, never re-opens the door (device #368306). Structure: MEET ->
+# Case battery — 新手引导体验课 trial demo, word pages: HEDGEHOG + FLAMINGO.
+# Ages 4-6, pre-A1. The reveal VIDEO played before each page: the teacher faces
+# the animal, never re-opens the door (device #368306). Structure: MEET ->
 # second ask (piece/ladder retry OR clap game) -> wonder -> close.
+# Flamingo extras: the ladder is three sing-song beats (Fla. Min. Go.), and the
+# giraffe (the third shadow) is a live secret on the page.
 # Run: python3 eval/run_word_trial.py
 
 word_trial_hedgehog:
@@ -102,6 +104,110 @@ word_trial_hedgehog:
     student_name: "test_user"
     turns:
       - "Hedgehog!"
+      - "yes"
+    forbid_phrases:
+      - "test_user"
+
+word_trial_flamingo:
+  - id: fl-pass
+    note: happy path — whole word, clap-along rolls into the wonder, close (3 replies)
+    turns:
+      - "Flamingo!"
+      - "yes!"
+    require_phrases:
+      - "fla\\W+min\\W+go"             # the clap-along / syllable beats
+      - "(good job|well done|yes|wow)" # real, kid-sized celebration
+
+  - id: fl-claims-win
+    note: the child guessed flamingo in the bridge game and now claims it — hand them the win, then the ladder
+    seed:
+      - role: assistant
+        text: "The hedgehog is IN! But look![TEACHER_POINT_TO_SCREEN] ANOTHER shadow! Who is it THIS time? Guess![STUDENT_TALK]"
+      - role: user
+        text: "火烈鸟！"
+      - role: assistant
+        text: "A flamingo? Ooh! Maybe! Is it tall, or short?[STUDENT_TALK]"
+      - role: user
+        text: "Tall!"
+      - role: assistant
+        text: "Tall? Ooh! Maybe! Let's watch! Come on![NEXT_STEP]"
+      - role: assistant
+        text: "The door opened! A FLAMINGO![TEACHER_APPLAUD] WOW! So pink! But look![TEACHER_POINT_TO_SCREEN] A NEW shadow! Who is it?[STUDENT_TALK]"
+      - role: user
+        text: "A cat!"
+      - role: assistant
+        text: "A cat? Ooh! Maybe! We don't know yet! But we know the FLAMINGO! Let's look at her first! Come on![TEMPLATE_FINISH]"
+    turns:
+      - "我说对了！我说的火烈鸟！"
+      - "Flamingo!"
+      - "yes!"
+    require_phrases:
+      - "(you said it|you were right|you knew|you guessed|good ears)"
+
+  - id: fl-beat
+    note: '"Go!" is a ladder beat — echo THEIR beat, then the ladder builds the rest'
+    turns:
+      - "Go!"
+      - "Flamingo!"
+      - "yes!"
+    require_phrases:
+      - "one more time"           # the ladder retry, not fake full-word praise
+
+  - id: fl-half-chunk
+    note: '"Mingo!" is a half-chunk — praise the try but NEVER echo it (broken sound)'
+    turns:
+      - "Mingo!"
+      - "Flamingo!"
+      - "yes!"
+    require_phrases:
+      - "(so close|almost)"
+
+  - id: fl-cn-word
+    note: own-language word means they understood — recast to English, then the ladder
+    turns:
+      - "火烈鸟！"
+      - "flamingo"
+      - "yes"
+    require_phrases:
+      - "in english"
+
+  - id: fl-door-question
+    note: the child asks who is behind the door — the giraffe stays secret, tiny true answer
+    turns:
+      - "门后面是谁呀？"
+      - "flamingo"
+      - "yes"
+    forbid_phrases:
+      - "giraffe"
+      - "长颈鹿"
+    require_phrases:
+      - "(do(n't| not) know|not yet)"
+
+  - id: fl-agreement
+    note: 好 is agreement, not a try — no praise, run the ladder
+    turns:
+      - "好。"
+      - "flamingo"
+      - "yes!"
+
+  - id: fl-optout
+    note: opt-out at the meet call is sacred — no more asks, wonder, close
+    turns:
+      - "我不想说了。"
+      - "嗯。"
+
+  - id: fl-silent
+    note: fully silent page — exactly 4 replies, no fake praise
+    turns: []
+    forbid_phrases:
+      - "good job"
+      - "great job"
+
+  - id: fl-junk-name
+    note: junk default name is never spoken
+    student_name: "test_user"
+    turns:
+      - "Flamingo!"
       - "yes"
     forbid_phrases:
       - "test_user"

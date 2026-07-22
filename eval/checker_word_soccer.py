@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Structural checker for the generated word-teaching pages (ages 4-6, pre-A1):
-the 足球课 words (goal/team/come on) and the trial demo's hedgehog reveal.
+the 足球课 words (goal/team/come on) and the trial demo's word pages
+(hedgehog, flamingo).
 
 Unlike the L2/L3 word pages, the lines are GENERATED from renderContent
 (word + imageDesc), so this checker validates shape and language, not scripts:
@@ -47,6 +48,25 @@ INVITE_PHRASE = (r"(say\s+it|one\s+more\s+time|shout\s+with\s+me|your\s+turn"
                  r"|say\s+with\s+me|try\s+again|you\s+say\s*[.!]|clap\s+it"
                  r"|repeat\s+after\s+me)")
 OPT_OUT = re.compile(r"不想说|不说了|不要说|不念|no\s+more|stop\s+it|i\s+don'?t\s+want", re.I)
+# family "word_trial": per-word ladder/handoff/screen-data config.
+TRIAL_WORDS = {
+    "hedgehog": {
+        "ladder": r"\bhedge\b[\s.!,]+\bhog\b",
+        "ladder_name": "Hedge. Hog.",
+        "chunks": r"\b(hed|ge|hetch|hodge)\b",
+        "handoff": r"back\s+to\s+the\s+party",
+        "handoff_name": "Let's go back to the party!",
+        "screen_data": r"\bspines?\b|small\s+animal\s+with",
+    },
+    "flamingo": {
+        "ladder": r"\bfla\b[\s.!,]+\bmin\b[\s.!,]+\bgo\b",
+        "ladder_name": "Fla. Min. Go.",
+        "chunks": r"\b(flam|mingo|ingo|lamin)\b",
+        "handoff": r"back\s+to\s+the\s+door",
+        "handoff_name": "Now, back to the door!",
+        "screen_data": r"pink\s+bird\s+with\s+long|stands\s+on\s+one\s+leg",
+    },
+}
 
 
 def is_invite(body, word):
@@ -277,26 +297,42 @@ def check(tr):
         v("word-taught", f"the target word {word!r} never appears")
 
     if tr.get("family") == "word_trial":
-        # The syllable ladder is the page's trick: the word broken into its
-        # two REAL-word halves ("Hedge. Hog.") must appear somewhere — it is
-        # the clap game on the pass path and the retry scaffold otherwise.
+        conf = TRIAL_WORDS[word]
+        # The syllable ladder is the page's trick: the word broken into
+        # voice-safe pieces (real-word halves for hedgehog, sing-song beats
+        # for flamingo) must appear somewhere — it is the clap game on the
+        # pass path and the retry scaffold otherwise.
         # Exception: an opt-out ends all asks, so the ladder may never come.
-        if not opted_out and not re.search(r"\bhedge\b[\s.!,]+\bhog\b", all_teacher, re.I):
-            v("syllable-ladder", "the split 'Hedge. Hog.' never appears "
-                                 "(the ladder is the page's scaffold)")
-        # The lesson continues (the flamingo bridge is next): the close must
-        # hand the class back to the story, not just stop.
-        if replies and not re.search(r"back\s+to\s+the\s+party", strip_tags(replies[-1]), re.I):
-            v("party-handoff", "the close never hands back to the story "
-                               "('Let's go back to the party!')")
-        # Letter chunks are broken sound: only whole real words may be spoken.
+        if not opted_out and not re.search(conf["ladder"], all_teacher, re.I):
+            v("syllable-ladder", f"the ladder split {conf['ladder_name']!r} never "
+                                 f"appears (the ladder is the page's scaffold)")
+        # The lesson continues: the close must hand the class back to the
+        # story (the party for hedgehog, the new shadow's door for flamingo).
+        if replies and not re.search(conf["handoff"], strip_tags(replies[-1]), re.I):
+            v("story-handoff", f"the close never hands back to the story "
+                               f"({conf['handoff_name']!r})")
+        # The flamingo page carries the NEXT page's secret: the giraffe
+        # shadow. Teacher-first mention is a spoiler; a recast after the
+        # child said it (any language) is teaching.
+        if word == "flamingo":
+            child_said_secret = False
+            for m in msgs:
+                if m["role"] == "user":
+                    if re.search(r"长颈鹿|giraffe", m["text"], re.I):
+                        child_said_secret = True
+                elif not child_said_secret and re.search(r"giraffe", m["text"], re.I):
+                    v("secret-spoiled", f"teacher says the giraffe first: "
+                                        f"{strip_tags(m['text']).strip()!r}")
+                    break
         for n, r in enumerate(replies, 1):
             body = strip_tags(r)
-            for m in re.finditer(r"\b(hed|ge|hetch|hodge)\b", body, re.I):
-                v("broken-chunk", f"reply {n}: letter chunk {m.group(0)!r} "
-                                  f"is not a real word the voice engine can say")
-            # Device #368306: the teacher re-opened a door the reveal video
-            # already opened. The word page starts FACING the hedgehog.
+            # Broken chunks are broken sound: only voice-safe pieces spoken.
+            for m in re.finditer(conf["chunks"], body, re.I):
+                v("broken-chunk", f"reply {n}: chunk {m.group(0)!r} "
+                                  f"is not a sound the voice engine can say")
+            # Device #368306: the teacher re-opened a door the video already
+            # opened / re-revealed an already-cheered animal. The word page
+            # starts FACING the animal.
             if re.search(r"door\s+opens|open\s+the\s+door|ta-?da|^ready\b", body, re.I):
                 v("door-reopened", f"reply {n}: re-opens the door the video "
                                    f"already opened: {body.strip()!r}")
@@ -308,7 +344,7 @@ def check(tr):
             if re.search(r"we\s+did\s+it", body, re.I):
                 v("kid-words", f"reply {n}: 'we did it' is not owned at 4; "
                                f"use 'Good job! Well done!'")
-            if re.search(r"\bspines?\b|small\s+animal\s+with", body, re.I):
+            if re.search(conf["screen_data"], body, re.I):
                 v("screen-data", f"reply {n}: reads grown-up renderContent data "
                                  f"aloud: {body.strip()!r}")
     for pat in tr.get("require_phrases", []):
