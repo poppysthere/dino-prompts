@@ -84,8 +84,11 @@ BUDGETS = {
     # Shadow bridge: the repurposed wrap-up (second shadow -> flamingo reveal).
     # Grew 1000 -> 1450 when the user made pre-video a real guess game
     # (3 replies, two child turns) instead of a one-beat tease — the counter
-    # law, catch table and dead-line rules came with it. Deliberate.
-    "shadow_bridge_rules_trial_flamingo.md": (90, 1450),
+    # law, catch table and dead-line rules came with it. Then -> 1520: the
+    # video gained a THIRD shadow (giraffe, next page's secret), so post-video
+    # became a second guess round (cheer + who-ask -> catch + forward close)
+    # with its own catch table and spoiler clock. Deliberate.
+    "shadow_bridge_rules_trial_flamingo.md": (95, 1520),
     "render_content_trial_shadow_flamingo.md": (15, 250),
 }
 
