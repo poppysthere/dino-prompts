@@ -3,7 +3,8 @@
 
 The wrap has only two device steps: pre-video (teacher speaks) and the final
 video (giraffe reveal, ends the class). Pre-video = recap cheer + one guess
-round about the last shadow + the goodbye, launched with [NEXT_STEP].
+round about the last shadow, then [NEXT_STEP]. No goodbye — the avatar
+watches the finale WITH the child.
 
 Usage:
   FORGE_TOKEN=... python3 eval/run_wrap_trial.py [--model gpt-5.4-mini] [--only case-id]

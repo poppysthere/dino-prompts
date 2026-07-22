@@ -450,18 +450,19 @@ def check_post_bridge(tr, replies, users, v, out):
     return out
 
 
-# Trial wrap-up pre-video: recap cheer + the LAST shadow guess round + goodbye,
-# then [NEXT_STEP] — the giraffe-reveal video ends the class, so the goodbye
-# must ride in reply 2 and reply 2 must NOT ask anything new.
+# Trial wrap-up pre-video: recap cheer + the LAST shadow guess round, then
+# [NEXT_STEP] — the giraffe-reveal video ends the class. NO goodbye anywhere:
+# the avatar stays and watches the finale WITH the child.
 WRAP_ASK = "who is it? guess!"
-CLOSE_WRAP_RE = r"let's watch and see! bye-bye[^!?]*![^!?]*(see you|next time)[^!?]*!$"
+CLOSE_WRAP_RE = r"let's watch and see! come on!$"
 
 
 def check_pre_wrap(tr, replies, users, v, out):
     """Trial wrap-up pre-video: 2 replies — recap+remember+who (wait), then
-    catch+goodbye launch [NEXT_STEP]. The giraffe stays secret: recast-only."""
+    catch+launch [NEXT_STEP]. The giraffe stays secret: recast-only. No
+    goodbye words: the avatar watches the finale with the child."""
     if len(replies) != 2:
-        v("two-replies", f"wrap pre-video is recap+ask -> catch+goodbye (2 replies), got {len(replies)}")
+        v("two-replies", f"wrap pre-video is recap+ask -> catch+launch (2 replies), got {len(replies)}")
     child_said_secret = any(
         m["role"] == "user" and (BRIDGE_SECRET2_L1 in m["text"]
                                  or re.search(rf"\b{BRIDGE_SECRET2}\b", m["text"], re.I))
@@ -476,6 +477,9 @@ def check_pre_wrap(tr, replies, users, v, out):
             v("spoiler", f"reply {n} CONFIRMS the secret guess: {body.strip()!r}")
         if re.search(r"repeat\s+after\s+me|one\s+more\s+time|can\s+you\s+say", body, re.I):
             v("no-teaching", f"reply {n}: say-calls belong to the word pages, not the wrap")
+        if re.search(GOODBYE, body, re.I):
+            v("no-goodbye", f"reply {n} says goodbye — the avatar watches the finale "
+                            f"WITH the child: {body.strip()!r}")
         if n > 1 and re.search(r"who\s+is\s+it", body, re.I):
             v("dead-line-repeat", f"reply {n} re-runs the dead who-ask: {body.strip()!r}")
     if replies:
@@ -489,8 +493,6 @@ def check_pre_wrap(tr, replies, users, v, out):
             v("script-ask", f"reply 1 does not end with the who-is-it guess call: {strip_tags(r1).strip()!r}")
         if "[STUDENT_TALK]" not in r1:
             v("tag-ask", "reply 1 must give the child the guess turn with [STUDENT_TALK]")
-        if re.search(GOODBYE, strip_tags(r1), re.I):
-            v("early-goodbye", f"reply 1 says goodbye before the guess round: {strip_tags(r1).strip()!r}")
         # the recap is a cheer, not a quiz: only tiny questions allowed
         qs = [s for s in re.split(r"(?<=[.!?])\s+", strip_tags(r1)) if s.strip().endswith("?")]
         if len(qs) > 2 or any(len(q.strip().rstrip("?").split()) > 6 for q in qs):
@@ -503,17 +505,17 @@ def check_pre_wrap(tr, replies, users, v, out):
             v("no-wait", "reply 2 must launch the video, not wait or finish by tag")
         m2 = re.search(CLOSE_WRAP_RE, n2)
         if not m2:
-            v("script-goodbye", f"reply 2 is missing the goodbye launch "
-                                f"('Let's watch and see! Bye-bye! See you next time!'): {strip_tags(r2).strip()!r}")
+            v("script-launch", f"reply 2 is missing the launch "
+                               f"('Let's watch and see! Come on!'): {strip_tags(r2).strip()!r}")
         else:
             catch = n2[: m2.start()].strip()
             if len(catch.split()) > 10:
                 v("catch-budget", f"reply 2 catch over budget ({len(catch.split())} words): {catch!r}")
             first = users[1].lower() if len(users) > 1 else ""
             if first.startswith("the student has been silent") and catch:
-                v("catch-on-silence", f"reply 2 puts a catch before the goodbye on a silent child: {catch!r}")
+                v("catch-on-silence", f"reply 2 puts a catch before the launch on a silent child: {catch!r}")
             elif first and not first.startswith("the student has been silent") and not catch:
-                v("missing-catch", "reply 2 ignores the child's guess — no catch before the goodbye")
+                v("missing-catch", "reply 2 ignores the child's guess — no catch before the launch")
             qs = [s for s in re.split(r"(?<=[?])\s+", catch) if s.endswith("?")]
             if len(qs) > 1 or any(len(q.rstrip("?").split()) > 3 for q in qs):
                 v("no-question-finish", f"reply 2 catch asks a real question: {catch!r}")
