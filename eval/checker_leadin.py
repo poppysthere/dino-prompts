@@ -366,7 +366,11 @@ def check_pre_bridge(tr, replies, users, v, out):
 BRIDGE_SECRET2 = "giraffe"
 BRIDGE_SECRET2_L1 = "长颈鹿"
 ASK_BRIDGE_POST = "a new shadow! who is it?"
-CLOSE_BRIDGE_POST = "we don't know yet! but we know the flamingo! let's look at her first! come on!"
+# The load-bearing tail of the forward close. "We don't know yet! But" in
+# front of it is script too (optional on silence — nothing to not-know), so
+# the catch judge strips it rather than counting it as a catch.
+CLOSE_BRIDGE_POST = "we know the flamingo! let's look at her first! come on!"
+CLOSE_BRIDGE_PREFIX = r"(we don't know( yet)?!?\s*)?(but\s*)?$"
 
 
 def check_post_bridge(tr, replies, users, v, out):
@@ -393,23 +397,26 @@ def check_post_bridge(tr, replies, users, v, out):
             v("no-teaching", f"reply {n}: say-calls belong to the word page, not the bridge")
         if n > 1 and re.search(r"who\s+is\s+it", body, re.I):
             v("dead-line-repeat", f"reply {n} re-runs the dead who-ask: {body.strip()!r}")
-    child_guessed_flamingo = any(
-        m["role"] == "user" and ("火烈鸟" in m["text"]
-                                 or re.search(rf"\b{BRIDGE_SECRET}\b", m["text"], re.I))
-        for m in tr["messages"])
     if replies:
         n1 = norm(replies[0])
         if not re.search(rf"\b{BRIDGE_SECRET}\b", n1):
             v("reveal", f"reply 1 never cheers the flamingo: {strip_tags(replies[0]).strip()!r}")
-        if child_guessed_flamingo and "ta-da" in n1:
-            v("stolen-win", "the child guessed the flamingo during the game but "
-                            "reply 1 says 'Ta-da!' instead of opening with their win")
+        if "the door opened" not in n1:
+            v("script-reveal", f"reply 1 is missing the fixed cheer opener ('The door opened!'): {strip_tags(replies[0]).strip()!r}")
+        # Reply 1 is guess-blind by design: a live bug hit both ways ("Ta-da!"
+        # stole a guesser's win, "You said it" lied to a cat-guesser). The
+        # win-talk lives in reply 2, only when the CHILD claims it.
+        if re.search(r"you (said it|were right|knew|guessed)|ta-?da", n1):
+            v("reply1-off-script", "reply 1 judges who guessed ('You said it' / 'Ta-da') "
+                                   "— it must be the same fixed cheer for every child")
         if not n1.endswith(ASK_BRIDGE_POST):
             v("script-ask", f"reply 1 does not end with the new-shadow who-ask: {strip_tags(replies[0]).strip()!r}")
         if "[STUDENT_TALK]" not in replies[0]:
             v("tag-ask", "reply 1 must give the child the guess turn with [STUDENT_TALK]")
     if len(replies) >= 2:
-        r2, n2 = replies[1], norm(replies[1])
+        r2 = replies[1]
+        # "We do not know" == "We don't know" — same words to a child's ear
+        n2 = norm(replies[1]).replace("do not", "don't")
         if "[TEMPLATE_FINISH]" not in r2:
             v("must-finish", "reply 2 does not hand off with [TEMPLATE_FINISH]")
         if "[STUDENT_TALK]" in r2 or "[NEXT_STEP]" in r2:
@@ -418,7 +425,7 @@ def check_post_bridge(tr, replies, users, v, out):
         if at < 0:
             v("script-close", f"reply 2 is missing the forward close: {strip_tags(r2).strip()!r}")
         else:
-            catch = n2[:at].strip()
+            catch = re.sub(CLOSE_BRIDGE_PREFIX, "", n2[:at].strip()).strip()
             if len(catch.split()) > 10:
                 v("catch-budget", f"reply 2 catch over budget ({len(catch.split())} words): {catch!r}")
             if n2[at + len(CLOSE_BRIDGE_POST):].strip():

@@ -87,8 +87,13 @@ BUDGETS = {
     # law, catch table and dead-line rules came with it. Then -> 1520: the
     # video gained a THIRD shadow (giraffe, next page's secret), so post-video
     # became a second guess round (cheer + who-ask -> catch + forward close)
-    # with its own catch table and spoiler clock. Deliberate.
-    "shadow_bridge_rules_trial_flamingo.md": (95, 1520),
+    # with its own catch table and spoiler clock. Then -> 1670: three flaky
+    # live bugs hardened — the skipped catch (child's answer vanished before
+    # the ask/close; TWO HALVES hard rule + IDK bad example), the stolen win
+    # (the receipt sentence turned out to be load-bearing), and the fake win
+    # ("You said it" to a cat-guesser, twice — its own bad example now).
+    # Deliberate recalibrations, not creep.
+    "shadow_bridge_rules_trial_flamingo.md": (99, 1670),
     "render_content_trial_shadow_flamingo.md": (15, 250),
 }
 

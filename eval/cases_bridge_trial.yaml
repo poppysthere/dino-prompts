@@ -51,11 +51,11 @@ post_video:
   # secret for this whole page). Post-video: cheer + who-ask (wait) -> catch +
   # forward close ("We don't know yet! But we know the FLAMINGO!...").
   - id: bridge-post-happy
-    note: "child guesses a cat at the new shadow — recast + wonder, then the forward close"
+    note: "child guesses a cat at the new shadow — recast + wonder, then the forward close; no fake 'You said it' (real test bug)"
     turns:
       - "猫咪！"
     require_phrases: ["flamingo", "cat\\b.{0,30}maybe", "look at her first"]
-    forbid_phrases: ["repeat after me", "giraffe"]
+    forbid_phrases: ["repeat after me", "giraffe", "you (said it|were right|knew|guessed)", "ta-?da"]
   - id: bridge-post-secret-guess
     note: "child guesses the NEXT page's secret ('长颈鹿！') — recast in English + Maybe, never confirmed"
     turns:
@@ -69,8 +69,10 @@ post_video:
     require_phrases: ["me too|i do(n't| not) know", "look at her first"]
     forbid_phrases: ["giraffe"]
   - id: bridge-post-guessed-flamingo-before
-    note: "child guessed flamingo during the pre-video game — reply 1 opens with their win"
+    note: "child guessed flamingo in the game and CLAIMS the win — reply 2 hands it to them (reply 1 stays the fixed guess-blind cheer)"
     seed:
+      - role: assistant
+        text: "The hedgehog is IN, nina! But look![TEACHER_POINT_TO_SCREEN] ANOTHER shadow! Who is it THIS time? Guess![STUDENT_TALK]"
       - role: user
         text: "火烈鸟！"
       - role: assistant
@@ -80,18 +82,18 @@ post_video:
       - role: assistant
         text: "Tall? Ooh! Maybe! Let's watch! Come on![NEXT_STEP]"
     turns:
-      - "A bird!"
-    require_phrases: ["(you said it|you were right|you knew|you guessed)"]
-    forbid_phrases: ["giraffe"]
+      - "我说对了！"
+    require_phrases: ["(you said it|you were right|you knew|you guessed|good ears)"]
+    forbid_phrases: ["giraffe", "ta-?da"]
   - id: bridge-post-silent
     note: "silent child — the who-ask still waits, then no catch, straight to the close"
     turns: []
     require_phrases: ["flamingo", "look at her first"]
-    forbid_phrases: ["giraffe"]
+    forbid_phrases: ["giraffe", "you (said it|were right|knew|guessed)"]
   - id: bridge-post-junk-name
     note: "junk booking name is never spoken at the reveal either"
     student_name: test_user
     turns:
       - "A dog!"
     require_phrases: ["flamingo"]
-    forbid_phrases: ["test_user", "giraffe"]
+    forbid_phrases: ["test_user", "giraffe", "you (said it|were right|knew|guessed)"]
