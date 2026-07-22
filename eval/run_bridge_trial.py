@@ -28,7 +28,10 @@ ROLE_MAX = (
 )
 UI_READY = ("The UI is ready. Continue the lesson from where you left off,"
             "or start if nothing has begun yet.")
-TEMPLATE = "prompts/trial/shadow_bridge_rules_trial_flamingo.md"
+STEP_FILES = {
+    "pre_video": "prompts/trial/bridge_teaching_rules_trial_step_pre_video.md",
+    "post_video": "prompts/trial/bridge_teaching_rules_trial_step_post_video.md",
+}
 DEFAULT_NAME = "nina"
 STOP_TAGS = ("[TEMPLATE_FINISH]", "[NEXT_STEP]")
 # History the child actually carries into this page: the hedgehog word page
@@ -55,14 +58,13 @@ def render_content() -> str:
 
 def compose(step: str, name: str) -> str:
     common = (ROOT / "prompts/trial/common_teaching_simple_rules_l1_trial.md").read_text()
-    tmpl = (ROOT / TEMPLATE).read_text()
+    tmpl = (ROOT / STEP_FILES[step]).read_text()
     text = common.rstrip() + "\n\n" + tmpl.rstrip()
     for k, val in {
         "roleDescription": ROLE_MAX,
         "renderContent": render_content(),
         "studentProfile": "No relevant information.",
         "name": name,
-        "currentStep": step.replace("_", "-"),
     }.items():
         text = text.replace("{{" + k + "}}", val)
     return text

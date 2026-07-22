@@ -87,13 +87,14 @@ BUDGETS = {
     # law, catch table and dead-line rules came with it. Then -> 1520: the
     # video gained a THIRD shadow (giraffe, next page's secret), so post-video
     # became a second guess round (cheer + who-ask -> catch + forward close)
-    # with its own catch table and spoiler clock. Then -> 1670: three flaky
-    # live bugs hardened — the skipped catch (child's answer vanished before
-    # the ask/close; TWO HALVES hard rule + IDK bad example), the stolen win
-    # (the receipt sentence turned out to be load-bearing), and the fake win
-    # ("You said it" to a cat-guesser, twice — its own bad example now).
-    # Deliberate recalibrations, not creep.
-    "shadow_bridge_rules_trial_flamingo.md": (99, 1670),
+    # Shadow bridge, split into Forge's two paste slots (was one file with
+    # <currentStep> branching). Pre: the 3-reply tall-or-short guess game.
+    # Post: guess-blind flamingo cheer + third-shadow round + forward close.
+    "bridge_teaching_rules_trial_step_pre_video.md": (60, 1050),
+    # Post needed a page-boundary section once the pre script left the file:
+    # without it the model counted the pre-video game as its own replies and
+    # skipped the flamingo cheer (caught by the split battery). +~130 words.
+    "bridge_teaching_rules_trial_step_post_video.md": (60, 1130),
     "render_content_trial_shadow_flamingo.md": (15, 250),
 }
 
