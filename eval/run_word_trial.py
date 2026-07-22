@@ -2,7 +2,7 @@
 """Run the trial-demo word-teaching battery (hedgehog, flamingo) against Forge.
 
 Usage:
-  FORGE_TOKEN=... python3 eval/run_word_trial.py [--model gpt-5-mini] [--only case-id] [--family word_trial_flamingo]
+  FORGE_TOKEN=... python3 eval/run_word_trial.py [--model gpt-5.4-mini] [--only case-id] [--family word_trial_flamingo]
 """
 import argparse
 import json
@@ -90,7 +90,7 @@ def run_case(backend, family, case):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--model", default=os.environ.get("FORGE_MODEL", "gpt-5-mini"))
+    ap.add_argument("--model", default=os.environ.get("FORGE_MODEL", "gpt-5.4-mini"))
     ap.add_argument("--only", help="run a single case id")
     ap.add_argument("--family", help="run a single family")
     args = ap.parse_args()

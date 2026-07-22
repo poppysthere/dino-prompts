@@ -6,7 +6,7 @@ no browser puppetry. Composes common_l3 + the step template per case, drives
 the scripted child turns, saves one transcript JSON per case, then checks.
 
 Usage:
-  FORGE_TOKEN=... python3 eval/run_leadin_l3.py [--model gpt-5-mini]
+  FORGE_TOKEN=... python3 eval/run_leadin_l3.py [--model gpt-5.4-mini]
 """
 import argparse
 import json
@@ -81,7 +81,7 @@ def run_case(backend, step, case):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--model", default=os.environ.get("FORGE_MODEL", "gpt-5-mini"))
+    ap.add_argument("--model", default=os.environ.get("FORGE_MODEL", "gpt-5.4-mini"))
     ap.add_argument("--only", help="run a single case id")
     args = ap.parse_args()
 

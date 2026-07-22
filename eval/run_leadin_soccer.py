@@ -2,7 +2,7 @@
 """Run the 足球课 (World Cup soccer festival) lead-in battery against the Forge debug API.
 
 Usage:
-  FORGE_TOKEN=... python3 eval/run_leadin_soccer.py [--model gpt-5-mini] [--only case-id]
+  FORGE_TOKEN=... python3 eval/run_leadin_soccer.py [--model gpt-5.4-mini] [--only case-id]
 """
 import argparse
 import json
@@ -84,7 +84,7 @@ def run_case(backend, step, case):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--model", default=os.environ.get("FORGE_MODEL", "gpt-5-mini"))
+    ap.add_argument("--model", default=os.environ.get("FORGE_MODEL", "gpt-5.4-mini"))
     ap.add_argument("--only", help="run a single case id")
     args = ap.parse_args()
 

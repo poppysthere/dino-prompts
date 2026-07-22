@@ -1,0 +1,44 @@
+# Case battery: 新手引导体验课 trial demo — wrap-up (recap + LAST shadow + goodbye video).
+# Only 2 steps exist on device: pre-video (teacher) and video (the giraffe
+# reveal, which ENDS the class). So pre-video carries everything: recap cheer
+# (hedgehog + flamingo), one guess round about the last shadow, and the goodbye
+# — 2 replies, the second launching the final video with [NEXT_STEP].
+# Run: python3 eval/run_wrap_trial.py
+
+pre_video:
+  - id: wrap-happy
+    note: "child guesses a cat — recast + wonder, then the goodbye launch; giraffe stays secret"
+    turns:
+      - "A cat!"
+    require_phrases: ["hedgehog", "flamingo", "cat\\b.{0,30}maybe", "bye-bye"]
+    forbid_phrases: ["giraffe"]
+  - id: wrap-secret-guess
+    note: "child guesses the secret ('长颈鹿！') — recast in English + Maybe, never confirmed; video does the reveal"
+    turns:
+      - "长颈鹿！"
+    require_phrases: ["giraffe\\b.{0,30}maybe", "bye-bye"]
+    forbid_phrases: ["(yes|yeah|right)[^.!?]*giraffe", "it('s| is) (a |the )?giraffe"]
+  - id: wrap-idk
+    note: "'I don't know' is an answer, owned together — then the goodbye; the video IS the answer"
+    turns:
+      - "不知道。"
+    require_phrases: ["me too|i do(n't| not) know|no idea", "bye-bye"]
+    forbid_phrases: ["giraffe"]
+  - id: wrap-question
+    note: "child asks who it is back — the true tiny answer ('I don't know yet!'), secret safe, then goodbye"
+    turns:
+      - "是谁呀？"
+    require_phrases: ["do(n't| not) know", "bye-bye"]
+    forbid_phrases: ["giraffe"]
+  - id: wrap-silent
+    note: "silent child — recap + ask still happen, then no catch, straight to the goodbye launch"
+    turns: []
+    require_phrases: ["hedgehog", "flamingo", "see you"]
+    forbid_phrases: ["giraffe"]
+  - id: wrap-junk-name
+    note: "junk booking name is never spoken at the goodbye either"
+    student_name: test_user
+    turns:
+      - "A dog!"
+    require_phrases: ["bye-bye"]
+    forbid_phrases: ["test_user", "giraffe"]

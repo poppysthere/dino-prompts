@@ -2,7 +2,7 @@
 """Run the L3 sentence-trail battery straight against the Forge debug API.
 
 Usage:
-  FORGE_TOKEN=... python3 eval/run_sentence_l3.py [--model gpt-5-mini] [--only case-id]
+  FORGE_TOKEN=... python3 eval/run_sentence_l3.py [--model gpt-5.4-mini] [--only case-id]
 """
 import argparse
 import json
@@ -91,7 +91,7 @@ def run_case(backend, family, case):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--model", default=os.environ.get("FORGE_MODEL", "gpt-5-mini"))
+    ap.add_argument("--model", default=os.environ.get("FORGE_MODEL", "gpt-5.4-mini"))
     ap.add_argument("--only", help="run a single case id")
     ap.add_argument("--family", help="run only cases of one family")
     args = ap.parse_args()

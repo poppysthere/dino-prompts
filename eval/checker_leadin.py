@@ -111,7 +111,7 @@ def check(path):
             v("english-only", f"reply {n}: contains non-English characters")
         # "Ta-da!" is in the common layer's own toolbox; hyphenated
         # interjections are single TTS-safe words, not pause-breaking dashes.
-        dashable = re.sub(r"\b(ta-da|ding-dong|high-five)\b", "x", strip_tags(r), flags=re.I)
+        dashable = re.sub(r"\b(ta-da|ding-dong|high-five|bye-bye)\b", "x", strip_tags(r), flags=re.I)
         if "..." in r or "…" in r or re.search(r"\w\s*[-–—]\s*\w", dashable):
             v("tts-safety", f"reply {n}: ellipsis or dash (voice engine breaks)")
         for m in re.finditer(r"[A-Za-z]*([A-Za-z])\1{2,}[A-Za-z]*", strip_tags(r)):
@@ -135,6 +135,9 @@ def check(path):
         if step == "pre_video":
             return check_pre_bridge(tr, replies, users, v, out)
         return check_post_bridge(tr, replies, users, v, out)
+
+    if family == "wrap_trial":
+        return check_pre_wrap(tr, replies, users, v, out)
 
     if step == "pre_video":
         if len(replies) != 1:
@@ -444,6 +447,86 @@ def check_post_bridge(tr, replies, users, v, out):
             qs = [s for s in re.split(r"(?<=[?])\s+", catch) if s.endswith("?")]
             if len(qs) > 1 or any(len(q.rstrip("?").split()) > 3 for q in qs):
                 v("no-question-finish", f"reply 2 catch asks a real question: {catch!r}")
+    return out
+
+
+# Trial wrap-up pre-video: recap cheer + the LAST shadow guess round + goodbye,
+# then [NEXT_STEP] — the giraffe-reveal video ends the class, so the goodbye
+# must ride in reply 2 and reply 2 must NOT ask anything new.
+WRAP_ASK = "who is it? guess!"
+CLOSE_WRAP_RE = r"let's watch and see! bye-bye[^!?]*![^!?]*(see you|next time)[^!?]*!$"
+
+
+def check_pre_wrap(tr, replies, users, v, out):
+    """Trial wrap-up pre-video: 2 replies — recap+remember+who (wait), then
+    catch+goodbye launch [NEXT_STEP]. The giraffe stays secret: recast-only."""
+    if len(replies) != 2:
+        v("two-replies", f"wrap pre-video is recap+ask -> catch+goodbye (2 replies), got {len(replies)}")
+    child_said_secret = any(
+        m["role"] == "user" and (BRIDGE_SECRET2_L1 in m["text"]
+                                 or re.search(rf"\b{BRIDGE_SECRET2}\b", m["text"], re.I))
+        for m in tr["messages"])
+    for n, r in enumerate(replies, 1):
+        body = strip_tags(r)
+        if re.search(rf"\b{BRIDGE_SECRET2}\b", body, re.I) and not child_said_secret:
+            v("spoiler", f"reply {n} says the last secret (giraffe) first: {body.strip()!r}")
+        if child_said_secret and re.search(
+                rf"(yes|yeah|right|correct)[^.!?]*\b{BRIDGE_SECRET2}\b|it('s| is) (a |the )?{BRIDGE_SECRET2}",
+                body, re.I):
+            v("spoiler", f"reply {n} CONFIRMS the secret guess: {body.strip()!r}")
+        if re.search(r"repeat\s+after\s+me|one\s+more\s+time|can\s+you\s+say", body, re.I):
+            v("no-teaching", f"reply {n}: say-calls belong to the word pages, not the wrap")
+        if n > 1 and re.search(r"who\s+is\s+it", body, re.I):
+            v("dead-line-repeat", f"reply {n} re-runs the dead who-ask: {body.strip()!r}")
+    if replies:
+        r1, n1 = replies[0], norm(replies[0])
+        for w in ("hedgehog", "flamingo"):
+            if w not in n1:
+                v("recap", f"reply 1 recap never cheers the {w}: {strip_tags(r1).strip()!r}")
+        if "shadow" not in n1:
+            v("tease", f"reply 1 never points at the last shadow: {strip_tags(r1).strip()!r}")
+        if not n1.endswith(WRAP_ASK):
+            v("script-ask", f"reply 1 does not end with the who-is-it guess call: {strip_tags(r1).strip()!r}")
+        if "[STUDENT_TALK]" not in r1:
+            v("tag-ask", "reply 1 must give the child the guess turn with [STUDENT_TALK]")
+        if re.search(GOODBYE, strip_tags(r1), re.I):
+            v("early-goodbye", f"reply 1 says goodbye before the guess round: {strip_tags(r1).strip()!r}")
+        # the recap is a cheer, not a quiz: only tiny questions allowed
+        qs = [s for s in re.split(r"(?<=[.!?])\s+", strip_tags(r1)) if s.strip().endswith("?")]
+        if len(qs) > 2 or any(len(q.strip().rstrip("?").split()) > 6 for q in qs):
+            v("recap-quiz", f"reply 1 asks too much — remember-ask + who-ask only: {strip_tags(r1).strip()!r}")
+    if len(replies) >= 2:
+        r2, n2 = replies[1], norm(replies[1])
+        if "[NEXT_STEP]" not in r2:
+            v("next-step", "reply 2 does not launch the final video with [NEXT_STEP] (class stuck)")
+        if "[STUDENT_TALK]" in r2 or "[TEMPLATE_FINISH]" in r2:
+            v("no-wait", "reply 2 must launch the video, not wait or finish by tag")
+        m2 = re.search(CLOSE_WRAP_RE, n2)
+        if not m2:
+            v("script-goodbye", f"reply 2 is missing the goodbye launch "
+                                f"('Let's watch and see! Bye-bye! See you next time!'): {strip_tags(r2).strip()!r}")
+        else:
+            catch = n2[: m2.start()].strip()
+            if len(catch.split()) > 10:
+                v("catch-budget", f"reply 2 catch over budget ({len(catch.split())} words): {catch!r}")
+            first = users[1].lower() if len(users) > 1 else ""
+            if first.startswith("the student has been silent") and catch:
+                v("catch-on-silence", f"reply 2 puts a catch before the goodbye on a silent child: {catch!r}")
+            elif first and not first.startswith("the student has been silent") and not catch:
+                v("missing-catch", "reply 2 ignores the child's guess — no catch before the goodbye")
+            qs = [s for s in re.split(r"(?<=[?])\s+", catch) if s.endswith("?")]
+            if len(qs) > 1 or any(len(q.rstrip("?").split()) > 3 for q in qs):
+                v("no-question-finish", f"reply 2 catch asks a real question: {catch!r}")
+    # Nothing said twice.
+    seen_sents = {}
+    for n, r in enumerate(replies, 1):
+        for s in re.split(r"(?<=[.!?])\s+", strip_tags(r).strip()):
+            ns = re.sub(r"[^a-z' ]", "", s.lower()).strip()
+            if len(ns.split()) < 3:
+                continue
+            if ns in seen_sents and seen_sents[ns] != n:
+                v("sentence-repeat", f"reply {n}: repeats {s.strip()!r} (first said in reply {seen_sents[ns]})")
+            seen_sents.setdefault(ns, n)
     return out
 
 

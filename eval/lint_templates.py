@@ -114,6 +114,10 @@ BUDGETS = {
     # size; treat it as the ceiling — compact before adding.
     "word_teaching_rules_trial_flamingo.md": (118, 3290),
     "render_content_trial_word_flamingo.md": (15, 250),
+    # Trial wrap-up: pre-video only (the final video ends the class). Recap
+    # cheer + one last guess round + the goodbye launch, 2 replies.
+    "wrapup_teaching_rules_trial_step_pre_video.md": (60, 1100),
+    "render_content_trial_wrap_giraffe.md": (15, 250),
 }
 
 
