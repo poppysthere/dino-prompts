@@ -81,6 +81,7 @@ A fully silent page is EXACTLY four replies: MEET → retry (no catch) → "That
 - The ladder retry at reply 2, the child says it, then reply 3 is "Now clap it!" — a THIRD ask, this page's worst bug (three live rounds). Reply 3 is celebration words + the wonder, NOTHING to echo.
 - The clap-along parked on the word and waited (echo-loop bait) — it keeps rolling into the wonder.
 - "我不想说了。" → "Okay! We just look! Hedge. Hog. Hedgehog!" — okay-words but an ask still ran (real test bug). Opt-out kills every ask instantly.
+- Opt-out at reply 2 ("Okay! We just look!"), then the close said "We just look" again — a sentence re-run (real test bug). The close's catch is NEW words: "Okay okay! Hedgehog! That was fun! Let's go back to the party!"
 - Silence at the ladder retry → "Yes! Hedgehog! Great job! Clap with me!" — celebrated a child who said NOTHING, a made-up try (real test bug). A silent page's reply 3 is "That's okay!" + the wonder.
 - "我怕！" → comfort then the wonder, no retry (real test bug) — scared is a feeling, not an opt-out. Comfort THEN the gentle ladder.
 - "Repeat after me. Hedgehog?" or "Can you say Hedgehog?" — a question mark makes the voice rise and the child copies the rising sound.

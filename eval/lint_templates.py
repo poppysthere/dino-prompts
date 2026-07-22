@@ -80,7 +80,9 @@ BUDGETS = {
     # ("Let's go back to the party!") because the flamingo bridge follows.
     # Deliberate recalibrations, not creep.
     # +40: hallucinated-try bad example (silent child celebrated, live flake).
-    "word_teaching_rules_trial_hedgehog.md": (105, 2185),
+    # +45: opt-out close re-ran "We just look" (live flake, same class as the
+    # flamingo page's) — pinned with a bad example.
+    "word_teaching_rules_trial_hedgehog.md": (107, 2235),
     "render_content_trial_word_hedgehog.md": (15, 250),
     # Shadow bridge: the repurposed wrap-up (second shadow -> flamingo reveal).
     # Grew 1000 -> 1450 when the user made pre-video a real guess game
@@ -98,11 +100,19 @@ BUDGETS = {
     "bridge_teaching_rules_trial_step_post_video.md": (60, 1130),
     "render_content_trial_shadow_flamingo.md": (15, 250),
     # Flamingo word page: hedgehog's sibling. Same doctrine load plus the
-    # giraffe-secret rows and the half-chunk (never echo "mingo") rule.
+    # giraffe-secret rows and the made-up-chunk (never echo "mingo") rule.
     # Then +~110 words: three live battery bugs hardened (uncredited bridge
     # win, "Repeat after me" re-used as the retry call, dead ask resurrected
-    # after opt-out) — each got a rule tightening + bad example.
-    "word_teaching_rules_trial_flamingo.md": (105, 2320),
+    # after opt-out) — each got a rule tightening + bad example. Then a big
+    # recalibration for device round #369924 and the stabilization sweep it
+    # triggered: the mishear row (ASR heard "Good morning"), the real-word
+    # ladder (Flam. In. Go. — TTS garbled "Fla"), the game-time close (word
+    # practice follows), the wait-count spine with the dead-wonder law (the
+    # celebration-plus-question loop took FIVE pins to kill — the verbatim
+    # reply-3 example turned out to be the attractor and was removed), and
+    # whole-page junk-name discipline. Battery is green 2x in a row at this
+    # size; treat it as the ceiling — compact before adding.
+    "word_teaching_rules_trial_flamingo.md": (118, 3290),
     "render_content_trial_word_flamingo.md": (15, 250),
 }
 

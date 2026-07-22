@@ -2,8 +2,9 @@
 # Ages 4-6, pre-A1. The reveal VIDEO played before each page: the teacher faces
 # the animal, never re-opens the door (device #368306). Structure: MEET ->
 # second ask (piece/ladder retry OR clap game) -> wonder -> close.
-# Flamingo extras: the ladder is three sing-song beats (Fla. Min. Go.), and the
-# giraffe (the third shadow) is a live secret on the page.
+# Flamingo extras: the ladder is three REAL words (Flam. In. Go. — TTS garbles
+# made-up chunks like "Fla", device #369924), the giraffe (the third shadow) is
+# a live secret, and the close hands to the hedgehog+flamingo practice game.
 # Run: python3 eval/run_word_trial.py
 
 word_trial_hedgehog:
@@ -115,7 +116,7 @@ word_trial_flamingo:
       - "Flamingo!"
       - "yes!"
     require_phrases:
-      - "fla\\W+min\\W+go"             # the clap-along / syllable beats
+      - "flam\\W+in\\W+go"             # the clap-along / real-word beats
       - "(good job|well done|yes|wow)" # real, kid-sized celebration
 
   - id: fl-claims-win
@@ -154,13 +155,24 @@ word_trial_flamingo:
       - "one more time"           # the ladder retry, not fake full-word praise
 
   - id: fl-half-chunk
-    note: '"Mingo!" is a half-chunk — praise the try but NEVER echo it (broken sound)'
+    note: '"Mingo!" is a made-up chunk — praise the try but NEVER echo it (broken sound)'
     turns:
       - "Mingo!"
       - "Flamingo!"
       - "yes!"
     require_phrases:
       - "(so close|almost)"
+
+  - id: fl-mishear
+    note: 'device #369927 — ASR turned their try into "Good morning. Hello, hello.";
+      warm tiny nod, redirect via the retry, and NEVER a third ask (the device ran
+      "One more time" twice)'
+    turns:
+      - "Good morning. Hello, hello."
+      - "Hello, me."
+      - "Flamingo."
+    require_phrases:
+      - "(hello|morning|ha ha)"   # the nod — a person answers a greeting-shaped sound
 
   - id: fl-cn-word
     note: own-language word means they understood — recast to English, then the ladder

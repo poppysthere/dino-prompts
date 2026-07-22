@@ -58,12 +58,15 @@ TRIAL_WORDS = {
         "handoff_name": "Let's go back to the party!",
         "screen_data": r"\bspines?\b|small\s+animal\s+with",
     },
+    # The beats are three REAL words (flam/in/go) — device test #369924 showed
+    # TTS garbling the made-up chunk "Fla" (the "a" sound drifted). The close
+    # hands to the next page: a practice game for hedgehog AND flamingo.
     "flamingo": {
-        "ladder": r"\bfla\b[\s.!,]+\bmin\b[\s.!,]+\bgo\b",
-        "ladder_name": "Fla. Min. Go.",
-        "chunks": r"\b(flam|mingo|ingo|lamin)\b",
-        "handoff": r"back\s+to\s+the\s+door",
-        "handoff_name": "Now, back to the door!",
+        "ladder": r"\bflam\b[\s.!,]+\bin\b[\s.!,]+\bgo\b",
+        "ladder_name": "Flam. In. Go.",
+        "chunks": r"\b(fla|mingo|ingo|lamin)\b",
+        "handoff": r"game\s+time",
+        "handoff_name": "Now! Game time! Hedgehog and flamingo!",
         "screen_data": r"pink\s+bird\s+with\s+long|stands\s+on\s+one\s+leg",
     },
 }
