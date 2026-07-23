@@ -176,7 +176,7 @@ def check(tr):
         if has_cjk(r):
             v("english-only", f"reply {n}: contains non-English characters")
         # hyphenated interjections the voice engine says fine are whitelisted
-        dash_body = re.sub(r"\b(ta-da|ding-dong)\b", " ", body, flags=re.I)
+        dash_body = re.sub(r"\b(ta-da|ding-dong|peek-a-boo)\b", " ", body, flags=re.I)
         if "..." in r or "…" in r or re.search(r"\w\s*[-–—]\s*\w", dash_body):
             v("tts-safety", f"reply {n}: ellipsis or dash")
         for s in re.finditer(r"[A-Za-z]*([A-Za-z])\1{2,}[A-Za-z]*", body):

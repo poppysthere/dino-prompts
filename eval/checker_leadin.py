@@ -123,6 +123,25 @@ def is_silent(t):
     return is_client_silence(t) or not re.search(r"[\w\u4e00-\u9fff]", t)
 
 
+SILENCE_HOOK_BAD = re.compile(
+    r"it'?s okay|that'?s okay|\bokay\b|good job|great|well done|me too|don'?t worry", re.I)
+
+
+def silence_catch_issue(catch):
+    """A client-silence turn has no words to answer, so a real CATCH is
+    forbidden — but a tiny attention call (the child's name + one playful
+    sound: 'Lily! Peek-a-boo!') is a pro-tutor move and welcome (user
+    doctrine: grab a silent child's attention, never just roll on). Bad =
+    comfort or praise aimed at nobody, or anything longer than a call."""
+    if not catch:
+        return None
+    if SILENCE_HOOK_BAD.search(catch):
+        return f"comforts or praises nobody: {catch!r}"
+    if len(catch.split()) > 5:
+        return f"a whole catch at a silent child: {catch!r}"
+    return None
+
+
 def check(path):
     tr = json.loads(open(path, encoding="utf-8").read())
     msgs = tr["messages"]
@@ -142,7 +161,7 @@ def check(path):
             v("english-only", f"reply {n}: contains non-English characters")
         # "Ta-da!" is in the common layer's own toolbox; hyphenated
         # interjections are single TTS-safe words, not pause-breaking dashes.
-        dashable = re.sub(r"\b(ta-da|ding-dong|high-five|bye-bye)\b", "x", strip_tags(r), flags=re.I)
+        dashable = re.sub(r"\b(ta-da|ding-dong|high-five|bye-bye|peek-a-boo)\b", "x", strip_tags(r), flags=re.I)
         if "..." in r or "…" in r or re.search(r"\w\s*[-–—]\s*\w", dashable):
             v("tts-safety", f"reply {n}: ellipsis or dash (voice engine breaks)")
         for m in re.finditer(r"[A-Za-z]*([A-Za-z])\1{2,}[A-Za-z]*", strip_tags(r)):
@@ -311,8 +330,10 @@ def check_pre_trial(tr, replies, users, v, out):
             if len(qs) > 1 or any(len(q.rstrip("?").split()) > 3 for q in qs):
                 v("no-question-launch", f"reply 3 catch asks a real question: {catch!r}")
             last = turn_before(tr["messages"], 3).lower()
-            if is_client_silence(last) and catch:
-                v("catch-on-silence", f"reply 3 puts a catch before the launch on a silent child: {catch!r}")
+            if is_client_silence(last):
+                bad = silence_catch_issue(catch)
+                if bad:
+                    v("catch-on-silence", f"reply 3, on a silent child, {bad}")
     # Nothing said twice (same law as the post-video page).
     seen_sents = {}
     for n, r in enumerate(replies, 1):
@@ -379,8 +400,10 @@ def check_pre_bridge(tr, replies, users, v, out):
             if len(catch.split()) > 10:
                 v("catch-budget", f"reply 2 catch over budget ({len(catch.split())} words): {catch!r}")
             first = turn_before(tr["messages"], 2).lower()
-            if is_client_silence(first) and catch:
-                v("catch-on-silence", f"reply 2 puts a catch before the ask on a silent child: {catch!r}")
+            if is_client_silence(first):
+                bad = silence_catch_issue(catch)
+                if bad:
+                    v("catch-on-silence", f"reply 2, on a silent child, {bad}")
             elif first and not is_silent(first) and not catch:
                 v("missing-catch", "reply 2 ignores the child's guess — no catch before the hint ask")
         if "[STUDENT_TALK]" not in replies[1]:
@@ -403,6 +426,11 @@ def check_pre_bridge(tr, replies, users, v, out):
             qs = [s for s in re.split(r"(?<=[?])\s+", catch) if s.endswith("?")]
             if len(qs) > 1 or any(len(q.rstrip("?").split()) > 3 for q in qs):
                 v("no-question-finish", f"reply 3 catch asks a real question: {catch!r}")
+        # The dead hint may not return in ANY shape (device bug: "错是什么意思？"
+        # got "It is okay. Look. Tall, or short?" as a fourth wait, then "哦。"
+        # got "Oh! Tall, or short? Let's watch!" — the ask inside the launch).
+        if re.search(r"tall,?\s+or\s+short", strip_tags(r3), re.I):
+            v("dead-ask", f"reply 3 re-runs the dead tall-or-short hint: {strip_tags(r3).strip()!r}")
     return out
 
 
@@ -480,8 +508,10 @@ def check_post_bridge(tr, replies, users, v, out):
             ans = (msgs[ai + 1]["text"].lower()
                    if ai is not None and ai + 1 < len(msgs) and msgs[ai + 1]["role"] == "user"
                    else "")
-            if is_client_silence(ans) and catch:
-                v("catch-on-silence", f"reply 2 puts a catch before the close on a silent child: {catch!r}")
+            if is_client_silence(ans):
+                bad = silence_catch_issue(catch)
+                if bad:
+                    v("catch-on-silence", f"reply 2, on a silent child, {bad}")
             elif ans and not is_silent(ans) and not catch:
                 v("missing-catch", "reply 2 ignores the child's guess — no catch before the close")
             qs = [s for s in re.split(r"(?<=[?])\s+", catch) if s.endswith("?")]
@@ -552,8 +582,10 @@ def check_pre_wrap(tr, replies, users, v, out):
             if len(catch.split()) > 10:
                 v("catch-budget", f"reply 2 catch over budget ({len(catch.split())} words): {catch!r}")
             first = turn_before(tr["messages"], 2).lower()
-            if is_client_silence(first) and catch:
-                v("catch-on-silence", f"reply 2 puts a catch before the launch on a silent child: {catch!r}")
+            if is_client_silence(first):
+                bad = silence_catch_issue(catch)
+                if bad:
+                    v("catch-on-silence", f"reply 2, on a silent child, {bad}")
             elif first and not is_silent(first) and not catch:
                 v("missing-catch", "reply 2 ignores the child's guess — no catch before the launch")
             qs = [s for s in re.split(r"(?<=[?])\s+", catch) if s.endswith("?")]
@@ -667,8 +699,10 @@ def check_post_trial(tr, replies, users, v, out):
             if len(catch.split()) > 10:
                 v("catch-budget", f"reply 2 catch over budget ({len(catch.split())} words): {catch!r}")
             first = turn_before(tr["messages"], 2).lower()
-            if is_client_silence(first) and catch:
-                v("catch-on-silence", f"reply 2 puts a catch before the ask on a silent child: {catch!r}")
+            if is_client_silence(first):
+                bad = silence_catch_issue(catch)
+                if bad:
+                    v("catch-on-silence", f"reply 2, on a silent child, {bad}")
             elif first and not is_silent(first) and not catch:
                 v("missing-catch", "reply 2 ignores the child's answer — no catch before the ask (real test bug: 'Mommy!' got no echo)")
         if "[STUDENT_TALK]" not in replies[1]:
@@ -686,14 +720,17 @@ def check_post_trial(tr, replies, users, v, out):
                 v("catch-budget", f"reply 3 catch over budget ({len(catch.split())} words): {catch!r}")
             if n3[at + len(CLOSE_TRIAL):].strip():
                 v("script-close", "reply 3 has text after the close line")
-            # template allows a 3-word echo max at the close — a longer question
-            # shape here is a re-asked dead question ("is it big, or small?")
+            # template allows tiny echoes at the close (3 words max each; a
+            # natural double like "Red? A red monster?" is fine) — a longer
+            # question shape is a re-asked dead question ("is it big, or small?")
             qs = [s for s in re.split(r"(?<=[?])\s+", catch) if s.endswith("?")]
-            if len(qs) > 1 or any(len(q.rstrip("?").split()) > 3 for q in qs):
+            if len(qs) > 2 or any(len(q.rstrip("?").split()) > 3 for q in qs):
                 v("no-question-finish", f"reply 3 catch asks a real question: {catch!r}")
             second = turn_before(tr["messages"], 3).lower()
-            if is_client_silence(second) and catch:
-                v("catch-on-silence", f"reply 3 puts a catch before the close on a silent child: {catch!r}")
+            if is_client_silence(second):
+                bad = silence_catch_issue(catch)
+                if bad:
+                    v("catch-on-silence", f"reply 3, on a silent child, {bad}")
             elif second and not is_silent(second) and not catch:
                 v("missing-catch", "reply 3 ignores the child's answer — no catch before the close")
     return out
@@ -768,7 +805,9 @@ def check_post_l3(tr, replies, users, v, out,
         if (silent or idk) and re.search(praise, n2):
             v("fake-praise", "reply 2 gives praise but the student gave no idea (silence / 'I don't know')")
         if silent and launch_at > 0:
-            v("catch-on-silence", f"reply 2 puts a catch before the launch on a silent child: {n2[:launch_at].strip()!r}")
+            bad = silence_catch_issue(n2[:launch_at].strip())
+            if bad:
+                v("catch-on-silence", f"reply 2, on a silent child, {bad}")
 
     return out
 

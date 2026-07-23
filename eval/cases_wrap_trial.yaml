@@ -30,6 +30,12 @@ pre_video:
       - "是谁呀？"
     require_phrases: ["do(n't| not) know", "watch and see"]
     forbid_phrases: ["giraffe"]
+  - id: wrap-meh
+    note: "REGRESSION (device class 8100450001): '不太行' got the ENTIRE reply 1 again, word for word — the worst robot bug. A meh answer buys a soft catch ('Aww, okay!') + the launch; the count never rewinds"
+    turns:
+      - "不太行。"
+    require_phrases: ["watch and see"]
+    forbid_phrases: ["giraffe", "good job", "well done"]
   - id: wrap-silent
     note: "silent child — recap + ask still happen, then no catch, straight to the launch"
     turns: []

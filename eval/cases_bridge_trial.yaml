@@ -33,6 +33,13 @@ pre_video:
       - "我听不懂。"
       - "Tall."
     forbid_phrases: ["flamingo"]
+  - id: bridge-pre-meaning
+    note: "REGRESSION (device class 8100450001): '错是什么意思？' at reply 3 got 'It is okay. Look. Tall, or short?' — the dead hint re-asked as a FOURTH wait — then '哦。' got 'Oh! Tall, or short? Let's watch!' with the dead ask inside the launch. Reply 3 answers THEM tiny and launches; tall-or-short never returns"
+    turns:
+      - "是一个鸟。"
+      - "错是什么意思？"
+    require_phrases: ["bird\\b.{0,30}maybe", "let's watch"]
+    forbid_phrases: ["flamingo"]
   - id: bridge-pre-silent
     note: "silent both turns — no catch before the asks, game still reaches the launch"
     turns: []
