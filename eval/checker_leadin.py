@@ -92,6 +92,37 @@ def control_tags(t):
     return re.findall(r"\[(?:STUDENT_TALK|TEMPLATE_FINISH|NEXT_STEP|WORD_EVALUATION|TEACHER_TALK)\]", t)
 
 
+def turn_before(msgs, n):
+    """Text of the user message right before the nth (1-based) assistant reply.
+
+    Replaces plain users[i] indexing, which silently went off-by-one whenever a
+    runner kept or dropped the UI-ready line, or a case seeded user history —
+    the silence/catch checks were reading the WRONG child turn (found in the
+    second-round retest: an opt-out at B2 was read from the wrong slot)."""
+    seen = 0
+    for i, m in enumerate(msgs):
+        if m["role"] == "assistant":
+            seen += 1
+            if seen == n:
+                return msgs[i - 1]["text"] if i and msgs[i - 1]["role"] == "user" else ""
+    return ""
+
+
+def is_client_silence(t):
+    """The client's explicit silence message — a catch here comforts nobody
+    about nothing, so catches are FORBIDDEN."""
+    return t.strip().lower().startswith("the student has been silent")
+
+
+def is_silent(t):
+    """No words a catch could answer: the client silence message OR a
+    contentless turn ("...", a whimper). A catch is not REQUIRED here —
+    but a tiny one on a contentless turn is fine (only is_client_silence
+    forbids it)."""
+    t = t.strip()
+    return is_client_silence(t) or not re.search(r"[\w\u4e00-\u9fff]", t)
+
+
 def check(path):
     tr = json.loads(open(path, encoding="utf-8").read())
     msgs = tr["messages"]
@@ -203,8 +234,8 @@ def check(path):
         if "?" in strip_tags(r2):
             v("no-question-finish", "reply 2 asks a question ('are you ready?' wait was cut); it must launch and end")
         # classification: POS row only if the child's first answer carried a positive signal
-        first = users[1].lower() if len(users) > 1 else ""  # users[0] is the UI-ready message
-        if not first.startswith("the student has been silent"):
+        first = turn_before(tr["messages"], 2).lower()
+        if not is_silent(first):
             hit = any(s in first for s in POSITIVE_SIGNALS)
             if is_pos and not hit:
                 v("row2-classify", f"reply 2 took POS row but child answer had no 'gone' signal: {first!r}")
@@ -232,6 +263,11 @@ def check_pre_trial(tr, replies, users, v, out):
             v("hello-only", f"reply 1 is the hello ONLY — the small win — no question yet: {b1.strip()!r}")
         if re.search(r"your\s+name|你叫什么", b1, re.I):
             v("no-name-ask", "the demo never asks the child's name")
+        # A real <studentName> is always greeted (device bug #372667: name was
+        # "yana", the hello had no name). Junk names are pre-blanked by runners.
+        name = tr.get("student_name", "")
+        if name and not re.search(rf"\b{re.escape(name)}\b", b1, re.I):
+            v("greet-name", f"reply 1 drops the real name {name!r}: {b1.strip()!r}")
     # The greeting/self-intro lives in reply 1 ONLY (device bug #368067-75:
     # "Hi hi Tommy! I'm Max!" re-said verbatim after the child said hi).
     for n, r in enumerate(replies[1:], 2):
@@ -243,8 +279,8 @@ def check_pre_trial(tr, replies, users, v, out):
             v("tag-b2", "reply 2 must wait with [STUDENT_TALK]")
         if b2.count("?") > 1:
             v("one-question", f"reply 2 asks more than one question: {b2.strip()!r}")
-        second = users[1].lower() if len(users) > 1 else ""
-        if (second.startswith("the student has been silent")
+        second = turn_before(tr["messages"], 2).lower()
+        if (is_client_silence(second)
                 and not re.search(r"repeat after me|you can say", b2, re.I)):
             v("feed-on-silence", f"a silent child gets the fed line ('Repeat after me. Hi ...'), got: {b2.strip()!r}")
     # A fed line must never be a question: "Can you say hi?" bends the melody
@@ -258,6 +294,10 @@ def check_pre_trial(tr, replies, users, v, out):
             v("next-step", "reply 3 does not start the video with [NEXT_STEP] (class stuck)")
         if "[STUDENT_TALK]" in r3:
             v("no-wait", "reply 3 must launch, never wait again")
+        # The feed lives in B2 only (device bug #372667: "Repeat after me. Hi
+        # Max!" ran as a FOURTH wait, to a child who had already said hello).
+        if re.search(r"repeat after me|you can say", strip_tags(r3), re.I):
+            v("feed-late", f"reply 3 feeds a line instead of launching: {strip_tags(r3).strip()!r}")
         at = n3.find(LAUNCH_TRIAL_PRE)
         if at < 0:
             v("script-launch", f"reply 3 is missing the fixed launch: {strip_tags(r3).strip()!r}")
@@ -270,8 +310,8 @@ def check_pre_trial(tr, replies, users, v, out):
             qs = [s for s in re.split(r"(?<=[?])\s+", catch) if s.endswith("?")]
             if len(qs) > 1 or any(len(q.rstrip("?").split()) > 3 for q in qs):
                 v("no-question-launch", f"reply 3 catch asks a real question: {catch!r}")
-            last = users[2].lower() if len(users) > 2 else ""
-            if last.startswith("the student has been silent") and catch:
+            last = turn_before(tr["messages"], 3).lower()
+            if is_client_silence(last) and catch:
                 v("catch-on-silence", f"reply 3 puts a catch before the launch on a silent child: {catch!r}")
     # Nothing said twice (same law as the post-video page).
     seen_sents = {}
@@ -338,10 +378,10 @@ def check_pre_bridge(tr, replies, users, v, out):
             catch = n2[: m2.start()].strip()
             if len(catch.split()) > 10:
                 v("catch-budget", f"reply 2 catch over budget ({len(catch.split())} words): {catch!r}")
-            first = users[1].lower() if len(users) > 1 else ""
-            if first.startswith("the student has been silent") and catch:
+            first = turn_before(tr["messages"], 2).lower()
+            if is_client_silence(first) and catch:
                 v("catch-on-silence", f"reply 2 puts a catch before the ask on a silent child: {catch!r}")
-            elif first and not first.startswith("the student has been silent") and not catch:
+            elif first and not is_silent(first) and not catch:
                 v("missing-catch", "reply 2 ignores the child's guess — no catch before the hint ask")
         if "[STUDENT_TALK]" not in replies[1]:
             v("tag-ask2", "reply 2 must wait with [STUDENT_TALK]")
@@ -440,9 +480,9 @@ def check_post_bridge(tr, replies, users, v, out):
             ans = (msgs[ai + 1]["text"].lower()
                    if ai is not None and ai + 1 < len(msgs) and msgs[ai + 1]["role"] == "user"
                    else "")
-            if ans.startswith("the student has been silent") and catch:
+            if is_client_silence(ans) and catch:
                 v("catch-on-silence", f"reply 2 puts a catch before the close on a silent child: {catch!r}")
-            elif ans and not ans.startswith("the student has been silent") and not catch:
+            elif ans and not is_silent(ans) and not catch:
                 v("missing-catch", "reply 2 ignores the child's guess — no catch before the close")
             qs = [s for s in re.split(r"(?<=[?])\s+", catch) if s.endswith("?")]
             if len(qs) > 1 or any(len(q.rstrip("?").split()) > 3 for q in qs):
@@ -511,10 +551,10 @@ def check_pre_wrap(tr, replies, users, v, out):
             catch = n2[: m2.start()].strip()
             if len(catch.split()) > 10:
                 v("catch-budget", f"reply 2 catch over budget ({len(catch.split())} words): {catch!r}")
-            first = users[1].lower() if len(users) > 1 else ""
-            if first.startswith("the student has been silent") and catch:
+            first = turn_before(tr["messages"], 2).lower()
+            if is_client_silence(first) and catch:
                 v("catch-on-silence", f"reply 2 puts a catch before the launch on a silent child: {catch!r}")
-            elif first and not first.startswith("the student has been silent") and not catch:
+            elif first and not is_silent(first) and not catch:
                 v("missing-catch", "reply 2 ignores the child's guess — no catch before the launch")
             qs = [s for s in re.split(r"(?<=[?])\s+", catch) if s.endswith("?")]
             if len(qs) > 1 or any(len(q.rstrip("?").split()) > 3 for q in qs):
@@ -533,9 +573,14 @@ def check_pre_wrap(tr, replies, users, v, out):
 
 
 def check_post_trial(tr, replies, users, v, out):
-    """Trial demo post-video: shadow chat — ASK1 who -> catch + ASK2 big/small -> catch + close."""
-    if len(replies) != 3:
-        v("three-replies", f"trial post-video must be exactly 3 replies, got {len(replies)}")
+    """Trial demo post-video: shadow chat — ASK1 who -> catch + ASK2 big/small -> catch + close.
+    Opt-out at B2 is the one shortcut: the ask dies, okay-words + close, 2 replies."""
+    optout = bool(re.search(r"不想说|do(n'?t| not) want to (say|talk|speak)",
+                             turn_before(tr["messages"], 2), re.I))
+    want = 2 if optout else 3
+    if len(replies) != want:
+        v("three-replies", f"trial post-video must be exactly {want} replies"
+                           f"{' (opt-out closes early)' if optout else ''}, got {len(replies)}")
     child_guessed_secret = False
     for m in tr["messages"]:
         if m["role"] == "user":
@@ -582,7 +627,26 @@ def check_post_trial(tr, replies, users, v, out):
                 v("script-ask1-drop", f"reply 1 dropped {part!r} from the B1 script (real test bug)")
         if "[STUDENT_TALK]" not in replies[0]:
             v("tag-ask1", "reply 1 must wait with [STUDENT_TALK]")
-    if len(replies) >= 2:
+    if len(replies) >= 2 and optout:
+        # The opt-out shortcut: reply 2 = okay-words + the close, NO question —
+        # "Is it big, or small?" at a no-more-talking child is a push.
+        r2, n2 = replies[1], norm(replies[1])
+        if "[TEMPLATE_FINISH]" not in r2:
+            v("must-finish", "opt-out reply must close the page with [TEMPLATE_FINISH]")
+        if "?" in strip_tags(r2):
+            v("optout-push", f"asked a question at a child who said no-more-talking: {strip_tags(r2).strip()!r}")
+        at = n2.find(CLOSE_TRIAL)
+        if at < 0:
+            v("script-close", f"opt-out reply is missing the close line: {strip_tags(r2).strip()!r}")
+        else:
+            catch = n2[:at].strip()
+            if len(catch.split()) > 10:
+                v("catch-budget", f"opt-out catch over budget ({len(catch.split())} words): {catch!r}")
+            if not catch:
+                v("missing-catch", "opt-out reply has no okay-words before the close — the child's no was ignored")
+            if n2[at + len(CLOSE_TRIAL):].strip():
+                v("script-close", "opt-out reply has text after the close line")
+    elif len(replies) >= 2:
         n2 = norm(replies[1])
         if not n2.endswith(ASK2_TRIAL):
             v("script-ask2", f"reply 2 does not end with the big-or-small line: {strip_tags(replies[1]).strip()!r}")
@@ -590,10 +654,10 @@ def check_post_trial(tr, replies, users, v, out):
             catch = n2[: n2.rfind(ASK2_TRIAL)].strip()
             if len(catch.split()) > 10:
                 v("catch-budget", f"reply 2 catch over budget ({len(catch.split())} words): {catch!r}")
-            first = users[1].lower() if len(users) > 1 else ""
-            if first.startswith("the student has been silent") and catch:
+            first = turn_before(tr["messages"], 2).lower()
+            if is_client_silence(first) and catch:
                 v("catch-on-silence", f"reply 2 puts a catch before the ask on a silent child: {catch!r}")
-            elif first and not first.startswith("the student has been silent") and not catch:
+            elif first and not is_silent(first) and not catch:
                 v("missing-catch", "reply 2 ignores the child's answer — no catch before the ask (real test bug: 'Mommy!' got no echo)")
         if "[STUDENT_TALK]" not in replies[1]:
             v("tag-ask2", "reply 2 must wait with [STUDENT_TALK]")
@@ -615,10 +679,10 @@ def check_post_trial(tr, replies, users, v, out):
             qs = [s for s in re.split(r"(?<=[?])\s+", catch) if s.endswith("?")]
             if len(qs) > 1 or any(len(q.rstrip("?").split()) > 3 for q in qs):
                 v("no-question-finish", f"reply 3 catch asks a real question: {catch!r}")
-            second = users[2].lower() if len(users) > 2 else ""
-            if second.startswith("the student has been silent") and catch:
+            second = turn_before(tr["messages"], 3).lower()
+            if is_client_silence(second) and catch:
                 v("catch-on-silence", f"reply 3 puts a catch before the close on a silent child: {catch!r}")
-            elif second and not second.startswith("the student has been silent") and not catch:
+            elif second and not is_silent(second) and not catch:
                 v("missing-catch", "reply 3 ignores the child's answer — no catch before the close")
     return out
 
@@ -686,8 +750,8 @@ def check_post_l3(tr, replies, users, v, out,
             qs = [s for s in re.split(r"(?<=[?])\s+", catch) if s.endswith("?")]
             if len(qs) > 1 or any(len(q.rstrip("?").split()) > 5 for q in qs):
                 v("no-question-finish", f"reply 2 catch asks a real question: {catch!r}")
-        first = users[1].lower() if len(users) > 1 else ""  # users[0] is the UI-ready message
-        silent = first.startswith("the student has been silent")
+        first = turn_before(tr["messages"], 2).lower()
+        silent = is_silent(first)
         idk = any(s in first for s in IDK_SIGNALS)
         if (silent or idk) and re.search(praise, n2):
             v("fake-praise", "reply 2 gives praise but the student gave no idea (silence / 'I don't know')")

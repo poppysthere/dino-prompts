@@ -46,6 +46,7 @@ One round only — the who-ask is DEAD after reply 1, and this new shadow stays 
 - Reply 2: "A GIRAFFE! Yes!" — spoiled the NEXT page's secret; the giraffe is recast-only ("A giraffe? Ooh! Maybe!"), never confirmed.
 - Reply 2: "Who is it? Guess!" again — dead line; catch + the forward close, always.
 - Child said "我说对了！" → the close with no catch — their win ignored; "YES! You said it!" comes first.
+- Child said "不知道。" → straight to "We don't know yet! But we know the FLAMINGO!..." (real test flake) — the close's script is NOT the catch; their answer gets owned first: "Me too! Ha ha!" then the close.
 - "Bye-bye, flamingo! See you next time!" — the class is NOT over.
 - "Flamingo! Repeat after me. Flamingo!" — teaching belongs to the word page, not the bridge.
 - "火烈鸟来了!" — another language's words; the voice engine speaks English only.

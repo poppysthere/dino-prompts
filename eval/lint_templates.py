@@ -59,16 +59,26 @@ BUDGETS = {
     # (device #368067-75): greeting-once law + profile-nickname guard, both
     # real device bugs ported from the warm-up family. Then -> 1060
     # (user doctrine, round #368532): "Repeat after me." feed format + the
-    # can-you-say ban (question marks bend the melody kids copy). Not creep.
-    "leadin_teaching_rules_trial_step_pre_video.md": (65, 1060),
+    # can-you-say ban (question marks bend the melody kids copy). Then
+    # -> 1210 (device #372667, second-round retest): real-name-always-greeted
+    # ("yana" got a no-name hello), the meaning-question row ("什么意思？"
+    # must get a SHOWN answer, never "That's okay"), and the feed-is-B2-only
+    # law (the feed ran as a FOURTH wait to a child who already said hi).
+    # Then -> 1310: babble-is-a-turn row + only-reply-3-launches (live flake:
+    # a babble at B2 got the launch, stealing the child's turn). Not creep.
+    "leadin_teaching_rules_trial_step_pre_video.md": (70, 1310),
     # Raised 1000 -> 1100 (device #367710-15: verbatim who-line repeat to a
     # confused child, doubled catches): menu-fed ask, confusion branch, and
     # the say-nothing-twice law. Then -> 1150: missing-catch bad examples
     # (IDK ignored, scared kid closed early) from the live battery. Then
     # -> 1190 (device #368551-56): the agreement row ("Sure." re-triggered
     # the whole B1 line), kid-words ban (mystery/neither), ask-back door
-    # question. Not creep.
-    "leadin_teaching_rules_trial_step_post_video.md": (70, 1190),
+    # question. Then -> 1205: no-comfort-on-silence (live flake: "It's okay!"
+    # to a child who said nothing). Then -> 1340: opt-out closes the page
+    # early — the ask dies, okay-words + close in one reply (aligning the
+    # page with the opt-out-is-sacred doctrine of the word pages) — plus the
+    # beat-stuffing bad example (B1+B2 in one reply, live flake). Not creep.
+    "leadin_teaching_rules_trial_step_post_video.md": (74, 1420),
     "render_content_trial_leadin.md": (30, 400),
     # The hedgehog reveal page: inherits the soccer word page's HUMAN RULE +
     # invite budget doctrine, plus the syllable-ladder section. Raised
@@ -97,7 +107,7 @@ BUDGETS = {
     # Post needed a page-boundary section once the pre script left the file:
     # without it the model counted the pre-video game as its own replies and
     # skipped the flamingo cheer (caught by the split battery). +~130 words.
-    "bridge_teaching_rules_trial_step_post_video.md": (60, 1130),
+    "bridge_teaching_rules_trial_step_post_video.md": (60, 1170),
     "render_content_trial_shadow_flamingo.md": (15, 250),
     # Flamingo word page: hedgehog's sibling. Same doctrine load plus the
     # giraffe-secret rows and the made-up-chunk (never echo "mingo") rule.

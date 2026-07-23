@@ -37,6 +37,18 @@ pre_video:
     turns: ["hi", "yes"]
     require_phrases: ["\\bheidi\\b"]
     forbid_phrases: ["\\btommy\\b"]
+  - id: pre-yana-name
+    note: "REGRESSION (device #372667): <studentName> 'yana' + Tommy profile — the hello came out with NO name at all; a real name is always greeted"
+    student_name: yana
+    profile: tommy
+    turns: ["Yeah. Hello, Max.", "yes!"]
+    require_phrases: ["\\byana\\b"]
+    forbid_phrases: ["\\btommy\\b"]
+  - id: pre-meaning-question
+    note: "REGRESSION (device #372667): child said hi, got the happy question, asked '什么意思？' — got 'Repeat after me. Hi Max!' as a FOURTH wait and no answer; reply 3 SHOWS the meaning tiny ('Happy is YAY!') and launches"
+    turns: ["Yeah. Hello, Max.", "什么意思？"]
+    require_phrases: ["happy is"]
+    forbid_phrases: ["repeat after me", "can you say"]
   - id: pre-lost-kid
     note: "child is lost at the hello ('什么？') — B2 FEEDS the line ('Repeat after me. Hi Max!'), the echo is celebrated, launch"
     turns: ["什么？", "hi Max!"]
@@ -119,9 +131,9 @@ post_video:
     turns: ["A dog! A cat! A monster!", "small"]
     forbid_phrases: ["dog[^.!?]*cat[^.!?]*monster"]
   - id: post-optout
-    note: "'I don't want to say' is respected — no push, no repeat, the page still flows to the close"
-    turns: ["我不想说。", "我不想说。"]
-    forbid_phrases: ["you can say", "try", "good (guess|job|idea)"]
+    note: "'I don't want to say' is sacred — the ask dies with it: okay-words + the close in ONE reply, page ends early (live round: the model did the human thing and the rule followed it)"
+    turns: ["我不想说。"]
+    forbid_phrases: ["you can say", "try", "good (guess|job|idea)", "is it big"]
   - id: post-offsize-answer
     note: "the big-or-small question answered with something else ('红色的！') — their word is caught, the page still closes"
     turns: ["A monster!", "红色的！"]
