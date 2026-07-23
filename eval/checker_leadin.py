@@ -606,6 +606,18 @@ def check_post_trial(tr, replies, users, v, out):
     for n, r in enumerate(replies[1:], 2):
         if re.search(r"ding\s+dong|who is it|someone is at the door", strip_tags(r), re.I):
             v("dead-line-repeat", f"reply {n}: brings back the who-line ('Ding dong' / 'Who is it') — it exists once, in reply 1 only: {strip_tags(r).strip()!r}")
+    # Fabricated guess guard (device #374194: "I don't know" was answered with
+    # "A dog? Ooh! Maybe!" — the teacher's own B1 menu word echoed back as if
+    # the child had guessed it). A menu word may return only if THEY said it.
+    child_text = " ".join(m["text"].lower() for m in tr["messages"] if m["role"] == "user")
+    for word, aliases in (("cat", ("cat", "猫")), ("dog", ("dog", "狗"))):
+        if any(a in child_text for a in aliases):
+            continue
+        for n, r in enumerate(replies[1:], 2):
+            # the recast shape ("A dog?") attributes the word to the child;
+            # a silly maybe ("Maybe a dog!") is a different, allowed shape
+            if re.search(rf"\b{word}\s*\?", strip_tags(r), re.I):
+                v("fabricated-guess", f"reply {n} echoes {word!r} as a guess the child never made: {strip_tags(r).strip()!r}")
     for n, r in enumerate(replies, 1):
         if re.search(rf"(yes|yeah|right|correct)[^a-z]{{0,4}}[^.!?]*\b{SPOILER_TRIAL}\b|it('s| is) (a |the )?{SPOILER_TRIAL}", strip_tags(r), re.I):
             v("spoiler-confirm", f"reply {n}: confirms the secret visitor: {strip_tags(r).strip()!r}")

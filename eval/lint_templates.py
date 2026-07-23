@@ -74,11 +74,13 @@ BUDGETS = {
     # -> 1190 (device #368551-56): the agreement row ("Sure." re-triggered
     # the whole B1 line), kid-words ban (mystery/neither), ask-back door
     # question. Then -> 1205: no-comfort-on-silence (live flake: "It's okay!"
-    # to a child who said nothing). Then -> 1340: opt-out closes the page
-    # early — the ask dies, okay-words + close in one reply (aligning the
-    # page with the opt-out-is-sacred doctrine of the word pages) — plus the
-    # beat-stuffing bad example (B1+B2 in one reply, live flake). Not creep.
-    "leadin_teaching_rules_trial_step_post_video.md": (74, 1420),
+    # to a child who said nothing). Then -> 1520 (second-round retest, one
+    # recalibration for four pinned bugs): opt-out closes the page early
+    # (opt-out is sacred), beat-stuffing (B1+B2 in one reply), the hardened
+    # never-grows counter law (dead-ask loop returned on device), and the
+    # fabricated-guess ban (device #374194: "I don't know" was answered
+    # "A dog? Ooh! Maybe!" — a menu word put in the child's mouth). Not creep.
+    "leadin_teaching_rules_trial_step_post_video.md": (76, 1570),
     "render_content_trial_leadin.md": (30, 400),
     # The hedgehog reveal page: inherits the soccer word page's HUMAN RULE +
     # invite budget doctrine, plus the syllable-ladder section. Raised

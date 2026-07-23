@@ -89,6 +89,10 @@ post_video:
     note: "'I don't know' gets honest company in kid words ('Me too! I don't know!'), never fake praise, never 'mystery'/'neither'"
     turns: ["I don't know.", "I don't know."]
     forbid_phrases: ["good (guess|job|idea)", "mystery", "neither"]
+  - id: post-fabricated-guess
+    note: "REGRESSION (device #374194): '嗯。 看，嗯， I don't know.' got 'A dog? Ooh! Maybe!' — a guess invented from the teacher's own B1 menu — then the SAME reply verbatim at '这个。'. No child word = nothing to echo; IDK is owned ('Me too!')"
+    turns: ["嗯。 看，嗯， I don't know.", "这个。"]
+    require_phrases: ["me too|i do(n.t| not) know"]
   - id: post-sure
     note: "REGRESSION (device #368551): 'Sure.' matched no row and got the whole B1 line again — agreement is an answer: tiny catch + the ask, the who-line stays dead"
     turns: ["Sure.", "谁在门后面？"]
