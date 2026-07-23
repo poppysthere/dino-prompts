@@ -48,11 +48,15 @@ INVITE_PHRASE = (r"(say\s+it|one\s+more\s+time|shout\s+with\s+me|your\s+turn"
                  r"|say\s+with\s+me|try\s+again|you\s+say\s*[.!]|clap\s+it"
                  r"|repeat\s+after\s+me)")
 OPT_OUT = re.compile(r"不想说|不说了|不要说|不念|no\s+more|stop\s+it|i\s+don'?t\s+want", re.I)
-# family "word_trial": per-word ladder/handoff/screen-data config.
+# family "word_trial": per-word model/handoff/screen-data config.
+# "parts" is the slow break; "ladder" is the full model shape, which must END
+# on the whole word (user doctrine: word, parts, word — a small child copies
+# the LAST sound they hear, so the ending is the echo target).
 TRIAL_WORDS = {
     "hedgehog": {
-        "ladder": r"\bhedge\b[\s.!,]+\bhog\b",
-        "ladder_name": "Hedge. Hog.",
+        "parts": r"\bhedge\b[\s.!,]+\bhog\b",
+        "ladder": r"\bhedge\b[\s.!,]+\bhog\b[\s.!,]+\bhedgehog\b",
+        "ladder_name": "Hedge. Hog. Hedgehog!",
         "chunks": r"\b(hed|ge|hetch|hodge)\b",
         "handoff": r"back\s+to\s+the\s+party",
         "handoff_name": "Let's go back to the party!",
@@ -62,8 +66,9 @@ TRIAL_WORDS = {
     # TTS garbling the made-up chunk "Fla" (the "a" sound drifted). The close
     # hands to the next page: a practice game for hedgehog AND flamingo.
     "flamingo": {
-        "ladder": r"\bflam\b[\s.!,]+\bin\b[\s.!,]+\bgo\b",
-        "ladder_name": "Flam. In. Go.",
+        "parts": r"\bflam\b[\s.!,]+\bin\b[\s.!,]+\bgo\b",
+        "ladder": r"\bflam\b[\s.!,]+\bin\b[\s.!,]+\bgo\b[\s.!,]+\bflamingo\b",
+        "ladder_name": "Flam. In. Go. Flamingo!",
         "chunks": r"\b(fla|mingo|ingo|lamin)\b",
         "handoff": r"game\s+time",
         "handoff_name": "Now! Game time! Hedgehog and flamingo!",
@@ -301,14 +306,13 @@ def check(tr):
 
     if tr.get("family") == "word_trial":
         conf = TRIAL_WORDS[word]
-        # The syllable ladder is the page's trick: the word broken into
-        # voice-safe pieces (real-word halves for hedgehog, sing-song beats
-        # for flamingo) must appear somewhere — it is the clap game on the
-        # pass path and the retry scaffold otherwise.
-        # Exception: an opt-out ends all asks, so the ladder may never come.
-        if not opted_out and not re.search(conf["ladder"], all_teacher, re.I):
-            v("syllable-ladder", f"the ladder split {conf['ladder_name']!r} never "
-                                 f"appears (the ladder is the page's scaffold)")
+        # The MODEL is the page's trick: the word broken slowly into voice-safe
+        # real words and ALWAYS closed by the whole word. It lives in the meet
+        # call (reply 1), so it must appear on every page, opt-out included.
+        if not re.search(conf["ladder"], all_teacher, re.I):
+            v("model-shape", f"the model {conf['ladder_name']!r} never appears "
+                             f"(the slow model is the page's scaffold, and it "
+                             f"must end on the whole word)")
         # The lesson continues: the close must hand the class back to the
         # story (the party for hedgehog, the new shadow's door for flamingo).
         if replies and not re.search(conf["handoff"], strip_tags(replies[-1]), re.I):
@@ -333,6 +337,17 @@ def check(tr):
             for m in re.finditer(conf["chunks"], body, re.I):
                 v("broken-chunk", f"reply {n}: chunk {m.group(0)!r} "
                                   f"is not a sound the voice engine can say")
+            # Every slow break must close on the whole word — the child
+            # copies the LAST sound they hear (user doctrine).
+            for m in re.finditer(conf["parts"], body, re.I):
+                if not re.match(r"[\s.!,]*" + re.escape(word), body[m.end():], re.I):
+                    v("model-tail", f"reply {n}: the model stops on a piece — "
+                                    f"it must end {word!r}: {body.strip()!r}")
+            # The clap-along is retired (user doctrine): clapping and
+            # speaking at once is too hard at 4. The model replaces it.
+            if re.search(r"\bclap\b", body, re.I):
+                v("clap-banned", f"reply {n}: the clap game is retired — "
+                                 f"model the word slowly instead: {body.strip()!r}")
             # Device #368306: the teacher re-opened a door the video already
             # opened / re-revealed an already-cheered animal. The word page
             # starts FACING the animal.
@@ -342,7 +357,7 @@ def check(tr):
             # Turn-taking voice cannot say anything WITH the child.
             if re.search(r"say\s+(it\s+)?with\s+me", body, re.I):
                 v("with-me-call", f"reply {n}: 'say it with me' is impossible "
-                                  f"turn-taking speech; the call is 'You say.'")
+                                  f"turn-taking speech; the call is 'Repeat after me.'")
             # Kid-friendly close + screen data stays on the screen.
             if re.search(r"we\s+did\s+it", body, re.I):
                 v("kid-words", f"reply {n}: 'we did it' is not owned at 4; "

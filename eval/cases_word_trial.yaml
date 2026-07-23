@@ -1,21 +1,41 @@
 # Case battery — 新手引导体验课 trial demo, word pages: HEDGEHOG + FLAMINGO.
 # Ages 4-6, pre-A1. The reveal VIDEO played before each page: the teacher faces
-# the animal, never re-opens the door (device #368306). Structure: MEET ->
-# second ask (piece/ladder retry OR clap game) -> wonder -> close.
-# Flamingo extras: the ladder is three REAL words (Flam. In. Go. — TTS garbles
+# the animal, never re-opens the door (device #368306). Structure: MEET (call
+# carries the model: word, parts, word — ends on the whole word) -> celebrate +
+# wonder OR retry -> wonder -> close. The clap-along is retired (user doctrine:
+# clapping and speaking at once is too hard at 4).
+# Flamingo extras: the beats are three REAL words (Flam. In. Go. — TTS garbles
 # made-up chunks like "Fla", device #369924), the giraffe (the third shadow) is
 # a live secret, and the close hands to the hedgehog+flamingo practice game.
 # Run: python3 eval/run_word_trial.py
 
 word_trial_hedgehog:
   - id: hh-pass
-    note: happy path — whole word, clap-along rolls into the wonder, close (3 replies)
+    note: happy path — whole word, celebrate + wonder, close (3 replies)
     turns:
       - "Hedgehog!"
       - "yes!"
     require_phrases:
-      - "hedge\\W+hog"                 # the clap-along / syllable ladder
+      - "hedge\\W+hog\\W+hedgehog"     # the model, ending on the whole word
       - "(good job|well done|yes|wow)" # real, kid-sized celebration
+
+  - id: hh-word-again
+    note: "REGRESSION (device #375239): the wonder went out, the child said
+      'Hedgehog.' again — that is their ANSWER; the reply is the CLOSE, never
+      celebration plus the wonder re-asked"
+    turns:
+      - "Hedgehog."
+      - "Hedgehog."
+
+  - id: hh-confused-close
+    note: "device tail of #375239: the wonder's answer is a confused question
+      ('什么意思？听不懂。') — the close answers it tiny and real (a little
+      spiky friend), never with a new question"
+    turns:
+      - "Hedgehog."
+      - "嗯，什么意思？听不懂。"
+    require_phrases:
+      - "(spiky|friend|little)"
 
   - id: hh-guessed-before
     note: the child guessed the hedgehog in the lead-in — the reveal is THEIR win
@@ -111,13 +131,20 @@ word_trial_hedgehog:
 
 word_trial_flamingo:
   - id: fl-pass
-    note: happy path — whole word, clap-along rolls into the wonder, close (3 replies)
+    note: happy path — whole word, celebrate + wonder, close (3 replies)
     turns:
       - "Flamingo!"
       - "yes!"
     require_phrases:
-      - "flam\\W+in\\W+go"             # the clap-along / real-word beats
+      - "flam\\W+in\\W+go\\W+flamingo" # the model, ending on the whole word
       - "(good job|well done|yes|wow)" # real, kid-sized celebration
+
+  - id: fl-word-again
+    note: "sister regression of device #375239: the word said again after the
+      wonder is its ANSWER — the reply is the CLOSE, no re-ask"
+    turns:
+      - "Flamingo."
+      - "Flamingo."
 
   - id: fl-claims-win
     note: the child guessed flamingo in the bridge game and now claims it — hand them the win, then the ladder

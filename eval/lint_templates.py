@@ -94,7 +94,33 @@ BUDGETS = {
     # +40: hallucinated-try bad example (silent child celebrated, live flake).
     # +45: opt-out close re-ran "We just look" (live flake, same class as the
     # flamingo page's) — pinned with a bad example.
-    "word_teaching_rules_trial_hedgehog.md": (107, 2235),
+    # -> 2560: device #375239 (the wonder re-asked at a child who echoed the
+    # word again) showed this page missing the sister flamingo page's armor —
+    # ported the mechanical one-question check, the dead-words scan and the
+    # words-die paragraph. Same round: clap-along retired, the model becomes
+    # word -> parts -> word ending on the whole word (user doctrine).
+    # -> 2860: the loop reproduced in the battery — the WAIT COUNT spine
+    # (flamingo's anchor for the same bug) ported in, plus the catch-list
+    # rows declared dead once the wonder is out (a confused question at the
+    # close resurrected the retry in a live round), plus two live-flake pins
+    # (reply 1's shape re-run at a "刺猬!" reply 2; opt-out words re-run at
+    # the close). Parity with the sister page's armor — not creep.
+    # -> 3020: three more live-flake pins (handoff dropped from the close;
+    # silent page closed a beat early; the guessed-before scan skipped),
+    # the ?-scan (any "?" above = the wonder is out = close, simpler than
+    # remembering the wonder's words), and the page boundary on the
+    # guessed-before variant (a 刺猬 ON this page kept re-running reply 1).
+    # -> 3090: the 刺猬 row promoted into REPLY 2 with a full quoted reply
+    # (the model copies quoted examples, and reply 1's variant kept winning),
+    # then the LAST-REPLY TEST (my last reply ended "?" = this one closes —
+    # a one-message check replacing the page-wide scan) + pre-check 1b for
+    # the guessed-before opener.
+    # -> 3130: the copyable reply-3 quote (the loop's attractor string)
+    # replaced with prose + the last-reply condition; the common layer's
+    # silence ladder explicitly voided (parity with the sister page).
+    # -> 3185: a "?" never shares a reply with [TEMPLATE_FINISH] (live flake:
+    # the wonder closed the page mid-question).
+    "word_teaching_rules_trial_hedgehog.md": (114, 3185),
     "render_content_trial_word_hedgehog.md": (15, 250),
     # Shadow bridge: the repurposed wrap-up (second shadow -> flamingo reveal).
     # Grew 1000 -> 1450 when the user made pre-video a real guess game
@@ -123,8 +149,16 @@ BUDGETS = {
     # celebration-plus-question loop took FIVE pins to kill — the verbatim
     # reply-3 example turned out to be the attractor and was removed), and
     # whole-page junk-name discipline. Battery is green 2x in a row at this
-    # size; treat it as the ceiling — compact before adding.
-    "word_teaching_rules_trial_flamingo.md": (118, 3290),
+    # size; treat it as the ceiling — compact before adding. The clap-along
+    # retirement + word->parts->word model (user doctrine) landed within it;
+    # +20 for the opt-out fresh-okay-words pin (live flake), +50 for the
+    # claims-path wonder re-ask pin (live flake: the "?" written by the claim
+    # row was not honored as the wonder), then the ?-scan replacing the
+    # dead-words scan (any "?" above = close — simpler and model-checkable),
+    # +45: the common layer's silence ladder explicitly voided (it lured a
+    # third model out of a silent page, live flake). +40: a "?" never shares
+    # a reply with [TEMPLATE_FINISH] (sister-page flake).
+    "word_teaching_rules_trial_flamingo.md": (118, 3480),
     "render_content_trial_word_flamingo.md": (15, 250),
     # Trial wrap-up: pre-video only (the final video ends the class). Recap
     # cheer + one last guess round + the goodbye launch, 2 replies.
