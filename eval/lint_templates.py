@@ -119,8 +119,12 @@ BUDGETS = {
     # replaced with prose + the last-reply condition; the common layer's
     # silence ladder explicitly voided (parity with the sister page).
     # -> 3185: a "?" never shares a reply with [TEMPLATE_FINISH] (live flake:
-    # the wonder closed the page mid-question).
-    "word_teaching_rules_trial_hedgehog.md": (114, 3185),
+    # the wonder closed the page mid-question). -> 3320: device #375560 —
+    # meaning questions answered for real ("A hedgehog is HIM!") and the
+    # CONFUSED CLOSE (meaning + comfort, no praise at a lost child).
+    # +40: "hedge hog" back to back is the whole word, never "SO close"
+    # (live flake: a second retry ran at reply 3).
+    "word_teaching_rules_trial_hedgehog.md": (115, 3360),
     "render_content_trial_word_hedgehog.md": (15, 250),
     # Shadow bridge: the repurposed wrap-up (second shadow -> flamingo reveal).
     # Grew 1000 -> 1450 when the user made pre-video a real guess game
@@ -157,8 +161,9 @@ BUDGETS = {
     # dead-words scan (any "?" above = close — simpler and model-checkable),
     # +45: the common layer's silence ladder explicitly voided (it lured a
     # third model out of a silent page, live flake). +40: a "?" never shares
-    # a reply with [TEMPLATE_FINISH] (sister-page flake).
-    "word_teaching_rules_trial_flamingo.md": (118, 3480),
+    # a reply with [TEMPLATE_FINISH] (sister-page flake). -> 3630: meaning
+    # questions answered for real + the CONFUSED CLOSE (device #375560).
+    "word_teaching_rules_trial_flamingo.md": (118, 3630),
     "render_content_trial_word_flamingo.md": (15, 250),
     # Trial wrap-up: pre-video only (the final video ends the class). Recap
     # cheer + one last guess round + the goodbye launch, 2 replies.

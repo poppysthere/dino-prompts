@@ -318,6 +318,24 @@ def check(tr):
         if replies and not re.search(conf["handoff"], strip_tags(replies[-1]), re.I):
             v("story-handoff", f"the close never hands back to the story "
                                f"({conf['handoff_name']!r})")
+        # A confused child is answered, never medaled (device #375560:
+        # "听不懂" got "Good job! Well done!" — a formula rolled over a lost
+        # child). If the last child turn before the close is confusion, the
+        # close must carry the MEANING (kid-sized descriptor) and no praise.
+        CONFUSED = re.compile(r"听不懂|什么意思|不明白|don'?t\s+(get|understand)", re.I)
+        MEANING_CUE = {"hedgehog": r"spiky|friend|little",
+                       "flamingo": r"pink|bird|tall"}[word]
+        last_ai = max(i2 for i2, m2 in enumerate(msgs) if m2["role"] == "assistant")
+        prev_users = [m2["text"] for m2 in msgs[:last_ai] if m2["role"] == "user"]
+        if (prev_users and CONFUSED.search(prev_users[-1])
+                and "[TEMPLATE_FINISH]" in msgs[last_ai]["text"]):
+            close_body = strip_tags(msgs[last_ai]["text"])
+            if PRAISE.search(close_body):
+                v("praise-at-confusion", f"the close praises a child who just "
+                                         f"said they don't understand: {close_body.strip()!r}")
+            if not re.search(MEANING_CUE, close_body, re.I):
+                v("meaning-missing", f"a confused child got no meaning answer "
+                                     f"(no {MEANING_CUE!r}): {close_body.strip()!r}")
         # The flamingo page carries the NEXT page's secret: the giraffe
         # shadow. Teacher-first mention is a spoiler; a recast after the
         # child said it (any language) is teaching.

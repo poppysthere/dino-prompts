@@ -28,14 +28,17 @@ word_trial_hedgehog:
       - "Hedgehog."
 
   - id: hh-confused-close
-    note: "device tail of #375239: the wonder's answer is a confused question
-      ('什么意思？听不懂。') — the close answers it tiny and real (a little
-      spiky friend), never with a new question"
+    note: "REGRESSION (device #375560): the wonder's answer is confusion
+      ('什么意思？听不懂。') — the close gives the MEANING (a little spiky
+      friend), with comfort and NO praise: 'Good job! Well done!' at a lost
+      child says they were not heard"
     turns:
       - "Hedgehog."
-      - "嗯，什么意思？听不懂。"
+      - "嗯，你不知道什么意思。"
     require_phrases:
       - "(spiky|friend|little)"
+    # praise-in-close is banned by the checker's praise-at-confusion rule;
+    # a case-level forbid would wrongly hit reply 2's honest celebration
 
   - id: hh-guessed-before
     note: the child guessed the hedgehog in the lead-in — the reveal is THEIR win
