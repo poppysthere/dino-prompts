@@ -54,29 +54,17 @@ pre_video:
     forbid_phrases: ["test_user", "flamingo"]
 
 post_video:
-  # The video revealed the flamingo AND ended on a THIRD shadow (the giraffe —
-  # secret for this whole page). Post-video: cheer + who-ask (wait) -> catch +
-  # forward close ("We don't know yet! But we know the FLAMINGO!...").
-  - id: bridge-post-happy
-    note: "child guesses a cat at the new shadow — recast + wonder, then the forward close; no fake 'You said it' (real test bug)"
-    turns:
-      - "猫咪！"
-    require_phrases: ["flamingo", "cat\\b.{0,30}maybe", "look at her first"]
-    forbid_phrases: ["repeat after me", "giraffe", "you (said it|were right|knew|guessed)", "ta-?da"]
-  - id: bridge-post-secret-guess
-    note: "child guesses the NEXT page's secret ('长颈鹿！') — recast in English + Maybe, never confirmed"
-    turns:
-      - "长颈鹿！"
-    require_phrases: ["giraffe\\b.{0,30}maybe"]
-    forbid_phrases: ["(yes|yeah|right)[^.!?]*giraffe", "it('s| is) (a |the )?giraffe"]
-  - id: bridge-post-idk
-    note: "'I don't know' at the new shadow — owned together, the close IS the answer"
-    turns:
-      - "不知道。"
-    require_phrases: ["me too|i do(n't| not) know", "look at her first"]
-    forbid_phrases: ["giraffe"]
+  # REDESIGN (user doctrine): ONE reply, no interaction — cheer the flamingo,
+  # spot the third shadow, PARK it ("But wait! The flamingo first!"), hand off.
+  # A guess game here pulled the child away from the flamingo lesson (real
+  # device log); the new shadow's game lives on later pages.
+  - id: bridge-post-clean
+    note: "the fixed cheer: door opened + flamingo + new shadow spotted + parked; zero questions, zero waits"
+    turns: []
+    require_phrases: ["the door opened", "shadow", "flamingo first|look at her"]
+    forbid_phrases: ["giraffe", "who is it", "big.{0,8}small", "tall.{0,8}short", "repeat after me"]
   - id: bridge-post-guessed-flamingo-before
-    note: "child guessed flamingo in the game and CLAIMS the win — reply 2 hands it to them (reply 1 stays the fixed guess-blind cheer)"
+    note: "child guessed flamingo in the pre-video game — the reply stays guess-blind and still takes no turn; the word page's claim row hands them the win"
     seed:
       - role: assistant
         text: "The hedgehog is IN, nina! But look![TEACHER_POINT_TO_SCREEN] ANOTHER shadow! Who is it THIS time? Guess![STUDENT_TALK]"
@@ -88,19 +76,12 @@ post_video:
         text: "Tall!"
       - role: assistant
         text: "Tall? Ooh! Maybe! Let's watch! Come on![NEXT_STEP]"
-    turns:
-      - "我说对了！"
-    require_phrases: ["(you said it|you were right|you knew|you guessed|good ears)"]
-    forbid_phrases: ["giraffe", "ta-?da"]
-  - id: bridge-post-silent
-    note: "silent child — the who-ask still waits, then no catch, straight to the close"
     turns: []
-    require_phrases: ["flamingo", "look at her first"]
-    forbid_phrases: ["giraffe", "you (said it|were right|knew|guessed)"]
+    require_phrases: ["the door opened", "flamingo first|look at her"]
+    forbid_phrases: ["giraffe", "ta-?da", "you (said it|were right|knew|guessed)"]
   - id: bridge-post-junk-name
     note: "junk booking name is never spoken at the reveal either"
     student_name: test_user
-    turns:
-      - "A dog!"
+    turns: []
     require_phrases: ["flamingo"]
-    forbid_phrases: ["test_user", "giraffe", "you (said it|were right|knew|guessed)"]
+    forbid_phrases: ["test_user", "giraffe"]

@@ -442,84 +442,44 @@ def check_pre_bridge(tr, replies, users, v, out):
 
 BRIDGE_SECRET2 = "giraffe"
 BRIDGE_SECRET2_L1 = "长颈鹿"
-ASK_BRIDGE_POST = "a new shadow! who is it?"
-# The load-bearing tail of the forward close. "We don't know yet! But" in
-# front of it is script too (optional on silence — nothing to not-know), so
-# the catch judge strips it rather than counting it as a catch.
-CLOSE_BRIDGE_POST = "we know the flamingo! let's look at her first! come on!"
-CLOSE_BRIDGE_PREFIX = r"(we don't know( yet)?!?\s*)?(but\s*)?$"
 
 
 def check_post_bridge(tr, replies, users, v, out):
-    """Trial shadow bridge post-video: 2 replies — flamingo cheer + third-shadow
-    guess round, then the forward close to the flamingo word page. The giraffe
-    (third shadow) stays secret the whole page: recast-only, never confirmed."""
-    if len(replies) != 2:
-        v("two-replies", f"bridge post-video is cheer+ask -> catch+close (2 replies), got {len(replies)}")
-    child_said_secret2 = any(
-        m["role"] == "user" and (BRIDGE_SECRET2_L1 in m["text"]
-                                 or re.search(rf"\b{BRIDGE_SECRET2}\b", m["text"], re.I))
-        for m in tr["messages"])
+    """Trial shadow bridge post-video: ONE reply, no interaction (user doctrine)
+    — cheer the flamingo reveal, spot the third shadow, PARK it ('But wait! The
+    flamingo first!') and hand off. A guess game here would pull the child away
+    from the flamingo lesson; the new shadow's game lives on later pages."""
+    if len(replies) != 1:
+        v("one-reply", f"bridge post-video is ONE cheer reply + [TEMPLATE_FINISH], got {len(replies)}")
     for n, r in enumerate(replies, 1):
         body = strip_tags(r)
-        if re.search(rf"\b{BRIDGE_SECRET2}\b", body, re.I) and not child_said_secret2:
-            v("spoiler", f"reply {n} says the NEXT page's secret (giraffe) first: {body.strip()!r}")
-        if child_said_secret2 and re.search(
-                rf"(yes|yeah|right|correct)[^.!?]*\b{BRIDGE_SECRET2}\b|it('s| is) (a |the )?{BRIDGE_SECRET2}",
-                body, re.I):
-            v("spoiler", f"reply {n} CONFIRMS the secret guess: {body.strip()!r}")
+        if re.search(rf"\b{BRIDGE_SECRET2}\b", body, re.I):
+            v("spoiler", f"reply {n} says the later pages' secret (giraffe): {body.strip()!r}")
         if re.search(GOODBYE, body, re.I):
             v("not-a-wrapup", f"reply {n} has goodbye words on a bridge page: {body.strip()!r}")
         if re.search(r"repeat\s+after\s+me|one\s+more\s+time", body, re.I):
             v("no-teaching", f"reply {n}: say-calls belong to the word page, not the bridge")
-        if n > 1 and re.search(r"who\s+is\s+it", body, re.I):
-            v("dead-line-repeat", f"reply {n} re-runs the dead who-ask: {body.strip()!r}")
+        if "?" in body:
+            v("no-questions", f"reply {n} asks on a no-interaction page: {body.strip()!r}")
+        if re.search(r"you (said it|were right|knew|guessed)|ta-?da", norm(r)):
+            v("guess-blind", f"reply {n} judges who guessed ('You said it' / 'Ta-da') — "
+                             f"the word page hands out the win, not the bridge")
+        if "[STUDENT_TALK]" in r or "[NEXT_STEP]" in r:
+            v("no-wait", f"reply {n} waits or starts a video — this page only hands off")
     if replies:
         n1 = norm(replies[0])
-        if not re.search(rf"\b{BRIDGE_SECRET}\b", n1):
-            v("reveal", f"reply 1 never cheers the flamingo: {strip_tags(replies[0]).strip()!r}")
+        if "[TEMPLATE_FINISH]" not in replies[0]:
+            v("must-finish", "the reply does not hand off with [TEMPLATE_FINISH]")
         if "the door opened" not in n1:
-            v("script-reveal", f"reply 1 is missing the fixed cheer opener ('The door opened!'): {strip_tags(replies[0]).strip()!r}")
-        # Reply 1 is guess-blind by design: a live bug hit both ways ("Ta-da!"
-        # stole a guesser's win, "You said it" lied to a cat-guesser). The
-        # win-talk lives in reply 2, only when the CHILD claims it.
-        if re.search(r"you (said it|were right|knew|guessed)|ta-?da", n1):
-            v("reply1-off-script", "reply 1 judges who guessed ('You said it' / 'Ta-da') "
-                                   "— it must be the same fixed cheer for every child")
-        if not n1.endswith(ASK_BRIDGE_POST):
-            v("script-ask", f"reply 1 does not end with the new-shadow who-ask: {strip_tags(replies[0]).strip()!r}")
-        if "[STUDENT_TALK]" not in replies[0]:
-            v("tag-ask", "reply 1 must give the child the guess turn with [STUDENT_TALK]")
-    if len(replies) >= 2:
-        r2 = replies[1]
-        # "We do not know" == "We don't know" — same words to a child's ear
-        n2 = norm(replies[1]).replace("do not", "don't")
-        if "[TEMPLATE_FINISH]" not in r2:
-            v("must-finish", "reply 2 does not hand off with [TEMPLATE_FINISH]")
-        if "[STUDENT_TALK]" in r2 or "[NEXT_STEP]" in r2:
-            v("no-wait", "reply 2 must close, not wait or start a video")
-        at = n2.find(CLOSE_BRIDGE_POST)
-        if at < 0:
-            v("script-close", f"reply 2 is missing the forward close: {strip_tags(r2).strip()!r}")
-        else:
-            catch = re.sub(CLOSE_BRIDGE_PREFIX, "", n2[:at].strip()).strip()
-            if len(catch.split()) > 10:
-                v("catch-budget", f"reply 2 catch over budget ({len(catch.split())} words): {catch!r}")
-            if n2[at + len(CLOSE_BRIDGE_POST):].strip():
-                v("script-close", "reply 2 has text after the forward close")
-            # the child's guess is the user message right after reply 1
-            # (seed users shift plain indexing, so find it positionally)
-            msgs = tr["messages"]
-            ai = next((i for i, m in enumerate(msgs) if m["role"] == "assistant"), None)
-            ans = (msgs[ai + 1]["text"].lower()
-                   if ai is not None and ai + 1 < len(msgs) and msgs[ai + 1]["role"] == "user"
-                   else "")
-            if is_client_silence(ans):
-                bad = silence_catch_issue(catch)
-                if bad:
-                    v("catch-on-silence", f"reply 2, on a silent child, {bad}")
-            elif ans and not is_silent(ans) and not catch:
-                v("missing-catch", "reply 2 ignores the child's guess — no catch before the close")
+            v("script-reveal", f"missing the fixed opener ('The door opened!'): {strip_tags(replies[0]).strip()!r}")
+        if not re.search(rf"\b{BRIDGE_SECRET}\b", n1):
+            v("reveal", f"the flamingo is never cheered: {strip_tags(replies[0]).strip()!r}")
+        if "shadow" not in n1:
+            v("script-spot", f"the new shadow is never spotted: {strip_tags(replies[0]).strip()!r}")
+        if not re.search(r"(the )?flamingo first|look at her", n1):
+            v("script-park", f"the shadow is never parked ('But wait! The flamingo first!'): {strip_tags(replies[0]).strip()!r}")
+        if not n1.endswith("come on!"):
+            v("script-walk", f"the reply does not end on the walk-over ('Come on!'): {strip_tags(replies[0]).strip()!r}")
             qs = [s for s in re.split(r"(?<=[?])\s+", catch) if s.endswith("?")]
             if len(qs) > 1 or any(len(q.rstrip("?").split()) > 3 for q in qs):
                 v("no-question-finish", f"reply 2 catch asks a real question: {catch!r}")
