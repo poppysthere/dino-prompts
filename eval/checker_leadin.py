@@ -83,9 +83,12 @@ def strip_tags(t):
     return re.sub(r"\[[A-Z_]+\]", "", t)
 
 
+def unquirk(t):
+    return t.replace("\u2019", "'").replace("\u2018", "'")  # curly apostrophes break phrase matching
+
+
 def norm(t):
-    t = t.replace("\u2019", "'").replace("\u2018", "'")  # curly apostrophes break script matching
-    return re.sub(r"\s+", " ", strip_tags(t)).strip().lower()
+    return re.sub(r"\s+", " ", strip_tags(unquirk(t))).strip().lower()
 
 
 def control_tags(t):
@@ -169,11 +172,11 @@ def check(path):
         for m in re.finditer(r"\b(hee[\s-]?hee|tee[\s-]?hee|hehe)\b", strip_tags(r), re.I):
             v("tts-giggle", f"reply {n}: giggle spelling {m.group(0)!r} (voice engine breaks; use 'Ha ha!')")
         for pat in tr.get("forbid_phrases", []):
-            if re.search(pat, strip_tags(r), re.I):
+            if re.search(pat, unquirk(strip_tags(r)), re.I):
                 v("forbid-phrase", f"reply {n}: contains forbidden phrase {pat!r}")
 
     for pat in tr.get("require_phrases", []):
-        if not any(re.search(pat, strip_tags(r), re.I) for r in replies):
+        if not any(re.search(pat, unquirk(strip_tags(r)), re.I) for r in replies):
             v("require-phrase", f"no reply contains required phrase {pat!r}")
 
     family = tr.get("family", "leadin_l2")
@@ -288,9 +291,12 @@ def check_pre_trial(tr, replies, users, v, out):
         if name and not re.search(rf"\b{re.escape(name)}\b", b1, re.I):
             v("greet-name", f"reply 1 drops the real name {name!r}: {b1.strip()!r}")
     # The greeting/self-intro lives in reply 1 ONLY (device bug #368067-75:
-    # "Hi hi Tommy! I'm Max!" re-said verbatim after the child said hi).
+    # "Hi hi Tommy! I'm Max!" re-said verbatim after the child said hi; #379014:
+    # the same line THREE times while the child said hello twice). Case-blind:
+    # "Hi hi" is as dead as "hi hi". "You said hi" (the celebrate row) is fine.
     for n, r in enumerate(replies[1:], 2):
-        if re.search(r"\bI'?m\s+[A-Z][a-z]+\b|\bhi\s+hi\b|\bhello\s+hello\b", strip_tags(r)):
+        if (re.search(r"\bI'?m\s+[A-Z][a-z]+\b", strip_tags(r))
+                or re.search(r"\b(hi|hello)\s+(hi|hello)\b", strip_tags(r), re.I)):
             v("dead-greeting", f"reply {n}: re-greets or re-introduces — the greeting exists once, in reply 1 only: {strip_tags(r).strip()!r}")
     if len(replies) >= 2:
         r2, b2 = replies[1], strip_tags(replies[1])
