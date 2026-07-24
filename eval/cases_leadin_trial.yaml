@@ -122,6 +122,10 @@ post_video:
         text: "Me too! I don't know! Ha ha! Hmm! Is it big, or small?[STUDENT_TALK]"
     turns: ["Small. I said small."]
     require_phrases: ["you (did|said)|good ears"]
+  - id: post-howsay-soso
+    note: "REGRESSION (device): 'How to say. Uh, boy.' bought the whole B1 line again — the fragment IS the guess, recast it ('A boy? Ooh! Maybe!') + the ask. Then 'It's not big, not small, just so-so.' was read back as questions — one playful take ('So-so? A MEDIUM one!') + the close"
+    turns: ["How to say. Uh, boy.", "It's not big, not small, just so-so."]
+    require_phrases: ["boy"]
   - id: post-help-plea
     note: "REGRESSION (device #380427): 'I need help.' was parroted back as a question and the dead B1 line rolled over it, freezing the count. A help plea gets help ('I help you! Listen!') + the ask — the two choices ARE the help — then 'Too.' buys the close"
     turns: ["I need help.", "Too."]

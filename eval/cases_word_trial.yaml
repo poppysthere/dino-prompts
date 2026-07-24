@@ -27,6 +27,16 @@ word_trial_hedgehog:
       - "Hedgehog."
       - "Hedgehog."
 
+  - id: hh-slow-request
+    note: "REGRESSION (device): after the wonder, 'Hedgehog. Can you say it slowly?'
+      got the celebrate+wonder reply repeated word for word, then a second ask
+      got a canned 'Hi again! Ha ha!'. A slow request is a real question:
+      granted inside the close — 'Okay! Slow! Hedge. Hog. Hedgehog!' + handoff"
+    turns:
+      - "Hedgehog."
+      - "Hedgehog. Can you say it slowly?"
+    require_phrases: ["slow"]
+
   - id: hh-point-words
     note: "REGRESSION (device): '看这个。' at reply 2 re-bought reply 1's 'You said
       it ... Repeat after me ...' for a guess that never happened, and a third

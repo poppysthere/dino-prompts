@@ -312,6 +312,16 @@ def check(tr):
         if len(replies) > 4:
             v("reply-budget", f"{len(replies)} replies — the page speaks at most "
                               f"4 times; the count froze on a repeated input")
+        # The frozen robot (real device bug: the celebrate + wonder reply
+        # repeated word for word when the child asked "Can you say it
+        # slowly?"): no reply may repeat an earlier reply verbatim.
+        seen_replies = {}
+        for n2, r2 in enumerate(replies, 1):
+            key = re.sub(r"[^a-z' ]", "", strip_tags(r2).lower()).strip()
+            if key and key in seen_replies:
+                v("frozen-robot", f"reply {n2} repeats reply {seen_replies[key]} word for word")
+            else:
+                seen_replies.setdefault(key, n2)
         # The meet call lives in reply 1 ONLY (real device bug: "看这个" at
         # reply 2 re-bought "You said it ... Repeat after me ..." wholesale).
         for n2, r2 in enumerate(replies[1:], 2):

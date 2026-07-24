@@ -164,7 +164,7 @@ def check(path):
             v("english-only", f"reply {n}: contains non-English characters")
         # "Ta-da!" is in the common layer's own toolbox; hyphenated
         # interjections are single TTS-safe words, not pause-breaking dashes.
-        dashable = re.sub(r"\b(ta-da|ding-dong|high-five|bye-bye|peek-a-boo)\b", "x", strip_tags(r), flags=re.I)
+        dashable = re.sub(r"\b(ta-da|ding-dong|high-five|bye-bye|peek-a-boo|so-so)\b", "x", strip_tags(r), flags=re.I)
         if "..." in r or "…" in r or re.search(r"\w\s*[-–—]\s*\w", dashable):
             v("tts-safety", f"reply {n}: ellipsis or dash (voice engine breaks)")
         for m in re.finditer(r"[A-Za-z]*([A-Za-z])\1{2,}[A-Za-z]*", strip_tags(r)):
