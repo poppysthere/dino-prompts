@@ -117,6 +117,10 @@ post_video:
         text: "Me too! I don't know! Ha ha! Hmm! Is it big, or small?[STUDENT_TALK]"
     turns: ["Small. I said small."]
     require_phrases: ["you (did|said)|good ears"]
+  - id: post-shrug-guess
+    note: "REGRESSION (device): '我就。' then '呃。' — the shrug at reply 3 re-bought 'Hmm! Is it big, or small?'. A child who cannot answer gets the tutor's own playful guess ('You don't know? I think it's BIG!') + the close, never the question again"
+    turns: ["我就。", "呃。"]
+    require_phrases: ["i think|maybe"]
   - id: post-uh-no
     note: "REGRESSION (device class 8100450001): 'Uh.' got 'Uh? Someone is at the door! A shadow! Who is it?...' — the caught sound then the WHOLE B1 line re-run; later 'No.' got a bare close with no catch. Babble buys a tiny catch + the B2 ask; every answer gets its echo before the close"
     turns: ["Uh.", "No."]

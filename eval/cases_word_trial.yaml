@@ -27,6 +27,19 @@ word_trial_hedgehog:
       - "Hedgehog."
       - "Hedgehog."
 
+  - id: hh-point-words
+    note: "REGRESSION (device): '看这个。' at reply 2 re-bought reply 1's 'You said
+      it ... Repeat after me ...' for a guess that never happened, and a third
+      '这个' got 'Great try' — praise for a try that never came. Pointing is own
+      words: take it tiny + the retry, then nod + wonder, then close"
+    turns:
+      - "看这个。"
+      - "看这个。"
+      - "这个。"
+    forbid_phrases:
+      - "you said it"
+      - "great try"
+
   - id: hh-mishear-loop
     note: "REGRESSION (device): the child's echo tries were misheard as '嗨，纸' /
       '纸号' and the SAME retry ('Hi hi! Look at him! One more time...') went out

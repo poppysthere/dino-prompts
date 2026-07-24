@@ -312,6 +312,12 @@ def check(tr):
         if len(replies) > 4:
             v("reply-budget", f"{len(replies)} replies — the page speaks at most "
                               f"4 times; the count froze on a repeated input")
+        # The meet call lives in reply 1 ONLY (real device bug: "看这个" at
+        # reply 2 re-bought "You said it ... Repeat after me ..." wholesale).
+        for n2, r2 in enumerate(replies[1:], 2):
+            if re.search(r"repeat\s+after\s+me", strip_tags(r2), re.I):
+                v("meet-call-reuse", f"reply {n2}: 'Repeat after me' outside reply 1 "
+                                     f"— the meet call fired once, ever: {strip_tags(r2).strip()!r}")
         # The MODEL is the page's trick: the word broken slowly into voice-safe
         # real words and ALWAYS closed by the whole word. It lives in the meet
         # call (reply 1), so it must appear on every page, opt-out included.

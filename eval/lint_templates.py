@@ -66,7 +66,7 @@ BUDGETS = {
     # law (the feed ran as a FOURTH wait to a child who already said hi).
     # Then -> 1310: babble-is-a-turn row + only-reply-3-launches (live flake:
     # a babble at B2 got the launch, stealing the child's turn). Not creep.
-    "leadin_teaching_rules_trial_step_pre_video.md": (74, 1650),
+    "leadin_teaching_rules_trial_step_pre_video.md": (74, 1680),
     # Raised 1000 -> 1100 (device #367710-15: verbatim who-line repeat to a
     # confused child, doubled catches): menu-fed ask, confusion branch, and
     # the say-nothing-twice law. Then -> 1150: missing-catch bad examples
@@ -80,7 +80,7 @@ BUDGETS = {
     # never-grows counter law (dead-ask loop returned on device), and the
     # fabricated-guess ban (device #374194: "I don't know" was answered
     # "A dog? Ooh! Maybe!" — a menu word put in the child's mouth). Not creep.
-    "leadin_teaching_rules_trial_step_post_video.md": (92, 2400),
+    "leadin_teaching_rules_trial_step_post_video.md": (94, 2460),
     "render_content_trial_leadin.md": (30, 400),
     # The hedgehog reveal page: inherits the soccer word page's HUMAN RULE +
     # invite budget doctrine, plus the syllable-ladder section. Raised
@@ -124,7 +124,7 @@ BUDGETS = {
     # CONFUSED CLOSE (meaning + comfort, no praise at a lost child).
     # +40: "hedge hog" back to back is the whole word, never "SO close"
     # (live flake: a second retry ran at reply 3).
-    "word_teaching_rules_trial_hedgehog.md": (123, 3980),
+    "word_teaching_rules_trial_hedgehog.md": (125, 4100),
     "render_content_trial_word_hedgehog.md": (15, 250),
     # Shadow bridge: the repurposed wrap-up (second shadow -> flamingo reveal).
     # Grew 1000 -> 1450 when the user made pre-video a real guess game
@@ -135,7 +135,7 @@ BUDGETS = {
     # Shadow bridge, split into Forge's two paste slots (was one file with
     # <currentStep> branching). Pre: the 3-reply tall-or-short guess game.
     # Post: guess-blind flamingo cheer + third-shadow round + forward close.
-    "bridge_teaching_rules_trial_step_pre_video.md": (66, 1330),
+    "bridge_teaching_rules_trial_step_pre_video.md": (66, 1400),
     # Post needed a page-boundary section once the pre script left the file:
     # without it the model counted the pre-video game as its own replies and
     # skipped the flamingo cheer (caught by the split battery). +~130 words.
