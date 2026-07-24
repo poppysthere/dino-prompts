@@ -80,7 +80,7 @@ BUDGETS = {
     # never-grows counter law (dead-ask loop returned on device), and the
     # fabricated-guess ban (device #374194: "I don't know" was answered
     # "A dog? Ooh! Maybe!" — a menu word put in the child's mouth). Not creep.
-    "leadin_teaching_rules_trial_step_post_video.md": (78, 1800),
+    "leadin_teaching_rules_trial_step_post_video.md": (85, 2150),
     "render_content_trial_leadin.md": (30, 400),
     # The hedgehog reveal page: inherits the soccer word page's HUMAN RULE +
     # invite budget doctrine, plus the syllable-ladder section. Raised
@@ -124,7 +124,7 @@ BUDGETS = {
     # CONFUSED CLOSE (meaning + comfort, no praise at a lost child).
     # +40: "hedge hog" back to back is the whole word, never "SO close"
     # (live flake: a second retry ran at reply 3).
-    "word_teaching_rules_trial_hedgehog.md": (116, 3420),
+    "word_teaching_rules_trial_hedgehog.md": (123, 3980),
     "render_content_trial_word_hedgehog.md": (15, 250),
     # Shadow bridge: the repurposed wrap-up (second shadow -> flamingo reveal).
     # Grew 1000 -> 1450 when the user made pre-video a real guess game
@@ -163,7 +163,7 @@ BUDGETS = {
     # third model out of a silent page, live flake). +40: a "?" never shares
     # a reply with [TEMPLATE_FINISH] (sister-page flake). -> 3630: meaning
     # questions answered for real + the CONFUSED CLOSE (device #375560).
-    "word_teaching_rules_trial_flamingo.md": (118, 3680),
+    "word_teaching_rules_trial_flamingo.md": (121, 3990),
     "render_content_trial_word_flamingo.md": (15, 250),
     # Trial wrap-up: pre-video only (the final video ends the class). Recap
     # cheer + one last guess round + the goodbye launch, 2 replies.

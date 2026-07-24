@@ -306,6 +306,12 @@ def check(tr):
 
     if tr.get("family") == "word_trial":
         conf = TRIAL_WORDS[word]
+        # The page speaks at most 4 times (meet -> retry -> wonder -> close).
+        # Real device bug: ASR mishears ("嗨，纸") re-matched the greeting row
+        # forever and the SAME retry went out five times — the count froze.
+        if len(replies) > 4:
+            v("reply-budget", f"{len(replies)} replies — the page speaks at most "
+                              f"4 times; the count froze on a repeated input")
         # The MODEL is the page's trick: the word broken slowly into voice-safe
         # real words and ALWAYS closed by the whole word. It lives in the meet
         # call (reply 1), so it must appear on every page, opt-out included.

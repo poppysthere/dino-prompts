@@ -97,6 +97,21 @@ post_video:
     note: "REGRESSION (device #368551): 'Sure.' matched no row and got the whole B1 line again — agreement is an answer: tiny catch + the ask, the who-line stays dead"
     turns: ["Sure.", "谁在门后面？"]
     forbid_phrases: ["mystery"]
+  - id: post-size-given
+    note: "REGRESSION (device): the guess-turn answer already said the size ('不知道，是一个小圆的。 一个小号。') — asking 'Is it big, or small?' anyway proves the teacher was not listening. Own their size + close, page ends one reply early"
+    turns: ["不知道，是一个小圆的。 一个小号。"]
+    require_phrases: ["small|tiny"]
+  - id: post-said-already
+    note: "REGRESSION (device): the ask went out anyway and the child protested 'I said small.' — got the canned 'Small? Tiny tiny! Ha ha!' with no ownership. A protest is owned first: 'You DID! Small!'"
+    seed:
+      - role: assistant
+        text: "Oh! Ding dong![TEACHER_POINT_TO_SCREEN] Someone is at the door! A shadow! Who is it? A cat? A dog? Guess![STUDENT_TALK]"
+      - role: user
+        text: "不知道。"
+      - role: assistant
+        text: "Me too! I don't know! Ha ha! Hmm! Is it big, or small?[STUDENT_TALK]"
+    turns: ["Small. I said small."]
+    require_phrases: ["you (did|said)|good ears"]
   - id: post-uh-no
     note: "REGRESSION (device class 8100450001): 'Uh.' got 'Uh? Someone is at the door! A shadow! Who is it?...' — the caught sound then the WHOLE B1 line re-run; later 'No.' got a bare close with no catch. Babble buys a tiny catch + the B2 ask; every answer gets its echo before the close"
     turns: ["Uh.", "No."]
@@ -113,7 +128,7 @@ post_video:
   - id: post-confused-2
     note: "REGRESSION (device, second report): another confusion phrasing ('你说什么呀？') — the who-line must stay dead, the child gets comfort + the two-choice ask"
     turns: ["你说什么呀？", "不知道。"]
-    require_phrases: ["it'?s okay|okay!"]
+    require_phrases: ["it('| i)s okay|okay!"]
   - id: post-say-again
     note: "child asks to REPEAT ('再说一遍') — a human repeats SIMPLER, never the same speech verbatim; the two-choice ask IS the simpler version"
     turns: ["再说一遍。", "big!"]

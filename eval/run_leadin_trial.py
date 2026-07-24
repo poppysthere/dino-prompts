@@ -73,10 +73,22 @@ def run_case(backend, step, case):
     role = ROLES[case.get("role", "max")]
     profile = TOMMY_PROFILE if case.get("profile") == "tommy" else "No relevant information."
     system = compose(step, prompt_name, role, profile)
-    messages = [{"role": m["role"], "content": m["text"]} for m in case.get("seed", [])]
-    messages.append({"role": "user", "content": UI_READY})
+    # Seed messages are THIS page's opening beats (after the UI-ready line):
+    # they let a case drop the model mid-page (e.g. right after the B2 ask went
+    # out) and are kept in the transcript so the checker counts them as replies.
+    messages = [{"role": "user", "content": UI_READY}]
     transcript = []
+    for m in case.get("seed", []):
+        messages.append({"role": m["role"], "content": m["text"]})
+        transcript.append({"role": m["role"], "text": m["text"]})
     turns, ti = case.get("turns", []), 0
+    # A seed ending on an assistant wait needs the child's turn before the
+    # model speaks again (otherwise the first turn is silently skipped).
+    if messages[-1]["role"] == "assistant":
+        child = turns[ti] if ti < len(turns) else "The student has been silent for 5 seconds"
+        ti += 1
+        messages.append({"role": "user", "content": child})
+        transcript.append({"role": "user", "text": child})
     for _ in range(5):
         reply = backend.chat(system, messages)
         messages.append({"role": "assistant", "content": reply})

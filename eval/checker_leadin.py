@@ -604,15 +604,28 @@ def check_pre_wrap(tr, replies, users, v, out):
     return out
 
 
+# The child's guess-turn answer already carries the size (device bug: "一个
+# 小圆的。一个小号。" got "Is it big, or small?" anyway and the child protested
+# "I said small."). Conservative shapes only — 小猫/小狗-style animal guesses
+# must NOT fire this ("small cat" is a guess, not a size answer).
+SIZE_GIVEN = re.compile(
+    r"\b(big|small|tiny|little)\b|小小|大大|[小大](的|号|圆)|(很|好|真)[小大]", re.I)
+
+
 def check_post_trial(tr, replies, users, v, out):
     """Trial demo post-video: shadow chat — ASK1 who -> catch + ASK2 big/small -> catch + close.
-    Opt-out at B2 is the one shortcut: the ask dies, okay-words + close, 2 replies."""
+    Opt-out at B2 is one shortcut (the ask dies, okay-words + close, 2 replies);
+    a guess that already tells the size is the other (the ask is answered
+    before it was asked — own the size + close, 2 replies)."""
+    first_turn = turn_before(tr["messages"], 2)
     optout = bool(re.search(r"不想说|do(n'?t| not) want to (say|talk|speak)",
-                             turn_before(tr["messages"], 2), re.I))
-    want = 2 if optout else 3
+                             first_turn, re.I))
+    size_given = not optout and bool(SIZE_GIVEN.search(first_turn))
+    want = 2 if (optout or size_given) else 3
     if len(replies) != want:
-        v("three-replies", f"trial post-video must be exactly {want} replies"
-                           f"{' (opt-out closes early)' if optout else ''}, got {len(replies)}")
+        why = (" (opt-out closes early)" if optout
+               else " (size already given closes early)" if size_given else "")
+        v("three-replies", f"trial post-video must be exactly {want} replies{why}, got {len(replies)}")
     child_guessed_secret = False
     for m in tr["messages"]:
         if m["role"] == "user":
@@ -690,6 +703,24 @@ def check_post_trial(tr, replies, users, v, out):
                 v("missing-catch", "opt-out reply has no okay-words before the close — the child's no was ignored")
             if n2[at + len(CLOSE_TRIAL):].strip():
                 v("script-close", "opt-out reply has text after the close line")
+    elif len(replies) >= 2 and size_given:
+        # The size-given shortcut: the guess-turn answer already said the size,
+        # so the big-or-small ask is ANSWERED — asking it anyway is the
+        # I-was-not-listening bug. Reply 2 = own their size + the close.
+        r2, n2 = replies[1], norm(replies[1])
+        if ASK2_TRIAL in n2:
+            v("asked-answered", f"reply 2 asks the size the child already gave: {strip_tags(r2).strip()!r}")
+        if "[TEMPLATE_FINISH]" not in r2:
+            v("must-finish", "size-given reply must close the page with [TEMPLATE_FINISH]")
+        at = n2.find(CLOSE_TRIAL)
+        if at < 0:
+            v("script-close", f"size-given reply is missing the close line: {strip_tags(r2).strip()!r}")
+        else:
+            catch = n2[:at].strip()
+            if len(catch.split()) > 10:
+                v("catch-budget", f"size-given catch over budget ({len(catch.split())} words): {catch!r}")
+            if not re.search(r"\b(big|small|tiny|little)\b", catch, re.I):
+                v("missing-catch", f"size-given reply never owns the child's size before the close: {catch!r}")
     elif len(replies) >= 2:
         n2 = norm(replies[1])
         if not n2.endswith(ASK2_TRIAL):

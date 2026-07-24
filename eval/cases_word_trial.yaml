@@ -27,6 +27,18 @@ word_trial_hedgehog:
       - "Hedgehog."
       - "Hedgehog."
 
+  - id: hh-mishear-loop
+    note: "REGRESSION (device): the child's echo tries were misheard as '嗨，纸' /
+      '纸号' and the SAME retry ('Hi hi! Look at him! One more time...') went out
+      FIVE times word for word. Mishears are tries: nod + retry once, then nod +
+      the WONDER, then the close — the count never freezes"
+    turns:
+      - "嗨，纸。"
+      - "嗨。"
+      - "嗨，纸号。"
+    require_phrases:
+      - "do you like|is he (big|small)"
+
   - id: hh-confused-close
     note: "REGRESSION (device #375560): the wonder's answer is confusion
       ('什么意思？听不懂。') — the close gives the MEANING (a little spiky
