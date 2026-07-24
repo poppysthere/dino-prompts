@@ -66,7 +66,7 @@ BUDGETS = {
     # law (the feed ran as a FOURTH wait to a child who already said hi).
     # Then -> 1310: babble-is-a-turn row + only-reply-3-launches (live flake:
     # a babble at B2 got the launch, stealing the child's turn). Not creep.
-    "leadin_teaching_rules_trial_step_pre_video.md": (74, 1680),
+    "leadin_teaching_rules_trial_step_pre_video.md": (77, 1770),
     # Raised 1000 -> 1100 (device #367710-15: verbatim who-line repeat to a
     # confused child, doubled catches): menu-fed ask, confusion branch, and
     # the say-nothing-twice law. Then -> 1150: missing-catch bad examples
@@ -80,7 +80,7 @@ BUDGETS = {
     # never-grows counter law (dead-ask loop returned on device), and the
     # fabricated-guess ban (device #374194: "I don't know" was answered
     # "A dog? Ooh! Maybe!" — a menu word put in the child's mouth). Not creep.
-    "leadin_teaching_rules_trial_step_post_video.md": (94, 2460),
+    "leadin_teaching_rules_trial_step_post_video.md": (105, 3200),
     "render_content_trial_leadin.md": (30, 400),
     # The hedgehog reveal page: inherits the soccer word page's HUMAN RULE +
     # invite budget doctrine, plus the syllable-ladder section. Raised

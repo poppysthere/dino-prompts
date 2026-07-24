@@ -617,6 +617,21 @@ def check_post_trial(tr, replies, users, v, out):
     for n, r in enumerate(replies[1:], 2):
         if re.search(r"ding\s+dong|who is it|someone is at the door", strip_tags(r), re.I):
             v("dead-line-repeat", f"reply {n}: brings back the who-line ('Ding dong' / 'Who is it') — it exists once, in reply 1 only: {strip_tags(r).strip()!r}")
+    # Parrot guard (device #380427: "I need help." came back as "I need help?"
+    # glued to the dead who-line). Echoing a guess WORD is warm; echoing the
+    # child's whole sentence back as a question is a parrot, not a person.
+    msgs = tr["messages"]
+    for i, m in enumerate(msgs):
+        if m["role"] != "user":
+            continue
+        words = re.sub(r"[^a-z' ]", " ", m["text"].lower()).split()
+        if len(words) < 3:
+            continue
+        nxt = next((x for x in msgs[i + 1:] if x["role"] == "assistant"), None)
+        if nxt and re.search(r"\W+".join(map(re.escape, words)) + r"\W*\?",
+                             strip_tags(nxt["text"]), re.I):
+            v("parrot", f"the child's sentence {m['text'].strip()!r} echoed back "
+                        f"whole as a question: {strip_tags(nxt['text']).strip()!r}")
     # Fabricated guess guard (device #374194: "I don't know" was answered with
     # "A dog? Ooh! Maybe!" — the teacher's own B1 menu word echoed back as if
     # the child had guessed it). A menu word may return only if THEY said it.
@@ -719,8 +734,11 @@ def check_post_trial(tr, replies, users, v, out):
                 v("script-close", "reply 3 has text after the close line")
             # template allows tiny echoes at the close (3 words max each; a
             # natural double like "Red? A red monster?" is fine) — a longer
-            # question shape is a re-asked dead question ("is it big, or small?")
-            qs = [s for s in re.split(r"(?<=[?])\s+", catch) if s.endswith("?")]
+            # question shape is a re-asked dead question ("is it big, or small?").
+            # Count with contractions folded ("you do not know?" == "you don't
+            # know?", the tutor's own playful self-guess opener).
+            cf = re.sub(r"\bdo not\b", "don't", re.sub(r"\bit is\b", "it's", catch))
+            qs = [s for s in re.split(r"(?<=[?])\s+", cf) if s.endswith("?")]
             if len(qs) > 2 or any(len(q.rstrip("?").split()) > 3 for q in qs):
                 v("no-question-finish", f"reply 3 catch asks a real question: {catch!r}")
             second = turn_before(tr["messages"], 3).lower()

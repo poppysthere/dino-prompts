@@ -59,6 +59,11 @@ pre_video:
     turns: ["什么？", "hi Max!"]
     require_phrases: ["repeat after me\\W{0,3}hi"]
     forbid_phrases: ["are you happy", "can you say"]
+  - id: pre-help-plea
+    note: "REGRESSION (device #380417): 'Uh, I need help with' at the happy question got the sad row's 'Aww. Big hug!' — asking for help is not sad. Helping words ('I help you!') + the launch, the video IS the help"
+    turns: ["Hi, hi.", "Uh, I need help with"]
+    require_phrases: ["help you|i help"]
+    forbid_phrases: ["aww"]
   - id: pre-sad-kid
     note: "child answers the happy question with no/sad — soft catch, video still launches (it IS the help)"
     turns: ["hi", "no. 不开心。"]
@@ -117,6 +122,10 @@ post_video:
         text: "Me too! I don't know! Ha ha! Hmm! Is it big, or small?[STUDENT_TALK]"
     turns: ["Small. I said small."]
     require_phrases: ["you (did|said)|good ears"]
+  - id: post-help-plea
+    note: "REGRESSION (device #380427): 'I need help.' was parroted back as a question and the dead B1 line rolled over it, freezing the count. A help plea gets help ('I help you! Listen!') + the ask — the two choices ARE the help — then 'Too.' buys the close"
+    turns: ["I need help.", "Too."]
+    require_phrases: ["help you|i help"]
   - id: post-shrug-guess
     note: "REGRESSION (device): '我就。' then '呃。' — the shrug at reply 3 re-bought 'Hmm! Is it big, or small?'. A child who cannot answer gets the tutor's own playful guess ('You don't know? I think it's BIG!') + the close, never the question again"
     turns: ["我就。", "呃。"]
