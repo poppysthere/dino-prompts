@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt 质量报告 · Prompt Report</title>
+<style>
+  :root {
+    --ink: #1a2233;
+    --ink-soft: #4a5568;
+    --accent: #2563eb;
+    --accent-soft: #eff6ff;
+    --green: #059669;
+    --green-soft: #ecfdf5;
+    --amber: #b45309;
+    --amber-soft: #fffbeb;
+    --red-soft: #fef2f2;
+    --red: #b91c1c;
+    --line: #e5e9f0;
+    --bg: #f7f9fc;
+    --card: #ffffff;
+    --zh: #7c3aed;
+    --zh-soft: #f5f3ff;
+    --mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.65;
+    font-size: 15px;
+  }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 28px 80px; }
+
+  header.hero {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 60%, #3b82f6 100%);
+    color: #fff;
+    padding: 56px 28px 48px;
+    margin-bottom: 40px;
+  }
+  header.hero .inner { max-width: 1000px; margin: 0 auto; }
+  header.hero h1 { margin: 0 0 6px; font-size: 32px; letter-spacing: -0.5px; }
+  header.hero .zh-title { font-size: 20px; opacity: 0.92; font-weight: 500; }
+  header.hero p.sub { margin: 18px 0 0; max-width: 720px; opacity: 0.88; font-size: 15px; }
+  .hero-stats { display: flex; gap: 16px; margin-top: 28px; flex-wrap: wrap; }
+  .stat {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 12px;
+    padding: 12px 20px;
+    min-width: 150px;
+  }
+  .stat .num { font-size: 24px; font-weight: 700; }
+  .stat .lbl { font-size: 12.5px; opacity: 0.85; }
+
+  h2 {
+    font-size: 24px;
+    margin: 56px 0 4px;
+    padding-top: 16px;
+    letter-spacing: -0.3px;
+  }
+  h2 .zh { display: block; font-size: 16px; color: var(--zh); font-weight: 600; margin-top: 2px; }
+  h3 { font-size: 17px; margin: 32px 0 8px; }
+  h3 .zh { color: var(--zh); font-weight: 600; font-size: 14.5px; margin-left: 8px; }
+
+  .zh-note {
+    background: var(--zh-soft);
+    border-left: 3px solid var(--zh);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 16px;
+    margin: 10px 0 18px;
+    color: #4c1d95;
+    font-size: 14px;
+  }
+  .zh-note strong { color: var(--zh); }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin: 16px 0;
+    box-shadow: 0 1px 3px rgba(16,24,40,0.04);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 6px;
+    font-size: 13.5px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  th {
+    text-align: left;
+    background: #f1f5fb;
+    padding: 9px 14px;
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--line);
+  }
+  td { padding: 9px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  td .zh { color: var(--zh); font-size: 12.5px; display: block; margin-top: 2px; }
+  code {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    background: #eef2f8;
+    color: #334155;
+    padding: 1.5px 6px;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+
+  .pipeline { list-style: none; padding: 0; margin: 8px 0; counter-reset: step; }
+  .pipeline li {
+    counter-increment: step;
+    position: relative;
+    padding: 12px 16px 12px 58px;
+    margin: 8px 0;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  .pipeline li::before {
+    content: counter(step);
+    position: absolute;
+    left: 16px; top: 50%;
+    transform: translateY(-50%);
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pipeline li .en { font-weight: 600; }
+  .pipeline li .zh { color: var(--zh); font-size: 13.5px; display: block; }
+
+  .badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .badge.green { background: var(--green-soft); color: var(--green); }
+  .badge.blue { background: var(--accent-soft); color: var(--accent); }
+
+  .doctrine-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 14px; }
+  .doctrine {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .doctrine .t { font-weight: 700; font-size: 14.5px; }
+  .doctrine .t-zh { color: var(--zh); font-weight: 700; font-size: 14px; }
+  .doctrine .d { color: var(--ink-soft); font-size: 13px; margin-top: 4px; }
+
+  .bug { color: var(--red); }
+  .fix { color: var(--green); }
+
+  details { margin: 10px 0; }
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 12px 16px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    user-select: none;
+  }
+  summary:hover { background: var(--accent-soft); }
+  summary .zh { color: var(--zh); font-size: 13.5px; font-weight: 600; margin-left: 6px; }
+  details[open] summary { border-radius: 10px 10px 0 0; }
+  details > div { border: 1px solid var(--line); border-top: none; border-radius: 0 0 10px 10px; padding: 4px 16px 14px; background: #fbfcfe; }
+
+  footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 13px; }
+
+  @media print {
+    header.hero { padding: 32px 20px; }
+    details { break-inside: avoid; }
+    details > div { display: block; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="inner">
+    <h1>Prompt Report</h1>
+    <div class="zh-title">课程 Prompt 质量报告 —— 如何测试、修复并验证我们的课堂提示词</div>
+    <p class="sub">
+      This document explains three things: the <b>standards</b> (mechanical checkers every prompt must pass), the <b>mock kids</b> (simulated children we test against), and the <b>process</b> (how a real-device bug becomes a permanent, re-testable standard).<br>
+      本报告说明三件事：<b>标准</b>（每个 prompt 模板必须通过的机械化检查器）、<b>模拟儿童</b>（用来测试的各种真实孩子行为模式）、<b>流程</b>（真机 bug 如何变成永久可回归的标准）。所有规则都由 <code>eval/</code> 中的代码强制执行，而非主观判断。
+    </p>
+    <div class="hero-stats">
+      <div class="stat"><div class="num">~319</div><div class="lbl">test cases 测试用例</div></div>
+      <div class="stat"><div class="num">19</div><div class="lbl">batteries 测试套件</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">live models 真实模型验证</div></div>
+      <div class="stat"><div class="num">16+</div><div class="lbl">mock kid personas 模拟儿童画像</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ============ 1. PIPELINE ============ -->
+<h2>1. The Fix Pipeline <span class="zh">修复流程 —— 每个 bug 如何变成标准</span></h2>
+<div class="zh-note">
+  <strong>核心思想：</strong>每一个真机课堂里发现的 bug，都会被复现成回归测试用例、修复模板、加上机械检查规则（让同类 bug 永远无法复发）、再用真实模型跑完整套测试后才提交上线。
+</div>
+
+<ol class="pipeline">
+  <li><span class="en">Real device transcript reveals a bug</span><span class="zh">真机课堂录音/记录中发现 bug</span></li>
+  <li><span class="en">Reproduce it as a regression case (<code>eval/cases_*.yaml</code>, device ID in the note)</span><span class="zh">复现为回归测试用例（备注中记录设备 ID）</span></li>
+  <li><span class="en">Fix the template (<code>prompts/**</code>)</span><span class="zh">修复 prompt 模板</span></li>
+  <li><span class="en">Add a mechanical checker rule so the bug CLASS can never silently return</span><span class="zh">添加机械检查规则，使这一类 bug 永远无法悄悄复发</span></li>
+  <li><span class="en">Run the full live battery against real models (gpt-5.4-mini / gpt-5-mini / doubao-seed-16)</span><span class="zh">用真实模型跑完整套线上测试</span></li>
+  <li><span class="en">Size lint — every template has a hard line + word budget</span><span class="zh">体积检查 —— 每个模板都有行数/字数硬预算</span></li>
+  <li><span class="en">Commit + push — every fix versioned on GitHub with reasoning</span><span class="zh">提交推送 —— 每个修复都带原因说明，版本化管理</span></li>
+</ol>
+
+<div class="card">
+  <b>Two disciplines keep this honest 两条纪律保证可信度：</b>
+  <ul style="margin: 8px 0 0;">
+    <li><b>Anti-bloat 防膨胀：</b> Every template has a line/word budget. A fix must usually pay for itself by trimming elsewhere. <span style="color:var(--zh)">每个模板有行数/字数预算，加东西通常要在别处删掉等量内容；只有结构性变更才能提高预算，且必须写明原因。</span></li>
+    <li><b>Flakiness testing 抗随机性测试：</b> Fixed cases are re-run 3–4 times before we trust them — LLMs fail intermittently. <span style="color:var(--zh)">修好的用例连续重跑 3–4 次才算通过 —— LLM 会间歇性失败，一次通过说明不了问题。</span></li>
+  </ul>
+</div>
+
+<!-- ============ 2. STANDARDS ============ -->
+<h2>2. The Standards <span class="zh">标准 —— 按课程页面分类的检查器</span></h2>
+<div class="zh-note">
+  每一条模型回复都会经过检查器。检查器是一组命名规则，任何一条违反即判定用例失败。以下按课程页面分组。<strong>建议 PM 重点看每个折叠块的中文摘要，规则明细可展开查看。</strong>
+</div>
+
+<h3>2.1 Universal rules <span class="zh">通用规则（所有检查器强制执行）</span></h3>
+<table>
+  <tr><th>Rule 规则</th><th>What it catches 拦截什么</th></tr>
+  <tr><td><code>tts-stretched</code></td><td>Stretched spellings TTS cannot say ("Hiiii", "SOOOO")<span class="zh">语音引擎读不出来的拉长拼写</span></td></tr>
+  <tr><td><code>tts-giggle</code></td><td>Written giggles that break TTS ("hee hee", "hehe") — only "Ha ha!" allowed<span class="zh">书面笑声会导致语音异常，只允许 "Ha ha!"</span></td></tr>
+  <tr><td><code>tts-safety</code> / <code>tts-dash</code> / <code>tts-ellipsis</code></td><td>Em dashes, "…", punctuation that sounds broken when spoken<span class="zh">破折号、省略号等朗读时听起来异常的标点</span></td></tr>
+  <tr><td><code>english-only</code></td><td>Any non-English output (CJK etc.) — teacher answers <i>meaning</i> in English<span class="zh">禁止非英文输出 —— 老师用英文回应孩子中文表达的“含义”</span></td></tr>
+  <tr><td><code>one-tag</code> / <code>tag-last</code> / <code>tag-at-end</code></td><td>Exactly one control tag per reply, at the very end<span class="zh">每条回复只能有一个控制标签，且必须在最末尾</span></td></tr>
+  <tr><td><code>unknown-action</code> / <code>forbidden-tag</code></td><td>Invented or off-whitelist avatar action tags<span class="zh">禁止编造或使用白名单以外的形象动作标签</span></td></tr>
+  <tr><td><code>require-phrase</code> / <code>forbid-phrase</code></td><td>Per-case content assertions (must greet Kim, must NOT say Max)<span class="zh">按用例定制的内容断言</span></td></tr>
+</table>
+
+<details>
+  <summary>2.2 Warm-up 热身页 <span class="zh">—— 固定节拍的“计数法则”页面：老师自己的回复数决定节奏，孩子说什么都不增加节拍，页面必须准时结束</span></summary>
+  <div>
+  <table>
+    <tr><th>Rule 规则</th><th>Standard it enforces 强制的标准</th></tr>
+    <tr><td><code>path-a-*</code></td><td>First meeting: ask the name once, never speak the unknown default name, never say "you're back" to a new kid<span class="zh">初次见面：只问一次名字，不说未知的默认名，不对新生说“你回来了”</span></td></tr>
+    <tr><td><code>path-b-*</code> / <code>stale-name</code> / <code>name-mix</code></td><td>Returning kid: greet with real <code>&lt;studentName&gt;</code> only, never stale profile nicknames, never two names in one reply<span class="zh">老生：只用真实姓名问候，档案里的过期昵称视为死数据，一条回复不出现两个名字</span></td></tr>
+    <tr><td><code>happy-once</code></td><td>"Are you happy today?" asked ONCE — real device bug: asked 3–4 times verbatim<span class="zh">“今天开心吗”只能问一次 —— 真机 bug 曾原句重复 3–4 次</span></td></tr>
+    <tr><td><code>question-repeat</code> / <code>sentence-repeat</code></td><td>No question or sentence said twice on the page, not even reworded loops<span class="zh">整页不允许任何句子/问题重复，换个说法的循环也不行</span></td></tr>
+    <tr><td><code>one-question</code></td><td>One question per reply, maximum<span class="zh">每条回复最多一个问题</span></td></tr>
+    <tr><td><code>beat-budget</code></td><td>Hard cap on total replies — the page must END<span class="zh">回复总数硬上限 —— 热身不能无限拖长</span></td></tr>
+    <tr><td><code>no-question-on-finish</code></td><td>No question in the same breath as <code>[TEMPLATE_FINISH]</code><span class="zh">结束标签同句不能带问题 —— 不等答案的问题是假问题</span></td></tr>
+    <tr><td><code>child-job</code> / <code>silence-escalation</code></td><td>Every waiting reply gives one tiny job; silence: re-ask shorter → yes/no choice → move on<span class="zh">每次等待都给孩子一个明确小任务；孩子沉默时：简短重问 → 二选一 → 优雅推进</span></td></tr>
+    <tr><td><code>invisible-action</code> / <code>word-teach-leak</code> / <code>register</code></td><td>No narrated actions, no early word teaching, age-appropriate register<span class="zh">不用嘴描述动作、热身不提前教单词、语言符合年龄段</span></td></tr>
+  </table>
+  </div>
+</details>
+
+<details>
+  <summary>2.3 Lead-in 导入页（视频前/后）<span class="zh">—— 剧本页：固定台词必须一字不差，前面的“个人回应”必须真实回应孩子说过的话</span></summary>
+  <div>
+  <table>
+    <tr><th>Rule 规则</th><th>Standard it enforces 强制的标准</th></tr>
+    <tr><td><code>script-*</code></td><td>Fixed script lines spoken exactly, in the right reply; no sentence silently dropped<span class="zh">固定台词一字不差、位置正确，不允许悄悄丢句</span></td></tr>
+    <tr><td><code>two-replies</code> / <code>three-replies</code></td><td>The page is exactly its designed length<span class="zh">页面长度严格等于设计长度</span></td></tr>
+    <tr><td><code>missing-catch</code></td><td>If the child SPOKE, the reply must react before the script line (real bug: "Mommy!" got no echo)<span class="zh">孩子说了话，回复必须先回应再进台词（真机 bug：孩子喊“Mommy!”被无视）</span></td></tr>
+    <tr><td><code>catch-on-silence</code> / <code>catch-budget</code></td><td>Silent child gets NO invented catch; the catch stays tiny (8–10 words)<span class="zh">孩子没说话就不能凭空“回应”；回应保持极短，回应而非说教</span></td></tr>
+    <tr><td><code>fake-praise</code></td><td>No empty "Good guess!" — must play with the child's actual word<span class="zh">禁止空洞夸奖 —— 必须使用孩子实际说的词</span></td></tr>
+    <tr><td><code>spoiler</code> / <code>no-deny</code></td><td>The secret (e.g. the hedgehog) never volunteered, confirmed, or denied — every guess gets "Maybe!"<span class="zh">谜底绝不主动透露、不确认也不否认 —— 任何猜测都回 "Maybe!"</span></td></tr>
+    <tr><td><code>hello-only</code> / <code>feed-on-silence</code> (trial)</td><td>Trial reply 1 is the greeting alone (the "small win"); a lost child gets the words fed ("You can say, hi Max!")<span class="zh">体验课第一句只打招呼（让孩子先赢一次）；迷茫的孩子直接“喂词”而不是再抛问题</span></td></tr>
+    <tr><td><code>no-question-launch</code> / <code>no-teaching</code> / <code>no-name-ask</code></td><td>No question glued to video launch; no vocabulary drilling on lead-in; trial never asks the name<span class="zh">视频启动句不带问题；导入页不教单词；体验课不问名字</span></td></tr>
+  </table>
+  </div>
+</details>
+
+<details>
+  <summary>2.4 Word teaching 单词教学页 <span class="zh">—— “机器人式反复操练”问题的重灾区。核心标准：最多邀请两次，然后温暖地放手</span></summary>
+  <div>
+  <table>
+    <tr><th>Rule 规则</th><th>Standard it enforces 强制的标准</th></tr>
+    <tr><td><code>invite-budget</code> / <code>retry-once</code></td><td>Maximum TWO invitations to say the word: one ASK + one guided retry, then close warmly<span class="zh">最多两次邀请开口：一次提问 + 一次带引导的重试，然后温暖收尾</span></td></tr>
+    <tr><td><code>opt-out</code></td><td>"我不想说" is sacred — acknowledged, never pushed, no third invite, no guilt<span class="zh">“我不想说”神圣不可侵犯 —— 立即尊重，不催、不第三次邀请、不让孩子内疚</span></td></tr>
+    <tr><td><code>fake-praise</code></td><td>No "YES! You know it!" when the child only said "好"<span class="zh">孩子只说了“好”就不能假装他答对了 —— 夸奖必须匹配实际发生的事</span></td></tr>
+    <tr><td><code>wrong-word</code> / <code>word-taught</code></td><td>The page teaches exactly the word in <code>renderContent</code> (real bug: the "Come on!" page taught "Goal!")<span class="zh">本页只教指定单词 —— 真机 bug：“Come on!”页教成了“Goal!”（历史泄漏）</span></td></tr>
+    <tr><td><code>names-the-shout</code></td><td>Shouts are used, not defined: never "That is COME ON!"<span class="zh">感叹语要“用”而不是“定义” —— 不能像教名词一样教喊话</span></td></tr>
+    <tr><td><code>guided-retry</code></td><td>A retry re-teaches with context (chunking, gesture, example) — never a bare "say it again"<span class="zh">重试必须换方式再教一遍（拆音节/手势/例子），不能干巴巴地“再说一遍”</span></td></tr>
+    <tr><td><code>close-line</code> / <code>beat-budget</code></td><td>The page closes on time, warmly, with the right tag<span class="zh">页面准时、温暖地收尾，回复总数有硬上限</span></td></tr>
+  </table>
+  </div>
+</details>
+
+<details>
+  <summary>2.5 Sentence teaching 句子教学页 <span class="zh">—— 固定台词精确执行，步骤严格按边界推进，一次引导重试封顶</span></summary>
+  <div>
+  <table>
+    <tr><th>Rule 规则</th><th>Standard it enforces 强制的标准</th></tr>
+    <tr><td><code>script-ask</code> / <code>script-reveal</code></td><td>Fixed ask/reveal lines spoken exactly (punctuation-tolerant)<span class="zh">固定的提问/揭示台词精确说出</span></td></tr>
+    <tr><td><code>retry-once</code></td><td>One guided retry max, then move on<span class="zh">最多一次引导重试，然后推进</span></td></tr>
+    <tr><td><code>early-advance</code> / <code>must-advance</code></td><td>Steps advance exactly on their boundary — history never lets the model skip a step<span class="zh">步骤严格按边界推进 —— 历史记录不能让模型跳步</span></td></tr>
+    <tr><td><code>spoiler</code></td><td>No revealing the answer of a later beat early<span class="zh">不提前剧透后面步骤的答案</span></td></tr>
+  </table>
+  </div>
+</details>
+
+<details>
+  <summary>2.6 Wrap-up 收尾页 <span class="zh">—— 简短复习本课单词 + 真诚道别，最后一句都不出错</span></summary>
+  <div>
+  <table>
+    <tr><th>Rule 规则</th><th>Standard it enforces 强制的标准</th></tr>
+    <tr><td><code>recap</code> / <code>recap-budget</code></td><td>Recap covers the lesson words, briefly<span class="zh">简短复习本课单词</span></td></tr>
+    <tr><td><code>goodbye</code> / <code>watch-line</code></td><td>A real warm goodbye; fixed watch-video line where required<span class="zh">真诚温暖的道别；必要处说固定的看视频台词</span></td></tr>
+    <tr><td><code>no-question</code> / <code>name</code></td><td>No new question at the end; correct name discipline to the very last line<span class="zh">课程结尾不抛新问题；名字规范坚持到最后一句</span></td></tr>
+  </table>
+  </div>
+</details>
+
+<!-- ============ 3. MOCK KIDS ============ -->
+<h2>3. The Mock Kids <span class="zh">模拟儿童 —— 测试时我们扮演谁</span></h2>
+<div class="zh-note">
+  每套测试模拟的是<strong>真实的孩子，而不是理想学生</strong>。每个用例是一种孩子的行为模式；只有当 prompt 对所有孩子都表现良好时才允许上线。测试脚本会说出孩子的台词（包括中文、沉默标记、乱语），检查器则评判老师的反应。
+</div>
+
+<table>
+  <tr><th style="width:22%">Kid 孩子类型</th><th style="width:36%">How they behave 测试中的表现</th><th>What the prompt must do 要求 prompt 做到</th></tr>
+  <tr><td><b>Happy-path kid</b><span class="zh">顺利型孩子</span></td><td>Answers correctly, says "yes!", plays along</td><td>Celebrate specifically, keep moving — no dwelling<span class="zh">有针对性地庆祝（不能泛泛夸），然后推进，不拖沓</span></td></tr>
+  <tr><td><b>Silent kid</b><span class="zh">沉默的孩子</span></td><td>Says nothing; system injects "silent for 5 seconds", sometimes twice</td><td>Re-ask shorter → two-option choice → move on. Never repeat verbatim, never celebrate an answer that never came<span class="zh">简短重问 → 二选一 → 优雅推进。绝不原句重复，绝不庆祝一个不存在的回答</span></td></tr>
+  <tr><td><b>Lost/confused kid</b><span class="zh">迷茫的孩子</span></td><td>"什么？", "我听不懂", "我不会"</td><td>HELP, don't repeat louder: comfort + feed the words ("You can say, hi Max!")<span class="zh">帮忙而不是更大声重复：安慰 + 直接喂词，或改成二选一问题</span></td></tr>
+  <tr><td><b>Chinese-only kid</b><span class="zh">只说中文的孩子</span></td><td>"我很开心！", "小猫！", "不知道"</td><td>React to the MEANING in easy English; never echo Chinese, never treat L1 as a wrong answer<span class="zh">用简单英文回应“含义”；不复读中文、不翻译、绝不把说母语当成答错</span></td></tr>
+  <tr><td><b>Babbling kid</b><span class="zh">乱语的孩子</span></td><td>"hkajshd", random sounds</td><td>Greet the sound happily, never parrot it back or adopt it as a name<span class="zh">开心回应声音本身，绝不把乱语当单词复读或当成名字</span></td></tr>
+  <tr><td><b>Sad/tired kid</b><span class="zh">难过/疲惫的孩子</span></td><td>"no. 不开心。", "I'm sad"</td><td>Softness first, no games, no "YAY!", never told to smile<span class="zh">先温柔，不玩游戏、不欢呼、绝不叫孩子笑一笑；把视频作为安慰提供</span></td></tr>
+  <tr><td><b>Scared kid</b><span class="zh">害怕的孩子</span></td><td>"我怕。"</td><td>"It's okay. I'm here." first — the page still flows, gently<span class="zh">先说“没事，我在” —— 页面仍温和地继续</span></td></tr>
+  <tr><td><b>Opt-out kid</b><span class="zh">拒绝开口的孩子</span></td><td>"我不想说。" (twice)</td><td>Respected instantly. No third invite, no "just try!", no guilt<span class="zh">立即尊重。不第三次邀请、不说“试一下嘛”、不制造内疚。拒绝是神圣的</span></td></tr>
+  <tr><td><b>Ask-back kid</b><span class="zh">反问的孩子</span></td><td>"Are YOU happy?", "你说是谁呀？"</td><td>Answer like a person FIRST ("Me? SO happy!"), then take the turn back<span class="zh">先像个真人一样回答，再把话题接回来</span></td></tr>
+  <tr><td><b>Worst-time question kid</b><span class="zh">在最不巧时提问的孩子</span></td><td>Asks right when the page should close ("门后面是什么呀？")</td><td>A tiny real answer INSIDE the same reply, then the close — a question never buys extra beats<span class="zh">同一条回复里给一个小小的真实回答，然后照常收尾 —— 提问买不来额外节拍</span></td></tr>
+  <tr><td><b>Chatty/multi-guess kid</b><span class="zh">话多/连猜的孩子</span></td><td>"A dog! A cat! A monster!", off-topic words</td><td>Echo the LAST guess only; tiny catch for off-topic, then back on track<span class="zh">只回应最后一个猜测；跑题的简短回应后拉回正轨</span></td></tr>
+  <tr><td><b>Secret-guesser</b><span class="zh">猜中谜底的孩子</span></td><td>Guesses the hidden answer, often in Chinese ("刺猬！")</td><td>Recast into English + "Maybe!" — never confirm, deny, or volunteer the secret<span class="zh">把孩子自己的猜测转成英文 + "Maybe!" —— 绝不确认、否认或主动剧透</span></td></tr>
+  <tr><td><b>Menu-echo kid</b><span class="zh">跟读选项的孩子</span></td><td>Shyly echoes a word the teacher fed ("Cat.")</td><td>That IS an answer — celebrated like any guess<span class="zh">跟读就是回答 —— 和任何猜测一样值得庆祝</span></td></tr>
+  <tr><td><b>Mistake-maker</b><span class="zh">说错的孩子</span></td><td>"Me happy!", "I goed to the park"</td><td>RECAST, never correct: say the good version back as a happy reaction<span class="zh">重述而不纠错：把正确说法当成开心的回应说回去，然后推进</span></td></tr>
+  <tr><td><b>Already-knows-it kid</b><span class="zh">早就会了的孩子</span></td><td>Embeds the target word in their own sentence ("I climb trees at home!")</td><td>Counts as a try — celebrated, not treated as off-topic<span class="zh">算作一次尝试 —— 庆祝，而不是当成跑题</span></td></tr>
+  <tr><td><b>Name-protest kid</b><span class="zh">抗议名字的孩子</span></td><td>"我叫张志桦，你怎么叫我 Tommy？"</td><td>Apologize in a few words, use THEIR name forever, never resurrect the old one<span class="zh">简短道歉，永远使用孩子说的名字，旧名字绝不复活</span></td></tr>
+</table>
+
+<h3>Name &amp; identity traps <span class="zh">名字与身份陷阱（系统级用例）</span></h3>
+<table>
+  <tr><th>Setup 设置</th><th>Simulates 模拟什么</th><th>What must happen 必须发生什么</th></tr>
+  <tr><td><code>studentName: test_user</code> / <code>"11"</code></td><td>Junk placeholder names from the booking system (common in trials)<span class="zh">预约系统里的垃圾占位名（体验课很常见）</span></td><td>Never spoken. "My friend" or no name at all<span class="zh">绝不念出来，用 "my friend" 或干脆不叫名字</span></td></tr>
+  <tr><td><code>heidi</code> + profile nickname "Tommy"</td><td>Stale profile nickname conflicting with real name (real device bug)<span class="zh">档案过期昵称与真名冲突（真机 bug）</span></td><td>Greet "heidi" — profile nicknames are dead data<span class="zh">用真名问候 —— 档案昵称是死数据</span></td></tr>
+  <tr><td>Role = Max / Kim / Leo (rotated)</td><td>Our three teacher personas<span class="zh">三个老师人设轮换测试</span></td><td>The teacher introduces the name from <code># Role</code> — never a name copied from a template example (real bug: Leo said "I'm Kim")<span class="zh">自我介绍必须读 Role 字段 —— 真机 bug：Leo 自称 "I'm Kim"</span></td></tr>
+  <tr><td>Seeded history</td><td>A page starting mid-lesson with previous steps in context<span class="zh">带历史上下文的中途开页</span></td><td>"The UI is ready" resets to THIS page — history never lets the model skip a step<span class="zh">新页面信号强制重置到当前页 —— 历史不能让模型跳步</span></td></tr>
+</table>
+
+<div class="card">
+  <b>Default test identities 默认测试身份：</b>
+  Student names 学生名: <code>heidi</code>（初见）, <code>nina</code>（老生）, <code>lily</code>（真名问候）, <code>test_user</code>（垃圾名）。
+  Teacher roles 老师人设: Max（丛林队长）, Kim（大姐姐）, Leo（爱玩的大哥哥），轮换以捕捉硬编码名字。
+  Models 模型: <code>gpt-5.4-mini</code>（主）, <code>gpt-5-mini</code>, <code>doubao-seed-16</code> —— 通过 Forge API 真实调用，与生产环境完全一致。
+</div>
+
+<!-- ============ 4. DOCTRINES ============ -->
+<h2>4. The Teaching Doctrines <span class="zh">教学信条 —— 规则背后的人性标准</span></h2>
+<div class="zh-note">
+  这些是检查器机械化执行的“人的标准”，全部来自真机课堂中让孩子觉得虚拟老师“太像 AI”的记录。<strong>这一节最适合直接给 PM 团队讲。</strong>
+</div>
+
+<div class="doctrine-grid">
+  <div class="doctrine"><div class="t">1. Recast, never correct <span class="t-zh">重述，绝不纠错</span></div><div class="d">这个年龄任何开口都是胜利。把正确版本当成开心的回应说回去，绝不说“你应该这样说”。</div></div>
+  <div class="doctrine"><div class="t">2. Feed the words <span class="t-zh">直接喂词</span></div><div class="d">卡住的孩子想回答但没有词。递给他一个小菜单（"You can say, yes. Or, no."），任何跟读都算他的回答。</div></div>
+  <div class="doctrine"><div class="t">3. Answer first <span class="t-zh">先回答孩子</span></div><div class="d">孩子反问老师时，老师先像一个真人一样回答，再把话轮接回来。</div></div>
+  <div class="doctrine"><div class="t">4. The counter law <span class="t-zh">计数法则</span></div><div class="d">老师数自己的回复数，这就是节拍。孩子说什么都不增加节拍 —— 页面永远准时结束。</div></div>
+  <div class="doctrine"><div class="t">5. Say nothing twice <span class="t-zh">绝不重复</span></div><div class="d">同一页里任何句子、问题、回应都不说第二遍。重复听起来就像坏掉的机器人。</div></div>
+  <div class="doctrine"><div class="t">6. Invite budget <span class="t-zh">邀请预算</span></div><div class="d">最多两次邀请开口。这是孩子的课堂 —— 不做机械操练。</div></div>
+  <div class="doctrine"><div class="t">7. Opt-out is sacred <span class="t-zh">拒绝神圣不可侵犯</span></div><div class="d">“我不想说”立即、温暖地终止追问。</div></div>
+  <div class="doctrine"><div class="t">8. Wait is a job <span class="t-zh">等待即任务</span></div><div class="d">每一次等待孩子的回复，都要给孩子一个明确、微小、答得上来的任务。</div></div>
+  <div class="doctrine"><div class="t">9. Questions a 4-year-old can answer <span class="t-zh">四岁孩子答得上的问题</span></div><div class="d">开放问题自带选项（"A cat? A dog?"）。二选一优于开放式。</div></div>
+  <div class="doctrine"><div class="t">10. Matched catches, no fake praise <span class="t-zh">真实回应，不假夸</span></div><div class="d">回复必须证明听见了孩子：孩子的词打头，夸奖匹配实际发生的事。</div></div>
+  <div class="doctrine"><div class="t">11. Small win first <span class="t-zh">先赢一次</span></div><div class="d">体验课开场只需要说 "hi" —— 孩子在英语课堂的第一个动作是一个不可能失败的动作。</div></div>
+  <div class="doctrine"><div class="t">12. TTS-safe, English-only <span class="t-zh">语音安全、纯英文输出</span></div><div class="d">写出的每个字都会被英文语音引擎朗读出来。</div></div>
+</div>
+
+<!-- ============ 5. PROGRESSION ============ -->
+<h2>5. Progression <span class="zh">进展 —— 真机 bug 如何变成永久标准</span></h2>
+<div class="zh-note">
+  下表每一行都来自真实课堂记录：发现 → 复现为测试用例 → 修复 → 用检查规则永久锁定。
+</div>
+
+<table>
+  <tr><th style="width:48%">Device bug 真机 bug（孩子经历了什么）</th><th>Fix + permanent standard 修复与永久标准</th></tr>
+  <tr><td class="bug">Leo introduced himself as "I'm Kim" / "Coach Leo" / "I'm teacher Max" (#365995)<span class="zh">Leo 老师自我介绍成 "I'm Kim"（张冠李戴）</span></td><td class="fix">Templates show TWO contrasting role→name examples; forbid-phrases on every warm-up battery<span class="zh">模板加入两个对照示例强制模型读 Role 字段；全部热身套件加禁词断言</span></td></tr>
+  <tr><td class="bug">Student "heidii" greeted as "Tom" / "Tommy" (example name + stale nickname)<span class="zh">学生 heidii 被叫成 Tommy（示例名 + 过期档案昵称）</span></td><td class="fix">Name comes from <code>&lt;studentName&gt;</code> only; <code>stale-name</code> rules + Tommy trap case<span class="zh">名字只从 studentName 取；加过期昵称陷阱用例</span></td></tr>
+  <tr><td class="bug">"Are you happy today?" asked 3–4 times verbatim; page never closed<span class="zh">“今天开心吗”原句问了 3–4 遍，页面无法结束</span></td><td class="fix">Counter-law rewrite of all warm-ups; <code>happy-once</code>, <code>question-repeat</code>, <code>beat-budget</code><span class="zh">全部热身页按计数法则重写，配三条规则锁定</span></td></tr>
+  <tr><td class="bug">Word pages drilled "say it again" endlessly, ignored "Team是什么意思？" and "我不想说了"<span class="zh">单词页无限“再说一遍”，无视孩子的提问和拒绝</span></td><td class="fix">THE HUMAN RULE rework: <code>invite-budget</code>, <code>opt-out</code>, <code>wait-job</code>, answer-the-child-first<span class="zh">按“人的规则”重构：邀请预算、尊重拒绝、先回答孩子；每条真实话语都有回归用例</span></td></tr>
+  <tr><td class="bug">"That is COME ON!" — a shout defined like a noun<span class="zh">把感叹语当名词定义</span></td><td class="fix"><code>names-the-shout</code> rule; usage-based teaching for shouts<span class="zh">感叹语改为用法教学</span></td></tr>
+  <tr><td class="bug">"Come on!" page accidentally taught "Goal!" (history leak)<span class="zh">"Come on!" 页因历史泄漏教成了 "Goal!"</span></td><td class="fix">WORD CHECK rule + <code>wrong-word</code> checker guard<span class="zh">单词校验规则 + 检查器守卫</span></td></tr>
+  <tr><td class="bug">Announcer talk to 4-year-olds ("The big match is on!")<span class="zh">对 4 岁孩子说解说员式的成人语言</span></td><td class="fix"><code>kid-words</code> register guard with exact forbidden phrases<span class="zh">儿童语域守卫，含精确禁用短语</span></td></tr>
+  <tr><td class="bug">Trial post-video: ding-dong line repeated verbatim to a confused child (#367710-15)<span class="zh">体验课：对困惑的孩子原句重复门铃台词，"A mystery! Ooh!" 说了两遍</span></td><td class="fix">Fed guess menu; confusion branches; say-nothing-twice law + <code>sentence-repeat</code><span class="zh">提问自带猜测菜单；加困惑分支；“绝不重复”法则锁定</span></td></tr>
+  <tr><td class="bug">Silent kid got "Hi hi! YAY!" (celebrating a hi that never happened); "Mommy!" got no echo<span class="zh">孩子沉默却被庆祝“打了招呼”；孩子喊 "Mommy!" 无人回应</span></td><td class="fix"><code>feed-on-silence</code>, <code>missing-catch</code>, <code>catch-on-silence</code><span class="zh">沉默时喂词；说了话必须先回应</span></td></tr>
+  <tr><td class="bug">Secret spoiled / denied ("No, not a dog!")<span class="zh">谜底被剧透或被否认（“不，不是狗！”）</span></td><td class="fix"><code>spoiler</code>, <code>spoiler-confirm</code>, <code>no-deny</code>; recast-of-their-own-guess allowed<span class="zh">不透露、不确认、不否认；允许把孩子自己的猜测转成英文（那是教学，不是剧透）</span></td></tr>
+  <tr><td class="bug">TTS spoke "Hiiii", "hee hee", em dashes, "…" as broken audio<span class="zh">语音引擎把拉长拼写、笑声、破折号读成破碎音频</span></td><td class="fix">Universal TTS rules in every checker<span class="zh">全部检查器加通用 TTS 规则</span></td></tr>
+</table>
+
+<!-- ============ 6. STATUS ============ -->
+<h2>6. Where Things Stand <span class="zh">当前状态</span></h2>
+
+<table>
+  <tr><th>Lesson family 课程系列</th><th>Templates 模板</th><th>Battery 测试套件</th><th>Status 状态</th></tr>
+  <tr><td><b>L1</b> (pre-A1, 4–6岁) core 核心课</td><td>warm-up, lead-in, 3 words, 2 sentences, wrap-up</td><td>word/sentence/lead-in batteries</td><td><span class="badge green">live 已上线</span></td></tr>
+  <tr><td><b>L1 足球 festival</b> (World Cup 世界杯专题)</td><td>common, warm-up, lead-in ×2, word (Goal!/team/Come on!), wrap-up</td><td>58 cases</td><td><span class="badge green">live, all passing 全部通过</span></td></tr>
+  <tr><td><b>L2</b> (6–8岁)</td><td>warm-up, lead-in, words (cat/cow/horse), sentence trail, wrap-up</td><td>100+ cases</td><td><span class="badge green">live 已上线</span></td></tr>
+  <tr><td><b>L3</b> (7–9岁, A1+)</td><td>common, warm-up, lead-in ×2, words (climb/jump/fly), 5 sentence steps, wrap-up</td><td>97 cases</td><td><span class="badge green">live, all passing 全部通过</span></td></tr>
+  <tr><td><b>L5</b> (11–12岁, A2+)</td><td>common, warm-up, lead-in ×2</td><td>32 cases</td><td><span class="badge green">live, all passing 全部通过</span></td></tr>
+  <tr><td><b>新手引导体验课</b> trial demo</td><td>common, render-content data file, lead-in pre+post</td><td>24 cases</td><td><span class="badge green">live, 24/24 通过</span></td></tr>
+</table>
+
+<div class="card">
+  All templates, checkers, cases, and this report are version-controlled; every fix is one commit with the device bug and reasoning in the message.<br>
+  <span style="color:var(--zh)">所有模板、检查器、测试用例和本报告均纳入版本管理；每个修复对应一次提交，提交信息中记录对应的真机 bug 与修复理由。</span>
+</div>
+
+<footer>
+  Prompt Report · 课程 Prompt 质量报告 — enforced by code in <code>eval/</code>, not by opinion · 所有规则由代码强制执行，而非主观判断
+</footer>
+
+</div>
+</body>
+</html>
