@@ -27,16 +27,15 @@ cases:
     max_replies: 4
     bridge: forbidden
 
-  - id: configured-arabic-not-child-language
+  - id: arabic-bridge-works
     support_language: Arabic
-    turns: ["什么？", "我不明白。", "cow", "moo", "no"]
+    turns: ["ماذا؟", "أنا لا أفهم.", "cow", "moo", "no"]
     max_replies: 6
     bridge: required
     bridge_script: arabic
 
   - id: no-configured-language
     support_language: none
-    turns: ["What?", "I don't understand", "", "moo", "no"]
+    turns: ["What?", "I don't understand", "", "no"]
     max_replies: 5
     bridge: forbidden
-
