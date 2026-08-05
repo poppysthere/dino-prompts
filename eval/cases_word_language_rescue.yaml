@@ -1,0 +1,42 @@
+# Experimental L2 cow cases. One language bridge is allowed only after a real
+# comprehension block and only in the configured support language.
+
+cases:
+  - id: confused-then-english-works
+    support_language: Chinese
+    turns: ["什么？", "cow", "moo", "no"]
+    max_replies: 5
+    bridge: forbidden
+
+  - id: chinese-bridge-works
+    support_language: Chinese
+    turns: ["什么？", "我还是不明白。", "cow", "moo", "I don't know"]
+    max_replies: 6
+    bridge: required
+    bridge_script: cjk
+
+  - id: correct-local-meaning-is-not-stuck
+    support_language: Chinese
+    turns: ["奶牛！", "cow", "moo", "no"]
+    max_replies: 5
+    bridge: forbidden
+
+  - id: approximate-cow-is-not-stuck
+    support_language: Chinese
+    turns: ["How?", "moo", "no"]
+    max_replies: 4
+    bridge: forbidden
+
+  - id: configured-arabic-not-child-language
+    support_language: Arabic
+    turns: ["什么？", "我不明白。", "cow", "moo", "no"]
+    max_replies: 6
+    bridge: required
+    bridge_script: arabic
+
+  - id: no-configured-language
+    support_language: none
+    turns: ["What?", "I don't understand", "", "moo", "no"]
+    max_replies: 5
+    bridge: forbidden
+

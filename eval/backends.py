@@ -1,6 +1,6 @@
 """Model backends for the eval runner and judge.
 
-Three backends, selected with EVAL_BACKEND (or --backend):
+Four backends, selected with EVAL_BACKEND (or --backend):
   forge  — the Prompt Forge debug API (same models the app uses). Needs:
              FORGE_BASE_URL   e.g. http://ec2-....amazonaws.com:8888/api
              FORGE_TOKEN      (or FORGE_EMAIL + FORGE_PASSWORD to login)
@@ -8,6 +8,10 @@ Three backends, selected with EVAL_BACKEND (or --backend):
              FORGE_MODEL      model name as shown in the forge model picker
   openai — any OpenAI-compatible chat completions endpoint. Needs:
              EVAL_API_BASE, EVAL_API_KEY, EVAL_MODEL
+  azure  — a direct Azure OpenAI deployment. Needs:
+             AZURE_OPENAI_ENDPOINT, AZURE_OPENAI_API_KEY,
+             AZURE_OPENAI_API_VERSION, AZURE_OPENAI_DEPLOYMENT
+             Optional: AZURE_OPENAI_TIMEOUT (default 180 seconds)
   mock   — no network; replays scripted good-teacher replies. For testing the
            pipeline itself (runner -> transcript -> checker) without a model.
 """
@@ -16,6 +20,7 @@ import os
 import socket
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 
 
@@ -25,7 +30,7 @@ class Backend:
         raise NotImplementedError
 
 
-def _post_json(url: str, payload: dict, headers: dict) -> dict:
+def _post_json(url: str, payload: dict, headers: dict, timeout: int = 90) -> dict:
     # The Forge ALB throws intermittent 400/5xx under load (seen 2026-07-15,
     # identical request succeeds on retry) — retry transient failures.
     last = None
@@ -37,7 +42,7 @@ def _post_json(url: str, payload: dict, headers: dict) -> dict:
             method="POST",
         )
         try:
-            with urllib.request.urlopen(req, timeout=90) as resp:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
                 return json.loads(resp.read().decode())
         except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError,
                 socket.timeout) as e:  # socket.timeout != TimeoutError before 3.10
@@ -105,6 +110,31 @@ class OpenAIBackend(Backend):
         return res["choices"][0]["message"]["content"]
 
 
+class AzureOpenAIBackend(Backend):
+    """Direct Azure OpenAI deployment using the deployment-based chat API."""
+
+    def __init__(self):
+        self.endpoint = os.environ["AZURE_OPENAI_ENDPOINT"].rstrip("/")
+        self.key = os.environ["AZURE_OPENAI_API_KEY"]
+        self.api_version = os.environ["AZURE_OPENAI_API_VERSION"]
+        self.deployment = os.environ["AZURE_OPENAI_DEPLOYMENT"]
+        self.timeout = int(os.environ.get("AZURE_OPENAI_TIMEOUT", "180"))
+
+    def chat(self, system_prompt, messages):
+        payload = {
+            "messages": [{"role": "system", "content": system_prompt}]
+            + [{"role": m["role"], "content": m["content"]} for m in messages],
+        }
+        deployment = urllib.parse.quote(self.deployment, safe="")
+        version = urllib.parse.quote(self.api_version, safe="")
+        url = (
+            f"{self.endpoint}/openai/deployments/{deployment}/chat/completions"
+            f"?api-version={version}"
+        )
+        res = _post_json(url, payload, {"api-key": self.key}, timeout=self.timeout)
+        return res["choices"][0]["message"]["content"]
+
+
 class MockBackend(Backend):
     """Deterministic well-behaved teacher, driven by the page manifest.
 
@@ -147,6 +177,8 @@ def make_backend(name: str, page: dict = None) -> Backend:
         return ForgeBackend()
     if name == "openai":
         return OpenAIBackend()
+    if name == "azure":
+        return AzureOpenAIBackend()
     if name == "mock":
         return MockBackend(page or {})
     raise ValueError(f"unknown backend: {name}")

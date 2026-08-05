@@ -52,6 +52,14 @@ python3 eval/runner.py --backend forge --runs 10  # pass = >=9/10 clean per case
 export EVAL_API_BASE=... EVAL_API_KEY=... EVAL_MODEL=...
 python3 eval/judge.py eval/runs/<run_id>/ --backend openai
 
+# direct Azure OpenAI run for the language-rescue experiment:
+export AZURE_OPENAI_ENDPOINT=https://YOUR-RESOURCE.openai.azure.com
+export AZURE_OPENAI_API_KEY=...  # local shell only; never commit it
+export AZURE_OPENAI_API_VERSION=2025-04-01-preview
+export AZURE_OPENAI_DEPLOYMENT=gpt-5.4-mini
+export AZURE_OPENAI_TIMEOUT=180
+python3 eval/run_word_language_rescue.py
+
 # check one transcript by hand:
 python3 eval/checker.py path/to/transcript.json
 ```
