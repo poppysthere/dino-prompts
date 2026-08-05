@@ -38,9 +38,14 @@ def check(tr):
     if tr["bridge"] == "forbidden" and bridge_replies:
         issues.append(f"unexpected support-language reply(s): {bridge_replies}")
     if tr["bridge"] == "required":
-        if len(bridge_replies) != 1:
+        expected_replies = tr.get("bridge_replies")
+        if expected_replies is not None and bridge_replies != expected_replies:
+            issues.append(f"support-language replies were {bridge_replies}, expected {expected_replies}")
+        elif expected_replies is None and len(bridge_replies) != 1:
             issues.append(f"expected exactly one support-language bridge, got {bridge_replies}")
-        elif not expected.search(replies[bridge_replies[0] - 1]):
+        elif not bridge_replies:
+            issues.append("expected support-language bridge, got none")
+        elif not all(expected.search(replies[i - 1]) for i in bridge_replies):
             issues.append("bridge used the wrong writing system")
         elif "cow" not in replies[bridge_replies[0] - 1].lower():
             issues.append("bridge did not return immediately to English target 'cow'")
@@ -66,6 +71,16 @@ def check(tr):
                     issues.append("moo bridge did not return to a tiny English moo invitation")
                 if re.search(r"say[, ]+cow", bridge, re.I):
                     issues.append("moo question incorrectly returned to teaching cow")
+            if job == "contextual_rescue" and tr.get("bridge_script") == "cjk":
+                first = replies[bridge_replies[0] - 1]
+                second = replies[bridge_replies[1] - 1]
+                last = replies[bridge_replies[-1] - 1]
+                if "Cow 就是牛" not in first:
+                    issues.append("first meaning bridge is not natural Chinese")
+                if re.search(r"say[, ]+cow", second, re.I):
+                    issues.append("continued drilling cow after meaning rescue failed")
+                if "蛋糕" not in last or "牛的叫声" in last:
+                    issues.append("final confusion did not explain the current cake question")
             if job == "instruction" and tr.get("bridge_script") == "arabic":
                 if not re.search(r"(?:قل|اسمع|انظر|اختر)", bridge):
                     issues.append("Arabic bridge did not give a concrete instruction")

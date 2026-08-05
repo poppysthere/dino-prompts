@@ -79,3 +79,12 @@ cases:
     bridge_script: cjk
     bridge_job: moo_meaning
     bridge_reply: 3
+
+  - id: chinese-meaning-still-confused-then-wonder-confused
+    support_language: Chinese
+    turns: ["Cow 是什么意思？", "什么？听不懂。", "I don't know.", "什么？", "no"]
+    max_replies: 6
+    bridge: required
+    bridge_script: cjk
+    bridge_job: contextual_rescue
+    bridge_replies: [2, 3, 5]
