@@ -52,3 +52,21 @@ cases:
     turns: ["What?", "I don't understand", "", "no"]
     max_replies: 5
     bridge: forbidden
+
+  - id: no-configured-language-chinese-help
+    support_language: none
+    turns: ["要做什么？", "cow", "moo", "no"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: instruction
+    bridge_reply: 2
+
+  - id: no-configured-language-chinese-meaning
+    support_language: none
+    turns: ["cow是什么意思？", "cow", "moo", "no"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: meaning
+    bridge_reply: 2
