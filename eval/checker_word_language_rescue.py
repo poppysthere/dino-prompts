@@ -8,6 +8,7 @@ import sys
 CONTROL = re.compile(r"\[(?:STUDENT_TALK|TEMPLATE_FINISH|NEXT_STEP|WORD_EVALUATION)\]")
 CJK = re.compile(r"[\u3400-\u9fff]")
 ARABIC = re.compile(r"[\u0600-\u06ff]")
+BANNED_TEACHING = re.compile(r"\b(?:say it with me|repeat after me|one more time)\b", re.I)
 
 
 def check(tr):
@@ -24,6 +25,13 @@ def check(tr):
             issues.append(f"reply {i}: [WORD_EVALUATION] is forbidden")
         if CJK.search(reply) or ARABIC.search(reply):
             bridge_replies.append(i)
+        if BANNED_TEACHING.search(reply):
+            issues.append(f"reply {i}: banned teaching phrase")
+        spoken = re.sub(r"\[[A-Z_]+\]", "", reply)
+        for sentence in re.split(r"[.!?]+", spoken):
+            words = re.findall(r"[A-Za-z]+(?:'[A-Za-z]+)?", sentence)
+            if len(words) > 6:
+                issues.append(f"reply {i}: English sentence too long ({len(words)} words)")
         if i > 1 and "Mouse sees a cow" in reply:
             issues.append(f"reply {i}: restarted the page")
 
@@ -36,6 +44,24 @@ def check(tr):
             issues.append("bridge used the wrong writing system")
         elif "cow" not in replies[bridge_replies[0] - 1].lower():
             issues.append("bridge did not return immediately to English target 'cow'")
+        else:
+            bridge = replies[bridge_replies[0] - 1]
+            expected_reply = tr.get("bridge_reply")
+            if expected_reply and bridge_replies[0] != expected_reply:
+                issues.append(
+                    f"support-language bridge came on reply {bridge_replies[0]}, "
+                    f"expected reply {expected_reply}"
+                )
+            job = tr.get("bridge_job")
+            if job == "instruction" and tr.get("bridge_script") == "cjk":
+                if not re.search(r"[听说看选]", bridge):
+                    issues.append("Chinese bridge did not give a concrete instruction")
+            if job == "meaning" and tr.get("bridge_script") == "cjk":
+                if "牛" not in bridge:
+                    issues.append("Chinese meaning bridge did not give the target meaning")
+            if job == "instruction" and tr.get("bridge_script") == "arabic":
+                if not re.search(r"(?:قل|اسمع|انظر|اختر)", bridge):
+                    issues.append("Arabic bridge did not give a concrete instruction")
 
     if len(replies) > tr["max_replies"]:
         issues.append(f"too many replies: {len(replies)} > {tr['max_replies']}")
@@ -63,4 +89,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

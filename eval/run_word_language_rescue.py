@@ -81,6 +81,8 @@ def run_case(backend, case):
         "support_language": case["support_language"],
         "bridge": case["bridge"],
         "bridge_script": case.get("bridge_script"),
+        "bridge_job": case.get("bridge_job"),
+        "bridge_reply": case.get("bridge_reply"),
         "max_replies": case["max_replies"],
         "messages": transcript,
     }

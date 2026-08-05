@@ -4,16 +4,27 @@
 cases:
   - id: confused-then-english-works
     support_language: Chinese
-    turns: ["什么？", "cow", "moo", "no"]
+    turns: ["What?", "cow", "moo", "no"]
     max_replies: 5
     bridge: forbidden
 
   - id: chinese-bridge-works
     support_language: Chinese
-    turns: ["什么？", "我还是不明白。", "cow", "moo", "I don't know"]
-    max_replies: 6
+    turns: ["要做什么？", "cow", "moo", "I don't know"]
+    max_replies: 5
     bridge: required
     bridge_script: cjk
+    bridge_job: instruction
+    bridge_reply: 2
+
+  - id: chinese-meaning-bridge
+    support_language: Chinese
+    turns: ["cow是什么意思？", "cow", "moo", "no"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: meaning
+    bridge_reply: 2
 
   - id: correct-local-meaning-is-not-stuck
     support_language: Chinese
@@ -29,10 +40,12 @@ cases:
 
   - id: arabic-bridge-works
     support_language: Arabic
-    turns: ["ماذا؟", "أنا لا أفهم.", "cow", "moo", "no"]
-    max_replies: 6
+    turns: ["ماذا أفعل؟", "cow", "moo", "no"]
+    max_replies: 5
     bridge: required
     bridge_script: arabic
+    bridge_job: instruction
+    bridge_reply: 2
 
   - id: no-configured-language
     support_language: none
