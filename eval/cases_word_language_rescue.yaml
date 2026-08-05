@@ -70,3 +70,12 @@ cases:
     bridge_script: cjk
     bridge_job: meaning
     bridge_reply: 2
+
+  - id: chinese-moo-meaning
+    support_language: Chinese
+    turns: ["cow", "什么是moo moo？", "moo moo", "no"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: moo_meaning
+    bridge_reply: 3

@@ -59,6 +59,13 @@ def check(tr):
             if job == "meaning" and tr.get("bridge_script") == "cjk":
                 if "牛" not in bridge:
                     issues.append("Chinese meaning bridge did not give the target meaning")
+            if job == "moo_meaning" and tr.get("bridge_script") == "cjk":
+                if not re.search(r"牛.*(?:叫声|声音)", bridge):
+                    issues.append("Chinese moo bridge did not explain that moo is a cow sound")
+                if not re.search(r"(?:you say|say)[, ]+moo moo", bridge, re.I):
+                    issues.append("moo bridge did not return to a tiny English moo invitation")
+                if re.search(r"say[, ]+cow", bridge, re.I):
+                    issues.append("moo question incorrectly returned to teaching cow")
             if job == "instruction" and tr.get("bridge_script") == "arabic":
                 if not re.search(r"(?:قل|اسمع|انظر|اختر)", bridge):
                     issues.append("Arabic bridge did not give a concrete instruction")
