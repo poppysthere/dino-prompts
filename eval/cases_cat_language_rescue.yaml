@@ -1,0 +1,108 @@
+# Experimental L2 cat cases. One language bridge is allowed only after a real
+# comprehension block and only in the configured support language.
+
+cases:
+  - id: confused-then-english-works
+    support_language: Chinese
+    turns: ["What?", "cat", "meow", "no"]
+    max_replies: 5
+    bridge: forbidden
+
+  - id: chinese-bridge-works
+    support_language: Chinese
+    turns: ["要做什么？", "cat", "meow", "I don't know"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: instruction
+    bridge_reply: 2
+
+  - id: chinese-meaning-bridge
+    support_language: Chinese
+    turns: ["cat是什么意思？", "cat", "meow", "no"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: meaning
+    bridge_reply: 2
+
+  - id: correct-local-meaning-is-not-stuck
+    support_language: Chinese
+    turns: ["小猫！", "cat", "meow", "no"]
+    max_replies: 5
+    bridge: forbidden
+
+  - id: approximate-cat-is-not-stuck
+    support_language: Chinese
+    turns: ["kat", "meow", "no"]
+    max_replies: 4
+    bridge: forbidden
+
+  - id: previous-cow-is-not-cat
+    support_language: Chinese
+    turns: ["cow", "cat", "meow", "no"]
+    max_replies: 5
+    bridge: forbidden
+
+  - id: arabic-bridge-works
+    support_language: Arabic
+    turns: ["ماذا أفعل؟", "cat", "meow", "no"]
+    max_replies: 5
+    bridge: required
+    bridge_script: arabic
+    bridge_job: instruction
+    bridge_reply: 2
+
+  - id: no-configured-language
+    support_language: none
+    turns: ["What?", "I don't understand", "", "no"]
+    max_replies: 3
+    bridge: forbidden
+    rescue_exit: true
+
+  - id: no-configured-language-chinese-help
+    support_language: none
+    turns: ["要做什么？", "cat", "meow", "no"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: instruction
+    bridge_reply: 2
+
+  - id: no-configured-language-chinese-meaning
+    support_language: none
+    turns: ["cat是什么意思？", "cat", "meow", "no"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: meaning
+    bridge_reply: 2
+
+  - id: chinese-meow-meaning
+    support_language: Chinese
+    turns: ["cat", "什么是meow meow？", "meow meow", "no"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: meow_meaning
+    bridge_reply: 3
+
+  - id: chinese-meaning-still-confused-then-wonder-confused
+    support_language: Chinese
+    turns: ["Cat 是什么意思？", "什么？听不懂。", "I don't know.", "什么？", "no"]
+    max_replies: 3
+    bridge: required
+    bridge_script: cjk
+    bridge_job: rescue_exit
+    bridge_replies: [2, 3]
+    rescue_exit: true
+
+  - id: child-help-overrides-word-goal
+    support_language: none
+    turns: ["Yup. 什么呀？", "我不懂。我不会说。"]
+    max_replies: 3
+    bridge: required
+    bridge_script: cjk
+    bridge_job: rescue_exit
+    bridge_replies: [2, 3]
+    rescue_exit: true
