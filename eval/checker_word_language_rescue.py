@@ -81,6 +81,21 @@ def check(tr):
                     issues.append("continued drilling cow after meaning rescue failed")
                 if "蛋糕" not in last or "牛的叫声" in last:
                     issues.append("final confusion did not explain the current cake question")
+            if job == "rescue_exit" and tr.get("bridge_script") == "cjk":
+                first = replies[bridge_replies[0] - 1]
+                last = replies[bridge_replies[-1] - 1]
+                if "牛" not in first:
+                    issues.append("first help response did not explain cow")
+                if re.search(r"(?:say|you say)[, ]+cow", first, re.I):
+                    issues.append("first help response immediately demanded cow")
+                if not re.search(r"不用说|不需要说|可以不说", last):
+                    issues.append("rescue exit did not remove speaking pressure")
+                if not re.search(r"牛", last):
+                    issues.append("rescue exit did not answer the child's meaning problem")
+                if re.search(r"(?:say|you say)[, ]+cow", last, re.I):
+                    issues.append("rescue exit repeated the cow demand")
+                if "[TEMPLATE_FINISH]" not in last:
+                    issues.append("rescue exit did not gently finish the activity")
             if job == "instruction" and tr.get("bridge_script") == "arabic":
                 if not re.search(r"(?:قل|اسمع|انظر|اختر)", bridge):
                     issues.append("Arabic bridge did not give a concrete instruction")
@@ -89,7 +104,7 @@ def check(tr):
         issues.append(f"too many replies: {len(replies)} > {tr['max_replies']}")
     if not replies or "[TEMPLATE_FINISH]" not in replies[-1]:
         issues.append("page did not finish")
-    if sum("Who ate the cake" in r for r in replies) != 1:
+    if not tr.get("rescue_exit") and sum("Who ate the cake" in r for r in replies) != 1:
         issues.append("cake wonder must appear exactly once")
     return issues
 

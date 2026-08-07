@@ -83,6 +83,8 @@ def run_case(backend, case):
         "bridge_script": case.get("bridge_script"),
         "bridge_job": case.get("bridge_job"),
         "bridge_reply": case.get("bridge_reply"),
+        "bridge_replies": case.get("bridge_replies"),
+        "rescue_exit": case.get("rescue_exit", False),
         "max_replies": case["max_replies"],
         "messages": transcript,
     }
