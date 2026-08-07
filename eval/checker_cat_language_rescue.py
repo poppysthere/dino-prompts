@@ -10,6 +10,7 @@ CJK = re.compile(r"[\u3400-\u9fff]")
 ARABIC = re.compile(r"[\u0600-\u06ff]")
 BANNED_TEACHING = re.compile(r"\b(?:say it with me|repeat after me|one more time)\b", re.I)
 ROBOTIC_CHINESE = re.compile(r"(?:^|[。！？])\s*(?:猫|听|说|看图片|先听|你不用说|我们先继续)\s*[。！？]")
+UNNATURAL_CAT = re.compile(r"good look|we go to cat|cat\s*就是小猫|^\s*什么意思[？?]", re.I)
 
 
 def check(tr):
@@ -30,6 +31,11 @@ def check(tr):
             issues.append(f"reply {i}: banned teaching phrase")
         if ROBOTIC_CHINESE.search(reply):
             issues.append(f"reply {i}: robotic or unnatural Chinese teacher language")
+        if UNNATURAL_CAT.search(reply):
+            issues.append(f"reply {i}: unnatural or context-insensitive cat language")
+        spoken_lower = re.sub(r"\[[A-Z_]+\]", "", reply).lower()
+        if re.search(r"\b(?:move on|continue|next)\b", spoken_lower) and "[TEMPLATE_FINISH]" not in reply:
+            issues.append(f"reply {i}: announced a transition without finishing the page")
         spoken = re.sub(r"\[[A-Z_]+\]", "", reply)
         for sentence in re.split(r"[.!?]+", spoken):
             words = re.findall(r"[A-Za-z]+(?:'[A-Za-z]+)?", sentence)
@@ -107,6 +113,24 @@ def check(tr):
                     issues.append("rescue exit repeated the cat demand")
                 if "[TEMPLATE_FINISH]" not in last:
                     issues.append("rescue exit did not gently finish the activity")
+            if job == "contextual_help_flow" and tr.get("bridge_script") == "cjk":
+                silence_nudge = replies[1]
+                first_help = replies[2]
+                direction_help = replies[3]
+                meow_help = replies[5]
+                slow_help = replies[6]
+                if "Good look" in silence_nudge or "Look here" not in silence_nudge:
+                    issues.append("first silence did not get a natural cat nudge")
+                if "先听我说吧" not in first_help or "That's a cat" not in first_help:
+                    issues.append("first confusion did not get natural instruction plus English model")
+                if "还在学 cat" not in direction_help or "We go to cat" in direction_help:
+                    issues.append("where-next question was not answered naturally")
+                if "猫的叫声" not in meow_help or "Cat 就是" in meow_help:
+                    issues.append("meaning question after meow explained the wrong item")
+                if "我慢一点" not in slow_help or not re.search(r"Meow\.\s*Meow\.", slow_help, re.I):
+                    issues.append("slow-down request did not slow the current meow target")
+                if "[TEMPLATE_FINISH]" in slow_help:
+                    issues.append("slow-down request incorrectly ended the activity")
             if job == "instruction" and tr.get("bridge_script") == "arabic":
                 if not re.search(r"(?:قل|اسمع|استمع|انظر|اختر)", bridge):
                     issues.append("Arabic bridge did not give a concrete instruction")

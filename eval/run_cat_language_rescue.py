@@ -64,7 +64,7 @@ def run_case(backend, case):
     transcript = []
     turns = case["turns"]
     turn_i = 0
-    for _ in range(7):
+    for _ in range(10):
         reply = backend.chat(compose(case["support_language"]), messages)
         messages.append({"role": "assistant", "content": reply})
         transcript.append({"role": "assistant", "text": reply})
@@ -118,4 +118,3 @@ def main():
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
