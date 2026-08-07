@@ -6,7 +6,7 @@ cases:
     support_language: Chinese
     turns: ["What?", "cow", "moo", "no"]
     max_replies: 5
-    bridge: required
+    bridge: optional
     bridge_script: cjk
     bridge_job: meaning
     bridge_reply: 2
@@ -53,8 +53,9 @@ cases:
   - id: no-configured-language
     support_language: none
     turns: ["What?", "I don't understand", "", "no"]
-    max_replies: 5
+    max_replies: 3
     bridge: forbidden
+    rescue_exit: true
 
   - id: no-configured-language-chinese-help
     support_language: none

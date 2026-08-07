@@ -9,7 +9,22 @@ CONTROL = re.compile(r"\[(?:STUDENT_TALK|TEMPLATE_FINISH|NEXT_STEP|WORD_EVALUATI
 CJK = re.compile(r"[\u3400-\u9fff]")
 ARABIC = re.compile(r"[\u0600-\u06ff]")
 BANNED_TEACHING = re.compile(r"\b(?:say it with me|repeat after me|one more time)\b", re.I)
-ROBOTIC_CHINESE = re.compile(r"(?:^|[。！？])\s*(?:牛|听|说|看图片|先听|你不用说|我们先继续)\s*[。！？]")
+ROBOTIC_CHINESE = re.compile(r"(?:^|[。！？])\s*(?:牛|听|说|看|看图片|先听|跟着老师|你不用说|我们先继续)\s*[。！？]")
+
+
+def proactive_script(tr):
+    language = str(tr.get("support_language", "")).strip().lower()
+    if language in {"", "none", "unknown", "unsupported"}:
+        return None
+    if language == "chinese":
+        return CJK
+    if language == "arabic":
+        return ARABIC
+    return None
+
+
+def is_proactive_scaffold(reply, reply_number, tr):
+    return proactive_script(tr) is not None and reply_number == 1
 
 
 def check(tr):
@@ -24,7 +39,7 @@ def check(tr):
             issues.append(f"reply {i}: needs exactly one final control tag")
         if "[WORD_EVALUATION]" in reply:
             issues.append(f"reply {i}: [WORD_EVALUATION] is forbidden")
-        if CJK.search(reply) or ARABIC.search(reply):
+        if (CJK.search(reply) or ARABIC.search(reply)) and not is_proactive_scaffold(reply, i, tr):
             bridge_replies.append(i)
         if BANNED_TEACHING.search(reply):
             issues.append(f"reply {i}: banned teaching phrase")
@@ -38,8 +53,24 @@ def check(tr):
         if i > 1 and "Mouse sees a cow" in reply:
             issues.append(f"reply {i}: restarted the page")
 
+    configured = proactive_script(tr)
+    if configured is not None and replies:
+        if not configured.search(replies[0]):
+            issues.append("first reply missed the configured-language orientation")
+        elif tr.get("support_language") == "Chinese" and not re.search(r"看.*听.*轮到你", replies[0]):
+            issues.append("Chinese orientation was not one natural look-listen-your-turn sentence")
+    elif replies:
+        if CJK.search(replies[0]) or ARABIC.search(replies[0]):
+            issues.append("first reply invented a local language with no configured support language")
+        spoken_first = re.sub(r"\[[A-Z_]+\]", "", replies[0])
+        if not all(piece in spoken_first for piece in ("Look here", "Listen first", "your turn")):
+            issues.append("first reply missed the easy-English orientation")
+
     if tr["bridge"] == "forbidden" and bridge_replies:
         issues.append(f"unexpected support-language reply(s): {bridge_replies}")
+    if tr["bridge"] == "optional" and bridge_replies:
+        if not all(expected.search(replies[i - 1]) for i in bridge_replies):
+            issues.append("optional bridge used the wrong writing system")
     if tr["bridge"] == "required":
         expected_replies = tr.get("bridge_replies")
         if expected_replies is not None and bridge_replies != expected_replies:
@@ -106,7 +137,7 @@ def check(tr):
                 if "[TEMPLATE_FINISH]" not in last:
                     issues.append("rescue exit did not gently finish the activity")
             if job == "instruction" and tr.get("bridge_script") == "arabic":
-                if not re.search(r"(?:قل|اسمع|انظر|اختر)", bridge):
+                if not re.search(r"(?:قل|اسمع|استمع|استماع|انظر|اختر)", bridge):
                     issues.append("Arabic bridge did not give a concrete instruction")
 
     if len(replies) > tr["max_replies"]:

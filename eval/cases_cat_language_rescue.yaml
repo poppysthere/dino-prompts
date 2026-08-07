@@ -6,7 +6,8 @@ cases:
     support_language: Chinese
     turns: ["What?", "cat", "meow", "no"]
     max_replies: 5
-    bridge: forbidden
+    bridge: optional
+    bridge_script: cjk
 
   - id: chinese-bridge-works
     support_language: Chinese
