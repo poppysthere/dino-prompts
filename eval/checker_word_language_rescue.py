@@ -9,6 +9,7 @@ CONTROL = re.compile(r"\[(?:STUDENT_TALK|TEMPLATE_FINISH|NEXT_STEP|WORD_EVALUATI
 CJK = re.compile(r"[\u3400-\u9fff]")
 ARABIC = re.compile(r"[\u0600-\u06ff]")
 BANNED_TEACHING = re.compile(r"\b(?:say it with me|repeat after me|one more time)\b", re.I)
+ROBOTIC_CHINESE = re.compile(r"(?:^|[。！？])\s*(?:牛|听|说|看图片|先听|你不用说|我们先继续)\s*[。！？]")
 
 
 def check(tr):
@@ -27,6 +28,8 @@ def check(tr):
             bridge_replies.append(i)
         if BANNED_TEACHING.search(reply):
             issues.append(f"reply {i}: banned teaching phrase")
+        if ROBOTIC_CHINESE.search(reply):
+            issues.append(f"reply {i}: robotic or unnatural Chinese teacher language")
         spoken = re.sub(r"\[[A-Z_]+\]", "", reply)
         for sentence in re.split(r"[.!?]+", spoken):
             words = re.findall(r"[A-Za-z]+(?:'[A-Za-z]+)?", sentence)
@@ -86,12 +89,18 @@ def check(tr):
                 last = replies[bridge_replies[-1] - 1]
                 if "牛" not in first:
                     issues.append("first help response did not explain cow")
+                if not re.search(r"先听我说吧|看这里", first):
+                    issues.append("first help response gave no clear local instruction")
                 if re.search(r"(?:say|you say)[, ]+cow", first, re.I):
                     issues.append("first help response immediately demanded cow")
-                if not re.search(r"不用说|不需要说|可以不说", last):
-                    issues.append("rescue exit did not remove speaking pressure")
-                if not re.search(r"牛", last):
-                    issues.append("rescue exit did not answer the child's meaning problem")
+                if not re.search(r"没关系[^。！？]*先听我说吧", last):
+                    issues.append("rescue exit did not use natural reassurance plus instruction")
+                if re.search(r"你不用说|不需要说|可以不说", last):
+                    issues.append("rescue exit dismissed the child from speaking")
+                if not re.search(r"先听我说吧|看这里", last):
+                    issues.append("rescue exit gave no clear local instruction")
+                if not re.search(r"that's a cow", last, re.I):
+                    issues.append("rescue exit did not return gently to English")
                 if re.search(r"(?:say|you say)[, ]+cow", last, re.I):
                     issues.append("rescue exit repeated the cow demand")
                 if "[TEMPLATE_FINISH]" not in last:
