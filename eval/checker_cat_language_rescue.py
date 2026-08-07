@@ -64,7 +64,7 @@ def check(tr):
     if configured is not None and replies:
         if not configured.search(replies[0]):
             issues.append("first reply missed the configured-language orientation")
-        elif tr.get("support_language") == "Chinese" and not re.search(r"看.*听.*轮到你", replies[0]):
+        elif str(tr.get("support_language", "")).strip().lower() == "chinese" and not re.search(r"看.*听.*轮到你", replies[0]):
             issues.append("Chinese orientation was not one natural look-listen-your-turn sentence")
     elif replies:
         if CJK.search(replies[0]) or ARABIC.search(replies[0]):

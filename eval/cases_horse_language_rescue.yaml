@@ -1,6 +1,12 @@
 # Experimental L2 horse cases: child rescue plus horse-specific ASR and spoiler guards.
 
 cases:
+  - id: lowercase-chinese-opening
+    support_language: chinese
+    turns: ["horse", "neigh", "no"]
+    max_replies: 4
+    bridge: forbidden
+
   - id: confused-then-english-works
     support_language: Chinese
     turns: ["What?", "horse", "neigh", "no"]

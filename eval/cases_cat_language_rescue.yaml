@@ -2,6 +2,12 @@
 # comprehension block and only in the configured support language.
 
 cases:
+  - id: lowercase-chinese-opening
+    support_language: chinese
+    turns: ["cat", "meow", "no"]
+    max_replies: 4
+    bridge: forbidden
+
   - id: confused-then-english-works
     support_language: Chinese
     turns: ["What?", "cat", "meow", "no"]
