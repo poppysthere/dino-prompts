@@ -57,14 +57,14 @@ def check(tr):
     if configured is not None and replies:
         if not configured.search(replies[0]):
             issues.append("first reply missed the configured-language orientation")
-        elif str(tr.get("support_language", "")).strip().lower() == "chinese" and not re.search(r"看.*听.*轮到你", replies[0]):
-            issues.append("Chinese orientation was not one natural look-listen-your-turn sentence")
+        elif str(tr.get("support_language", "")).strip().lower() == "chinese" and not re.search(r"(?:快看|咦|再看看).*谁.*(?:试试|说说看|轮到你)", replies[0]):
+            issues.append("Chinese opening did not use a natural discovery-model-invitation flow")
     elif replies:
         if CJK.search(replies[0]) or ARABIC.search(replies[0]):
             issues.append("first reply invented a local language with no configured support language")
         spoken_first = re.sub(r"\[[A-Z_]+\]", "", replies[0])
-        if not all(piece in spoken_first for piece in ("Look here", "Listen first", "your turn")):
-            issues.append("first reply missed the easy-English orientation")
+        if not re.search(r"\b(?:Look|look)\b", spoken_first) or not re.search(r"\b(?:Your turn|You try|Now you)\b", spoken_first, re.I):
+            issues.append("first reply missed the easy-English discovery and invitation cues")
 
     if tr["bridge"] == "forbidden" and bridge_replies:
         issues.append(f"unexpected support-language reply(s): {bridge_replies}")
