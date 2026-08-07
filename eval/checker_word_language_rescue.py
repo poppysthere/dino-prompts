@@ -136,6 +136,24 @@ def check(tr):
                     issues.append("rescue exit repeated the cow demand")
                 if "[TEMPLATE_FINISH]" not in last:
                     issues.append("rescue exit did not gently finish the activity")
+            if job == "exact_log_help_flow" and tr.get("bridge_script") == "cjk":
+                retry = replies[1]
+                help_reply = replies[2]
+                final = replies[3]
+                if "cow" not in retry.lower() or not re.search(r"you try|say[, ]+cow", retry, re.I):
+                    issues.append("unclear first response did not get one tiny cow retry")
+                if re.search(r"moo|Who ate the cake", retry, re.I):
+                    issues.append("unclear first response incorrectly advanced past cow")
+                if not re.search(r"我在说\s*cow|cow[^。！？]*就是牛", help_reply, re.I):
+                    issues.append("what-did-you-say request was not answered in Chinese")
+                if re.search(r"\bShe\b|Ha ha|No, cow|moo|Who ate the cake", help_reply, re.I):
+                    issues.append("Chinese help reply echoed ASR, laughed, corrected, or advanced")
+                if "你已经说出来啦" not in final or "Cow" not in final:
+                    issues.append("mixed cow success and inability was not acknowledged")
+                if re.search(r"I (?:will not|won't) say more|moo|Who ate the cake", final, re.I):
+                    issues.append("final reply refused help or incorrectly advanced")
+                if "[TEMPLATE_FINISH]" not in final:
+                    issues.append("mixed success and inability did not finish gently")
             if job == "instruction" and tr.get("bridge_script") == "arabic":
                 if not re.search(r"(?:قل|اسمع|استمع|استماع|انظر|اختر)", bridge):
                     issues.append("Arabic bridge did not give a concrete instruction")

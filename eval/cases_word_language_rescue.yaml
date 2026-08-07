@@ -109,3 +109,13 @@ cases:
     bridge_job: rescue_exit
     bridge_replies: [2, 3]
     rescue_exit: true
+
+  - id: exact-log-unclear-then-chinese-help
+    support_language: none
+    turns: ["Tomorrow. Yeah.", "你在说什么呀？ She.", "Cow. 我也不会。"]
+    max_replies: 4
+    bridge: required
+    bridge_script: cjk
+    bridge_job: exact_log_help_flow
+    bridge_replies: [3, 4]
+    rescue_exit: true
