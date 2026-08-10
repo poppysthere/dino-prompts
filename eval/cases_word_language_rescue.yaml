@@ -119,3 +119,12 @@ cases:
     bridge_job: exact_log_help_flow
     bridge_replies: [3, 4]
     rescue_exit: true
+
+  - id: current-moo-meaning-and-cut-off-speech
+    support_language: English (US)
+    turns: ["Cow 是什么意思？", "That's a cow.", "什么意思？我听不懂。", "That's a cow. 你是——", "moo", "no"]
+    max_replies: 7
+    bridge: required
+    bridge_script: cjk
+    bridge_job: human_direction_current_item
+    bridge_replies: [2, 4, 5]

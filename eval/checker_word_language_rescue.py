@@ -10,6 +10,7 @@ CJK = re.compile(r"[\u3400-\u9fff]")
 ARABIC = re.compile(r"[\u0600-\u06ff]")
 BANNED_TEACHING = re.compile(r"\b(?:say it with me|repeat after me|one more time)\b", re.I)
 ROBOTIC_CHINESE = re.compile(r"(?:^|[。！？])\s*(?:牛|听|说|看|看图片|先听|跟着老师|你不用说|我们先继续)\s*[。！？]")
+UNNATURAL_TEACHER = re.compile(r"(?:Good look|We go to (?:cow|cat|horse) now|I (?:will not|won't) say more)", re.I)
 
 
 def proactive_script(tr):
@@ -45,6 +46,8 @@ def check(tr):
             issues.append(f"reply {i}: banned teaching phrase")
         if ROBOTIC_CHINESE.search(reply):
             issues.append(f"reply {i}: robotic or unnatural Chinese teacher language")
+        if UNNATURAL_TEACHER.search(reply):
+            issues.append(f"reply {i}: unnatural teacher wording")
         spoken = re.sub(r"\[[A-Z_]+\]", "", reply)
         for sentence in re.split(r"[.!?]+", spoken):
             words = re.findall(r"[A-Za-z]+(?:'[A-Za-z]+)?", sentence)
@@ -81,7 +84,7 @@ def check(tr):
             issues.append("expected support-language bridge, got none")
         elif not all(expected.search(replies[i - 1]) for i in bridge_replies):
             issues.append("bridge used the wrong writing system")
-        elif "cow" not in replies[bridge_replies[0] - 1].lower():
+        elif tr.get("bridge_job") not in {"moo_meaning"} and "cow" not in replies[bridge_replies[0] - 1].lower():
             issues.append("bridge did not return immediately to English target 'cow'")
         else:
             bridge = replies[bridge_replies[0] - 1]
@@ -101,8 +104,10 @@ def check(tr):
             if job == "moo_meaning" and tr.get("bridge_script") == "cjk":
                 if not re.search(r"牛.*(?:叫声|声音)", bridge):
                     issues.append("Chinese moo bridge did not explain that moo is a cow sound")
-                if not re.search(r"(?:you say|say)[, ]+moo moo", bridge, re.I):
-                    issues.append("moo bridge did not return to a tiny English moo invitation")
+                if not re.search(r"先听我说吧", bridge):
+                    issues.append("moo bridge did not give one natural, clear listening instruction")
+                if not re.search(r"moo moo", bridge, re.I):
+                    issues.append("moo bridge did not model the current sound")
                 if re.search(r"say[, ]+cow", bridge, re.I):
                     issues.append("moo question incorrectly returned to teaching cow")
             if job == "contextual_rescue" and tr.get("bridge_script") == "cjk":
@@ -154,6 +159,22 @@ def check(tr):
                     issues.append("final reply refused help or incorrectly advanced")
                 if "[TEMPLATE_FINISH]" not in final:
                     issues.append("mixed success and inability did not finish gently")
+            if job == "human_direction_current_item" and tr.get("bridge_script") == "cjk":
+                cow_help = replies[1]
+                moo_help = replies[3]
+                cutoff = replies[4]
+                if "Cow 就是牛" not in cow_help or not re.search(r"先听我说吧|看这里", cow_help):
+                    issues.append("cow meaning help was not a natural explanation plus clear action")
+                if not re.search(r"Moo moo 是牛的叫声", moo_help, re.I):
+                    issues.append("current moo question was not answered directly")
+                if "先听我说吧" not in moo_help or not re.search(r"moo moo", moo_help, re.I):
+                    issues.append("moo help lacked one clear instruction and model")
+                if re.search(r"Cow 就是牛|Cow\. That's a cow", moo_help, re.I):
+                    issues.append("moo question regressed to the mastered cow meaning")
+                if not re.search(r"慢慢说.*我在听", cutoff):
+                    issues.append("cut-off speech was not met with a natural invitation to finish")
+                if re.search(r"move on|继续|TEMPLATE_FINISH", cutoff, re.I):
+                    issues.append("teacher redirected or closed while the child was still speaking")
             if job == "instruction" and tr.get("bridge_script") == "arabic":
                 if not re.search(r"(?:قل|اسمع|استمع|استماع|انظر|اختر)", bridge):
                     issues.append("Arabic bridge did not give a concrete instruction")

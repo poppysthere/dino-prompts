@@ -88,7 +88,7 @@ def check(tr):
             issues.append("expected support-language bridge, got none")
         elif not all(expected.search(replies[i - 1]) for i in bridge_replies):
             issues.append("bridge used the wrong writing system")
-        elif "cat" not in replies[bridge_replies[0] - 1].lower():
+        elif tr.get("bridge_job") not in {"meow_meaning"} and "cat" not in replies[bridge_replies[0] - 1].lower():
             issues.append("bridge did not return immediately to English target 'cat'")
         else:
             bridge = replies[bridge_replies[0] - 1]
