@@ -52,7 +52,7 @@ def compose(support_language):
         "renderContent": RENDER,
         "studentProfile": "No relevant information.",
         "name": "nina",
-        "supportLanguage": support_language,
+        "nativeLanguage": support_language,
     }
     for key, value in values.items():
         text = text.replace("{{" + key + "}}", value)
