@@ -53,6 +53,8 @@ def check(tr):
         if re.search(r"\b(?:move on|continue|next)\b", spoken_lower) and "[TEMPLATE_FINISH]" not in reply:
             issues.append(f"reply {i}: announced a transition without finishing the page")
         spoken = re.sub(r"\[[A-Z_]+\]", "", reply)
+        if spoken.count("!") > 1:
+            issues.append(f"reply {i}: too many exclamation marks ({spoken.count('!')})")
         for sentence in re.split(r"[.!?]+", spoken):
             words = re.findall(r"[A-Za-z]+(?:'[A-Za-z]+)?", sentence)
             if len(words) > 6:
@@ -64,7 +66,7 @@ def check(tr):
     if configured is not None and replies:
         if not configured.search(replies[0]):
             issues.append("first reply missed the configured-language orientation")
-        elif str(tr.get("support_language", "")).strip().lower() == "chinese" and not re.search(r"(?:快看|咦|再看看).*谁.*(?:试试|说说看|轮到你)", replies[0]):
+        elif str(tr.get("support_language", "")).strip().lower() == "chinese" and not re.search(r"(?:快看|咦|再看看).*谁.*(?:试试|说说看|轮到你|来[^。！？]*(?:说|读))", replies[0]):
             issues.append("Chinese opening did not use a natural discovery-model-invitation flow")
     elif replies:
         if CJK.search(replies[0]) or ARABIC.search(replies[0]):
@@ -88,7 +90,7 @@ def check(tr):
             issues.append("expected support-language bridge, got none")
         elif not all(expected.search(replies[i - 1]) for i in bridge_replies):
             issues.append("bridge used the wrong writing system")
-        elif tr.get("bridge_job") not in {"meow_meaning"} and "cat" not in replies[bridge_replies[0] - 1].lower():
+        elif tr.get("bridge_job") not in {"meow_meaning", "current_personal_direction"} and "cat" not in replies[bridge_replies[0] - 1].lower():
             issues.append("bridge did not return immediately to English target 'cat'")
         else:
             bridge = replies[bridge_replies[0] - 1]
@@ -164,16 +166,28 @@ def check(tr):
             if job == "instruction" and tr.get("bridge_script") == "arabic":
                 if not re.search(r"(?:قل|اسمع|استمع|استماع|انظر|اختر)", bridge):
                     issues.append("Arabic bridge did not give a concrete instruction")
+            if job == "current_personal_direction" and tr.get("bridge_script") == "cjk" and not tr.get("skip_personality_check"):
+                direction = replies[bridge_replies[0] - 1]
+                if not re.search(r"喜不喜欢猫", direction) or not re.search(r"yes.*no", direction, re.I):
+                    issues.append("late what-to-do question did not explain the current cat preference task")
+                if re.search(r"我们来学\s*cat|现在你说\s*cat|听，?\s*cat", direction, re.I):
+                    issues.append("late what-to-do question regressed to the mastered cat drill")
 
     if len(replies) > tr["max_replies"]:
         issues.append(f"too many replies: {len(replies)} > {tr['max_replies']}")
     if tr.get("case") == "previous-cow-is-not-cat" and len(replies) > 1:
         if "Cow says moo" not in replies[1] or re.search(r"YES! Cat|You got it", replies[1], re.I):
             issues.append("previous word cow was falsely accepted as cat")
+    if tr.get("case") == "what-to-do-after-cat-and-meow" and len(replies) > 2:
+        if "That was cute" not in replies[2]:
+            issues.append("real meow did not receive a specific human reaction")
     if not replies or "[TEMPLATE_FINISH]" not in replies[-1]:
         issues.append("page did not finish")
-    if not tr.get("rescue_exit") and sum("Who ate the cake" in r for r in replies) != 1:
-        issues.append("cake wonder must appear exactly once")
+    if not tr.get("rescue_exit") and not tr.get("skip_personality_check"):
+        if any("Who ate the cake" in r for r in replies):
+            issues.append("cat page fell back to the repetitive cake question")
+        if not any("I have two cats" in r and "Do you like cats" in r for r in replies):
+            issues.append("cat page missed Max's stable two-cats story")
     return issues
 
 

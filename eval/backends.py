@@ -16,6 +16,7 @@ Four backends, selected with EVAL_BACKEND (or --backend):
            pipeline itself (runner -> transcript -> checker) without a model.
 """
 import json
+import http.client
 import os
 import socket
 import time
@@ -45,7 +46,7 @@ def _post_json(url: str, payload: dict, headers: dict, timeout: int = 90) -> dic
             with urllib.request.urlopen(req, timeout=timeout) as resp:
                 return json.loads(resp.read().decode())
         except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError,
-                socket.timeout) as e:  # socket.timeout != TimeoutError before 3.10
+                socket.timeout, http.client.RemoteDisconnected) as e:  # socket.timeout != TimeoutError before 3.10
             code = getattr(e, "code", None)
             if code is not None and code not in (400, 429, 500, 502, 503, 504):
                 raise

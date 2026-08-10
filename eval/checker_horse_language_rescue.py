@@ -11,6 +11,7 @@ import checker_cat_language_rescue as shared
 def cat_equivalent(tr):
     """Reuse the mature rescue checker after mapping horse concepts to cat concepts."""
     mapped = copy.deepcopy(tr)
+    mapped["skip_personality_check"] = True
     replacements = (
         ("[TEACHER_RIDE_HORSE]", "[TEACHER_CAT_PAWS]"),
         ("HORSES", "CATS"),
@@ -52,14 +53,14 @@ def check(tr):
             issues.append(f"reply {i}: confirmed the horse as the cake culprit")
 
     if replies and "[TEMPLATE_FINISH]" in replies[-1] and not tr.get("rescue_exit"):
-        if "Let's go find out!" not in replies[-1]:
+        if "Let's go find out." not in replies[-1]:
             issues.append("normal horse close did not say Let's go find out")
         if "[TEACHER_RIDE_HORSE]" not in replies[-1]:
             issues.append("horse close missed [TEACHER_RIDE_HORSE]")
 
     case = tr.get("case")
     if case in {"house-asr-is-horse", "of-course-asr-is-horse"} and len(spoken) > 1:
-        if not re.search(r"\b(?:YES! Horse|Horse! YES|You got it)\b", spoken[1], re.I):
+        if not re.search(r"\b(?:Yes, horse|You got it)\b", spoken[1], re.I):
             issues.append(f"{case}: ASR horse try was not accepted")
         if re.search(r"say[, ]+horse", spoken[1], re.I):
             issues.append(f"{case}: ASR horse try incorrectly triggered a retry")
@@ -67,16 +68,31 @@ def check(tr):
     if case == "previous-cat-is-not-horse" and len(spoken) > 1:
         if "Cat says meow" not in spoken[1] or "horse" not in spoken[1].lower():
             issues.append("previous cat word was not handled warmly and redirected to horse")
-        if re.search(r"YES! Horse|You got it", spoken[1], re.I):
+        if re.search(r"Yes, horse|You got it", spoken[1], re.I):
             issues.append("previous cat word was falsely accepted as horse")
 
     if case == "nainai-asr-is-neigh" and len(spoken) > 2:
-        if "Funny sound" in spoken[2] or "real horses" not in spoken[2]:
+        if "Funny sound" in spoken[2] or "I want to ride one" not in spoken[2]:
             issues.append("奶奶 ASR was not accepted as a real neigh")
 
     if case == "correct-culprit-is-not-confirmed" and replies:
-        if "Hmm, maybe!" not in replies[-1]:
+        if spoiler.search(spoken[-1]):
             issues.append("correct horse guess was not kept as a mystery")
+
+    if not tr.get("rescue_exit"):
+        if any("Who ate the cake" in line for line in replies):
+            issues.append("horse page fell back to the repetitive cake question")
+        if not any("I want to ride one" in line for line in replies):
+            issues.append("horse page missed Max's natural riding wish")
+
+    if tr.get("bridge_job") == "current_personal_direction" and tr.get("bridge_script") == "cjk":
+        bridge_replies = [i for i, line in enumerate(replies, 1) if re.search(r"[\u3400-\u9fff]", line) and i != 1]
+        if bridge_replies:
+            direction = replies[bridge_replies[0] - 1]
+            if not re.search(r"想不想骑", direction) or not re.search(r"yes.*no", direction, re.I):
+                issues.append("late what-to-do question did not explain the current horse riding task")
+            if re.search(r"我们来学\s*horse|现在你说\s*horse|听，?\s*horse", direction, re.I):
+                issues.append("late what-to-do question regressed to the mastered horse drill")
 
     return issues
 

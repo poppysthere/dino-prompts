@@ -122,3 +122,12 @@ cases:
     bridge_script: cjk
     bridge_job: contextual_help_flow
     bridge_replies: [3, 4, 6, 7]
+
+  - id: what-to-do-after-cat-and-meow
+    support_language: Chinese
+    turns: ["cat", "meow", "你要干什么？", "yes"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: current_personal_direction
+    bridge_reply: 4

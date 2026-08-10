@@ -49,6 +49,8 @@ def check(tr):
         if UNNATURAL_TEACHER.search(reply):
             issues.append(f"reply {i}: unnatural teacher wording")
         spoken = re.sub(r"\[[A-Z_]+\]", "", reply)
+        if spoken.count("!") > 1:
+            issues.append(f"reply {i}: too many exclamation marks ({spoken.count('!')})")
         for sentence in re.split(r"[.!?]+", spoken):
             words = re.findall(r"[A-Za-z]+(?:'[A-Za-z]+)?", sentence)
             if len(words) > 6:
@@ -60,7 +62,7 @@ def check(tr):
     if configured is not None and replies:
         if not configured.search(replies[0]):
             issues.append("first reply missed the configured-language orientation")
-        elif str(tr.get("support_language", "")).strip().lower() == "chinese" and not re.search(r"(?:快看|咦|再看看).*谁.*(?:试试|说说看|轮到你)", replies[0]):
+        elif str(tr.get("support_language", "")).strip().lower() == "chinese" and not re.search(r"(?:快看|咦|再看看).*谁.*(?:试试|说说看|轮到你|来[^。！？]*(?:说|读))", replies[0]):
             issues.append("Chinese opening did not use a natural discovery-model-invitation flow")
     elif replies:
         if CJK.search(replies[0]) or ARABIC.search(replies[0]):
@@ -84,7 +86,7 @@ def check(tr):
             issues.append("expected support-language bridge, got none")
         elif not all(expected.search(replies[i - 1]) for i in bridge_replies):
             issues.append("bridge used the wrong writing system")
-        elif tr.get("bridge_job") not in {"moo_meaning"} and "cow" not in replies[bridge_replies[0] - 1].lower():
+        elif tr.get("bridge_job") not in {"moo_meaning", "current_personal_direction"} and "cow" not in replies[bridge_replies[0] - 1].lower():
             issues.append("bridge did not return immediately to English target 'cow'")
         else:
             bridge = replies[bridge_replies[0] - 1]
@@ -182,7 +184,7 @@ def check(tr):
                     issues.append("what-to-do question did not explain the task and child's action")
                 if "没关系" in task_help or "[STUDENT_TALK]" not in task_help:
                     issues.append("neutral task question got canned reassurance or no wait")
-                if not re.search(r"现在轮到你", then_help) or not re.search(r"你说\s*cow", then_help, re.I):
+                if not re.search(r"现在轮到你", then_help) or not re.search(r"(?:你)?说\s*cow", then_help, re.I):
                     issues.append("then-what question did not give the immediate child action")
                 if re.search(r"先听|听我说", then_help):
                     issues.append("teacher told the child to listen again after they already listened")
@@ -194,6 +196,12 @@ def check(tr):
                     issues.append("repeated moo confusion did not get a clearer natural explanation and action")
                 if re.search(r"Cow 就是牛|Cow\. That's a cow|move on|TEMPLATE_FINISH", moo_help + repeated_moo_help, re.I):
                     issues.append("moo help regressed to cow or closed before resolving the question")
+            if job == "current_personal_direction" and tr.get("bridge_script") == "cjk":
+                direction = replies[bridge_replies[0] - 1]
+                if not re.search(r"喜不喜欢牛", direction) or not re.search(r"yes.*no", direction, re.I):
+                    issues.append("late what-to-do question did not explain the current cow preference task")
+                if re.search(r"我们来学\s*cow|现在你说\s*cow|听，?\s*cow", direction, re.I):
+                    issues.append("late what-to-do question regressed to the mastered cow drill")
             if job == "instruction" and tr.get("bridge_script") == "arabic":
                 if not re.search(r"(?:قل|اسمع|استمع|استماع|انظر|اختر)", bridge):
                     issues.append("Arabic bridge did not give a concrete instruction")
@@ -202,8 +210,11 @@ def check(tr):
         issues.append(f"too many replies: {len(replies)} > {tr['max_replies']}")
     if not replies or "[TEMPLATE_FINISH]" not in replies[-1]:
         issues.append("page did not finish")
-    if not tr.get("rescue_exit") and sum("Who ate the cake" in r for r in replies) != 1:
-        issues.append("cake wonder must appear exactly once")
+    if not tr.get("rescue_exit"):
+        if any("Who ate the cake" in r for r in replies):
+            issues.append("cow page fell back to the repetitive cake question")
+        if not any("I like cows" in r and "Do you like cows" in r for r in replies):
+            issues.append("cow page missed Max's natural preference reaction")
     return issues
 
 

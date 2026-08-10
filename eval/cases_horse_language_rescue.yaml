@@ -120,3 +120,12 @@ cases:
     turns: ["horse", "neigh", "The horse ate the cake!"]
     max_replies: 4
     bridge: forbidden
+
+  - id: what-to-do-after-horse-and-neigh
+    support_language: Chinese
+    turns: ["horse", "neigh", "你要干什么？", "yes"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: current_personal_direction
+    bridge_reply: 4

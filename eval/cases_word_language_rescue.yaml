@@ -137,3 +137,12 @@ cases:
     bridge_script: cjk
     bridge_job: exact_task_direction_flow
     bridge_replies: [2, 3, 5, 6]
+
+  - id: what-to-do-after-cow-and-moo
+    support_language: Chinese
+    turns: ["cow", "moo", "你要干什么？", "yes"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: current_personal_direction
+    bridge_reply: 4
