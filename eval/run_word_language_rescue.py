@@ -64,7 +64,7 @@ def run_case(backend, case):
     transcript = []
     turns = case["turns"]
     turn_i = 0
-    for _ in range(7):
+    for _ in range(case["max_replies"]):
         reply = backend.chat(compose(case["support_language"]), messages)
         messages.append({"role": "assistant", "content": reply})
         transcript.append({"role": "assistant", "text": reply})

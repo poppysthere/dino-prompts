@@ -104,8 +104,8 @@ def check(tr):
             if job == "moo_meaning" and tr.get("bridge_script") == "cjk":
                 if not re.search(r"牛.*(?:叫声|声音)", bridge):
                     issues.append("Chinese moo bridge did not explain that moo is a cow sound")
-                if not re.search(r"先听我说吧", bridge):
-                    issues.append("moo bridge did not give one natural, clear listening instruction")
+                if not re.search(r"(?:现在)?你.*(?:学牛叫|叫一声|试试|说)", bridge):
+                    issues.append("moo bridge did not give a clear child action after the model")
                 if not re.search(r"moo moo", bridge, re.I):
                     issues.append("moo bridge did not model the current sound")
                 if re.search(r"say[, ]+cow", bridge, re.I):
@@ -125,15 +125,13 @@ def check(tr):
                 last = replies[bridge_replies[-1] - 1]
                 if "牛" not in first:
                     issues.append("first help response did not explain cow")
-                if not re.search(r"先听我说吧|看这里", first):
+                if not re.search(r"现在你说|先听我说吧|看这里", first):
                     issues.append("first help response gave no clear local instruction")
-                if re.search(r"(?:say|you say)[, ]+cow", first, re.I):
-                    issues.append("first help response immediately demanded cow")
-                if not re.search(r"没关系[^。！？]*先听我说吧", last):
+                if not re.search(r"没关系[^。！？]*听老师说", last):
                     issues.append("rescue exit did not use natural reassurance plus instruction")
                 if re.search(r"你不用说|不需要说|可以不说", last):
                     issues.append("rescue exit dismissed the child from speaking")
-                if not re.search(r"先听我说吧|看这里", last):
+                if not re.search(r"听老师说", last):
                     issues.append("rescue exit gave no clear local instruction")
                 if not re.search(r"that's a cow", last, re.I):
                     issues.append("rescue exit did not return gently to English")
@@ -163,18 +161,39 @@ def check(tr):
                 cow_help = replies[1]
                 moo_help = replies[3]
                 cutoff = replies[4]
-                if "Cow 就是牛" not in cow_help or not re.search(r"先听我说吧|看这里", cow_help):
+                if "Cow 就是牛" not in cow_help or not re.search(r"现在你说\s*cow", cow_help, re.I):
                     issues.append("cow meaning help was not a natural explanation plus clear action")
                 if not re.search(r"Moo moo 是牛的叫声", moo_help, re.I):
                     issues.append("current moo question was not answered directly")
-                if "先听我说吧" not in moo_help or not re.search(r"moo moo", moo_help, re.I):
-                    issues.append("moo help lacked one clear instruction and model")
+                if not re.search(r"(?:学牛叫|叫一声|试试)", moo_help) or not re.search(r"moo moo", moo_help, re.I):
+                    issues.append("moo help lacked one clear child action and model")
                 if re.search(r"Cow 就是牛|Cow\. That's a cow", moo_help, re.I):
                     issues.append("moo question regressed to the mastered cow meaning")
                 if not re.search(r"慢慢说.*我在听", cutoff):
                     issues.append("cut-off speech was not met with a natural invitation to finish")
                 if re.search(r"move on|继续|TEMPLATE_FINISH", cutoff, re.I):
                     issues.append("teacher redirected or closed while the child was still speaking")
+            if job == "exact_task_direction_flow" and tr.get("bridge_script") == "cjk":
+                task_help = replies[1]
+                then_help = replies[2]
+                moo_help = replies[4]
+                repeated_moo_help = replies[5]
+                if "我们来学 cow" not in task_help or not re.search(r"现在你说\s*cow", task_help, re.I):
+                    issues.append("what-to-do question did not explain the task and child's action")
+                if "没关系" in task_help or "[STUDENT_TALK]" not in task_help:
+                    issues.append("neutral task question got canned reassurance or no wait")
+                if not re.search(r"现在轮到你", then_help) or not re.search(r"你说\s*cow", then_help, re.I):
+                    issues.append("then-what question did not give the immediate child action")
+                if re.search(r"先听|听我说", then_help):
+                    issues.append("teacher told the child to listen again after they already listened")
+                if not re.search(r"Moo moo 是牛的叫声", moo_help, re.I):
+                    issues.append("first moo meaning request did not explain the current sound")
+                if not re.search(r"学牛叫|叫一声", moo_help):
+                    issues.append("first moo help did not tell the child how to participate")
+                if not re.search(r"牛会这样叫", repeated_moo_help) or not re.search(r"叫一声", repeated_moo_help):
+                    issues.append("repeated moo confusion did not get a clearer natural explanation and action")
+                if re.search(r"Cow 就是牛|Cow\. That's a cow|move on|TEMPLATE_FINISH", moo_help + repeated_moo_help, re.I):
+                    issues.append("moo help regressed to cow or closed before resolving the question")
             if job == "instruction" and tr.get("bridge_script") == "arabic":
                 if not re.search(r"(?:قل|اسمع|استمع|استماع|انظر|اختر)", bridge):
                     issues.append("Arabic bridge did not give a concrete instruction")

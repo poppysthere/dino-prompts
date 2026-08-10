@@ -128,3 +128,12 @@ cases:
     bridge_script: cjk
     bridge_job: human_direction_current_item
     bridge_replies: [2, 4, 5]
+
+  - id: exact-task-direction-and-current-moo-help
+    support_language: English (US)
+    turns: ["要干什么？", "哦，听你说了，然后呢？", "That's a cow. Cow.", "I don't know. 什么意思？", "我不理解。老师，你可以讲一下吗？", "moo", "no"]
+    max_replies: 8
+    bridge: required
+    bridge_script: cjk
+    bridge_job: exact_task_direction_flow
+    bridge_replies: [2, 3, 5, 6]

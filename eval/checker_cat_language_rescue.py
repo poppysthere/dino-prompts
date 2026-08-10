@@ -108,8 +108,8 @@ def check(tr):
             if job == "meow_meaning" and tr.get("bridge_script") == "cjk":
                 if not re.search(r"猫.*(?:叫声|声音)", bridge):
                     issues.append("Chinese meow bridge did not explain that meow is a cat sound")
-                if "先听我说吧" not in bridge or "meow meow" not in bridge.lower():
-                    issues.append("meow bridge did not give a natural instruction and English model")
+                if not re.search(r"学猫叫|叫一声|试试", bridge) or "meow meow" not in bridge.lower():
+                    issues.append("meow bridge did not give a natural child action and English model")
                 if re.search(r"(?:you say|say)[, ]+meow meow", bridge, re.I):
                     issues.append("meow help response immediately demanded performance")
                 if re.search(r"say[, ]+cat", bridge, re.I):
@@ -129,15 +129,13 @@ def check(tr):
                 last = replies[bridge_replies[-1] - 1]
                 if "猫" not in first:
                     issues.append("first help response did not explain cat")
-                if not re.search(r"先听我说吧|看这里", first):
+                if not re.search(r"现在你说|先听我说吧|看这里", first):
                     issues.append("first help response gave no clear local instruction")
-                if re.search(r"(?:say|you say)[, ]+cat", first, re.I):
-                    issues.append("first help response immediately demanded cat")
-                if not re.search(r"没关系[^。！？]*先听我说吧", last):
+                if not re.search(r"没关系[^。！？]*听老师说", last):
                     issues.append("rescue exit did not use natural reassurance plus instruction")
                 if re.search(r"你不用说|不需要说|可以不说", last):
                     issues.append("rescue exit dismissed the child from speaking")
-                if not re.search(r"先听我说吧|看这里", last):
+                if not re.search(r"听老师说", last):
                     issues.append("rescue exit gave no clear local instruction")
                 if not re.search(r"that's a cat", last, re.I):
                     issues.append("rescue exit did not return gently to English")
@@ -153,9 +151,9 @@ def check(tr):
                 slow_help = replies[6]
                 if "Good look" in silence_nudge or "Look here" not in silence_nudge:
                     issues.append("first silence did not get a natural cat nudge")
-                if "先听我说吧" not in first_help or "That's a cat" not in first_help:
-                    issues.append("first confusion did not get natural instruction plus English model")
-                if "还在学 cat" not in direction_help or "We go to cat" in direction_help:
+                if "Cat 就是猫" not in first_help or not re.search(r"现在你说\s*cat", first_help, re.I):
+                    issues.append("first Chinese confusion did not get meaning plus a clear child action")
+                if "还在学 cat" not in direction_help or not re.search(r"你说\s*cat", direction_help, re.I) or "We go to cat" in direction_help:
                     issues.append("where-next question was not answered naturally")
                 if "猫的叫声" not in meow_help or "Cat 就是" in meow_help:
                     issues.append("meaning question after meow explained the wrong item")
