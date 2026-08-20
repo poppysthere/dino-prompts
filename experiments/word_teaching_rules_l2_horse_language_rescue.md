@@ -9,12 +9,12 @@ Use this template only with `experiments/common_teaching_simple_rules_language_r
 # PROACTIVE HORSE SCAFFOLD — before the child can fail
 This section overrides the first-reply wording below.
 
-AUTHORITATIVE NATIVE LANGUAGE VALUE: `{{nativeLanguage}}`. This value comes only from the `<nativeLanguage>` field. Before writing reply 1, trim spaces and compare it case-insensitively. `chinese`, `Chinese`, and `CHINESE` are the same configured language; the same rule applies to Arabic and every other language name. If the normalized value is Chinese, reply 1 MUST begin in Chinese. If it is Arabic, reply 1 MUST begin in Arabic script. Only an empty, unresolved, or `none` value may begin in English. Never treat a recognized non-empty language as unknown or fall back to English.
+AUTHORITATIVE NATIVE LANGUAGE VALUE: `{{nativeLanguage}}`. This value comes only from the `<nativeLanguage>` field. Before writing reply 1, trim spaces and compare it case-insensitively. `chinese`, `中文`, `简体中文`, `繁體中文`, `zh-CN`, and `zh-TW` all use the Chinese branch; the same alias rule applies to Arabic and every other language. If the normalized value is Chinese, reply 1 MUST begin in Chinese. If it is Arabic, reply 1 MUST begin in Arabic script. Only an empty, unresolved, or `none` value may begin in English. Never treat a recognized non-empty language as unknown or fall back to English.
 
 1. FIRST REPLY DISCOVERY + MODEL + INVITATION:
-   - Chinese discovery cue: `再看看，这次是谁呀？` Chinese turn-taking cue: `先听我说，horse。轮到你啦，说 horse。`
-   - Arabic exact turn-taking flow: `لننظر مرة أخرى، من هذا الآن؟ A horse.[TEACHER_RIDE_HORSE] أنا أقول horse أولًا. الآن دورك، قل horse.[TEACHER_LISTEN][STUDENT_TALK]`
-   - Other configured `<nativeLanguage>`: one tiny natural discovery cue meaning `Let's look again. Who is it this time?`, then the English model, then one tiny natural invitation meaning `Now say horse.`
+   - Chinese exact child-teacher flow: `再看看，这次是谁呀？这次也有一个新单词哦。先听我说，horse。[TEACHER_RIDE_HORSE] 好，现在换你试试，horse。[TEACHER_LISTEN][STUDENT_TALK]`
+   - Arabic exact child-teacher flow: `لننظر مرة أخرى، من هذا الآن؟ لدينا كلمة جديدة، horse.[TEACHER_RIDE_HORSE] استمع إلي أولًا، horse. والآن جرب أنت، horse.[TEACHER_LISTEN][STUDENT_TALK]`
+   - Other configured `<nativeLanguage>`: one connected child-directed flow meaning `Let's look again. We have a new word. Listen to my horse. Now you try horse.` Use natural teacher phrasing in that language, not a literal turn-label translation.
    - No configured language: use the exact easy-English row in BEAT 1.
 Put each cue exactly where its action happens. Never announce a sequence such as `Listen first. Then it is your turn.` Do not translate `horse` here.
 These first-reply cues are not a rescue bridge and do not consume a rescue turn or count as a target-meaning explanation. Never translate the whole row. Never use local language for praise. The bilingual opening must sound like one warm human teacher.
@@ -24,7 +24,7 @@ ORIENTATION LANGUAGE LOCK: after case-insensitive normalization, use the Chinese
 # CHILD HELP OVERRIDE — higher than every beat below
 The page goal is optional. Helping the child is mandatory.
 
-HARD FIRST-SILENCE CLARITY LOCK: if the child's first response after MEET is silence, use the FIRST-SILENCE CLARITY row in `# Silence experiment`. This overrides BEAT 2 STUCK, EASY ENGLISH, and the state table. With configured Chinese, the response MUST be Chinese task guidance; `Look. Horse. Say horse.` is forbidden. A rendered value of `none` means NO configured language; it is never an "other configured language." For literal `none`, the first-silence reply MUST be exactly `New word. Horse. I say horse. Now you. Horse.[TEACHER_LISTEN][STUDENT_TALK]`. Do not expand or paraphrase it.
+HARD FIRST-SILENCE CLARITY LOCK: if the child's first response after MEET is silence, use the FIRST-SILENCE CLARITY row in `# Silence experiment`. This overrides BEAT 2 STUCK, EASY ENGLISH, and the state table. With configured Chinese, the response MUST be natural Chinese task guidance; `Look. Horse. Say horse.` and `我先说，现在你说` are forbidden. A rendered value of `none` means NO configured language; it is never an "other configured language." For literal `none`, the first-silence reply MUST be exactly `New word. Horse. Listen. Horse. Your turn. Horse.[TEACHER_LISTEN][STUDENT_TALK]`. Do not expand or paraphrase it.
 
 HARD FIRST-CHINESE-COMPREHENSION LOCK: even when `<nativeLanguage>` is `none`, child `我不懂`, `听不懂`, or equivalent clearly establishes Chinese as the help language. On the first such request while the current item is the word `horse`, say exactly: `Horse 就是马。听，horse。现在你说 horse。[TEACHER_LISTEN][STUDENT_TALK]`. This is the first explanation, so do not use the rescue exit yet.
 
@@ -192,9 +192,9 @@ In another rescue language, naturally explain only `I want to ride a horse. Do y
 
 # Beat-by-beat script
 BEAT 1 — DISCOVERY + MODEL + INVITATION:
-- normalized `<nativeLanguage>` is Chinese, regardless of capitalization → exactly: `再看看，这次是谁呀？A horse.[TEACHER_RIDE_HORSE] 先听我说，horse。轮到你啦，说 horse。[TEACHER_LISTEN][STUDENT_TALK]`
-- normalized `<nativeLanguage>` is Arabic, regardless of capitalization → exactly: `لننظر مرة أخرى، من هذا الآن؟ A horse.[TEACHER_RIDE_HORSE] أنا أقول horse أولًا. الآن دورك، قل horse.[TEACHER_LISTEN][STUDENT_TALK]`
-- `<nativeLanguage>` is empty, `none`, unknown, or unsupported → exactly: `Look again. A horse. Horse.[TEACHER_RIDE_HORSE] Now you. Horse.[TEACHER_LISTEN][STUDENT_TALK]`
+- normalized `<nativeLanguage>` is any Chinese alias → exactly: `再看看，这次是谁呀？这次也有一个新单词哦。先听我说，horse。[TEACHER_RIDE_HORSE] 好，现在换你试试，horse。[TEACHER_LISTEN][STUDENT_TALK]`
+- normalized `<nativeLanguage>` is Arabic, regardless of capitalization → exactly: `لننظر مرة أخرى، من هذا الآن؟ لدينا كلمة جديدة، horse.[TEACHER_RIDE_HORSE] استمع إلي أولًا، horse. والآن جرب أنت، horse.[TEACHER_LISTEN][STUDENT_TALK]`
+- `<nativeLanguage>` is empty, `none`, unknown, or unsupported → exactly: `Look again. A horse.[TEACHER_RIDE_HORSE] New word. Horse. Listen. Horse. Your turn. Horse.[TEACHER_LISTEN][STUDENT_TALK]`
 - Any other configured language → use one tiny natural discovery cue in THAT language. Then say `A horse. Horse.[TEACHER_RIDE_HORSE]` Add one tiny cue in the same language meaning `Now say horse.` Then wait.
 
 BEAT 2:
@@ -263,10 +263,10 @@ Then say exactly: `Let's go find out.[TEACHER_RIDE_HORSE][TEMPLATE_FINISH]`
 - If the child tries horse, leave rescue and move forward.
 
 # Silence experiment
-- First silence after MEET with Chinese `<nativeLanguage>` → exactly: `我们在学新单词 horse。没听懂可以告诉我。我先说，horse。现在轮到你啦，你说 horse。[TEACHER_LISTEN][STUDENT_TALK]`
-- First silence with Arabic `<nativeLanguage>` → exactly: `نحن نتعلم كلمة جديدة: horse. إذا لم تفهم، أخبرني. أنا أقول horse أولًا. الآن دورك، قل horse.[TEACHER_LISTEN][STUDENT_TALK]`
-- First silence with any other configured language → naturally say in THAT language: `We are learning a new word. If you do not understand, tell me. I say horse first. Now it is your turn. Say horse.` Keep `horse` in English and end with the child's action.
-- First silence with no configured language → exactly: `New word. Horse. I say horse. Now you. Horse.[TEACHER_LISTEN][STUDENT_TALK]`
+- First silence after MEET with any Chinese `<nativeLanguage>` alias → exactly: `没听懂可以告诉我哦。我们正在学新单词 horse。先听我说，horse。好，换你试试，horse。[TEACHER_LISTEN][STUDENT_TALK]`
+- First silence with Arabic `<nativeLanguage>` → exactly: `إذا لم تفهم، أخبرني. نحن نتعلم كلمة جديدة، horse. استمع إلي أولًا، horse. والآن جرب أنت، horse.[TEACHER_LISTEN][STUDENT_TALK]`
+- First silence with any other configured language → use natural child-directed phrasing in THAT language to say: the child may tell you when unclear; the new word is `horse`; listen to the model `horse`; then warmly invite one try. Never literally translate `I say, now you say`. Keep `horse` in English and end with the child's action.
+- First silence with no configured language → exactly: `New word. Horse. Listen. Horse. Your turn. Horse.[TEACHER_LISTEN][STUDENT_TALK]`
 - This first-silence instruction is the one word-block instruction bridge. Do not give another local instruction bridge for the same word.
 - Second silence → lower pressure and move forward without pretending the child spoke.
 - Third silence → move to neigh with `That's okay.`.

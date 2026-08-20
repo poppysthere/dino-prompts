@@ -10,14 +10,19 @@ CJK = re.compile(r"[\u3400-\u9fff]")
 ARABIC = re.compile(r"[\u0600-\u06ff]")
 BANNED_TEACHING = re.compile(r"\b(?:say it with me|repeat after me|one more time)\b", re.I)
 ROBOTIC_CHINESE = re.compile(r"(?:^|[。！？])\s*(?:猫|听|说|看|看图片|先听|跟着老师|你不用说|我们先继续)\s*[。！？]")
-UNNATURAL_CAT = re.compile(r"good look|we go to cat|cat\s*就是小猫|^\s*什么意思[？?]", re.I)
+UNNATURAL_CAT = re.compile(r"good look|we go to cat|cat\s*就是小猫|^\s*什么意思[？?]|我先说[^。！？]*现在[^。！？]*你说|嗯[，,]?现在[^。！？]*Now you say", re.I)
+CHINESE_LABELS = {"chinese", "中文", "简体中文", "繁體中文", "繁体中文", "zh-cn", "zh-tw"}
+
+
+def is_chinese_language(value):
+    return str(value or "").strip().lower() in CHINESE_LABELS
 
 
 def proactive_script(tr):
     language = str(tr.get("support_language", "")).strip().lower()
     if language in {"", "none", "unknown", "unsupported"}:
         return None
-    if language == "chinese":
+    if is_chinese_language(language):
         return CJK
     if language == "arabic":
         return ARABIC
@@ -55,7 +60,7 @@ def check(tr):
         spoken = re.sub(r"\[[A-Z_]+\]", "", reply)
         if spoken.count("!") > 1:
             issues.append(f"reply {i}: too many exclamation marks ({spoken.count('!')})")
-        for sentence in re.split(r"[.!?]+", spoken):
+        for sentence in re.split(r"[.!?。！？]+", spoken):
             words = re.findall(r"[A-Za-z]+(?:'[A-Za-z]+)?", sentence)
             if len(words) > 6:
                 issues.append(f"reply {i}: English sentence too long ({len(words)} words)")
@@ -66,11 +71,16 @@ def check(tr):
     if configured is not None and replies:
         if not configured.search(replies[0]):
             issues.append("first reply missed the configured-language orientation")
-        elif str(tr.get("support_language", "")).strip().lower() == "chinese" and not re.search(r"(?:快看|咦|再看看).*谁.*(?:试试|说说看|轮到你|现在你|来[^。！？]*(?:说|读))", replies[0]):
-            issues.append("Chinese opening did not use a natural discovery-model-invitation flow")
+        elif is_chinese_language(tr.get("support_language")):
+            if not re.search(r"(?:快看|咦|再看看).*谁", replies[0]) or "新单词" not in replies[0]:
+                issues.append("Chinese opening did not explain the new-word activity naturally")
+            if not re.search(r"先听我说.*cat.*(?:轮到你|换你|试试|说说)", replies[0], re.I):
+                issues.append("Chinese opening did not use a natural model-and-invitation flow")
+            if re.search(r"我先说.*现在.*你说", replies[0]):
+                issues.append("Chinese opening used literal robotic turn labels")
         elif str(tr.get("support_language", "")).strip().lower() == "arabic":
-            if not re.search(r"أنا أقول\s*cat.*الآن دورك.*قل\s*cat", replies[0], re.I) or re.search(r"\bsay\b|كالقط|يعني|معناه", replies[0], re.I):
-                issues.append("Arabic opening did not use a natural Arabic turn-taking flow")
+            if not re.search(r"كلمة جديدة.*cat.*استمع.*cat.*جرب أنت.*cat", replies[0], re.I) or re.search(r"أنا أقول|الآن دورك|\bsay\b|كالقط|يعني|معناه", replies[0], re.I):
+                issues.append("Arabic opening did not use a natural child-teacher flow")
     elif replies:
         if CJK.search(replies[0]) or ARABIC.search(replies[0]):
             issues.append("first reply invented a local language with no configured support language")
@@ -154,7 +164,7 @@ def check(tr):
                 direction_help = replies[3]
                 meow_help = replies[5]
                 slow_help = replies[6]
-                if "New word" not in silence_nudge or not re.search(r"I say cat.*Now you", silence_nudge, re.I):
+                if "New word" not in silence_nudge or not re.search(r"Listen.*cat.*Your turn.*cat", silence_nudge, re.I):
                     issues.append("first silence did not get a natural cat nudge")
                 if "Cat 就是猫" not in first_help or not re.search(r"现在你说\s*cat", first_help, re.I):
                     issues.append("first Chinese confusion did not get meaning plus a clear child action")
@@ -174,8 +184,8 @@ def check(tr):
                     issues.append("Arabic first silence did not explain the learning activity")
                 if not re.search(r"إذا لم تفهم.*(?:أخبرني|قل لي)", bridge):
                     issues.append("Arabic first silence did not make help-seeking safe")
-                if not re.search(r"أنا أقول.*cat.*دورك.*قل\s*cat", bridge, re.I):
-                    issues.append("Arabic first silence did not explain turn-taking and the cat action")
+                if not re.search(r"استمع.*cat.*جرب أنت.*cat", bridge, re.I) or re.search(r"أنا أقول|الآن دورك", bridge):
+                    issues.append("Arabic first silence did not use a natural model-and-try invitation")
             if job == "current_personal_direction" and tr.get("bridge_script") == "cjk" and not tr.get("skip_personality_check"):
                 direction = replies[bridge_replies[0] - 1]
                 if not re.search(r"喜不喜欢猫", direction) or not re.search(r"yes.*no", direction, re.I):
@@ -184,12 +194,14 @@ def check(tr):
                     issues.append("late what-to-do question regressed to the mastered cat drill")
             if job == "first_silence_clarity" and tr.get("bridge_script") == "cjk":
                 silence_help = replies[bridge_replies[0] - 1]
-                if not re.search(r"在学新单词\s*cat", silence_help, re.I):
+                if not re.search(r"(?:正在|在)学新单词\s*cat", silence_help, re.I):
                     issues.append("first silence did not explain what the child is doing")
-                if not re.search(r"没听懂.*告诉我", silence_help):
+                if not re.search(r"(?:没听清|没听懂|不明白|不太明白).*告诉我|告诉我.*(?:不明白|没听懂|没听清)", silence_help):
                     issues.append("first silence did not teach safe help-seeking")
-                if not re.search(r"我先说.*cat.*轮到你.*(?:你)?说\s*cat", silence_help, re.I):
-                    issues.append("first silence did not model child-friendly turn-taking and one action")
+                if not re.search(r"先听我说.*cat.*(?:试试|说说).*cat", silence_help, re.I):
+                    issues.append("first silence did not use a natural model-and-try invitation")
+                if re.search(r"我先说.*现在.*你说", silence_help):
+                    issues.append("first silence used literal robotic turn labels")
                 if re.search(r"Look.*Cat.*Say\s*cat", silence_help, re.I):
                     issues.append("first silence fell back to a mechanical English command")
 

@@ -17,6 +17,15 @@ cases:
     bridge_job: first_silence_clarity
     bridge_reply: 2
 
+  - id: simplified-chinese-natural-opening-now-go
+    support_language: 简体中文
+    turns: ["Now.", "", "Go.", "cow", "moo", "yes"]
+    max_replies: 7
+    bridge: required
+    bridge_script: cjk
+    bridge_job: natural_now_go_flow
+    bridge_replies: [2, 3, 4]
+
   - id: arabic-first-silence-needs-instruction
     support_language: Arabic
     turns: ["", "cow", "moo", "yes"]
