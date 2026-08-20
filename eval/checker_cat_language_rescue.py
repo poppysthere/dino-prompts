@@ -66,8 +66,11 @@ def check(tr):
     if configured is not None and replies:
         if not configured.search(replies[0]):
             issues.append("first reply missed the configured-language orientation")
-        elif str(tr.get("support_language", "")).strip().lower() == "chinese" and not re.search(r"(?:快看|咦|再看看).*谁.*(?:试试|说说看|轮到你|来[^。！？]*(?:说|读))", replies[0]):
+        elif str(tr.get("support_language", "")).strip().lower() == "chinese" and not re.search(r"(?:快看|咦|再看看).*谁.*(?:试试|说说看|轮到你|现在你|来[^。！？]*(?:说|读))", replies[0]):
             issues.append("Chinese opening did not use a natural discovery-model-invitation flow")
+        elif str(tr.get("support_language", "")).strip().lower() == "arabic":
+            if not re.search(r"أنا أقول\s*cat.*الآن دورك.*قل\s*cat", replies[0], re.I) or re.search(r"\bsay\b|كالقط|يعني|معناه", replies[0], re.I):
+                issues.append("Arabic opening did not use a natural Arabic turn-taking flow")
     elif replies:
         if CJK.search(replies[0]) or ARABIC.search(replies[0]):
             issues.append("first reply invented a local language with no configured support language")
@@ -151,7 +154,7 @@ def check(tr):
                 direction_help = replies[3]
                 meow_help = replies[5]
                 slow_help = replies[6]
-                if "Good look" in silence_nudge or "Look here" not in silence_nudge:
+                if "New word" not in silence_nudge or not re.search(r"I say cat.*Now you", silence_nudge, re.I):
                     issues.append("first silence did not get a natural cat nudge")
                 if "Cat 就是猫" not in first_help or not re.search(r"现在你说\s*cat", first_help, re.I):
                     issues.append("first Chinese confusion did not get meaning plus a clear child action")
@@ -166,12 +169,29 @@ def check(tr):
             if job == "instruction" and tr.get("bridge_script") == "arabic":
                 if not re.search(r"(?:قل|اسمع|استمع|استماع|انظر|اختر)", bridge):
                     issues.append("Arabic bridge did not give a concrete instruction")
+            if job == "first_silence_clarity" and tr.get("bridge_script") == "arabic":
+                if not re.search(r"نتعلم.*كلمة جديدة", bridge):
+                    issues.append("Arabic first silence did not explain the learning activity")
+                if not re.search(r"إذا لم تفهم.*(?:أخبرني|قل لي)", bridge):
+                    issues.append("Arabic first silence did not make help-seeking safe")
+                if not re.search(r"أنا أقول.*cat.*دورك.*قل\s*cat", bridge, re.I):
+                    issues.append("Arabic first silence did not explain turn-taking and the cat action")
             if job == "current_personal_direction" and tr.get("bridge_script") == "cjk" and not tr.get("skip_personality_check"):
                 direction = replies[bridge_replies[0] - 1]
                 if not re.search(r"喜不喜欢猫", direction) or not re.search(r"yes.*no", direction, re.I):
                     issues.append("late what-to-do question did not explain the current cat preference task")
                 if re.search(r"我们来学\s*cat|现在你说\s*cat|听，?\s*cat", direction, re.I):
                     issues.append("late what-to-do question regressed to the mastered cat drill")
+            if job == "first_silence_clarity" and tr.get("bridge_script") == "cjk":
+                silence_help = replies[bridge_replies[0] - 1]
+                if not re.search(r"在学新单词\s*cat", silence_help, re.I):
+                    issues.append("first silence did not explain what the child is doing")
+                if not re.search(r"没听懂.*告诉我", silence_help):
+                    issues.append("first silence did not teach safe help-seeking")
+                if not re.search(r"我先说.*cat.*轮到你.*(?:你)?说\s*cat", silence_help, re.I):
+                    issues.append("first silence did not model child-friendly turn-taking and one action")
+                if re.search(r"Look.*Cat.*Say\s*cat", silence_help, re.I):
+                    issues.append("first silence fell back to a mechanical English command")
 
     if len(replies) > tr["max_replies"]:
         issues.append(f"too many replies: {len(replies)} > {tr['max_replies']}")

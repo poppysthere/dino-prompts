@@ -62,8 +62,11 @@ def check(tr):
     if configured is not None and replies:
         if not configured.search(replies[0]):
             issues.append("first reply missed the configured-language orientation")
-        elif str(tr.get("support_language", "")).strip().lower() == "chinese" and not re.search(r"(?:快看|咦|再看看).*谁.*(?:试试|说说看|轮到你|来[^。！？]*(?:说|读))", replies[0]):
+        elif str(tr.get("support_language", "")).strip().lower() == "chinese" and not re.search(r"(?:快看|咦|再看看).*谁.*(?:试试|说说看|轮到你|现在你|来[^。！？]*(?:说|读))", replies[0]):
             issues.append("Chinese opening did not use a natural discovery-model-invitation flow")
+        elif str(tr.get("support_language", "")).strip().lower() == "arabic":
+            if not re.search(r"أنا أقول\s*cow.*الآن دورك.*قل\s*cow", replies[0], re.I) or re.search(r"\bsay\b", replies[0], re.I):
+                issues.append("Arabic opening did not use a natural Arabic turn-taking flow")
     elif replies:
         if CJK.search(replies[0]) or ARABIC.search(replies[0]):
             issues.append("first reply invented a local language with no configured support language")
@@ -202,9 +205,26 @@ def check(tr):
                     issues.append("late what-to-do question did not explain the current cow preference task")
                 if re.search(r"我们来学\s*cow|现在你说\s*cow|听，?\s*cow", direction, re.I):
                     issues.append("late what-to-do question regressed to the mastered cow drill")
+            if job == "first_silence_clarity" and tr.get("bridge_script") == "cjk":
+                silence_help = replies[bridge_replies[0] - 1]
+                if not re.search(r"在学新单词\s*cow", silence_help, re.I):
+                    issues.append("first silence did not explain what the child is doing")
+                if not re.search(r"没听懂.*告诉我", silence_help):
+                    issues.append("first silence did not teach safe help-seeking")
+                if not re.search(r"我先说.*cow.*轮到你.*(?:你)?说\s*cow", silence_help, re.I):
+                    issues.append("first silence did not model child-friendly turn-taking and one action")
+                if re.search(r"Look.*Cow.*Say\s*cow", silence_help, re.I):
+                    issues.append("first silence fell back to a mechanical English command")
             if job == "instruction" and tr.get("bridge_script") == "arabic":
                 if not re.search(r"(?:قل|اسمع|استمع|استماع|انظر|اختر)", bridge):
                     issues.append("Arabic bridge did not give a concrete instruction")
+            if job == "first_silence_clarity" and tr.get("bridge_script") == "arabic":
+                if not re.search(r"نتعلم.*كلمة جديدة", bridge):
+                    issues.append("Arabic first silence did not explain the learning activity")
+                if not re.search(r"إذا لم تفهم.*(?:أخبرني|قل لي)", bridge):
+                    issues.append("Arabic first silence did not make help-seeking safe")
+                if not re.search(r"أنا أقول.*cow.*دورك.*قل\s*cow", bridge, re.I):
+                    issues.append("Arabic first silence did not explain turn-taking and the cow action")
 
     if len(replies) > tr["max_replies"]:
         issues.append(f"too many replies: {len(replies)} > {tr['max_replies']}")

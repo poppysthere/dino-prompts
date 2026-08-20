@@ -7,6 +7,24 @@ cases:
     max_replies: 4
     bridge: forbidden
 
+  - id: first-silence-needs-child-friendly-instruction
+    support_language: Chinese
+    turns: ["", "horse", "neigh", "yes"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: first_silence_clarity
+    bridge_reply: 2
+
+  - id: arabic-first-silence-needs-instruction
+    support_language: Arabic
+    turns: ["", "horse", "neigh", "yes"]
+    max_replies: 5
+    bridge: required
+    bridge_script: arabic
+    bridge_job: first_silence_clarity
+    bridge_reply: 2
+
   - id: confused-then-english-works
     support_language: Chinese
     turns: ["What?", "horse", "neigh", "no"]
