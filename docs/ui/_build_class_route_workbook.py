@@ -42,6 +42,41 @@ TYPE_EN = {
     "语言筑基课": "Language Foundations",
 }
 
+# Short labels for the route chip. 1 word EN / 2 characters ZH when possible.
+ROUTE_ZH = {
+    "词汇课": "单词",
+    "句型课": "句子",
+    "主题阅读课": "阅读",
+    "字母课": "字母",
+    "拼读阅读课": "拼读",
+    "复习测评课": "测评",
+    "自拼课": "自拼",
+    "语法阅读课": "语法读",
+    "词句听说课": "听说",
+    "阅读基础课": "基础",
+    "语法课": "语法",
+    "篇章阅读课": "篇章",
+    "写作课": "写作",
+    "语言筑基课": "筑基",
+}
+
+ROUTE_EN = {
+    "词汇课": "Words",
+    "句型课": "Sentences",
+    "主题阅读课": "Story",
+    "字母课": "ABC",
+    "拼读阅读课": "Phonics",
+    "复习测评课": "Quiz",
+    "自拼课": "Blend",
+    "语法阅读课": "Read",
+    "词句听说课": "Speak",
+    "阅读基础课": "Basics",
+    "语法课": "Grammar",
+    "篇章阅读课": "Passage",
+    "写作课": "Writing",
+    "语言筑基课": "Core",
+}
+
 CATALOG = [
     ("Level 1", "Lesson 1", "词汇课"),
     ("Level 1", "Lesson 2", "句型课"),
@@ -153,25 +188,50 @@ def main():
             style(ws.cell(i, col, val), bg=bg, bold=(col >= 3), size=13)
         ws.row_dimensions[i].height = 32
 
-    # --- Catalog ---
+    # --- Catalog: short names on the route ---
     cat = wb.create_sheet("Lesson catalog 课表")
-    header_row(cat, ["Level 级别", "Lesson 课次", "课型", "Lesson type"])
-    for col, width in enumerate([14, 14, 18, 36], 1):
+    header_row(
+        cat,
+        ["Level 级别", "Lesson 课次", "课型", "Full name EN", "On route 中文", "On route EN"],
+    )
+    for col, width in enumerate([14, 14, 16, 34, 16, 14], 1):
         cat.column_dimensions[get_column_letter(col)].width = width
 
     for i, (level, lesson, typ) in enumerate(CATALOG, 2):
         bg = LEVEL_FILL[level]
         fg = NAVY if level == "Level 5" else WHITE
-        c1 = cat.cell(i, 1, level)
-        c2 = cat.cell(i, 2, lesson)
-        c3 = cat.cell(i, 3, typ)
-        c4 = cat.cell(i, 4, TYPE_EN[typ])
-        for c in (c1, c2):
-            style(c, bg=bg, fg=fg, bold=True)
-        style(c3, bg=WHITE if i % 2 == 0 else GREY)
-        style(c4, bg=WHITE if i % 2 == 0 else GREY)
+        stripe = WHITE if i % 2 == 0 else GREY
+        vals = [level, lesson, typ, TYPE_EN[typ], ROUTE_ZH[typ], ROUTE_EN[typ]]
+        for col, val in enumerate(vals, 1):
+            cell = cat.cell(i, col, val)
+            if col <= 2:
+                style(cell, bg=bg, fg=fg, bold=True)
+            elif col >= 5:
+                style(cell, bg=PEACH, bold=True)
+            else:
+                style(cell, bg=stripe)
         cat.row_dimensions[i].height = 22
-    cat.auto_filter.ref = f"A1:D{1 + len(CATALOG)}"
+    cat.auto_filter.ref = f"A1:F{1 + len(CATALOG)}"
+
+    # --- Unique short labels for design ---
+    tags = wb.create_sheet("Type tags 课型标签")
+    header_row(
+        tags,
+        ["课型", "Full name EN", "On route 中文", "On route EN"],
+    )
+    for col, width in enumerate([16, 36, 16, 14], 1):
+        tags.column_dimensions[get_column_letter(col)].width = width
+    seen = []
+    for typ in TYPE_EN:
+        seen.append(typ)
+    for i, typ in enumerate(seen, 2):
+        stripe = WHITE if i % 2 == 0 else GREY
+        for col, val in enumerate(
+            (typ, TYPE_EN[typ], ROUTE_ZH[typ], ROUTE_EN[typ]), 1
+        ):
+            style(tags.cell(i, col, val), bg=PEACH if col >= 3 else stripe, bold=(col >= 3))
+        tags.row_dimensions[i].height = 26
+    tags.auto_filter.ref = f"A1:D{1 + len(seen)}"
 
     wb.properties.title = "Class route structure 上课路线结构"
     wb.save(OUT)
