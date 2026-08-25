@@ -359,7 +359,7 @@ def build_readme(wb):
             "What this file is",
             "The Class tab must feel like a clear journey kids can walk with us — not a cramped toolbar of 4 chips. This workbook lists every layer and every element that must appear on that route, plus copy in English and Chinese.",
             "上课 Tab 要有「一条能跟着走的路」，而不是底部挤着 4 个小标签。本表列出路线上每一层、每一个必出元素，以及中英对照文案，方便设计出图。",
-            "Start with 01_Screen_Layers, then 02_Route_Must_Have. Do not invent extra steps.",
+            "Start with 01_Screen_Layers + 01c_Video_Feel, then 02_Route_Must_Have. Do not invent extra steps.",
         ),
         (
             "Why we are changing it",
@@ -368,10 +368,10 @@ def build_readme(wb):
             "Keep the 3D art, teacher, lesson card, profile switcher, and tab bar. Rebuild the route.",
         ),
         (
-            "Reference video",
-            "Target feeling: a followable path / map journey (Lark clip Lark20260825-162130.mp4). Winding road, stations, character walks with the kid, current node is obvious, next node is visible. Not a chip bar.",
-            "目标感觉：可跟随的路线/地图（飞书视频 Lark20260825-162130.mp4）。弯道、站点、角色陪孩子走、当前点足够大、下一步看得见。不要做成标签条。",
-            "Match motion + path metaphor from the video. Match our existing 3D characters and warm farm/ocean art from the screenshot.",
+            "Reference video — LAYER FEELING",
+            "The Lark frames are the layer language we want: a themed WORLD behind, a shared GROUND PLANE, objects sitting on that plane in a HORIZONTAL scroll, sticky header + sticky tab bar as overlays. Big yellow-bordered CARDS = main events. Treasure CHESTS = tasks/rewards on the floor. Mini-steps with green/grey locks live ON the lesson card. A mascot talks ('Come with me') and a next locked card peeks from the right. Not a chip toolbar, not a vertical list.",
+            "飞书视频帧就是我们要的图层语言：主题世界在后，共用地面，物件都坐在这条水平地面上横向滑。大黄边卡片=主事件。宝箱=地上的任务/奖励。小步骤带绿锁/灰锁长在主课卡片上。角色说话（跟我走），下一张未解锁卡片从右边探出来。不要标签条，也不要竖着列表。",
+            "Copy STRUCTURE and DEPTH from the video. Keep OUR 3D teacher, farm/ocean art, Chat/Class/Explore/Play tabs, and our 9 steps. Do not copy their 1V1/小班 tabs, parrot brand, or PaperHomework naming.",
         ),
         (
             "Route law (do not break)",
@@ -380,15 +380,15 @@ def build_readme(wb):
             "You may restyle nodes by lesson type color, but never drop, reorder, or rename the 9 steps.",
         ),
         (
-            "Two scales of route",
-            "MACRO = the week: Lesson 1 station → Lesson 2 → … MICRO = inside the current lesson: the 9 steps. Kids always know (1) which lesson they are on this week, (2) which step they are on in that lesson.",
-            "大路线 = 本周：第1课站点 → 第2课 → … 小路线 = 当前课内部的 9 步。孩子随时知道（1）这周上到哪一课，（2）这一课走到哪一步。",
-            "Only the CURRENT lesson expands the 9-step path. Other lessons stay as stations on the week map.",
+            "Two scales of route (video language)",
+            "MACRO (horizontal unit path): Lesson 1 CARD → after-class CHESTS → Lesson 2 CARD → … → unit test CARD → stage report CARD. MICRO (on the current lesson): 5 in-class steps sit ON the big lesson card; 4 after-class steps sit as chests on the floor AFTER that card. Kids always know which lesson card they are on, and which lock on that card / which chest is next.",
+            "大路线（横向单元路）：第1课大卡片 → 课后宝箱 → 第2课大卡片 → … → 单元测评大卡片 → 阶段报告大卡片。小路线（当前课）：课中 5 步长在大卡片上；课后 4 步是卡片后面地上的宝箱。孩子随时知道自己在哪张课卡、下一步是卡片上的哪把锁还是地上的哪个宝箱。",
+            "Match the video: big card = class, chests = follow-up tasks, test/report = destination cards. Do not put all 9 steps as equal dots.",
         ),
         (
             "How to read the sheets",
-            "00 ReadMe · 01 z-order layers · 02 must-have elements on the route · 03 the 9 steps · 04 node states · 05 full Class page inventory · 06 original lesson catalog + EN · 07 lesson-type dictionary · 08 all UI copy EN/ZH · 09 current vs target.",
-            "00 说明 · 01 图层顺序 · 02 路线必出元素 · 03 九步定义 · 04 节点状态 · 05 上课页全量元件 · 06 原课表+英文 · 07 课型词典 · 08 全部文案中英 · 09 现状对照目标。",
+            "00 ReadMe · 01 z-order layers · 01b wire map · 01c video layer-feel (copy vs don't copy) · 02 must-have elements · 03 the 9 steps · 04 node states · 05 page inventory · 06 catalog · 07 types · 08 copy · 09 current vs target.",
+            "00 说明 · 01 图层 · 01b 示意 · 01c 视频图层感觉（学什么/不学什么） · 02 必出元素 · 03 九步 · 04 状态 · 05 全页 · 06 课表 · 07 课型 · 08 文案 · 09 对照。",
             "Required = Must draw. Recommended = should draw if it helps the path feel. Never hide Required behind a hover on a kids app.",
         ),
         (
@@ -449,7 +449,7 @@ def build_layers(wb):
         ws,
         "Screen layers (back → front)",
         "页面图层（从底到顶）",
-        "Figma / PS layer order for Class → Weekly Study Plan. Designers should build the file in this stack. 上课-本周学习计划的图层顺序，请按此叠文件。",
+        "Build Figma in this stack. Feeling from the video: WORLD in back, FLOOR in the middle, CARDS/CHESTS/MASCOT in front, HEADER + TAB BAR as sticky overlays that do not scroll with the path. 按此叠 Figma。视频感觉：世界在后，地面在中，卡片/宝箱/角色在前，顶栏底栏是不跟着路滑的浮层。",
         cols,
     )
     headers = [
@@ -468,143 +468,123 @@ def build_layers(wb):
     layers = [
         (
             "L00",
-            "Scene background",
-            "场景底图",
-            "Back",
-            "Full-bleed 3D environment matching the current lesson theme (farm, ocean, city…). Soft sky + ground so the path can sit on it.",
-            "Slow parallax / idle breeze. Does not steal taps.",
-            "Yes — keep the 3D world quality from the screenshot.",
-            "The path must read on top of busy art. Add a slight ground shadow under the road.",
+            "World background",
+            "主题世界（后景）",
+            "Back · 后景",
+            "Themed full-bleed world. Video: soft ocean + low-contrast line-art whale, turtle, fish, coral — atmosphere, not content. Ours: keep 3D farm/ocean/city the same way — pretty, quiet, not tappable.",
+            "Slow parallax. Video silhouettes drift; ours can idle (chicks, clouds). Never steals taps.",
+            "Yes — keep our 3D quality. Copy the video's quiet-wallpaper discipline.",
+            "VIDEO FEEL: if a kid can't tell the path from the whale, the layer failed. Path objects must be brighter/sharper than the world.",
         ),
         (
             "L01",
-            "Ambient props",
-            "氛围小物件",
-            "Back+",
-            "Non-interactive friends: animals, trees, clouds, bubbles. They decorate the journey.",
-            "Tiny idle loops (chick peck, cloud drift). Never cover a node.",
-            "Yes — farm animals in the Farm Animals example.",
-            "Props stay OFF the tappable path. Safe margin 8–12 pt around every node.",
+            "Ground plane / sea floor",
+            "共用地面（路线平面）",
+            "Mid-back · 中后",
+            "One shared horizontal floor. Video: the sea floor. Every card, chest, signpost, and mascot SITS on this plane. Left-to-right scroll along the floor — not a vertical feed, not a chip bar.",
+            "World + floor + objects scroll together horizontally. Header and tab bar do NOT scroll.",
+            "New — old UI had one floating card, no floor.",
+            "MOST IMPORTANT FEEL LAYER. Align object bottoms. Soft contact shadow under every object. Random Y = not the video.",
         ),
         (
             "L02",
-            "Week map road (macro path)",
-            "本周大路线（课与课之间）",
-            "Mid-back",
-            "The road / trail that connects this week's lesson stations: L1 → L2 → L3… Solid behind, dashed or dim ahead.",
-            "Fill animates when a lesson is cleared. Camera can ease to the current station.",
-            "New — old UI had no week path, only one card.",
-            "This is the 'follow us' feeling at week scale. One visible road, not a list of cards only.",
+            "Wayfinding props",
+            "路标层",
+            "Mid · 中景",
+            "Unit signpost (video: yellow arrow 'Unit 11'), floating section title (video: yellow pill 'Language Booster 3'), floor label (video: blue/yellow pill 'lesson 1'). Ours: Unit n · theme · 第 n 课.",
+            "Signpost planted on the floor. Section title hovers above the current cluster. Lesson pill sits under the card/chests it belongs to.",
+            "New.",
+            "VIDEO FEEL: kids read WHERE they are from signs on the road, not only from a header.",
         ),
         (
             "L03",
-            "Lesson stations",
-            "课程站点",
-            "Mid",
-            "One station per lesson this week. Completed = stamp/star. Current = expanded. Locked = grey + lock. Shows lesson type color chip.",
-            "Current station gently breathes. Locked stations do not bounce.",
-            "Partial — we had one big card, not a chain of stations.",
-            "Station must show: type tag, lesson number, title. Tapping a completed station can replay; tapping locked shows 'finish the one before'.",
+            "Big event cards",
+            "主事件大卡片",
+            "Mid-front · 中前",
+            "Large rounded white cards with a thick friendly border (video: yellow). One card = one MAIN event: the lesson (教学), later Progress Test / Graduation Test / Stage Report. Current card biggest. Next card peeks from the right with a lock.",
+            "Horizontal scroll. Peek 24–40 pt of the next card. Locked card dimmer; CTA greyed.",
+            "Partial — we already have a farm hero card. Plant it on the floor and add more cards to the right.",
+            "VIDEO HIERARCHY: CARD > chest. Never make 口语/听力 as large as the lesson card. Lesson card still carries type, title, duration, words, sentences, 3D art.",
         ),
         (
             "L04",
-            "In-lesson micro path",
-            "课内小路线（9 步）",
-            "Mid",
-            "The 9-step trail attached to the CURRENT lesson only: 5 in-class + 4 after-class. Connecting line + nodes.",
-            "Line draws from last completed to current. Character walks along it.",
-            "Replace the old 4-chip bar.",
-            "Must group visually: 课中 cluster vs 课后 cluster, with Award as the gate between them.",
+            "Mini-route ON the lesson card",
+            "主卡片上的课中小路线",
+            "Front- · 卡片内",
+            "Horizontal row ON the lesson card (video: Preview · Live Class · Review · PaperHomework with green/grey locks). Ours on the card: 预习 Preview · 教学 Teaching · 练习 Practice · 总结 Summary · 领奖 Award. After-class steps do NOT live on this row.",
+            "Current step highlighted (video: yellow Preview tab). Completed = green. Locked = grey lock. Illegal tap = lock shake + mascot line.",
+            "Replace the old 4-chip bar that mixed 练习/口语/听力/报告.",
+            "VIDEO FEEL: in-class path lives IN the card. After-class becomes floor chests (L05).",
         ),
         (
             "L05",
-            "Path connectors & progress fill",
-            "路线连接线与进度填充",
-            "Mid",
-            "Segment between each pair of nodes. Done = bright/solid. Current = glowing. Locked = dotted/grey.",
-            "A short 'paint the road' tween when a step completes (like the reference video).",
-            "New.",
-            "Kids read the LINE as much as the ICONS. Make completed vs remaining obvious in greyscale too.",
+            "Floor chests (after class)",
+            "地面宝箱（课后）",
+            "Mid-front · 中前",
+            "Smaller than cards. Video: yellow chests with blue buttons Review / PaperHomework sitting on the floor. Ours to the right of each lesson card: 复习, 口语, 听力, plus 领奖 as a chest. 报告 may be a chest or a destination card.",
+            "Same floor as the card. Claimable chest bounces. Locked chest closed + grey button.",
+            "New — old UI had no chests.",
+            "VIDEO HIERARCHY: chests = collectible tasks, cards = main events. One button family on every chest.",
         ),
         (
             "L06",
-            "Step nodes",
-            "步骤节点",
-            "Mid-front",
-            "The 9 circular (or stamp-like) stations: icon + bilingual label + state badge.",
-            "Current node scales up ~1.15–1.3×. Claimable Award / Report may bounce.",
-            "Improve — old nodes had no Preview/Teaching/Summary/Award/Review.",
-            "Always show the label. Icon-only fails for young kids and for i18n.",
+            "Mascot guide + speech",
+            "向导角色 + 说话",
+            "Front · 前景",
+            "Video: parrot with headphones, white bubble ('Hey! Your unit test treasure chest is still waiting. Come with me!') + blue Go. Ours: 3D teacher and/or kid avatar standing ON the floor beside the current card/chest, pointing forward.",
+            "Idle bounce. Speech for the current unfinished landmark (unclaimed 领奖 / unit test). Go pans to that object.",
+            "Partial — move the existing teacher off the card-left and onto the floor as a guide.",
+            "VIDEO FEEL: character is a GUIDE on the path. Do not copy their parrot. Bilingual speech in 08_Copy_i18n.",
         ),
         (
             "L07",
-            "State badges on nodes",
-            "节点状态角标",
-            "Front-",
-            "Checkmark, lock, star, 'new', progress pie, chest-closed / chest-open.",
-            "Check pops in. Lock shakes once if tapped early.",
-            "New (old UI only highlighted Practice).",
-            "Do not cover the icon. Badge sits at 4–5 o'clock of the node.",
+            "CTA button family",
+            "主按钮家族",
+            "Front · 前景",
+            "Video: one rounded blue button language on cards AND chests — Enter, Go, Review, Start, Report. Disabled = grey/translucent. Ours: keep orange 去上课 energy, same shape/size on every path object.",
+            "Only the current step's CTA is vivid. Others grey until unlocked.",
+            "Yes — keep 去上课; stop truncating Farm Anim…",
+            "VIDEO FEEL: kids learn 'this pill = do this'. One family, not a unique button per module.",
         ),
         (
             "L08",
-            "Traveler / You-are-here",
-            "旅人 / 你在这里",
-            "Front",
-            "The child's avatar (or teacher + child) standing on the current node. This is how kids 'follow the path with us'.",
-            "Idle bounce. Walk-tween to the next node on complete. Faces the next step.",
-            "Partial — teacher stood LEFT of the card, not ON the route.",
-            "Use the current-profile avatar from the header so the kid recognizes themselves. Teacher can stand beside, pointing forward.",
+            "Lock / unlock markers",
+            "锁与解锁标记",
+            "Front · 前景",
+            "Video: small lock under each mini-step — green = open, grey = closed. Greyed Go to Class / Start when the card is not current. Peeked next card shows a lock.",
+            "Lock shake on illegal tap. Green pop when a step opens.",
+            "New (old UI only tinted Practice).",
+            "VIDEO FEEL: order is visible as locks. Use lock+label, never color-only.",
         ),
         (
             "L09",
-            "Current-step CTA",
-            "当前步主按钮",
-            "Front",
-            "One primary pill attached to the current node (not a floating bar that fights the path). Icon + verb + lesson nickname.",
-            "Pulse on first land. Sticky if the path scrolls.",
-            "Yes — keep 去上课 energy, but glue it to the Teaching (or current) node.",
-            "Never truncate the lesson name into 'Farm Anim…' if we can use two lines. CTA copy comes from the current step (see 03_Route_Steps).",
+            "Sticky header overlay",
+            "顶部浮层（不随路滚动）",
+            "Overlay · 浮层",
+            "Pinned while the path scrolls. Video: avatar, name, stars, 外教1V1/中教小班 pills, Task Wall, Self Study, Level. Ours: child avatar, sibling switcher, Weekly Study Plan, More lessons. Do NOT copy their 1V1/小班 IA.",
+            "Does not move when the path pans.",
+            "Yes — keep our header content.",
+            "VIDEO FEEL: header is HUD, path is a world. Never put the 9 steps in the header.",
         ),
         (
             "L10",
-            "Lesson hero info",
-            "课程主卡片信息",
-            "Front",
-            "Type tag, Lesson n, Level · Unit, title, duration, status, Words, Sentences. Sits above or as the current station's 'signboard'.",
-            "Status chip can shimmer when In progress.",
-            "Yes — keep all of these from the screenshot.",
-            "Fix 'Hear of' → Hear & Speak / 听说. Keep Words + Sentences so parents and kids know the destination of this path.",
+            "Sticky tab bar overlay",
+            "底部导航浮层（不随路滚动）",
+            "Overlay · 浮层",
+            "Video: 6 colorful circles (songs, diary, AI, games…). Ours stays Chat · Class (selected glow) · Explore · Play. Path lives INSIDE Class. Video's yellow 'lesson 2' oval above a tab is optional — if used, it marks the floor position, not a 5th tab.",
+            "Selection glow only. Pad the scroll so chests are not hidden under the bar.",
+            "Yes — keep our 4 tabs and Class selected treatment.",
+            "VIDEO FEEL: footer is overlay, not part of the sea floor. Do not replace our tabs with their 6 circles.",
         ),
         (
             "L11",
-            "Header HUD",
-            "顶部信息条",
-            "Front+",
-            "Child avatar, sibling switcher (multi-profile), screen title Weekly Study Plan, More lessons entry (submarine thumb in current UI).",
-            "Switcher opens a kid-safe picker.",
-            "Yes — keep.",
-            "Title bilingual. More lessons must not jump kids off the path without a back affordance.",
-        ),
-        (
-            "L12",
-            "Bottom tab bar",
-            "底部导航",
-            "Front+",
-            "Chat · Class (selected) · Explore · Play. Class has the yellow glow + book/star from current UI.",
-            "Selection glow only. Do not animate every tab.",
-            "Yes — keep icons and selected treatment.",
-            "The route lives IN Class. Tabs are not part of the lesson path.",
-        ),
-        (
-            "L13",
             "Overlays & celebrations",
             "弹层与庆祝",
-            "Top",
-            "Lock toast, mic permission, reward chest open, report sheet, parent report peek, error/offline.",
-            "Chest-open is the biggest celebration. Do not block the path for more than a beat after claim.",
+            "Top · 最前",
+            "Lock coach, mic permission, chest-open, report sheet, offline. Prefer on-path mascot speech (L06) over a modal for 'come with me'.",
+            "Chest-open is the biggest beat. Then auto-pan right so 复习 is in view.",
             "New / expand.",
-            "After Award claim, auto-pan to the after-class path so kids see Review is next — that is the 'route is clear' moment.",
+            "VIDEO FEEL: the path itself invites. Don't full-screen popup every next step.",
         ),
     ]
     for i, row in enumerate(layers):
@@ -618,6 +598,79 @@ def build_layers(wb):
         ws.cell(r, 1).alignment = align("center", "center")
     ws.freeze_panes = "A4"
     ws.auto_filter.ref = f"A3:H{3+len(layers)}"
+
+
+def build_video_feel(wb):
+    ws = wb.create_sheet("01c_Video_Feel")
+    cols = 8
+    title_block(
+        ws,
+        "Video layer-feel: copy this, not their product",
+        "视频图层感觉：学结构，不抄产品",
+        "Frames from Lark20260825-162130.mp4. Copy DEPTH, FLOOR, CARD vs CHEST, LOCKS, sticky chrome. Keep our 9 steps, 3D teacher, Chat/Class/Explore/Play. 学纵深/地面/卡片vs宝箱/锁/浮层。课步、老师、底栏用我们的。",
+        cols,
+    )
+    headers = [
+        "ID",
+        "In the video EN",
+        "视频里有什么 中文",
+        "Feeling to copy 要学的感觉",
+        "Do NOT copy 不要照搬",
+        "Maps to OUR element 对应我们",
+        "Layer",
+        "Designer note 设计备注",
+    ]
+    paint_header_row(ws, 3, headers)
+    set_widths(ws, [8, 28, 26, 40, 32, 32, 10, 40])
+    rows = [
+        ("V01", "Soft ocean world + line-art whale/turtle/fish/coral", "浅蓝海底世界 + 低对比线描鲸/龟/鱼/珊瑚", "Quiet wallpaper behind the path. Theme can change (farm/ocean) but it stays BACK.", "Do not paste their ocean into Farm Animals. Do not make background characters tappable.", "L00 world. Our 3D farm animals stay decoration.", "L00", "Contrast test: desaturate the file — cards/chests must still pop."),
+        ("V02", "Everything sits on one sea floor; swipe left-right", "所有物件坐在同一片海底，左右滑", "Shared ground plane + horizontal journey. Bottoms aligned. Contact shadows.", "Not a vertical list. Not a winding mountain map. Not a 4-chip toolbar.", "L01 floor. Week = one long floor from lesson 1 → test cards.", "L01", "If Y positions wander, it will not feel like the video."),
+        ("V03", "Sticky header (avatar Jerry, stars, 1V1 / 中教小班, Task Wall, Level 2)", "顶栏固定（头像、星星、1V1/小班、任务墙、Level）", "Header is a HUD overlay. It does not scroll with the path.", "Do not add 外教1V1 / 中教小班. Do not add their star score unless we have it. Do not add Task Wall/Self Study unless they exist in our app.", "L09: our avatar, sibling switcher, Weekly Study Plan, More lessons.", "L09", "Two layers: HUD vs world."),
+        ("V04", "Yellow Unit 11 arrow signpost on a stand", "黄色 Unit 11 箭头路标", "Unit is a physical sign on the road.", "Do not keep 'Unit 11' as dummy copy. Use the real unit index.", "R03 unit signpost.", "L02", "Plant it on the floor, not in the header."),
+        ("V05", "Yellow pill 'Language Booster 3' above the parrot", "黄色胶囊标题 Language Booster 3", "A chapter name floats above the current cluster.", "Do not use their course-line name. Use our unit theme / 课型.", "R49 section header + R56 theme.", "L02", "One label per cluster, not per chest."),
+        ("V06", "Parrot + bubble 'Hey! Your unit test treasure chest is still waiting. Come with me!' + Go", "鹦鹉+气泡邀请去宝箱 + Go", "A guide ON the path talks and offers Go. Invitation is the route.", "Do not use their parrot. Do not write long English paragraphs.", "Our 3D teacher + R58/R59. Copy: 08_Copy_i18n coach.*", "L06", "Speech points at a real object that is on screen or one pan away."),
+        ("V07", "Large white card, thick yellow border (Unit Printouts / lesson card)", "大白卡 + 粗黄边（主事件）", "CARD = main event. Biggest object. Friendly thick border. Rounded.", "Border color can stay our orange/warm brand. Do not copy printouts as a new lesson type unless we have it.", "L03 lesson card. Keep Words/Sentences/art from our current hero.", "L03", "CARD > chest is the hierarchy."),
+        ("V08", "On the lesson card: Preview / Live Class / Review / PaperHomework + green/grey locks", "卡片上的四步 + 绿锁/灰锁", "Mini-route lives IN the card. Locks under icons. Current step highlighted (yellow Preview tab). Greyed Go to Class when not ready.", "Do not copy their 4 step names. Do not put 口语/听力 on this row.", "On-card: 预习 教学 练习 总结 领奖. Teaching = Go to Class.", "L04+L08", "This replaces our old 练习-口语-听力-报告 chip bar."),
+        ("V09", "Yellow treasure chests on the floor with blue Review / PaperHomework buttons + lesson 1 pill", "地上黄宝箱 + 蓝按钮 + lesson 1 胶囊", "CHEST = smaller follow-up task on the floor after the card. Button on the chest. Lesson number on the floor.", "Do not name a step PaperHomework. Do not make chests as tall as the lesson card.", "After-class: 复习 口语 听力 as chests. 领奖 is a chest. Floor pill = 第 n 课.", "L05+L02", "Chests belong to the lesson on their left."),
+        ("V10", "Next lesson card peeking from the right with teacher photo, 30th, Preview, green lock", "右边探出下一张课卡 + 锁", "The path continues off-screen. Peek + lock = destination.", "Do not require a live-class calendar ('30th Aug 10:00') unless we have scheduled class.", "R04 / R25 next-card peek. Grey CTA + lock.", "L03", "Always show a slice of 'later'."),
+        ("V11", "Progress Test / Graduation Test / Stage Report as large illustrated cards + Start/Report", "阶段测 / 毕业测 / 阶段报告 也是大卡片", "End-of-unit destinations are CARDS with mascot art, not tiny chips.", "Do not add extra lesson types. Map onto 复习测评课 + 报告.", "R63/R64/R17.", "L03", "Same card chrome as the lesson card, different illustration."),
+        ("V12", "One blue rounded button family: Enter, Go, Review, Start, Report; disabled = grey/translucent", "统一蓝圆角按钮；不能点就变灰", "One CTA shape everywhere. Disabled is still visible.", "Button color can be our orange. Do not invent a new control per module.", "L07 CTA family. 去上课 / 去预习 / 领奖 / 去复习 / 看报告.", "L07", "Kids learn one affordance."),
+        ("V13", "Foreground mascot & buttons, mid chests/signposts, background sea life", "前景角色按钮、中景宝箱路标、后景生物", "Three depths. Shadows. Nothing important lives in the wallpaper.", "Do not flatten into one layer.", "L00 back · L01–L05 mid · L06–L07 front · L09–L11 overlay.", "all", "Figma: name groups exactly these depths."),
+        ("V14", "Bottom colorful circles (songs, diary, AI, games, globe…)", "底栏一排彩色圆图标", "Footer is a STICKY overlay, not on the sea floor.", "Do not replace Chat / Class / Explore / Play with their 6 circles. Do not put a 'lesson 2' tab that leaves Class.", "L10 our 4 tabs. Optional floor pill already covers 'lesson n'.", "L10", "Path lives inside Class."),
+        ("V15", "Teacher photo + class time on the lesson card", "卡片上老师头像+上课时间", "The card can show WHO and WHEN for teaching.", "Do not force a calendar class if our 教学 is on-demand AI class.", "Optional on L03. Our 教学 is Go to Class with the AI teacher. Time/duration we already have (10 min).", "L03", "Prefer duration + status we already show."),
+    ]
+    copy_bg = GREEN_SOFT
+    skip_bg = ORANGE_SOFT
+    for i, row in enumerate(rows):
+        r = 4 + i
+        bg = WHITE if i % 2 == 0 else GREY
+        for c, val in enumerate(row, 1):
+            text_cell(ws, r, c, val, bg=bg)
+        ws.cell(r, 4).fill = fill(copy_bg)
+        ws.cell(r, 5).fill = fill(skip_bg)
+        ws.row_dimensions[r].height = 64
+        ws.cell(r, 1).font = font(11, True, NAVY)
+    # rule strip
+    rr = 20
+    ws.merge_cells(start_row=rr, start_column=1, end_row=rr, end_column=cols)
+    header_cell(ws, rr, 1, "Object scale on OUR path  ·  我们这条路上的物件大小（对齐视频）", bg=NAVY2)
+    scale = [
+        "BIG CARD 大卡片 — Lesson (教学) · 复习测评课 Progress Test · optional Graduation / Stage Report. One main CTA.",
+        "ON THE CARD 卡片内 — 预习 Preview · 教学 Teaching (Live Class) · 练习 Practice · 总结 Summary · 领奖 Award icon. Green/grey locks under each.",
+        "FLOOR CHEST 地上宝箱 — 领奖 (if not on card) · 复习 Review · 口语 Speaking · 听力 Listening. Smaller than the card. Button on the chest.",
+        "FLOOR PILL 地面胶囊 — lesson n / 第 n 课 under that cluster.",
+        "SIGN 路标 — Unit n arrow + section title pill.",
+        "GUIDE 向导 — teacher on the floor, speech, Go.",
+        "PEEK 探出 — next locked card on the right edge.",
+        "OVERLAY 浮层 — header + Class tab bar, do not scroll.",
+    ]
+    for i, t in enumerate(scale):
+        r = 21 + i
+        ws.merge_cells(start_row=r, start_column=1, end_row=r, end_column=cols)
+        text_cell(ws, r, 1, "• " + t, bg=GOLD_SOFT if i < 3 else (WHITE if i % 2 == 0 else GREY))
+        ws.row_dimensions[r].height = 26
+    ws.freeze_panes = "A4"
+    ws.auto_filter.ref = f"A3:H{3+len(rows)}"
 
 
 def build_must_have(wb):
@@ -649,70 +702,82 @@ def build_must_have(wb):
 
     items = [
         # PATH CORE
-        ("R01", "L02", "Week path", "本周大路线", "Week road / trail", "本周道路", "This week's path", "本周路线", "Winding ground trail, 3D, readable on busy art", "Required 必出", "Always on Class weekly plan", "One continuous road connecting this week's lessons. Filled behind the current lesson, dim ahead. This is the 'follow us' metaphor at week scale."),
-        ("R02", "L03", "Week path", "本周大路线", "Lesson station (one per lesson)", "课程站点（每课一个）", "Lesson 3", "第 3 课", "Colored pad / island with type chip", "Required 必出", "One for every lesson in the current week", "Station shows type tag + lesson number + short title. Current station is expanded and hosts the 9-step micro path."),
-        ("R03", "L03", "Week path", "本周大路线", "Week progress marker", "本周进度", "3 / 6 lessons", "3 / 6 课", "Tiny dots or flag at the end of the week", "Required 必出", "Always", "Kids and parents must see how far the week has been walked. Place near title or at the end of the week road."),
-        ("R04", "L03", "Week path", "本周大路线", "Next-lesson lock gate", "下一课关卡", "Finish this lesson first", "先走完这一课", "Lock + dim station", "Required 必出", "On future lessons", "Do not hide future lessons. Show them locked so the path has a destination."),
+        ("R01", "L01", "Ground plane", "共用地面", "Shared floor / sea-floor path", "共用地面（横向路）", "This week's path", "本周路线", "One horizontal floor; all objects sit on it with contact shadows", "Required 必出", "Always on Class weekly plan", "VIDEO FEEL: sea floor. Objects share one Y. Horizontal scroll. Not a winding map and not a chip bar."),
+        ("R02", "L03", "Big cards", "主事件卡片", "Lesson event card", "课程大卡片", "Lesson 3", "第 3 课", "Large rounded card, thick friendly border (video: yellow), sits on the floor", "Required 必出", "One for every lesson this week", "VIDEO HIERARCHY: CARD > chest. Current card biggest. Carries type, title, duration, words, sentences, 3D art, plus the in-class mini-route (L04)."),
+        ("R03", "L02", "Wayfinding", "路标", "Unit signpost", "单元路标", "Unit 1", "Unit 1", "Yellow arrow signpost planted on the floor (video: Unit 11)", "Required 必出", "At the start of the current unit cluster", "Kids read unit from the road, not only the header."),
+        ("R04", "L03", "Big cards", "主事件卡片", "Next-card peek + lock", "下一张卡片探出+锁", "Finish this lesson first", "先走完这一课", "24–40 pt of the next card visible on the right; lock + grey CTA", "Required 必出", "Whenever another lesson/test exists to the right", "VIDEO FEEL: the path continues off-screen. Never dead-end the current card."),
         # MICRO PATH
-        ("R05", "L04", "Lesson path", "课内小路线", "In-class section header", "课中分段标题", "In class", "课中", "Small flag / signboard on the road", "Required 必出", "On the current lesson's micro path", "Groups S1–S5. Without this, 9 nodes become a flat necklace and kids get lost."),
-        ("R06", "L04", "Lesson path", "课内小路线", "After-class section header", "课后分段标题", "After class", "课后", "Small flag / signboard after the award", "Required 必出", "On the current lesson's micro path", "Groups S6–S9. Visually a new chapter after Award."),
-        ("R07", "L05", "Lesson path", "课内小路线", "Node connector line", "节点连接线", "—", "—", "Solid glow vs dotted grey", "Required 必出", "Between every consecutive pair of the 9 steps", "The line IS the route. Completed segments filled; remaining empty. Must still read in greyscale."),
-        ("R08", "L05", "Lesson path", "课内小路线", "Path progress fill", "路线进度填充", "—", "—", "Painted road from start → current", "Required 必出", "Always on micro path", "When a step completes, the segment paints forward (reference video energy)."),
+        ("R05", "L04", "On-card mini-route", "卡片内小路线", "In-class section on the card", "课中分段（在卡片上）", "In class", "课中", "The 5 in-class steps as a row inside the lesson card", "Required 必出", "On every lesson card", "VIDEO: Preview / Live Class / Review / Homework sit ON the card. Ours: 预习-教学-练习-总结-领奖 on the card. Do not mix 口语听力 onto this row."),
+        ("R06", "L05", "Floor chests", "地面宝箱", "After-class chest cluster", "课后宝箱组", "After class", "课后", "Chests sitting on the floor to the right of the lesson card", "Required 必出", "After each lesson card", "VIDEO: Review + PaperHomework chests on the floor. Ours: 复习-口语-听力-报告 as chests (报告 may upgrade to a destination card)."),
+        ("R07", "L01", "Ground plane", "共用地面", "Left-to-right object order", "从左到右的物件顺序", "—", "—", "Card then chests then next card — reading order is X, not a line graphic", "Required 必出", "Always", "VIDEO FEEL: the route is the arrangement on the floor. A drawn road is optional; alignment is required."),
+        ("R08", "L03", "Big cards", "主事件卡片", "Current-card emphasis", "当前卡片强调", "You are here", "你在这里", "Current card larger, full color; others smaller/dimmer", "Required 必出", "Always one current event", "VIDEO: the live lesson card dominates. Tests to the right wait their turn."),
         # 9 NODES — listed also in sheet 03, but they MUST appear on the route
-        ("R09", "L06", "In-class nodes", "课中节点", "Node: Preview", "节点：预习", "Peek first", "预习", "Binoculars / sparkle book", "Required 必出", "Step 1 of every lesson", "MISSING in current screenshot. First gate of the lesson."),
-        ("R10", "L06", "In-class nodes", "课中节点", "Node: Teaching", "节点：教学", "Class time", "教学", "Teacher / play class", "Required 必出", "Step 2 of every lesson", "MISSING as a node today (only a 去上课 button). Must live ON the path."),
-        ("R11", "L06", "In-class nodes", "课中节点", "Node: Practice", "节点：练习", "Try it", "练习", "Target / bullseye — keep", "Required 必出", "Step 3 of every lesson", "Present in current UI. Keep icon. Do not make it the only highlighted chip."),
-        ("R12", "L06", "In-class nodes", "课中节点", "Node: Summary", "节点：总结", "Wrap up", "总结", "Star notebook / recap cards", "Required 必出", "Step 4 of every lesson", "MISSING in current screenshot. Short, warm, visual recap."),
-        ("R13", "L06", "In-class nodes", "课中节点", "Node: Award (landmark)", "节点：领奖（地标）", "Prize", "领奖", "Chest / medal / gift — bigger than normal nodes", "Required 必出", "Step 5, end of in-class", "MISSING. This is the celebration gate before after-class work. Must feel like a landmark, not a 5th identical dot."),
-        ("R14", "L06", "After-class nodes", "课后节点", "Node: Review", "节点：复习", "Replay", "复习", "Replay / flashcards", "Required 必出", "Step 6, start of after-class", "MISSING in current screenshot. First after-class step."),
-        ("R15", "L06", "After-class nodes", "课后节点", "Node: Speaking", "节点：口语", "Say it", "口语", "Microphone — keep", "Required 必出", "Step 7", "Present in current UI. Keep mic icon."),
-        ("R16", "L06", "After-class nodes", "课后节点", "Node: Listening", "节点：听力", "Listen", "听力", "Headphones — keep", "Required 必出", "Step 8", "Present in current UI. Keep headphone icon."),
-        ("R17", "L06", "After-class nodes", "课后节点", "Node: Report (destination)", "节点：报告（终点）", "My report", "报告", "Chart / report card — landmark", "Required 必出", "Step 9, end of the lesson path", "Present in current UI as a chip. Promote to destination landmark of this lesson, then the week road continues to the next lesson."),
+        ("R09", "L04", "On-card mini-route", "卡片内小路线", "Node: Preview", "节点：预习", "Peek first", "预习", "Document / binoculars on the card row (video: yellow Preview tab)", "Required 必出", "Step 1 of every lesson — ON the lesson card", "MISSING in our old chip bar. First in-class lock."),
+        ("R10", "L04", "On-card mini-route", "卡片内小路线", "Node: Teaching", "节点：教学", "Class time", "教学", "TV / teacher / play-class icon (video: Live Class)", "Required 必出", "Step 2 — ON the lesson card AND as the card's main Go to Class", "Main event. Video's 'Go to Class' on the card is this step."),
+        ("R11", "L04", "On-card mini-route", "卡片内小路线", "Node: Practice", "节点：练习", "Try it", "练习", "Target / bullseye — keep", "Required 必出", "Step 3 — ON the lesson card", "Was the only highlighted chip. Now one of five on-card steps."),
+        ("R12", "L04", "On-card mini-route", "卡片内小路线", "Node: Summary", "节点：总结", "Wrap up", "总结", "Star notebook / recap", "Required 必出", "Step 4 — ON the lesson card", "MISSING before. Still in-class, still on the card."),
+        ("R13", "L05", "Floor chests", "地面宝箱", "Chest: Award (landmark)", "宝箱：领奖", "Prize", "领奖", "Treasure chest on/just after the card — bigger bounce than other chests", "Required 必出", "Step 5, end of in-class", "VIDEO language: chests = rewards. Gate before after-class chests."),
+        ("R14", "L05", "Floor chests", "地面宝箱", "Chest: Review", "宝箱：复习", "Replay", "复习", "Chest + blue/orange button (video: Review chest)", "Required 必出", "Step 6, first after-class chest", "VIDEO maps almost 1:1. Sits on the floor after the lesson card."),
+        ("R15", "L05", "Floor chests", "地面宝箱", "Chest: Speaking", "宝箱：口语", "Say it", "口语", "Chest or mic-on-chest; keep mic icon", "Required 必出", "Step 7", "Do not put on the lesson-card row. Floor object, smaller than the card."),
+        ("R16", "L05", "Floor chests", "地面宝箱", "Chest: Listening", "宝箱：听力", "Listen", "听力", "Chest or headphone-on-chest; keep headphone icon", "Required 必出", "Step 8", "Same as Speaking — floor chest, not a 4th chip on the card."),
+        ("R17", "L03", "Big cards", "主事件卡片", "Destination: Report", "终点：报告", "My report", "报告", "Stage Report-style card (video) or a chest that opens a report sheet", "Required 必出", "Step 9, end of the lesson cluster", "VIDEO: Stage Report is a BIG card with mascot + Report button. Prefer card at lesson end; unit 复习测评课 uses Progress Test / Graduation Test card scale."),
         # NODE ANATOMY (each node needs these sub-elements)
-        ("R18", "L06", "Node anatomy", "节点构造", "Step icon", "步骤图标", "—", "—", "Simple, 1 concept, readable at 32–40 pt", "Required 必出", "Every node", "Different silhouette per step so color-blind / grey mode still works."),
-        ("R19", "L06", "Node anatomy", "节点构造", "Step label ZH", "步骤中文名", "预习 / 教学 / …", "预习 / 教学 / …", "Under the icon, always visible", "Required 必出", "Every node", "Never hide Chinese labels. 2 characters preferred."),
-        ("R20", "L06", "Node anatomy", "节点构造", "Step label EN", "步骤英文名", "Preview / Teaching / …", "Preview / Teaching / …", "Second line or locale swap", "Required 必出", "When language = EN; reserve space even in ZH build", "Layout must survive longer English words (Listening, Practice)."),
-        ("R21", "L07", "Node anatomy", "节点构造", "State badge", "状态角标", "✓  lock  star", "✓  锁  星", "Check / lock / star / pie", "Required 必出", "Every node except maybe current (glow instead)", "4–5 o'clock of the node. Do not cover the icon."),
-        ("R22", "L06", "Node anatomy", "节点构造", "Tap target", "点击热区", "—", "—", "Min 44×44 pt invisible hit area", "Required 必出", "Every node", "Kids miss small chips. The old pill row is too tight."),
-        # YOU ARE HERE
-        ("R23", "L08", "You-are-here", "你在这里", "Traveler character", "旅人角色", "—", "—", "Current child avatar on the current node; teacher may point forward", "Required 必出", "Always on the current step", "This is the 'kids can follow the path with us' element. Old UI put the teacher beside the card, not on the route."),
-        ("R24", "L08", "You-are-here", "你在这里", "Current-node glow / scale", "当前节点高亮放大", "You are here", "你在这里", "Glow ring + 1.15–1.3× scale", "Required 必出", "Current step", "Old UI used a pale orange plate behind Practice only. New: the whole node + traveler + CTA."),
-        ("R25", "L08", "You-are-here", "你在这里", "Next-step peek", "下一步预告", "Next: Practice", "下一步：练习", "The next node is fully visible, slightly smaller", "Required 必出", "Always (unless on Report of last lesson)", "Never crop the next node off-screen without a peek. Camera frames current + next."),
-        # CTA
-        ("R26", "L09", "CTA", "主按钮", "Primary action on current node", "当前步主按钮", "(see step CTA)", "（见各步 CTA）", "Orange pill + icon, glued to current node", "Required 必出", "Whenever the current step is playable", "Replace the left-side 去上课 that sits beside a 4-chip bar. One verb, no truncation like 'Farm Anim…'."),
-        ("R27", "L09", "CTA", "主按钮", "Secondary: replay completed step", "次按钮：重玩已完成", "Play again", "再玩一次", "Ghost / small replay on completed nodes", "Recommended 建议", "When a completed node is selected", "Optional. Do not compete with the primary CTA."),
+        ("R18", "L04", "On-card mini-route", "卡片内小路线", "Step icon", "步骤图标", "—", "—", "Simple, 1 concept, readable at 32–40 pt", "Required 必出", "Every on-card step and chest", "Different silhouette so grey+lock still works."),
+        ("R19", "L04", "On-card mini-route", "卡片内小路线", "Step label ZH", "步骤中文名", "预习 / 教学 / …", "预习 / 教学 / …", "Under the icon, always visible", "Required 必出", "Every step", "Never hide Chinese. 2 characters preferred."),
+        ("R20", "L04", "On-card mini-route", "卡片内小路线", "Step label EN", "步骤英文名", "Preview / Teaching / …", "Preview / Teaching / …", "Locale swap or second line", "Required 必出", "When language = EN; reserve space even in ZH build", "Layout must survive Listening / Practice."),
+        ("R21", "L08", "Locks", "锁", "Green vs grey lock under step", "步骤下的绿锁/灰锁", "—", "—", "Video: small lock below each mini-step", "Required 必出", "Every mini-step and peeked card", "THIS is the video's state language. Lock under icon, not a badge covering art."),
+        ("R22", "L04", "On-card mini-route", "卡片内小路线", "Tap target", "点击热区", "—", "—", "Min 44×44 pt", "Required 必出", "Every step and chest", "Video cards are generous. Do not go back to tiny chips."),
+        # GUIDE + CTA
+        ("R23", "L06", "Mascot guide", "向导", "Guide character on the floor", "站在地上的向导", "—", "—", "Our 3D teacher (not their parrot) + optional kid avatar", "Required 必出", "Beside the current card or chest", "VIDEO FEEL: guide stands ON the path with speech + Go."),
+        ("R24", "L03", "Big cards", "主事件卡片", "Current-card scale", "当前卡片强调", "You are here", "你在这里", "Largest card, full saturation", "Required 必出", "Current lesson", "Video: the live lesson card dominates the frame."),
+        ("R25", "L03", "Big cards", "主事件卡片", "Next-card peek", "下一张预告", "Next: Lesson 4", "下一课", "Right-edge peek + lock", "Required 必出", "If something exists to the right", "Video already peeks the next locked card."),
+        ("R26", "L07", "CTA family", "主按钮家族", "Primary CTA on current object", "当前物件主按钮", "(see step CTA)", "（见各步 CTA）", "Same rounded pill on cards AND chests (video: blue Enter/Go/Start)", "Required 必出", "Whenever the current step is playable", "One family. Grey when locked. No 'Farm Anim…' truncation."),
+        ("R27", "L07", "CTA family", "主按钮家族", "Secondary: replay", "次按钮：重玩", "Play again", "再玩一次", "Ghost / small replay", "Recommended 建议", "When a completed object is selected", "Do not compete with the primary CTA."),
         # LESSON SIGNBOARD (anchors the path)
-        ("R28", "L10", "Lesson signboard", "课程牌", "Lesson type tag", "课型标签", "Hear & Speak", "听说", "Colored pill (type color)", "Required 必出", "On current lesson station / hero", "Fix screenshot English 'Hear of'. Use dictionary in 07_Lesson_Types."),
-        ("R29", "L10", "Lesson signboard", "课程牌", "Lesson number", "课次", "Lesson 3", "第 3 课", "Neutral chip", "Required 必出", "Always on current lesson", "Keep. Pair with Level · Unit."),
-        ("R30", "L10", "Lesson signboard", "课程牌", "Level · Unit", "级别 · 单元", "Level 4 · Unit 1", "Level 4 · Unit 1", "Overlay chip", "Required 必出", "Always on current lesson", "Keep from screenshot."),
-        ("R31", "L10", "Lesson signboard", "课程牌", "Lesson title", "课程标题", "Farm Animals", "农场动物", "Large rounded title", "Required 必出", "Always on current lesson", "Keep large white title. Provide ZH + EN."),
-        ("R32", "L10", "Lesson signboard", "课程牌", "Duration", "时长", "10 min", "10 分钟", "Clock icon + time", "Required 必出", "On current lesson", "Keep. Duration may change per step if we later show remaining time; v1 = lesson duration."),
-        ("R33", "L10", "Lesson signboard", "课程牌", "Lesson status", "课程状态", "In progress / Not started / Done", "进行中 / 未开始 / 已完成", "Signal bars or status chip", "Required 必出", "On current lesson", "Keep. Map to week-station state too."),
-        ("R34", "L10", "Lesson signboard", "课程牌", "Words preview", "单词预告", "Words: friend, classmate…", "单词：friend, classmate…", "Text line under title", "Required 必出", "When the lesson has target words", "Keep. Tells kids what this path is 'about'."),
-        ("R35", "L10", "Lesson signboard", "课程牌", "Sentences preview", "句型预告", "Sentences: This is my friend.", "句子：This is my friend.", "Text line under words", "Required 必出", "When the lesson has target sentences", "Keep. Empty-state: hide the line, do not show 'Sentences: —'."),
-        ("R36", "L10", "Lesson signboard", "课程牌", "Theme illustration", "主题插画", "—", "—", "3D scene for this lesson", "Required 必出", "Current lesson", "Keep quality from screenshot. The path sits in front / below, not replacing the art."),
+        ("R28", "L03", "Lesson signboard", "课程牌", "Lesson type tag", "课型标签", "Hear & Speak", "听说", "Colored pill (type color)", "Required 必出", "On current lesson station / hero", "Fix screenshot English 'Hear of'. Use dictionary in 07_Lesson_Types."),
+        ("R29", "L03", "Lesson signboard", "课程牌", "Lesson number", "课次", "Lesson 3", "第 3 课", "Neutral chip", "Required 必出", "Always on current lesson", "Keep. Pair with Level · Unit."),
+        ("R30", "L03", "Lesson signboard", "课程牌", "Level · Unit", "级别 · 单元", "Level 4 · Unit 1", "Level 4 · Unit 1", "Overlay chip", "Required 必出", "Always on current lesson", "Keep from screenshot."),
+        ("R31", "L03", "Lesson signboard", "课程牌", "Lesson title", "课程标题", "Farm Animals", "农场动物", "Large rounded title", "Required 必出", "Always on current lesson", "Keep large white title. Provide ZH + EN."),
+        ("R32", "L03", "Lesson signboard", "课程牌", "Duration", "时长", "10 min", "10 分钟", "Clock icon + time", "Required 必出", "On current lesson", "Keep. Duration may change per step if we later show remaining time; v1 = lesson duration."),
+        ("R33", "L03", "Lesson signboard", "课程牌", "Lesson status", "课程状态", "In progress / Not started / Done", "进行中 / 未开始 / 已完成", "Signal bars or status chip", "Required 必出", "On current lesson", "Keep. Map to week-station state too."),
+        ("R34", "L03", "Lesson signboard", "课程牌", "Words preview", "单词预告", "Words: friend, classmate…", "单词：friend, classmate…", "Text line under title", "Required 必出", "When the lesson has target words", "Keep. Tells kids what this path is 'about'."),
+        ("R35", "L03", "Lesson signboard", "课程牌", "Sentences preview", "句型预告", "Sentences: This is my friend.", "句子：This is my friend.", "Text line under words", "Required 必出", "When the lesson has target sentences", "Keep. Empty-state: hide the line, do not show 'Sentences: —'."),
+        ("R36", "L03", "Lesson signboard", "课程牌", "Theme illustration", "主题插画", "—", "—", "3D scene for this lesson", "Required 必出", "Current lesson", "Keep quality from screenshot. The path sits in front / below, not replacing the art."),
         # PAGE CHROME still essential for the route to make sense
-        ("R37", "L11", "Header", "顶部", "Current child avatar", "当前孩子头像", "—", "—", "Circular photo/avatar", "Required 必出", "Always", "Same avatar as the traveler on the path."),
-        ("R38", "L11", "Header", "顶部", "Sibling / profile switcher", "多孩子切换", "Switch kid", "切换宝贝", "Stacked avatars + swap icon", "Required 必出", "When the family has 2+ kids", "Keep from screenshot. Switching kid switches the path progress."),
-        ("R39", "L11", "Header", "顶部", "Screen title", "页面标题", "Weekly Study Plan", "本周学习计划", "Centered rounded title", "Required 必出", "Always", "Bilingual. This is the week-map, not a random class list."),
-        ("R40", "L11", "Header", "顶部", "More lessons entry", "更多课程入口", "More lessons", "更多课程", "Pill + lesson thumbnail (submarine in screenshot)", "Required 必出", "Always", "Keep. Must return to the same spot on the path."),
-        ("R41", "L12", "Tab bar", "底栏", "Class tab (selected)", "上课 Tab（选中）", "Class", "上课", "Green book + star + yellow glow", "Required 必出", "Always", "Keep selected treatment. Route lives here."),
-        ("R42", "L12", "Tab bar", "底栏", "Chat / Explore / Play tabs", "聊天 / 探索 / 玩", "Chat · Explore · Play", "聊天 · 探索 · 玩", "Honey pot / chart / VS", "Required 必出", "Always", "Keep. Not part of the lesson route."),
+        ("R37", "L09", "Header", "顶部", "Current child avatar", "当前孩子头像", "—", "—", "Circular photo/avatar", "Required 必出", "Always", "Same avatar as the traveler on the path."),
+        ("R38", "L09", "Header", "顶部", "Sibling / profile switcher", "多孩子切换", "Switch kid", "切换宝贝", "Stacked avatars + swap icon", "Required 必出", "When the family has 2+ kids", "Keep from screenshot. Switching kid switches the path progress."),
+        ("R39", "L09", "Header", "顶部", "Screen title", "页面标题", "Weekly Study Plan", "本周学习计划", "Centered rounded title", "Required 必出", "Always", "Bilingual. This is the week-map, not a random class list."),
+        ("R40", "L09", "Header", "顶部", "More lessons entry", "更多课程入口", "More lessons", "更多课程", "Pill + lesson thumbnail (submarine in screenshot)", "Required 必出", "Always", "Keep. Must return to the same spot on the path."),
+        ("R41", "L10", "Tab bar", "底栏", "Class tab (selected)", "上课 Tab（选中）", "Class", "上课", "Green book + star + yellow glow", "Required 必出", "Always", "Keep selected treatment. Route lives here."),
+        ("R42", "L10", "Tab bar", "底栏", "Chat / Explore / Play tabs", "聊天 / 探索 / 玩", "Chat · Explore · Play", "聊天 · 探索 · 玩", "Honey pot / chart / VS", "Required 必出", "Always", "Keep. Not part of the lesson route."),
         # OVERLAYS that belong to the route
-        ("R43", "L13", "Overlays", "弹层", "Award celebration", "领奖庆祝", "You earned a star!", "你得到一颗星！", "Chest open + stars + stamp on S5", "Required 必出", "When S5 is claimed", "Then auto-pan to after-class path so Review is obviously next."),
-        ("R44", "L13", "Overlays", "弹层", "Locked-step feedback", "未解锁反馈", "Let's finish Teaching first", "先上完课再来", "Lock shake + tiny coach line", "Required 必出", "When a locked node is tapped", "Never dead-end. Tell the child which node to do."),
-        ("R45", "L13", "Overlays", "弹层", "Mic permission for Speaking", "口语麦克风授权", "Let me hear you", "让老师听见你", "Friendly mic card", "Required 必出", "First time entering Speaking", "Kids path must not jump into a system dialog without a kid-facing explainer."),
-        ("R46", "L13", "Overlays", "弹层", "Report sheet", "报告单", "My lesson report", "我的本课报告", "Stars, words, speaking count, listening score", "Required 必出", "On S9 or after claiming S9", "Kid-first layout. Parent-detail can be a second page / toggle."),
-        ("R47", "L07", "Node anatomy", "节点构造", "Stars / stamps on completed nodes", "完成章/星星", "Done!", "完成！", "Star or ink stamp", "Required 必出", "Each completed step", "Makes the walked path feel collected, not just grey checks."),
-        ("R48", "L04", "Lesson path", "课内小路线", "Award-to-Review gate", "领奖→复习 分界", "After class starts here", "课后从这里开始", "Arch / bridge / banner after the chest", "Required 必出", "Between S5 and S6", "Without a gate, Award and Review look like the same homework list."),
-        ("R49", "L03", "Week path", "本周大路线", "Start-of-week landmark", "本周起点", "Week start", "本周出发", "Flag / camp / school gate", "Recommended 建议", "Beginning of week road", "Helps the map feel like a journey, matching the reference video."),
-        ("R50", "L03", "Week path", "本周大路线", "End-of-week chest", "本周终点宝箱", "Week prize", "本周大奖", "Bigger chest after last Report", "Recommended 建议", "After the week's last lesson Report", "Optional extra celebration. Do not confuse with per-lesson Award (S5)."),
-        ("R51", "L09", "CTA", "主按钮", "CTA lesson nickname", "按钮上的课名简称", "Farm Animals", "农场动物", "On the pill, full name or 2 lines", "Required 必出", "On primary CTA", "Do not clip to 'Farm Anim…'."),
-        ("R52", "L08", "You-are-here", "你在这里", "Teacher companion on path", "路上的老师伙伴", "—", "—", "3D teacher from current UI, pointing to the next node", "Recommended 建议", "On current lesson", "Keep the beloved teacher, but move her from card-left onto the road so she walks with the kid."),
-        ("R53", "L06", "Node anatomy", "节点构造", "Remaining-time or step status text", "步骤状态小字", "In progress", "进行中", "Under current label only", "Recommended 建议", "Current node", "Optional. Don't clutter every node."),
-        ("R54", "L13", "Overlays", "弹层", "Empty / first-time coach", "首次引导", "We walk this path together", "我们一起走这条路", "Teacher points S1 → S9 once", "Recommended 建议", "First launch of the new Class tab", "One-time. Then the path itself must be self-explanatory."),
+        ("R43", "L11", "Overlays", "弹层", "Award celebration", "领奖庆祝", "You earned a star!", "你得到一颗星！", "Chest open + stars + stamp on S5", "Required 必出", "When S5 is claimed", "Then auto-pan to after-class path so Review is obviously next."),
+        ("R44", "L11", "Overlays", "弹层", "Locked-step feedback", "未解锁反馈", "Let's finish Teaching first", "先上完课再来", "Lock shake + tiny coach line", "Required 必出", "When a locked node is tapped", "Never dead-end. Tell the child which node to do."),
+        ("R45", "L11", "Overlays", "弹层", "Mic permission for Speaking", "口语麦克风授权", "Let me hear you", "让老师听见你", "Friendly mic card", "Required 必出", "First time entering Speaking", "Kids path must not jump into a system dialog without a kid-facing explainer."),
+        ("R46", "L11", "Overlays", "弹层", "Report sheet", "报告单", "My lesson report", "我的本课报告", "Stars, words, speaking count, listening score", "Required 必出", "On S9 or after claiming S9", "Kid-first layout. Parent-detail can be a second page / toggle."),
+        ("R47", "L08", "Node anatomy", "节点构造", "Stars / stamps on completed nodes", "完成章/星星", "Done!", "完成！", "Star or ink stamp", "Required 必出", "Each completed step", "Makes the walked path feel collected, not just grey checks."),
+        ("R48", "L05", "Floor chests", "地面宝箱", "Card-to-chest gap (Award → Review)", "卡片到宝箱的分界", "After class starts here", "课后从这里开始", "Physical gap on the floor after the lesson card / award chest", "Required 必出", "Between S5 and S6", "VIDEO: chests sit AFTER the card, not inside it. That gap IS the 课中/课后 gate."),
+        ("R49", "L02", "Wayfinding", "路标", "Section header pill", "段落标题胶囊", "Language Booster / unit theme", "单元主题名", "Floating yellow rounded title above the cluster (video: Language Booster 3)", "Required 必出", "Above the current unit/lesson cluster", "VIDEO FEEL: a named chapter in the world, not only in the app bar."),
+        ("R50", "L03", "Big cards", "主事件卡片", "Unit test / graduation cards", "单元测评 / 毕业测卡片", "Progress Test · Graduation Test", "阶段测评 · 毕业测", "Large illustrated cards with mascot + Start (video end of path)", "Required 必出", "At unit end — maps to 复习测评课", "VIDEO: Progress Test, Graduation Test, Stage Report are CARDS not chips. Use this scale for 复习测评课 and the final 报告."),
+        ("R51", "L07", "CTA", "主按钮", "CTA lesson nickname", "按钮上的课名简称", "Farm Animals", "农场动物", "On the pill, full name or 2 lines", "Required 必出", "On primary CTA", "Do not clip to 'Farm Anim…'."),
+        ("R52", "L06", "You-are-here", "你在这里", "Teacher companion on path", "路上的老师伙伴", "—", "—", "3D teacher from current UI, pointing to the next node", "Recommended 建议", "On current lesson", "Keep the beloved teacher, but move her from card-left onto the road so she walks with the kid."),
+        ("R53", "L04", "Node anatomy", "节点构造", "Remaining-time or step status text", "步骤状态小字", "In progress", "进行中", "Under current label only", "Recommended 建议", "Current node", "Optional. Don't clutter every node."),
+        ("R54", "L06", "Overlays", "弹层", "Empty / first-time coach", "首次引导", "We walk this path together", "我们一起走这条路", "Teacher points S1 → S9 once", "Recommended 建议", "First launch of the new Class tab", "One-time. Then the path itself must be self-explanatory."),
         ("R55", "L04", "Lesson path", "课内小路线", "Collapsed completed cluster", "已完成段可收起", "In class done ✓", "课中完成 ✓", "S1–S5 can shrink to a stamped ribbon after Award is claimed", "Recommended 建议", "After S5 claimed, if 9 nodes overflow a phone", "If we collapse, the ribbon must still be tappable to expand. Never delete walked steps."),
-        ("R56", "L10", "Lesson signboard", "课程牌", "Unit theme name", "单元主题名", "Farm Animals", "农场动物", "May equal lesson title or sit above it", "Recommended 建议", "When unit has a theme", "Helps the week map feel like one story, not 6 disconnected cards."),
+        ("R56", "L02", "Wayfinding", "路标", "Unit theme name", "单元主题名", "Farm Animals", "农场动物", "May equal lesson title or sit in the section pill", "Recommended 建议", "When unit has a theme", "Helps the week feel like one story. Video: Language Booster 3."),
+        # VIDEO-FEEL ELEMENTS (from Lark frames)
+        ("R57", "L02", "Wayfinding", "路标", "Floor lesson pill", "地面课次胶囊", "lesson 3", "第 3 课", "Small pill sitting ON the floor under the card/chests (video: lesson 1 / lesson 2)", "Required 必出", "Under each lesson cluster", "VIDEO FEEL: the lesson number lives in the world, not only on the card header."),
+        ("R58", "L06", "Mascot guide", "向导", "Speech bubble", "说话气泡", "Hey! Your prize chest is still waiting. Come with me!", "嘿！奖品宝箱还在等你，跟我走！", "White rounded bubble from the guide, 1–2 short lines", "Required 必出", "When a landmark is waiting (unclaimed 领奖 / unit test)", "VIDEO: parrot invites the next chest. Ours: teacher. Keep it spoken-kid, not marketing."),
+        ("R59", "L06", "Mascot guide", "向导", "Go on the speech", "气泡上的出发", "Go", "出发", "Small blue/orange pill inside or under the bubble (video: Go)", "Required 必出", "Together with R58", "Tapping Go pans to the invited object and focuses its CTA."),
+        ("R60", "L01", "Ground plane", "共用地面", "Contact shadow under objects", "物件落地震影", "—", "—", "Soft oval shadow so cards/chests look planted", "Required 必出", "Every floor object", "VIDEO depth: foreground objects, mid chests, quiet world. Shadows sell the plane."),
+        ("R61", "L01", "Ground plane", "共用地面", "Horizontal pan / scroll", "横向滑动", "—", "—", "Swipe left-right along the unit. Header and tabs stay.", "Required 必出", "Always", "VIDEO FEEL: you walk the path by scrolling the world, not by switching pages."),
+        ("R62", "L07", "CTA family", "主按钮家族", "Disabled / grey CTA", "未解锁灰按钮", "Go to Class (disabled)", "去上课（不可点）", "Video: greyed Go to Class / translucent Start", "Required 必出", "When the card/chest is locked or not current", "Kids see the button exists but cannot press it yet — plus a lock."),
+        ("R63", "L03", "Big cards", "主事件卡片", "Progress Test card", "阶段测评卡片", "Progress Test", "阶段测评", "Mascot + chest + A+ art, subtitle Unit learning test, Start", "Required 必出", "Maps to 复习测评课 (mid-unit, e.g. L6)", "Copy the VIDEO card type, not their copy deck. Keep our lesson-type name."),
+        ("R64", "L03", "Big cards", "主事件卡片", "Graduation / stage report cards", "毕业测 / 阶段报告卡片", "Graduation Test · Stage Report", "毕业测 · 阶段报告", "Large illustrated destination cards at the end of a block", "Recommended 建议", "End of unit / after last Report", "Video has both. We can merge into 复习测评课 + 报告 if we must not add extra lesson types."),
+        ("R65", "L00", "World", "主题世界", "Low-contrast ambient creatures", "低对比氛围生物", "—", "—", "Video: line-art whale/turtle. Ours: farm animals stay in L00, never covering CTAs", "Required 必出", "Always", "Decoration only. Safe margin around every tappable object."),
+        ("R66", "L09", "Header overlay", "顶部浮层", "Header does not scroll with the path", "顶栏不跟路线滚动", "—", "—", "Pinned HUD", "Required 必出", "Always", "VIDEO: world moves, chrome stays. Two layers."),
+        ("R67", "L10", "Tab overlay", "底栏浮层", "Tab bar does not scroll with the path", "底栏不跟路线滚动", "—", "—", "Pinned overlay + scroll padding", "Required 必出", "Always", "Do not put Chat/Explore/Play icons onto the sea floor."),
+        ("R68", "L07", "CTA family", "主按钮家族", "Chest action button", "宝箱上的行动按钮", "Review / Start Speaking / …", "去复习 / 去开口 / …", "Same pill on every chest (video: blue Review, PaperHomework)", "Required 必出", "Every floor chest", "One control, one verb. Do not invent a second UI on the chest."),
     ]
 
     pri_fill = {
@@ -1174,7 +1239,18 @@ def build_copy(wb):
         ("award.celebrate", "Overlay", "You earned a star!", "你得到一颗星！", "Yes", "24 / 10", "Don't use You have successfully claimed", ""),
         ("report.title", "Overlay", "My lesson report", "我的本课报告", "Yes", "22 / 8", "", ""),
         ("mic.title", "Overlay", "Let me hear you", "让老师听见你", "Yes", "22 / 8", "", ""),
-        ("coach.first_time", "Overlay", "We walk this path together", "我们一起走这条路", "Yes", "32 / 10", "", "Once."),
+        ("coach.prize_waiting", "Mascot bubble", "Hey! Your prize chest is still waiting. Come with me!", "嘿！奖品宝箱还在等你，跟我走！", "Yes", "40 / 18", "Don't write unit test treasure chest if we mean 领奖", "Video parrot line, rewritten for our Award chest."),
+        ("cta.go", "Mascot bubble", "Go", "出发", "Yes", "4 / 2", "Don't use Enter if the mascot is inviting a pan", "Video Go."),
+        ("cta.enter", "Card / printouts", "Enter", "进入", "Yes", "8 / 2", "", "Video uses Enter on some cards."),
+        ("cta.start", "Test card", "Start", "开始", "Yes", "8 / 2", "", "Video Progress/Graduation Test."),
+        ("test.progress.title", "Test card", "Progress Test", "阶段测评", "Yes", "18 / 4", "", "Maps to 复习测评课."),
+        ("test.progress.sub", "Test card", "Unit learning test", "本单元学习测验", "Yes", "22 / 8", "", ""),
+        ("test.graduation.title", "Test card", "Graduation Test", "毕业测", "Yes", "18 / 4", "", "Optional end-of-block card."),
+        ("test.graduation.sub", "Test card", "Test for learning results", "检验学习成果", "Yes", "28 / 8", "", ""),
+        ("test.stage_report.title", "Report card", "Stage Report", "阶段报告", "Yes", "16 / 4", "", "Video destination card. Maps to 报告."),
+        ("wayfinding.unit", "Signpost", "Unit {n}", "Unit {n}", "Yes", "10 / 10", "", "Yellow arrow on the floor."),
+        ("wayfinding.lesson_pill", "Floor pill", "lesson {n}", "第 {n} 课", "Yes", "12 / 6", "", "Video: lesson 1 under chests."),
+        ("cta.go_to_class_off", "Lesson card", "Go to Class", "去上课", "Yes", "14 / 4", "", "Same string as cta.teaching; grey + lock when not ready (video)."),
         ("week.progress", "HUD", "{done} / {total} lessons", "{done} / {total} 课", "Yes", "16 / 10", "", ""),
         ("week.start", "Landmark", "Week start", "本周出发", "Yes", "12 / 4", "", ""),
         ("week.prize", "Landmark", "Week prize", "本周大奖", "Yes", "12 / 4", "", "Don't confuse with per-lesson Award."),
@@ -1231,10 +1307,10 @@ def build_gap(wb):
         (
             "Route metaphor",
             "Horizontal 4-chip bar under one lesson card. Feels like a toolbar.",
-            "A road kids walk: week stations + 9-step lesson path, traveler on the current node, next node always in view.",
+            "Video feel: a themed WORLD, a shared FLOOR, swipe left-right. BIG lesson CARD (in-class 5 steps + locks on the card) → CHESTS on the floor (复习/口语/听力) → next card peeking. Sticky header + tabs.",
             "Fix 改",
-            "Chips do not feel like a journey. The video reference is a path.",
-            "Draw a real trail. Do not restyle the chips and call it done.",
+            "Chips do not feel like a journey. The video is cards and chests on a sea floor.",
+            "Build the floor first. Then plant cards and chests. Do not restyle the chips and call it done.",
         ),
         (
             "Steps shown",
@@ -1263,18 +1339,26 @@ def build_gap(wb):
         (
             "Teacher character",
             "Stands left, overlapping the card, not related to progress.",
-            "Walks the path with the child, pointing to the next node.",
+            "VIDEO: parrot stands ON the floor, talks, offers Go. Ours: 3D teacher on the floor beside the current card/chest.",
             "Fix 改",
             "She is loved, but she is not helping the route.",
             "Reuse the 3D teacher. Put her on the road.",
         ),
         (
+            "Card vs chest scale",
+            "Every step is the same size chip.",
+            "VIDEO HIERARCHY: lesson / test / report = BIG CARD. 复习 口语 听力 领奖 = smaller CHESTS on the floor. Mini-locks live ON the card.",
+            "Fix 改",
+            "Equal chips hide what is the main event. Kids follow the big card first.",
+            "If 口语 is as large as Farm Animals, the layer failed.",
+        ),
+        (
             "Week context",
             "Only one lesson card. Other lessons hidden behind More lessons.",
-            "Week road with all stations for this week; More lessons is extra / library.",
+            "Horizontal floor of cards this week; More lessons is extra / library. Next card always peeks.",
             "Add 补",
             "A weekly plan that shows one card is not a plan.",
-            "6 (or 6+6) stations on a trail.",
+            "Plant every lesson as a card on the floor, like the video's left-to-right stations.",
         ),
         (
             "Type tag English",
@@ -1335,10 +1419,10 @@ def build_gap(wb):
         (
             "Motion",
             "Static bar.",
-            "Road paints forward; traveler walks; chest bounces; camera keeps current+next framed (as in the Lark video).",
+            "Horizontal pan of the world; mascot Go; lock shake; grey CTA until unlocked; chest bounce; auto-pan to the next chest after Award (video: Come with me).",
             "Add 补",
-            "Feeling of following comes from motion along a path.",
-            "Spec: complete → paint segment → walk → settle on next node → CTA updates.",
+            "Feeling of following comes from walking a floor, not from a highlight tint.",
+            "Spec: complete on-card step → next lock turns green → after Award, pan to 复习 chest.",
         ),
     ]
     keep_bg = {
@@ -1364,7 +1448,7 @@ def build_map_sheet(wb):
         ws,
         "One-page route map (wire in cells)",
         "一页路线地图（用格子示意）",
-        "Not final art. Shows grouping, order, and what sits on which layer. 不是终稿，只表示分组、顺序、图层。",
+        "Not final art. Horizontal floor like the video: signpost → big lesson CARD (5 in-class locks) → floor CHESTS → next card peek. 不是终稿。按视频做成横向地面：路标 → 大课卡（课中五锁） → 地上宝箱 → 下一张探出。",
         11,
     )
     set_widths(ws, [14] * 11)
@@ -1401,13 +1485,13 @@ def build_map_sheet(wb):
     ws.row_dimensions[6].height = 28
 
     ws.merge_cells("A8:K8")
-    header_cell(ws, 8, 1, "MICRO  当前课 Farm Animals  课内 9 步  (only the current station expands this)", bg=NAVY2)
+    header_cell(ws, 8, 1, "HORIZONTAL FLOOR  当前课 Farm Animals  像视频一样从左滑到右  CARD then CHESTS then PEEK", bg=NAVY2)
 
     # in class band
     ws.merge_cells("A9:F9")
-    header_cell(ws, 9, 1, "IN CLASS  课中   Preview → Teaching → Practice → Summary → Award", bg=ORANGE)
+    header_cell(ws, 9, 1, "ON THE CARD  课中五步锁在卡片上   Preview → Teaching → Practice → Summary → Award", bg=ORANGE)
     ws.merge_cells("G9:K9")
-    header_cell(ws, 9, 7, "AFTER CLASS  课后   Review → Speaking → Listening → Report", bg=BLUE)
+    header_cell(ws, 9, 7, "ON THE FLOOR  课后宝箱   Review · Speaking · Listening · Report card peek", bg=BLUE)
 
     nodes = [
         (1, "1\n预习\nPreview\nS1", ORANGE_SOFT, ORANGE),
@@ -1445,8 +1529,8 @@ def build_map_sheet(wb):
         "In the old UI the highlighted chip was Practice — that is usually WRONG if class has not been taken. Current node should be the first incomplete step (often Teaching / 去上课).",
         "S5 Award is drawn as a chest (landmark). S9 Report is drawn as a destination. Column 6 is the after-class gate, not a step.",
         "Column 11 is the next lesson station on the week road (locked) so the path never feels like it ends at Report.",
-        "Layers from back to front on this map: scene art (not shown) → week road → stations → micro path line → nodes → traveler+CTA → header/tab (not shown).",
-        "示例对齐原图课程：Level 4 · Unit 1 · 第 3 课 · Farm Animals · 听说。旅人站在「教学」，主按钮是去上课。",
+        "Layers like the video: L00 world (not shown) → L01 floor → L02 signs → L03 CARD → L04 locks on card → L05 chests → L06 teacher+bubble → L07 CTA → L09/L10 sticky chrome.",
+        "示例对齐原图课程：Level 4 · Unit 1 · 第 3 课 · Farm Animals · 听说。老师站在地上说话，主按钮是去上课。下一张课卡从右边探出并带锁。",
     ]
     for i, t in enumerate(notes):
         rr = 18 + i
@@ -1467,6 +1551,7 @@ def add_print_and_meta(wb):
     order = [
         "00_ReadMe",
         "01_Screen_Layers",
+        "01c_Video_Feel",
         "01b_Route_Map",
         "02_Route_Must_Have",
         "03_Route_Steps",
@@ -1483,6 +1568,7 @@ def add_print_and_meta(wb):
     tab_colors = {
         "00_ReadMe": NAVY,
         "01_Screen_Layers": PURPLE,
+        "01c_Video_Feel": BLUE,
         "01b_Route_Map": ORANGE,
         "02_Route_Must_Have": GREEN,
         "03_Route_Steps": ORANGE,
@@ -1510,6 +1596,7 @@ def main():
     build_copy(wb)
     build_gap(wb)
     build_map_sheet(wb)
+    build_video_feel(wb)
     add_print_and_meta(wb)
     wb.save(OUT)
     print("Wrote", OUT, "sheets:", wb.sheetnames)
