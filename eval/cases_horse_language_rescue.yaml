@@ -1,0 +1,149 @@
+# Experimental L2 horse cases: child rescue plus horse-specific ASR and spoiler guards.
+
+cases:
+  - id: lowercase-chinese-opening
+    support_language: chinese
+    turns: ["horse", "neigh", "no"]
+    max_replies: 4
+    bridge: forbidden
+
+  - id: first-silence-needs-child-friendly-instruction
+    support_language: Chinese
+    turns: ["", "horse", "neigh", "yes"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: first_silence_clarity
+    bridge_reply: 2
+
+  - id: arabic-first-silence-needs-instruction
+    support_language: Arabic
+    turns: ["", "horse", "neigh", "yes"]
+    max_replies: 5
+    bridge: required
+    bridge_script: arabic
+    bridge_job: first_silence_clarity
+    bridge_reply: 2
+
+  - id: confused-then-english-works
+    support_language: Chinese
+    turns: ["What?", "horse", "neigh", "no"]
+    max_replies: 5
+    bridge: optional
+    bridge_script: cjk
+
+  - id: chinese-bridge-works
+    support_language: Chinese
+    turns: ["要做什么？", "horse", "neigh", "I don't know"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: instruction
+    bridge_reply: 2
+
+  - id: chinese-meaning-bridge
+    support_language: Chinese
+    turns: ["horse是什么意思？", "horse", "neigh", "no"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: meaning
+    bridge_reply: 2
+
+  - id: correct-local-meaning-is-not-stuck
+    support_language: Chinese
+    turns: ["小马！", "horse", "neigh", "no"]
+    max_replies: 5
+    bridge: forbidden
+
+  - id: house-asr-is-horse
+    support_language: Chinese
+    turns: ["house", "neigh", "no"]
+    max_replies: 4
+    bridge: forbidden
+
+  - id: of-course-asr-is-horse
+    support_language: Chinese
+    turns: ["Of course.", "neigh", "yes"]
+    max_replies: 4
+    bridge: forbidden
+
+  - id: previous-cat-is-not-horse
+    support_language: Chinese
+    turns: ["cat", "horse", "neigh", "no"]
+    max_replies: 5
+    bridge: forbidden
+
+  - id: nainai-asr-is-neigh
+    support_language: Chinese
+    turns: ["horse", "奶奶。", "no"]
+    max_replies: 4
+    bridge: forbidden
+
+  - id: arabic-bridge-works
+    support_language: Arabic
+    turns: ["ماذا أفعل؟", "horse", "neigh", "no"]
+    max_replies: 5
+    bridge: required
+    bridge_script: arabic
+    bridge_job: instruction
+    bridge_reply: 2
+
+  - id: no-configured-language
+    support_language: none
+    turns: ["What?", "I don't understand"]
+    max_replies: 3
+    bridge: forbidden
+    rescue_exit: true
+
+  - id: no-configured-language-chinese-help
+    support_language: none
+    turns: ["要做什么？", "horse", "neigh", "no"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: instruction
+    bridge_reply: 2
+
+  - id: chinese-neigh-meaning
+    support_language: Chinese
+    turns: ["horse", "什么是neigh neigh？", "neigh neigh", "no"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: meow_meaning
+    bridge_reply: 3
+
+  - id: child-help-overrides-word-goal
+    support_language: none
+    turns: ["Yup. 什么呀？", "我不懂。我不会说。"]
+    max_replies: 3
+    bridge: required
+    bridge_script: cjk
+    bridge_job: rescue_exit
+    bridge_replies: [2, 3]
+    rescue_exit: true
+
+  - id: exact-log-context-sensitive-help
+    support_language: none
+    turns: ["", "我不懂。", "No phone. 去哪儿？", "嗯，呃，horse。", "什么意思？", "我不会说。你能说慢点？", "neigh", "no"]
+    max_replies: 9
+    bridge: required
+    bridge_script: cjk
+    bridge_job: contextual_help_flow
+    bridge_replies: [3, 4, 6, 7]
+
+  - id: correct-culprit-is-not-confirmed
+    support_language: none
+    turns: ["horse", "neigh", "The horse ate the cake!"]
+    max_replies: 4
+    bridge: forbidden
+
+  - id: what-to-do-after-horse-and-neigh
+    support_language: Chinese
+    turns: ["horse", "neigh", "你要干什么？", "yes"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: current_personal_direction
+    bridge_reply: 4

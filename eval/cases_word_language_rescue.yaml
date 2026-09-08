@@ -1,0 +1,175 @@
+# Experimental L2 cow cases. One language bridge is allowed only after a real
+# comprehension block and only in the configured support language.
+
+cases:
+  - id: lowercase-chinese-opening
+    support_language: chinese
+    turns: ["cow", "moo", "no"]
+    max_replies: 4
+    bridge: forbidden
+
+  - id: first-silence-needs-child-friendly-instruction
+    support_language: Chinese
+    turns: ["", "cow", "moo", "yes"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: first_silence_clarity
+    bridge_reply: 2
+
+  - id: simplified-chinese-natural-opening-now-go
+    support_language: 简体中文
+    turns: ["Now.", "", "Go.", "cow", "moo", "yes"]
+    max_replies: 7
+    bridge: required
+    bridge_script: cjk
+    bridge_job: natural_now_go_flow
+    bridge_replies: [2, 3, 4]
+
+  - id: arabic-first-silence-needs-instruction
+    support_language: Arabic
+    turns: ["", "cow", "moo", "yes"]
+    max_replies: 5
+    bridge: required
+    bridge_script: arabic
+    bridge_job: first_silence_clarity
+    bridge_reply: 2
+
+  - id: confused-then-english-works
+    support_language: Chinese
+    turns: ["What?", "cow", "moo", "no"]
+    max_replies: 5
+    bridge: optional
+    bridge_script: cjk
+    bridge_job: meaning
+    bridge_reply: 2
+
+  - id: chinese-bridge-works
+    support_language: Chinese
+    turns: ["要做什么？", "cow", "moo", "I don't know"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: instruction
+    bridge_reply: 2
+
+  - id: chinese-meaning-bridge
+    support_language: Chinese
+    turns: ["cow是什么意思？", "cow", "moo", "no"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: meaning
+    bridge_reply: 2
+
+  - id: correct-local-meaning-is-not-stuck
+    support_language: Chinese
+    turns: ["奶牛！", "cow", "moo", "no"]
+    max_replies: 5
+    bridge: forbidden
+
+  - id: approximate-cow-is-not-stuck
+    support_language: Chinese
+    turns: ["How?", "moo", "no"]
+    max_replies: 4
+    bridge: forbidden
+
+  - id: arabic-bridge-works
+    support_language: Arabic
+    turns: ["ماذا أفعل؟", "cow", "moo", "no"]
+    max_replies: 5
+    bridge: required
+    bridge_script: arabic
+    bridge_job: instruction
+    bridge_reply: 2
+
+  - id: no-configured-language
+    support_language: none
+    turns: ["What?", "I don't understand", "", "no"]
+    max_replies: 3
+    bridge: forbidden
+    rescue_exit: true
+
+  - id: no-configured-language-chinese-help
+    support_language: none
+    turns: ["要做什么？", "cow", "moo", "no"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: instruction
+    bridge_reply: 2
+
+  - id: no-configured-language-chinese-meaning
+    support_language: none
+    turns: ["cow是什么意思？", "cow", "moo", "no"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: meaning
+    bridge_reply: 2
+
+  - id: chinese-moo-meaning
+    support_language: Chinese
+    turns: ["cow", "什么是moo moo？", "moo moo", "no"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: moo_meaning
+    bridge_reply: 3
+
+  - id: chinese-meaning-still-confused-then-wonder-confused
+    support_language: Chinese
+    turns: ["Cow 是什么意思？", "什么？听不懂。", "I don't know.", "什么？", "no"]
+    max_replies: 3
+    bridge: required
+    bridge_script: cjk
+    bridge_job: rescue_exit
+    bridge_replies: [2, 3]
+    rescue_exit: true
+
+  - id: child-help-overrides-word-goal
+    support_language: none
+    turns: ["Yup. 什么呀？", "我不懂。我不会说。"]
+    max_replies: 3
+    bridge: required
+    bridge_script: cjk
+    bridge_job: rescue_exit
+    bridge_replies: [2, 3]
+    rescue_exit: true
+
+  - id: exact-log-unclear-then-chinese-help
+    support_language: none
+    turns: ["Tomorrow. Yeah.", "你在说什么呀？ She.", "Cow. 我也不会。"]
+    max_replies: 4
+    bridge: required
+    bridge_script: cjk
+    bridge_job: exact_log_help_flow
+    bridge_replies: [3, 4]
+    rescue_exit: true
+
+  - id: current-moo-meaning-and-cut-off-speech
+    support_language: English (US)
+    turns: ["Cow 是什么意思？", "That's a cow.", "什么意思？我听不懂。", "That's a cow. 你是——", "moo", "no"]
+    max_replies: 7
+    bridge: required
+    bridge_script: cjk
+    bridge_job: human_direction_current_item
+    bridge_replies: [2, 4, 5]
+
+  - id: exact-task-direction-and-current-moo-help
+    support_language: English (US)
+    turns: ["要干什么？", "哦，听你说了，然后呢？", "That's a cow. Cow.", "I don't know. 什么意思？", "我不理解。老师，你可以讲一下吗？", "moo", "no"]
+    max_replies: 8
+    bridge: required
+    bridge_script: cjk
+    bridge_job: exact_task_direction_flow
+    bridge_replies: [2, 3, 5, 6]
+
+  - id: what-to-do-after-cow-and-moo
+    support_language: Chinese
+    turns: ["cow", "moo", "你要干什么？", "yes"]
+    max_replies: 5
+    bridge: required
+    bridge_script: cjk
+    bridge_job: current_personal_direction
+    bridge_reply: 4
