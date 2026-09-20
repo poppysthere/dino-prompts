@@ -5,13 +5,14 @@ Three backends, selected with EVAL_BACKEND (or --backend):
              FORGE_BASE_URL   e.g. http://ec2-....amazonaws.com:8888/api
              FORGE_TOKEN      (or FORGE_EMAIL + FORGE_PASSWORD to login)
              FORGE_PROVIDER   provider name as shown in the forge model picker
-             FORGE_MODEL      model name as shown in the forge model picker
+             FORGE_MODEL      provider modelName sent to /debug (may differ from picker ID)
   openai — any OpenAI-compatible chat completions endpoint. Needs:
              EVAL_API_BASE, EVAL_API_KEY, EVAL_MODEL
   mock   — no network; replays scripted good-teacher replies. For testing the
            pipeline itself (runner -> transcript -> checker) without a model.
 """
 import json
+import http.client
 import os
 import socket
 import time
@@ -40,7 +41,8 @@ def _post_json(url: str, payload: dict, headers: dict) -> dict:
             with urllib.request.urlopen(req, timeout=90) as resp:
                 return json.loads(resp.read().decode())
         except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError,
-                socket.timeout) as e:  # socket.timeout != TimeoutError before 3.10
+                socket.timeout, http.client.RemoteDisconnected,
+                ConnectionResetError, BrokenPipeError) as e:
             code = getattr(e, "code", None)
             if code is not None and code not in (400, 429, 500, 502, 503, 504):
                 raise

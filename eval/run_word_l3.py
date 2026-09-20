@@ -85,6 +85,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", default=os.environ.get("FORGE_MODEL", "gpt-5.4-mini"))
     ap.add_argument("--only", help="run a single case id")
+    ap.add_argument("--run-dir", type=pathlib.Path, default=RUNS,
+                    help="where to save transcripts (default: the historical L3 directory)")
+    ap.add_argument("--skip-existing", action="store_true",
+                    help="reuse saved transcripts, then check the whole selected battery")
     args = ap.parse_args()
 
     os.environ.setdefault("FORGE_BASE_URL",
@@ -94,18 +98,22 @@ def main():
     backend = ForgeBackend()
 
     battery = yaml.safe_load((ROOT / "eval/cases_word_l3.yaml").read_text())
-    RUNS.mkdir(parents=True, exist_ok=True)
+    run_dir = args.run_dir
+    run_dir.mkdir(parents=True, exist_ok=True)
     paths = []
     for family, cases in battery.items():
         for case in cases:
             if args.only and case["id"] != args.only:
                 continue
-            print(f"running {case['id']} ...", flush=True)
-            tr = run_case(backend, family, case)
-            p = RUNS / f"{case['id']}.json"
-            p.write_text(json.dumps(tr, ensure_ascii=False, indent=1))
+            p = run_dir / f"{case['id']}.json"
+            if args.skip_existing and p.exists():
+                print(f"reusing {case['id']} ...", flush=True)
+            else:
+                print(f"running {case['id']} ...", flush=True)
+                tr = run_case(backend, family, case)
+                p.write_text(json.dumps(tr, ensure_ascii=False, indent=1))
             paths.append(str(p))
-    print(f"\n{len(paths)} transcripts -> {RUNS}")
+    print(f"\n{len(paths)} transcripts -> {run_dir}")
     os.execvp(sys.executable, [sys.executable, str(ROOT / "eval/checker_word_l3.py"), *paths])
 
 

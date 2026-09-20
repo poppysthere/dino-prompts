@@ -58,6 +58,42 @@ python3 eval/checker.py path/to/transcript.json
 
 Deps: `pip3 install pyyaml` (runner/judge; checker is stdlib-only).
 
+## L3 on GPT-5.6 Luna via Prompt Forge
+
+`run_l3_forge.py` tests the **GitHub `prompts/l3` files**, not whichever prompt
+versions happen to be selected in the Forge lesson editor. It composes the L3
+common rule with each stage template, sends those prompts to Forge's `/debug`
+API using provider model name `gpt5.6LunaChatModel` (the Forge picker labels it
+`gpt-5.6-luna`), and runs the existing warm-up, lead-in,
+word, sentence, and wrap-up checkers. The sentence runner includes wrap-up.
+Historical GPT-5.4-mini runner defaults remain unchanged.
+
+```bash
+# Offline plan: no credentials, no model calls.
+/usr/bin/python3 eval/run_l3_forge.py --plan
+
+# Live run: Forge authentication must already be available in the environment.
+# Use either FORGE_TOKEN or FORGE_EMAIL + FORGE_PASSWORD; do not commit them.
+/usr/bin/python3 eval/run_l3_forge.py
+
+# Small live smoke test before the 97-case full battery.
+/usr/bin/python3 eval/run_l3_forge.py --stage word --only climb-pass
+
+# If Forge disconnects mid-run, resume without repeating saved cases.
+/usr/bin/python3 eval/run_l3_forge.py --resume eval/runs/l3_gpt5.6LunaChatModel_<timestamp>
+```
+
+The live command first checks that Forge exposes the `gpt-5.6-luna` picker ID,
+then sends `gpt5.6LunaChatModel` as `/debug`'s `modelName`. It saves
+each run's transcripts, per-stage logs, source-prompt hashes, and `report.json`
+under a timestamped `eval/runs/l3_gpt5.6LunaChatModel_*` directory. `FORGE_BASE_URL`
+and `FORGE_PROVIDER` may be overridden if the platform configuration changes.
+An offline `--plan` or template lint is not a model-quality result.
+These checkers cover structure and scripted constraints, not whether a teacher
+sounds natural; read representative transcripts before approving a prompt.
+The first Luna run and human-language findings are in
+`eval/L3_LUNA_EVAL_2026-09-20.md`.
+
 If the machine you run on cannot reach the forge ALB directly (network policy), there is a
 fallback: serve the repo with `python3 eval/_cors_server.py 8766` and drive the same /debug
 calls from a browser page that CAN reach it (the forge login page works as a host). The
