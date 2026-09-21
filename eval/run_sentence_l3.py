@@ -88,6 +88,7 @@ def run_case(backend, family, case, prompt_version):
         "forbid_phrases": case.get("forbid_phrases", []),
         "require_phrases": case.get("require_phrases", []),
         "reply_forbid": case.get("reply_forbid", {}),
+        "reply_require": case.get("reply_require", {}),
         "max_replies": case.get("max_replies"),
         "messages": transcript,
     }

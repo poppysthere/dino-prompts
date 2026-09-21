@@ -34,6 +34,11 @@
 - `I can climb.` is the last sentence node, so every close now emits
   `[TEMPLATE_FINISH]`. If the child asks `Teacher, can you climb?`, the teacher
   answers first, then gives the child one clear speaking instruction.
+- Both sentence nodes now answer any safe child question first in one easy
+  sentence, then return to one clear lesson action. Reply-level checks cover
+  personal, story, and harmless off-topic questions so later text cannot create
+  a false test pass. An unlisted `Do you like pizza?` blind case also passed,
+  confirming the behavior is not limited to the examples written in the prompt.
 
 ## Results
 
@@ -41,8 +46,8 @@
 |---|---:|---:|
 | Lead-in | 13 | 13 passed |
 | Word teaching | 35 | 35 passed |
-| Sentence teaching and wrap-up | 19 | 19 passed |
-| **Total** | **67** | **67 passed** |
+| Sentence teaching and wrap-up | 24 | 24 passed |
+| **Total** | **72** | **72 passed** |
 
 The cases include ready/not ready, silence, confusion, meaning questions,
 another-language input, junk names, ASR near-misses, retry limits, off-topic

@@ -37,6 +37,33 @@ sent_l3_can_you_climb:
     turns: ["What do I do?", "Can you climb?"]
     require_phrases: ["say, can you climb"]
     max_replies: 3
+  - id: l3v2s0-asks-swim
+    note: "teacher answers a different personal question, then returns to the sentence"
+    turns: ["Teacher, can you swim?", "Can you climb?"]
+    require_phrases: ["listen again"]
+    reply_require:
+      2: ["yes, i can|no, i can't|no, i cannot"]
+    reply_forbid:
+      2: ["great job", "you ask if mia"]
+    max_replies: 3
+  - id: l3v2s0-asks-why
+    note: "teacher answers a story question instead of ignoring it, then continues"
+    turns: ["Why is Mia climbing?", "Can you climb?"]
+    require_phrases: ["listen again"]
+    reply_require:
+      2: ["because|maybe|go up|wall|do not know|don't know"]
+    reply_forbid:
+      2: ["great job", "you ask if mia can climb"]
+    max_replies: 3
+  - id: l3v2s0-asks-unlisted
+    note: "blind generalization: this harmless off-topic question has no scripted example"
+    turns: ["Teacher, do you like pizza?", "Can you climb?"]
+    require_phrases: ["listen again"]
+    reply_require:
+      2: ["yes, i do|no, i don't|yes, i like pizza|no, i do not"]
+    reply_forbid:
+      2: ["great job", "you ask if mia", "i don't know"]
+    max_replies: 3
   - id: l3v2s0-silent
     note: "silence gets one model, then a neutral close"
     turns: []
@@ -67,6 +94,24 @@ sent_l3_i_can_climb:
     note: "lost child gets the exact line to say"
     turns: ["What do I do?", "I can climb!"]
     require_phrases: ["say, i can climb"]
+    max_replies: 3
+  - id: l3v2s1-asks-cats
+    note: "teacher answers a harmless off-topic question, then gives the next action"
+    turns: ["Teacher, do you like cats?", "I can climb!"]
+    require_phrases: ["listen again"]
+    reply_require:
+      2: ["cat"]
+    reply_forbid:
+      2: ["great job", "mia says"]
+    max_replies: 3
+  - id: l3v2s1-asks-why
+    note: "teacher answers a story question, then returns to the target sentence"
+    turns: ["Why is Mia climbing?", "I can climb!"]
+    require_phrases: ["listen again"]
+    reply_require:
+      2: ["because|maybe|go up|wall|do not know|don't know"]
+    reply_forbid:
+      2: ["great job", "mia says she can climb"]
     max_replies: 3
   - id: l3v2s1-silent
     note: "silence gets one model, then a neutral close"

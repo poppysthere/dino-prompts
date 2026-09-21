@@ -5,7 +5,8 @@ Steps: intro (1 fixed line, NEXT_STEP) -> sentence_0 cow -> sentence_1 cat
        -> sentence_2 horse + mystery question -> reveal (1 fixed line, TEMPLATE_FINISH).
 Transcript JSON: {"family":"sent_cow"|..., "case":..., "student_name":...,
                   "messages":[{role,text}...], "max_replies":N,
-                  "forbid_phrases":[...], "require_phrases":[...], "reply_forbid":{"2":[...]}}
+                  "forbid_phrases":[...], "require_phrases":[...],
+                  "reply_forbid":{"2":[...]}, "reply_require":{"2":[...]}}
 Exit 0 = clean, 1 = violations found.
 """
 import json
@@ -198,6 +199,15 @@ def check(tr):
             for pat in pats:
                 if re.search(pat, strip_tags(replies[i - 1]), re.I):
                     v("reply-forbid", f"reply {i}: contains forbidden phrase {pat!r}")
+
+    for idx, pats in (tr.get("reply_require") or {}).items():
+        i = int(idx)
+        if i > len(replies):
+            v("reply-require", f"reply {i}: missing reply; cannot match {pats!r}")
+            continue
+        for pat in pats:
+            if not re.search(pat, strip_tags(replies[i - 1]), re.I):
+                v("reply-require", f"reply {i}: missing required phrase {pat!r}")
 
     all_teacher = " ".join(strip_tags(r) for r in replies)
     for pat in tr.get("require_phrases", []):
