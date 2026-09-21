@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prompt Quality &amp; Evaluation Report · Prompt 质量与评测报告</title>
+<title>Prompt Evaluation Harness &amp; Quality System · Prompt 评测体系</title>
 <style>
   :root {
     --ink: #1a2233;
@@ -103,6 +103,26 @@
   .snapshot-item .value { font-weight: 750; font-size: 18px; color: var(--accent); }
   .snapshot-item .en { display: block; font-size: 13px; color: var(--ink-soft); }
   .snapshot-item .zh { display: block; font-size: 12.5px; color: var(--zh); margin-top: 2px; }
+  .harness-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+    margin: 18px 0 22px;
+    flex-wrap: wrap;
+  }
+  .flow-node {
+    flex: 1 1 118px;
+    min-width: 118px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 11px 12px;
+    position: relative;
+  }
+  .flow-node .en { display: block; font-weight: 700; font-size: 13px; }
+  .flow-node .zh { display: block; color: var(--zh); font-size: 12px; margin-top: 2px; }
+  .flow-arrow { align-self: center; color: var(--accent); font-size: 19px; font-weight: 800; }
 
   table {
     width: 100%;
@@ -216,16 +236,16 @@
 
 <header class="hero">
   <div class="inner">
-    <h1>Prompt Quality &amp; Evaluation Report</h1>
-    <div class="zh-title">课程 Prompt 质量与评测报告</div>
+    <h1>Prompt Evaluation Harness &amp; Quality System</h1>
+    <div class="zh-title">课程 Prompt 评测体系与质量保障机制</div>
     <p class="sub">
-      This report explains the <b>standards</b> each prompt must pass, the <b>mock children</b> used in evaluation, and the <b>workflow</b> that turns a classroom issue into a permanent regression test.<br>
-      本报告说明每个 Prompt 必须通过的<b>标准</b>、评测中使用的<b>模拟儿童</b>，以及如何把真实课堂问题转化为永久回归测试的<b>工作流程</b>。规则由 <code>eval/</code> 中的代码执行，而非仅凭主观判断。
+      This report explains how we evaluate teaching prompts professionally: a versioned harness calls real target models, simulates realistic child behavior, stores auditable evidence, and converts classroom findings into permanent regression standards.<br>
+      本报告说明我们如何专业地评测教学 Prompt：通过版本化 Harness 调用真实目标模型、模拟真实儿童行为、保存可审计证据，并把课堂发现转化为永久回归标准。
     </p>
     <div class="hero-stats">
       <div class="stat"><div class="num">417</div><div class="lbl">repository cases · 仓库用例</div></div>
       <div class="stat"><div class="num">24</div><div class="lbl">test batteries · 测试套件</div></div>
-      <div class="stat"><div class="num">72/72</div><div class="lbl">current L3 V2 · 本次结果</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">execution backends · 执行后端</div></div>
       <div class="stat"><div class="num">16+</div><div class="lbl">mock child types · 模拟儿童类型</div></div>
     </div>
   </div>
@@ -233,37 +253,75 @@
 
 <div class="wrap">
 
-<!-- ============ CURRENT SNAPSHOT ============ -->
-<h2>Current Evaluation Snapshot <span class="zh">本次评测快照</span></h2>
+<!-- ============ 1. HARNESS ============ -->
+<h2>1. How the Evaluation Harness Works <span class="zh">评测 Harness 如何工作</span></h2>
 <div class="zh-note">
-  <strong>Scope note 范围说明：</strong> The repository contains 417 regression cases across 24 batteries. The verified result below is specifically for the current <b>L3 V2</b> flow; it should not be confused with the older 97-case L3 report.<br>
-  仓库目前共有 417 个回归用例、24 个测试套件。下方实测结果仅对应当前 <b>L3 V2</b> 流程，请勿与旧版 97-case L3 报告混用。
+  <strong>Executive summary 管理层摘要：</strong> The harness is not a collection of manual test chats. It is a repeatable software system that controls prompt source, test inputs, model routing, evidence capture, evaluation rules, and release decisions.<br>
+  Harness 不是一组人工随意聊天，而是一套可重复的软件系统：统一控制 Prompt 来源、测试输入、模型调用、证据留存、评判规则与发布决策。
 </div>
+
+<div class="harness-flow">
+  <div class="flow-node"><span class="en">Versioned prompts</span><span class="zh">版本化 Prompt</span></div><div class="flow-arrow">→</div>
+  <div class="flow-node"><span class="en">YAML child cases</span><span class="zh">儿童行为用例</span></div><div class="flow-arrow">→</div>
+  <div class="flow-node"><span class="en">Prompt composer</span><span class="zh">Prompt 组装器</span></div><div class="flow-arrow">→</div>
+  <div class="flow-node"><span class="en">Model backend</span><span class="zh">模型调用后端</span></div><div class="flow-arrow">→</div>
+  <div class="flow-node"><span class="en">JSON transcripts</span><span class="zh">JSON 对话证据</span></div><div class="flow-arrow">→</div>
+  <div class="flow-node"><span class="en">Checker + judge</span><span class="zh">检查器与评审器</span></div><div class="flow-arrow">→</div>
+  <div class="flow-node"><span class="en">Report + gate</span><span class="zh">报告与发布门禁</span></div>
+</div>
+
+<h3>1.1 Harness components <span class="zh">Harness 核心组件</span></h3>
+<table>
+  <tr><th style="width:22%">Component · 组件</th><th>Professional function · 专业作用</th></tr>
+  <tr><td><b>Prompt source</b><span class="zh">Prompt 源文件</span></td><td>Common rules, stage templates, render content, and variables live in Git. The harness hashes every source file so a result is tied to an exact prompt version.<span class="zh">公共规则、阶段模板、渲染内容和变量全部进入 Git；每次运行记录源文件哈希，结果可精确追溯到具体版本。</span></td></tr>
+  <tr><td><b>Case batteries</b><span class="zh">测试用例套件</span></td><td><code>cases_*.yaml</code> defines realistic child turns, including silence, confusion, another language, ASR noise, questions, refusal, and off-topic speech.<span class="zh"><code>cases_*.yaml</code> 定义真实儿童行为，包括沉默、迷茫、使用其他语言、ASR 噪声、提问、拒绝与跑题。</span></td></tr>
+  <tr><td><b>Runner / orchestrator</b><span class="zh">运行器／编排器</span></td><td>Selects prompt version, lesson stage, model, and cases; composes the production-shaped system prompt; supports planning, single-case smoke tests, full batteries, and safe resume.<span class="zh">选择 Prompt 版本、课程阶段、模型和用例；按生产形态组装 System Prompt；支持计划预览、单例冒烟、全量套件和安全续跑。</span></td></tr>
+  <tr><td><b>Backend adapter</b><span class="zh">模型后端适配层</span></td><td>Uses one interface for Prompt Forge, OpenAI-compatible endpoints, or a deterministic mock. Provider and model are runtime configuration, not hardcoded evaluation assumptions.<span class="zh">使用统一接口连接 Prompt Forge、OpenAI-compatible 接口或确定性 Mock；Provider 与模型在运行时配置，而不是写死在评测逻辑中。</span></td></tr>
+  <tr><td><b>Evidence store</b><span class="zh">证据留存</span></td><td>Saves one JSON transcript per case plus stage logs, timestamps, prompt hashes, expected/saved counts, exit codes, and an aggregate report manifest.<span class="zh">每个用例保存一份 JSON 对话，同时记录阶段日志、时间戳、Prompt 哈希、预期／实际数量、退出码和汇总报告。</span></td></tr>
+  <tr><td><b>Evaluation layers</b><span class="zh">多层评判</span></td><td>Deterministic checkers enforce hard rules; an optional strong-model judge evaluates soft qualities; template lint controls size and prevents prompt bloat.<span class="zh">确定性检查器执行硬规则；可选强模型评审柔性质量；模板 Lint 控制体积，防止 Prompt 不断膨胀。</span></td></tr>
+  <tr><td><b>Release gate</b><span class="zh">发布门禁</span></td><td>Any violation, missing transcript, or failed stage produces a non-zero result. A human reviews representative transcripts and the Git diff before anything is released.<span class="zh">任何违规、缺失记录或阶段失败都会产生非零结果；发布前由人工复核代表性对话与 Git Diff。</span></td></tr>
+</table>
+
+<h3>1.2 What happens in one model call <span class="zh">一次模型调用如何发生</span></h3>
+<ol class="pipeline">
+  <li><span class="en">Load the exact common rule, stage template, render content, and runtime variables</span><span class="zh">加载指定公共规则、阶段模板、渲染内容与运行时变量</span></li>
+  <li><span class="en">Authenticate once from environment variables and preflight that the selected model exists</span><span class="zh">从环境变量完成一次认证，并预检所选模型确实可用</span></li>
+  <li><span class="en">Send <code>systemPrompt</code>, conversation <code>messages</code>, <code>providerName</code>, and <code>modelName</code> to Prompt Forge's debug API</span><span class="zh">向 Prompt Forge Debug API 发送 <code>systemPrompt</code>、对话 <code>messages</code>、<code>providerName</code> 与 <code>modelName</code></span></li>
+  <li><span class="en">Play the scripted child behavior turn by turn and capture every teacher response</span><span class="zh">逐轮执行儿童行为脚本，完整采集老师的每次回复</span></li>
+  <li><span class="en">Save the transcript first, then run stage-specific rules and quality checks</span><span class="zh">先保存原始对话证据，再执行阶段专属规则与质量检查</span></li>
+  <li><span class="en">Aggregate counts and exit codes; fail the run if any case fails or any expected transcript is missing</span><span class="zh">汇总数量与退出码；任何用例失败或预期记录缺失，整次运行即失败</span></li>
+</ol>
 
 <div class="snapshot-grid">
-  <div class="snapshot-item"><div class="value">L3 V2 · A1+</div><span class="en">Prompt version and learner level</span><span class="zh">Prompt 版本与学习者级别</span></div>
-  <div class="snapshot-item"><div class="value">GPT-5.6 Luna</div><span class="en"><code>gpt5.6LunaChatModel</code> via Prompt Forge</span><span class="zh">通过 Prompt Forge 真实调用</span></div>
-  <div class="snapshot-item"><div class="value">No warm-up</div><span class="en">Lead-in is the first lesson stage</span><span class="zh">不设热身，直接从导入开始</span></div>
-  <div class="snapshot-item"><div class="value">72 / 72</div><span class="en">All current L3 V2 cases passed</span><span class="zh">当前 L3 V2 用例全部通过</span></div>
+  <div class="snapshot-item"><div class="value">Mock</div><span class="en">Offline plumbing self-test</span><span class="zh">离线验证运行链路</span></div>
+  <div class="snapshot-item"><div class="value">Prompt Forge</div><span class="en">Real target-model evaluation</span><span class="zh">真实目标模型评测</span></div>
+  <div class="snapshot-item"><div class="value">OpenAI-compatible</div><span class="en">Portable model access and soft judge</span><span class="zh">可移植模型调用与柔性评审</span></div>
+  <div class="snapshot-item"><div class="value">Plan / Smoke / Full / Resume</div><span class="en">Progressive cost and risk control</span><span class="zh">逐级控制成本与风险</span></div>
 </div>
 
+<h3>1.3 How the team uses it <span class="zh">团队如何使用 Harness</span></h3>
 <table>
-  <tr><th>Stage · 阶段</th><th>Cases · 用例数</th><th>Result · 结果</th></tr>
-  <tr><td>Lead-in <span class="zh">导入</span></td><td>13</td><td><span class="badge green">13/13 passed · 全部通过</span></td></tr>
-  <tr><td>Word teaching <span class="zh">单词教学</span></td><td>35</td><td><span class="badge green">35/35 passed · 全部通过</span></td></tr>
-  <tr><td>Sentence teaching + wrap-up <span class="zh">句型教学与收尾</span></td><td>24</td><td><span class="badge green">24/24 passed · 全部通过</span></td></tr>
-  <tr><td><b>Total</b> <span class="zh">合计</span></td><td><b>72</b></td><td><span class="badge green">72/72 passed · 全部通过</span></td></tr>
+  <tr><th style="width:20%">Mode · 模式</th><th style="width:32%">Purpose · 目的</th><th>Control mechanism · 控制机制</th></tr>
+  <tr><td><b>Plan</b><span class="zh">计划预览</span></td><td>Review the selected stages and case count without calling a model<span class="zh">不调用模型，先确认阶段与用例数量</span></td><td>Prevents accidental spend or testing the wrong prompt version<span class="zh">防止误花成本或测错 Prompt 版本</span></td></tr>
+  <tr><td><b>Smoke</b><span class="zh">冒烟测试</span></td><td>Run one high-value case or one lesson stage after a small edit<span class="zh">小改动后先跑一个高价值用例或单个阶段</span></td><td>Fast feedback before launching the full battery<span class="zh">全量测试前快速发现明显问题</span></td></tr>
+  <tr><td><b>Full battery</b><span class="zh">全量套件</span></td><td>Run every applicable child behavior across the lesson flow<span class="zh">覆盖完整课程流程中的所有适用儿童行为</span></td><td>All expected transcripts must exist and every stage must exit cleanly<span class="zh">全部预期记录必须存在，且每个阶段必须正常通过</span></td></tr>
+  <tr><td><b>Repeat</b><span class="zh">抗随机复跑</span></td><td>Re-run repaired or high-risk cases several times<span class="zh">对已修复或高风险用例重复运行</span></td><td>Detects intermittent LLM failures that a single pass can hide<span class="zh">发现单次通过可能掩盖的模型间歇性失败</span></td></tr>
+  <tr><td><b>Resume</b><span class="zh">安全续跑</span></td><td>Continue after a network or platform interruption without paying twice<span class="zh">网络或平台中断后继续执行，避免重复调用</span></td><td>Saved model, prompt version, and SHA-256 hashes must match before reuse<span class="zh">模型、Prompt 版本和 SHA-256 哈希一致时才允许复用结果</span></td></tr>
+  <tr><td><b>Model comparison</b><span class="zh">模型对比</span></td><td>Run the same versioned case corpus against another configured model<span class="zh">用同一套版本化用例评测不同模型</span></td><td>Changes only the runtime model route, keeping prompts and grading constant<span class="zh">只切换运行时模型路由，Prompt 与评分标准保持不变</span></td></tr>
 </table>
 
 <div class="card bilingual-copy">
-  <span class="en-copy"><b>Current opening:</b> <code>Hi, {{name}}! I'm {{teacherName}}. Nice to meet you! Say hi to me!</code> The teacher's name must come only from <code>{{teacherName}}</code>. A silent or confused child receives one modeled rescue: <code>Listen first. Hi! Now, you try.</code></span>
-  <span class="zh-copy"><b>当前开场：</b><code>Hi, {{name}}! I'm {{teacherName}}. Nice to meet you! Say hi to me!</code> 老师称呼只能读取 <code>{{teacherName}}</code>，不得写死。孩子沉默或迷茫时，老师先示范一次：<code>Listen first. Hi! Now, you try.</code></span>
-  <span class="en-copy" style="margin-top:10px;"><b>Verified version:</b> branch <code>agent/l3-v2-no-warmup</code>, commit <a href="https://github.com/poppysthere/dino-prompts/commit/e637bf356306841f718e134226029c371be9d571">e637bf3</a>. Detailed machine-readable transcripts remain under <code>eval/runs/</code> locally.</span>
-  <span class="zh-copy"><b>验证版本：</b>分支 <code>agent/l3-v2-no-warmup</code>，提交 <a href="https://github.com/poppysthere/dino-prompts/commit/e637bf356306841f718e134226029c371be9d571">e637bf3</a>。详细机器可读测试记录保存在本地 <code>eval/runs/</code>。</span>
+  <span class="en-copy"><b>Operational safety:</b> credentials are read only from process environment variables, never committed to Git or written into reports. Transient network and upstream failures are retried with limits. Resume is allowed only when the saved model, prompt version, and source hashes still match.</span>
+  <span class="zh-copy"><b>运行安全：</b>凭证只从进程环境变量读取，绝不提交到 Git 或写入报告。瞬时网络与上游错误采用有限重试；只有模型、Prompt 版本与源文件哈希完全一致时才允许续跑。</span>
 </div>
 
-<!-- ============ 1. PIPELINE ============ -->
-<h2>1. The Fix Pipeline <span class="zh">修复流程 —— 每个 bug 如何变成标准</span></h2>
+<div class="card bilingual-copy">
+  <span class="en-copy"><b>Separation of concerns:</b> the harness sends local, versioned prompts to Prompt Forge's debug API; it does not edit or deploy Prompt Forge content. Transport failures are retried as infrastructure events, while teaching-quality failures remain visible as evaluation failures.</span>
+  <span class="zh-copy"><b>职责分离：</b>Harness 将本地版本化 Prompt 发送到 Prompt Forge Debug API，不会修改或发布 Forge 中的内容。传输错误按基础设施故障有限重试；教学质量问题则保留为明确的评测失败。</span>
+</div>
+
+<!-- ============ 2. PIPELINE ============ -->
+<h2>2. The Regression Pipeline <span class="zh">回归闭环 —— 每个问题如何变成标准</span></h2>
 <div class="zh-note">
   <strong>Core idea 核心思想：</strong> Every issue found in a real lesson is reproduced as a regression case, repaired in the template, protected by a mechanical checker, and retested on the live model before release.<br>
   每一个真实课堂问题都会被复现为回归用例、在模板中修复、由机械检查器永久守护，并在发布前使用真实模型重新验证。
@@ -274,7 +332,7 @@
   <li><span class="en">Reproduce it as a regression case (<code>eval/cases_*.yaml</code>, device ID in the note)</span><span class="zh">复现为回归测试用例（备注中记录设备 ID）</span></li>
   <li><span class="en">Fix the template (<code>prompts/**</code>)</span><span class="zh">修复 prompt 模板</span></li>
   <li><span class="en">Add a mechanical checker rule so the bug CLASS can never silently return</span><span class="zh">添加机械检查规则，使这一类 bug 永远无法悄悄复发</span></li>
-  <li><span class="en">Run the full live battery through Prompt Forge on the target production model (current L3 V2: GPT-5.6 Luna)</span><span class="zh">通过 Prompt Forge 在目标生产模型上跑完整测试（当前 L3 V2：GPT-5.6 Luna）</span></li>
+  <li><span class="en">Run the full live battery through Prompt Forge on the selected target model</span><span class="zh">通过 Prompt Forge 在所选目标模型上运行完整测试套件</span></li>
   <li><span class="en">Size lint — every template has a hard line + word budget</span><span class="zh">体积检查 —— 每个模板都有行数/字数硬预算</span></li>
   <li><span class="en">Commit + push — every fix versioned on GitHub with reasoning</span><span class="zh">提交推送 —— 每个修复都带原因说明，版本化管理</span></li>
 </ol>
@@ -287,27 +345,27 @@
   </ul>
 </div>
 
-<!-- ============ 2. STANDARDS ============ -->
-<h2>2. The Standards <span class="zh">标准 —— 按课程页面分类的检查器</span></h2>
+<!-- ============ 3. STANDARDS ============ -->
+<h2>3. The Standards <span class="zh">标准 —— 按课程页面分类的检查器</span></h2>
 <div class="zh-note">
   Every model reply is evaluated by named checker rules; violating any rule fails the case. The rules below are grouped by lesson stage.<br>
   每一条模型回复都会经过命名检查规则；违反任一规则即判定用例失败。以下按课程阶段分组。
 </div>
 
-<h3>2.1 Universal rules <span class="zh">通用规则（所有检查器强制执行）</span></h3>
+<h3>3.1 Universal rules <span class="zh">通用规则（所有检查器强制执行）</span></h3>
 <table>
   <tr><th>Rule 规则</th><th>What it catches 拦截什么</th></tr>
   <tr><td><code>tts-stretched</code></td><td>Stretched spellings TTS cannot say ("Hiiii", "SOOOO")<span class="zh">语音引擎读不出来的拉长拼写</span></td></tr>
   <tr><td><code>tts-giggle</code></td><td>Written giggles that break TTS ("hee hee", "hehe") — only "Ha ha!" allowed<span class="zh">书面笑声会导致语音异常，只允许 "Ha ha!"</span></td></tr>
   <tr><td><code>tts-safety</code> / <code>tts-dash</code> / <code>tts-ellipsis</code></td><td>Em dashes, "…", punctuation that sounds broken when spoken<span class="zh">破折号、省略号等朗读时听起来异常的标点</span></td></tr>
-  <tr><td><code>language-policy</code></td><td>Enforces the language policy of each course. Current L3 V2 is English-only; bilingual L2 templates may use <code>{{nativeLanguage}}</code> only in explicitly allowed rescue situations<span class="zh">按课程执行语言政策：当前 L3 V2 仅使用英文；L2 双语模板只有在明确允许的救援场景中才能使用 <code>{{nativeLanguage}}</code></span></td></tr>
+  <tr><td><code>language-policy</code></td><td>Enforces the declared policy of each course: English-only lessons reject unintended translation, while bilingual lessons allow <code>{{nativeLanguage}}</code> only in explicitly designed rescue situations<span class="zh">按课程执行已声明的语言政策：纯英文课程拦截意外翻译；双语课程只有在明确设计的救援场景中才能使用 <code>{{nativeLanguage}}</code></span></td></tr>
   <tr><td><code>one-tag</code> / <code>tag-last</code> / <code>tag-at-end</code></td><td>Exactly one control tag per reply, at the very end<span class="zh">每条回复只能有一个控制标签，且必须在最末尾</span></td></tr>
   <tr><td><code>unknown-action</code> / <code>forbidden-tag</code></td><td>Invented or off-whitelist avatar action tags<span class="zh">禁止编造或使用白名单以外的形象动作标签</span></td></tr>
   <tr><td><code>require-phrase</code> / <code>forbid-phrase</code></td><td>Per-case content assertions (must greet Kim, must NOT say Max)<span class="zh">按用例定制的内容断言</span></td></tr>
 </table>
 
 <details>
-  <summary>2.2 Warm-up 热身页 <span class="zh">—— 固定节拍的“计数法则”页面：老师自己的回复数决定节奏，孩子说什么都不增加节拍，页面必须准时结束</span></summary>
+  <summary>3.2 Warm-up 热身页 <span class="zh">—— 固定节拍的“计数法则”页面：老师自己的回复数决定节奏，孩子说什么都不增加节拍，页面必须准时结束</span></summary>
   <div>
   <table>
     <tr><th>Rule 规则</th><th>Standard it enforces 强制的标准</th></tr>
@@ -325,7 +383,7 @@
 </details>
 
 <details>
-  <summary>2.3 Lead-in 导入页（视频前/后）<span class="zh">—— 剧本页：固定台词必须一字不差，前面的“个人回应”必须真实回应孩子说过的话</span></summary>
+  <summary>3.3 Lead-in 导入页（视频前/后）<span class="zh">—— 剧本页：固定台词必须一字不差，前面的“个人回应”必须真实回应孩子说过的话</span></summary>
   <div>
   <table>
     <tr><th>Rule 规则</th><th>Standard it enforces 强制的标准</th></tr>
@@ -344,7 +402,7 @@
 </details>
 
 <details>
-  <summary>2.4 Word teaching 单词教学页 <span class="zh">—— “机器人式反复操练”问题的重灾区。核心标准：最多邀请两次，然后温暖地放手</span></summary>
+  <summary>3.4 Word teaching 单词教学页 <span class="zh">—— “机器人式反复操练”问题的重灾区。核心标准：最多邀请两次，然后温暖地放手</span></summary>
   <div>
   <table>
     <tr><th>Rule 规则</th><th>Standard it enforces 强制的标准</th></tr>
@@ -360,7 +418,7 @@
 </details>
 
 <details>
-  <summary>2.5 Sentence teaching 句子教学页 <span class="zh">—— 固定台词精确执行，步骤严格按边界推进，一次引导重试封顶</span></summary>
+  <summary>3.5 Sentence teaching 句子教学页 <span class="zh">—— 固定台词精确执行，步骤严格按边界推进，一次引导重试封顶</span></summary>
   <div>
   <table>
     <tr><th>Rule 规则</th><th>Standard it enforces 强制的标准</th></tr>
@@ -373,7 +431,7 @@
 </details>
 
 <details>
-  <summary>2.6 Wrap-up 收尾页 <span class="zh">—— 简短复习本课单词 + 真诚道别，最后一句都不出错</span></summary>
+  <summary>3.6 Wrap-up 收尾页 <span class="zh">—— 简短复习本课单词 + 真诚道别，最后一句都不出错</span></summary>
   <div>
   <table>
     <tr><th>Rule 规则</th><th>Standard it enforces 强制的标准</th></tr>
@@ -385,7 +443,7 @@
 </details>
 
 <!-- ============ 3. MOCK KIDS ============ -->
-<h2>3. The Mock Kids <span class="zh">模拟儿童 —— 测试时我们扮演谁</span></h2>
+<h2>4. The Mock Kids <span class="zh">模拟儿童 —— 测试时我们扮演谁</span></h2>
 <div class="zh-note">
   Tests simulate <strong>real children, not ideal students</strong>. Each case represents one behavior pattern, including silence, another language, confusion, questions, or playful off-topic speech. The checker evaluates whether the teacher responds helpfully and continues naturally.<br>
   测试模拟的是<strong>真实孩子，而不是理想学生</strong>。每个用例代表一种行为，包括沉默、使用其他语言、迷茫、提问或玩闹跑题；检查器评判老师是否提供帮助并自然推进。
@@ -424,12 +482,12 @@
   <b>Default test identities 默认测试身份：</b>
   Student names 学生名: <code>heidi</code>（初见）, <code>nina</code>（老生）, <code>lily</code>（真名问候）, <code>test_user</code>（垃圾名）。
   Teacher roles 老师人设: Max（丛林队长）, Kim（大姐姐）, Leo（爱玩的大哥哥），轮换以捕捉硬编码名字。
-  Current L3 V2 model 当前 L3 V2 模型: <code>gpt5.6LunaChatModel</code> (<code>gpt-5.6-luna</code>) — called through the Prompt Forge API using the same prompt-composition path as the lesson environment.<br>
-  通过 Prompt Forge API 真实调用，并使用与课堂环境一致的 Prompt 组合方式。
+  Model routing 模型路由: the target provider and model are supplied at runtime through environment configuration. The harness calls Prompt Forge through the same debug path used for lesson-prompt testing, while keeping evaluation logic independent of one model.<br>
+  目标 Provider 与模型通过运行时环境配置传入。Harness 使用课堂 Prompt 调试所采用的同一条 Prompt Forge Debug 调用路径，同时让评测逻辑保持模型无关。
 </div>
 
 <!-- ============ 4. DOCTRINES ============ -->
-<h2>4. The Teaching Doctrines <span class="zh">教学信条 —— 规则背后的人性标准</span></h2>
+<h2>5. The Teaching Doctrines <span class="zh">教学信条 —— 规则背后的人性标准</span></h2>
 <div class="zh-note">
   These are the human standards enforced by the checkers. They come from real lesson moments in which the avatar sounded robotic or failed to help the child.<br>
   这些是检查器强制执行的“人的标准”，来自真实课堂中虚拟老师显得机械、或没有真正帮助孩子的时刻。
@@ -451,7 +509,7 @@
 </div>
 
 <!-- ============ 5. PROGRESSION ============ -->
-<h2>5. Progression <span class="zh">进展 —— 真机 bug 如何变成永久标准</span></h2>
+<h2>6. Evidence of Improvement <span class="zh">改进证据 —— 真机问题如何变成永久标准</span></h2>
 <div class="zh-note">
   Each row comes from a real lesson record: discover the issue → reproduce it as a case → repair the prompt → lock the behavior with a permanent checker rule.<br>
   下表每一行都来自真实课堂记录：发现问题 → 复现为用例 → 修复 Prompt → 用永久检查规则锁定。
@@ -472,12 +530,12 @@
   <tr><td class="bug">TTS spoke "Hiiii", "hee hee", em dashes, "…" as broken audio<span class="zh">语音引擎把拉长拼写、笑声、破折号读成破碎音频</span></td><td class="fix">Universal TTS rules in every checker<span class="zh">全部检查器加通用 TTS 规则</span></td></tr>
 </table>
 
-<!-- ============ 6. STATUS ============ -->
-<h2>6. Repository Coverage &amp; Current Status <span class="zh">仓库覆盖范围与当前状态</span></h2>
+<!-- ============ 7. COVERAGE ============ -->
+<h2>7. Coverage Map <span class="zh">评测覆盖地图</span></h2>
 
 <div class="zh-note">
-  The L3 V2 row reflects the new GPT-5.6 Luna run completed on 2026-09-21. Other rows summarize the existing repository coverage and were not re-run as part of this L3 V2 evaluation.<br>
-  L3 V2 行对应 2026-09-21 完成的 GPT-5.6 Luna 新评测。其他行仅概括仓库中已有覆盖范围，本次没有随 L3 V2 一起重新执行。
+  Coverage is organized by lesson family and stage. Case counts measure automated regression breadth; they complement, rather than replace, real-child classroom observation.<br>
+  覆盖范围按课程系列与教学阶段组织。用例数量衡量自动化回归广度，但不能替代真实儿童课堂观察，两者共同构成质量证据。
 </div>
 
 <table>
@@ -485,7 +543,7 @@
   <tr><td><b>L1</b> (pre-A1, 4–6岁) core 核心课</td><td>warm-up, lead-in, 3 words, 2 sentences, wrap-up</td><td>word/sentence/lead-in batteries</td><td><span class="badge green">live 已上线</span></td></tr>
   <tr><td><b>L1 足球 festival</b> (World Cup 世界杯专题)</td><td>common, warm-up, lead-in ×2, word (Goal!/team/Come on!), wrap-up</td><td>58 cases</td><td><span class="badge green">live, all passing 全部通过</span></td></tr>
   <tr><td><b>L2</b> (5–7 years · 5–7岁)</td><td>warm-up, lead-in, words (cat/cow/horse), sentence trail, wrap-up</td><td>100+ repository cases <span class="zh">仓库用例</span></td><td><span class="badge green">existing coverage · 已有覆盖</span></td></tr>
-  <tr><td><b>L3 V2</b> (A1+)</td><td>common, lead-in ×2, words (climb/jump/fly), 2 sentence targets, wrap-up; <b>no warm-up</b><span class="zh">公共规则、导入、三个单词、两个目标句型、收尾；不设热身</span></td><td>72 current cases <span class="zh">当前用例</span></td><td><span class="badge green">GPT-5.6 Luna 72/72</span></td></tr>
+  <tr><td><b>L3 V2</b> (A1+)</td><td>common, lead-in ×2, words (climb/jump/fly), 2 sentence targets, wrap-up; <b>no warm-up</b><span class="zh">公共规则、导入、三个单词、两个目标句型、收尾；不设热身</span></td><td>72 cases <span class="zh">72 个用例</span></td><td><span class="badge green">harnessed · 已接入 Harness</span></td></tr>
   <tr><td><b>L5</b> (11–12岁, A2+)</td><td>common, warm-up, lead-in ×2</td><td>32 cases</td><td><span class="badge green">live, all passing 全部通过</span></td></tr>
   <tr><td><b>新手引导体验课</b> trial demo</td><td>common, render-content data file, lead-in pre+post</td><td>24 cases</td><td><span class="badge green">live, 24/24 通过</span></td></tr>
 </table>
@@ -496,7 +554,7 @@
 </div>
 
 <footer>
-  Prompt Report · 课程 Prompt 质量报告 — enforced by code in <code>eval/</code>, not by opinion · 所有规则由代码强制执行，而非主观判断
+  Prompt Eval Report · Prompt 评测报告 — deterministic rules + model-assisted review + human classroom validation · 硬规则检查 + 模型辅助评审 + 真实课堂人工验证
 </footer>
 
 </div>
