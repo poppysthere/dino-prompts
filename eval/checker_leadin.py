@@ -32,6 +32,8 @@ WELCOME_L3_V2 = ("welcome! today, let's learn three new words. climb. jump. fly.
 LAUNCH_L3_V2 = "look! dino and mia are here. the story starts now!"
 ASK_L3 = ("look! unicorns! dino and mia meet some unicorns! "
           "what fun will they have together?")
+ASK_L3_V2 = ("look! unicorns! dino and mia meet some unicorns. "
+             "can they fly together?")
 LAUNCH_L3 = "let's watch and find out!"
 IDK_SIGNALS = ["don't know", "dont know", "不知道", "no sé", "no se"]
 
@@ -225,8 +227,10 @@ def check(path):
                     v("no-question", "pre-video must not ask anything")
         return out
 
-    if family in ("leadin_l3", "leadin_l3_v2"):
+    if family == "leadin_l3":
         return check_post_l3(tr, replies, users, v, out)
+    if family == "leadin_l3_v2":
+        return check_post_l3(tr, replies, users, v, out, ask=ASK_L3_V2)
     if family == "leadin_l5":
         return check_post_l3(tr, replies, users, v, out,
                              ask=ASK_L5, launch=LAUNCH_L5,

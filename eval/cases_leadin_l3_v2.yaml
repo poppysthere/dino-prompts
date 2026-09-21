@@ -40,12 +40,23 @@ pre_video:
     forbid_phrases: ["test[_\\s]?user"]
 
 post_video:
+  - id: l3v2post-yes
+    note: "the easy yes-or-no question accepts a one-word yes"
+    turns: ["Yes!"]
+    require_phrases: ["maybe"]
+    forbid_phrases: ["good idea", "what fun"]
+  - id: l3v2post-no
+    note: "a one-word no is a complete answer and is not corrected"
+    turns: ["No."]
+    require_phrases: ["maybe not"]
+    forbid_phrases: ["good idea", "what fun"]
   - id: l3v2post-idea
     turns: ["They will fly! Fly high!"]
     require_phrases: ["\\bfly\\b"]
+    forbid_phrases: ["what fun"]
   - id: l3v2post-idk
     turns: ["I don't know."]
-    forbid_phrases: ["good idea"]
+    forbid_phrases: ["good idea", "what fun"]
   - id: l3v2post-silent
     turns: []
-    forbid_phrases: ["good idea"]
+    forbid_phrases: ["good idea", "what fun"]

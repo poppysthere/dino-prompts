@@ -29,15 +29,17 @@
   `Piece of cake!` prompt files were removed from V2.
 - Word teaching uses the natural classroom pattern `Listen. ... Your turn. ...`
   and must briefly respond when a child shares a personal sentence.
+- The post-video lead-in now asks the easy yes-or-no question `Can they fly
+  together?` instead of the broad `What fun will they have together?`.
 
 ## Results
 
 | Stage | Cases | Result |
 |---|---:|---:|
-| Lead-in | 11 | 11 passed |
+| Lead-in | 13 | 13 passed |
 | Word teaching | 35 | 35 passed |
 | Sentence teaching and wrap-up | 19 | 19 passed |
-| **Total** | **65** | **65 passed** |
+| **Total** | **67** | **67 passed** |
 
 The cases include ready/not ready, silence, confusion, meaning questions,
 another-language input, junk names, ASR near-misses, retry limits, off-topic
