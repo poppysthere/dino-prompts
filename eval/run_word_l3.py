@@ -76,6 +76,7 @@ def run_case(backend, family, case, prompt_version):
     return {
         "family": family,
         "case": case["id"],
+        "prompt_version": prompt_version,
         "student_name": checker_name,
         "forbid_phrases": case.get("forbid_phrases", []),
         "require_phrases": case.get("require_phrases", []),

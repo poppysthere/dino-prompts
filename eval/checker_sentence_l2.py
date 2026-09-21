@@ -47,8 +47,7 @@ STEPS = {
         "final_tag": "[TEMPLATE_FINISH]",
         "max": 1,
     },
-    # --- L3 sentence trail (Dino & Mia): intro -> Can you climb? -> I can climb.
-    # --- -> Can you fly? (+ real question) -> Piece of cake! (TEMPLATE_FINISH)
+    # --- Original L3 sentence trail (Dino & Mia).
     "sent_l3_intro": {
         "fixed": "Climb, jump, fly. You know them ALL! What will happen to Dino and Mia next? Let's find out!",
         "final_tag": "[NEXT_STEP]",
@@ -75,12 +74,13 @@ STEPS = {
         "max": 4,
     },
     "wrapup_l3_pre": {
-        "ask": ("Look! Dino and Mia are here. The unicorns are here too. "
-                "They are happy. Did you like the story?"),
-        "close": "Now it's song time. Let's sing together!",
+        "ask": ("Dino and Mia meet the unicorn! Look! The unicorn's family and friends "
+                "are here too! They are all so happy. Did you like the adventure?"),
+        "close": ("Unicorns, friends, and a big adventure! Now it's song time! "
+                  "Let's sing together!"),
         "final_tag": "[NEXT_STEP]",
         "max": 2,
-        "catch_budget": 7,
+        "catch_budget": 12,
     },
     "sent_l3_piece_of_cake": {
         "ask": ("Wow! The unicorn can fly! Mia is flying in the sky! So easy for her! "
@@ -98,6 +98,38 @@ STEPS = {
         "final_tag": "[NEXT_STEP]",
         "max": 2,
         "catch_budget": 22,
+    },
+}
+
+# V2 follows the production four-step flow: sentence intro, video, then only
+# two taught sentences. These overrides let the same checker protect both
+# prompt versions without rewriting the historical V1 contract.
+STEPS_V2 = {
+    "sent_l3_intro": {
+        "fixed": ("Great work! You know three words. Climb, jump, and fly. "
+                  "Now, let's watch Dino and Mia."),
+        "final_tag": "[NEXT_STEP]",
+        "max": 1,
+    },
+    "sent_l3_can_you_climb": {
+        "ask": "Look! Dino asks Mia. Listen. Can you climb? Your turn. Can you climb?",
+        "retry": "Listen again. Can you climb? Your turn. Can you climb?",
+        "final_tag": "[NEXT_STEP]",
+        "max": 3,
+    },
+    "sent_l3_i_can_climb": {
+        "ask": "Look! Mia climbs the wall. Listen. I can climb. Your turn. I can climb.",
+        "retry": "Listen again. I can climb. Your turn. I can climb.",
+        "final_tag": "[NEXT_STEP]",
+        "max": 3,
+    },
+    "wrapup_l3_pre": {
+        "ask": ("Look! Dino and Mia are here. The unicorns are here too. "
+                "They are happy. Did you like the story?"),
+        "close": "Now it's song time. Let's sing together!",
+        "final_tag": "[NEXT_STEP]",
+        "max": 2,
+        "catch_budget": 7,
     },
 }
 
@@ -126,7 +158,9 @@ def control_tags(t):
 
 
 def check(tr):
-    step = STEPS[tr["family"]]
+    step_set = STEPS_V2 if tr.get("prompt_version") == "v2" else STEPS
+    family = tr["family"]
+    step = step_set[family] if family in step_set else STEPS[family]
     replies = [m["text"] for m in tr["messages"] if m["role"] == "assistant"]
     out = []
     v = lambda rule, msg: out.append(f"[{rule}] {msg}")

@@ -24,6 +24,11 @@
   `Look! Dino and Mia are here. The story starts now!`
 
 - The wrap-up no longer uses `adventure` or a long fixed celebration line.
+- The production sentence flow is now represented exactly: intro, video,
+  `Can you climb?`, then `I can climb.` The obsolete `Can you fly?` and
+  `Piece of cake!` prompt files were removed from V2.
+- Word teaching uses the natural classroom pattern `Listen. ... Your turn. ...`
+  and must briefly respond when a child shares a personal sentence.
 
 ## Results
 
@@ -31,25 +36,28 @@
 |---|---:|---:|
 | Lead-in | 11 | 11 passed |
 | Word teaching | 35 | 35 passed |
-| Sentence teaching and wrap-up | 31 | 31 passed |
-| **Total** | **77** | **77 passed** |
+| Sentence teaching and wrap-up | 19 | 19 passed |
+| **Total** | **65** | **65 passed** |
 
 The cases include ready/not ready, silence, confusion, meaning questions,
 another-language input, junk names, ASR near-misses, retry limits, off-topic
 answers, ask-backs, and fresh-step state resets.
 
-One word transcript used a typographic apostrophe in `Let’s`. The spoken line
-was correct; the mechanical checker was updated to treat straight and curly
-apostrophes as equivalent.
+The word suite exposed two useful issues during iteration. First, the teacher
+passed personal sentences without reacting to the child's idea; the prompt now
+requires a tiny natural echo. Second, Luna occasionally treated the ASR form
+`Junk` as a near miss instead of `jump`; the prompt now marks it as an immediate
+PASS. Both repairs were retested successfully.
 
 ## Example repairs
 
 - Child: `What do I do?`
-  Teacher: `Watch first. I will help you.`
+  Teacher: `Say, can you climb? Listen again. Can you climb? Your turn. Can you climb?`
 - Child: `What is climb?`
   Teacher: `Climb. Go up, up, up.`
+- Child: `I jump on my bed!`
+  Teacher: `On your bed? Wow! Yes! Great job!`
 - Child: silence
   Teacher: `Let's start.`
 - Child: `Did YOU like it?`
   Teacher: `Yes! I liked it! Now it's song time. Let's sing together!`
-

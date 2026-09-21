@@ -1,0 +1,114 @@
+# L3 V2 sentence flow: intro -> video -> Can you climb? -> I can climb.
+# Wrap-up remains in this runner because it shares the sentence-step harness.
+
+sent_l3_intro:
+  - id: l3v2s-intro-line
+    note: "one easy fixed line, ends [NEXT_STEP], no waiting"
+    turns: []
+  - id: l3v2s-intro-junkname
+    note: "placeholder name is never spoken"
+    turns: []
+    student_name: "test_user"
+    forbid_phrases: ["test[_\\s]?user"]
+
+sent_l3_can_you_climb:
+  - id: l3v2s0-pass
+    note: "full question -> short true praise and two easy examples"
+    turns: ["Can you climb?"]
+    require_phrases: ["can you jump", "can you swim"]
+    forbid_phrases: ["say it with me", "anything", "so useful"]
+    max_replies: 2
+  - id: l3v2s0-word-only
+    note: "word-only try -> one clear supported retry, then pass"
+    turns: ["Climb!", "Can you climb?"]
+    require_phrases: ["listen again"]
+    reply_forbid:
+      2: ["great job"]
+    max_replies: 3
+  - id: l3v2s0-answered-instead
+    note: "an answer shows understanding but still receives the sentence model"
+    turns: ["Yes, I can!", "Can you climb?"]
+    require_phrases: ["ask mia", "listen again"]
+    reply_forbid:
+      2: ["great job"]
+    max_replies: 3
+  - id: l3v2s0-what-do-i-do
+    note: "lost child gets an exact action"
+    turns: ["What do I do?", "Can you climb?"]
+    require_phrases: ["say, can you climb"]
+    max_replies: 3
+  - id: l3v2s0-silent
+    note: "silence gets one model, then a neutral close"
+    turns: []
+    forbid_phrases: ["great job", "you said it"]
+    max_replies: 3
+
+sent_l3_i_can_climb:
+  - id: l3v2s1-pass
+    note: "full sentence -> short true praise and two easy examples"
+    turns: ["I can climb!"]
+    require_phrases: ["i can jump", "i can swim"]
+    forbid_phrases: ["shout it out", "loud and proud"]
+    max_replies: 2
+  - id: l3v2s1-own-cando
+    note: "another true I-can sentence passes"
+    turns: ["I can swim!"]
+    require_phrases: ["swim"]
+    forbid_phrases: ["listen slowly"]
+    max_replies: 2
+  - id: l3v2s1-old-line
+    note: "the previous question gets acknowledged, then one supported retry"
+    turns: ["Can you climb?", "I can climb!"]
+    require_phrases: ["mia answers", "listen again"]
+    reply_forbid:
+      2: ["great job"]
+    max_replies: 3
+  - id: l3v2s1-what-do-i-do
+    note: "lost child gets the exact line to say"
+    turns: ["What do I do?", "I can climb!"]
+    require_phrases: ["say, i can climb"]
+    max_replies: 3
+  - id: l3v2s1-silent
+    note: "silence gets one model, then a neutral close"
+    turns: []
+    forbid_phrases: ["great job", "you said it"]
+    max_replies: 3
+
+wrapup_l3_pre:
+  - id: l3v2w-pos
+    turns: ["Yes! It was fun!"]
+    require_phrases: ["me too", "song time"]
+    max_replies: 2
+  - id: l3v2w-favorite
+    turns: ["I like the unicorn!"]
+    require_phrases: ["unicorn", "song time"]
+    forbid_phrases: ["that's okay"]
+    max_replies: 2
+  - id: l3v2w-neg
+    turns: ["不喜欢。"]
+    require_phrases: ["song time"]
+    forbid_phrases: ["me too"]
+    max_replies: 2
+  - id: l3v2w-askback
+    turns: ["Did YOU like it?"]
+    require_phrases: ["liked it", "song time"]
+    max_replies: 2
+  - id: l3v2w-silent
+    turns: []
+    require_phrases: ["song time"]
+    forbid_phrases: ["me too"]
+    max_replies: 2
+  - id: l3v2w-junkname
+    turns: ["Yes!"]
+    student_name: "test_user"
+    forbid_phrases: ["test[_\\s]?user"]
+    max_replies: 2
+  - id: l3v2w-fresh-start
+    note: "old sentence chat cannot skip the wrap-up question"
+    seed:
+      - role: assistant
+        text: "Great job! You said it! I can jump. I can swim.[NEXT_STEP]"
+    turns: ["Yes!"]
+    reply_forbid:
+      1: ["song time"]
+    max_replies: 2

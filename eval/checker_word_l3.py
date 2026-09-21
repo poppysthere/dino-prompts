@@ -52,6 +52,42 @@ WORDS = {
     },
 }
 
+# V2 keeps the same evaluation behavior, but uses shorter A1+ scripts with
+# one concrete instruction at a time. Keep the V1 strings above intact so the
+# historical prompt and its saved transcripts remain reproducible.
+WORDS_V2 = {
+    "word_l3_climb": {
+        "word": "climb",
+        "try_re": r"\b(climb\w*|clime|crime|claim)\b",
+        "ask_core": ("look! dino and mia go up the wall. listen. climb. "
+                     "your turn. climb!"),
+        "retry_re": r"climb a tree\W+climb a wall",
+        "bare_retry_re": r"one more time|say it with me|say with me",
+        "close_core": "climb. up, up, up!",
+        "action": "[TEACHER_CLIMB]",
+    },
+    "word_l3_jump": {
+        "word": "jump",
+        "try_re": r"\b(jump\w*|junk|dump|jamp)\b",
+        "ask_core": ("look! dino and mia jump over the rocks. listen. jump. "
+                     "your turn. jump!"),
+        "retry_re": r"jump over a rock\W+jump up high",
+        "bare_retry_re": r"one more time|say it with me|say with me",
+        "close_core": "jump. up and over!",
+        "action": "[TEACHER_JUMP]",
+    },
+    "word_l3_fly": {
+        "word": "fly",
+        "try_re": r"\b(fly\w*|flie\w*|fry|flight)\b",
+        "ask_core": ("look! dino and mia fly with a unicorn. listen. fly. "
+                     "your turn. fly!"),
+        "retry_re": r"fly like a bird\W+fly like a plane",
+        "bare_retry_re": r"one more time|say it with me|say with me",
+        "close_core": "fly. high in the sky!",
+        "action": "[TEACHER_FLY]",
+    },
+}
+
 KNOWN_ACTIONS = {
     "[TEACHER_WAVE]", "[TEACHER_THUMBS_UP]", "[TEACHER_APPLAUD]", "[TEACHER_HIGH_FIVE]",
     "[TEACHER_POINT_TO_SCREEN]", "[TEACHER_SHOW_MUSCLE]", "[TEACHER_LISTEN]", "[TEACHER_JUMP]",
@@ -84,7 +120,8 @@ def control_tags(t):
 
 def check(path):
     tr = json.loads(open(path, encoding="utf-8").read())
-    cfg = WORDS[tr["family"]]
+    word_set = WORDS_V2 if tr.get("prompt_version") == "v2" else WORDS
+    cfg = word_set[tr["family"]]
     msgs = tr["messages"]
     replies = [m["text"] for m in msgs if m["role"] == "assistant"]
     out = []

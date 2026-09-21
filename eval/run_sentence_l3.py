@@ -33,6 +33,7 @@ FAMILY_FILES = {
     "wrapup_l3_pre": "wrapup_teaching_rules_l3_step_pre_video.md",
 }
 PROMPT_DIRS = {"v1": "prompts/l3", "v2": "prompts/l3-v2"}
+CASE_FILES = {"v1": "cases_sentence_l3.yaml", "v2": "cases_sentence_l3_v2.yaml"}
 FAMILY_RENDER = {
     "sent_l3_intro": "Sentence trail intro before the adventure video.",
     "sent_l3_can_you_climb": "Sentence teaching: Can you climb? Dino asks Mia.",
@@ -82,6 +83,7 @@ def run_case(backend, family, case, prompt_version):
     return {
         "family": family,
         "case": case["id"],
+        "prompt_version": prompt_version,
         "student_name": checker_name,
         "forbid_phrases": case.get("forbid_phrases", []),
         "require_phrases": case.get("require_phrases", []),
@@ -110,7 +112,7 @@ def main():
     os.environ["FORGE_MODEL"] = args.model
     backend = ForgeBackend()
 
-    battery = yaml.safe_load((ROOT / "eval/cases_sentence_l3.yaml").read_text())
+    battery = yaml.safe_load((ROOT / "eval" / CASE_FILES[args.prompt_version]).read_text())
     run_dir = args.run_dir
     run_dir.mkdir(parents=True, exist_ok=True)
     paths = []

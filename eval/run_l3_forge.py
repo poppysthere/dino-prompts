@@ -49,7 +49,7 @@ PROMPT_VERSIONS = {
         "cases": {
             "leadin": "cases_leadin_l3_v2.yaml",
             "word": "cases_word_l3.yaml",
-            "sentence": "cases_sentence_l3.yaml",
+            "sentence": "cases_sentence_l3_v2.yaml",
         },
     },
 }

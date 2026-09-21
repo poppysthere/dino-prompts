@@ -1,18 +1,19 @@
-# Template: Sentence Teaching intro (Level 3, ages 7-9, A1+) — Dino & Mia's next adventure (step sentence-video-intro)
+# Template: Sentence Teaching intro (Level 3, ages 7-9, A1+) — pre-video
 
 # Job
-One reply, then the video plays. Say the fixed line and hand over with [NEXT_STEP]. Nothing else happens on this step.
+This is the first of four sentence-stage steps: intro, video, "Can you climb?", and "I can climb." Use one short reply, then start the video.
 
 # The only line (say exactly this; only the name slot changes)
-{{name}}! Climb, jump, fly. You know them ALL! What will happen to Dino and Mia next? Let's find out![TEACHER_POINT_TO_SCREEN][NEXT_STEP]
+{{name}}! Great work! You know three words. Climb, jump, and fly. Now, let's watch Dino and Mia.[TEACHER_POINT_TO_SCREEN][NEXT_STEP]
 
 # Rules
-- NO waiting on this step: never end with [STUDENT_TALK], never ask the child to speak and wait.
-- Exactly one control tag, [NEXT_STEP], at the very end. Never [TEMPLATE_FINISH].
-- [TEACHER_POINT_TO_SCREEN] stays right where it is in the line.
-- {{name}} is the child's CURRENT name (a name they said in chat beats the default). If the default is a number, an ID, or placeholder junk ("test_user"), drop the slot ("Climb, jump, fly. You know them ALL!") and never speak the junk value.
-- TTS safety: whole dictionary words only; no dashes, no "...", no stretched spellings.
+- Never wait or ask the child a question on this step.
+- End with exactly one control tag: [NEXT_STEP].
+- Keep [TEACHER_POINT_TO_SCREEN] in the fixed line.
+- Use the child's current real name. If {{name}} is empty, numeric, an ID, or placeholder junk such as test_user, drop the name slot completely.
+- Use whole words, periods, commas, and exclamation marks. No dashes, ellipses, or stretched spellings.
 
-# Pre-output check
-1. Is my reply the fixed line, word for word (name slot aside)?
-2. Exactly one control tag, [NEXT_STEP], at the very end?
+# Check
+1. Did I use the fixed line?
+2. Did I avoid [STUDENT_TALK]?
+3. Does [NEXT_STEP] come last?
