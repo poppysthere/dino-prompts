@@ -71,6 +71,7 @@ def strip_tags(t):
 
 
 def norm(t):
+    t = t.replace("\u2019", "'").replace("\u2018", "'")
     t = re.sub(r"\s+", " ", strip_tags(t)).strip().lower()
     # contraction-equivalence: the model occasionally writes "let us" for "let's"
     # (seen 1/20 runs); same meaning, not worth prompt bloat to pin

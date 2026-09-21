@@ -27,10 +27,9 @@ CULPRIT = "horse"
 # pre-video HAS teaser questions by design (answered by the video, never waited on).
 PRE_LINE_L3 = ("look! dino and mia are ready for an adventure! where will they go? "
                "what will happen to them? let's watch and find out!")
-WELCOME_L3_V2 = ("welcome to class. today, we'll learn three action words. "
-                 "climb, jump, and fly. listen, watch, and speak with me. ready to start?")
-LAUNCH_L3_V2 = ("look! dino and mia are ready for an adventure. "
-                "let's see where they go and what happens.")
+WELCOME_L3_V2 = ("welcome! today, let's learn three new words. climb. jump. fly. "
+                 "first, watch the story. then, say the words. ready?")
+LAUNCH_L3_V2 = "look! dino and mia are here. the story starts now!"
 ASK_L3 = ("look! unicorns! dino and mia meet some unicorns! "
           "what fun will they have together?")
 LAUNCH_L3 = "let's watch and find out!"
@@ -306,27 +305,32 @@ def check_pre_l3_v2(tr, replies, users, v, out):
             catch = n2[:launch_at].strip()
             if n2[launch_at + len(LAUNCH_L3_V2):].strip():
                 v("script-launch", "reply 2 has spoken text after the fixed story launch")
-        if len(catch.split()) > 8:
+        if len(catch.split()) > 6:
             v("catch-budget", f"reply 2 catch over budget ({len(catch.split())} words): {catch!r}")
         if "[NEXT_STEP]" not in r2 or "[STUDENT_TALK]" in r2:
             v("must-launch", "reply 2 must start the video with [NEXT_STEP], never wait")
         if "?" in strip_tags(r2):
             v("no-second-question", "reply 2 asks another question instead of starting the story")
-        if WELCOME_L3_V2 in n2 or "ready to start" in n2:
+        if WELCOME_L3_V2 in n2 or re.search(r"\bready\??", n2):
             v("no-repeat-welcome", "reply 2 repeats the welcome or ready question")
+        if re.search(r"\b(action words?|adventure)\b|what happens", n2):
+            v("a1-vocabulary", f"reply 2 adds unnecessary language above the V2 A1+ gate: {strip_tags(r2).strip()!r}")
 
         child = turn_before(tr["messages"], 2).lower()
         if is_silent(child):
-            if "let's start together" not in catch:
-                v("silence-start", f"silence needs a neutral 'Let's start together' catch, got {catch!r}")
+            if "let's start" not in catch:
+                v("silence-start", f"silence needs a neutral 'Let's start' catch, got {catch!r}")
             if re.search(r"good|great|well done", catch, re.I):
                 v("fake-praise", "reply 2 praises a silent child")
         elif "what do i do" in child:
-            if not (re.search(r"listen|watch", catch) and "help" in catch):
+            if not ("watch first" in catch and "help" in catch):
                 v("instruction-answer", f"the child asked what to do, but got no concrete help: {catch!r}")
-        elif "what are action words" in child:
-            if not all(word in catch for word in ("climb", "jump", "fly", "actions")):
-                v("meaning-answer", f"the action-word question was not answered concretely: {catch!r}")
+        elif "which words" in child:
+            if not all(word in catch for word in ("climb", "jump", "fly")):
+                v("meaning-answer", f"the child was not given the three words: {catch!r}")
+        elif "what is climb" in child:
+            if not ("climb" in catch and "go up" in catch):
+                v("meaning-answer", f"the child did not get a simple example of climb: {catch!r}")
         elif re.search(r"\b(no|not ready)\b", child):
             if re.search(r"great|let's go", catch):
                 v("meaning-reaction", f"not-ready child gets a false ready reaction: {catch!r}")

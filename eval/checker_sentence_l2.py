@@ -75,12 +75,12 @@ STEPS = {
         "max": 4,
     },
     "wrapup_l3_pre": {
-        "ask": ("Dino and Mia meet the unicorn! Look! The unicorn's family and friends are here too! "
-                "They are all so happy. Did you like the adventure?"),
-        "close": "Unicorns, friends, and a big adventure! Now it's SONG TIME! Let's sing together!",
+        "ask": ("Look! Dino and Mia are here. The unicorns are here too. "
+                "They are happy. Did you like the story?"),
+        "close": "Now it's song time. Let's sing together!",
         "final_tag": "[NEXT_STEP]",
         "max": 2,
-        "catch_budget": 12,
+        "catch_budget": 7,
     },
     "sent_l3_piece_of_cake": {
         "ask": ("Wow! The unicorn can fly! Mia is flying in the sky! So easy for her! "
@@ -111,6 +111,7 @@ def strip_tags(t):
 
 
 def norm(t):
+    t = t.replace("\u2019", "'").replace("\u2018", "'")
     return re.sub(r"\s+", " ", strip_tags(t)).strip().lower()
 
 

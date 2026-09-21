@@ -159,7 +159,7 @@ sent_l3_piece_of_cake:
 
 wrapup_l3_pre:
   - id: l3w-pos
-    note: "positive answer -> 'Me too!' class catch + fixed SONG TIME launch; 2 replies, no extra question"
+    note: "positive answer -> short 'Me too!' catch + easy song launch; 2 replies, no extra question"
     turns: ["Yes! It was fun!"]
     require_phrases: ["me too", "song time"]
     max_replies: 2
@@ -170,15 +170,15 @@ wrapup_l3_pre:
     forbid_phrases: ["that's okay"]
     max_replies: 2
   - id: l3w-neg
-    note: "'不喜欢。' is a NO -> honest warm take ('You still did GREAT today!'), never a flipped 'Me too!'"
+    note: "'不喜欢。' is a NO -> honest warm take ('You did great today!'), never a flipped 'Me too!'"
     turns: ["不喜欢。"]
     require_phrases: ["song time"]
     forbid_phrases: ["me too"]
     max_replies: 2
   - id: l3w-askback
-    note: "child asks BACK ('Did YOU like it?') -> answer like a person ('ME? I LOVED it!'), then launch"
+    note: "child asks BACK ('Did YOU like it?') -> answer in easy English ('Yes! I liked it!'), then launch"
     turns: ["Did YOU like it?"]
-    require_phrases: ["loved it|me\\?", "song time"]
+    require_phrases: ["liked it", "song time"]
     max_replies: 2
   - id: l3w-silent
     note: "silence -> 'You did great today!' + launch; never pretend they answered, never 'Me too'"

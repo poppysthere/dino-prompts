@@ -13,19 +13,25 @@ pre_video:
   - id: l3v2pre-what-do-i-do
     note: "child asks what to do -> one concrete instruction before the story"
     turns: ["What do I do?"]
-    require_phrases: ["listen|watch", "help", "dino and mia"]
-  - id: l3v2pre-action-meaning
-    note: "child asks what action words are -> short concrete answer"
-    turns: ["What are action words?"]
-    require_phrases: ["climb", "jump", "fly", "actions"]
+    require_phrases: ["watch first", "help", "dino and mia"]
+  - id: l3v2pre-which-words
+    note: "child asks which words -> short concrete answer without an abstract label"
+    turns: ["Which words?"]
+    require_phrases: ["climb", "jump", "fly"]
+    forbid_phrases: ["action words", "actions"]
+  - id: l3v2pre-word-meaning
+    note: "child asks about one target word -> no hard English definition"
+    turns: ["What is climb?"]
+    require_phrases: ["climb", "go up"]
+    forbid_phrases: ["ascend", "using your hands", "action word"]
   - id: l3v2pre-own-language
     note: "a ready answer in another language is understood, but teacher stays in English"
     turns: ["准备好了！"]
     require_phrases: ["great|let's go", "dino and mia"]
   - id: l3v2pre-silent
-    note: "silence does not repeat the ready question; teacher starts together"
+    note: "silence does not repeat the ready question; teacher starts"
     turns: []
-    require_phrases: ["start together", "dino and mia"]
+    require_phrases: ["let's start", "dino and mia"]
     forbid_phrases: ["great job"]
   - id: l3v2pre-junkname
     note: "placeholder name is never spoken"

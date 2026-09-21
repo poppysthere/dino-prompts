@@ -171,6 +171,9 @@ BUDGETS = {
     "render_content_trial_wrap_giraffe.md": (15, 250),
 }
 PATH_BUDGETS = {
+    # V2's common layer adds an explicit A1+ language gate and repair ladder
+    # because no translator or second teacher is available in the lesson.
+    "prompts/l3-v2/common_teaching_simple_rules_l3.md": (105, 1500),
     # V2 opens the whole class here, so it contains a welcome state that V1
     # does not. Keep this isolated budget lean rather than raising V1's limit.
     "prompts/l3-v2/leadin_teaching_rules_l3_step_pre_video.md": (78, 800),
