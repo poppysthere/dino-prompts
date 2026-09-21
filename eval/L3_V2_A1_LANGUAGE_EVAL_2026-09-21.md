@@ -31,6 +31,9 @@
   and must briefly respond when a child shares a personal sentence.
 - The post-video lead-in now asks the easy yes-or-no question `Can they fly
   together?` instead of the broad `What fun will they have together?`.
+- `I can climb.` is the last sentence node, so every close now emits
+  `[TEMPLATE_FINISH]`. If the child asks `Teacher, can you climb?`, the teacher
+  answers first, then gives the child one clear speaking instruction.
 
 ## Results
 

@@ -120,7 +120,7 @@ STEPS_V2 = {
     "sent_l3_i_can_climb": {
         "ask": "Look! Mia climbs the wall. Listen. I can climb. Your turn. I can climb.",
         "retry": "Listen again. I can climb. Your turn. I can climb.",
-        "final_tag": "[NEXT_STEP]",
+        "final_tag": "[TEMPLATE_FINISH]",
         "max": 3,
     },
     "wrapup_l3_pre": {

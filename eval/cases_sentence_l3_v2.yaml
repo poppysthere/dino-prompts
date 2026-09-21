@@ -56,12 +56,12 @@ sent_l3_i_can_climb:
     require_phrases: ["swim"]
     forbid_phrases: ["listen slowly"]
     max_replies: 2
-  - id: l3v2s1-old-line
-    note: "the previous question gets acknowledged, then one supported retry"
-    turns: ["Can you climb?", "I can climb!"]
-    require_phrases: ["mia answers", "listen again"]
+  - id: l3v2s1-asks-teacher
+    note: "a question addressed to the teacher is answered before a clear child instruction"
+    turns: ["Teacher, can you climb?", "I can climb!"]
+    require_phrases: ["yes, i can", "what about you", "say, i can climb"]
     reply_forbid:
-      2: ["great job"]
+      2: ["great job", "dino asks", "listen again"]
     max_replies: 3
   - id: l3v2s1-what-do-i-do
     note: "lost child gets the exact line to say"
@@ -107,7 +107,7 @@ wrapup_l3_pre:
     note: "old sentence chat cannot skip the wrap-up question"
     seed:
       - role: assistant
-        text: "Great job! You said it! I can jump. I can swim.[NEXT_STEP]"
+        text: "Great job! You said it! I can jump. I can swim.[TEMPLATE_FINISH]"
     turns: ["Yes!"]
     reply_forbid:
       1: ["song time"]
