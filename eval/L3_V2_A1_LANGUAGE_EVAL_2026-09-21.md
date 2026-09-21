@@ -17,11 +17,15 @@
   blocked unless they are explicit lesson targets.
 - The opening now says:
 
-  `Hi, {{name}}! Welcome! Today, let's learn three new words. Climb. Jump. Fly. First, watch the story. Then, say the words. Ready?`
+  `Hi, {{name}}! I'm {{teacherName}}. Nice to meet you! Say hi to me!`
 
-- The story launch is now:
+- After the child greets the teacher, the lesson starts with:
 
-  `Look! Dino and Mia are here. The story starts now!`
+  `Today, let's learn three new words. Climb. Jump. Fly. First, watch. Then, say the words. Look! Dino and Mia are here. Let's watch!`
+
+- The teacher's own name comes only from `{{teacherName}}`; it is never
+  hardcoded. A silent or confused child gets one modeled `Hi!` rescue before
+  the video starts.
 
 - The wrap-up no longer uses `adventure` or a long fixed celebration line.
 - The production sentence flow is now represented exactly: intro, video,
@@ -49,7 +53,7 @@
 | Sentence teaching and wrap-up | 24 | 24 passed |
 | **Total** | **72** | **72 passed** |
 
-The cases include ready/not ready, silence, confusion, meaning questions,
+The cases include greetings, teacher-name injection, silence, confusion, meaning questions,
 another-language input, junk names, ASR near-misses, retry limits, off-topic
 answers, ask-backs, and fresh-step state resets.
 
@@ -68,6 +72,6 @@ PASS. Both repairs were retested successfully.
 - Child: `I jump on my bed!`
   Teacher: `On your bed? Wow! Yes! Great job!`
 - Child: silence
-  Teacher: `Let's start.`
+  Teacher: `Listen first. Hi! Now, you try.`
 - Child: `Did YOU like it?`
   Teacher: `Yes! I liked it! Now it's song time. Let's sing together!`

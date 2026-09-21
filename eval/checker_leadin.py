@@ -27,9 +27,10 @@ CULPRIT = "horse"
 # pre-video HAS teaser questions by design (answered by the video, never waited on).
 PRE_LINE_L3 = ("look! dino and mia are ready for an adventure! where will they go? "
                "what will happen to them? let's watch and find out!")
-WELCOME_L3_V2 = ("welcome! today, let's learn three new words. climb. jump. fly. "
-                 "first, watch the story. then, say the words. ready?")
-LAUNCH_L3_V2 = "look! dino and mia are here. the story starts now!"
+START_L3_V2 = ("today, let's learn three new words. climb. jump. fly. first, watch. "
+               "then, say the words. look! dino and mia are here. let's watch!")
+RESCUE_L3_V2 = "listen first. hi! now, you try."
+GREETING_L3_RE = re.compile(r"\b(hi|hello|hey)\b|你好|哈喽", re.I)
 ASK_L3 = ("look! unicorns! dino and mia meet some unicorns! "
           "what fun will they have together?")
 ASK_L3_V2 = ("look! unicorns! dino and mia meet some unicorns. "
@@ -283,61 +284,78 @@ def check(path):
 
 
 def check_pre_l3_v2(tr, replies, users, v, out):
-    """L3 V2 begins class here: welcome and directions -> child -> story launch."""
-    if len(replies) != 2:
-        v("two-replies", f"V2 pre-video must be welcome -> launch (2 replies), got {len(replies)}")
+    """L3 V2 begins with one hello turn, one optional rescue, then the story."""
+    if len(replies) not in (2, 3):
+        v("reply-count", f"V2 pre-video must be hello -> [rescue ->] start, got {len(replies)} replies")
 
     if replies:
         r1, n1 = replies[0], norm(replies[0])
-        if not n1.endswith(WELCOME_L3_V2):
-            v("script-welcome", f"reply 1 is not the V2 welcome: {strip_tags(r1).strip()!r}")
+        student = tr.get("student_name", "")
+        teacher = tr.get("teacher_name", "")
+        if teacher:
+            prefix = f"hi, {student}! " if student else "hi! "
+            expected = f"{prefix}i'm {teacher}. nice to meet you! say hi to me!".lower()
+            if n1 != expected:
+                v("script-hello", f"reply 1 is not the tagged-name hello: {strip_tags(r1).strip()!r}")
+        if teacher and not re.search(rf"\b{re.escape(teacher)}\b", strip_tags(r1), re.I):
+            v("teacher-name", f"reply 1 does not use teacherName {teacher!r}")
+        if student and not re.search(rf"\b{re.escape(student)}\b", strip_tags(r1), re.I):
+            v("student-name", f"reply 1 drops the usable child name {student!r}")
         if "[TEACHER_LISTEN][STUDENT_TALK]" not in r1.replace(" ", ""):
-            v("tag-welcome", "reply 1 must wait with [TEACHER_LISTEN][STUDENT_TALK]")
-        if strip_tags(r1).count("?") != 1:
-            v("one-question", "reply 1 must ask exactly one question")
-        name = tr.get("student_name", "")
-        if name and not re.search(rf"\b{re.escape(name)}\b", strip_tags(r1), re.I):
-            v("greet-name", f"reply 1 drops the usable name {name!r}")
+            v("tag-hello", "reply 1 must wait with [TEACHER_LISTEN][STUDENT_TALK]")
+        if "?" in strip_tags(r1) or re.search(r"\bready\b", strip_tags(r1), re.I):
+            v("hello-task", "reply 1 must ask only for hi, never ask a ready question")
 
-    if len(replies) >= 2:
+    first = turn_before(tr["messages"], 2)
+    first_is_greeting = bool(GREETING_L3_RE.search(first))
+    if len(replies) == 2 and not first_is_greeting:
+        v("missing-rescue", f"child did not greet; teacher must rescue once before launch: {first!r}")
+    if len(replies) == 3 and first_is_greeting:
+        v("extra-rescue", f"child already greeted; teacher should launch on reply 2: {first!r}")
+
+    def check_start(reply, number, child):
+        n = norm(reply)
+        start_at = n.find(START_L3_V2)
+        if start_at < 0:
+            v("script-start", f"reply {number} is missing the fixed lesson start: {strip_tags(reply).strip()!r}")
+            catch = n
+        else:
+            catch = n[:start_at].strip()
+            if n[start_at + len(START_L3_V2):].strip():
+                v("script-start", f"reply {number} has spoken text after the fixed lesson start")
+        if len(catch.split()) > 6:
+            v("catch-budget", f"reply {number} catch over budget ({len(catch.split())} words): {catch!r}")
+        if "[NEXT_STEP]" not in reply or "[STUDENT_TALK]" in reply:
+            v("must-start", f"reply {number} must start the video with [NEXT_STEP], never wait")
+        if "?" in strip_tags(reply) or re.search(r"\bready\b", strip_tags(reply), re.I):
+            v("no-question-start", f"reply {number} asks another question instead of starting")
+        if re.search(r"\b(action words?|adventure)\b|what happens", n):
+            v("a1-vocabulary", f"reply {number} adds language above the A1+ gate: {strip_tags(reply).strip()!r}")
+        if is_client_silence(child):
+            bad = silence_catch_issue(catch)
+            if bad:
+                v("catch-on-silence", f"reply {number}, on a silent child, {bad}")
+
+    if len(replies) == 2:
+        check_start(replies[1], 2, first)
+    elif len(replies) >= 3:
         r2, n2 = replies[1], norm(replies[1])
-        launch_at = n2.find(LAUNCH_L3_V2)
-        if launch_at < 0:
-            v("script-launch", f"reply 2 is missing the V2 story launch: {strip_tags(r2).strip()!r}")
+        rescue_at = n2.find(RESCUE_L3_V2)
+        if rescue_at < 0:
+            v("script-rescue", f"reply 2 is missing the one rescue: {strip_tags(r2).strip()!r}")
             catch = n2
         else:
-            catch = n2[:launch_at].strip()
-            if n2[launch_at + len(LAUNCH_L3_V2):].strip():
-                v("script-launch", "reply 2 has spoken text after the fixed story launch")
+            catch = n2[:rescue_at].strip()
+            if n2[rescue_at + len(RESCUE_L3_V2):].strip():
+                v("script-rescue", "reply 2 has spoken text after the fixed rescue")
         if len(catch.split()) > 6:
-            v("catch-budget", f"reply 2 catch over budget ({len(catch.split())} words): {catch!r}")
-        if "[NEXT_STEP]" not in r2 or "[STUDENT_TALK]" in r2:
-            v("must-launch", "reply 2 must start the video with [NEXT_STEP], never wait")
-        if "?" in strip_tags(r2):
-            v("no-second-question", "reply 2 asks another question instead of starting the story")
-        if WELCOME_L3_V2 in n2 or re.search(r"\bready\??", n2):
-            v("no-repeat-welcome", "reply 2 repeats the welcome or ready question")
-        if re.search(r"\b(action words?|adventure)\b|what happens", n2):
-            v("a1-vocabulary", f"reply 2 adds unnecessary language above the V2 A1+ gate: {strip_tags(r2).strip()!r}")
-
-        child = turn_before(tr["messages"], 2).lower()
-        if is_silent(child):
-            if "let's start" not in catch:
-                v("silence-start", f"silence needs a neutral 'Let's start' catch, got {catch!r}")
-            if re.search(r"good|great|well done", catch, re.I):
-                v("fake-praise", "reply 2 praises a silent child")
-        elif "what do i do" in child:
-            if not ("watch first" in catch and "help" in catch):
-                v("instruction-answer", f"the child asked what to do, but got no concrete help: {catch!r}")
-        elif "which words" in child:
-            if not all(word in catch for word in ("climb", "jump", "fly")):
-                v("meaning-answer", f"the child was not given the three words: {catch!r}")
-        elif "what is climb" in child:
-            if not ("climb" in catch and "go up" in catch):
-                v("meaning-answer", f"the child did not get a simple example of climb: {catch!r}")
-        elif re.search(r"\b(no|not ready)\b", child):
-            if re.search(r"great|let's go", catch):
-                v("meaning-reaction", f"not-ready child gets a false ready reaction: {catch!r}")
+            v("catch-budget", f"reply 2 rescue catch over budget ({len(catch.split())} words): {catch!r}")
+        if "[TEACHER_LISTEN][STUDENT_TALK]" not in r2.replace(" ", "") or "[NEXT_STEP]" in r2:
+            v("rescue-wait", "reply 2 rescue must wait once, not start the video")
+        if is_client_silence(first) and catch:
+            v("catch-on-silence", f"reply 2 adds a catch to client silence: {catch!r}")
+        second = turn_before(tr["messages"], 3)
+        check_start(replies[2], 3, second)
 
     return out
 

@@ -37,10 +37,11 @@ PROMPT_VERSIONS = {
     "v2": {"dir": "prompts/l3-v2", "cases": "cases_leadin_l3_v2.yaml", "family": "leadin_l3_v2"},
 }
 DEFAULT_NAME = "tom"
+DEFAULT_TEACHER_NAME = "Max"
 STOP_TAGS = ("[TEMPLATE_FINISH]", "[NEXT_STEP]")
 
 
-def compose(step: str, name: str, prompt_dir: str) -> str:
+def compose(step: str, name: str, teacher_name: str, prompt_dir: str) -> str:
     common = (ROOT / prompt_dir / "common_teaching_simple_rules_l3.md").read_text()
     tmpl = (ROOT / prompt_dir / STEP_FILES[step]).read_text()
     text = common.rstrip() + "\n\n" + tmpl.rstrip()
@@ -49,6 +50,7 @@ def compose(step: str, name: str, prompt_dir: str) -> str:
         "renderContent": "Lead-in stage.",
         "studentProfile": "No relevant information.",
         "name": name,
+        "teacherName": teacher_name,
     }.items():
         text = text.replace("{{" + k + "}}", val)
     return text
@@ -56,8 +58,9 @@ def compose(step: str, name: str, prompt_dir: str) -> str:
 
 def run_case(backend, step, case, version):
     prompt_name = case.get("student_name", DEFAULT_NAME)
+    teacher_name = case.get("teacher_name", DEFAULT_TEACHER_NAME)
     config = PROMPT_VERSIONS[version]
-    system = compose(step, prompt_name, config["dir"])
+    system = compose(step, prompt_name, teacher_name, config["dir"])
     messages = [{"role": "user", "content": UI_READY}]
     transcript = []
     turns, ti = case.get("turns", []), 0
@@ -78,6 +81,7 @@ def run_case(backend, step, case, version):
         "step": step,
         "case": case["id"],
         "student_name": checker_name,
+        "teacher_name": teacher_name,
         "forbid_phrases": case.get("forbid_phrases", []),
         "require_phrases": case.get("require_phrases", []),
         "messages": transcript,
