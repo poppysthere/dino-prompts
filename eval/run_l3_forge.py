@@ -27,23 +27,44 @@ DEFAULT_BASE = "http://dino-test-alb-2087276790.ap-southeast-1.elb.amazonaws.com
 # picker exposes its separate catalog ID. Keep both names explicit.
 DEFAULT_MODEL = "gpt5.6LunaChatModel"
 CATALOG_IDS = {DEFAULT_MODEL: "gpt-5.6-luna"}
-STAGES = {
-    "warmup": ("run_warmup_l3.py", "cases_warmup_l3.yaml"),
-    "leadin": ("run_leadin_l3.py", "cases_leadin_l3.yaml"),
-    "word": ("run_word_l3.py", "cases_word_l3.yaml"),
-    "sentence": ("run_sentence_l3.py", "cases_sentence_l3.yaml"),
+STAGE_RUNNERS = {
+    "warmup": "run_warmup_l3.py",
+    "leadin": "run_leadin_l3.py",
+    "word": "run_word_l3.py",
+    "sentence": "run_sentence_l3.py",
+}
+PROMPT_VERSIONS = {
+    "v1": {
+        "dir": "prompts/l3",
+        "cases": {
+            "warmup": "cases_warmup_l3.yaml",
+            "leadin": "cases_leadin_l3.yaml",
+            "word": "cases_word_l3.yaml",
+            "sentence": "cases_sentence_l3.yaml",
+        },
+    },
+    # V2 intentionally has no warm-up. Its default battery starts at lead-in.
+    "v2": {
+        "dir": "prompts/l3-v2",
+        "cases": {
+            "leadin": "cases_leadin_l3_v2.yaml",
+            "word": "cases_word_l3.yaml",
+            "sentence": "cases_sentence_l3.yaml",
+        },
+    },
 }
 
 
-def cases_for(stage):
-    data = yaml.safe_load((ROOT / "eval" / STAGES[stage][1]).read_text())
+def cases_for(stage, version):
+    case_file = PROMPT_VERSIONS[version]["cases"][stage]
+    data = yaml.safe_load((ROOT / "eval" / case_file).read_text())
     return [case for group in data.values() for case in group]
 
 
-def prompt_hashes():
+def prompt_hashes(prompt_dir):
     return {
         str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest()
-        for path in sorted((ROOT / "prompts/l3").glob("*.md"))
+        for path in sorted((ROOT / prompt_dir).glob("*.md"))
     }
 
 
@@ -72,7 +93,9 @@ def check_model(backend, model):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model", default=DEFAULT_MODEL, help="Forge model ID")
-    parser.add_argument("--stage", choices=STAGES, action="append",
+    parser.add_argument("--prompt-version", choices=PROMPT_VERSIONS, default="v1",
+                        help="isolated L3 prompt version to test")
+    parser.add_argument("--stage", choices=STAGE_RUNNERS, action="append",
                         help="run only this stage; repeat for multiple stages")
     parser.add_argument("--only", help="run one case ID, found in the selected stages")
     parser.add_argument("--plan", action="store_true", help="show cases without calling Forge")
@@ -82,15 +105,21 @@ def main():
     if args.resume and args.only:
         parser.error("--resume cannot be combined with --only")
 
-    selected = list(dict.fromkeys(args.stage or STAGES))
+    version_config = PROMPT_VERSIONS[args.prompt_version]
+    if args.stage and any(stage not in version_config["cases"] for stage in args.stage):
+        parser.error(f"L3 {args.prompt_version} has no warm-up stage")
+    selected = list(dict.fromkeys(args.stage or version_config["cases"]))
     selected_cases = {
-        stage: [c for c in cases_for(stage) if not args.only or c["id"] == args.only]
+        stage: [c for c in cases_for(stage, args.prompt_version)
+                if not args.only or c["id"] == args.only]
         for stage in selected
     }
     selected_cases = {stage: cases for stage, cases in selected_cases.items() if cases}
     if not selected_cases:
         parser.error(f"no L3 case matches {args.only!r}")
-    print(f"Prompt source: {ROOT / 'prompts/l3'}", flush=True)
+    print(f"Prompt source: {ROOT / version_config['dir']}", flush=True)
+    print(f"Lesson flow: L3 {args.prompt_version} ({'no warm-up' if args.prompt_version == 'v2' else 'with warm-up'})",
+          flush=True)
     print(f"Forge /debug modelName: {args.model}", flush=True)
     print(f"Forge picker ID: {CATALOG_IDS.get(args.model, args.model)}", flush=True)
     for stage, cases in selected_cases.items():
@@ -129,19 +158,22 @@ def main():
     if args.resume:
         run_dir = args.resume.resolve()
         report = json.loads((run_dir / "report.json").read_text())
-        if report["model"] != args.model or report["prompt_sha256"] != prompt_hashes():
+        if (report["model"] != args.model
+                or report.get("prompt_version", "v1") != args.prompt_version
+                or report["prompt_sha256"] != prompt_hashes(version_config["dir"])):
             parser.error("model or prompt files differ from the saved run; start a new run")
     else:
         stamp = dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-        run_dir = ROOT / "eval/runs" / f"l3_{args.model}_{stamp}"
+        run_dir = ROOT / "eval/runs" / f"l3_{args.prompt_version}_{args.model}_{stamp}"
         run_dir.mkdir(parents=True, exist_ok=False)
         report = {
             "model": args.model,
+            "prompt_version": args.prompt_version,
             "forge_picker_id": CATALOG_IDS.get(args.model, args.model),
             "backend": "Prompt Forge /debug",
             "provider": env["FORGE_PROVIDER"],
             "started_at_utc": stamp,
-            "prompt_sha256": prompt_hashes(),
+            "prompt_sha256": prompt_hashes(version_config["dir"]),
             "stages": {},
         }
     for stage, cases in selected_cases.items():
@@ -151,8 +183,10 @@ def main():
                 and previous.get("saved_transcripts") == len(cases)):
             print(f"\n=== {stage} already clean; skipping ===", flush=True)
             continue
-        command = [sys.executable, str(ROOT / "eval" / STAGES[stage][0]),
+        command = [sys.executable, str(ROOT / "eval" / STAGE_RUNNERS[stage]),
                    "--model", args.model, "--run-dir", str(stage_dir)]
+        if stage != "warmup":
+            command.extend(["--prompt-version", args.prompt_version])
         if args.only:
             command.extend(["--only", args.only])
         if args.resume:

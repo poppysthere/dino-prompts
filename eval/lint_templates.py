@@ -5,7 +5,7 @@ Every fix must fit the budget: fold new knowledge into existing rules/lists,
 swap examples one-in-one-out, never append case after case. If this lint fails,
 the fix goes back for compaction, not the budget up.
 
-L2, L3 and the festival lessons are linted — the legacy L1 _l1l2_ files are
+L2, L3, isolated L3 V2, and the festival lessons are linted — the legacy L1 _l1l2_ files are
 frozen in production and stay unlinted.
 Exit 0 = all within budget, 1 = over budget.
 """
@@ -170,12 +170,17 @@ BUDGETS = {
     "wrapup_teaching_rules_trial_step_pre_video.md": (63, 1230),
     "render_content_trial_wrap_giraffe.md": (15, 250),
 }
+PATH_BUDGETS = {
+    # V2 opens the whole class here, so it contains a welcome state that V1
+    # does not. Keep this isolated budget lean rather than raising V1's limit.
+    "prompts/l3-v2/leadin_teaching_rules_l3_step_pre_video.md": (78, 800),
+}
 
 
 def main():
     bad = 0
     files = []
-    for level in ("l2", "l3", "l5"):
+    for level in ("l2", "l3", "l3-v2", "l5"):
         files += sorted((ROOT / "prompts" / level).glob("*.md"))
     files += sorted((ROOT / "prompts/festival").glob("*.md"))
     files += sorted((ROOT / "prompts/trial").glob("*.md"))
@@ -183,11 +188,12 @@ def main():
         text = f.read_text()
         lines = len(text.splitlines())
         words = len(text.split())
-        max_lines, max_words = BUDGETS.get(f.name, DEFAULT_BUDGET)
+        rel = str(f.relative_to(ROOT))
+        max_lines, max_words = PATH_BUDGETS.get(rel, BUDGETS.get(f.name, DEFAULT_BUDGET))
         over = lines > max_lines or words > max_words
         bad += over
         mark = "OVER" if over else "ok  "
-        print(f"[{mark}] {f.name}: {lines} lines (max {max_lines}), {words} words (max {max_words})")
+        print(f"[{mark}] {rel}: {lines} lines (max {max_lines}), {words} words (max {max_words})")
     sys.exit(1 if bad else 0)
 
 

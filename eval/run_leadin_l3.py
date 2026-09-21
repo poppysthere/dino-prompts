@@ -29,16 +29,20 @@ ROLE = (
 UI_READY = ("The UI is ready. Continue the lesson from where you left off,"
             "or start if nothing has begun yet.")
 STEP_FILES = {
-    "pre_video": "prompts/l3/leadin_teaching_rules_l3_step_pre_video.md",
-    "post_video": "prompts/l3/leadin_teaching_rules_l3_step_post_video.md",
+    "pre_video": "leadin_teaching_rules_l3_step_pre_video.md",
+    "post_video": "leadin_teaching_rules_l3_step_post_video.md",
+}
+PROMPT_VERSIONS = {
+    "v1": {"dir": "prompts/l3", "cases": "cases_leadin_l3.yaml", "family": "leadin_l3"},
+    "v2": {"dir": "prompts/l3-v2", "cases": "cases_leadin_l3_v2.yaml", "family": "leadin_l3_v2"},
 }
 DEFAULT_NAME = "tom"
 STOP_TAGS = ("[TEMPLATE_FINISH]", "[NEXT_STEP]")
 
 
-def compose(step: str, name: str) -> str:
-    common = (ROOT / "prompts/l3/common_teaching_simple_rules_l3.md").read_text()
-    tmpl = (ROOT / STEP_FILES[step]).read_text()
+def compose(step: str, name: str, prompt_dir: str) -> str:
+    common = (ROOT / prompt_dir / "common_teaching_simple_rules_l3.md").read_text()
+    tmpl = (ROOT / prompt_dir / STEP_FILES[step]).read_text()
     text = common.rstrip() + "\n\n" + tmpl.rstrip()
     for k, val in {
         "roleDescription": ROLE,
@@ -50,9 +54,10 @@ def compose(step: str, name: str) -> str:
     return text
 
 
-def run_case(backend, step, case):
+def run_case(backend, step, case, version):
     prompt_name = case.get("student_name", DEFAULT_NAME)
-    system = compose(step, prompt_name)
+    config = PROMPT_VERSIONS[version]
+    system = compose(step, prompt_name, config["dir"])
     messages = [{"role": "user", "content": UI_READY}]
     transcript = []
     turns, ti = case.get("turns", []), 0
@@ -69,7 +74,7 @@ def run_case(backend, step, case):
     # junk default => checker must see no usable name
     checker_name = "" if prompt_name in ("test_user", "11") else prompt_name
     return {
-        "family": "leadin_l3",
+        "family": config["family"],
         "step": step,
         "case": case["id"],
         "student_name": checker_name,
@@ -83,6 +88,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", default=os.environ.get("FORGE_MODEL", "gpt-5.4-mini"))
     ap.add_argument("--only", help="run a single case id")
+    ap.add_argument("--prompt-version", choices=PROMPT_VERSIONS, default="v1",
+                    help="which isolated L3 prompt directory to test")
     ap.add_argument("--run-dir", type=pathlib.Path, default=RUNS,
                     help="where to save transcripts (default: the historical L3 directory)")
     ap.add_argument("--skip-existing", action="store_true",
@@ -95,7 +102,8 @@ def main():
     os.environ["FORGE_MODEL"] = args.model
     backend = ForgeBackend()
 
-    battery = yaml.safe_load((ROOT / "eval/cases_leadin_l3.yaml").read_text())
+    config = PROMPT_VERSIONS[args.prompt_version]
+    battery = yaml.safe_load((ROOT / "eval" / config["cases"]).read_text())
     run_dir = args.run_dir
     run_dir.mkdir(parents=True, exist_ok=True)
     paths = []
@@ -108,7 +116,7 @@ def main():
                 print(f"reusing {case['id']} ...", flush=True)
             else:
                 print(f"running {case['id']} ...", flush=True)
-                tr = run_case(backend, step, case)
+                tr = run_case(backend, step, case, args.prompt_version)
                 p.write_text(json.dumps(tr, ensure_ascii=False, indent=1))
             paths.append(str(p))
     print(f"\n{len(paths)} transcripts -> {run_dir}")
