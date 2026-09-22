@@ -4,7 +4,7 @@ leadin_pre:
     turns: ["Hi!"]
     max_replies: 2
     reply_require:
-      "1": ["^Hi, Mia\\.", "I'm Kim", "Welcome to class", "Say hi to me"]
+      "1": ["^Hi, Mia\\.", "I'm Kim", "Welcome to class", "Say hi to me\\. Hi\\.$"]
       "2": ["nice to meet you", "learn food words", "watch Chef Boo", "say the words"]
 
   - id: l1-leadin-own-language-hi
@@ -23,11 +23,11 @@ leadin_pre:
       "3": ["Now we can start|nice to meet you", "learn food words"]
 
   - id: l1-leadin-question
-    note: "A safe child question is answered before the hi rescue"
+    note: "A safe child question is answered before a fresh hi demo"
     turns: ["Do you like cats?", "Hi!"]
     max_replies: 3
     reply_require:
-      "2": ["^Yes, I like cats\\.", "Listen first", "Now you try"]
+      "2": ["^Yes, I like cats\\.", "Say hi to me\\. Hi\\.$"]
       "3": ["Now we can start|nice to meet you", "watch Chef Boo"]
 
   - id: l1-leadin-silent
@@ -45,7 +45,7 @@ leadin_pre:
     turns: ["Hi!"]
     max_replies: 2
     reply_require:
-      "1": ["^Hi there\\.", "I'm Kim", "Say hi to me"]
+      "1": ["^Hi there\\.", "I'm Kim", "Say hi to me\\. Hi\\.$"]
     forbid_phrases: ["test[_\\s]?user"]
 
   - id: l1-leadin-teacher-name
@@ -208,3 +208,13 @@ wrapup:
     max_replies: 2
     reply_require:
       "2": ["dog", "let's sing"]
+
+  - id: l1-wrapup-confused
+    note: "Confusion gets an easier question and one clear yes-or-no job"
+    turns: ["I don't understand.", "yes"]
+    max_replies: 3
+    reply_require:
+      "2": ["^That's okay\\.", "Did you like class", "Say yes or no"]
+      "3": ["glad you liked class", "learned three words", "let's sing"]
+    reply_forbid:
+      "2": ["learned three words", "let's sing"]
