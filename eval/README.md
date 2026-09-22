@@ -130,6 +130,22 @@ to force the child back to the short target. It also rejects open or abstract
 teacher questions such as `What does A say?`, `Who ate the food?`, and
 `Do you want to eat Chef Boo's food?`.
 
+## L1 V2 no-sentence harness
+
+`run_l1_v2_forge.py` tests the independent `prompts/l1-v2` source. V2 keeps
+the same child-first pre-A1 behavior but uses the shorter production flow:
+`lead-in -> word practice -> wrap-up`. The battery contains no sentence-stage
+families and rejects letter-practice handoffs such as `Apple starts with A`.
+
+```bash
+# Offline plan or a single apple handoff case.
+python3 eval/run_l1_v2_forge.py --plan
+python3 eval/run_l1_v2_forge.py --only l1-apple-pass
+
+# Full live V2 battery.
+python3 eval/run_l1_v2_forge.py
+```
+
 ## L2 no-warm-up harness
 
 L2 starts at lead-in. Its harness composes the local `prompts/l2` common rule

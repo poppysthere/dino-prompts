@@ -1,0 +1,210 @@
+leadin_pre:
+  - id: l1-leadin-hi
+    note: "The first task is one natural hello exchange before class starts"
+    turns: ["Hi!"]
+    max_replies: 2
+    reply_require:
+      "1": ["^Hi, Mia\\.", "I'm Kim", "Welcome to class", "Say hi to me"]
+      "2": ["nice to meet you", "learn food words", "watch Chef Boo", "say the words"]
+
+  - id: l1-leadin-own-language-hi
+    note: "A greeting in another language counts; the teacher stays in English"
+    turns: ["你好！"]
+    max_replies: 2
+    reply_require:
+      "2": ["nice to meet you", "learn food words"]
+
+  - id: l1-leadin-instruction
+    note: "What-do-I-do gets a direct hi instruction and one modeled rescue"
+    turns: ["What do I do?", "Hi!"]
+    max_replies: 3
+    reply_require:
+      "2": ["^Say hi to me\\.", "Listen first", "Now you try"]
+      "3": ["Now we can start|nice to meet you", "learn food words"]
+
+  - id: l1-leadin-question
+    note: "A safe child question is answered before the hi rescue"
+    turns: ["Do you like cats?", "Hi!"]
+    max_replies: 3
+    reply_require:
+      "2": ["^Yes, I like cats\\.", "Listen first", "Now you try"]
+      "3": ["Now we can start|nice to meet you", "watch Chef Boo"]
+
+  - id: l1-leadin-silent
+    note: "Silence gets one modeled hi rescue, then the video starts"
+    turns: []
+    max_replies: 3
+    reply_require:
+      "2": ["^Listen first\\.", "Now you try"]
+      "3": ["Now we can start", "watch Chef Boo"]
+    forbid_phrases: ["great job", "nice to meet you too"]
+
+  - id: l1-leadin-junk-name
+    note: "A placeholder child name is never spoken"
+    student_name: "test_user"
+    turns: ["Hi!"]
+    max_replies: 2
+    reply_require:
+      "1": ["^Hi there\\.", "I'm Kim", "Say hi to me"]
+    forbid_phrases: ["test[_\\s]?user"]
+
+  - id: l1-leadin-teacher-name
+    note: "The teacher introduces the name from teacherName"
+    teacher_name: "Zoe"
+    turns: ["Hi, Zoe!"]
+    max_replies: 2
+    reply_require:
+      "1": ["I'm Zoe", "Welcome to class"]
+    forbid_phrases: ["I'm Kim", "I'm Max"]
+
+leadin_post:
+  - id: l1-leadin-post
+    note: "Post-video tells the child what comes next"
+    turns: []
+    max_replies: 1
+    reply_require:
+      "1": ["Chef Boo has food", "learn three words"]
+
+word_apple:
+  - id: l1-apple-pass
+    note: "A clear target hands off to more apple word practice"
+    turns: ["apple"]
+    max_replies: 2
+    reply_require:
+      "2": ["Nice work", "play with apple"]
+
+  - id: l1-apple-name
+    note: "Name question is answered before one clear retry"
+    teacher_name: "Kim"
+    turns: ["What's your name?", "apple"]
+    max_replies: 3
+    reply_require:
+      "2": ["^I'm Kim\\.", "Apple", "Your turn"]
+
+  - id: l1-apple-dog
+    note: "Pet question gets a real answer before teaching resumes"
+    turns: ["Do you like my dog?", "apple"]
+    max_replies: 3
+    reply_require:
+      "2": ["^Yes, I like dogs\\.", "Apple"]
+
+  - id: l1-apple-expanded
+    note: "Richer target language keeps the child's added meaning"
+    turns: ["I like apple juice."]
+    max_replies: 2
+    reply_require:
+      "2": ["apple juice", "You said apple|Nice work"]
+    reply_forbid:
+      "2": ["^Apple\\.", "Your turn"]
+
+  - id: l1-apple-instruction
+    note: "What-do-I-do question gets an explicit child job"
+    turns: ["What do I do?", "apple"]
+    max_replies: 3
+    reply_require:
+      "2": ["^Listen first\\.", "Then you say apple"]
+
+  - id: l1-apple-own-language
+    note: "Own-language understanding gets one supported English target"
+    turns: ["苹果", "apple"]
+    max_replies: 3
+    reply_require:
+      "2": ["In English, apple"]
+
+  - id: l1-apple-silent
+    note: "Full silence gets one supported retry and then closes"
+    turns: []
+    max_replies: 4
+    forbid_phrases: ["Great job", "You said apple"]
+
+word_bread:
+  - id: l1-bread-pass
+    note: "A clear target hands off to more bread word practice"
+    turns: ["bread"]
+    max_replies: 2
+    reply_require:
+      "2": ["Nice work", "play with bread"]
+
+  - id: l1-bread-dog
+    note: "Unrelated safe question is answered before the target"
+    turns: ["Do you like my dog?", "bread"]
+    max_replies: 3
+    reply_require:
+      "2": ["^Yes, I like dogs\\.", "Bread"]
+
+  - id: l1-bread-related
+    note: "A related food idea gets a specific response"
+    turns: ["I like cake.", "bread"]
+    max_replies: 3
+    reply_require:
+      "2": ["Cake is yummy|You like cake", "Bread"]
+
+  - id: l1-bread-expanded
+    note: "Richer bread sentence is accepted and answered"
+    turns: ["I eat bread at home."]
+    max_replies: 2
+    reply_require:
+      "2": ["bread at home", "play with bread"]
+    reply_forbid:
+      "2": ["Your turn"]
+
+word_juice:
+  - id: l1-juice-pass
+    note: "A clear target hands off to more juice word practice"
+    turns: ["juice"]
+    max_replies: 2
+    reply_require:
+      "2": ["Nice work", "play with juice"]
+
+  - id: l1-juice-weather
+    note: "Teacher is honest about weather before teaching resumes"
+    turns: ["How's the weather?", "juice"]
+    max_replies: 3
+    reply_require:
+      "2": ["^I can't see the sky\\.", "Juice"]
+
+  - id: l1-juice-expanded
+    note: "Orange juice detail is preserved"
+    turns: ["I like orange juice."]
+    max_replies: 2
+    reply_require:
+      "2": ["orange juice", "play with juice"]
+    reply_forbid:
+      "2": ["^Juice\\.", "Your turn"]
+
+  - id: l1-juice-instruction
+    note: "The child is explicitly told what to do"
+    turns: ["What do I do?", "juice"]
+    max_replies: 3
+    reply_require:
+      "2": ["^Listen first\\.", "Then you say juice"]
+
+wrapup:
+  - id: l1-wrapup-yes
+    note: "Easy yes/no answer gets a specific warm response"
+    turns: ["yes"]
+    max_replies: 2
+    reply_require:
+      "2": ["glad you had fun", "learned three words", "let's sing"]
+
+  - id: l1-wrapup-no
+    note: "No is accepted without pressure"
+    turns: ["no"]
+    max_replies: 2
+    reply_require:
+      "2": ["worked hard", "let's sing"]
+
+  - id: l1-wrapup-name
+    note: "Teacher answers a last question before the song"
+    teacher_name: "Kim"
+    turns: ["What's your name?"]
+    max_replies: 2
+    reply_require:
+      "2": ["^I'm Kim\\.", "let's sing"]
+
+  - id: l1-wrapup-dog
+    note: "Child's own topic is acknowledged before the song"
+    turns: ["I have a dog."]
+    max_replies: 2
+    reply_require:
+      "2": ["dog", "let's sing"]

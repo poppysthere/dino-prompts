@@ -8,6 +8,27 @@ the latest reviewed text so changes are diffable and recoverable.
 
 ## Files → Prompt Forge codes
 
+### L1 V2: current no-sentence experiment
+
+Use the files in `prompts/l1-v2` for the new flow. Prompt codes stay the same
+in Forge; create a new version under each matching code.
+
+| File | Prompt Forge code | Used by |
+|---|---|---|
+| `prompts/l1-v2/common_teaching_simple_rules.md` | `common_teaching_simple_rules` | L1 V2 shared rules |
+| `prompts/l1-v2/leadin_teaching_rules_l1_step_pre_video.md` | `leadin_teaching_rules_l1_step_pre_video` | L1 V2 lead-in before video |
+| `prompts/l1-v2/leadin_teaching_rules_l1_step_post_video.md` | `leadin_teaching_rules_l1_step_post_video` | L1 V2 lead-in after video |
+| `prompts/l1-v2/word_teaching_rules_l1l2_apple.md` | `word_teaching_rules_l1l2_apple` | Apple word teaching and apple-practice handoff |
+| `prompts/l1-v2/word_teaching_rules_l1l2_juice.md` | `word_teaching_rules_l1l2_juice` | Juice word teaching and juice-practice handoff |
+| `prompts/l1-v2/word_teaching_rules_l1l2_bread.md` | `word_teaching_rules_l1l2_bread` | Bread word teaching and bread-practice handoff |
+| `prompts/l1-v2/wrapup_teaching_rules_l1l2.md` | `wrapup_teaching_rules_l1l2` | L1 V2 wrap-up |
+
+V2 flow: `lead-in -> word practice -> wrap-up`. It has no warm-up and no
+sentence-teaching templates. Do not paste the three old L1 sentence prompts
+into the V2 course tree.
+
+### L1 V1: preserved reference
+
 | File | Prompt Forge code | Used by |
 |---|---|---|
 | `prompts/l1/common_teaching_simple_rules.md` | `common_teaching_simple_rules` | L1 shared rules, ages 4-6, CEFR pre-A1 |

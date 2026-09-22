@@ -5,7 +5,7 @@ Every fix must fit the budget: fold new knowledge into existing rules/lists,
 swap examples one-in-one-out, never append case after case. If this lint fails,
 the fix goes back for compaction, not the budget up.
 
-L1, L2, L3, isolated L3 V2, and the festival lessons are linted.
+L1, isolated L1 V2, L2, L3, isolated L3 V2, and the festival lessons are linted.
 Exit 0 = all within budget, 1 = over budget.
 """
 import pathlib
@@ -174,6 +174,8 @@ BUDGETS = {
     "render_content_trial_wrap_giraffe.md": (15, 250),
 }
 PATH_BUDGETS = {
+    # L1 V2 keeps the existing pre-A1 contract while removing sentence nodes.
+    "prompts/l1-v2/common_teaching_simple_rules.md": (115, 1200),
     # V2's common layer adds an explicit A1+ language gate and repair ladder
     # because no translator or second teacher is available in the lesson.
     "prompts/l3-v2/common_teaching_simple_rules_l3.md": (105, 1500),
@@ -186,7 +188,7 @@ PATH_BUDGETS = {
 def main():
     bad = 0
     files = []
-    for level in ("l1", "l2", "l3", "l3-v2", "l5"):
+    for level in ("l1", "l1-v2", "l2", "l3", "l3-v2", "l5"):
         files += sorted((ROOT / "prompts" / level).glob("*.md"))
     files += sorted((ROOT / "prompts/festival").glob("*.md"))
     files += sorted((ROOT / "prompts/trial").glob("*.md"))
