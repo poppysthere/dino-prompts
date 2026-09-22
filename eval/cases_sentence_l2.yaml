@@ -92,6 +92,26 @@ sent_horse:
     max_replies: 3
     forbid_phrases: ["the horse ate", "you got it"]
 
+  - id: l2sent-horse-observation-after-retry
+    note: "Regression #545215: child already sees cake on the horse, so skip the redundant mystery question"
+    turns: ["The horse is a.", "The horse has cake on its mouth."]
+    max_replies: 3
+    allow_no_question: true
+    reply_require:
+      "3": ["saw cake on its mouth", "Good eyes", "Let's watch and find out"]
+    reply_forbid:
+      "3": ["Who has the cake", "Your turn"]
+
+  - id: l2sent-horse-mystery-lock
+    note: "Regression #545217: after the mystery question, Horse closes the step and never restarts teaching"
+    turns: ["It's a horse.", "The horse. Horse."]
+    max_replies: 3
+    reply_require:
+      "2": ["Who has the cake"]
+      "3": ["^Good guess\\.", "Let's watch and find out"]
+    reply_forbid:
+      "3": ["Who has the cake", "It's a horse", "Your turn", "Let's try again"]
+
   - id: l2sent-horse-asr
     note: "It's of course counts as the full target"
     turns: ["It's of course.", "cat"]
@@ -141,7 +161,7 @@ sent_reveal:
     note: "Horse guess receives the warm hit line"
     seed:
       - role: assistant
-        text: "Yes! It's a horse. Who has the cake? Cow, cat, or horse?[TEACHER_LISTEN][STUDENT_TALK]"
+        text: "Yes, it's a horse. Who has the cake? Say cow, cat, or horse.[TEACHER_LISTEN][STUDENT_TALK]"
       - role: user
         text: "horse"
     turns: []
@@ -151,7 +171,7 @@ sent_reveal:
     note: "Horse meaning in another language still counts"
     seed:
       - role: assistant
-        text: "Yes! It's a horse. Who has the cake? Cow, cat, or horse?[TEACHER_LISTEN][STUDENT_TALK]"
+        text: "Yes, it's a horse. Who has the cake? Say cow, cat, or horse.[TEACHER_LISTEN][STUDENT_TALK]"
       - role: user
         text: "马"
     turns: []
@@ -161,7 +181,7 @@ sent_reveal:
     note: "Other guess is never mocked"
     seed:
       - role: assistant
-        text: "Yes! It's a horse. Who has the cake? Cow, cat, or horse?[TEACHER_LISTEN][STUDENT_TALK]"
+        text: "Yes, it's a horse. Who has the cake? Say cow, cat, or horse.[TEACHER_LISTEN][STUDENT_TALK]"
       - role: user
         text: "cat"
     turns: []
@@ -171,7 +191,7 @@ sent_reveal:
     note: "Junk child name is never spoken"
     seed:
       - role: assistant
-        text: "Yes! It's a horse. Who has the cake? Cow, cat, or horse?[TEACHER_LISTEN][STUDENT_TALK]"
+        text: "Yes, it's a horse. Who has the cake? Say cow, cat, or horse.[TEACHER_LISTEN][STUDENT_TALK]"
       - role: user
         text: "horse"
     turns: []

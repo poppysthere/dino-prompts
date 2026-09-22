@@ -46,7 +46,9 @@ STEPS = {
         "close": "Let's watch and find out.",
         "final_tag": "[NEXT_STEP]",
         "max": 4,
-        "spoiler": r"(?:\byes\b|\byou got it\b|\bright\b|\bcorrect\b)[^.!?]*\bhorse\b|\bthe horse ate\b",
+        "spoiler": (r"(?:\byes\b|\byou got it\b|\bright\b|\bcorrect\b)[^.!?]*\bhorse\b"
+                    r"[^.!?]*\b(?:cake|ate|took|did)\b|\bthe horse ate\b|"
+                    r"\bhorse (?:did|took) it\b"),
     },
     "sent_reveal": {
         "must_contain": "The horse ate the cake.",
@@ -263,10 +265,22 @@ def check(tr):
 
     if step.get("question"):
         qs = sum(1 for r in replies if step["question"] in norm(r))
-        if qs == 0:
+        if qs == 0 and not tr.get("allow_no_question"):
             v("question-missing", "the mystery question never happens")
         elif qs > 1:
             v("question-loop", f"the mystery question asked {qs} times")
+
+    if family == "sent_horse":
+        question_indexes = [
+            i for i, reply in enumerate(replies)
+            if step["question"] in norm(reply)
+        ]
+        if question_indexes:
+            first_question = question_indexes[0]
+            for i, reply in enumerate(replies[first_question + 1:], first_question + 2):
+                body = norm(reply)
+                if re.search(r"\bit's a horse\b|\byour turn\b|\blet's try again\b", body):
+                    v("mystery-state-lock", f"reply {i}: restarted sentence teaching after mystery question")
 
     last = replies[-1]
     if step["final_tag"] not in last:

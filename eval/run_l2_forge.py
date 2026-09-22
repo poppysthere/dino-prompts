@@ -179,6 +179,7 @@ def run_case(backend, family, case):
         "require_phrases": case.get("require_phrases", []),
         "reply_forbid": case.get("reply_forbid", {}),
         "reply_require": case.get("reply_require", {}),
+        "allow_no_question": case.get("allow_no_question", False),
         "max_replies": case.get("max_replies"),
         "messages": transcript_messages,
     }
