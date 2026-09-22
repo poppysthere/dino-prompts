@@ -141,6 +141,12 @@ STEPS_V2 = {
     },
 }
 
+L2_SENTENCE_TARGETS = {
+    "sent_cow": "cow",
+    "sent_cat": "cat",
+    "sent_horse": "horse",
+}
+
 
 def has_cjk(t):
     return any(unicodedata.category(c) == "Lo" and "CJK" in unicodedata.name(c, "") for c in t)
@@ -242,6 +248,32 @@ def check(tr):
     for pat in tr.get("require_phrases", []):
         if not re.search(pat, all_teacher, re.I):
             v("require-phrase", f"no teacher reply contains required phrase {pat!r}")
+
+    target = L2_SENTENCE_TARGETS.get(family)
+    if target:
+        expanded = re.compile(
+            rf"\bit(?:'s| is)\s+(?:a|an)\s+"
+            rf"(?P<detail>(?:[a-z]+\s+){{1,4}}){target}\b",
+            re.I,
+        )
+        messages = tr.get("messages", [])
+        for index, message in enumerate(messages[:-1]):
+            if message.get("role") != "user":
+                continue
+            match = expanded.search(message.get("text", ""))
+            if not match:
+                continue
+            following = messages[index + 1]
+            if following.get("role") != "assistant":
+                v("expanded-response", "expanded target has no following teacher reply")
+                continue
+            detail = re.sub(r"\s+", " ", match.group("detail")).strip().lower()
+            expected = f"{detail} {target}"
+            answer = norm(following.get("text", ""))
+            if expected not in answer:
+                v("expanded-meaning", f"teacher dropped child detail {expected!r}")
+            if "let's try again" in answer:
+                v("expanded-retry", f"teacher retried a correct expanded {target} sentence")
 
     if not replies:
         v("empty", "no teacher replies at all")

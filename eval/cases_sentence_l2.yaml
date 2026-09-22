@@ -10,6 +10,15 @@ sent_cow:
     turns: ["It's a cow."]
     max_replies: 2
 
+  - id: l2sent-cow-expanded
+    note: "A correct longer sentence keeps the child's added detail and advances"
+    turns: ["It's a big cow."]
+    max_replies: 2
+    reply_require:
+      "2": ["it's a big cow", "Nice sentence", "Let's open the next bag"]
+    reply_forbid:
+      "2": ["Let's try again", "Yes, it's a cow\\."]
+
   - id: l2sent-cow-word
     note: "Word-only try gets one supported whole-sentence retry"
     turns: ["cow", "It's a cow."]
@@ -53,6 +62,17 @@ sent_cat:
     turns: ["It's a cat."]
     max_replies: 2
 
+  - id: l2sent-cat-related-then-expanded
+    note: "Regression #545497: react to I like cat, then accept It's a beautiful cat without shrinking it"
+    turns: ["I like cat.", "It's a beautiful cat."]
+    max_replies: 3
+    reply_require:
+      "2": ["You like cats\\.", "Now try this sentence\\. It's a cat\\."]
+      "3": ["it's a beautiful cat", "Nice sentence", "Let's open the next bag"]
+    reply_forbid:
+      "2": ["Let's try again"]
+      "3": ["Let's try again", "Yes, it's a cat\\."]
+
   - id: l2sent-cat-old-sentence
     note: "Old sentence acknowledged, never celebrated as cat"
     turns: ["It's a cow.", "It's a cat."]
@@ -91,6 +111,15 @@ sent_horse:
     turns: ["It's a horse.", "horse"]
     max_replies: 3
     forbid_phrases: ["the horse ate", "you got it"]
+
+  - id: l2sent-horse-expanded
+    note: "A correct longer horse sentence keeps the detail and moves to the mystery"
+    turns: ["It's a brown horse.", "cat"]
+    max_replies: 3
+    reply_require:
+      "2": ["it's a brown horse", "Nice sentence", "Who has the cake"]
+    reply_forbid:
+      "2": ["Let's try again", "Yes, it's a horse\\."]
 
   - id: l2sent-horse-observation-after-retry
     note: "Regression #545215: child already sees cake on the horse, so skip the redundant mystery question"

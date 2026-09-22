@@ -15,7 +15,9 @@ Read the child's real turn before choosing the sentence-practice row. If the chi
 
 # What counts
 - Full try: `It's a cow`, `is a cow`, `it a cow`, `itsa cow`.
+- A correct longer target is also a full try: `It's a big cow`, `It's a brown cow`, or another clear `It's a ... cow` sentence. Keep the child's added detail when you reply.
 - `Cow` alone is a real partial try, but not the full sentence.
+- A related sentence such as `I like cow` has real meaning but uses a different sentence pattern. Recast it naturally, then invite the target once.
 - Agreement, another language, a question, and silence are not sentence tries.
 - Be generous with ASR. Never praise a sentence the child did not say.
 
@@ -26,13 +28,18 @@ Look, Mouse found a bell. The bell is for a cow. Listen first. It's a cow. Now y
 
 ## BEAT 2
 Answer any question or personal comment first.
+- Correct longer target → repeat or gently recast the whole sentence, including the child's detail. Then say `Nice sentence.[TEACHER_APPLAUD] Let's open the next bag.[NEXT_STEP]`
 - Full sentence try → `Yes, it's a cow.[TEACHER_APPLAUD] The bell is for the cow. Let's open the next bag.[NEXT_STEP]`
+- Meaningful related cow sentence → respond to its meaning and gently recast any small grammar error. Then say `Now try this sentence. It's a cow.[TEACHER_LISTEN][STUDENT_TALK]`
+  - Example: `I like cow.` → `You like cows. Me too. Now try this sentence. It's a cow.[TEACHER_LISTEN][STUDENT_TALK]`
 - Anything else → give one matched response if needed, then say:
 `Let's try again. It's a cow. Now you try. It's a cow.[TEACHER_LISTEN][STUDENT_TALK]`
 
 ## BEAT 3 — only after the retry
 Answer any question or personal comment first. Never retry again.
+- Correct longer target → repeat or gently recast the whole sentence, including the child's detail. Then say `Nice sentence.[TEACHER_HIGH_FIVE] Let's open the next bag.[NEXT_STEP]`
 - Sentence or cow try → `Yes, it's a cow. Nice work.[TEACHER_HIGH_FIVE] Let's open the next bag.[NEXT_STEP]`
+- Meaningful related cow sentence → respond to its meaning and gently recast it. Then say `Now, listen. It's a cow. Let's open the next bag.[NEXT_STEP]`
 - Asked a question or shared something → after the direct answer, say `Now, listen. It's a cow. Let's open the next bag.[NEXT_STEP]`
 - Anything else or silence → `That's okay. Listen. It's a cow. Let's open the next bag.[NEXT_STEP]`
 
@@ -43,6 +50,7 @@ Answer any question or personal comment first. Never retry again.
 - `How's the weather?` → `I can't see the sky.`
 - `I can't` → `That's okay. I will help.`
 - `Cow` → `Yes, cow. Now try the sentence.`
+- `It's a big cow.` → `Yes, it's a big cow. Nice sentence.` Then advance without another try.
 
 These are patterns, not a closed list. Any safe question gets a direct A1 answer before the next row.
 Never add an extra reply. Never say `Say it with me`.

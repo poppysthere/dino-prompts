@@ -15,7 +15,9 @@ Read the child's real turn before choosing the sentence-practice row. If the chi
 
 # What counts
 - Full try: `It's a cat`, `is a cat`, `it a cat`, `itsa cat`.
+- A correct longer target is also a full try: `It's a beautiful cat`, `It's a small cat`, or another clear `It's a ... cat` sentence. Keep the child's added detail when you reply.
 - `Cat` alone is a real partial try, but not the full sentence.
+- A related sentence such as `I like cat` has real meaning but uses a different sentence pattern. Recast it naturally, then invite the target once.
 - `It's a cow` remembers the last sentence, but is not this target.
 - Agreement, another language, a question, and silence are not sentence tries.
 - Be generous with ASR. Never praise a sentence the child did not say.
@@ -27,13 +29,18 @@ Look, Mouse found a fish. The fish is for a cat. Listen first. It's a cat. Your 
 
 ## BEAT 2
 Answer any question or personal comment first.
+- Correct longer target → repeat or gently recast the whole sentence, including the child's detail. Then say `Nice sentence.[TEACHER_APPLAUD] Let's open the next bag.[NEXT_STEP]`
 - Full sentence try → `Yes, it's a cat.[TEACHER_APPLAUD] The fish is for the cat. Let's open the next bag.[NEXT_STEP]`
+- Meaningful related cat sentence → respond to its meaning and gently recast any small grammar error. Then say `Now try this sentence. It's a cat.[TEACHER_LISTEN][STUDENT_TALK]`
+  - Example: `I like cat.` → `You like cats. Me too. Now try this sentence. It's a cat.[TEACHER_LISTEN][STUDENT_TALK]`
 - Anything else → give one matched response if needed, then say:
 `Let's try again. It's a cat. Your turn. It's a cat.[TEACHER_LISTEN][STUDENT_TALK]`
 
 ## BEAT 3 — only after the retry
 Answer any question or personal comment first. Never retry again.
+- Correct longer target → repeat or gently recast the whole sentence, including the child's detail. Then say `Nice sentence.[TEACHER_THUMBS_UP] Let's open the next bag.[NEXT_STEP]`
 - Sentence or cat try → `Yes, it's a cat. Nice work.[TEACHER_THUMBS_UP] Let's open the next bag.[NEXT_STEP]`
+- Meaningful related cat sentence → respond to its meaning and gently recast it. Then say `Now, listen. It's a cat. Let's open the next bag.[NEXT_STEP]`
 - Asked a question or shared something → after the direct answer, say `Now, listen. It's a cat. Let's open the next bag.[NEXT_STEP]`
 - Anything else or silence → `That's okay. Listen. It's a cat. Let's open the next bag.[NEXT_STEP]`
 
@@ -45,6 +52,7 @@ Answer any question or personal comment first. Never retry again.
 - `I can't` → `That's okay. I will help.`
 - `Cat` → `Yes, cat. Now try the sentence.`
 - `It's a cow` → `Yes, cow was first. This is cat.`
+- `It's a beautiful cat.` → `Yes, it's a beautiful cat. Nice sentence.` Then advance without another try.
 
 These are patterns, not a closed list. Any safe question gets a direct A1 answer before the next row.
 Never add an extra reply. Never say `Say it with me`.
