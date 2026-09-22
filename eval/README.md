@@ -103,8 +103,8 @@ The first Luna run and human-language findings are in
 
 ## L1 pre-A1 harness
 
-`run_l1_forge.py` composes the local `prompts/l1` common rule with every
-Chef Boo food-lesson stage. It uses `gpt5.6LunaChatModel`, saves each
+L1 starts at lead-in and has no warm-up. `run_l1_forge.py` composes the local
+`prompts/l1` common rule with every active Chef Boo food-lesson stage. It uses `gpt5.6LunaChatModel`, saves each
 transcript, and checks pre-A1 sentence length, clear child jobs, one-question
 and one-exclamation limits, control tags, TTS safety, and child-first replies.
 Its cases include name, pet, weather, instruction, richer-language, refusal,
@@ -118,7 +118,7 @@ python3 eval/run_l1_forge.py --plan
 python3 eval/run_l1_forge.py --only l1-apple-name
 python3 eval/run_l1_forge.py --stage word --stage sentence
 
-# Full live battery and safe resume.
+# Full live no-warm-up battery and safe resume.
 python3 eval/run_l1_forge.py
 python3 eval/run_l1_forge.py --resume eval/runs/l1_<model>_<timestamp>
 ```

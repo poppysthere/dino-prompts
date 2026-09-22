@@ -16,10 +16,6 @@ CONFIG = {
         "first": r"^Chef Boo has food\. Now let's learn three words\.",
         "finish": "[TEMPLATE_FINISH]",
     },
-    "warmup": {
-        "first": r"^Hi there\. I'm .+\. What's your name\?",
-        "finish": "[TEMPLATE_FINISH]",
-    },
     "word_apple": {
         "first": r"^Look\. Boo has an apple\. Listen first\. Apple\. Now you try\. Apple\.",
         "finish": "[TEMPLATE_FINISH]",

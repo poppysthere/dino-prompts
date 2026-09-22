@@ -11,7 +11,6 @@ the latest reviewed text so changes are diffable and recoverable.
 | File | Prompt Forge code | Used by |
 |---|---|---|
 | `prompts/l1/common_teaching_simple_rules.md` | `common_teaching_simple_rules` | L1 shared rules, ages 4-6, CEFR pre-A1 |
-| `prompts/l1/warmup_teaching_rules_l1l2.md` | `warmup_teaching_rules_l1l2` | L1 Warm-Up |
 | `prompts/l1/leadin_teaching_rules_l1_step_pre_video.md` | `leadin_teaching_rules_l1_step_pre_video` | L1 Lead-in before video |
 | `prompts/l1/leadin_teaching_rules_l1_step_post_video.md` | `leadin_teaching_rules_l1_step_post_video` | L1 Lead-in after video |
 | `prompts/l1/word_teaching_rules_l1l2_apple.md` | `word_teaching_rules_l1l2_apple` | L1 apple word teaching |

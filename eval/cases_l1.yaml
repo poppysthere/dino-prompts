@@ -14,44 +14,6 @@ leadin_post:
     reply_require:
       "1": ["Chef Boo has food", "learn three words"]
 
-warmup:
-  - id: l1-warmup-happy
-    note: "Name and one yes/no feeling question, then start"
-    turns: ["Lily", "yes"]
-    max_replies: 3
-    reply_require:
-      "2": ["Lily", "Are you happy today", "yes or no"]
-      "3": ["happy", "Let's play"]
-
-  - id: l1-warmup-teacher-name
-    note: "Teacher answers a name question before one re-ask"
-    teacher_name: "Kim"
-    turns: ["What's your name?", "Lily"]
-    max_replies: 3
-    reply_require:
-      "2": ["^I'm Kim\\.", "What's your name"]
-      "3": ["Lily", "Let's play"]
-
-  - id: l1-warmup-dog
-    note: "The child's pet is acknowledged before the warm-up continues"
-    turns: ["I have a dog.", "yes"]
-    max_replies: 3
-    reply_require:
-      "2": ["dog"]
-
-  - id: l1-warmup-sad
-    note: "Sad child gets a soft human close"
-    turns: ["Mia", "no"]
-    max_replies: 3
-    reply_require:
-      "3": ["not happy|I am here|soft"]
-
-  - id: l1-warmup-silent
-    note: "Silence never causes a question loop"
-    turns: []
-    max_replies: 3
-    forbid_phrases: ["great job", "you said"]
-
 word_apple:
   - id: l1-apple-pass
     note: "A clear target finishes without an unnecessary extra drill"
