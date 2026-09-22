@@ -101,6 +101,33 @@ sounds natural; read representative transcripts before approving a prompt.
 The first Luna run and human-language findings are in
 `eval/L3_LUNA_EVAL_2026-09-20.md`.
 
+## L1 pre-A1 harness
+
+`run_l1_forge.py` composes the local `prompts/l1` common rule with every
+Chef Boo food-lesson stage. It uses `gpt5.6LunaChatModel`, saves each
+transcript, and checks pre-A1 sentence length, clear child jobs, one-question
+and one-exclamation limits, control tags, TTS safety, and child-first replies.
+Its cases include name, pet, weather, instruction, richer-language, refusal,
+own-language, and silence paths.
+
+```bash
+# Offline inspection. No Forge credentials or model calls.
+python3 eval/run_l1_forge.py --plan
+
+# One child-first smoke case or selected stages.
+python3 eval/run_l1_forge.py --only l1-apple-name
+python3 eval/run_l1_forge.py --stage word --stage sentence
+
+# Full live battery and safe resume.
+python3 eval/run_l1_forge.py
+python3 eval/run_l1_forge.py --resume eval/runs/l1_<model>_<timestamp>
+```
+
+The L1 checker treats a correct longer answer as better language, not a reason
+to force the child back to the short target. It also rejects open or abstract
+teacher questions such as `What does A say?`, `Who ate the food?`, and
+`Do you want to eat Chef Boo's food?`.
+
 ## L2 no-warm-up harness
 
 L2 starts at lead-in. Its harness composes the local `prompts/l2` common rule
@@ -160,7 +187,5 @@ first live battery (`eval/runs/live_bread_20260712*`) was run this way.
 ## Not yet built
 
 - CI gate (GitHub Action running `runner.py --backend forge` on every prompt commit).
-- Sentence-page cases (`cases_sentence_teaching.yaml`) — word cases exist; sentence pages need
-  their own battery including the "I like apples" don't-trap.
 - Whole-lesson runs (page-to-page variety judging needs multi-page transcripts).
 - Production log mining (run checker nightly over real class logs — see notes/dev_message_log_mining.md).

@@ -10,8 +10,17 @@ the latest reviewed text so changes are diffable and recoverable.
 
 | File | Prompt Forge code | Used by |
 |---|---|---|
-| `prompts/common_teaching_simple_rules.md` | `common_teaching_simple_rules` | Prepended to all lesson stage templates (公共规则) |
-| `prompts/warmup_teaching_rules_l1l2.md` | `warmup_teaching_rules_l1l2` | Warm-Up stage, Level 1-2 (ages 4-6, CEFR pre-A1) |
+| `prompts/l1/common_teaching_simple_rules.md` | `common_teaching_simple_rules` | L1 shared rules, ages 4-6, CEFR pre-A1 |
+| `prompts/l1/warmup_teaching_rules_l1l2.md` | `warmup_teaching_rules_l1l2` | L1 Warm-Up |
+| `prompts/l1/leadin_teaching_rules_l1_step_pre_video.md` | `leadin_teaching_rules_l1_step_pre_video` | L1 Lead-in before video |
+| `prompts/l1/leadin_teaching_rules_l1_step_post_video.md` | `leadin_teaching_rules_l1_step_post_video` | L1 Lead-in after video |
+| `prompts/l1/word_teaching_rules_l1l2_apple.md` | `word_teaching_rules_l1l2_apple` | L1 apple word teaching |
+| `prompts/l1/word_teaching_rules_l1l2_juice.md` | `word_teaching_rules_l1l2_juice` | L1 juice word teaching |
+| `prompts/l1/word_teaching_rules_l1l2_bread.md` | `word_teaching_rules_l1l2_bread` | L1 bread word teaching |
+| `prompts/l1/sentence_teaching_rules_l1l2_pre_video.md` | `sentence_teaching_rules_l1l2_pre_video` | L1 sentence video intro |
+| `prompts/l1/sentence_teaching_rules_l1l2_i_like_bread.md` | `sentence_teaching_rules_l1l2_i_like_bread` | `I like bread.` |
+| `prompts/l1/sentence_teaching_rules_l1l2_i_dont_like_apples.md` | `sentence_teaching_rules_l1l2_i_dont_like_apples` | `I don't like apples.` |
+| `prompts/l1/wrapup_teaching_rules_l1l2.md` | `wrapup_teaching_rules_l1l2` | L1 Chef Boo wrap-up |
 
 ## Placeholders
 
@@ -20,13 +29,12 @@ are filled by the backend at class time. Keep them intact.
 
 ## Design notes
 
-- Target learner: 4-6 years old, CEFR pre-A1. Very short sentences, simplest words; fun comes
-  from performance (sound effects, silliness, pretend actions), not vocabulary.
-- Turn shape: CATCH (react to the child's exact words) → FOLLOW (child's topic) or STEP (checklist).
-- FOLLOW budget: max 2 per warm-up, never 2 in a row — student-centered but always finishes.
-- Hard guarantees: one control tag per reply ([STUDENT_TALK] / [TEMPLATE_FINISH]); after the
-  READY question the next turn always ends the template; 2 failed tries on an item → skip it.
-- English only: never echo or translate Chinese; show meaning by acting it out.
+- Target learner: 4-6 years old, CEFR pre-A1. Most spoken sentences are 1-6 words and no
+  spoken sentence exceeds 8 words.
+- Turn shape: answer or react to the child's meaning first, then give one clear next action.
+- Questions are yes/no or two-choice. Open, abstract, prediction, and explanation questions are out.
+- One supported retry only; silence never creates an extra loop.
+- English only: respond to another language's meaning without echoing or translating it.
 
 ## Workflow
 

@@ -1,0 +1,280 @@
+leadin_pre:
+  - id: l1-leadin-pre
+    note: "Fixed pre-A1 welcome starts the video without a fake question"
+    turns: []
+    max_replies: 1
+    reply_require:
+      "1": ["^Hi\\.", "Today we play with food", "Let's watch Chef Boo"]
+
+leadin_post:
+  - id: l1-leadin-post
+    note: "Post-video tells the child what comes next"
+    turns: []
+    max_replies: 1
+    reply_require:
+      "1": ["Chef Boo has food", "learn three words"]
+
+warmup:
+  - id: l1-warmup-happy
+    note: "Name and one yes/no feeling question, then start"
+    turns: ["Lily", "yes"]
+    max_replies: 3
+    reply_require:
+      "2": ["Lily", "Are you happy today", "yes or no"]
+      "3": ["happy", "Let's play"]
+
+  - id: l1-warmup-teacher-name
+    note: "Teacher answers a name question before one re-ask"
+    teacher_name: "Kim"
+    turns: ["What's your name?", "Lily"]
+    max_replies: 3
+    reply_require:
+      "2": ["^I'm Kim\\.", "What's your name"]
+      "3": ["Lily", "Let's play"]
+
+  - id: l1-warmup-dog
+    note: "The child's pet is acknowledged before the warm-up continues"
+    turns: ["I have a dog.", "yes"]
+    max_replies: 3
+    reply_require:
+      "2": ["dog"]
+
+  - id: l1-warmup-sad
+    note: "Sad child gets a soft human close"
+    turns: ["Mia", "no"]
+    max_replies: 3
+    reply_require:
+      "3": ["not happy|I am here|soft"]
+
+  - id: l1-warmup-silent
+    note: "Silence never causes a question loop"
+    turns: []
+    max_replies: 3
+    forbid_phrases: ["great job", "you said"]
+
+word_apple:
+  - id: l1-apple-pass
+    note: "A clear target finishes without an unnecessary extra drill"
+    turns: ["apple"]
+    max_replies: 2
+    reply_require:
+      "2": ["Nice work", "starts with A"]
+
+  - id: l1-apple-name
+    note: "Name question is answered before one clear retry"
+    teacher_name: "Kim"
+    turns: ["What's your name?", "apple"]
+    max_replies: 3
+    reply_require:
+      "2": ["^I'm Kim\\.", "Apple", "Your turn"]
+
+  - id: l1-apple-dog
+    note: "Pet question gets a real answer before teaching resumes"
+    turns: ["Do you like my dog?", "apple"]
+    max_replies: 3
+    reply_require:
+      "2": ["^Yes, I like dogs\\.", "Apple"]
+
+  - id: l1-apple-expanded
+    note: "Richer target language keeps the child's added meaning"
+    turns: ["I like apple juice."]
+    max_replies: 2
+    reply_require:
+      "2": ["apple juice", "You said apple|Nice work"]
+    reply_forbid:
+      "2": ["^Apple\\.", "Your turn"]
+
+  - id: l1-apple-instruction
+    note: "What-do-I-do question gets an explicit child job"
+    turns: ["What do I do?", "apple"]
+    max_replies: 3
+    reply_require:
+      "2": ["^Listen first\\.", "Then you say apple"]
+
+  - id: l1-apple-own-language
+    note: "Own-language understanding gets one supported English target"
+    turns: ["苹果", "apple"]
+    max_replies: 3
+    reply_require:
+      "2": ["In English, apple"]
+
+  - id: l1-apple-silent
+    note: "Full silence gets one supported retry and then closes"
+    turns: []
+    max_replies: 4
+    forbid_phrases: ["Great job", "You said apple"]
+
+word_bread:
+  - id: l1-bread-pass
+    note: "A clear target advances to the B activity"
+    turns: ["bread"]
+    max_replies: 2
+    reply_require:
+      "2": ["Nice work", "starts with B"]
+
+  - id: l1-bread-dog
+    note: "Unrelated safe question is answered before the target"
+    turns: ["Do you like my dog?", "bread"]
+    max_replies: 3
+    reply_require:
+      "2": ["^Yes, I like dogs\\.", "Bread"]
+
+  - id: l1-bread-related
+    note: "A related food idea gets a specific response"
+    turns: ["I like cake.", "bread"]
+    max_replies: 3
+    reply_require:
+      "2": ["Cake is yummy|You like cake", "Bread"]
+
+  - id: l1-bread-expanded
+    note: "Richer bread sentence is accepted and answered"
+    turns: ["I eat bread at home."]
+    max_replies: 2
+    reply_require:
+      "2": ["bread at home", "starts with B"]
+    reply_forbid:
+      "2": ["Your turn"]
+
+word_juice:
+  - id: l1-juice-pass
+    note: "A clear target closes naturally"
+    turns: ["juice"]
+    max_replies: 2
+    reply_require:
+      "2": ["Nice work", "Glug glug"]
+
+  - id: l1-juice-weather
+    note: "Teacher is honest about weather before teaching resumes"
+    turns: ["How's the weather?", "juice"]
+    max_replies: 3
+    reply_require:
+      "2": ["^I can't see the sky\\.", "Juice"]
+
+  - id: l1-juice-expanded
+    note: "Orange juice detail is preserved"
+    turns: ["I like orange juice."]
+    max_replies: 2
+    reply_require:
+      "2": ["orange juice", "Glug glug"]
+    reply_forbid:
+      "2": ["^Juice\\.", "Your turn"]
+
+  - id: l1-juice-instruction
+    note: "The child is explicitly told what to do"
+    turns: ["What do I do?", "juice"]
+    max_replies: 3
+    reply_require:
+      "2": ["^Listen first\\.", "Then you say juice"]
+
+sentence_intro:
+  - id: l1-sentence-intro
+    note: "No hard prediction question before the video"
+    turns: []
+    max_replies: 1
+    reply_require:
+      "1": ["Apple", "Juice", "Bread", "Let's watch Boo eat"]
+
+sentence_like_bread:
+  - id: l1-like-bread-pass
+    note: "Target sentence finishes in two teacher replies"
+    turns: ["I like bread."]
+    max_replies: 2
+    reply_require:
+      "2": ["Great sentence", "I like bread"]
+
+  - id: l1-like-bread-name
+    note: "Teacher answers name before the retry"
+    teacher_name: "Kim"
+    turns: ["What's your name?", "I like bread."]
+    max_replies: 3
+    reply_require:
+      "2": ["^I'm Kim\\.", "I like bread", "Your turn"]
+
+  - id: l1-like-bread-other-food
+    note: "Child's real food preference is heard"
+    turns: ["I like cake.", "I like bread."]
+    max_replies: 3
+    reply_require:
+      "2": ["You like cake", "Boo likes bread"]
+
+  - id: l1-like-bread-expanded
+    note: "Richer correct sentence is accepted without shrinking"
+    turns: ["I really like bread."]
+    max_replies: 2
+    reply_require:
+      "2": ["really like bread", "Great sentence"]
+    reply_forbid:
+      "2": ["Your turn"]
+
+  - id: l1-like-bread-silent
+    note: "One retry only, then forward"
+    turns: []
+    max_replies: 3
+    forbid_phrases: ["Great sentence", "You said"]
+
+sentence_dont_apples:
+  - id: l1-dont-apples-pass
+    note: "Target sentence finishes without extra drill"
+    turns: ["I don't like apples."]
+    max_replies: 2
+    reply_require:
+      "2": ["Great sentence", "I don't like apples"]
+
+  - id: l1-dont-apples-opposite
+    note: "I like apples is respected, then Boo's line is modeled once"
+    turns: ["I like apples.", "I don't like apples."]
+    max_replies: 3
+    reply_require:
+      "2": ["You like apples", "Boo does not", "Boo's line"]
+
+  - id: l1-dont-apples-expanded
+    note: "Green-apples detail is preserved"
+    turns: ["I don't like green apples."]
+    max_replies: 2
+    reply_require:
+      "2": ["green apples", "Great sentence"]
+    reply_forbid:
+      "2": ["Your turn"]
+
+  - id: l1-dont-apples-why
+    note: "Why question is answered before one clear retry"
+    turns: ["Why?", "I don't like apples."]
+    max_replies: 3
+    reply_require:
+      "2": ["^They taste bad to Boo\\.", "I don't like apples"]
+
+  - id: l1-dont-apples-silent
+    note: "Silence closes after one retry without fake success"
+    turns: []
+    max_replies: 3
+    forbid_phrases: ["Great sentence", "You said"]
+
+wrapup:
+  - id: l1-wrapup-yes
+    note: "Easy yes/no answer gets a specific warm response"
+    turns: ["yes"]
+    max_replies: 2
+    reply_require:
+      "2": ["glad you had fun", "learned three words", "let's sing"]
+
+  - id: l1-wrapup-no
+    note: "No is accepted without pressure"
+    turns: ["no"]
+    max_replies: 2
+    reply_require:
+      "2": ["worked hard", "let's sing"]
+
+  - id: l1-wrapup-name
+    note: "Teacher answers a last question before the song"
+    teacher_name: "Kim"
+    turns: ["What's your name?"]
+    max_replies: 2
+    reply_require:
+      "2": ["^I'm Kim\\.", "let's sing"]
+
+  - id: l1-wrapup-dog
+    note: "Child's own topic is acknowledged before the song"
+    turns: ["I have a dog."]
+    max_replies: 2
+    reply_require:
+      "2": ["dog", "let's sing"]

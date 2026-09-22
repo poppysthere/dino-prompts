@@ -5,8 +5,7 @@ Every fix must fit the budget: fold new knowledge into existing rules/lists,
 swap examples one-in-one-out, never append case after case. If this lint fails,
 the fix goes back for compaction, not the budget up.
 
-L2, L3, isolated L3 V2, and the festival lessons are linted — the legacy L1 _l1l2_ files are
-frozen in production and stay unlinted.
+L1, L2, L3, isolated L3 V2, and the festival lessons are linted.
 Exit 0 = all within budget, 1 = over budget.
 """
 import pathlib
@@ -17,6 +16,9 @@ ROOT = pathlib.Path(__file__).parent.parent
 # (max lines, max words) per template; default covers the fixed-script pages.
 DEFAULT_BUDGET = (115, 1800)
 BUDGETS = {
+    # L1 was rebuilt for ages 4-6, pre-A1. Keep the shared language and
+    # child-first contract explicit, but keep stage pages compact.
+    "common_teaching_simple_rules.md": (115, 1200),
     # L2 starts at lead-in; its common layer owns the child-first answer and
     # reliable-A1 contracts that used to be duplicated across stage templates.
     "common_teaching_simple_rules_l2.md": (110, 1500),
@@ -184,7 +186,7 @@ PATH_BUDGETS = {
 def main():
     bad = 0
     files = []
-    for level in ("l2", "l3", "l3-v2", "l5"):
+    for level in ("l1", "l2", "l3", "l3-v2", "l5"):
         files += sorted((ROOT / "prompts" / level).glob("*.md"))
     files += sorted((ROOT / "prompts/festival").glob("*.md"))
     files += sorted((ROOT / "prompts/trial").glob("*.md"))
