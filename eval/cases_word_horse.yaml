@@ -52,7 +52,9 @@ horse:
     turns: ["horse", "Do you like my dog?", "no"]
     max_replies: 4
     reply_require:
-      "3": ["^Yes, I like dogs!", "Does it have the cake"]
+      "3": ["^Yes, I like dogs\\.", "Now, let's look at the horse\\.", "Does the horse have the cake"]
+    reply_forbid:
+      "3": ["Neigh neigh"]
 
   - id: horse-weather-at-close
     note: "Weather question is answered before the page closes"

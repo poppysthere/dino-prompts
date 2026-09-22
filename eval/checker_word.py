@@ -6,26 +6,28 @@ import re
 import sys
 import unicodedata
 
+from checker_l2_human import check_child_first
+
 
 WORDS = {
     "word_cow": {
-        "meet": "Look! Mouse sees a cow. Cow. Listen first. Cow. Now you try. Cow.",
+        "meet": "Look, Mouse sees a cow. Cow. Listen first. Cow. Now you try. Cow.",
         "retry": "Let's try again. Cow. Now you try. Cow.",
         "question": "Does the cow have the cake? Say yes or no.",
-        "close": "Let's keep looking, Mouse!",
+        "close": "Let's keep looking, Mouse.",
     },
     "word_cat": {
-        "meet": "Look! Mouse sees a cat. Cat. Listen first. Cat. Now you try. Cat.",
-        "retry": "Let's try again. Cat. Now you try. Cat.",
+        "meet": "Look, Mouse sees a cat. Cat. Listen first. Cat. Your turn. Cat.",
+        "retry": "Let's try again. Cat. Your turn. Cat.",
         "question": "Does the cat have the cake? Say yes or no.",
-        "close": "Let's keep looking, Mouse!",
+        "close": "Let's keep looking, Mouse.",
         "close_tag": "[TEACHER_SHOW_MUSCLE]",
     },
     "word_horse": {
-        "meet": "Look! Mouse sees a horse. Horse. Listen first. Horse. Now you try. Horse.",
-        "retry": "Let's try again. Horse. Now you try. Horse.",
+        "meet": "Look, Mouse sees a horse. Horse. Listen first. Horse. Your turn. Horse.",
+        "retry": "Let's try again. Horse. Your turn. Horse.",
         "question": "Does the horse have the cake? Say yes or no.",
-        "close": "Let's watch and find out!",
+        "close": "Let's watch and find out.",
         "close_tag": "[TEACHER_RIDE_HORSE]",
         "spoiler": r"\bthe horse ate\b|\bhorse (?:did|took) it\b|\byes[^.!?]*horse[^.!?]*(?:cake|ate|took)\b",
     },
@@ -90,6 +92,8 @@ def check(transcript):
             v("a1-wording", f"reply {n}: avoidable non-A1 word")
         if body.count("?") > 1:
             v("one-question", f"reply {n}: more than one question")
+        if body.count("!") > 1:
+            v("too-excited", f"reply {n}: more than one exclamation mark")
         for sentence in spoken_sentences(body):
             if word_count(sentence) > 10:
                 v("a1-length", f"reply {n}: sentence over 10 words: {sentence!r}")
@@ -151,6 +155,10 @@ def check(transcript):
     for reply in replies[:-1]:
         if "[TEMPLATE_FINISH]" in reply:
             v("early-finish", "page finished before last reply")
+
+    issues.extend(check_child_first(
+        transcript["messages"], transcript.get("teacher_name", ""), transcript["family"]
+    ))
 
     return issues
 

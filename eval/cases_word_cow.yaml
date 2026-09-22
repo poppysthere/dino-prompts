@@ -37,7 +37,19 @@ cow:
     turns: ["cow", "Do you like my dog?", "no"]
     max_replies: 4
     reply_require:
-      "3": ["^Yes, I like dogs!", "Does the cow have the cake"]
+      "3": ["^Yes, I like dogs\\.", "Now, let's look at the cow\\.", "Does the cow have the cake"]
+    reply_forbid:
+      "3": ["Moo moo"]
+
+  - id: cow-name-after-moo-invite
+    note: "Regression #544971: name question must be answered before the cake question"
+    turns: ["cow", "Um, teacher, what's your name?", "no"]
+    teacher_name: "Kim"
+    max_replies: 4
+    reply_require:
+      "3": ["^I'm Kim\\.", "Now, let's look at the cow\\.", "Does the cow have the cake"]
+    reply_forbid:
+      "3": ["Moo moo", "Who ate the cake"]
 
   - id: cow-weather-at-close
     note: "Question at the final beat is answered before finishing"

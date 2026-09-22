@@ -4,7 +4,7 @@
 One reply. Show the three bags and start the video.
 
 # Exact line
-Look! Mouse found three bags. One, two, three. What is inside? Let's watch![TEACHER_POINT_TO_SCREEN][NEXT_STEP]
+Look, Mouse found three bags. One, two, three. What is inside? Let's watch.[TEACHER_POINT_TO_SCREEN][NEXT_STEP]
 
 # Rules
 - One reply only. Do not wait.

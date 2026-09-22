@@ -31,7 +31,7 @@ wrapup_pre:
     turns: ["Do you like my dog?"]
     max_replies: 2
     reply_require:
-      "2": ["^Yes, I like dogs!", "Now, let's hear the song"]
+      "2": ["^Yes, I like dogs\\.", "Now, let's hear the song"]
 
   - id: l2wrap-weather-question
     note: "Teacher answers live-weather limitation honestly"

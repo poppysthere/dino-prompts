@@ -6,13 +6,15 @@ import re
 import sys
 import unicodedata
 
+from checker_l2_human import check_child_first
+
 
 START = ("Today, let's meet Farmer Bob. It is his birthday. First, watch the video. "
-         "Look! Here he is. Let's watch!")
-RESCUE = "Listen first. Hi! Now you try. Hi!"
-POST_ASK = "Oh no! The cake is gone. Where is it?"
-POST_POS = "Yes, it is gone. Look! This is Mouse. Mouse can help us. Let's find the cake!"
-POST_OTHER = "The cake is gone. Look! This is Mouse. Mouse can help us. Let's find the cake!"
+         "Look, here he is. Let's watch.")
+RESCUE = "Listen first. Hi. Now you try. Hi."
+POST_ASK = "Oh no. The cake is gone. Where is it?"
+POST_POS = "Yes, it is gone. Look, this is Mouse. Mouse can help us. Let's find the cake."
+POST_OTHER = "The cake is gone. Look, this is Mouse. Mouse can help us. Let's find the cake."
 GREETING = re.compile(r"\b(?:hi|hello|hey)\b|你好|哈喽", re.I)
 
 
@@ -78,6 +80,8 @@ def check(transcript):
             v("forbidden-prompt", f"reply {n}: unclear or unnecessary child prompt")
         if body.count("?") > 1:
             v("one-question", f"reply {n}: more than one question")
+        if body.count("!") > 1:
+            v("too-excited", f"reply {n}: more than one exclamation mark")
         for sentence in spoken_sentences(body):
             if word_count(sentence) > 10:
                 v("a1-length", f"reply {n}: sentence over 10 words: {sentence!r}")
@@ -148,6 +152,10 @@ def check(transcript):
             v("spoiler", "post-video reply named the horse")
     else:
         v("family", f"unknown family {family!r}")
+
+    issues.extend(check_child_first(
+        transcript["messages"], transcript.get("teacher_name", ""), family
+    ))
 
     return issues
 

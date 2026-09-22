@@ -127,7 +127,9 @@ The L2 battery includes questions such as `What's your name?`, `Do you like my
 dog?`, and `How's the weather?`, plus blind questions not listed in the stage
 prompt. A clean run requires the teacher to answer naturally first, then
 continue the next lesson action in the same reply using reliable CEFR A1
-language.
+language. The shared child-first checker rejects lesson boilerplate, animal
+sounds, or the next scripted question when they appear before the answer. It
+also limits L2 replies to one exclamation mark.
 
 If the machine you run on cannot reach the forge ALB directly (network policy), there is a
 fallback: serve the repo with `python3 eval/_cors_server.py 8766` and drive the same /debug

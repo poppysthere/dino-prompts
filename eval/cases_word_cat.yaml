@@ -41,7 +41,9 @@ cat:
     turns: ["cat", "Do you like my dog?", "no"]
     max_replies: 4
     reply_require:
-      "3": ["^Yes, I like dogs!", "Does the cat have the cake"]
+      "3": ["^Yes, I like dogs\\.", "Now, let's look at the cat\\.", "Does the cat have the cake"]
+    reply_forbid:
+      "3": ["Meow meow"]
 
   - id: cat-weather-at-close
     note: "Weather question is answered before finishing"

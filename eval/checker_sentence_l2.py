@@ -14,14 +14,16 @@ import re
 import sys
 import unicodedata
 
+from checker_l2_human import check_child_first
+
 STEPS = {
     "sent_intro": {
-        "fixed": "Look! Mouse found three bags. One, two, three. What is inside? Let's watch!",
+        "fixed": "Look, Mouse found three bags. One, two, three. What is inside? Let's watch.",
         "final_tag": "[NEXT_STEP]",
         "max": 1,
     },
     "sent_cow": {
-        "ask": ("Look! Mouse found a bell. The bell is for a cow. Listen first. "
+        "ask": ("Look, Mouse found a bell. The bell is for a cow. Listen first. "
                 "It's a cow. Now you try. It's a cow."),
         "retry": "Let's try again. It's a cow. Now you try. It's a cow.",
         "final_tag": "[NEXT_STEP]",
@@ -29,19 +31,19 @@ STEPS = {
         "spoiler": r"\bhorse\b",
     },
     "sent_cat": {
-        "ask": ("Look! Mouse found a fish. The fish is for a cat. Listen first. "
-                "It's a cat. Now you try. It's a cat."),
-        "retry": "Let's try again. It's a cat. Now you try. It's a cat.",
+        "ask": ("Look, Mouse found a fish. The fish is for a cat. Listen first. "
+                "It's a cat. Your turn. It's a cat."),
+        "retry": "Let's try again. It's a cat. Your turn. It's a cat.",
         "final_tag": "[NEXT_STEP]",
         "max": 3,
         "spoiler": r"\bhorse\b",
     },
     "sent_horse": {
-        "ask": ("Look! Mouse found a horse. Listen first. It's a horse. "
-                "Now you try. It's a horse."),
-        "retry": "Let's try again. It's a horse. Now you try. It's a horse.",
+        "ask": ("Look, Mouse found a horse. Listen first. It's a horse. "
+                "Your turn. It's a horse."),
+        "retry": "Let's try again. It's a horse. Your turn. It's a horse.",
         "question": "who has the cake",
-        "close": "Let's watch and find out!",
+        "close": "Let's watch and find out.",
         "final_tag": "[NEXT_STEP]",
         "max": 4,
         "spoiler": r"(?:\byes\b|\byou got it\b|\bright\b|\bcorrect\b)[^.!?]*\bhorse\b|\bthe horse ate\b",
@@ -204,6 +206,8 @@ def check(tr):
             v("a1-wording", f"reply {n}: avoidable non-A1 word")
         if is_l2 and body.count("?") > 1:
             v("one-question", f"reply {n}: more than one question")
+        if is_l2 and body.count("!") > 1:
+            v("too-excited", f"reply {n}: more than one exclamation mark")
         if is_l2:
             for sentence in spoken_sentences(body):
                 if word_count(sentence) > 10:
@@ -279,6 +283,9 @@ def check(tr):
             v("early-advance", f"a reply before the last one contains {step['final_tag']}")
         if "[TEMPLATE_FINISH]" in r:
             v("early-finish", "a reply before the last one ends the template")
+
+    if is_l2:
+        out.extend(check_child_first(tr["messages"], tr.get("teacher_name", ""), family))
 
     return out
 

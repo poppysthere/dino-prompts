@@ -30,7 +30,9 @@ sent_cow:
     turns: ["okay", "Do you like my dog?"]
     max_replies: 3
     reply_require:
-      "3": ["^Yes, I like dogs!", "Let's open the next bag"]
+      "3": ["^Yes, I like dogs\\.", "Now, listen\\. It's a cow\\.", "Let's open the next bag"]
+    reply_forbid:
+      "3": ["That's okay"]
 
   - id: l2sent-cow-silent
     note: "One retry, then warm forward move without fake praise"
@@ -58,7 +60,7 @@ sent_cat:
     reply_require:
       "2": ["cow was first", "Let's try again"]
     reply_forbid:
-      "2": ["Yes! It's a cat"]
+      "2": ["Yes, it's a cat"]
 
   - id: l2sent-cat-weather
     note: "Weather question answered honestly before the retry"
@@ -73,7 +75,9 @@ sent_cat:
     teacher_name: "Kim"
     max_replies: 3
     reply_require:
-      "3": ["^I'm Kim\\.", "Let's open the next bag"]
+      "3": ["^I'm Kim\\.", "Now, listen\\. It's a cat\\.", "Let's open the next bag"]
+    reply_forbid:
+      "3": ["That's okay"]
 
   - id: l2sent-cat-silent
     note: "Silence moves forward after one retry"
@@ -108,7 +112,9 @@ sent_horse:
     turns: ["okay", "Do you like my dog?", "cat"]
     max_replies: 4
     reply_require:
-      "3": ["^Yes, I like dogs!", "Who has the cake"]
+      "3": ["^Yes, I like dogs\\.", "Now, look\\. It's a horse\\.", "Who has the cake"]
+    reply_forbid:
+      "3": ["That's okay"]
 
   - id: l2sent-horse-weather-close
     note: "Weather question at final beat answered before video launch"
