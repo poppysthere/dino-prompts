@@ -17,8 +17,9 @@ ROOT = pathlib.Path(__file__).parent.parent
 # (max lines, max words) per template; default covers the fixed-script pages.
 DEFAULT_BUDGET = (115, 1800)
 BUDGETS = {
-    "warmup_teaching_rules_l2_lesson0.md": (230, 3600),  # state machine with two paths
-    "common_teaching_simple_rules_l2.md": (95, 1500),
+    # L2 starts at lead-in; its common layer owns the child-first answer and
+    # reliable-A1 contracts that used to be duplicated across stage templates.
+    "common_teaching_simple_rules_l2.md": (110, 1500),
     # Word pages are AT their ceiling (mishear whitelists + worked examples for a
     # flaky small model). Frozen at current size: any new fix must be net-zero,
     # and the next compaction pass should push them back toward the default.

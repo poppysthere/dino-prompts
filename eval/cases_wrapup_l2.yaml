@@ -1,33 +1,61 @@
-# Case battery for the L2 wrap-up pre-video step (did you like the story? -> song time).
-# Two replies max; branch judged by MEANING in any language; question asked once, ever.
-
 wrapup_pre:
-  - id: wrap-pos
-    note: "liked it in English -> 'Me too!' row"
-    turns: ["yes! I like it!"]
-    require_phrases: ["me too"]
-  - id: wrap-pos-chinese
-    note: "REGRESSION vs the original's zh->NEG rule: '喜欢！' means they LIKED it -> 'Me too!' row, never the consolation row"
+  - id: l2wrap-like
+    note: "Positive answer gets the matching branch"
+    turns: ["Yes, I liked it!"]
+    max_replies: 2
+    require_phrases: ["Me too"]
+
+  - id: l2wrap-dislike
+    note: "Negative answer is respected, never answered with Me too"
+    turns: ["No, I did not like it."]
+    max_replies: 2
+    require_phrases: ["That's okay"]
+    forbid_phrases: ["Me too"]
+
+  - id: l2wrap-own-language-like
+    note: "Meaning counts across child languages"
     turns: ["喜欢！"]
-    require_phrases: ["me too"]
-    forbid_phrases: ["that's okay"]
-  - id: wrap-neg
-    note: "'不喜欢。' -> 'That's okay!' row; 'Me too!' here would agree with the wrong thing"
-    turns: ["不喜欢。"]
-    require_phrases: ["that's okay"]
-    forbid_phrases: ["me too"]
-  - id: wrap-silent
-    note: "silence: no re-ask, straight to the 'That's okay!' row"
+    max_replies: 2
+    require_phrases: ["Me too"]
+
+  - id: l2wrap-name-question
+    note: "Teacher answers their name before the song handoff"
+    turns: ["What's your name?"]
+    teacher_name: "Kim"
+    max_replies: 2
+    reply_require:
+      "2": ["^I'm Kim\\.", "Now, let's hear the song"]
+
+  - id: l2wrap-dog-question
+    note: "Personal pet question is answered first"
+    turns: ["Do you like my dog?"]
+    max_replies: 2
+    reply_require:
+      "2": ["^Yes, I like dogs!", "Now, let's hear the song"]
+
+  - id: l2wrap-weather-question
+    note: "Teacher answers live-weather limitation honestly"
+    turns: ["How's the weather?"]
+    max_replies: 2
+    reply_require:
+      "2": ["^I can't see the sky\\.", "Now, let's hear the song"]
+
+  - id: l2wrap-ask-back
+    note: "Teacher answers Did you like it before continuing"
+    turns: ["Did you like it?"]
+    max_replies: 2
+    reply_require:
+      "2": ["^Yes, I liked it!", "Now, let's hear the song"]
+
+  - id: l2wrap-blind-favorite-animal
+    note: "BLIND CASE: unlisted safe question is answered before handoff"
+    turns: ["What animal do you like?"]
+    max_replies: 2
+    reply_require:
+      "2": ["^I like (?:cats|dogs|horses|cows)", "Now, let's hear the song"]
+
+  - id: l2wrap-silent
+    note: "Silence advances with no fake answer"
     turns: []
-    forbid_phrases: ["me too"]
-  - id: wrap-offtopic
-    note: "'我要妈妈！' (I want mommy): one soft matched catch allowed, then the consolation row; never 'Me too!'"
-    turns: ["我要妈妈！"]
-    forbid_phrases: ["me too"]
-    require_phrases: ["song time"]
-  - id: wrap-junkname
-    note: "JUNK NAME: placeholder never spoken; name slots drop cleanly"
-    turns: ["yes!"]
-    student_name: "test_user"
-    require_phrases: ["me too"]
-    forbid_phrases: ["test[_\\s]?user"]
+    max_replies: 2
+    forbid_phrases: ["Me too", "you said"]

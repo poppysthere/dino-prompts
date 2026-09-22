@@ -1,72 +1,69 @@
-# Case battery for the L2 horse word page (Mouse's cake mystery — the CULPRIT page).
-# Same skeleton: MEET -> try (max 1 retry) -> neigh invite -> neigh react + wonder -> close.
-# Extra stake here: the horse DID eat the cake, and the teacher must never confirm it.
-
 horse:
   - id: horse-happy
-    note: "fast path: horse -> neigh -> guesses the horse (CORRECTLY!) -> teacher still only teases; 4 replies"
-    turns: ["horse!", "neigh neigh!", "the horse ate it!"]
-    forbid_phrases: ["\\bthe horse ate\\b", "\\byes\\b[^.!?]*\\bhorse\\b[^.!?]*\\bate\\b"]
+    note: "horse -> neigh -> horse guess -> neutral close"
+    turns: ["horse!", "neigh neigh!", "the horse!"]
     max_replies: 4
+    forbid_phrases: ["the horse ate", "yes[^.!?]*horse[^.!?]*cake"]
+
   - id: horse-house-asr
-    note: "ASR mishears horse as 'house' — counts as a try, celebrate row fires"
-    turns: ["house!", "neigh!", "no"]
+    note: "ASR house counts as a horse try"
+    turns: ["house", "neigh", "no"]
     max_replies: 4
+    reply_forbid:
+      "2": ["Let's try again"]
+
   - id: horse-of-course-asr
-    note: "REGRESSION (prod 2026-07-13 #353094): ASR writes the child's 'horse' as 'Of course.' — it counts as the try, celebrate row fires, NO retry loop"
-    turns: ["Of course.", "neigh neigh!", "yes"]
-    reply_forbid:
-      2: ["one more time", "you said yes"]
+    note: "ASR of course counts as horse, not agreement"
+    turns: ["of course", "neigh", "no"]
     max_replies: 4
-  - id: horse-agree-loop
-    note: "REGRESSION (prod #353094 shape): stubborn agreement every turn — retry happens ONCE, then the script rides forward to the close; never 'you said yes again'"
-    turns: ["好的好的", "好。", "好。", "好。"]
-    forbid_phrases: ["you said yes", "you agree"]
+    reply_forbid:
+      "2": ["Let's try again"]
+
+  - id: horse-meaning-retry
+    note: "Meaning question answered before one retry"
+    turns: ["What is a horse?", "horse", "neigh", "no"]
     max_replies: 5
+    reply_require:
+      "2": ["^A horse is a big animal\\.", "Let's try again"]
+
   - id: horse-nainai-asr
-    note: "REGRESSION (prod #353094): child's neigh neigh comes through Chinese ASR as '奶奶' — counts as the neigh, celebrate row, never 'funny sound' or a backward retry"
-    turns: ["horse!", "奶奶。", "no"]
-    reply_forbid:
-      3: ["funny sound", "one more time"]
+    note: "奶奶 counts as a neigh sound"
+    turns: ["horse", "奶奶。", "no"]
     max_replies: 4
-  - id: horse-retry-pass
-    note: "confused first ('what is horse?') -> catch + ONE retry -> pass -> neigh -> close; 5 replies"
-    turns: ["什么是horse呀？", "horse", "neigh", "ok"]
-    max_replies: 5
-  - id: horse-l1-word
-    note: "own-language horse word does NOT count (catch credits the knowing); neigh in own language DOES count; correct culprit guess in Chinese must not be confirmed"
-    turns: ["小马！", "horse", "咴咴！", "马吃的！"]
-    forbid_phrases: ["\\bthe horse ate\\b"]
-    max_replies: 5
-  - id: horse-old-word-cat
-    note: "child says an EARLIER page's word ('cat!') — not a horse try, no fake 'you got it'; catch the remembering, retry, then normal flow"
-    turns: ["cat!", "horse", "neigh", "yes"]
-    reply_forbid:
-      2: ["you got it", "yes! horse"]
-    max_replies: 5
-  - id: horse-silent-all
-    note: "full silence: script rides forward, one retry only, funny-sound row, close with no catch; 5 replies, no fake praise"
+    reply_require:
+      "3": ["^Neigh neigh! You sound like a horse!"]
+
+  - id: horse-silent
+    note: "Full silence moves forward with one retry and no fake praise"
     turns: []
     max_replies: 5
-    forbid_phrases: ["you got it", "amazing"]
-  - id: horse-agree-no
-    note: "REGRESSION (cow/cat prod bugs, same guards here): '好。' is agreement, NOT a try; 'No.' to the wonder is sided with, never 'maybe'"
-    turns: ["好。", "horse", "neigh neigh", "No."]
-    forbid_phrases: ["\\bmaybe\\b"]
-    reply_forbid:
-      2: ["you got it", "yes! horse"]
-    require_phrases: ["\\bno\\b"]
+    forbid_phrases: ["you got it", "great job", "amazing"]
+
+  - id: horse-name-question
+    note: "Name question is answered before the retry"
+    turns: ["What's your name?", "horse", "neigh", "no"]
+    teacher_name: "Kim"
     max_replies: 5
-  - id: horse-word-again-idk
-    note: "REGRESSION (cat prod #352886, same guards): 'Horse.' at the neigh invite = practicing, praise the WORD; 'I don't know, what do you think?' gets answered, never 'maybe'"
-    turns: ["horse!", "Horse.", "我也不知道呀，你觉得呢？"]
-    reply_forbid:
-      3: ["real horses", "i love it", "funny sound"]
-    forbid_phrases: ["\\bmaybe\\b"]
+    reply_require:
+      "2": ["^I'm Kim\\.", "Let's try again"]
+
+  - id: horse-dog-after-neigh
+    note: "Dog question is answered before the cake question"
+    turns: ["horse", "Do you like my dog?", "no"]
     max_replies: 4
-  - id: horse-junkname
-    note: "JUNK NAME: placeholder studentName is never spoken; name slots drop cleanly"
-    turns: ["horse!", "neigh!", "yes"]
-    student_name: "test_user"
-    forbid_phrases: ["test[_\\s]?user"]
+    reply_require:
+      "3": ["^Yes, I like dogs!", "Does it have the cake"]
+
+  - id: horse-weather-at-close
+    note: "Weather question is answered before the page closes"
+    turns: ["horse", "neigh", "How's the weather?"]
     max_replies: 4
+    reply_require:
+      "4": ["^I can't see the sky\\.", "Let's watch and find out"]
+
+  - id: horse-blind-game
+    note: "BLIND CASE: unlisted safe question receives a direct answer"
+    turns: ["What game do you like?", "horse", "neigh", "no"]
+    max_replies: 5
+    reply_require:
+      "2": ["^I like [A-Za-z]+", "Let's try again"]

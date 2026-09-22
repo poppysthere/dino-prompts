@@ -1,0 +1,123 @@
+# L2 no-warm-up lead-in. The pre-video step owns the class greeting.
+
+leadin_pre:
+  - id: l2pre-hi
+    note: "Child greets -> natural catch + fixed launch in two replies"
+    turns: ["Hi!"]
+    max_replies: 2
+    reply_require:
+      "2": ["^Hi", "Today, let's meet Farmer Bob"]
+
+  - id: l2pre-name-question
+    note: "Teacher answers their own name before the hi rescue"
+    turns: ["What's your name?", "Hi!"]
+    teacher_name: "Kim"
+    max_replies: 3
+    reply_require:
+      "2": ["^I'm Kim\\.", "Listen first\\. Hi! Now you try\\. Hi"]
+
+  - id: l2pre-dog-question
+    note: "Personal pet question is answered before instruction"
+    turns: ["Do you like my dog?", "Hi!"]
+    max_replies: 3
+    reply_require:
+      "2": ["^Yes, I like dogs!", "Now you try\\. Hi"]
+
+  - id: l2pre-weather-question
+    note: "Teacher is honest about unavailable live weather"
+    turns: ["How's the weather?", "Hi!"]
+    max_replies: 3
+    reply_require:
+      "2": ["^I can't see the sky\\.", "Now you try\\. Hi"]
+
+  - id: l2pre-hi-and-name
+    note: "Greeting plus question: answer first, then launch without an unnecessary rescue"
+    turns: ["Hi! What's your name?"]
+    teacher_name: "Kim"
+    max_replies: 2
+    reply_require:
+      "2": ["^I'm Kim\\.", "Today, let's meet Farmer Bob"]
+
+  - id: l2pre-blind-pizza
+    note: "BLIND CASE: unlisted harmless question still receives a direct answer"
+    turns: ["Do you like pizza?", "Hi!"]
+    max_replies: 3
+    reply_require:
+      "2": ["^Yes, I (?:like|love) pizza", "Now you try\\. Hi"]
+
+  - id: l2pre-silent
+    note: "One modeled rescue, then launch without fake greeting praise"
+    turns: []
+    max_replies: 3
+    forbid_phrases: ["nice hi", "great hi", "you said hi"]
+
+  - id: l2pre-own-language-hi
+    note: "A greeting in another language counts as a greeting"
+    turns: ["你好！"]
+    max_replies: 2
+
+  - id: l2pre-junk-student-name
+    note: "Junk child name is never spoken"
+    turns: ["Hi!"]
+    student_name: "test_user"
+    max_replies: 2
+    forbid_phrases: ["test[_\\s]?user"]
+
+  - id: l2pre-teacher-kim
+    note: "Teacher identity comes from teacherName, not a copied example"
+    turns: ["Hi!"]
+    teacher_name: "Kim"
+    max_replies: 2
+    reply_require:
+      "1": ["I'm Kim"]
+    forbid_phrases: ["I'm Max", "I'm Leo"]
+
+leadin_post:
+  - id: l2post-gone
+    note: "Child identifies the missing cake"
+    turns: ["The cake is gone!"]
+    max_replies: 2
+    reply_require:
+      "2": ["Yes, it is gone", "This is Mouse"]
+
+  - id: l2post-name-question
+    note: "Name question is answered before Mouse is introduced"
+    turns: ["What's your name?"]
+    teacher_name: "Kim"
+    max_replies: 2
+    reply_require:
+      "2": ["^I'm Kim\\.", "This is Mouse"]
+
+  - id: l2post-dog-question
+    note: "Dog question is answered before the story continues"
+    turns: ["Do you like my dog?"]
+    max_replies: 2
+    reply_require:
+      "2": ["^Yes, I like dogs!", "This is Mouse"]
+
+  - id: l2post-weather-question
+    note: "Weather question gets an honest answer first"
+    turns: ["How's the weather?"]
+    max_replies: 2
+    reply_require:
+      "2": ["^I can't see the sky\\.", "This is Mouse"]
+
+  - id: l2post-meaning-question
+    note: "Lesson meaning is shown in easy English"
+    turns: ["What is gone?"]
+    max_replies: 2
+    reply_require:
+      "2": ["^The cake is not here\\.", "This is Mouse"]
+
+  - id: l2post-horse-guess
+    note: "Guess gets a natural non-spoiler response"
+    turns: ["The horse took it!"]
+    max_replies: 2
+    reply_require:
+      "2": ["^Maybe!"]
+
+  - id: l2post-silent
+    note: "Silence advances without invented catch or praise"
+    turns: []
+    max_replies: 2
+    forbid_phrases: ["good guess", "great job", "you said"]

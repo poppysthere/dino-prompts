@@ -101,6 +101,34 @@ sounds natural; read representative transcripts before approving a prompt.
 The first Luna run and human-language findings are in
 `eval/L3_LUNA_EVAL_2026-09-20.md`.
 
+## L2 no-warm-up harness
+
+L2 starts at lead-in. Its harness composes the local `prompts/l2` common rule
+with each stage template, calls Prompt Forge's debug API, saves one JSON
+transcript per case, and runs the L2 lead-in, word, and sentence/wrap-up
+checkers. It does not edit or deploy Forge content.
+
+```bash
+# Inspect the selected plan without credentials or model calls.
+python3 eval/run_l2_forge.py --plan
+
+# Run one blind child-question smoke case.
+python3 eval/run_l2_forge.py --only cow-blind-color
+
+# Run one or more stages, or the full no-warm-up battery.
+python3 eval/run_l2_forge.py --stage leadin --stage word
+python3 eval/run_l2_forge.py
+
+# Safely resume only when model and prompt hashes still match.
+python3 eval/run_l2_forge.py --resume eval/runs/l2_<model>_<timestamp>
+```
+
+The L2 battery includes questions such as `What's your name?`, `Do you like my
+dog?`, and `How's the weather?`, plus blind questions not listed in the stage
+prompt. A clean run requires the teacher to answer naturally first, then
+continue the next lesson action in the same reply using reliable CEFR A1
+language.
+
 If the machine you run on cannot reach the forge ALB directly (network policy), there is a
 fallback: serve the repo with `python3 eval/_cors_server.py 8766` and drive the same /debug
 calls from a browser page that CAN reach it (the forge login page works as a host). The

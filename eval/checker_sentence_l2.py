@@ -16,35 +16,38 @@ import unicodedata
 
 STEPS = {
     "sent_intro": {
-        "fixed": "Look! Mouse found something! Bags! One two three bags! WOW! What is inside? Let's find out!",
+        "fixed": "Look! Mouse found three bags. One, two, three. What is inside? Let's watch!",
         "final_tag": "[NEXT_STEP]",
         "max": 1,
     },
     "sent_cow": {
-        "ask": "Mouse found a bell! A bell! And look. It's a cow! Say it with me. It's a cow!",
-        "retry": "Let's say it together. It's a cow!",
+        "ask": ("Look! Mouse found a bell. The bell is for a cow. Listen first. "
+                "It's a cow. Now you try. It's a cow."),
+        "retry": "Let's try again. It's a cow. Now you try. It's a cow.",
         "final_tag": "[NEXT_STEP]",
         "max": 3,
         "spoiler": r"\bhorse\b",
     },
     "sent_cat": {
-        "ask": "WOW! Mouse found a fish! A fish! And look. It's a cat! Say it with me. It's a cat!",
-        "retry": "Let's say it together. It's a cat!",
+        "ask": ("Look! Mouse found a fish. The fish is for a cat. Listen first. "
+                "It's a cat. Now you try. It's a cat."),
+        "retry": "Let's try again. It's a cat. Now you try. It's a cat.",
         "final_tag": "[NEXT_STEP]",
         "max": 3,
         "spoiler": r"\bhorse\b",
     },
     "sent_horse": {
-        "ask": "Wait wait wait! Mouse found something! And look. It's a horse! Say it with me. It's a horse!",
-        "retry": "Let's say it together. It's a horse!",
-        "question": "who ate the cake",
-        "close": "Let's watch the video and find out!",
+        "ask": ("Look! Mouse found a horse. Listen first. It's a horse. "
+                "Now you try. It's a horse."),
+        "retry": "Let's try again. It's a horse. Now you try. It's a horse.",
+        "question": "who has the cake",
+        "close": "Let's watch and find out!",
         "final_tag": "[NEXT_STEP]",
         "max": 4,
         "spoiler": r"(?:\byes\b|\byou got it\b|\bright\b|\bcorrect\b)[^.!?]*\bhorse\b|\bthe horse ate\b",
     },
     "sent_reveal": {
-        "must_contain": "The horse ate the cake!",
+        "must_contain": "The horse ate the cake.",
         "final_tag": "[TEMPLATE_FINISH]",
         "max": 1,
     },
@@ -93,9 +96,9 @@ STEPS = {
     # wrap-up pre-video rides the same generic step rules; its branch rows are long
     # fixed lines, so the pre-close budget is wide (it only guards runaway improv)
     "wrapup_pre": {
-        "ask": "The horse ate the cake! Poor Farmer Bob! Did you like the story?",
+        "ask": "The horse ate the cake. Did you like the story?",
         "question": "did you like the story",
-        "close": "Now it's song time! Let's listen and have fun!",
+        "close": "Now, let's hear the song.",
         "final_tag": "[NEXT_STEP]",
         "max": 2,
         "catch_budget": 22,
@@ -158,10 +161,20 @@ def control_tags(t):
     return re.findall(r"\[(?:STUDENT_TALK|TEMPLATE_FINISH|NEXT_STEP|WORD_EVALUATION)\]", t)
 
 
+def spoken_sentences(t):
+    return [s.strip() for s in re.split(r"[.!?]+", strip_tags(t)) if s.strip()]
+
+
+def word_count(t):
+    return len(re.findall(r"[A-Za-z]+(?:'[A-Za-z]+)?", t))
+
+
 def check(tr):
     step_set = STEPS_V2 if tr.get("prompt_version") == "v2" else STEPS
     family = tr["family"]
     step = step_set[family] if family in step_set else STEPS[family]
+    is_l2 = family in {"sent_intro", "sent_cow", "sent_cat", "sent_horse",
+                       "sent_reveal", "wrapup_pre"}
     replies = [m["text"] for m in tr["messages"] if m["role"] == "assistant"]
     out = []
     v = lambda rule, msg: out.append(f"[{rule}] {msg}")
@@ -185,6 +198,16 @@ def check(tr):
             v("tts-giggle", f"reply {n}: giggle spelling {m.group(0)!r} (use 'Ha ha!')")
         if re.search(r"can\s+you\s+say", body, re.I):
             v("rising-invite", f"reply {n}: 'can you say' — invites must not be questions")
+        if is_l2 and re.search(r"\b(?:say it with me|repeat after me)\b", body, re.I):
+            v("clear-instruction", f"reply {n}: imitation prompt is not a clear modeled turn")
+        if is_l2 and re.search(r"\b(?:investigation|detective|culprit|belongs|adventure)\b", body, re.I):
+            v("a1-wording", f"reply {n}: avoidable non-A1 word")
+        if is_l2 and body.count("?") > 1:
+            v("one-question", f"reply {n}: more than one question")
+        if is_l2:
+            for sentence in spoken_sentences(body):
+                if word_count(sentence) > 10:
+                    v("a1-length", f"reply {n}: sentence over 10 words: {sentence!r}")
         if step.get("spoiler") and re.search(step["spoiler"], body, re.I):
             v("spoiler", f"reply {n}: culprit leak (matched {step['spoiler']!r})")
         if r.rstrip().endswith("[STUDENT_TALK]") and not r.rstrip().endswith("[TEACHER_LISTEN][STUDENT_TALK]"):

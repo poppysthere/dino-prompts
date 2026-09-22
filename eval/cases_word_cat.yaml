@@ -1,49 +1,58 @@
-# Case battery for the L2 cat word page (Mouse's cake mystery).
-# Same skeleton as cow: MEET -> try (max 1 retry) -> meow invite -> meow react + wonder -> close.
-# No [WORD_EVALUATION] anywhere; waits are [TEACHER_LISTEN][STUDENT_TALK].
-
 cat:
   - id: cat-happy
-    note: "fast path: cat -> meow -> guesses the cat -> neutral close (no confirm), 4 replies"
-    turns: ["cat!", "meow meow!", "the cat ate it!"]
+    note: "cat -> meow -> answer -> close"
+    turns: ["cat!", "meow meow!", "yes"]
     max_replies: 4
-  - id: cat-retry-pass
-    note: "confused first ('what is cat?') -> catch + ONE retry -> pass -> meow -> close; 5 replies"
-    turns: ["什么是cat呀？", "cat", "meow", "ok"]
+
+  - id: cat-meaning-retry
+    note: "Meaning question answered first, then one clear retry"
+    turns: ["What is a cat?", "cat", "meow", "no"]
     max_replies: 5
-  - id: cat-l1-word
-    note: "own-language cat word does NOT count as the English try (catch must credit the knowing); meow in own language DOES count; horse guess at the wonder must not leak"
-    turns: ["小猫！", "cat", "喵喵！", "马吃的！"]
+    reply_require:
+      "2": ["^A cat is a small pet\\.", "Let's try again"]
+
+  - id: cat-old-word
+    note: "Earlier word is acknowledged without fake cat praise"
+    turns: ["cow", "cat", "meow", "no"]
     max_replies: 5
-  - id: cat-old-word-cow
-    note: "child says LAST page's word ('cow!') — not a cat try, no fake 'you got it'; catch the remembering, retry, then normal flow"
-    turns: ["cow!", "cat", "meow", "yes"]
+    reply_require:
+      "2": ["^Yes, cow was first\\. This is cat\\."]
     reply_forbid:
-      2: ["you got it", "yes! cat"]
-    max_replies: 5
-  - id: cat-silent-all
-    note: "full silence: script rides forward, one retry only, funny-sound row, close with no catch; 5 replies, no fake praise"
+      "2": ["Yes, cat"]
+
+  - id: cat-silent
+    note: "Full silence moves forward with no fake praise"
     turns: []
     max_replies: 5
-    forbid_phrases: ["you got it", "amazing"]
-  - id: cat-agree-no
-    note: "REGRESSION (cow prod bug, same guard here): '好。' is agreement, NOT a cat try; and 'No.' to the wonder must be sided with, never 'maybe'"
-    turns: ["好。", "cat", "meow meow", "No."]
-    forbid_phrases: ["\\bmaybe\\b"]
-    reply_forbid:
-      2: ["you got it", "yes! cat"]
-    require_phrases: ["\\bno\\b"]
+    forbid_phrases: ["you got it", "great job", "amazing"]
+
+  - id: cat-name-question-after-retry
+    note: "Question after the one retry is answered before moving to meow"
+    turns: ["okay", "What's your name?", "meow", "no"]
+    teacher_name: "Kim"
     max_replies: 5
-  - id: cat-word-again-idk
-    note: "REGRESSION (prod 2026-07-13 #352886): child says 'Cat.' at the meow invite (practicing, not mooing) — praise the CAT, never 'we sound like real cats' or 'funny sound'; then '我也不知道呀，你觉得呢？' at the wonder — answer their question ('I don't know too!'), never 'maybe'"
-    turns: ["cat!", "Cat.", "我也不知道呀，你觉得呢？"]
+    reply_require:
+      "3": ["^I'm Kim\\.", "A cat says meow meow"]
     reply_forbid:
-      3: ["real cats", "i love it", "funny sound"]
-    forbid_phrases: ["\\bmaybe\\b"]
+      "3": ["Let's try again"]
+
+  - id: cat-dog-after-meow
+    note: "Dog question is answered before the cake question"
+    turns: ["cat", "Do you like my dog?", "no"]
     max_replies: 4
-  - id: cat-junkname
-    note: "JUNK NAME: placeholder studentName is never spoken; name slots drop cleanly"
-    turns: ["cat!", "meow!", "yes"]
-    student_name: "test_user"
-    forbid_phrases: ["test[_\\s]?user"]
+    reply_require:
+      "3": ["^Yes, I like dogs!", "Does the cat have the cake"]
+
+  - id: cat-weather-at-close
+    note: "Weather question is answered before finishing"
+    turns: ["cat", "meow", "How's the weather?"]
     max_replies: 4
+    reply_require:
+      "4": ["^I can't see the sky\\.", "Let's keep looking"]
+
+  - id: cat-blind-food
+    note: "BLIND CASE: teacher answers a new safe personal question"
+    turns: ["What food do you like?", "cat", "meow", "no"]
+    max_replies: 5
+    reply_require:
+      "2": ["^I like [A-Za-z]+", "Let's try again"]

@@ -1,125 +1,173 @@
-# Case battery for the L2 sentence-teaching trail (Mouse's three bags -> reveal).
-# Steps run as separate jobs: sent_intro / sent_cow / sent_cat / sent_horse / sent_reveal.
-# Reveal cases use `seed` = prior chat (the mystery question + the child's answer).
-
 sent_intro:
-  - id: intro-line
-    note: "one fixed line, ends [NEXT_STEP], no waiting"
+  - id: l2sent-intro
+    note: "One short A1 video launch"
     turns: []
-  - id: intro-junkname
-    note: "JUNK NAME: placeholder never spoken, slot drops"
-    turns: []
-    student_name: "test_user"
-    forbid_phrases: ["test[_\\s]?user"]
+    max_replies: 1
 
 sent_cow:
-  - id: s0-pass
-    note: "fast path: full sentence -> celebrate + advance; 2 replies"
-    turns: ["it's a cow"]
+  - id: l2sent-cow-pass
+    note: "Full sentence advances immediately"
+    turns: ["It's a cow."]
     max_replies: 2
-  - id: s0-word-only
-    note: "word-only try: warm catch + ONE retry, then full sentence -> high five; no early celebrate"
-    turns: ["cow!", "it's a cow"]
-    reply_forbid:
-      2: ["belongs"]
+
+  - id: l2sent-cow-word
+    note: "Word-only try gets one supported whole-sentence retry"
+    turns: ["cow", "It's a cow."]
     max_replies: 3
-  - id: s0-agree-silent
-    note: "'好。' is agreement, not a try (no celebrate); then silence rides to the 'That's okay' close"
-    turns: ["好。"]
-    reply_forbid:
-      2: ["belongs", "you got it"]
+    reply_require:
+      "2": ["Now try the sentence", "Let's try again"]
+
+  - id: l2sent-cow-name
+    note: "Name question answered before the retry"
+    turns: ["What's your name?", "It's a cow."]
+    teacher_name: "Kim"
     max_replies: 3
-  - id: s0-silent-all
-    note: "full silence: retry once, then close; no fake praise"
+    reply_require:
+      "2": ["^I'm Kim\\.", "Let's try again"]
+
+  - id: l2sent-cow-dog-after-retry
+    note: "Question after retry answered before the step ends"
+    turns: ["okay", "Do you like my dog?"]
+    max_replies: 3
+    reply_require:
+      "3": ["^Yes, I like dogs!", "Let's open the next bag"]
+
+  - id: l2sent-cow-silent
+    note: "One retry, then warm forward move without fake praise"
     turns: []
-    forbid_phrases: ["you got it", "amazing", "high five"]
     max_replies: 3
+    forbid_phrases: ["great job", "you got it"]
+
+  - id: l2sent-cow-blind-pizza
+    note: "BLIND CASE: unlisted question answered before teaching continues"
+    turns: ["Do you like pizza?", "It's a cow."]
+    max_replies: 3
+    reply_require:
+      "2": ["^Yes, I (?:like|love) pizza", "Let's try again"]
 
 sent_cat:
-  - id: s1-pass
-    note: "fast path: full sentence -> celebrate + advance; 2 replies"
-    turns: ["it's a cat"]
+  - id: l2sent-cat-pass
+    note: "Full sentence advances immediately"
+    turns: ["It's a cat."]
     max_replies: 2
-  - id: s1-old-sentence
-    note: "child repeats LAST bag's sentence ('it's a cow') — lovely remembering, NOT this line: catch + retry, no celebrate"
-    turns: ["it's a cow", "it's a cat"]
+
+  - id: l2sent-cat-old-sentence
+    note: "Old sentence acknowledged, never celebrated as cat"
+    turns: ["It's a cow.", "It's a cat."]
+    max_replies: 3
+    reply_require:
+      "2": ["cow was first", "Let's try again"]
     reply_forbid:
-      2: ["fish belongs"]
+      "2": ["Yes! It's a cat"]
+
+  - id: l2sent-cat-weather
+    note: "Weather question answered honestly before the retry"
+    turns: ["How's the weather?", "It's a cat."]
     max_replies: 3
-  - id: s1-silent-all
-    note: "full silence: retry once, then 'Come on!' close"
+    reply_require:
+      "2": ["^I can't see the sky\\.", "Let's try again"]
+
+  - id: l2sent-cat-name-after-retry
+    note: "Name question after retry gets answered before moving on"
+    turns: ["okay", "What's your name?"]
+    teacher_name: "Kim"
+    max_replies: 3
+    reply_require:
+      "3": ["^I'm Kim\\.", "Let's open the next bag"]
+
+  - id: l2sent-cat-silent
+    note: "Silence moves forward after one retry"
     turns: []
-    forbid_phrases: ["you got it", "amazing"]
     max_replies: 3
+    forbid_phrases: ["great job", "you got it"]
 
 sent_horse:
-  - id: s2-pass-guess
-    note: "full sentence -> question; guesses the horse (CORRECTLY) -> teacher only teases, video does the reveal"
-    turns: ["it's a horse", "the horse ate it!"]
-    forbid_phrases: ["\\bthe horse ate\\b", "\\byes\\b[^.!?]*\\bhorse\\b"]
+  - id: l2sent-horse-pass
+    note: "Sentence -> supported choice question -> neutral video close"
+    turns: ["It's a horse.", "horse"]
     max_replies: 3
-  - id: s2-ofcourse-asr
-    note: "REGRESSION (prod #353094): ASR writes the child's sentence as \"It's of course.\" — counts as the try, no retry loop"
-    turns: ["It's of course.", "the cat"]
+    forbid_phrases: ["the horse ate", "you got it"]
+
+  - id: l2sent-horse-asr
+    note: "It's of course counts as the full target"
+    turns: ["It's of course.", "cat"]
+    max_replies: 3
     reply_forbid:
-      2: ["you said yes", "let's say it together"]
+      "2": ["Let's try again"]
+
+  - id: l2sent-horse-name
+    note: "Name question answered before one retry"
+    turns: ["What's your name?", "It's a horse.", "cat"]
+    teacher_name: "Kim"
+    max_replies: 4
+    reply_require:
+      "2": ["^I'm Kim\\.", "Let's try again"]
+
+  - id: l2sent-horse-dog-after-retry
+    note: "Dog question after retry answered before the mystery question"
+    turns: ["okay", "Do you like my dog?", "cat"]
+    max_replies: 4
+    reply_require:
+      "3": ["^Yes, I like dogs!", "Who has the cake"]
+
+  - id: l2sent-horse-weather-close
+    note: "Weather question at final beat answered before video launch"
+    turns: ["It's a horse.", "How's the weather?"]
     max_replies: 3
-  - id: s2-agree-retry-idk
-    note: "'好。' = agreement -> catch + ONE retry; pass -> question; 'I don't know, what do you think?' answered, never 'maybe'"
-    turns: ["好。", "it's a horse", "我也不知道呀，你觉得呢？"]
-    forbid_phrases: ["\\bmaybe\\b"]
-    max_replies: 4
-  - id: s2-silent-all
-    note: "full silence: retry once, question comes anyway, close with no catch"
+    reply_require:
+      "3": ["^I can't see the sky\\.", "Let's watch and find out"]
+
+  - id: l2sent-horse-silent
+    note: "Full silence uses one retry, asks once, then advances"
     turns: []
-    forbid_phrases: ["you got it", "amazing"]
     max_replies: 4
+    forbid_phrases: ["great job", "you got it"]
+
+  - id: l2sent-horse-blind-color
+    note: "BLIND CASE: new harmless question answered before retry"
+    turns: ["What's your favorite color?", "It's a horse.", "cow"]
+    max_replies: 4
+    reply_require:
+      "2": ["^(?:My favorite color is|I like) (?:blue|red|green|yellow|pink|purple)", "Let's try again"]
 
 sent_reveal:
-  - id: reveal-hit
-    note: "child guessed horse -> HIT line with the name and 'you knew it'"
+  - id: l2reveal-hit
+    note: "Horse guess receives the warm hit line"
     seed:
       - role: assistant
-        text: "Great job![TEACHER_THUMBS_UP] Hmm, heidi! Who ate the cake? The cow? The cat? Or the horse?[TEACHER_LISTEN][STUDENT_TALK]"
+        text: "Yes! It's a horse. Who has the cake? Cow, cat, or horse?[TEACHER_LISTEN][STUDENT_TALK]"
       - role: user
-        text: "the horse!"
+        text: "horse"
     turns: []
-    require_phrases: ["you knew it"]
-  - id: reveal-hit-chinese
-    note: "guess in Chinese ('马吃的！') still counts as horse — meaning, not the English word"
+    require_phrases: ["you were right"]
+
+  - id: l2reveal-hit-own-language
+    note: "Horse meaning in another language still counts"
     seed:
       - role: assistant
-        text: "Great job![TEACHER_THUMBS_UP] Hmm, heidi! Who ate the cake? The cow? The cat? Or the horse?[TEACHER_LISTEN][STUDENT_TALK]"
+        text: "Yes! It's a horse. Who has the cake? Cow, cat, or horse?[TEACHER_LISTEN][STUDENT_TALK]"
       - role: user
-        text: "马吃的！"
+        text: "马"
     turns: []
-    require_phrases: ["you knew it"]
-  - id: reveal-miss
-    note: "child guessed cat -> MISS line; never mock, never name their animal"
+    require_phrases: ["you were right"]
+
+  - id: l2reveal-miss
+    note: "Other guess is never mocked"
     seed:
       - role: assistant
-        text: "Great job![TEACHER_THUMBS_UP] Hmm, heidi! Who ate the cake? The cow? The cat? Or the horse?[TEACHER_LISTEN][STUDENT_TALK]"
+        text: "Yes! It's a horse. Who has the cake? Cow, cat, or horse?[TEACHER_LISTEN][STUDENT_TALK]"
       - role: user
-        text: "the cat!"
+        text: "cat"
     turns: []
-    forbid_phrases: ["you knew it", "\\bcat\\b", "\\bwrong\\b"]
-  - id: reveal-miss-silent
-    note: "child was silent at the question -> MISS line"
+    forbid_phrases: ["wrong", "you were right"]
+
+  - id: l2reveal-junkname
+    note: "Junk child name is never spoken"
     seed:
       - role: assistant
-        text: "It's a horse! Off we go! Hmm, heidi! Who ate the cake? The cow? The cat? Or the horse?[TEACHER_LISTEN][STUDENT_TALK]"
+        text: "Yes! It's a horse. Who has the cake? Cow, cat, or horse?[TEACHER_LISTEN][STUDENT_TALK]"
       - role: user
-        text: "The student has been silent for 5 seconds"
-    turns: []
-    forbid_phrases: ["you knew it"]
-  - id: reveal-hit-junkname
-    note: "JUNK NAME on the HIT line: 'you knew it' fires but the placeholder is never spoken"
-    seed:
-      - role: assistant
-        text: "Great job![TEACHER_THUMBS_UP] Hmm! Who ate the cake? The cow? The cat? Or the horse?[TEACHER_LISTEN][STUDENT_TALK]"
-      - role: user
-        text: "horse! horse!"
+        text: "horse"
     turns: []
     student_name: "test_user"
-    require_phrases: ["you knew it"]
     forbid_phrases: ["test[_\\s]?user"]

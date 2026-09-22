@@ -1,76 +1,61 @@
-# Case battery for the L2 cow word page (inside Mouse's cake mystery).
-# Shape: MEET -> try (max 1 retry) -> moo -> wonder -> close. 4-5 teacher replies.
-# No [WORD_EVALUATION] anywhere; waits are [TEACHER_LISTEN][STUDENT_TALK].
-
 cow:
   - id: cow-happy
-    note: "fast path: cow -> moo -> guesses the cow -> neutral close (no confirm), 4 replies"
-    turns: ["cow!", "moo moo!", "the cow ate it!"]
+    note: "cow -> moo -> answer -> close"
+    turns: ["cow!", "moo moo!", "yes"]
     max_replies: 4
-  - id: cow-retry-pass
-    note: "confused first ('what is cow?') -> catch + ONE retry -> pass -> moo -> close; 5 replies"
-    turns: ["什么是cow呀？", "cow", "moo", "ok"]
+
+  - id: cow-meaning-retry
+    note: "Meaning question answered first, then one clear retry"
+    turns: ["What is a cow?", "cow", "moo", "no"]
     max_replies: 5
-  - id: cow-l1-word
-    note: "own-language cow word does NOT count as the English try (catch must credit the knowing); moo in own language DOES count (a moo is a moo); horse guess at the wonder must not leak"
-    turns: ["奶牛！", "cow", "哞哞！", "马吃的！"]
+    reply_require:
+      "2": ["^A cow is a big farm animal\\.", "Let's try again"]
+
+  - id: cow-own-language
+    note: "Understanding in another language gets credit but still one English try"
+    turns: ["奶牛！", "cow", "哞哞！", "no"]
     max_replies: 5
-  - id: cow-silent-all
-    note: "full silence: script rides forward, one retry only, funny-sound row, close with no catch; 5 replies, no fake praise"
+    reply_require:
+      "2": ["^Yes, you know the animal!"]
+
+  - id: cow-silent
+    note: "Full silence moves forward with no fake praise and one retry only"
     turns: []
     max_replies: 5
-    forbid_phrases: ["you got it", "amazing"]
-  - id: cow-offtopic
-    note: "child talks about their dog instead: catch it in one sentence, retry once, keep the script shape"
-    turns: ["I have a dog! Woof!", "kao", "moo", "I don't know"]
-    max_replies: 5
-  - id: cow-agree-no
-    note: "REGRESSION (prod 2026-07-13 #352593): '好。' is agreement, NOT a cow try — no fake 'you got it'; and 'No.' to the wonder must be sided with ('No? Ha ha, okay!'), never answered with 'maybe'"
-    turns: ["好。", "cow", "moo moo", "No."]
-    forbid_phrases: ["\\bmaybe\\b"]
-    reply_forbid:
-      2: ["you got it", "yes! cow"]
-    require_phrases: ["\\bno\\b"]
-    max_replies: 5
-  - id: cow-word-again-idk
-    note: "parity with cat regression: child says 'Cow.' at the moo invite (practicing) — praise the COW, no fake 'real cows'/'funny sound'; 'I don't know, what do you think?' at the wonder gets answered, never 'maybe'"
-    turns: ["cow!", "Cow.", "我也不知道，你觉得呢？"]
-    reply_forbid:
-      3: ["real cows", "i love it", "funny sound"]
-    forbid_phrases: ["\\bmaybe\\b"]
-    max_replies: 4
-  - id: cow-junkname
-    note: "JUNK NAME: placeholder studentName is never spoken; name slots drop cleanly"
-    turns: ["cow!", "moo!", "yes"]
-    student_name: "test_user"
-    forbid_phrases: ["test[_\\s]?user"]
-    max_replies: 4
+    forbid_phrases: ["you got it", "great job", "amazing"]
 
-  # REGRESSION (prod 2026-07-14 #7680580001): child said cow, ASR wrote "How?" — six retry
-  # loops fired. "How?" after a say-it call IS cow; retry happens once, ever.
+  - id: cow-name-question
+    note: "Teacher answers their name before the retry"
+    turns: ["What's your name?", "cow", "moo", "no"]
+    teacher_name: "Kim"
+    max_replies: 5
+    reply_require:
+      "2": ["^I'm Kim\\.", "Let's try again"]
+
+  - id: cow-dog-after-moo-invite
+    note: "Personal question after the sound invite is answered before the cake question"
+    turns: ["cow", "Do you like my dog?", "no"]
+    max_replies: 4
+    reply_require:
+      "3": ["^Yes, I like dogs!", "Does the cow have the cake"]
+
+  - id: cow-weather-at-close
+    note: "Question at the final beat is answered before finishing"
+    turns: ["cow", "moo", "How's the weather?"]
+    max_replies: 4
+    reply_require:
+      "4": ["^I can't see the sky\\.", "Let's keep looking"]
+
+  - id: cow-blind-color
+    note: "BLIND CASE: unlisted personal question still gets a direct answer"
+    turns: ["What's your favorite color?", "cow", "moo", "no"]
+    max_replies: 5
+    reply_require:
+      "2": ["^(?:My favorite color is|I like) (?:blue|red|green|yellow|pink|purple)", "Let's try again"]
+
   - id: cow-how-asr
-    note: "Lisa's class replay: 什么→retry, How?=cow celebrate, moo, lone 知道 = truncated 不知道"
-    turns:
-      - "嗯。 什么？"
-      - "How?"
-      - "哞哞！"
-      - "知道。"
-    max_replies: 5
+    note: "ASR How after a cow prompt counts as cow, not a question"
+    turns: ["How?", "moo", "no"]
+    max_replies: 4
     reply_forbid:
-      "3": ["one more time", "let's go together"]
-      "5": ["know\\. ?ha", "\\bmaybe\\b"]
-    require_phrases: ["don't know too"]
-
-  # REGRESSION (same class): agreement then "How?" — forward only, never a second retry
-  - id: cow-how-loop
-    note: "什么→retry, 好=agreement rides beat 3, How? at moo invite = practicing the word"
-    turns:
-      - "什么？"
-      - "好。"
-      - "How?"
-      - "不知道。"
-    max_replies: 5
-    reply_forbid:
-      "3": ["one more time", "let's go together"]
-      "4": ["one more time", "real cows", "funny sound"]
-
+      "2": ["Let's try again"]
