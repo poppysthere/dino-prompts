@@ -111,7 +111,11 @@ def child_first_issues(messages, teacher_name):
         opening = first_sentence(following.get("text", ""))
         low = child.lower()
 
-        if QUESTION.search(child) and LESSON_FIRST.search(opening):
+        instruction_question = bool(re.search(
+            r"what do i do|what should i do|what am i doing", low
+        ))
+        if (QUESTION.search(child) and LESSON_FIRST.search(opening)
+                and not instruction_question):
             issues.append(
                 f"[child-first] question {child!r} got lesson script first: {opening!r}"
             )
@@ -128,7 +132,7 @@ def child_first_issues(messages, teacher_name):
                 issues.append(
                     f"[answer-weather] weather question not answered first: {opening!r}"
                 )
-        if re.search(r"what do i do|what should i do|what am i doing", low):
+        if instruction_question:
             if not re.search(r"listen|say|you can", opening, re.I):
                 issues.append(
                     f"[answer-job] instruction question lacks a clear job: {opening!r}"

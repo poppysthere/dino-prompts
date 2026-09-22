@@ -66,6 +66,29 @@ class L1CheckerTests(unittest.TestCase):
         self.assertTrue(any("[answer-name]" in issue for issue in issues))
         self.assertTrue(any("[child-first]" in issue for issue in issues))
 
+    def test_clear_instruction_directly_answers_what_to_do(self):
+        data = transcript(
+            "word_apple",
+            [
+                {
+                    "role": "assistant",
+                    "text": "Look. Boo has an apple. Listen first. Apple. Now you try. Apple.[TEACHER_LISTEN][STUDENT_TALK]",
+                },
+                {"role": "user", "text": "What do I do?"},
+                {
+                    "role": "assistant",
+                    "text": "Listen first. Then you say apple. Apple.[TEACHER_LISTEN][STUDENT_TALK]",
+                },
+                {"role": "user", "text": "apple"},
+                {
+                    "role": "assistant",
+                    "text": "Nice work. Apple starts with A. Let's play with A.[TEMPLATE_FINISH]",
+                },
+            ],
+            max_replies=3,
+        )
+        self.assertEqual(checker_l1.check(data), [])
+
     def test_richer_answer_can_finish(self):
         data = transcript(
             "sentence_like_bread",
