@@ -107,6 +107,8 @@ L1 starts at lead-in and has no warm-up. `run_l1_forge.py` composes the local
 `prompts/l1` common rule with every active Chef Boo food-lesson stage. It uses `gpt5.6LunaChatModel`, saves each
 transcript, and checks pre-A1 sentence length, clear child jobs, one-question
 and one-exclamation limits, control tags, TTS safety, and child-first replies.
+The first lead-in step welcomes the child, introduces `teacherName`, and asks
+for one `Hi` before explaining the lesson and starting the video.
 Its cases include name, pet, weather, instruction, richer-language, refusal,
 own-language, and silence paths.
 

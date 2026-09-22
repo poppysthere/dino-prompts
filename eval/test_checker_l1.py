@@ -18,6 +18,38 @@ def transcript(family, messages, **extra):
 
 
 class L1CheckerTests(unittest.TestCase):
+    def test_leadin_welcomes_child_before_video(self):
+        data = transcript(
+            "leadin_pre",
+            [
+                {
+                    "role": "assistant",
+                    "text": "Hi, Mia. I'm Kim. Welcome to class. Say hi to me.[TEACHER_LISTEN][STUDENT_TALK]",
+                },
+                {"role": "user", "text": "Hi!"},
+                {
+                    "role": "assistant",
+                    "text": "Hi. It's nice to meet you. Today, we learn food words. First, watch Chef Boo. Then, say the words. Let's watch.[TEACHER_POINT_TO_SCREEN][NEXT_STEP]",
+                },
+            ],
+            max_replies=2,
+        )
+        self.assertEqual(checker_l1.check(data), [])
+
+    def test_leadin_cannot_jump_straight_to_video(self):
+        data = transcript(
+            "leadin_pre",
+            [
+                {
+                    "role": "assistant",
+                    "text": "Hi. Today we play with food. Let's watch Chef Boo.[TEACHER_POINT_TO_SCREEN][NEXT_STEP]",
+                }
+            ],
+            max_replies=1,
+        )
+        issues = checker_l1.check(data)
+        self.assertTrue(any("[opening]" in issue for issue in issues))
+
     def test_good_name_answer_then_apple(self):
         data = transcript(
             "word_apple",

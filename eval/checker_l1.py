@@ -9,7 +9,10 @@ import unicodedata
 
 CONFIG = {
     "leadin_pre": {
-        "first": r"^Hi\. Today we play with food\. Let's watch Chef Boo\.",
+        "first": (
+            r"^Hi(?:, [A-Za-z][A-Za-z .'-]*| there)\. I'm .+\. "
+            r"Welcome to class\. Say hi to me\."
+        ),
         "finish": "[NEXT_STEP]",
     },
     "leadin_post": {

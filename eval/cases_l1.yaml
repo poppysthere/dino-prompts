@@ -1,10 +1,61 @@
 leadin_pre:
-  - id: l1-leadin-pre
-    note: "Fixed pre-A1 welcome starts the video without a fake question"
-    turns: []
-    max_replies: 1
+  - id: l1-leadin-hi
+    note: "The first task is one natural hello exchange before class starts"
+    turns: ["Hi!"]
+    max_replies: 2
     reply_require:
-      "1": ["^Hi\\.", "Today we play with food", "Let's watch Chef Boo"]
+      "1": ["^Hi, Mia\\.", "I'm Kim", "Welcome to class", "Say hi to me"]
+      "2": ["nice to meet you", "learn food words", "watch Chef Boo", "say the words"]
+
+  - id: l1-leadin-own-language-hi
+    note: "A greeting in another language counts; the teacher stays in English"
+    turns: ["你好！"]
+    max_replies: 2
+    reply_require:
+      "2": ["nice to meet you", "learn food words"]
+
+  - id: l1-leadin-instruction
+    note: "What-do-I-do gets a direct hi instruction and one modeled rescue"
+    turns: ["What do I do?", "Hi!"]
+    max_replies: 3
+    reply_require:
+      "2": ["^Say hi to me\\.", "Listen first", "Now you try"]
+      "3": ["Now we can start|nice to meet you", "learn food words"]
+
+  - id: l1-leadin-question
+    note: "A safe child question is answered before the hi rescue"
+    turns: ["Do you like cats?", "Hi!"]
+    max_replies: 3
+    reply_require:
+      "2": ["^Yes, I like cats\\.", "Listen first", "Now you try"]
+      "3": ["Now we can start|nice to meet you", "watch Chef Boo"]
+
+  - id: l1-leadin-silent
+    note: "Silence gets one modeled hi rescue, then the video starts"
+    turns: []
+    max_replies: 3
+    reply_require:
+      "2": ["^Listen first\\.", "Now you try"]
+      "3": ["Now we can start", "watch Chef Boo"]
+    forbid_phrases: ["great job", "nice to meet you too"]
+
+  - id: l1-leadin-junk-name
+    note: "A placeholder child name is never spoken"
+    student_name: "test_user"
+    turns: ["Hi!"]
+    max_replies: 2
+    reply_require:
+      "1": ["^Hi there\\.", "I'm Kim", "Say hi to me"]
+    forbid_phrases: ["test[_\\s]?user"]
+
+  - id: l1-leadin-teacher-name
+    note: "The teacher introduces the name from teacherName"
+    teacher_name: "Zoe"
+    turns: ["Hi, Zoe!"]
+    max_replies: 2
+    reply_require:
+      "1": ["I'm Zoe", "Welcome to class"]
+    forbid_phrases: ["I'm Kim", "I'm Max"]
 
 leadin_post:
   - id: l1-leadin-post
