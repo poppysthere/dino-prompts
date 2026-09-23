@@ -30,7 +30,11 @@ PRE_LINE_L3 = ("look! dino and mia are ready for an adventure! where will they g
 START_L3_V2 = ("today, let's learn three new words. climb. jump. fly. first, watch. "
                "then, say the words. look! dino and mia are here. let's watch!")
 RESCUE_L3_V2 = "listen first. hi! now, you try."
-GREETING_L3_RE = re.compile(r"\b(hi|hello|hey)\b|你好|哈喽", re.I)
+GREETING_L3_RE = re.compile(
+    r"\b(hi|hello|hey|good morning|good afternoon|good evening|nice to meet you)\b"
+    r"|你好|哈喽",
+    re.I,
+)
 ASK_L3 = ("look! unicorns! dino and mia meet some unicorns! "
           "what fun will they have together?")
 ASK_L3_V2 = ("look! unicorns! dino and mia meet some unicorns. "
@@ -312,6 +316,21 @@ def check_pre_l3_v2(tr, replies, users, v, out):
         v("missing-rescue", f"child did not greet; teacher must rescue once before launch: {first!r}")
     if len(replies) == 3 and first_is_greeting:
         v("extra-rescue", f"child already greeted; teacher should launch on reply 2: {first!r}")
+
+    if len(replies) >= 2 and first_is_greeting:
+        catch_reply = norm(replies[1])
+        if (re.fullmatch(r"\s*(hi|hello|hey)[!.\s]*", first, re.I)
+                and "nice to meet you too" in catch_reply):
+            v("unsupported-too", "plain hi was answered as if the child said nice to meet you")
+        if (re.search(r"\bnice to meet you\b", first, re.I)
+                and "nice to meet you too" not in catch_reply):
+            v("missed-social-meaning", "child said nice to meet you, but teacher did not answer it")
+        if (re.search(r"\bgood morning\b", first, re.I)
+                and "good morning" not in catch_reply):
+            v("missed-social-meaning", "child said good morning, but teacher did not match it")
+        if ("?" in first and re.search(r"\bcat", first, re.I)
+                and not re.search(r"\bcat", catch_reply, re.I)):
+            v("ignored-question", "the greeting's cat question was ignored")
 
     def check_start(reply, number, child):
         n = norm(reply)

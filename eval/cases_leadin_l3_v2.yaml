@@ -5,12 +5,26 @@ pre_video:
     note: "the product's say-hi task gets one natural hello exchange, then class starts"
     turns: ["Hi!"]
     require_phrases: ["nice to meet you", "three new words", "dino and mia"]
-    forbid_phrases: ["ready\\?"]
+    forbid_phrases: ["ready\\?", "nice to meet you too"]
   - id: l3v2pre-own-language-hi
     note: "another-language greeting is understood as hello; teacher stays in English"
     turns: ["你好！"]
     require_phrases: ["nice to meet you", "three new words"]
-    forbid_phrases: ["ready\\?"]
+    forbid_phrases: ["ready\\?", "nice to meet you too"]
+  - id: l3v2pre-good-morning
+    note: "teacher naturally matches a good-morning greeting"
+    turns: ["Good morning!"]
+    require_phrases: ["good morning", "three new words"]
+    forbid_phrases: ["nice to meet you too"]
+  - id: l3v2pre-nice-to-meet-you
+    note: "too is used only when the child really says nice to meet you"
+    turns: ["Nice to meet you!"]
+    require_phrases: ["nice to meet you too", "three new words"]
+  - id: l3v2pre-hi-question
+    note: "a question attached to hi is answered before teaching continues"
+    turns: ["Hi! Do you like cats?"]
+    require_phrases: ["cat", "three new words"]
+    forbid_phrases: ["nice to meet you too"]
   - id: l3v2pre-not-ready
     note: "not-ready child gets one warm rescue before the lesson starts"
     turns: ["No, I'm not ready.", "Hi!"]
