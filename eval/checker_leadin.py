@@ -298,7 +298,7 @@ def check_pre_l3_v2(tr, replies, users, v, out):
         teacher = tr.get("teacher_name", "")
         if teacher:
             prefix = f"hi, {student}! " if student else "hi! "
-            expected = f"{prefix}i'm {teacher}. nice to meet you! say hi to me!".lower()
+            expected = f"{prefix}i'm {teacher}. welcome! let's say hi. hi!".lower()
             if n1 != expected:
                 v("script-hello", f"reply 1 is not the tagged-name hello: {strip_tags(r1).strip()!r}")
         if teacher and not re.search(rf"\b{re.escape(teacher)}\b", strip_tags(r1), re.I):

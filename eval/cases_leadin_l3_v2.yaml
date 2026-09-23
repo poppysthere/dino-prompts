@@ -4,12 +4,12 @@ pre_video:
   - id: l3v2pre-hi
     note: "the product's say-hi task gets one natural hello exchange, then class starts"
     turns: ["Hi!"]
-    require_phrases: ["nice to meet you", "three new words", "dino and mia"]
+    require_phrases: ["welcome", "let's say hi", "three new words", "dino and mia"]
     forbid_phrases: ["ready\\?", "nice to meet you too"]
   - id: l3v2pre-own-language-hi
     note: "another-language greeting is understood as hello; teacher stays in English"
     turns: ["你好！"]
-    require_phrases: ["nice to meet you", "three new words"]
+    require_phrases: ["welcome", "let's say hi", "three new words"]
     forbid_phrases: ["ready\\?", "nice to meet you too"]
   - id: l3v2pre-good-morning
     note: "teacher naturally matches a good-morning greeting"
@@ -33,7 +33,7 @@ pre_video:
   - id: l3v2pre-what-do-i-do
     note: "child gets an exact hi instruction and one modeled rescue"
     turns: ["What do I do?", "Hi!"]
-    require_phrases: ["say hi to me", "listen first", "three new words"]
+    require_phrases: ["listen first", "now, you try", "three new words"]
   - id: l3v2pre-question
     note: "teacher answers a safe child question, then returns to the say-hi task"
     turns: ["Do you like cats?", "Hi!"]
