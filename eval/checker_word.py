@@ -43,6 +43,13 @@ def strip_tags(text):
     return re.sub(r"\[[A-Z_]+\]", "", text)
 
 
+def action_with_later_speech(text):
+    for match in re.finditer(r"\[TEACHER_[A-Z_]+\]", text):
+        if strip_tags(text[match.end():]).strip():
+            return match.group()
+    return None
+
+
 def norm(text):
     text = text.replace("\u2019", "'").replace("\u2018", "'")
     return re.sub(r"\s+", " ", strip_tags(text)).strip().lower()
@@ -82,6 +89,10 @@ def check(transcript):
         if reply.rstrip().endswith("[STUDENT_TALK]") and not reply.rstrip().endswith(
                 "[TEACHER_LISTEN][STUDENT_TALK]"):
             v("listen-pose", f"reply {n}: wait without listening pose")
+        if transcript.get("action_timing"):
+            early_action = action_with_later_speech(reply)
+            if early_action:
+                v("action-timing", f"reply {n}: spoken text follows {early_action}")
         if has_cjk(reply):
             v("english-only", f"reply {n}: non-English teacher output")
         if "..." in reply or "…" in reply or re.search(r"\w\s*[-–—]\s*\w", body):

@@ -231,7 +231,7 @@ def check(tr):
             v("spoiler", f"reply {n}: culprit leak (matched {step['spoiler']!r})")
         if r.rstrip().endswith("[STUDENT_TALK]") and not r.rstrip().endswith("[TEACHER_LISTEN][STUDENT_TALK]"):
             v("listen-pose", f"reply {n}: wait without [TEACHER_LISTEN][STUDENT_TALK]")
-        if tr.get("prompt_version") == "v2":
+        if tr.get("prompt_version") == "v2" or tr.get("action_timing"):
             early_action = action_with_later_speech(r)
             if early_action:
                 v("action-timing", f"reply {n}: spoken text follows {early_action}")

@@ -28,8 +28,8 @@ Look, Mouse found a bell. The bell is for a cow. Listen first. It's a cow. Now y
 
 ## BEAT 2
 Answer any question or personal comment first.
-- Correct longer target → repeat or gently recast the whole sentence, including the child's detail. Then say `Nice sentence.[TEACHER_APPLAUD] Let's open the next bag.[NEXT_STEP]`
-- Full sentence try → `Yes, it's a cow.[TEACHER_APPLAUD] The bell is for the cow. Let's open the next bag.[NEXT_STEP]`
+- Correct longer target → repeat or gently recast the whole sentence, including the child's detail. Then say `Nice sentence. Let's open the next bag.[TEACHER_APPLAUD][NEXT_STEP]`
+- Full sentence try → `Yes, it's a cow. The bell is for the cow. Let's open the next bag.[TEACHER_APPLAUD][NEXT_STEP]`
 - Meaningful related cow sentence → respond to its meaning and gently recast any small grammar error. Then say `Now try this sentence. It's a cow.[TEACHER_LISTEN][STUDENT_TALK]`
   - Example: `I like cow.` → `You like cows. Me too. Now try this sentence. It's a cow.[TEACHER_LISTEN][STUDENT_TALK]`
 - Anything else → give one matched response if needed, then say:
@@ -37,8 +37,8 @@ Answer any question or personal comment first.
 
 ## BEAT 3 — only after the retry
 Answer any question or personal comment first. Never retry again.
-- Correct longer target → repeat or gently recast the whole sentence, including the child's detail. Then say `Nice sentence.[TEACHER_HIGH_FIVE] Let's open the next bag.[NEXT_STEP]`
-- Sentence or cow try → `Yes, it's a cow. Nice work.[TEACHER_HIGH_FIVE] Let's open the next bag.[NEXT_STEP]`
+- Correct longer target → repeat or gently recast the whole sentence, including the child's detail. Then say `Nice sentence. Let's open the next bag.[TEACHER_HIGH_FIVE][NEXT_STEP]`
+- Sentence or cow try → `Yes, it's a cow. Nice work. Let's open the next bag.[TEACHER_HIGH_FIVE][NEXT_STEP]`
 - Meaningful related cow sentence → respond to its meaning and gently recast it. Then say `Now, listen. It's a cow. Let's open the next bag.[NEXT_STEP]`
 - Asked a question or shared something → after the direct answer, say `Now, listen. It's a cow. Let's open the next bag.[NEXT_STEP]`
 - Anything else or silence → `That's okay. Listen. It's a cow. Let's open the next bag.[NEXT_STEP]`

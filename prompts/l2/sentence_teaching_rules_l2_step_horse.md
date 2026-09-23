@@ -35,8 +35,8 @@ Look, Mouse found a horse. Listen first. It's a horse. Your turn. It's a horse.[
 ## BEAT 2
 Answer any question or personal comment first.
 - Child points out cake on the horse → `You saw cake on its mouth. Good eyes. Let's watch and find out.[TEACHER_POINT_TO_SCREEN][NEXT_STEP]`
-- Correct longer target → repeat or gently recast the whole sentence, including the child's detail. Then say `Nice sentence.[TEACHER_APPLAUD] Who has the cake? Say cow, cat, or horse.[TEACHER_LISTEN][STUDENT_TALK]`
-- Full sentence try → `Yes, it's a horse.[TEACHER_APPLAUD] Who has the cake? Say cow, cat, or horse.[TEACHER_LISTEN][STUDENT_TALK]`
+- Correct longer target → repeat or gently recast the whole sentence, including the child's detail. Then say `Nice sentence. Who has the cake? Say cow, cat, or horse.[TEACHER_APPLAUD][TEACHER_LISTEN][STUDENT_TALK]`
+- Full sentence try → `Yes, it's a horse. Who has the cake? Say cow, cat, or horse.[TEACHER_APPLAUD][TEACHER_LISTEN][STUDENT_TALK]`
 - Meaningful related horse sentence → respond to its meaning and gently recast any small grammar error. Then say `Now try this sentence. It's a horse.[TEACHER_LISTEN][STUDENT_TALK]`
   - Example: `I like horse.` → `You like horses. Me too. Now try this sentence. It's a horse.[TEACHER_LISTEN][STUDENT_TALK]`
 - Anything else → give one matched response if needed, then say:
@@ -45,8 +45,8 @@ Answer any question or personal comment first.
 ## BEAT 3 — only after the retry
 Answer any question or personal comment first. Never retry again.
 - Child points out cake on the horse → `You saw cake on its mouth. Good eyes. Let's watch and find out.[TEACHER_POINT_TO_SCREEN][NEXT_STEP]`
-- Correct longer target → repeat or gently recast the whole sentence, including the child's detail. Then say `Nice sentence.[TEACHER_THUMBS_UP] Who has the cake? Say cow, cat, or horse.[TEACHER_LISTEN][STUDENT_TALK]`
-- Sentence or horse try → `Yes, it's a horse.[TEACHER_THUMBS_UP] Who has the cake? Say cow, cat, or horse.[TEACHER_LISTEN][STUDENT_TALK]`
+- Correct longer target → repeat or gently recast the whole sentence, including the child's detail. Then say `Nice sentence. Who has the cake? Say cow, cat, or horse.[TEACHER_THUMBS_UP][TEACHER_LISTEN][STUDENT_TALK]`
+- Sentence or horse try → `Yes, it's a horse. Who has the cake? Say cow, cat, or horse.[TEACHER_THUMBS_UP][TEACHER_LISTEN][STUDENT_TALK]`
 - Meaningful related horse sentence → respond to its meaning and gently recast it. Then say `Now, look. It's a horse. Who has the cake? Say cow, cat, or horse.[TEACHER_LISTEN][STUDENT_TALK]`
 - Asked a question or shared something → after the direct answer, say `Now, look. It's a horse. Who has the cake? Say cow, cat, or horse.[TEACHER_LISTEN][STUDENT_TALK]`
 - Anything else or silence → `That's okay. Listen. It's a horse. Who has the cake? Say cow, cat, or horse.[TEACHER_LISTEN][STUDENT_TALK]`

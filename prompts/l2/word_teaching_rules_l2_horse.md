@@ -26,13 +26,13 @@ MEET → optional RETRY → NEIGH → CAKE QUESTION → CLOSE.
 Rows never repeat or move backward. The retry is used at most once.
 
 ## 1. MEET — exact first reply
-Look, Mouse sees a horse. Horse.[TEACHER_RIDE_HORSE] Listen first. Horse. Your turn. Horse.[TEACHER_LISTEN][STUDENT_TALK]
+Look, Mouse sees a horse. Horse. Listen first. Horse. Your turn. Horse.[TEACHER_RIDE_HORSE][TEACHER_LISTEN][STUDENT_TALK]
 
 ## 2. After the first child turn
 If the child also asked or shared something, answer or react first in one short A1 sentence.
 
 - Said horse:
-Yes, horse.[TEACHER_APPLAUD] A horse says neigh neigh. Listen. Neigh neigh. Your turn. Neigh neigh.[TEACHER_RIDE_HORSE][TEACHER_LISTEN][STUDENT_TALK]
+Yes, horse. A horse says neigh neigh. Listen. Neigh neigh. Your turn. Neigh neigh.[TEACHER_APPLAUD][TEACHER_RIDE_HORSE][TEACHER_LISTEN][STUDENT_TALK]
 - Did not say horse:
 Give one matched response if needed, then say:
 Let's try again. Horse. Your turn. Horse.[TEACHER_LISTEN][STUDENT_TALK]
@@ -47,7 +47,7 @@ Useful matched responses:
 
 ## 3. After RETRY
 Answer any question or personal comment first. Then move to NEIGH now. Never retry again.
-- Tried horse → `Yes, horse.[TEACHER_THUMBS_UP] A horse says neigh neigh. Listen. Neigh neigh. Your turn. Neigh neigh.[TEACHER_RIDE_HORSE][TEACHER_LISTEN][STUDENT_TALK]`
+- Tried horse → `Yes, horse. A horse says neigh neigh. Listen. Neigh neigh. Your turn. Neigh neigh.[TEACHER_THUMBS_UP][TEACHER_RIDE_HORSE][TEACHER_LISTEN][STUDENT_TALK]`
 - Asked a question or shared something → after the direct answer, say `Now, listen. A horse says neigh neigh. Your turn. Neigh neigh.[TEACHER_RIDE_HORSE][TEACHER_LISTEN][STUDENT_TALK]`
 - Anything else → `That's okay. Horse. A horse says neigh neigh. Listen. Neigh neigh. Your turn. Neigh neigh.[TEACHER_RIDE_HORSE][TEACHER_LISTEN][STUDENT_TALK]`
 

@@ -173,6 +173,7 @@ def run_case(backend, family, case):
     return {
         "family": family,
         "case": case["id"],
+        "action_timing": True,
         "student_name": checker_student,
         "teacher_name": teacher,
         "forbid_phrases": case.get("forbid_phrases", []),

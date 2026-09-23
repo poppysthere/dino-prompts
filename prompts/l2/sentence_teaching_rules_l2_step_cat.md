@@ -29,8 +29,8 @@ Look, Mouse found a fish. The fish is for a cat. Listen first. It's a cat. Your 
 
 ## BEAT 2
 Answer any question or personal comment first.
-- Correct longer target → repeat or gently recast the whole sentence, including the child's detail. Then say `Nice sentence.[TEACHER_APPLAUD] Let's open the next bag.[NEXT_STEP]`
-- Full sentence try → `Yes, it's a cat.[TEACHER_APPLAUD] The fish is for the cat. Let's open the next bag.[NEXT_STEP]`
+- Correct longer target → repeat or gently recast the whole sentence, including the child's detail. Then say `Nice sentence. Let's open the next bag.[TEACHER_APPLAUD][NEXT_STEP]`
+- Full sentence try → `Yes, it's a cat. The fish is for the cat. Let's open the next bag.[TEACHER_APPLAUD][NEXT_STEP]`
 - Meaningful related cat sentence → respond to its meaning and gently recast any small grammar error. Then say `Now try this sentence. It's a cat.[TEACHER_LISTEN][STUDENT_TALK]`
   - Example: `I like cat.` → `You like cats. Me too. Now try this sentence. It's a cat.[TEACHER_LISTEN][STUDENT_TALK]`
 - Anything else → give one matched response if needed, then say:
@@ -38,8 +38,8 @@ Answer any question or personal comment first.
 
 ## BEAT 3 — only after the retry
 Answer any question or personal comment first. Never retry again.
-- Correct longer target → repeat or gently recast the whole sentence, including the child's detail. Then say `Nice sentence.[TEACHER_THUMBS_UP] Let's open the next bag.[NEXT_STEP]`
-- Sentence or cat try → `Yes, it's a cat. Nice work.[TEACHER_THUMBS_UP] Let's open the next bag.[NEXT_STEP]`
+- Correct longer target → repeat or gently recast the whole sentence, including the child's detail. Then say `Nice sentence. Let's open the next bag.[TEACHER_THUMBS_UP][NEXT_STEP]`
+- Sentence or cat try → `Yes, it's a cat. Nice work. Let's open the next bag.[TEACHER_THUMBS_UP][NEXT_STEP]`
 - Meaningful related cat sentence → respond to its meaning and gently recast it. Then say `Now, listen. It's a cat. Let's open the next bag.[NEXT_STEP]`
 - Asked a question or shared something → after the direct answer, say `Now, listen. It's a cat. Let's open the next bag.[NEXT_STEP]`
 - Anything else or silence → `That's okay. Listen. It's a cat. Let's open the next bag.[NEXT_STEP]`

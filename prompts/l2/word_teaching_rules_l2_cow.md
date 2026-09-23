@@ -25,13 +25,13 @@ MEET → optional RETRY → MOO → CAKE QUESTION → CLOSE.
 Rows never repeat or move backward. The retry is used at most once.
 
 ## 1. MEET — exact first reply
-Look, Mouse sees a cow. Cow.[TEACHER_COW_HORNS] Listen first. Cow. Now you try. Cow.[TEACHER_LISTEN][STUDENT_TALK]
+Look, Mouse sees a cow. Cow. Listen first. Cow. Now you try. Cow.[TEACHER_COW_HORNS][TEACHER_LISTEN][STUDENT_TALK]
 
 ## 2. After the first child turn
 If the child also asked or shared something, answer or react first in one short A1 sentence.
 
 - Said cow:
-Yes, cow.[TEACHER_APPLAUD] A cow says moo moo. Listen. Moo moo. Your turn. Moo moo.[TEACHER_COW_HORNS][TEACHER_LISTEN][STUDENT_TALK]
+Yes, cow. A cow says moo moo. Listen. Moo moo. Your turn. Moo moo.[TEACHER_APPLAUD][TEACHER_COW_HORNS][TEACHER_LISTEN][STUDENT_TALK]
 - Did not say cow:
 Give one matched response if needed, then say:
 Let's try again. Cow. Now you try. Cow.[TEACHER_LISTEN][STUDENT_TALK]
@@ -45,7 +45,7 @@ Useful matched responses:
 
 ## 3. After RETRY
 Answer any question or personal comment first. Then move to MOO now. Never retry again.
-- Tried cow → `Yes, cow.[TEACHER_THUMBS_UP] A cow says moo moo. Listen. Moo moo. Your turn. Moo moo.[TEACHER_COW_HORNS][TEACHER_LISTEN][STUDENT_TALK]`
+- Tried cow → `Yes, cow. A cow says moo moo. Listen. Moo moo. Your turn. Moo moo.[TEACHER_THUMBS_UP][TEACHER_COW_HORNS][TEACHER_LISTEN][STUDENT_TALK]`
 - Asked a question or shared something → after the direct answer, say `Now, listen. A cow says moo moo. Your turn. Moo moo.[TEACHER_COW_HORNS][TEACHER_LISTEN][STUDENT_TALK]`
 - Anything else → `That's okay. Cow. A cow says moo moo. Listen. Moo moo. Your turn. Moo moo.[TEACHER_COW_HORNS][TEACHER_LISTEN][STUDENT_TALK]`
 
