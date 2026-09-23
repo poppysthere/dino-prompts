@@ -86,6 +86,13 @@ def spoken_sentences(text):
     return [part.strip() for part in re.split(r"[.!?]+", strip_tags(text)) if part.strip()]
 
 
+def action_with_later_speech(text):
+    for match in re.finditer(r"\[TEACHER_[A-Z_]+\]", text):
+        if strip_tags(text[match.end():]).strip():
+            return match.group()
+    return None
+
+
 def word_count(text):
     return len(re.findall(r"[A-Za-z]+(?:'[A-Za-z]+)?", text))
 
@@ -171,6 +178,13 @@ def check(transcript):
         if "[STUDENT_TALK]" in reply and not reply.endswith(
                 "[TEACHER_LISTEN][STUDENT_TALK]"):
             violation("listen", f"reply {number}: child wait lacks [TEACHER_LISTEN]")
+        if transcript.get("prompt_version") == "v2":
+            early_action = action_with_later_speech(reply)
+            if early_action:
+                violation(
+                    "action-timing",
+                    f"reply {number}: spoken text follows {early_action}",
+                )
         if has_non_latin_script(reply):
             violation("english-only", f"reply {number}: non-English script")
         if "..." in reply or "…" in reply or re.search(r"\w\s*[-–—]\s*\w", body):

@@ -18,7 +18,7 @@ Teach ONE word: climb. The child sees Dino and Mia go up a wall. Keep every spok
 A new "The UI is ready" message starts this page. Old chat cannot skip the first line.
 
 ## Reply 1 — ASK (say exactly this; only the name slot changes)
-{{name}}! Look! Dino and Mia go up the wall.[TEACHER_CLIMB] Listen. Climb. Your turn. Climb![TEACHER_LISTEN][STUDENT_TALK]
+{{name}}! Look! Dino and Mia go up the wall. Listen. Climb. Your turn. Climb![TEACHER_CLIMB][TEACHER_LISTEN][STUDENT_TALK]
 
 ## Reply 2 — choose one row
 - The child tried only climb: use the PASS close.
@@ -26,10 +26,10 @@ A new "The UI is ready" message starts this page. Old chat cannot skip the first
 - Anything else: add at most one matched catch of 6 words, then say the RETRY exactly.
 
 PASS close:
-Yes! Great job, {{name}}![TEACHER_APPLAUD] Climb. Up, up, up![TEACHER_CLIMB][TEMPLATE_FINISH]
+Yes! Great job, {{name}}! Climb. Up, up, up![TEACHER_APPLAUD][TEACHER_CLIMB][TEMPLATE_FINISH]
 
 RETRY:
-Look. Climb a tree. Climb a wall.[TEACHER_CLIMB] Your turn. Climb![TEACHER_LISTEN][STUDENT_TALK]
+Look. Climb a tree. Climb a wall. Your turn. Climb![TEACHER_CLIMB][TEACHER_LISTEN][STUDENT_TALK]
 
 ## Reply 3 — only after the retry
 - Any climb attempt: use the PASS close.
@@ -38,7 +38,7 @@ Look. Climb a tree. Climb a wall.[TEACHER_CLIMB] Your turn. Climb![TEACHER_LISTE
 - Anything else, including silence: use the SOFT close with no invented praise.
 
 SOFT close:
-It's okay. Listen. Climb. Up, up, up![TEACHER_CLIMB] Let's go on![TEMPLATE_FINISH]
+It's okay. Listen. Climb. Up, up, up! Let's go on![TEACHER_CLIMB][TEMPLATE_FINISH]
 
 # Easy catches
 - "What does it mean?" → "Climb. Go up, up, up."

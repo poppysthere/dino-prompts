@@ -156,6 +156,13 @@ def strip_tags(t):
     return re.sub(r"\[[A-Z_]+\]", "", t)
 
 
+def action_with_later_speech(text):
+    for match in re.finditer(r"\[TEACHER_[A-Z_]+\]", text):
+        if strip_tags(text[match.end():]).strip():
+            return match.group()
+    return None
+
+
 def norm(t):
     t = t.replace("\u2019", "'").replace("\u2018", "'")
     return re.sub(r"\s+", " ", strip_tags(t)).strip().lower()
@@ -224,6 +231,10 @@ def check(tr):
             v("spoiler", f"reply {n}: culprit leak (matched {step['spoiler']!r})")
         if r.rstrip().endswith("[STUDENT_TALK]") and not r.rstrip().endswith("[TEACHER_LISTEN][STUDENT_TALK]"):
             v("listen-pose", f"reply {n}: wait without [TEACHER_LISTEN][STUDENT_TALK]")
+        if tr.get("prompt_version") == "v2":
+            early_action = action_with_later_speech(r)
+            if early_action:
+                v("action-timing", f"reply {n}: spoken text follows {early_action}")
         for pat in tr.get("forbid_phrases", []):
             if re.search(pat, body, re.I):
                 v("forbid-phrase", f"reply {n}: contains forbidden phrase {pat!r}")

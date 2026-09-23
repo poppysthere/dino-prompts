@@ -93,6 +93,13 @@ def strip_tags(t):
     return re.sub(r"\[[A-Z_]+\]", "", t)
 
 
+def action_with_later_speech(text):
+    for match in re.finditer(r"\[TEACHER_[A-Z_]+\]", text):
+        if strip_tags(text[match.end():]).strip():
+            return match.group()
+    return None
+
+
 def unquirk(t):
     return t.replace("\u2019", "'").replace("\u2018", "'")  # curly apostrophes break phrase matching
 
@@ -172,6 +179,10 @@ def check(path):
             v("tag-last", f"reply {n}: text after the control tag")
         if has_cjk(r):
             v("english-only", f"reply {n}: contains non-English characters")
+        if tr.get("family") == "leadin_l3_v2":
+            early_action = action_with_later_speech(r)
+            if early_action:
+                v("action-timing", f"reply {n}: spoken text follows {early_action}")
         # "Ta-da!" is in the common layer's own toolbox; hyphenated
         # interjections are single TTS-safe words, not pause-breaking dashes.
         dashable = re.sub(r"\b(ta-da|ding-dong|high-five|bye-bye|peek-a-boo|so-so)\b", "x", strip_tags(r), flags=re.I)

@@ -148,6 +148,7 @@ def run_case(backend, family, case):
     return {
         "family": family,
         "case": case["id"],
+        "prompt_version": "v2",
         "student_name": student,
         "teacher_name": teacher,
         **case_expectations(family, case),

@@ -173,6 +173,21 @@ class L1CheckerTests(unittest.TestCase):
         issues = checker_l1.check(data)
         self.assertTrue(any("[pre-a1-length]" in issue for issue in issues))
 
+    def test_v2_action_cannot_interrupt_tts(self):
+        data = transcript(
+            "word_apple",
+            [
+                {
+                    "role": "assistant",
+                    "text": "Look. Boo has an apple.[TEACHER_BITE_APPLE] Listen first. Apple. Now you try. Apple.[TEACHER_LISTEN][STUDENT_TALK]",
+                }
+            ],
+            prompt_version="v2",
+            max_replies=1,
+        )
+        issues = checker_l1.check(data)
+        self.assertTrue(any("[action-timing]" in issue for issue in issues))
+
 
 if __name__ == "__main__":
     unittest.main()

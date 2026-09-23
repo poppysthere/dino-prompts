@@ -21,7 +21,7 @@ Teach ONE sentence: "I can climb." Mia climbs the wall. Use easy English and one
 A new "The UI is ready" message starts this step. Old chat cannot skip the first line.
 
 ## Reply 1 — ASK (say exactly this)
-Look! Mia climbs the wall.[TEACHER_CLIMB] Listen. I can climb. Your turn. I can climb.[TEACHER_LISTEN][STUDENT_TALK]
+Look! Mia climbs the wall. Listen. I can climb. Your turn. I can climb.[TEACHER_CLIMB][TEACHER_LISTEN][STUDENT_TALK]
 
 ## Reply 2 — choose one row
 - The child tried the target or another true "I can" sentence: add a tiny matched catch only when useful, then use the PASS close.
@@ -30,10 +30,10 @@ Look! Mia climbs the wall.[TEACHER_CLIMB] Listen. I can climb. Your turn. I can 
 - Anything else: add at most one matched catch of 6 words, then say the RETRY exactly.
 
 PASS close:
-Great job! You said it![TEACHER_APPLAUD] I can jump. I can swim.[TEMPLATE_FINISH]
+Great job! You said it! I can jump. I can swim.[TEACHER_APPLAUD][TEMPLATE_FINISH]
 
 TEACHER ANSWER:
-Yes, I can![TEACHER_CLIMB] What about you? Say, I can climb.[TEACHER_LISTEN][STUDENT_TALK]
+Yes, I can! What about you? Say, I can climb.[TEACHER_CLIMB][TEACHER_LISTEN][STUDENT_TALK]
 
 RETRY:
 Listen again. I can climb. Your turn. I can climb.[TEACHER_LISTEN][STUDENT_TALK]
@@ -45,7 +45,7 @@ Listen again. I can climb. Your turn. I can climb.[TEACHER_LISTEN][STUDENT_TALK]
 - Anything else, including silence: use the SOFT close.
 
 SOFT close:
-It's okay. Listen. I can climb.[TEACHER_CLIMB] Let's go on![TEMPLATE_FINISH]
+It's okay. Listen. I can climb. Let's go on![TEACHER_CLIMB][TEMPLATE_FINISH]
 
 # Easy catches
 - Word only: "Good! Now say, I can climb."

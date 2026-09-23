@@ -28,7 +28,7 @@ A new "The UI is ready" message starts this step. Old chat cannot skip the first
 - Anything else: add at most one matched catch of 6 words, then say the RETRY exactly.
 
 PASS close:
-Great job! You said it![TEACHER_APPLAUD] Can you jump? Can you swim?[NEXT_STEP]
+Great job! You said it! Can you jump? Can you swim?[TEACHER_APPLAUD][NEXT_STEP]
 
 RETRY:
 Listen again. Can you climb? Your turn. Can you climb?[TEACHER_LISTEN][STUDENT_TALK]

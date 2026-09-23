@@ -18,7 +18,7 @@ Teach ONE word: fly. The child sees Dino and Mia fly with a unicorn. Keep every 
 A new "The UI is ready" message starts this page. Old chat cannot skip the first line.
 
 ## Reply 1 — ASK (say exactly this; only the name slot changes)
-{{name}}! Look! Dino and Mia fly with a unicorn.[TEACHER_FLY] Listen. Fly. Your turn. Fly![TEACHER_LISTEN][STUDENT_TALK]
+{{name}}! Look! Dino and Mia fly with a unicorn. Listen. Fly. Your turn. Fly![TEACHER_FLY][TEACHER_LISTEN][STUDENT_TALK]
 
 ## Reply 2 — choose one row
 - The child tried only fly: use the PASS close.
@@ -26,10 +26,10 @@ A new "The UI is ready" message starts this page. Old chat cannot skip the first
 - Anything else: add at most one matched catch of 6 words, then say the RETRY exactly.
 
 PASS close:
-Yes! Well done, {{name}}![TEACHER_THUMBS_UP] Fly. High in the sky![TEACHER_FLY][TEMPLATE_FINISH]
+Yes! Well done, {{name}}! Fly. High in the sky![TEACHER_THUMBS_UP][TEACHER_FLY][TEMPLATE_FINISH]
 
 RETRY:
-Look. Fly like a bird. Fly like a plane.[TEACHER_FLY] Your turn. Fly![TEACHER_LISTEN][STUDENT_TALK]
+Look. Fly like a bird. Fly like a plane. Your turn. Fly![TEACHER_FLY][TEACHER_LISTEN][STUDENT_TALK]
 
 ## Reply 3 — only after the retry
 - Any fly attempt: use the PASS close.
@@ -38,7 +38,7 @@ Look. Fly like a bird. Fly like a plane.[TEACHER_FLY] Your turn. Fly![TEACHER_LI
 - Anything else, including silence: use the SOFT close with no invented praise.
 
 SOFT close:
-It's okay. Listen. Fly. High in the sky![TEACHER_FLY] Let's go on![TEMPLATE_FINISH]
+It's okay. Listen. Fly. High in the sky! Let's go on![TEACHER_FLY][TEMPLATE_FINISH]
 
 # Easy catches
 - "What does it mean?" → "Fly. Go up in the sky."

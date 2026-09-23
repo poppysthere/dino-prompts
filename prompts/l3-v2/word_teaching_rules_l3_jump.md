@@ -19,7 +19,7 @@ Teach ONE word: jump. The child sees Dino and Mia go over rocks. Keep every spok
 A new "The UI is ready" message starts this page. Old chat cannot skip the first line.
 
 ## Reply 1 — ASK (say exactly this; only the name slot changes)
-{{name}}! Look! Dino and Mia jump over the rocks.[TEACHER_JUMP] Listen. Jump. Your turn. Jump![TEACHER_LISTEN][STUDENT_TALK]
+{{name}}! Look! Dino and Mia jump over the rocks. Listen. Jump. Your turn. Jump![TEACHER_JUMP][TEACHER_LISTEN][STUDENT_TALK]
 
 ## Reply 2 — choose one row
 - The child tried only jump: use the PASS close.
@@ -27,10 +27,10 @@ A new "The UI is ready" message starts this page. Old chat cannot skip the first
 - Anything else: add at most one matched catch of 6 words, then say the RETRY exactly.
 
 PASS close:
-Yes! Great job, {{name}}![TEACHER_APPLAUD] Jump. Up and over![TEACHER_JUMP][TEMPLATE_FINISH]
+Yes! Great job, {{name}}! Jump. Up and over![TEACHER_APPLAUD][TEACHER_JUMP][TEMPLATE_FINISH]
 
 RETRY:
-Look. Jump over a rock. Jump up high.[TEACHER_JUMP] Your turn. Jump![TEACHER_LISTEN][STUDENT_TALK]
+Look. Jump over a rock. Jump up high. Your turn. Jump![TEACHER_JUMP][TEACHER_LISTEN][STUDENT_TALK]
 
 ## Reply 3 — only after the retry
 - Any jump attempt: use the PASS close.
@@ -39,7 +39,7 @@ Look. Jump over a rock. Jump up high.[TEACHER_JUMP] Your turn. Jump![TEACHER_LIS
 - Anything else, including silence: use the SOFT close with no invented praise.
 
 SOFT close:
-It's okay. Listen. Jump. Up and over![TEACHER_JUMP] Let's go on![TEMPLATE_FINISH]
+It's okay. Listen. Jump. Up and over! Let's go on![TEACHER_JUMP][TEMPLATE_FINISH]
 
 # Easy catches
 - "What does it mean?" → "Jump. Go up and down."

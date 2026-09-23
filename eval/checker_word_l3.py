@@ -106,6 +106,13 @@ def strip_tags(t):
     return re.sub(r"\[[A-Z_]+\]", "", t)
 
 
+def action_with_later_speech(text):
+    for match in re.finditer(r"\[TEACHER_[A-Z_]+\]", text):
+        if strip_tags(text[match.end():]).strip():
+            return match.group()
+    return None
+
+
 def norm(t):
     t = t.replace("\u2019", "'").replace("\u2018", "'")
     t = re.sub(r"\s+", " ", strip_tags(t)).strip().lower()
@@ -146,6 +153,10 @@ def check(path):
             v("tag-last", f"reply {n}: text after the control tag")
         if "[STUDENT_TALK]" in r and "[TEACHER_LISTEN][STUDENT_TALK]" not in r.replace(" ", ""):
             v("listen-pose", f"reply {n}: wait without [TEACHER_LISTEN] glued to [STUDENT_TALK]")
+        if tr.get("prompt_version") == "v2":
+            early_action = action_with_later_speech(r)
+            if early_action:
+                v("action-timing", f"reply {n}: spoken text follows {early_action}")
         if has_cjk(r):
             v("english-only", f"reply {n}: contains non-English characters")
         if "..." in r or "…" in r or re.search(r"\w\s*[-–—]\s*\w", strip_tags(r)):
