@@ -140,6 +140,45 @@ class L1CheckerTests(unittest.TestCase):
         )
         self.assertEqual(checker_l1.check(data), [])
 
+    def test_v2_only_sentence_uses_template_finish_after_action(self):
+        data = transcript(
+            "sentence_like_bread",
+            [
+                {
+                    "role": "assistant",
+                    "text": "Look. Boo eats the bread. Munch munch. Listen first. I like bread. Now you try. I like bread.[TEACHER_LISTEN][STUDENT_TALK]",
+                },
+                {"role": "user", "text": "I really like bread."},
+                {
+                    "role": "assistant",
+                    "text": "You really like bread. Me too. Great sentence.[TEACHER_APPLAUD][TEMPLATE_FINISH]",
+                },
+            ],
+            prompt_version="v2",
+            max_replies=2,
+        )
+        self.assertEqual(checker_l1.check(data), [])
+
+    def test_v2_only_sentence_rejects_next_step_finish(self):
+        data = transcript(
+            "sentence_like_bread",
+            [
+                {
+                    "role": "assistant",
+                    "text": "Look. Boo eats the bread. Munch munch. Listen first. I like bread. Now you try. I like bread.[TEACHER_LISTEN][STUDENT_TALK]",
+                },
+                {"role": "user", "text": "I like bread."},
+                {
+                    "role": "assistant",
+                    "text": "You like bread. Great sentence.[TEACHER_APPLAUD][NEXT_STEP]",
+                },
+            ],
+            prompt_version="v2",
+            max_replies=2,
+        )
+        issues = checker_l1.check(data)
+        self.assertTrue(any("[must-finish]" in issue for issue in issues))
+
     def test_hard_question_is_rejected(self):
         data = transcript(
             "wrapup",

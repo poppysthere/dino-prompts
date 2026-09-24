@@ -179,6 +179,59 @@ word_juice:
     reply_require:
       "2": ["^Listen first\\.", "Then you say juice"]
 
+sentence_intro:
+  - id: l1-v2-sentence-intro
+    note: "The short video bridge gives no hard prediction question"
+    turns: []
+    max_replies: 1
+    reply_require:
+      "1": ["Apple", "Juice", "Bread", "Let's watch Boo eat"]
+
+sentence_like_bread:
+  - id: l1-v2-like-bread-pass
+    note: "A clear target finishes the only sentence page"
+    turns: ["I like bread."]
+    max_replies: 2
+    reply_require:
+      "2": ["like bread", "Great sentence"]
+
+  - id: l1-v2-like-bread-name
+    note: "The teacher answers the child before one clear retry"
+    teacher_name: "Kim"
+    turns: ["What's your name?", "I like bread."]
+    max_replies: 3
+    reply_require:
+      "2": ["^I'm Kim\\.", "I like bread", "Now you try"]
+
+  - id: l1-v2-like-bread-other-food
+    note: "The child's real food preference is heard before teaching resumes"
+    turns: ["I like cake.", "I like bread."]
+    max_replies: 3
+    reply_require:
+      "2": ["You like cake", "Boo likes bread"]
+
+  - id: l1-v2-like-bread-expanded
+    note: "Richer correct language is accepted without shrinking it"
+    turns: ["I really like bread."]
+    max_replies: 2
+    reply_require:
+      "2": ["really like bread", "Great sentence"]
+    reply_forbid:
+      "2": ["Your turn"]
+
+  - id: l1-v2-like-bread-instruction
+    note: "The child gets one direct modeled instruction"
+    turns: ["What do I do?", "I like bread."]
+    max_replies: 3
+    reply_require:
+      "2": ["^Listen first\\.", "I like bread", "Then you say it"]
+
+  - id: l1-v2-like-bread-silent
+    note: "One retry only, then the page finishes"
+    turns: []
+    max_replies: 3
+    forbid_phrases: ["Great sentence", "You said"]
+
 wrapup:
   - id: l1-wrapup-yes
     note: "Easy yes/no answer gets a specific warm response"

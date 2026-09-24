@@ -60,6 +60,16 @@ FAMILIES = {
         "template": "word_teaching_rules_l1l2_juice.md",
         "render": "Word teaching: juice. Chef Boo has juice.",
     },
+    "sentence_intro": {
+        "stage": "sentence",
+        "template": "sentence_teaching_rules_l1l2_pre_video.md",
+        "render": "Apple, juice, and bread are on screen. A video of Boo eating comes next.",
+    },
+    "sentence_like_bread": {
+        "stage": "sentence",
+        "template": "sentence_teaching_rules_l1l2_i_like_bread.md",
+        "render": "Sentence teaching: I like bread. Boo eats bread.",
+    },
     "wrapup": {
         "stage": "wrapup",
         "template": "wrapup_teaching_rules_l1l2.md",
@@ -181,7 +191,7 @@ def main():
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument(
         "--stage",
-        choices=("leadin", "word", "wrapup"),
+        choices=("leadin", "word", "sentence", "wrapup"),
         action="append",
     )
     parser.add_argument("--only", help="run one case ID")
@@ -190,7 +200,7 @@ def main():
     args = parser.parse_args()
 
     batteries = load_cases()
-    stages = set(args.stage or ("leadin", "word", "wrapup"))
+    stages = set(args.stage or ("leadin", "word", "sentence", "wrapup"))
     selected = [
         (family, case)
         for family, cases in batteries.items()
@@ -201,11 +211,11 @@ def main():
     if not selected:
         parser.error("no selected L1 cases")
 
-    print("Lesson flow: L1 V2 lead-in -> word practice -> wrap-up")
+    print("Lesson flow: L1 V2 lead-in -> word practice -> I like bread -> wrap-up")
     print("Learners: ages 4-6, CEFR pre-A1")
     print(f"Prompt source: {PROMPT_DIR}")
     print(f"Forge modelName: {args.model}")
-    for stage in ("leadin", "word", "wrapup"):
+    for stage in ("leadin", "word", "sentence", "wrapup"):
         count = sum(FAMILIES[family]["stage"] == stage for family, _ in selected)
         if count:
             print(f"  {stage}: {count} cases")
@@ -243,7 +253,7 @@ def main():
         report = {
             "model": args.model,
             "forge_picker_id": CATALOG_IDS.get(args.model, args.model),
-            "lesson": "L1 V2 lead-in -> word practice -> wrap-up",
+            "lesson": "L1 V2 lead-in -> word practice -> I like bread -> wrap-up",
             "started_at_utc": stamp,
             "prompt_sha256": hashes,
             "cases": {},

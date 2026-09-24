@@ -38,6 +38,7 @@ CONFIG = {
     "sentence_like_bread": {
         "first": r"^Look\. Boo eats the bread\. Munch munch\. Listen first\. I like bread\.",
         "finish": "[NEXT_STEP]",
+        "finish_v2": "[TEMPLATE_FINISH]",
     },
     "sentence_dont_apples": {
         "first": r"^Oh, Boo says yuck\. Listen first\. I don't like apples\.",
@@ -156,6 +157,11 @@ def child_first_issues(messages, teacher_name):
 def check(transcript):
     family = transcript["family"]
     config = CONFIG[family]
+    expected_finish = (
+        config.get("finish_v2", config["finish"])
+        if transcript.get("prompt_version") == "v2"
+        else config["finish"]
+    )
     messages = transcript.get("messages", [])
     replies = [m.get("text", "").strip() for m in messages if m.get("role") == "assistant"]
     issues = []
@@ -245,11 +251,11 @@ def check(transcript):
     if len(replies) > max_replies:
         violation("reply-budget", f"{len(replies)} replies, max {max_replies}")
 
-    if config["finish"] not in replies[-1]:
-        violation("must-finish", f"last reply lacks {config['finish']}")
+    if expected_finish not in replies[-1]:
+        violation("must-finish", f"last reply lacks {expected_finish}")
     for reply in replies[:-1]:
-        if config["finish"] in reply:
-            violation("early-finish", f"{config['finish']} appears before final reply")
+        if expected_finish in reply:
+            violation("early-finish", f"{expected_finish} appears before final reply")
 
     normalized = {}
     for number, reply in enumerate(replies, 1):
