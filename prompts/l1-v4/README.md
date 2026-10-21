@@ -43,5 +43,10 @@ the environment for 29 live cases on `gpt5.6LunaChatModel` through Prompt Forge.
 The runner saves prompt hashes, source diffs, transcripts and failures under
 `eval/runs/`. It does not deploy or edit Forge content.
 
-2026-10-21: offline checks passed. Live testing was attempted but blocked by
-HTTP 401 Unauthorized. No live case or TTS audio result is claimed as passed.
+2026-10-21: offline checks passed. After refreshing Forge authorization, the
+initial live run passed 28/29 cases. The wrap-up silence case repeated the
+question because the common silence ladder overrode the two-turn stage rule.
+An explicit stage override fixed that conflict; all six wrap-up cases then
+passed. Combined coverage is 29/29: 23 unchanged cases plus six wrap-up reruns.
+The runner verified text and tags, not TTS audio. See
+[`L1_V4_EVAL_2026-10-21.md`](../../eval/L1_V4_EVAL_2026-10-21.md) for evidence.
