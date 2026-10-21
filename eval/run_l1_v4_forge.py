@@ -22,7 +22,10 @@ ROOT = Path(__file__).resolve().parent.parent
 PROMPTS = ROOT / 'prompts/l1-v4'
 SOURCE = '829e768bb58a7302ed6987867a36ccc9431419b3'
 MODEL = 'gpt5.6LunaChatModel'
-PHONEMES = {'apple': '/æ/ /p/ /ə/ /l/', 'bread': '/b/ /r/ /ɛ/ /d/', 'juice': '/dʒ/ /uː/ /s/'}
+PHONEMES = {'apple': '/æp/ /əl/', 'bread': '/b/ /r/ /ɛ/ /d/', 'juice': '/dʒ/ /uː/ /s/'}  # Default IPA teaching units: syllables for apple.
+HELP_UNITS = {'apple': {'æp', 'əl', 'æ', 'p', 'ə', 'l'},
+              'bread': {'b', 'r', 'ɛ', 'd'}, 'juice': {'dʒ', 'uː', 's'}}
+IPA_UNIT = re.compile(r'/([^/\s]+)/')
 FILES = {
     'warmup': 'warmup_teaching_rules_l1l2.md',
     'intro': 'sentence_teaching_rules_l1l2_pre_video.md',
@@ -50,7 +53,34 @@ def cases():
             ('silent', [SILENCE] * 3),
         ]:
             result.append({'id': f'{word}-{name}', 'family': word, 'turns': turns,
-                           'phoneme_reply': None if name == 'instant' else 2})
+                           'phoneme_reply': None if name == 'instant' else 2,
+                           'allowed_unit_only_replies': [3] if name == 'silent' else []})
+    for word, approximation, target, request in [
+        ('apple', 'appo', 'l', "I can't say apple. Please show me just the last sound."),
+        ('bread', 'bred', 'r', "The r sound in bread is hard. Help me with that sound."),
+        ('juice', 'joos', 'dʒ', "I can't say juice. Please show me just the first sound."),
+    ]:
+        result.append({'id': f'{word}-approximation', 'family': word,
+                       'turns': [approximation], 'no_drill': True})
+        result.append({'id': f'{word}-specific-sound', 'family': word,
+                       'turns': [request, word], 'target_units': {'2': [target]}})
+        result.append({'id': f'{word}-assessed-sound', 'family': word,
+                       'turns': [approximation, word], 'target_units': {'2': [target]},
+                       'assessment': {'1': f'Reliable pronunciation feedback: the target word was attempted; the /{target}/ sound needs one supported practice. Demonstrate only that sound, then the whole word. This is a synthetic assessment for this test, not real audio analysis.'}})
+    result.extend([
+        {'id': 'apple-specific-syllable', 'family': 'apple',
+         'turns': ["The last part of apple is hard. Show me just the last part.", 'apple'],
+         'target_units': {'2': ['əl']}},
+        {'id': 'apple-still-struggling', 'family': 'apple',
+         'turns': ['Please say it slowly.', "I still can't. Can I try just the first bit?", 'ap'],
+         'phoneme_reply': 2, 'target_units': {'3': ['æp']}, 'unit_only_reply': 3},
+        {'id': 'apple-uncertain-asr', 'family': 'apple',
+         'turns': ['[unclear speech]', 'apple'], 'phoneme_reply': 2,
+         'no_diagnosis': True},
+        {'id': 'apple-help-after-attempt', 'family': 'apple',
+         'turns': ['yes', 'Apple. But the last part is hard. Help me with just that part.', 'apple'],
+         'phoneme_reply': 2, 'target_units': {'3': ['əl']}},
+    ])
     for name, turns, require in [
         ('bread', ['bread'], r'^(?:you like bread|bread for you|bread)'),
         ('juice', ['I like juice'], r'^(?:you like juice|juice for you|juice)'),
@@ -105,20 +135,47 @@ def check(case, messages):
         body = spoken(reply)
         if NOISE.search(body):
             issues.append(f'Reply {i}: written laughter or cheering noise')
-        remainder = body.lower().replace(PHONEMES.get(family, '__no_sound_model__'), '')
+        units = IPA_UNIT.findall(body)
+        remainder = IPA_UNIT.sub('', body)
         if '...' in body or '…' in body:
             issues.append(f'Reply {i}: ellipsis or obsolete dotted sound model')
-        if '/' in remainder:
-            issues.append(f'Reply {i}: unapproved IPA or phonemes not individually slash-delimited')
+        if '/' in remainder or any(unit not in HELP_UNITS.get(family, set()) for unit in units):
+            issues.append(f'Reply {i}: invalid IPA teaching unit or slash format')
         if family in PHONEMES and PHONEMES[family] in body.lower():
             model = re.escape(PHONEMES[family])
             if not re.search(r'\b' + family + r'[.! ,]*' + model + r'[.! ,]*' + family + r'\b', body, re.I):
                 issues.append(f'Reply {i}: missing whole word before/after sounds')
+        elif units and i != case.get('unit_only_reply') and i not in case.get('allowed_unit_only_replies', []) and not re.search(r'\b' + re.escape(family) + r'\b', body[body.rfind('/')+1:], re.I):
+            issues.append(f'Reply {i}: targeted help did not blend back to the whole word')
         if re.search(r'[\u4e00-\u9fff]', body):
             issues.append(f'Reply {i}: non-English speech')
     index = case.get('phoneme_reply')
     if index and (len(replies) < index or PHONEMES[family] not in spoken(replies[index-1]).lower()):
         issues.append(f'Reply {index}: missing sound model')
+    for target_index, expected_units in case.get('target_units', {}).items():
+        reply_index = int(target_index) - 1
+        if reply_index >= len(replies):
+            issues.append(f'Reply {target_index}: requested help was skipped')
+            continue
+        reply = replies[reply_index]
+        if list(dict.fromkeys(IPA_UNIT.findall(spoken(reply)))) != expected_units:
+            issues.append(f'Reply {target_index}: expected focused help {expected_units}')
+        if '[STUDENT_TALK]' not in reply:
+            issues.append(f'Reply {target_index}: help request prematurely handed off')
+        if not re.search(r'\b(?:your turn|try|you say|say)\b', spoken(reply), re.I):
+            issues.append(f'Reply {target_index}: no clear practice instruction')
+    if case.get('no_drill') and (len(replies) != 2 or any(IPA_UNIT.search(r) for r in replies)):
+        issues.append('Understandable approximation caused unnecessary drilling')
+    if case.get('unit_only_reply'):
+        small_index = case['unit_only_reply'] - 1
+        if small_index < len(replies):
+            invitation = re.split(r'\b(?:your turn|now (?:you )?say|say it|try)\b', spoken(replies[small_index]), flags=re.I)[-1]
+            if re.search(r'\b' + re.escape(family) + r'\b', invitation, re.I):
+                issues.append('Small-unit invitation demanded the whole word too soon')
+        if re.search(r'you (?:said|can say|did say)\s+' + re.escape(family) + r'\b', spoken(replies[-1]), re.I):
+            issues.append('Praised a part-only attempt as the whole word')
+    if case.get('no_diagnosis') and any(re.search(r'you (?:missed|said|forgot|dropped)|your .{0,25}(?:wrong|incorrect)', spoken(r), re.I) for r in replies[:2]):
+        issues.append('Claimed a pronunciation diagnosis without evidence')
     if family in PHONEMES:
         template = (PROMPTS / FILES[family]).read_text()
         opening = re.search(r'Say exactly this, nothing more:\n([^\n]+)', template).group(1)
@@ -198,6 +255,37 @@ def offline():
             broken[2]['text'] = broken[2]['text'].replace(model, invalid)
             if not check(sample_case, broken):
                 errors.append(f'{word}: checker accepted incorrect sound segmentation: {invalid}')
+        target = {'apple': 'əl', 'bread': 'r', 'juice': 'dʒ'}[word]
+        targeted = [dict(m) for m in fixture]
+        targeted[2]['text'] = f'Listen. /{target}/. {word}. Your turn. {word}.[TEACHER_LISTEN][STUDENT_TALK]'
+        targeted_case = {'id': f'{word}-target-fixture', 'family': word, 'target_units': {'2': [target]}}
+        if check(targeted_case, targeted):
+            errors.append(f'{word}: checker rejected focused help')
+        if not check(targeted_case, fixture):
+            errors.append(f'{word}: checker accepted full breakdown instead of focused help')
+    # Continued struggle must really reduce the task, not only mention a small unit.
+    small_case = {'id': 'small-unit-fixture', 'family': 'apple',
+                  'target_units': {'2': ['æp']}, 'unit_only_reply': 2}
+    template = (PROMPTS / FILES['apple']).read_text()
+    opening = re.search(r'Say exactly this, nothing more:\n([^\n]+)', template).group(1)
+    finish = re.search(r'HANDOVER LINE[^\n]*: "([^"]+)"', template).group(1)
+    small = [
+        {'role': 'assistant', 'text': fill(opening)},
+        {'role': 'user', 'text': 'Just the first bit, please.'},
+        {'role': 'assistant', 'text': 'Try this bit. /æp/. Your turn.[TEACHER_LISTEN][STUDENT_TALK]'},
+        {'role': 'user', 'text': 'ap'},
+        {'role': 'assistant', 'text': f'That was the first bit. Listen. Apple. {finish}[TEMPLATE_FINISH]'},
+    ]
+    if check(small_case, small):
+        errors.append('Checker rejected small-unit support')
+    for position, replacement in [
+        (2, 'Try this bit. /æp/. Now say apple.[TEACHER_LISTEN][STUDENT_TALK]'),
+        (4, f'You said apple! {finish}[TEMPLATE_FINISH]'),
+    ]:
+        broken = [dict(m) for m in small]
+        broken[position]['text'] = replacement
+        if not check(small_case, broken):
+            errors.append('Checker missed invalid small-unit support')
     return {'source_commit': SOURCE, 'offline_passed': not errors, 'issues': errors,
             'changes': changes, 'skipped_source_placeholders': SKIPPED,
             'live_status': 'not_run', 'tts_audio_status': 'not_tested'}
@@ -208,8 +296,10 @@ def main():
     parser.add_argument('--offline', action='store_true')
     parser.add_argument('--plan', action='store_true')
     parser.add_argument('--only', action='append')
+    parser.add_argument('--family', action='append', choices=sorted(FILES))
     args = parser.parse_args()
-    selected = [c for c in cases() if not args.only or c['id'] in args.only]
+    selected = [c for c in cases() if (not args.only or c['id'] in args.only)
+                and (not args.family or c['family'] in args.family)]
     if not selected:
         parser.error('No matching cases')
     if args.plan:
@@ -253,7 +343,8 @@ def main():
         messages = []
         try:
             for turn in range(5):
-                reply = backend.chat(system, history)
+                assessment = case.get('assessment', {}).get(str(turn), '')
+                reply = backend.chat(system + ('\n\n' + assessment if assessment else ''), history)
                 messages.append({'role': 'assistant', 'text': reply})
                 history.append({'role': 'assistant', 'content': reply})
                 if '[NEXT_STEP]' in reply or '[TEMPLATE_FINISH]' in reply:

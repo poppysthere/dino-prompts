@@ -9,17 +9,23 @@ Only three changes are included:
    their generation in the common rule. Use normal warm words instead.
 2. Wrap-up asks `So, what do you like?` Accept one food word and respond to the
    child's actual preference before the existing song handoff.
-3. Vocabulary invitations model individual IPA phonemes in separate `/ /` pairs, then
-   return to the whole word. The first invitation uses the model unless the
-   child already said the target; a successful child is not asked to repeat.
+3. Vocabulary invitations use IPA teaching units in separate `/ /` pairs:
+   syllables for words with two or more syllables, phonemes for one-syllable
+   words, then the whole word. The first invitation uses the model unless the
+   child already made an understandable attempt. Targeted pronunciation help
+   takes priority when requested or supported by reliable assessment.
 
 | Word | TTS sound cues |
 | --- | --- |
-| apple | `/æ/ /p/ /ə/ /l/` |
+| apple (two syllables) | `/æp/ /əl/` |
 | bread | `/b/ /r/ /ɛ/ /d/` |
 | juice | `/dʒ/ /uː/ /s/` |
 
-Separate phonemes with spaces, not dots. `/dʒ/` is one phoneme, not two.
+Separate units with spaces, not dots. `/dʒ/` is one phoneme, not two.
+For a specific difficulty, model just that phoneme or syllable and blend back
+to the word. For continued struggle, invite one small unit. Accept an
+understandable approximation without drilling for perfection. Never infer an
+exact sound error from ASR spelling alone or count "I can't say apple" as success.
 These cues represent sounds, not alphabet letter names. Actual pronunciation
 must be checked through the new TTS voice. Text eval cannot verify audio.
 
@@ -28,7 +34,7 @@ It includes warm-up, both sentence pages, and the source letter-practice handoff
 
 ## Forge update
 
-For the IPA revision, re-paste only the common rule and the apple, bread, and
+For the adaptive syllable/phoneme revision, re-paste only the common rule and the apple, bread, and
 juice vocabulary prompts. Other teaching templates are unchanged by this revision.
 
 Copy the common rule, three vocabulary prompts, wrap-up, warm-up, and both
@@ -43,14 +49,23 @@ teaching prompts until the real source is supplied.
 
 Run `python3 eval/run_l1_v4_forge.py --offline` for source checks and synthetic
 checker validation. Run `python3 eval/run_l1_v4_forge.py` with `FORGE_TOKEN` in
-the environment for 29 live cases on `gpt5.6LunaChatModel` through Prompt Forge.
+the environment for 42 live cases on `gpt5.6LunaChatModel` through Prompt Forge.
 The runner saves prompt hashes, source diffs, transcripts and failures under
 `eval/runs/`. It does not deploy or edit Forge content.
 
-2026-10-21 IPA revision: offline checks and a fresh full Forge run passed,
+Earlier phoneme-only IPA revision: offline checks and a fresh full Forge run passed,
 **29/29 cases**, including all 18 vocabulary cases. See
 [`L1_V4_IPA_EVAL_2026-10-21.md`](../../eval/L1_V4_IPA_EVAL_2026-10-21.md).
 Actual TTS audio pronunciation remains untested.
+
+Latest adaptive syllable/phoneme revision: **42/42 cases pass** under the final
+checker, across three test groups with matching prompt hashes. One checker
+false positive for a small-unit invitation after repeated silence was corrected;
+that case also passed a fresh live rerun. See
+[`L1_V4_ADAPTIVE_SOUND_EVAL_2026-10-21.md`](../../eval/L1_V4_ADAPTIVE_SOUND_EVAL_2026-10-21.md).
+The lead-in placeholders remain excluded; this is not a complete lesson or
+audio-pronunciation certification. Assessment-driven tests use synthetic
+feedback, not actual child recordings or an integrated pronunciation scorer.
 
 Earlier dot-format evaluation (superseded by the IPA revision): offline checks
 passed. After refreshing Forge authorization, the
