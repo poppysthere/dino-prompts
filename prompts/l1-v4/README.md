@@ -9,16 +9,17 @@ Only three changes are included:
    their generation in the common rule. Use normal warm words instead.
 2. Wrap-up asks `So, what do you like?` Accept one food word and respond to the
    child's actual preference before the existing song handoff.
-3. Vocabulary invitations can model sounds separated with three dots, then
+3. Vocabulary invitations model individual IPA phonemes in separate `/ /` pairs, then
    return to the whole word. The first invitation uses the model unless the
    child already said the target; a successful child is not asked to repeat.
 
 | Word | TTS sound cues |
 | --- | --- |
-| apple | `a...p...uh...l` |
-| bread | `b...r...e...d` |
-| juice | `j...oo...s` |
+| apple | `/æ/ /p/ /ə/ /l/` |
+| bread | `/b/ /r/ /ɛ/ /d/` |
+| juice | `/dʒ/ /uː/ /s/` |
 
+Separate phonemes with spaces, not dots. `/dʒ/` is one phoneme, not two.
 These cues represent sounds, not alphabet letter names. Actual pronunciation
 must be checked through the new TTS voice. Text eval cannot verify audio.
 
@@ -26,6 +27,9 @@ The source lesson flow, action tags, handoff lines, and turn limits are retained
 It includes warm-up, both sentence pages, and the source letter-practice handoffs.
 
 ## Forge update
+
+For the IPA revision, re-paste only the common rule and the apple, bread, and
+juice vocabulary prompts. Other teaching templates are unchanged by this revision.
 
 Copy the common rule, three vocabulary prompts, wrap-up, warm-up, and both
 sentence prompts from this folder. Warm-up and sentence changes only remove
@@ -43,7 +47,13 @@ the environment for 29 live cases on `gpt5.6LunaChatModel` through Prompt Forge.
 The runner saves prompt hashes, source diffs, transcripts and failures under
 `eval/runs/`. It does not deploy or edit Forge content.
 
-2026-10-21: offline checks passed. After refreshing Forge authorization, the
+2026-10-21 IPA revision: offline checks and a fresh full Forge run passed,
+**29/29 cases**, including all 18 vocabulary cases. See
+[`L1_V4_IPA_EVAL_2026-10-21.md`](../../eval/L1_V4_IPA_EVAL_2026-10-21.md).
+Actual TTS audio pronunciation remains untested.
+
+Earlier dot-format evaluation (superseded by the IPA revision): offline checks
+passed. After refreshing Forge authorization, the
 initial live run passed 28/29 cases. The wrap-up silence case repeated the
 question because the common silence ladder overrode the two-turn stage rule.
 An explicit stage override fixed that conflict; all six wrap-up cases then

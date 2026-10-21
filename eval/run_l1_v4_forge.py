@@ -22,7 +22,7 @@ ROOT = Path(__file__).resolve().parent.parent
 PROMPTS = ROOT / 'prompts/l1-v4'
 SOURCE = '829e768bb58a7302ed6987867a36ccc9431419b3'
 MODEL = 'gpt5.6LunaChatModel'
-PHONEMES = {'apple': 'a...p...uh...l', 'bread': 'b...r...e...d', 'juice': 'j...oo...s'}
+PHONEMES = {'apple': '/æ/ /p/ /ə/ /l/', 'bread': '/b/ /r/ /ɛ/ /d/', 'juice': '/dʒ/ /uː/ /s/'}
 FILES = {
     'warmup': 'warmup_teaching_rules_l1l2.md',
     'intro': 'sentence_teaching_rules_l1l2_pre_video.md',
@@ -106,8 +106,10 @@ def check(case, messages):
         if NOISE.search(body):
             issues.append(f'Reply {i}: written laughter or cheering noise')
         remainder = body.lower().replace(PHONEMES.get(family, '__no_sound_model__'), '')
-        if '...' in remainder or '…' in remainder:
-            issues.append(f'Reply {i}: ellipsis outside the approved sound model')
+        if '...' in body or '…' in body:
+            issues.append(f'Reply {i}: ellipsis or obsolete dotted sound model')
+        if '/' in remainder:
+            issues.append(f'Reply {i}: unapproved IPA or phonemes not individually slash-delimited')
         if family in PHONEMES and PHONEMES[family] in body.lower():
             model = re.escape(PHONEMES[family])
             if not re.search(r'\b' + family + r'[.! ,]*' + model + r'[.! ,]*' + family + r'\b', body, re.I):
@@ -190,10 +192,12 @@ def offline():
         sample_case = {'id': f'{word}-fixture', 'family': word, 'phoneme_reply': 2}
         if check(sample_case, fixture):
             errors.append(f'{word}: checker rejected approved phoneme notation')
-        broken = [dict(m) for m in fixture]
-        broken[2]['text'] = broken[2]['text'].replace(model, 'x...y...z')
-        if not check(sample_case, broken):
-            errors.append(f'{word}: checker accepted incorrect sound segmentation')
+        for invalid in ['x...y...z', '/' + model.replace('/', '') + '/',
+                        model.replace('/', ''), '/a/ /b/ /c/', model + ' /x/']:
+            broken = [dict(m) for m in fixture]
+            broken[2]['text'] = broken[2]['text'].replace(model, invalid)
+            if not check(sample_case, broken):
+                errors.append(f'{word}: checker accepted incorrect sound segmentation: {invalid}')
     return {'source_commit': SOURCE, 'offline_passed': not errors, 'issues': errors,
             'changes': changes, 'skipped_source_placeholders': SKIPPED,
             'live_status': 'not_run', 'tts_audio_status': 'not_tested'}
