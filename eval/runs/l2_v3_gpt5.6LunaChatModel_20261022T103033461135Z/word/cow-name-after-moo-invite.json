@@ -1,0 +1,56 @@
+{
+  "family": "word_cow",
+  "case": "cow-name-after-moo-invite",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Kim",
+  "forbid_phrases": [],
+  "require_phrases": [],
+  "reply_forbid": {
+    "3": [
+      "Moo moo",
+      "Who ate the cake"
+    ]
+  },
+  "reply_require": {
+    "3": [
+      "^I'm Kim\\.",
+      "Now, let's look at the cow\\.",
+      "Does the cow have the cake"
+    ]
+  },
+  "allow_no_question": false,
+  "max_replies": 4,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "Look, Mouse sees a cow. Listen. Cow. /k/ /aʊ/ Cow. Your turn. Cow.[TEACHER_COW_HORNS][TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "cow"
+    },
+    {
+      "role": "assistant",
+      "text": "Yes, cow. A cow says moo moo. Listen. Moo moo. Your turn. Moo moo.[TEACHER_APPLAUD][TEACHER_COW_HORNS][TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "Um, teacher, what's your name?"
+    },
+    {
+      "role": "assistant",
+      "text": "I'm Kim. Now, let's look at the cow. Does the cow have the cake? Say yes or no.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "no"
+    },
+    {
+      "role": "assistant",
+      "text": "Maybe not. Let's keep looking, Mouse.[TEMPLATE_FINISH]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}

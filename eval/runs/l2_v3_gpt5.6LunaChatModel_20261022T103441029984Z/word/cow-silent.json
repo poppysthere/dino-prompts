@@ -1,0 +1,57 @@
+{
+  "family": "word_cow",
+  "case": "cow-silent",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Max",
+  "forbid_phrases": [
+    "you got it",
+    "great job",
+    "amazing"
+  ],
+  "require_phrases": [],
+  "reply_forbid": {},
+  "reply_require": {},
+  "allow_no_question": false,
+  "max_replies": 5,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "Look, Mouse sees a cow. Listen. Cow. /k/ /aʊ/ Cow. Your turn. Cow.[TEACHER_COW_HORNS][TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "The student has been silent for 5 seconds"
+    },
+    {
+      "role": "assistant",
+      "text": "Let's try again. Cow. Now you try. Cow.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "The student has been silent for 5 seconds"
+    },
+    {
+      "role": "assistant",
+      "text": "That's okay. Cow. A cow says moo moo. Listen. Moo moo. Your turn. Moo moo.[TEACHER_COW_HORNS][TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "The student has been silent for 5 seconds"
+    },
+    {
+      "role": "assistant",
+      "text": "Moo moo. That's a cow sound. Does the cow have the cake? Say yes or no.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "The student has been silent for 5 seconds"
+    },
+    {
+      "role": "assistant",
+      "text": "Let's keep looking, Mouse.[TEMPLATE_FINISH]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}

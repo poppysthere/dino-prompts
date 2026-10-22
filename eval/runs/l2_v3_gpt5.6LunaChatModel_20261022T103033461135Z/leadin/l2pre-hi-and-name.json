@@ -1,0 +1,34 @@
+{
+  "family": "leadin_pre",
+  "case": "l2pre-hi-and-name",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Kim",
+  "forbid_phrases": [],
+  "require_phrases": [],
+  "reply_forbid": {},
+  "reply_require": {
+    "2": [
+      "^I'm Kim\\.",
+      "Today, let's meet Farmer Bob"
+    ]
+  },
+  "allow_no_question": false,
+  "max_replies": 2,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "Hi, tom. I'm Kim. Nice to meet you. Say hi to me. Hi.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "Hi! What's your name?"
+    },
+    {
+      "role": "assistant",
+      "text": "I'm Kim. Hi. Today, let's meet Farmer Bob. It is his birthday. First, watch the video. Look, here he is. Let's watch.[TEACHER_POINT_TO_SCREEN][NEXT_STEP]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}

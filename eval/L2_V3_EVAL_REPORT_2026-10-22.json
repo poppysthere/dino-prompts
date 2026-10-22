@@ -1,0 +1,1031 @@
+{
+  "version": "L2 V3",
+  "branch": "agent/l2-v3",
+  "base": "2393ae8",
+  "date": "2026-10-22",
+  "model": "gpt5.6LunaChatModel",
+  "provider": "Azure OpenAI",
+  "transport": "Prompt Forge /cms/api/debug",
+  "regression": {
+    "passed": 107,
+    "total": 107,
+    "stages": {
+      "leadin": 18,
+      "word": 52,
+      "sentence": 28,
+      "wrapup": 9
+    }
+  },
+  "synthetic_sound_probes": {
+    "passed": 6,
+    "total": 6,
+    "report": "eval/runs/l2_v3_sound_probes_20261022T102717746689Z/report.json"
+  },
+  "stability_repeats": {
+    "passed": 6,
+    "total": 6,
+    "report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103524871942Z/report.json"
+  },
+  "offline_unittests": 6,
+  "source_verification": "Each selected case manifest and the common + stage prompt SHA256 match the delivered version. Latest complete affected-stage runs were used, not pass-only selection.",
+  "prompt_sha256": {
+    "prompts/l2-v3/README.md": "c52afa75635d18c07e87d288e73fed255068284f8a6f5ea9441cd8c65ae7c76d",
+    "prompts/l2-v3/common_teaching_simple_rules_l2.md": "15b2e6f8b8721614f71d9fb0a0e73708a065546a02b5baa212ea500ca6851adf",
+    "prompts/l2-v3/leadin_teaching_rules_l2_step_post_video.md": "aaa90824a5849fd852c57caffa25cdb362027f2e58587aa131665e86562edfa3",
+    "prompts/l2-v3/leadin_teaching_rules_l2_step_pre_video.md": "151e83f3f0ab5a3a26aae50c563b096b93ddc13d5429bde6b70028bb20be2f22",
+    "prompts/l2-v3/sentence_teaching_rules_l2_step_cat.md": "9ab23e89095f147fe1c22d7da96a938c75e27a8344b490a26a053df38ae9ef7f",
+    "prompts/l2-v3/sentence_teaching_rules_l2_step_cow.md": "db9b27c878fcebf06ab3251be085a27664a363317fa7d142959d32710c3bf19f",
+    "prompts/l2-v3/sentence_teaching_rules_l2_step_horse.md": "75e3e47b503d5eb08e02ab810f91c755de99da830af44575e6164298563140a3",
+    "prompts/l2-v3/sentence_teaching_rules_l2_step_intro.md": "438991454776ac10673308b502c8211b7302148fed3e5b428bcc59661d08c1b5",
+    "prompts/l2-v3/sentence_teaching_rules_l2_step_reveal.md": "e2909298feaf1fa519f10ba409b752565c34840ae3d6919d8c0769190615a636",
+    "prompts/l2-v3/word_teaching_rules_l2_cat.md": "1ee20947827da63a8cb7c627e7d1cf27c01afecd54c321b936ceeb98157d1d7f",
+    "prompts/l2-v3/word_teaching_rules_l2_cow.md": "4d617c1aa16c50dbaed6657b252747c1cdf4d246dd7d4de3d84c0ab8a3b99ee3",
+    "prompts/l2-v3/word_teaching_rules_l2_horse.md": "41ff9fc5dc5670762632eea1d369e8ad969ecc1613b9f5dd4259bfc812e55c78",
+    "prompts/l2-v3/wrapup_teaching_rules_l2_step_pre_video.md": "5df4c2f666cf82c4302d8ba98a59366af741df761a7e0179e9172211c711d4e2"
+  },
+  "cases": {
+    "l2pre-hi": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2pre-hi.json",
+      "passed": true,
+      "issues": [],
+      "stage": "leadin",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/report.json",
+      "raw_sha256": "37e0f9b952bbcecdbac0399386bf03ff20d561f0f596809363958b31e610a914"
+    },
+    "l2pre-name-question": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2pre-name-question.json",
+      "passed": true,
+      "issues": [],
+      "stage": "leadin",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/report.json",
+      "raw_sha256": "b95d82b78fd0c2af0b347a2d193a4be2e84f81ef6124e2764d9e013e04bd3811"
+    },
+    "l2pre-dog-question": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2pre-dog-question.json",
+      "passed": true,
+      "issues": [],
+      "stage": "leadin",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/report.json",
+      "raw_sha256": "92743a59fc53fa48dc6de75bd8509b7db6be39d18e7f6daaa46188464c43c9fa"
+    },
+    "l2pre-weather-question": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2pre-weather-question.json",
+      "passed": true,
+      "issues": [],
+      "stage": "leadin",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/report.json",
+      "raw_sha256": "61cf6fd5f71d4998b2a1b171732bbbcd416ef278aafecf1402aca8a66f4c77fa"
+    },
+    "l2pre-hi-and-name": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2pre-hi-and-name.json",
+      "passed": true,
+      "issues": [],
+      "stage": "leadin",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/report.json",
+      "raw_sha256": "ae15d8fb5d04f6bbbe507863f74398d43a23c69fc17bef3fe893b1fccd6e118e"
+    },
+    "l2pre-blind-pizza": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2pre-blind-pizza.json",
+      "passed": true,
+      "issues": [],
+      "stage": "leadin",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/report.json",
+      "raw_sha256": "e6a6ed8aa72992152475c4cc9b7f82ac7a291adfb597b94105c51b27eecdaf2f"
+    },
+    "l2pre-silent": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2pre-silent.json",
+      "passed": true,
+      "issues": [],
+      "stage": "leadin",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/report.json",
+      "raw_sha256": "92cc76248c90d6861b1095b241b172ec44f6491195e9c0632877ee3c05275a28"
+    },
+    "l2pre-own-language-hi": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2pre-own-language-hi.json",
+      "passed": true,
+      "issues": [],
+      "stage": "leadin",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/report.json",
+      "raw_sha256": "1676deab42c3b0405be6f2397193ed2b1abd1fab49597287bbf99eb234aa4a48"
+    },
+    "l2pre-junk-student-name": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2pre-junk-student-name.json",
+      "passed": true,
+      "issues": [],
+      "stage": "leadin",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/report.json",
+      "raw_sha256": "296aa41f67b267d98f551308838a8ef8a0ed8251a7843c9c3dfc30e07079ef22"
+    },
+    "l2pre-teacher-kim": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2pre-teacher-kim.json",
+      "passed": true,
+      "issues": [],
+      "stage": "leadin",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/report.json",
+      "raw_sha256": "00af647398063509bf8053797f7713b04486ab9206c67747aa84a8297305a549"
+    },
+    "v3-plain-hi-not-meet-too": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/v3-plain-hi-not-meet-too.json",
+      "passed": true,
+      "issues": [],
+      "stage": "leadin",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/report.json",
+      "raw_sha256": "a7956adecbfa5a2331fe0b70bb9cb6bba15f84b858204a42d18e340bcbf6e835"
+    },
+    "l2post-gone": {
+      "family": "leadin_post",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2post-gone.json",
+      "passed": true,
+      "issues": [],
+      "stage": "leadin",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/report.json",
+      "raw_sha256": "437f7f06439b7ef34725ae1d22db67a93bd505f0241cf02ac5dcfd78ffbaad00"
+    },
+    "l2post-name-question": {
+      "family": "leadin_post",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2post-name-question.json",
+      "passed": true,
+      "issues": [],
+      "stage": "leadin",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/report.json",
+      "raw_sha256": "7ef498234ca5beed4e0a8ff8b8d29be04c18a6371c53913a7a9843d56ce59068"
+    },
+    "l2post-dog-question": {
+      "family": "leadin_post",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2post-dog-question.json",
+      "passed": true,
+      "issues": [],
+      "stage": "leadin",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/report.json",
+      "raw_sha256": "e5a26337e39b2081e25c7c5160d3b32299d93d8893c41b1d1ec5f2d1df044e39"
+    },
+    "l2post-weather-question": {
+      "family": "leadin_post",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2post-weather-question.json",
+      "passed": true,
+      "issues": [],
+      "stage": "leadin",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/report.json",
+      "raw_sha256": "233aec2148b5f2c3309cf06a43b230c5713c5acdcac17df4939fac56fbd66a07"
+    },
+    "l2post-meaning-question": {
+      "family": "leadin_post",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2post-meaning-question.json",
+      "passed": true,
+      "issues": [],
+      "stage": "leadin",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/report.json",
+      "raw_sha256": "721d9feeb97955245133fb926ddfa3acab66e3020e37508c5c34c4ce5dba56ed"
+    },
+    "l2post-horse-guess": {
+      "family": "leadin_post",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2post-horse-guess.json",
+      "passed": true,
+      "issues": [],
+      "stage": "leadin",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/report.json",
+      "raw_sha256": "61e4a61333b68fe09f5d56e593eb9de2d23c7d72e8f81972d3d2d1c6b967991f"
+    },
+    "l2post-silent": {
+      "family": "leadin_post",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2post-silent.json",
+      "passed": true,
+      "issues": [],
+      "stage": "leadin",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/report.json",
+      "raw_sha256": "dfbc91c59f2cb31873dbd0c29349d1763ab295fd5b736687bd300e22e1491ac5"
+    },
+    "cow-happy": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/cow-happy.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "2a277206bd36670856fd43d0074e34361abf149789e35e7edc8cb383b6e4c00c"
+    },
+    "cow-meaning-retry": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/cow-meaning-retry.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "5623d0e45a769072d21cef4a95f1b08e4ee8556efa603a423a2f64f408f4d17f"
+    },
+    "cow-own-language": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/cow-own-language.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "416a91c1acf7615011045a126aa93415c07be74b206e58cb36e6ae44cb56be97"
+    },
+    "cow-silent": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/cow-silent.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "90414a600d00b8827daa84d54448fec4a3ff0dc7246ebbfd4541c5df2e6ae1a7"
+    },
+    "cow-name-question": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/cow-name-question.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "70d0b20ae4277ea7ce8b31842274c9ea96ec17cc30b01105e98a708df0a17417"
+    },
+    "cow-dog-after-moo-invite": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/cow-dog-after-moo-invite.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "422616ef79ab7784e9c20e658159f57c69dfe79347dada64cbd3369e57f5b1cd"
+    },
+    "cow-name-after-moo-invite": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/cow-name-after-moo-invite.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "9d9206bcbac2d062354a3fa964e54081834753cc28631179717b9e7912491aff"
+    },
+    "cow-weather-at-close": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/cow-weather-at-close.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "28ac85c00ddb2186bf5b3f0e569af51ac8a26913bdb64b0c3dd6ef49c84529fe"
+    },
+    "cow-blind-color": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/cow-blind-color.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "c8e0f7a48b0a22cef32076110bc8849788a4715b5b4edbd63415745d70a54c23"
+    },
+    "v3-cow-ambiguous-how-help": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-cow-ambiguous-how-help.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "c4d33c687ff033c7c2460825a4c7c90fc3249d3389e114eaa680bcb81f550ca8"
+    },
+    "v3-cow-help-not-success": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-cow-help-not-success.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "05ee6a359d22e257c495570070a1558e67ece8f0d2aca9b09d498a2e7697f144"
+    },
+    "v3-cow-slow": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-cow-slow.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "e45b4583046accbaf75c41ee65807adb3eb66277e30b1e3e4405673b4908fbaa"
+    },
+    "v3-cow-specific-sound": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-cow-specific-sound.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "1f7dd4de2ec46bc152a86b287a95cb04127e621713f67b514b545bbb107c2719"
+    },
+    "v3-cow-still-lost": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-cow-still-lost.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "cce8befbe771d595539c0f2497497102f39c875c621fcd940ee674197b9dff34"
+    },
+    "v3-cow-help-after-success": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-cow-help-after-success.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "39ab3922417c2b77e722311c5a3a72a82ddd52657baa15227d7bfe23dcbf3cd9"
+    },
+    "v3-cow-no-laugh-echo": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-cow-no-laugh-echo.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "0501c1f46735a00e3e5ce6455af8ea20d0daaa5f93e358b6cce29b14c8c2d600"
+    },
+    "v3-cow-refusal": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-cow-refusal.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "0e6802cdabb0341e8fe02486ff8bfb32332b75347139f92c3b33045c09525203"
+    },
+    "v3-cow-asr-not-diagnosis": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-cow-asr-not-diagnosis.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "51a1470d93cb9156061aa2e19616ce83ea95cd69a9560389c2cf374d94fa8495"
+    },
+    "cat-happy": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/cat-happy.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "ecdecc3380f1533116b59b9775a801c03f29b9c9a0641755a171bce5dbfe8ffe"
+    },
+    "cat-meaning-retry": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/cat-meaning-retry.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "06c244b9931abe8c253455e20536a32bc416f2c4014792b6c93e08bd87c554ef"
+    },
+    "cat-old-word": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/cat-old-word.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "b51385b1cc05d3a0a120db7f085dc0bf092f9f9022bae025054b47ddd9e12f44"
+    },
+    "cat-silent": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/cat-silent.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "d7dbd1f6f5198c37fb6fa42e3e56a550d09aad13294b447782629bf57fc09a35"
+    },
+    "cat-name-question-after-retry": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/cat-name-question-after-retry.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "c619131ccd1e81b5ba6bf15d7c746fa88c6f03e1ec52086d4a9a0bfa1ccfabee"
+    },
+    "cat-dog-after-meow": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/cat-dog-after-meow.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "ce0f0a810ef32c2444e17b01352fb48ba2712a0cb73e4a0a2a22aea1de12d043"
+    },
+    "cat-weather-at-close": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/cat-weather-at-close.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "398c5f223d231d3d746e4e01412e4707a07eb7e635febe92c37d0eacff5be143"
+    },
+    "cat-blind-food": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/cat-blind-food.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "7a441f71f6e8596159414652ffe40a094d0503f4dff0cd035109ef9c677bf448"
+    },
+    "v3-cat-help-not-success": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-cat-help-not-success.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "e65f6dee4dc69e43db947cbfc3958c6563dab0bce7bea70aae8cf2e031c70dc4"
+    },
+    "v3-cat-slow": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-cat-slow.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "3e690f303ce7b0757547d6c7a8746f215b817b0afbeea2ce82fb73c96d4ea7d8"
+    },
+    "v3-cat-specific-sound": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-cat-specific-sound.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "a7b3293cefe92760370cc769a8a0c8948593e61439253cc33947005f4630cc93"
+    },
+    "v3-cat-still-lost": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-cat-still-lost.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "aff62d173bfa5a9eabe27ba52ba445d10551d67f7675bead192293ca482fe66d"
+    },
+    "v3-cat-help-after-success": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-cat-help-after-success.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "6ecc6b1ed8f2e1b380706101ed22b89fa5d41929ed591222ec7613e13e3c388d"
+    },
+    "v3-cat-no-laugh-echo": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-cat-no-laugh-echo.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "eefd85d263bcdf81b71d5bce16511581da4be150ec94ab9c32b117724acf7a3a"
+    },
+    "v3-cat-refusal": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-cat-refusal.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "9bcc1fcd4b3b67a959e081ab3b6ba95779db938918cad2e82bbf219a421b848d"
+    },
+    "v3-cat-asr-not-diagnosis": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-cat-asr-not-diagnosis.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "4b099d943fd2274e2504777335dada82a60de4c6ce18c7e8ffe8dbbf0f9de156"
+    },
+    "horse-happy": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/horse-happy.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "e92d05e5e4118c5e478e72d42b9c9e5ea34324c2c8448a649e20ec70944288dd"
+    },
+    "horse-house-asr": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/horse-house-asr.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "82400dc2c80455a93bbce51b37465ef2be3f1f2ba134edcfbd20762609c332e5"
+    },
+    "horse-of-course-asr": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/horse-of-course-asr.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "c10e80e5459b0c0ce2a9be8996e6ed6022bc73376dc9c62af709d87a430aa563"
+    },
+    "horse-meaning-retry": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/horse-meaning-retry.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "a15a04ceef4016b1ce5afbd91f55d7254823042b36c252fb73d82ddf5809c596"
+    },
+    "horse-nainai-asr": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/horse-nainai-asr.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "99fe4453a6014b58cfe25663794c3546c0a00a66f1f79d07b66e67d42f0f7e1d"
+    },
+    "horse-silent": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/horse-silent.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "51525ae2681f915f34dd8b9c27c56e68684a7c3c42fbaa2b27be8027b4c0e09e"
+    },
+    "horse-name-question": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/horse-name-question.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "842f26ece7010c2bd5e35766b82980fe7149218ac07cb1bc660c3511bcdb95e7"
+    },
+    "horse-dog-after-neigh": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/horse-dog-after-neigh.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "880c0dd76c8132744ee4b989d4b4c55bd85bde1f2507b60c4ba1818ec4c56122"
+    },
+    "horse-weather-at-close": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/horse-weather-at-close.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "0810d5748131d07d0405e2e926ae184014038217c0f226bdf51442b480235ece"
+    },
+    "horse-blind-game": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/horse-blind-game.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "859dea9833074ec007a4abb39ed71280fb2df55f46aa08d946d9b6ea61e2a1eb"
+    },
+    "v3-horse-help-not-success": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-horse-help-not-success.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "7040b57f90e2e383da947a9fdee950c42a0e83b9a7b12c34911c62829f421f28"
+    },
+    "v3-horse-slow": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-horse-slow.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "ac57afb94c86355a1ea40d99d3643feafce2472c6e0b5d7d607f5bde0215e6f7"
+    },
+    "v3-horse-specific-sound": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-horse-specific-sound.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "febf5cbc5577c779c9267957b934222d5b75ee5fc4d0bb7943e26fc61ec2a3fa"
+    },
+    "v3-horse-still-lost": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-horse-still-lost.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "9f48aaa013c933f2cd3ea07de5e84c6e77ddbf48af44223f878079943e9e9038"
+    },
+    "v3-horse-help-after-success": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-horse-help-after-success.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "d71fe8b9f48eb4bac56a3cbfe0a3ace975f3ab7744475a7c19aaf4c7e26136d5"
+    },
+    "v3-horse-no-laugh-echo": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-horse-no-laugh-echo.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "89aa614ad09c9febc75990d07a0d43aa922ef10bd646ba976dc76b8598228bfb"
+    },
+    "v3-horse-refusal": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-horse-refusal.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "68f4ae6ac2994eb3aafc1e1b74cfed20e62e1e16d97374712c7011a797782bef"
+    },
+    "v3-horse-asr-not-diagnosis": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/word/v3-horse-asr-not-diagnosis.json",
+      "passed": true,
+      "issues": [],
+      "stage": "word",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "c5a9cd3206c39f25cb4fbc9cf563b889a7f6b55dc6fe6bf4dea69c2f1e79bed0"
+    },
+    "l2sent-intro": {
+      "family": "sent_intro",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-intro.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "8880e2a38c046afc5ab753c4cfc12a69e322fed346e10ce244948d1b4f7563ed"
+    },
+    "l2sent-cow-pass": {
+      "family": "sent_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-cow-pass.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "70af00cfb746a3bce2d199426134d4691fbb6bdfa9412b4e1baf5dbcb7e1a3a5"
+    },
+    "l2sent-cow-expanded": {
+      "family": "sent_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-cow-expanded.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "1550d5af2716d6920aba9d108a082306977da6b6c7f97089d97f5dd4c2ca3c38"
+    },
+    "l2sent-cow-word": {
+      "family": "sent_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-cow-word.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "4161f812b67c31a3edee7adf28f818264e8cec3c1e6781c0e08ef5c8ff154eb4"
+    },
+    "l2sent-cow-name": {
+      "family": "sent_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-cow-name.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "3b85d744d5c7431eea94251687ce43c26218ae40a1e42ce0f45caf29813cc136"
+    },
+    "l2sent-cow-dog-after-retry": {
+      "family": "sent_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-cow-dog-after-retry.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "d6d0a46e66b43637d9ce637928b6756a8333ed97906bbba271c34ba58f814196"
+    },
+    "l2sent-cow-silent": {
+      "family": "sent_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-cow-silent.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "bc4a5c27a325cfa95d25b143616aaef7357382f6d0ce7860d0621adfe2d9fee9"
+    },
+    "l2sent-cow-blind-pizza": {
+      "family": "sent_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-cow-blind-pizza.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "5cb0ea7d78e218a04fe1913d7f73f7ac55dccdd4ad22cb18d1da6a2e19f3cb88"
+    },
+    "l2sent-cat-pass": {
+      "family": "sent_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-cat-pass.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "6cdbe84b5ac038d0731b1e39caf26d55625d29151af3df9cf3fd1b2576eb6965"
+    },
+    "l2sent-cat-related-then-expanded": {
+      "family": "sent_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-cat-related-then-expanded.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "2967ca5b42276e424701c21dcb9c1cb160aa1dd01a3a159871ec1fd4af92d92f"
+    },
+    "l2sent-cat-old-sentence": {
+      "family": "sent_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-cat-old-sentence.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "e90e3131d66f439846d367816ab905df29af519d4a5c17f8e62ae72210bc1abd"
+    },
+    "l2sent-cat-weather": {
+      "family": "sent_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-cat-weather.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "d8377d29aada5dc6dab5be35e36faebac73d94da7143e3d11ab2aa778d77b5a7"
+    },
+    "l2sent-cat-name-after-retry": {
+      "family": "sent_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-cat-name-after-retry.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "46f8eb9fdbc872c296eadd3659411cda529ebcaa2189b0db5e144791d8524c09"
+    },
+    "l2sent-cat-silent": {
+      "family": "sent_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-cat-silent.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "38919da6dc64a0ebd01eafb1336e1cc23d00065dd178cb9bc0ec25730598e00d"
+    },
+    "l2sent-horse-pass": {
+      "family": "sent_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-horse-pass.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "d28516752dfb30ae9cee4f865f72d2e3be210a9847c2a62a82420a0f82ee4e47"
+    },
+    "l2sent-horse-expanded": {
+      "family": "sent_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-horse-expanded.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "dc95b97cacde2dd05a1843520a2ab8ba8aa006cd1f391a489d4677cc84e739a7"
+    },
+    "l2sent-horse-observation-after-retry": {
+      "family": "sent_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-horse-observation-after-retry.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "662f410a25620bbaac34fa21ab66e1aa75a33b4cb5fe755ea1386f46c575a59b"
+    },
+    "l2sent-horse-mystery-lock": {
+      "family": "sent_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-horse-mystery-lock.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "0097052820dbd84bc4791aca4b7a03ae1f0ef9f5b5cdf6b7120418952de6c9a7"
+    },
+    "l2sent-horse-asr": {
+      "family": "sent_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-horse-asr.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "9a142d1b6f9b326b1a7c620fe6ca37739985199c466e5447eb36671e5fe0e5b5"
+    },
+    "l2sent-horse-name": {
+      "family": "sent_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-horse-name.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "5600a3c69ce5ba91ef42e0951d173fed84305d9ebdfb1d24663e1c8ffe262021"
+    },
+    "l2sent-horse-dog-after-retry": {
+      "family": "sent_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-horse-dog-after-retry.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "02a9aa06be3865da304c2cd1500ad313538496e91dd512b8714ce9086fcfc422"
+    },
+    "l2sent-horse-weather-close": {
+      "family": "sent_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-horse-weather-close.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "e00b69a88f902d8c74ac955bf3793aa8ff6a52a5ebad08c8f67f34b4eb5428cc"
+    },
+    "l2sent-horse-silent": {
+      "family": "sent_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-horse-silent.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "d2f826b6a81a2c0d36868f618f61af095d18add83bb577d14a921ac65e58fbdb"
+    },
+    "l2sent-horse-blind-color": {
+      "family": "sent_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2sent-horse-blind-color.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "bc8ed0ed56d4aa0f6d264b0acb41913ea816cd6bef16f47a8a8b29f98fbcc5aa"
+    },
+    "l2reveal-hit": {
+      "family": "sent_reveal",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2reveal-hit.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "0719117d9641be20722d9482cf59562da3d036f213577354908b47ac96ef7bfd"
+    },
+    "l2reveal-hit-own-language": {
+      "family": "sent_reveal",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2reveal-hit-own-language.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "7addd1b4c4855dad9a460ad364205f9df2b3a8d04e1ae90296e29fb290e60110"
+    },
+    "l2reveal-miss": {
+      "family": "sent_reveal",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2reveal-miss.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "d18b9fe517c7e0f0eaba39ead7d3c0ebd3653f292775c249cfb8607ee29e948a"
+    },
+    "l2reveal-junkname": {
+      "family": "sent_reveal",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/sentence/l2reveal-junkname.json",
+      "passed": true,
+      "issues": [],
+      "stage": "sentence",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103305276599Z/report.json",
+      "raw_sha256": "4f1afadab71b62f544838c66562e882ab532771dbbe3db3f60a9e6b12dcb9fab"
+    },
+    "l2wrap-like": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/wrapup/l2wrap-like.json",
+      "passed": true,
+      "issues": [],
+      "stage": "wrapup",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "46e5e1d2a539392e05b1eedf759ee0161a5cbbdd9cb91419e683303013b518fe"
+    },
+    "l2wrap-dislike": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/wrapup/l2wrap-dislike.json",
+      "passed": true,
+      "issues": [],
+      "stage": "wrapup",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "865d48d6edf3a54b337fc98f58d0439ee8f01a0dbbf59d355b925267e13743ec"
+    },
+    "l2wrap-own-language-like": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/wrapup/l2wrap-own-language-like.json",
+      "passed": true,
+      "issues": [],
+      "stage": "wrapup",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "3237ad76586e9dbdf26575fdc27486188536148207f8f2350ec6dfdff7481111"
+    },
+    "l2wrap-name-question": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/wrapup/l2wrap-name-question.json",
+      "passed": true,
+      "issues": [],
+      "stage": "wrapup",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "a52ff14d534fc47773e5e0421e943147183e869818cefafd53d4160eb4c5982e"
+    },
+    "l2wrap-dog-question": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/wrapup/l2wrap-dog-question.json",
+      "passed": true,
+      "issues": [],
+      "stage": "wrapup",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "457e46494a40275879486c5cb3db91415c42517b2bafd1128b525584fc70fdbe"
+    },
+    "l2wrap-weather-question": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/wrapup/l2wrap-weather-question.json",
+      "passed": true,
+      "issues": [],
+      "stage": "wrapup",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "5ee9f6c09298a1721e22ed8b5860a4cc175273b6bca580afc80b1ef7901f3f82"
+    },
+    "l2wrap-ask-back": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/wrapup/l2wrap-ask-back.json",
+      "passed": true,
+      "issues": [],
+      "stage": "wrapup",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "edca263e9eb90b75be385ad6ac868ab45ed900a6bc48190ba0210454d48d9424"
+    },
+    "l2wrap-blind-favorite-animal": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/wrapup/l2wrap-blind-favorite-animal.json",
+      "passed": true,
+      "issues": [],
+      "stage": "wrapup",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "0c5221732684ddcd9ae075430e74932e5fb23e0843928f1eb69a67510e4d1032"
+    },
+    "l2wrap-silent": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/wrapup/l2wrap-silent.json",
+      "passed": true,
+      "issues": [],
+      "stage": "wrapup",
+      "source_report": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103441029984Z/report.json",
+      "raw_sha256": "c86d5a5a0784ac43fb6b9cf2c1f54a9596ebf7dd58f6f98aa68b0becd0f2d7cc"
+    }
+  },
+  "limitations": [
+    "Scripted text conversations, not children or audio.",
+    "No TTS/ASR/animation integration testing or independent human approval.",
+    "Agent qualitative spot-checks are not CEFR certification or a universal naturalness guarantee.",
+    "Pronunciation feedback probes use synthetic system assessments.",
+    "The run uses locally composed V3 prompts; it does not deploy or inspect the Forge lesson-editor configuration."
+  ],
+  "iteration_notes": [
+    "Initial 101-case pass: 97 mechanical passes; two true failures (repeated cake question, missing small sound on continued difficulty) and two stale wording assertions.",
+    "Final broad 107-case run: 105 passes; found split cow diphthong and wrap-up question mistaken for an opinion. Both fixed, then all word/wrap-up cases rerun 61/61 and failures repeated three times each, 6/6.",
+    "Sentence stage rerun 28/28 after removing figurative Good eyes. Lead-in 18/18 retained with identical common and stage source hashes.",
+    "Six isolated sound probes: initially 5/6; clarified sound-versus-syllable priority; final 6/6."
+  ],
+  "fixture_changes": [
+    "Accept ASCII period or exclamation rather than demand shouting.",
+    "Require grammatical This is a cat, matching the template.",
+    "Partial cow sentence: require acknowledgment, sentence model and a clear retry, not two redundant fixed instructions.",
+    "Ambiguous How? now receives sound help instead of being presumed a successful cow repetition.",
+    "Remove required figurative Good eyes; retain observation acknowledgment and no repeated question."
+  ]
+}

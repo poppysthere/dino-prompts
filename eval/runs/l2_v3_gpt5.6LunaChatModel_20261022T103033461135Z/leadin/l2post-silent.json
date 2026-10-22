@@ -1,0 +1,33 @@
+{
+  "family": "leadin_post",
+  "case": "l2post-silent",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Max",
+  "forbid_phrases": [
+    "good guess",
+    "great job",
+    "you said"
+  ],
+  "require_phrases": [],
+  "reply_forbid": {},
+  "reply_require": {},
+  "allow_no_question": false,
+  "max_replies": 2,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "Oh no. The cake is gone. Where is it?[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "The student has been silent for 5 seconds"
+    },
+    {
+      "role": "assistant",
+      "text": "The cake is gone. Look, this is Mouse. Mouse can help us. Let's find the cake.[TEMPLATE_FINISH]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}

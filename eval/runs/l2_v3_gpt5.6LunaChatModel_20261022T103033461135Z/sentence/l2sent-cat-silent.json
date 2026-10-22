@@ -1,0 +1,40 @@
+{
+  "family": "sent_cat",
+  "case": "l2sent-cat-silent",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Max",
+  "forbid_phrases": [
+    "great job",
+    "you got it"
+  ],
+  "require_phrases": [],
+  "reply_forbid": {},
+  "reply_require": {},
+  "allow_no_question": false,
+  "max_replies": 3,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "Look, Mouse found a fish. The fish is for a cat. Listen first. It's a cat. Your turn. It's a cat.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "The student has been silent for 5 seconds"
+    },
+    {
+      "role": "assistant",
+      "text": "Let's try again. It's a cat. Your turn. It's a cat.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "The student has been silent for 5 seconds"
+    },
+    {
+      "role": "assistant",
+      "text": "That's okay. Listen. It's a cat. Let's open the next bag.[NEXT_STEP]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}

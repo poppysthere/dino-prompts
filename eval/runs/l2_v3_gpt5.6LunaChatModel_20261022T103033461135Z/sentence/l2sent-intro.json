@@ -1,0 +1,21 @@
+{
+  "family": "sent_intro",
+  "case": "l2sent-intro",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Max",
+  "forbid_phrases": [],
+  "require_phrases": [],
+  "reply_forbid": {},
+  "reply_require": {},
+  "allow_no_question": false,
+  "max_replies": 1,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "Look, Mouse found three bags. One, two, three. What is inside? Let's watch.[TEACHER_POINT_TO_SCREEN][NEXT_STEP]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}

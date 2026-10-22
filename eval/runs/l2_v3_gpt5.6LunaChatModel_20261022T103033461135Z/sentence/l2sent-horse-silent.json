@@ -1,0 +1,48 @@
+{
+  "family": "sent_horse",
+  "case": "l2sent-horse-silent",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Max",
+  "forbid_phrases": [
+    "great job",
+    "you got it"
+  ],
+  "require_phrases": [],
+  "reply_forbid": {},
+  "reply_require": {},
+  "allow_no_question": false,
+  "max_replies": 4,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "Look, Mouse found a horse. Listen first. It's a horse. Your turn. It's a horse.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "The student has been silent for 5 seconds"
+    },
+    {
+      "role": "assistant",
+      "text": "Let's try again. It's a horse. Your turn. It's a horse.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "The student has been silent for 5 seconds"
+    },
+    {
+      "role": "assistant",
+      "text": "That's okay. Listen. It's a horse. Who has the cake? Say cow, cat, or horse.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "The student has been silent for 5 seconds"
+    },
+    {
+      "role": "assistant",
+      "text": "Let's watch and find out.[TEACHER_POINT_TO_SCREEN][NEXT_STEP]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}

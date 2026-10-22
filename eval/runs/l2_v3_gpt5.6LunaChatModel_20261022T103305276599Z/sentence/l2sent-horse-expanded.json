@@ -1,0 +1,48 @@
+{
+  "family": "sent_horse",
+  "case": "l2sent-horse-expanded",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Max",
+  "forbid_phrases": [],
+  "require_phrases": [],
+  "reply_forbid": {
+    "2": [
+      "Let's try again",
+      "Yes, it's a horse\\."
+    ]
+  },
+  "reply_require": {
+    "2": [
+      "it's a brown horse",
+      "Nice sentence",
+      "Who has the cake"
+    ]
+  },
+  "allow_no_question": false,
+  "max_replies": 3,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "Look, Mouse found a horse. Listen first. It's a horse. Your turn. It's a horse.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "It's a brown horse."
+    },
+    {
+      "role": "assistant",
+      "text": "Yes, it's a brown horse. Nice sentence. Who has the cake? Say cow, cat, or horse.[TEACHER_APPLAUD][TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "cat"
+    },
+    {
+      "role": "assistant",
+      "text": "Good guess. Let's watch and find out.[TEACHER_POINT_TO_SCREEN][NEXT_STEP]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}

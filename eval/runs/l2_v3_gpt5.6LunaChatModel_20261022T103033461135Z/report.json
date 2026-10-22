@@ -1,0 +1,2534 @@
+{
+  "model": "gpt5.6LunaChatModel",
+  "forge_picker_id": "gpt-5.6-luna",
+  "lesson_flow": "lead-in -> word -> sentence -> wrap-up (no warm-up)",
+  "started_at_utc": "20261022T103033461135Z",
+  "prompt_sha256": {
+    "prompts/l2-v3/README.md": "c52afa75635d18c07e87d288e73fed255068284f8a6f5ea9441cd8c65ae7c76d",
+    "prompts/l2-v3/common_teaching_simple_rules_l2.md": "15b2e6f8b8721614f71d9fb0a0e73708a065546a02b5baa212ea500ca6851adf",
+    "prompts/l2-v3/leadin_teaching_rules_l2_step_post_video.md": "aaa90824a5849fd852c57caffa25cdb362027f2e58587aa131665e86562edfa3",
+    "prompts/l2-v3/leadin_teaching_rules_l2_step_pre_video.md": "151e83f3f0ab5a3a26aae50c563b096b93ddc13d5429bde6b70028bb20be2f22",
+    "prompts/l2-v3/sentence_teaching_rules_l2_step_cat.md": "9ab23e89095f147fe1c22d7da96a938c75e27a8344b490a26a053df38ae9ef7f",
+    "prompts/l2-v3/sentence_teaching_rules_l2_step_cow.md": "db9b27c878fcebf06ab3251be085a27664a363317fa7d142959d32710c3bf19f",
+    "prompts/l2-v3/sentence_teaching_rules_l2_step_horse.md": "3dc3a361733b431bac342ab589c4fa0d78cd658370792404fde0bc6aeac4ff2e",
+    "prompts/l2-v3/sentence_teaching_rules_l2_step_intro.md": "438991454776ac10673308b502c8211b7302148fed3e5b428bcc59661d08c1b5",
+    "prompts/l2-v3/sentence_teaching_rules_l2_step_reveal.md": "e2909298feaf1fa519f10ba409b752565c34840ae3d6919d8c0769190615a636",
+    "prompts/l2-v3/word_teaching_rules_l2_cat.md": "1ee20947827da63a8cb7c627e7d1cf27c01afecd54c321b936ceeb98157d1d7f",
+    "prompts/l2-v3/word_teaching_rules_l2_cow.md": "ce0f164d20b3b4014b1baa6a4b8cd59b6d04c0a7b8e1de86cdd67629961f25cd",
+    "prompts/l2-v3/word_teaching_rules_l2_horse.md": "41ff9fc5dc5670762632eea1d369e8ad969ecc1613b9f5dd4259bfc812e55c78",
+    "prompts/l2-v3/wrapup_teaching_rules_l2_step_pre_video.md": "6f578a3a43aff996e099a6568e762acc179b4e614d8eac9e9e8e34f843132d32"
+  },
+  "case_manifest": {
+    "l2pre-hi": {
+      "family": "leadin_pre",
+      "id": "l2pre-hi",
+      "note": "Child greets -> natural catch + fixed launch in two replies",
+      "turns": [
+        "Hi!"
+      ],
+      "max_replies": 2,
+      "reply_require": {
+        "2": [
+          "^Hi",
+          "Today, let's meet Farmer Bob"
+        ]
+      }
+    },
+    "l2pre-name-question": {
+      "family": "leadin_pre",
+      "id": "l2pre-name-question",
+      "note": "Teacher answers their own name before the hi rescue",
+      "turns": [
+        "What's your name?",
+        "Hi!"
+      ],
+      "teacher_name": "Kim",
+      "max_replies": 3,
+      "reply_require": {
+        "2": [
+          "^I'm Kim\\.",
+          "Listen first\\. Hi[.!] Now you try\\. Hi"
+        ]
+      }
+    },
+    "l2pre-dog-question": {
+      "family": "leadin_pre",
+      "id": "l2pre-dog-question",
+      "note": "Personal pet question is answered before instruction",
+      "turns": [
+        "Do you like my dog?",
+        "Hi!"
+      ],
+      "max_replies": 3,
+      "reply_require": {
+        "2": [
+          "^Yes, I like dogs\\.",
+          "Now you try\\. Hi"
+        ]
+      }
+    },
+    "l2pre-weather-question": {
+      "family": "leadin_pre",
+      "id": "l2pre-weather-question",
+      "note": "Teacher is honest about unavailable live weather",
+      "turns": [
+        "How's the weather?",
+        "Hi!"
+      ],
+      "max_replies": 3,
+      "reply_require": {
+        "2": [
+          "^I can't see the sky\\.",
+          "Now you try\\. Hi"
+        ]
+      }
+    },
+    "l2pre-hi-and-name": {
+      "family": "leadin_pre",
+      "id": "l2pre-hi-and-name",
+      "note": "Greeting plus question: answer first, then launch without an unnecessary rescue",
+      "turns": [
+        "Hi! What's your name?"
+      ],
+      "teacher_name": "Kim",
+      "max_replies": 2,
+      "reply_require": {
+        "2": [
+          "^I'm Kim\\.",
+          "Today, let's meet Farmer Bob"
+        ]
+      }
+    },
+    "l2pre-blind-pizza": {
+      "family": "leadin_pre",
+      "id": "l2pre-blind-pizza",
+      "note": "BLIND CASE: unlisted harmless question still receives a direct answer",
+      "turns": [
+        "Do you like pizza?",
+        "Hi!"
+      ],
+      "max_replies": 3,
+      "reply_require": {
+        "2": [
+          "^Yes, I (?:like|love) pizza",
+          "Now you try\\. Hi"
+        ]
+      }
+    },
+    "l2pre-silent": {
+      "family": "leadin_pre",
+      "id": "l2pre-silent",
+      "note": "One modeled rescue, then launch without fake greeting praise",
+      "turns": [],
+      "max_replies": 3,
+      "forbid_phrases": [
+        "nice hi",
+        "great hi",
+        "you said hi"
+      ]
+    },
+    "l2pre-own-language-hi": {
+      "family": "leadin_pre",
+      "id": "l2pre-own-language-hi",
+      "note": "A greeting in another language counts as a greeting",
+      "turns": [
+        "你好！"
+      ],
+      "max_replies": 2
+    },
+    "l2pre-junk-student-name": {
+      "family": "leadin_pre",
+      "id": "l2pre-junk-student-name",
+      "note": "Junk child name is never spoken",
+      "turns": [
+        "Hi!"
+      ],
+      "student_name": "test_user",
+      "max_replies": 2,
+      "forbid_phrases": [
+        "test[_\\s]?user"
+      ]
+    },
+    "l2pre-teacher-kim": {
+      "family": "leadin_pre",
+      "id": "l2pre-teacher-kim",
+      "note": "Teacher identity comes from teacherName, not a copied example",
+      "turns": [
+        "Hi!"
+      ],
+      "teacher_name": "Kim",
+      "max_replies": 2,
+      "reply_require": {
+        "1": [
+          "I'm Kim"
+        ]
+      },
+      "forbid_phrases": [
+        "I'm Max",
+        "I'm Leo"
+      ]
+    },
+    "v3-plain-hi-not-meet-too": {
+      "family": "leadin_pre",
+      "id": "v3-plain-hi-not-meet-too",
+      "turns": [
+        "hi"
+      ],
+      "max_replies": 2,
+      "v3_require": {
+        "1": [
+          "Say hi to me\\. Hi\\."
+        ]
+      },
+      "v3_forbid": {
+        "2": [
+          "meet you too"
+        ]
+      }
+    },
+    "l2post-gone": {
+      "family": "leadin_post",
+      "id": "l2post-gone",
+      "note": "Child identifies the missing cake",
+      "turns": [
+        "The cake is gone!"
+      ],
+      "max_replies": 2,
+      "reply_require": {
+        "2": [
+          "Yes, it is gone",
+          "This is Mouse"
+        ]
+      }
+    },
+    "l2post-name-question": {
+      "family": "leadin_post",
+      "id": "l2post-name-question",
+      "note": "Name question is answered before Mouse is introduced",
+      "turns": [
+        "What's your name?"
+      ],
+      "teacher_name": "Kim",
+      "max_replies": 2,
+      "reply_require": {
+        "2": [
+          "^I'm Kim\\.",
+          "This is Mouse"
+        ]
+      }
+    },
+    "l2post-dog-question": {
+      "family": "leadin_post",
+      "id": "l2post-dog-question",
+      "note": "Dog question is answered before the story continues",
+      "turns": [
+        "Do you like my dog?"
+      ],
+      "max_replies": 2,
+      "reply_require": {
+        "2": [
+          "^Yes, I like dogs\\.",
+          "This is Mouse"
+        ]
+      }
+    },
+    "l2post-weather-question": {
+      "family": "leadin_post",
+      "id": "l2post-weather-question",
+      "note": "Weather question gets an honest answer first",
+      "turns": [
+        "How's the weather?"
+      ],
+      "max_replies": 2,
+      "reply_require": {
+        "2": [
+          "^I can't see the sky\\.",
+          "This is Mouse"
+        ]
+      }
+    },
+    "l2post-meaning-question": {
+      "family": "leadin_post",
+      "id": "l2post-meaning-question",
+      "note": "Lesson meaning is shown in easy English",
+      "turns": [
+        "What is gone?"
+      ],
+      "max_replies": 2,
+      "reply_require": {
+        "2": [
+          "^The cake is not here\\.",
+          "This is Mouse"
+        ]
+      }
+    },
+    "l2post-horse-guess": {
+      "family": "leadin_post",
+      "id": "l2post-horse-guess",
+      "note": "Guess gets a natural non-spoiler response",
+      "turns": [
+        "The horse took it!"
+      ],
+      "max_replies": 2,
+      "reply_require": {
+        "2": [
+          "^Maybe\\."
+        ]
+      }
+    },
+    "l2post-silent": {
+      "family": "leadin_post",
+      "id": "l2post-silent",
+      "note": "Silence advances without invented catch or praise",
+      "turns": [],
+      "max_replies": 2,
+      "forbid_phrases": [
+        "good guess",
+        "great job",
+        "you said"
+      ]
+    },
+    "cow-happy": {
+      "family": "word_cow",
+      "id": "cow-happy",
+      "note": "cow -> moo -> answer -> close",
+      "turns": [
+        "cow!",
+        "moo moo!",
+        "yes"
+      ],
+      "max_replies": 4
+    },
+    "cow-meaning-retry": {
+      "family": "word_cow",
+      "id": "cow-meaning-retry",
+      "note": "Meaning question answered first, then one clear retry",
+      "turns": [
+        "What is a cow?",
+        "cow",
+        "moo",
+        "no"
+      ],
+      "max_replies": 5,
+      "reply_require": {
+        "2": [
+          "^A cow is a big farm animal\\.",
+          "Let's try again"
+        ]
+      }
+    },
+    "cow-own-language": {
+      "family": "word_cow",
+      "id": "cow-own-language",
+      "note": "Understanding in another language gets credit but still one English try",
+      "turns": [
+        "奶牛！",
+        "cow",
+        "哞哞！",
+        "no"
+      ],
+      "max_replies": 5,
+      "reply_require": {
+        "2": [
+          "^Yes, you know the animal[.!]"
+        ]
+      }
+    },
+    "cow-silent": {
+      "family": "word_cow",
+      "id": "cow-silent",
+      "note": "Full silence moves forward with no fake praise and one retry only",
+      "turns": [],
+      "max_replies": 5,
+      "forbid_phrases": [
+        "you got it",
+        "great job",
+        "amazing"
+      ]
+    },
+    "cow-name-question": {
+      "family": "word_cow",
+      "id": "cow-name-question",
+      "note": "Teacher answers their name before the retry",
+      "turns": [
+        "What's your name?",
+        "cow",
+        "moo",
+        "no"
+      ],
+      "teacher_name": "Kim",
+      "max_replies": 5,
+      "reply_require": {
+        "2": [
+          "^I'm Kim\\.",
+          "Let's try again"
+        ]
+      }
+    },
+    "cow-dog-after-moo-invite": {
+      "family": "word_cow",
+      "id": "cow-dog-after-moo-invite",
+      "note": "Personal question after the sound invite is answered before the cake question",
+      "turns": [
+        "cow",
+        "Do you like my dog?",
+        "no"
+      ],
+      "max_replies": 4,
+      "reply_require": {
+        "3": [
+          "^Yes, I like dogs\\.",
+          "Now, let's look at the cow\\.",
+          "Does the cow have the cake"
+        ]
+      },
+      "reply_forbid": {
+        "3": [
+          "Moo moo"
+        ]
+      }
+    },
+    "cow-name-after-moo-invite": {
+      "family": "word_cow",
+      "id": "cow-name-after-moo-invite",
+      "note": "Regression #544971: name question must be answered before the cake question",
+      "turns": [
+        "cow",
+        "Um, teacher, what's your name?",
+        "no"
+      ],
+      "teacher_name": "Kim",
+      "max_replies": 4,
+      "reply_require": {
+        "3": [
+          "^I'm Kim\\.",
+          "Now, let's look at the cow\\.",
+          "Does the cow have the cake"
+        ]
+      },
+      "reply_forbid": {
+        "3": [
+          "Moo moo",
+          "Who ate the cake"
+        ]
+      }
+    },
+    "cow-weather-at-close": {
+      "family": "word_cow",
+      "id": "cow-weather-at-close",
+      "note": "Question at the final beat is answered before finishing",
+      "turns": [
+        "cow",
+        "moo",
+        "How's the weather?"
+      ],
+      "max_replies": 4,
+      "reply_require": {
+        "4": [
+          "^I can't see the sky\\.",
+          "Let's keep looking"
+        ]
+      }
+    },
+    "cow-blind-color": {
+      "family": "word_cow",
+      "id": "cow-blind-color",
+      "note": "BLIND CASE: unlisted personal question still gets a direct answer",
+      "turns": [
+        "What's your favorite color?",
+        "cow",
+        "moo",
+        "no"
+      ],
+      "max_replies": 5,
+      "reply_require": {
+        "2": [
+          "^(?:My favorite color is|I like) (?:blue|red|green|yellow|pink|purple)",
+          "Let's try again"
+        ]
+      }
+    },
+    "v3-cow-ambiguous-how-help": {
+      "family": "word_cow",
+      "id": "v3-cow-ambiguous-how-help",
+      "note": "Ambiguous How gets sound help rather than assumed cow success.",
+      "turns": [
+        "How?",
+        "cow",
+        "moo",
+        "no"
+      ],
+      "max_replies": 5,
+      "reply_forbid": {
+        "2": [
+          "^Yes",
+          "says moo"
+        ]
+      },
+      "reply_require": {
+        "2": [
+          "/k/\\s*/aʊ/",
+          "Your turn"
+        ]
+      }
+    },
+    "v3-cow-help-not-success": {
+      "family": "word_cow",
+      "id": "v3-cow-help-not-success",
+      "turns": [
+        "I can't say cow.",
+        "cow",
+        "moo",
+        "no"
+      ],
+      "max_replies": 5,
+      "v3_require": {
+        "2": [
+          "/k/\\ /aʊ/",
+          "Your turn"
+        ]
+      },
+      "v3_forbid": {
+        "2": [
+          "says",
+          "^Yes"
+        ]
+      }
+    },
+    "v3-cow-slow": {
+      "family": "word_cow",
+      "id": "v3-cow-slow",
+      "turns": [
+        "Can you say it slowly?",
+        "cow",
+        "moo",
+        "no"
+      ],
+      "max_replies": 5,
+      "v3_require": {
+        "2": [
+          "/k/\\ /aʊ/",
+          "Your turn"
+        ]
+      },
+      "v3_forbid": {
+        "2": [
+          "says"
+        ]
+      }
+    },
+    "v3-cow-specific-sound": {
+      "family": "word_cow",
+      "id": "v3-cow-specific-sound",
+      "turns": [
+        "Please help me say the last sound in cow.",
+        "cow",
+        "moo",
+        "no"
+      ],
+      "max_replies": 5,
+      "v3_require": {
+        "2": [
+          "/aʊ/",
+          "cow"
+        ]
+      },
+      "v3_forbid": {
+        "2": [
+          "says",
+          "/k/\\ /aʊ/"
+        ]
+      }
+    },
+    "v3-cow-still-lost": {
+      "family": "word_cow",
+      "id": "v3-cow-still-lost",
+      "turns": [
+        "I can't say cow.",
+        "I still can't say it.",
+        "moo",
+        "no"
+      ],
+      "max_replies": 5,
+      "v3_require": {
+        "3": [
+          "/[^/]+/"
+        ]
+      },
+      "v3_forbid": {
+        "3": [
+          "^Yes",
+          "[Gg]reat",
+          "[Pp]erfect"
+        ]
+      }
+    },
+    "v3-cow-help-after-success": {
+      "family": "word_cow",
+      "id": "v3-cow-help-after-success",
+      "turns": [
+        "cow",
+        "How do I say the last sound in cow?",
+        "no"
+      ],
+      "max_replies": 4,
+      "v3_require": {
+        "3": [
+          "/aʊ/",
+          "Does the cow have the cake"
+        ]
+      },
+      "v3_forbid": {}
+    },
+    "v3-cow-no-laugh-echo": {
+      "family": "word_cow",
+      "id": "v3-cow-no-laugh-echo",
+      "turns": [
+        "Haha yay. cow",
+        "moo",
+        "no"
+      ],
+      "max_replies": 4,
+      "v3_require": {},
+      "v3_forbid": {}
+    },
+    "v3-cow-refusal": {
+      "family": "word_cow",
+      "id": "v3-cow-refusal",
+      "turns": [
+        "I don't want to say it.",
+        "moo",
+        "no"
+      ],
+      "max_replies": 4,
+      "v3_require": {},
+      "v3_forbid": {
+        "2": [
+          "(?:Your turn|Now you try|Say)[., ]+cow",
+          "Let's try again"
+        ]
+      }
+    },
+    "v3-cow-asr-not-diagnosis": {
+      "family": "word_cow",
+      "id": "v3-cow-asr-not-diagnosis",
+      "turns": [
+        "kao",
+        "moo",
+        "no"
+      ],
+      "max_replies": 4,
+      "v3_require": {
+        "2": [
+          "says"
+        ]
+      },
+      "v3_forbid": {
+        "2": [
+          "you (?:missed|forgot)|wrong sound|Your turn\\. cow"
+        ]
+      }
+    },
+    "cat-happy": {
+      "family": "word_cat",
+      "id": "cat-happy",
+      "note": "cat -> meow -> answer -> close",
+      "turns": [
+        "cat!",
+        "meow meow!",
+        "yes"
+      ],
+      "max_replies": 4
+    },
+    "cat-meaning-retry": {
+      "family": "word_cat",
+      "id": "cat-meaning-retry",
+      "note": "Meaning question answered first, then one clear retry",
+      "turns": [
+        "What is a cat?",
+        "cat",
+        "meow",
+        "no"
+      ],
+      "max_replies": 5,
+      "reply_require": {
+        "2": [
+          "^A cat is a small pet\\.",
+          "Let's try again"
+        ]
+      }
+    },
+    "cat-old-word": {
+      "family": "word_cat",
+      "id": "cat-old-word",
+      "note": "Earlier word is acknowledged without fake cat praise",
+      "turns": [
+        "cow",
+        "cat",
+        "meow",
+        "no"
+      ],
+      "max_replies": 5,
+      "reply_require": {
+        "2": [
+          "^Yes, cow was first\\. This is a cat\\."
+        ]
+      },
+      "reply_forbid": {
+        "2": [
+          "Yes, cat"
+        ]
+      }
+    },
+    "cat-silent": {
+      "family": "word_cat",
+      "id": "cat-silent",
+      "note": "Full silence moves forward with no fake praise",
+      "turns": [],
+      "max_replies": 5,
+      "forbid_phrases": [
+        "you got it",
+        "great job",
+        "amazing"
+      ]
+    },
+    "cat-name-question-after-retry": {
+      "family": "word_cat",
+      "id": "cat-name-question-after-retry",
+      "note": "Question after the one retry is answered before moving to meow",
+      "turns": [
+        "okay",
+        "What's your name?",
+        "meow",
+        "no"
+      ],
+      "teacher_name": "Kim",
+      "max_replies": 5,
+      "reply_require": {
+        "3": [
+          "^I'm Kim\\.",
+          "A cat says meow meow"
+        ]
+      },
+      "reply_forbid": {
+        "3": [
+          "Let's try again"
+        ]
+      }
+    },
+    "cat-dog-after-meow": {
+      "family": "word_cat",
+      "id": "cat-dog-after-meow",
+      "note": "Dog question is answered before the cake question",
+      "turns": [
+        "cat",
+        "Do you like my dog?",
+        "no"
+      ],
+      "max_replies": 4,
+      "reply_require": {
+        "3": [
+          "^Yes, I like dogs\\.",
+          "Now, let's look at the cat\\.",
+          "Does the cat have the cake"
+        ]
+      },
+      "reply_forbid": {
+        "3": [
+          "Meow meow"
+        ]
+      }
+    },
+    "cat-weather-at-close": {
+      "family": "word_cat",
+      "id": "cat-weather-at-close",
+      "note": "Weather question is answered before finishing",
+      "turns": [
+        "cat",
+        "meow",
+        "How's the weather?"
+      ],
+      "max_replies": 4,
+      "reply_require": {
+        "4": [
+          "^I can't see the sky\\.",
+          "Let's keep looking"
+        ]
+      }
+    },
+    "cat-blind-food": {
+      "family": "word_cat",
+      "id": "cat-blind-food",
+      "note": "BLIND CASE: teacher answers a new safe personal question",
+      "turns": [
+        "What food do you like?",
+        "cat",
+        "meow",
+        "no"
+      ],
+      "max_replies": 5,
+      "reply_require": {
+        "2": [
+          "^I like [A-Za-z]+",
+          "Let's try again"
+        ]
+      }
+    },
+    "v3-cat-help-not-success": {
+      "family": "word_cat",
+      "id": "v3-cat-help-not-success",
+      "turns": [
+        "I can't say cat.",
+        "cat",
+        "meow",
+        "no"
+      ],
+      "max_replies": 5,
+      "v3_require": {
+        "2": [
+          "/k/\\ /æ/\\ /t/",
+          "Your turn"
+        ]
+      },
+      "v3_forbid": {
+        "2": [
+          "says",
+          "^Yes"
+        ]
+      }
+    },
+    "v3-cat-slow": {
+      "family": "word_cat",
+      "id": "v3-cat-slow",
+      "turns": [
+        "Can you say it slowly?",
+        "cat",
+        "meow",
+        "no"
+      ],
+      "max_replies": 5,
+      "v3_require": {
+        "2": [
+          "/k/\\ /æ/\\ /t/",
+          "Your turn"
+        ]
+      },
+      "v3_forbid": {
+        "2": [
+          "says"
+        ]
+      }
+    },
+    "v3-cat-specific-sound": {
+      "family": "word_cat",
+      "id": "v3-cat-specific-sound",
+      "turns": [
+        "Please help me say the middle sound in cat.",
+        "cat",
+        "meow",
+        "no"
+      ],
+      "max_replies": 5,
+      "v3_require": {
+        "2": [
+          "/æ/",
+          "cat"
+        ]
+      },
+      "v3_forbid": {
+        "2": [
+          "says",
+          "/k/\\ /æ/\\ /t/"
+        ]
+      }
+    },
+    "v3-cat-still-lost": {
+      "family": "word_cat",
+      "id": "v3-cat-still-lost",
+      "turns": [
+        "I can't say cat.",
+        "I still can't say it.",
+        "meow",
+        "no"
+      ],
+      "max_replies": 5,
+      "v3_require": {
+        "3": [
+          "/[^/]+/"
+        ]
+      },
+      "v3_forbid": {
+        "3": [
+          "^Yes",
+          "[Gg]reat",
+          "[Pp]erfect"
+        ]
+      }
+    },
+    "v3-cat-help-after-success": {
+      "family": "word_cat",
+      "id": "v3-cat-help-after-success",
+      "turns": [
+        "cat",
+        "How do I say the middle sound in cat?",
+        "no"
+      ],
+      "max_replies": 4,
+      "v3_require": {
+        "3": [
+          "/æ/",
+          "Does the cat have the cake"
+        ]
+      },
+      "v3_forbid": {}
+    },
+    "v3-cat-no-laugh-echo": {
+      "family": "word_cat",
+      "id": "v3-cat-no-laugh-echo",
+      "turns": [
+        "Haha yay. cat",
+        "meow",
+        "no"
+      ],
+      "max_replies": 4,
+      "v3_require": {},
+      "v3_forbid": {}
+    },
+    "v3-cat-refusal": {
+      "family": "word_cat",
+      "id": "v3-cat-refusal",
+      "turns": [
+        "I don't want to say it.",
+        "meow",
+        "no"
+      ],
+      "max_replies": 4,
+      "v3_require": {},
+      "v3_forbid": {
+        "2": [
+          "(?:Your turn|Now you try|Say)[., ]+cat",
+          "Let's try again"
+        ]
+      }
+    },
+    "v3-cat-asr-not-diagnosis": {
+      "family": "word_cat",
+      "id": "v3-cat-asr-not-diagnosis",
+      "turns": [
+        "kat",
+        "meow",
+        "no"
+      ],
+      "max_replies": 4,
+      "v3_require": {
+        "2": [
+          "says"
+        ]
+      },
+      "v3_forbid": {
+        "2": [
+          "you (?:missed|forgot)|wrong sound|Your turn\\. cat"
+        ]
+      }
+    },
+    "horse-happy": {
+      "family": "word_horse",
+      "id": "horse-happy",
+      "note": "horse -> neigh -> horse guess -> neutral close",
+      "turns": [
+        "horse!",
+        "neigh neigh!",
+        "the horse!"
+      ],
+      "max_replies": 4,
+      "forbid_phrases": [
+        "the horse ate",
+        "yes[^.!?]*horse[^.!?]*cake"
+      ]
+    },
+    "horse-house-asr": {
+      "family": "word_horse",
+      "id": "horse-house-asr",
+      "note": "ASR house counts as a horse try",
+      "turns": [
+        "house",
+        "neigh",
+        "no"
+      ],
+      "max_replies": 4,
+      "reply_forbid": {
+        "2": [
+          "Let's try again"
+        ]
+      }
+    },
+    "horse-of-course-asr": {
+      "family": "word_horse",
+      "id": "horse-of-course-asr",
+      "note": "ASR of course counts as horse, not agreement",
+      "turns": [
+        "of course",
+        "neigh",
+        "no"
+      ],
+      "max_replies": 4,
+      "reply_forbid": {
+        "2": [
+          "Let's try again"
+        ]
+      }
+    },
+    "horse-meaning-retry": {
+      "family": "word_horse",
+      "id": "horse-meaning-retry",
+      "note": "Meaning question answered before one retry",
+      "turns": [
+        "What is a horse?",
+        "horse",
+        "neigh",
+        "no"
+      ],
+      "max_replies": 5,
+      "reply_require": {
+        "2": [
+          "^A horse is a big animal\\.",
+          "Let's try again"
+        ]
+      }
+    },
+    "horse-nainai-asr": {
+      "family": "word_horse",
+      "id": "horse-nainai-asr",
+      "note": "奶奶 counts as a neigh sound",
+      "turns": [
+        "horse",
+        "奶奶。",
+        "no"
+      ],
+      "max_replies": 4,
+      "reply_require": {
+        "3": [
+          "^Neigh neigh[.!] You sound like a horse[.!]"
+        ]
+      }
+    },
+    "horse-silent": {
+      "family": "word_horse",
+      "id": "horse-silent",
+      "note": "Full silence moves forward with one retry and no fake praise",
+      "turns": [],
+      "max_replies": 5,
+      "forbid_phrases": [
+        "you got it",
+        "great job",
+        "amazing"
+      ]
+    },
+    "horse-name-question": {
+      "family": "word_horse",
+      "id": "horse-name-question",
+      "note": "Name question is answered before the retry",
+      "turns": [
+        "What's your name?",
+        "horse",
+        "neigh",
+        "no"
+      ],
+      "teacher_name": "Kim",
+      "max_replies": 5,
+      "reply_require": {
+        "2": [
+          "^I'm Kim\\.",
+          "Let's try again"
+        ]
+      }
+    },
+    "horse-dog-after-neigh": {
+      "family": "word_horse",
+      "id": "horse-dog-after-neigh",
+      "note": "Dog question is answered before the cake question",
+      "turns": [
+        "horse",
+        "Do you like my dog?",
+        "no"
+      ],
+      "max_replies": 4,
+      "reply_require": {
+        "3": [
+          "^Yes, I like dogs\\.",
+          "Now, let's look at the horse\\.",
+          "Does the horse have the cake"
+        ]
+      },
+      "reply_forbid": {
+        "3": [
+          "Neigh neigh"
+        ]
+      }
+    },
+    "horse-weather-at-close": {
+      "family": "word_horse",
+      "id": "horse-weather-at-close",
+      "note": "Weather question is answered before the page closes",
+      "turns": [
+        "horse",
+        "neigh",
+        "How's the weather?"
+      ],
+      "max_replies": 4,
+      "reply_require": {
+        "4": [
+          "^I can't see the sky\\.",
+          "Let's watch and find out"
+        ]
+      }
+    },
+    "horse-blind-game": {
+      "family": "word_horse",
+      "id": "horse-blind-game",
+      "note": "BLIND CASE: unlisted safe question receives a direct answer",
+      "turns": [
+        "What game do you like?",
+        "horse",
+        "neigh",
+        "no"
+      ],
+      "max_replies": 5,
+      "reply_require": {
+        "2": [
+          "^I like [A-Za-z]+",
+          "Let's try again"
+        ]
+      }
+    },
+    "v3-horse-help-not-success": {
+      "family": "word_horse",
+      "id": "v3-horse-help-not-success",
+      "turns": [
+        "I can't say horse.",
+        "horse",
+        "neigh",
+        "no"
+      ],
+      "max_replies": 5,
+      "v3_require": {
+        "2": [
+          "/h/\\ /ɔ/\\ /ɹ/\\ /s/",
+          "Your turn"
+        ]
+      },
+      "v3_forbid": {
+        "2": [
+          "says",
+          "^Yes"
+        ]
+      }
+    },
+    "v3-horse-slow": {
+      "family": "word_horse",
+      "id": "v3-horse-slow",
+      "turns": [
+        "Can you say it slowly?",
+        "horse",
+        "neigh",
+        "no"
+      ],
+      "max_replies": 5,
+      "v3_require": {
+        "2": [
+          "/h/\\ /ɔ/\\ /ɹ/\\ /s/",
+          "Your turn"
+        ]
+      },
+      "v3_forbid": {
+        "2": [
+          "says"
+        ]
+      }
+    },
+    "v3-horse-specific-sound": {
+      "family": "word_horse",
+      "id": "v3-horse-specific-sound",
+      "turns": [
+        "Please help me say the last sound in horse.",
+        "horse",
+        "neigh",
+        "no"
+      ],
+      "max_replies": 5,
+      "v3_require": {
+        "2": [
+          "/s/",
+          "horse"
+        ]
+      },
+      "v3_forbid": {
+        "2": [
+          "says",
+          "/h/\\ /ɔ/\\ /ɹ/\\ /s/"
+        ]
+      }
+    },
+    "v3-horse-still-lost": {
+      "family": "word_horse",
+      "id": "v3-horse-still-lost",
+      "turns": [
+        "I can't say horse.",
+        "I still can't say it.",
+        "neigh",
+        "no"
+      ],
+      "max_replies": 5,
+      "v3_require": {
+        "3": [
+          "/[^/]+/"
+        ]
+      },
+      "v3_forbid": {
+        "3": [
+          "^Yes",
+          "[Gg]reat",
+          "[Pp]erfect"
+        ]
+      }
+    },
+    "v3-horse-help-after-success": {
+      "family": "word_horse",
+      "id": "v3-horse-help-after-success",
+      "turns": [
+        "horse",
+        "How do I say the last sound in horse?",
+        "no"
+      ],
+      "max_replies": 4,
+      "v3_require": {
+        "3": [
+          "/s/",
+          "Does the horse have the cake"
+        ]
+      },
+      "v3_forbid": {}
+    },
+    "v3-horse-no-laugh-echo": {
+      "family": "word_horse",
+      "id": "v3-horse-no-laugh-echo",
+      "turns": [
+        "Haha yay. horse",
+        "neigh",
+        "no"
+      ],
+      "max_replies": 4,
+      "v3_require": {},
+      "v3_forbid": {}
+    },
+    "v3-horse-refusal": {
+      "family": "word_horse",
+      "id": "v3-horse-refusal",
+      "turns": [
+        "I don't want to say it.",
+        "neigh",
+        "no"
+      ],
+      "max_replies": 4,
+      "v3_require": {},
+      "v3_forbid": {
+        "2": [
+          "(?:Your turn|Now you try|Say)[., ]+horse",
+          "Let's try again"
+        ]
+      }
+    },
+    "v3-horse-asr-not-diagnosis": {
+      "family": "word_horse",
+      "id": "v3-horse-asr-not-diagnosis",
+      "turns": [
+        "hoss",
+        "neigh",
+        "no"
+      ],
+      "max_replies": 4,
+      "v3_require": {
+        "2": [
+          "says"
+        ]
+      },
+      "v3_forbid": {
+        "2": [
+          "you (?:missed|forgot)|wrong sound|Your turn\\. horse"
+        ]
+      }
+    },
+    "l2sent-intro": {
+      "family": "sent_intro",
+      "id": "l2sent-intro",
+      "note": "One short A1 video launch",
+      "turns": [],
+      "max_replies": 1
+    },
+    "l2sent-cow-pass": {
+      "family": "sent_cow",
+      "id": "l2sent-cow-pass",
+      "note": "Full sentence advances immediately",
+      "turns": [
+        "It's a cow."
+      ],
+      "max_replies": 2
+    },
+    "l2sent-cow-expanded": {
+      "family": "sent_cow",
+      "id": "l2sent-cow-expanded",
+      "note": "A correct longer sentence keeps the child's added detail and advances",
+      "turns": [
+        "It's a big cow."
+      ],
+      "max_replies": 2,
+      "reply_require": {
+        "2": [
+          "it's a big cow",
+          "Nice sentence",
+          "Let's open the next bag"
+        ]
+      },
+      "reply_forbid": {
+        "2": [
+          "Let's try again",
+          "Yes, it's a cow\\."
+        ]
+      }
+    },
+    "l2sent-cow-word": {
+      "family": "sent_cow",
+      "id": "l2sent-cow-word",
+      "note": "Word-only try gets one supported whole-sentence retry",
+      "turns": [
+        "cow",
+        "It's a cow."
+      ],
+      "max_replies": 3,
+      "reply_require": {
+        "2": [
+          "^Yes, cow\\.",
+          "It's a cow\\.",
+          "(?:Now (?:you )?try|Your turn)"
+        ]
+      }
+    },
+    "l2sent-cow-name": {
+      "family": "sent_cow",
+      "id": "l2sent-cow-name",
+      "note": "Name question answered before the retry",
+      "turns": [
+        "What's your name?",
+        "It's a cow."
+      ],
+      "teacher_name": "Kim",
+      "max_replies": 3,
+      "reply_require": {
+        "2": [
+          "^I'm Kim\\.",
+          "Let's try again"
+        ]
+      }
+    },
+    "l2sent-cow-dog-after-retry": {
+      "family": "sent_cow",
+      "id": "l2sent-cow-dog-after-retry",
+      "note": "Question after retry answered before the step ends",
+      "turns": [
+        "okay",
+        "Do you like my dog?"
+      ],
+      "max_replies": 3,
+      "reply_require": {
+        "3": [
+          "^Yes, I like dogs\\.",
+          "Now, listen\\. It's a cow\\.",
+          "Let's open the next bag"
+        ]
+      },
+      "reply_forbid": {
+        "3": [
+          "That's okay"
+        ]
+      }
+    },
+    "l2sent-cow-silent": {
+      "family": "sent_cow",
+      "id": "l2sent-cow-silent",
+      "note": "One retry, then warm forward move without fake praise",
+      "turns": [],
+      "max_replies": 3,
+      "forbid_phrases": [
+        "great job",
+        "you got it"
+      ]
+    },
+    "l2sent-cow-blind-pizza": {
+      "family": "sent_cow",
+      "id": "l2sent-cow-blind-pizza",
+      "note": "BLIND CASE: unlisted question answered before teaching continues",
+      "turns": [
+        "Do you like pizza?",
+        "It's a cow."
+      ],
+      "max_replies": 3,
+      "reply_require": {
+        "2": [
+          "^Yes, I (?:like|love) pizza",
+          "Let's try again"
+        ]
+      }
+    },
+    "l2sent-cat-pass": {
+      "family": "sent_cat",
+      "id": "l2sent-cat-pass",
+      "note": "Full sentence advances immediately",
+      "turns": [
+        "It's a cat."
+      ],
+      "max_replies": 2
+    },
+    "l2sent-cat-related-then-expanded": {
+      "family": "sent_cat",
+      "id": "l2sent-cat-related-then-expanded",
+      "note": "Regression #545497: react to I like cat, then accept It's a beautiful cat without shrinking it",
+      "turns": [
+        "I like cat.",
+        "It's a beautiful cat."
+      ],
+      "max_replies": 3,
+      "reply_require": {
+        "2": [
+          "You like cats\\.",
+          "Now try this sentence\\. It's a cat\\."
+        ],
+        "3": [
+          "it's a beautiful cat",
+          "Nice sentence",
+          "Let's open the next bag"
+        ]
+      },
+      "reply_forbid": {
+        "2": [
+          "Let's try again"
+        ],
+        "3": [
+          "Let's try again",
+          "Yes, it's a cat\\."
+        ]
+      }
+    },
+    "l2sent-cat-old-sentence": {
+      "family": "sent_cat",
+      "id": "l2sent-cat-old-sentence",
+      "note": "Old sentence acknowledged, never celebrated as cat",
+      "turns": [
+        "It's a cow.",
+        "It's a cat."
+      ],
+      "max_replies": 3,
+      "reply_require": {
+        "2": [
+          "cow was first",
+          "Let's try again"
+        ]
+      },
+      "reply_forbid": {
+        "2": [
+          "Yes, it's a cat"
+        ]
+      }
+    },
+    "l2sent-cat-weather": {
+      "family": "sent_cat",
+      "id": "l2sent-cat-weather",
+      "note": "Weather question answered honestly before the retry",
+      "turns": [
+        "How's the weather?",
+        "It's a cat."
+      ],
+      "max_replies": 3,
+      "reply_require": {
+        "2": [
+          "^I can't see the sky\\.",
+          "Let's try again"
+        ]
+      }
+    },
+    "l2sent-cat-name-after-retry": {
+      "family": "sent_cat",
+      "id": "l2sent-cat-name-after-retry",
+      "note": "Name question after retry gets answered before moving on",
+      "turns": [
+        "okay",
+        "What's your name?"
+      ],
+      "teacher_name": "Kim",
+      "max_replies": 3,
+      "reply_require": {
+        "3": [
+          "^I'm Kim\\.",
+          "Now, listen\\. It's a cat\\.",
+          "Let's open the next bag"
+        ]
+      },
+      "reply_forbid": {
+        "3": [
+          "That's okay"
+        ]
+      }
+    },
+    "l2sent-cat-silent": {
+      "family": "sent_cat",
+      "id": "l2sent-cat-silent",
+      "note": "Silence moves forward after one retry",
+      "turns": [],
+      "max_replies": 3,
+      "forbid_phrases": [
+        "great job",
+        "you got it"
+      ]
+    },
+    "l2sent-horse-pass": {
+      "family": "sent_horse",
+      "id": "l2sent-horse-pass",
+      "note": "Sentence -> supported choice question -> neutral video close",
+      "turns": [
+        "It's a horse.",
+        "horse"
+      ],
+      "max_replies": 3,
+      "forbid_phrases": [
+        "the horse ate",
+        "you got it"
+      ]
+    },
+    "l2sent-horse-expanded": {
+      "family": "sent_horse",
+      "id": "l2sent-horse-expanded",
+      "note": "A correct longer horse sentence keeps the detail and moves to the mystery",
+      "turns": [
+        "It's a brown horse.",
+        "cat"
+      ],
+      "max_replies": 3,
+      "reply_require": {
+        "2": [
+          "it's a brown horse",
+          "Nice sentence",
+          "Who has the cake"
+        ]
+      },
+      "reply_forbid": {
+        "2": [
+          "Let's try again",
+          "Yes, it's a horse\\."
+        ]
+      }
+    },
+    "l2sent-horse-observation-after-retry": {
+      "family": "sent_horse",
+      "id": "l2sent-horse-observation-after-retry",
+      "note": "Regression #545215: child already sees cake on the horse, so skip the redundant mystery question",
+      "turns": [
+        "The horse is a.",
+        "The horse has cake on its mouth."
+      ],
+      "max_replies": 3,
+      "allow_no_question": true,
+      "reply_require": {
+        "3": [
+          "saw cake on its mouth",
+          "Good eyes",
+          "Let's watch and find out"
+        ]
+      },
+      "reply_forbid": {
+        "3": [
+          "Who has the cake",
+          "Your turn"
+        ]
+      }
+    },
+    "l2sent-horse-mystery-lock": {
+      "family": "sent_horse",
+      "id": "l2sent-horse-mystery-lock",
+      "note": "Regression #545217: after the mystery question, Horse closes the step and never restarts teaching",
+      "turns": [
+        "It's a horse.",
+        "The horse. Horse."
+      ],
+      "max_replies": 3,
+      "reply_require": {
+        "2": [
+          "Who has the cake"
+        ],
+        "3": [
+          "^Good guess\\.",
+          "Let's watch and find out"
+        ]
+      },
+      "reply_forbid": {
+        "3": [
+          "Who has the cake",
+          "It's a horse",
+          "Your turn",
+          "Let's try again"
+        ]
+      }
+    },
+    "l2sent-horse-asr": {
+      "family": "sent_horse",
+      "id": "l2sent-horse-asr",
+      "note": "It's of course counts as the full target",
+      "turns": [
+        "It's of course.",
+        "cat"
+      ],
+      "max_replies": 3,
+      "reply_forbid": {
+        "2": [
+          "Let's try again"
+        ]
+      }
+    },
+    "l2sent-horse-name": {
+      "family": "sent_horse",
+      "id": "l2sent-horse-name",
+      "note": "Name question answered before one retry",
+      "turns": [
+        "What's your name?",
+        "It's a horse.",
+        "cat"
+      ],
+      "teacher_name": "Kim",
+      "max_replies": 4,
+      "reply_require": {
+        "2": [
+          "^I'm Kim\\.",
+          "Let's try again"
+        ]
+      }
+    },
+    "l2sent-horse-dog-after-retry": {
+      "family": "sent_horse",
+      "id": "l2sent-horse-dog-after-retry",
+      "note": "Dog question after retry answered before the mystery question",
+      "turns": [
+        "okay",
+        "Do you like my dog?",
+        "cat"
+      ],
+      "max_replies": 4,
+      "reply_require": {
+        "3": [
+          "^Yes, I like dogs\\.",
+          "Now, look\\. It's a horse\\.",
+          "Who has the cake"
+        ]
+      },
+      "reply_forbid": {
+        "3": [
+          "That's okay"
+        ]
+      }
+    },
+    "l2sent-horse-weather-close": {
+      "family": "sent_horse",
+      "id": "l2sent-horse-weather-close",
+      "note": "Weather question at final beat answered before video launch",
+      "turns": [
+        "It's a horse.",
+        "How's the weather?"
+      ],
+      "max_replies": 3,
+      "reply_require": {
+        "3": [
+          "^I can't see the sky\\.",
+          "Let's watch and find out"
+        ]
+      }
+    },
+    "l2sent-horse-silent": {
+      "family": "sent_horse",
+      "id": "l2sent-horse-silent",
+      "note": "Full silence uses one retry, asks once, then advances",
+      "turns": [],
+      "max_replies": 4,
+      "forbid_phrases": [
+        "great job",
+        "you got it"
+      ]
+    },
+    "l2sent-horse-blind-color": {
+      "family": "sent_horse",
+      "id": "l2sent-horse-blind-color",
+      "note": "BLIND CASE: new harmless question answered before retry",
+      "turns": [
+        "What's your favorite color?",
+        "It's a horse.",
+        "cow"
+      ],
+      "max_replies": 4,
+      "reply_require": {
+        "2": [
+          "^(?:My favorite color is|I like) (?:blue|red|green|yellow|pink|purple)",
+          "Let's try again"
+        ]
+      }
+    },
+    "l2reveal-hit": {
+      "family": "sent_reveal",
+      "id": "l2reveal-hit",
+      "note": "Horse guess receives the warm hit line",
+      "seed": [
+        {
+          "role": "assistant",
+          "text": "Yes, it's a horse. Who has the cake? Say cow, cat, or horse.[TEACHER_LISTEN][STUDENT_TALK]"
+        },
+        {
+          "role": "user",
+          "text": "horse"
+        }
+      ],
+      "turns": [],
+      "require_phrases": [
+        "you were right"
+      ]
+    },
+    "l2reveal-hit-own-language": {
+      "family": "sent_reveal",
+      "id": "l2reveal-hit-own-language",
+      "note": "Horse meaning in another language still counts",
+      "seed": [
+        {
+          "role": "assistant",
+          "text": "Yes, it's a horse. Who has the cake? Say cow, cat, or horse.[TEACHER_LISTEN][STUDENT_TALK]"
+        },
+        {
+          "role": "user",
+          "text": "马"
+        }
+      ],
+      "turns": [],
+      "require_phrases": [
+        "you were right"
+      ]
+    },
+    "l2reveal-miss": {
+      "family": "sent_reveal",
+      "id": "l2reveal-miss",
+      "note": "Other guess is never mocked",
+      "seed": [
+        {
+          "role": "assistant",
+          "text": "Yes, it's a horse. Who has the cake? Say cow, cat, or horse.[TEACHER_LISTEN][STUDENT_TALK]"
+        },
+        {
+          "role": "user",
+          "text": "cat"
+        }
+      ],
+      "turns": [],
+      "forbid_phrases": [
+        "wrong",
+        "you were right"
+      ]
+    },
+    "l2reveal-junkname": {
+      "family": "sent_reveal",
+      "id": "l2reveal-junkname",
+      "note": "Junk child name is never spoken",
+      "seed": [
+        {
+          "role": "assistant",
+          "text": "Yes, it's a horse. Who has the cake? Say cow, cat, or horse.[TEACHER_LISTEN][STUDENT_TALK]"
+        },
+        {
+          "role": "user",
+          "text": "horse"
+        }
+      ],
+      "turns": [],
+      "student_name": "test_user",
+      "forbid_phrases": [
+        "test[_\\s]?user"
+      ]
+    },
+    "l2wrap-like": {
+      "family": "wrapup_pre",
+      "id": "l2wrap-like",
+      "note": "Positive answer gets the matching branch",
+      "turns": [
+        "Yes, I liked it!"
+      ],
+      "max_replies": 2,
+      "require_phrases": [
+        "Me too"
+      ]
+    },
+    "l2wrap-dislike": {
+      "family": "wrapup_pre",
+      "id": "l2wrap-dislike",
+      "note": "Negative answer is respected, never answered with Me too",
+      "turns": [
+        "No, I did not like it."
+      ],
+      "max_replies": 2,
+      "require_phrases": [
+        "That's okay"
+      ],
+      "forbid_phrases": [
+        "Me too"
+      ]
+    },
+    "l2wrap-own-language-like": {
+      "family": "wrapup_pre",
+      "id": "l2wrap-own-language-like",
+      "note": "Meaning counts across child languages",
+      "turns": [
+        "喜欢！"
+      ],
+      "max_replies": 2,
+      "require_phrases": [
+        "Me too"
+      ]
+    },
+    "l2wrap-name-question": {
+      "family": "wrapup_pre",
+      "id": "l2wrap-name-question",
+      "note": "Teacher answers their name before the song handoff",
+      "turns": [
+        "What's your name?"
+      ],
+      "teacher_name": "Kim",
+      "max_replies": 2,
+      "reply_require": {
+        "2": [
+          "^I'm Kim\\.",
+          "Now, let's hear the song"
+        ]
+      }
+    },
+    "l2wrap-dog-question": {
+      "family": "wrapup_pre",
+      "id": "l2wrap-dog-question",
+      "note": "Personal pet question is answered first",
+      "turns": [
+        "Do you like my dog?"
+      ],
+      "max_replies": 2,
+      "reply_require": {
+        "2": [
+          "^Yes, I like dogs\\.",
+          "Now, let's hear the song"
+        ]
+      }
+    },
+    "l2wrap-weather-question": {
+      "family": "wrapup_pre",
+      "id": "l2wrap-weather-question",
+      "note": "Teacher answers live-weather limitation honestly",
+      "turns": [
+        "How's the weather?"
+      ],
+      "max_replies": 2,
+      "reply_require": {
+        "2": [
+          "^I can't see the sky\\.",
+          "Now, let's hear the song"
+        ]
+      }
+    },
+    "l2wrap-ask-back": {
+      "family": "wrapup_pre",
+      "id": "l2wrap-ask-back",
+      "note": "Teacher answers Did you like it before continuing",
+      "turns": [
+        "Did you like it?"
+      ],
+      "max_replies": 2,
+      "reply_require": {
+        "2": [
+          "^Yes, I liked it[.!]",
+          "Now, let's hear the song"
+        ]
+      }
+    },
+    "l2wrap-blind-favorite-animal": {
+      "family": "wrapup_pre",
+      "id": "l2wrap-blind-favorite-animal",
+      "note": "BLIND CASE: unlisted safe question is answered before handoff",
+      "turns": [
+        "What animal do you like?"
+      ],
+      "max_replies": 2,
+      "reply_require": {
+        "2": [
+          "^I like (?:cats|dogs|horses|cows)",
+          "Now, let's hear the song"
+        ]
+      }
+    },
+    "l2wrap-silent": {
+      "family": "wrapup_pre",
+      "id": "l2wrap-silent",
+      "note": "Silence advances with no fake answer",
+      "turns": [],
+      "max_replies": 2,
+      "forbid_phrases": [
+        "Me too",
+        "you said"
+      ]
+    }
+  },
+  "cases": {
+    "l2pre-hi": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2pre-hi.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2pre-weather-question": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2pre-weather-question.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2pre-dog-question": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2pre-dog-question.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2pre-name-question": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2pre-name-question.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2pre-hi-and-name": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2pre-hi-and-name.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2pre-own-language-hi": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2pre-own-language-hi.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2pre-silent": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2pre-silent.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2pre-blind-pizza": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2pre-blind-pizza.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2pre-junk-student-name": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2pre-junk-student-name.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2post-name-question": {
+      "family": "leadin_post",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2post-name-question.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-plain-hi-not-meet-too": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/v3-plain-hi-not-meet-too.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2pre-teacher-kim": {
+      "family": "leadin_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2pre-teacher-kim.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2post-gone": {
+      "family": "leadin_post",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2post-gone.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2post-weather-question": {
+      "family": "leadin_post",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2post-weather-question.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2post-meaning-question": {
+      "family": "leadin_post",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2post-meaning-question.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2post-horse-guess": {
+      "family": "leadin_post",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2post-horse-guess.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2post-dog-question": {
+      "family": "leadin_post",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2post-dog-question.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2post-silent": {
+      "family": "leadin_post",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/leadin/l2post-silent.json",
+      "passed": true,
+      "issues": []
+    },
+    "cow-happy": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/cow-happy.json",
+      "passed": true,
+      "issues": []
+    },
+    "cow-meaning-retry": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/cow-meaning-retry.json",
+      "passed": true,
+      "issues": []
+    },
+    "cow-own-language": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/cow-own-language.json",
+      "passed": true,
+      "issues": []
+    },
+    "cow-silent": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/cow-silent.json",
+      "passed": true,
+      "issues": []
+    },
+    "cow-name-question": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/cow-name-question.json",
+      "passed": true,
+      "issues": []
+    },
+    "cow-name-after-moo-invite": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/cow-name-after-moo-invite.json",
+      "passed": true,
+      "issues": []
+    },
+    "cow-dog-after-moo-invite": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/cow-dog-after-moo-invite.json",
+      "passed": true,
+      "issues": []
+    },
+    "cow-weather-at-close": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/cow-weather-at-close.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-cow-ambiguous-how-help": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-cow-ambiguous-how-help.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-cow-help-not-success": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-cow-help-not-success.json",
+      "passed": true,
+      "issues": []
+    },
+    "cow-blind-color": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/cow-blind-color.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-cow-slow": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-cow-slow.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-cow-specific-sound": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-cow-specific-sound.json",
+      "passed": false,
+      "issues": [
+        "[v3-punctuation] reply 2: Disallowed spoken punctuation: U+002F",
+        "[v3_require] reply 2: '/aʊ/'"
+      ]
+    },
+    "v3-cow-still-lost": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-cow-still-lost.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-cow-no-laugh-echo": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-cow-no-laugh-echo.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-cow-help-after-success": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-cow-help-after-success.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-cow-refusal": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-cow-refusal.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-cow-asr-not-diagnosis": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-cow-asr-not-diagnosis.json",
+      "passed": true,
+      "issues": []
+    },
+    "cat-happy": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/cat-happy.json",
+      "passed": true,
+      "issues": []
+    },
+    "cat-meaning-retry": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/cat-meaning-retry.json",
+      "passed": true,
+      "issues": []
+    },
+    "cat-old-word": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/cat-old-word.json",
+      "passed": true,
+      "issues": []
+    },
+    "cat-silent": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/cat-silent.json",
+      "passed": true,
+      "issues": []
+    },
+    "cat-name-question-after-retry": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/cat-name-question-after-retry.json",
+      "passed": true,
+      "issues": []
+    },
+    "cat-dog-after-meow": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/cat-dog-after-meow.json",
+      "passed": true,
+      "issues": []
+    },
+    "cat-weather-at-close": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/cat-weather-at-close.json",
+      "passed": true,
+      "issues": []
+    },
+    "cat-blind-food": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/cat-blind-food.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-cat-slow": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-cat-slow.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-cat-help-not-success": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-cat-help-not-success.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-cat-specific-sound": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-cat-specific-sound.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-cat-help-after-success": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-cat-help-after-success.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-cat-still-lost": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-cat-still-lost.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-cat-no-laugh-echo": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-cat-no-laugh-echo.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-cat-refusal": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-cat-refusal.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-cat-asr-not-diagnosis": {
+      "family": "word_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-cat-asr-not-diagnosis.json",
+      "passed": true,
+      "issues": []
+    },
+    "horse-happy": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/horse-happy.json",
+      "passed": true,
+      "issues": []
+    },
+    "horse-house-asr": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/horse-house-asr.json",
+      "passed": true,
+      "issues": []
+    },
+    "horse-of-course-asr": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/horse-of-course-asr.json",
+      "passed": true,
+      "issues": []
+    },
+    "horse-nainai-asr": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/horse-nainai-asr.json",
+      "passed": true,
+      "issues": []
+    },
+    "horse-meaning-retry": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/horse-meaning-retry.json",
+      "passed": true,
+      "issues": []
+    },
+    "horse-silent": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/horse-silent.json",
+      "passed": true,
+      "issues": []
+    },
+    "horse-name-question": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/horse-name-question.json",
+      "passed": true,
+      "issues": []
+    },
+    "horse-weather-at-close": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/horse-weather-at-close.json",
+      "passed": true,
+      "issues": []
+    },
+    "horse-dog-after-neigh": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/horse-dog-after-neigh.json",
+      "passed": true,
+      "issues": []
+    },
+    "horse-blind-game": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/horse-blind-game.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-horse-help-not-success": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-horse-help-not-success.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-horse-specific-sound": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-horse-specific-sound.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-horse-slow": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-horse-slow.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-horse-still-lost": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-horse-still-lost.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-horse-no-laugh-echo": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-horse-no-laugh-echo.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-horse-help-after-success": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-horse-help-after-success.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-horse-refusal": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-horse-refusal.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-intro": {
+      "family": "sent_intro",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-intro.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-cow-expanded": {
+      "family": "sent_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-cow-expanded.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-cow-pass": {
+      "family": "sent_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-cow-pass.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-horse-asr-not-diagnosis": {
+      "family": "word_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/word/v3-horse-asr-not-diagnosis.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-cow-word": {
+      "family": "sent_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-cow-word.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-cow-name": {
+      "family": "sent_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-cow-name.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-cow-dog-after-retry": {
+      "family": "sent_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-cow-dog-after-retry.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-cow-silent": {
+      "family": "sent_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-cow-silent.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-cow-blind-pizza": {
+      "family": "sent_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-cow-blind-pizza.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-cat-pass": {
+      "family": "sent_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-cat-pass.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-cat-old-sentence": {
+      "family": "sent_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-cat-old-sentence.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-cat-related-then-expanded": {
+      "family": "sent_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-cat-related-then-expanded.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-cat-weather": {
+      "family": "sent_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-cat-weather.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-cat-name-after-retry": {
+      "family": "sent_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-cat-name-after-retry.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-cat-silent": {
+      "family": "sent_cat",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-cat-silent.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-horse-pass": {
+      "family": "sent_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-horse-pass.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-horse-expanded": {
+      "family": "sent_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-horse-expanded.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-horse-observation-after-retry": {
+      "family": "sent_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-horse-observation-after-retry.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-horse-mystery-lock": {
+      "family": "sent_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-horse-mystery-lock.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-horse-asr": {
+      "family": "sent_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-horse-asr.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-horse-weather-close": {
+      "family": "sent_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-horse-weather-close.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-horse-name": {
+      "family": "sent_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-horse-name.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-horse-dog-after-retry": {
+      "family": "sent_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-horse-dog-after-retry.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2reveal-hit": {
+      "family": "sent_reveal",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2reveal-hit.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2reveal-hit-own-language": {
+      "family": "sent_reveal",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2reveal-hit-own-language.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2reveal-miss": {
+      "family": "sent_reveal",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2reveal-miss.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2reveal-junkname": {
+      "family": "sent_reveal",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2reveal-junkname.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-horse-silent": {
+      "family": "sent_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-horse-silent.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2wrap-like": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/wrapup/l2wrap-like.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2wrap-dislike": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/wrapup/l2wrap-dislike.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2wrap-own-language-like": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/wrapup/l2wrap-own-language-like.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2sent-horse-blind-color": {
+      "family": "sent_horse",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/sentence/l2sent-horse-blind-color.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2wrap-name-question": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/wrapup/l2wrap-name-question.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2wrap-dog-question": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/wrapup/l2wrap-dog-question.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2wrap-weather-question": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/wrapup/l2wrap-weather-question.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2wrap-ask-back": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/wrapup/l2wrap-ask-back.json",
+      "passed": false,
+      "issues": [
+        "[reply-require] reply 2: missing required phrase '^Yes, I liked it[.!]'"
+      ]
+    },
+    "l2wrap-silent": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/wrapup/l2wrap-silent.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2wrap-blind-favorite-animal": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103033461135Z/wrapup/l2wrap-blind-favorite-animal.json",
+      "passed": true,
+      "issues": []
+    }
+  }
+}

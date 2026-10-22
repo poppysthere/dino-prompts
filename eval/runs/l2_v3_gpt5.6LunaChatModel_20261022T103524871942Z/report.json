@@ -1,0 +1,181 @@
+{
+  "model": "gpt5.6LunaChatModel",
+  "forge_picker_id": "gpt-5.6-luna",
+  "lesson_flow": "lead-in -> word -> sentence -> wrap-up (no warm-up)",
+  "started_at_utc": "20261022T103524871942Z",
+  "prompt_sha256": {
+    "prompts/l2-v3/README.md": "c52afa75635d18c07e87d288e73fed255068284f8a6f5ea9441cd8c65ae7c76d",
+    "prompts/l2-v3/common_teaching_simple_rules_l2.md": "15b2e6f8b8721614f71d9fb0a0e73708a065546a02b5baa212ea500ca6851adf",
+    "prompts/l2-v3/leadin_teaching_rules_l2_step_post_video.md": "aaa90824a5849fd852c57caffa25cdb362027f2e58587aa131665e86562edfa3",
+    "prompts/l2-v3/leadin_teaching_rules_l2_step_pre_video.md": "151e83f3f0ab5a3a26aae50c563b096b93ddc13d5429bde6b70028bb20be2f22",
+    "prompts/l2-v3/sentence_teaching_rules_l2_step_cat.md": "9ab23e89095f147fe1c22d7da96a938c75e27a8344b490a26a053df38ae9ef7f",
+    "prompts/l2-v3/sentence_teaching_rules_l2_step_cow.md": "db9b27c878fcebf06ab3251be085a27664a363317fa7d142959d32710c3bf19f",
+    "prompts/l2-v3/sentence_teaching_rules_l2_step_horse.md": "75e3e47b503d5eb08e02ab810f91c755de99da830af44575e6164298563140a3",
+    "prompts/l2-v3/sentence_teaching_rules_l2_step_intro.md": "438991454776ac10673308b502c8211b7302148fed3e5b428bcc59661d08c1b5",
+    "prompts/l2-v3/sentence_teaching_rules_l2_step_reveal.md": "e2909298feaf1fa519f10ba409b752565c34840ae3d6919d8c0769190615a636",
+    "prompts/l2-v3/word_teaching_rules_l2_cat.md": "1ee20947827da63a8cb7c627e7d1cf27c01afecd54c321b936ceeb98157d1d7f",
+    "prompts/l2-v3/word_teaching_rules_l2_cow.md": "4d617c1aa16c50dbaed6657b252747c1cdf4d246dd7d4de3d84c0ab8a3b99ee3",
+    "prompts/l2-v3/word_teaching_rules_l2_horse.md": "41ff9fc5dc5670762632eea1d369e8ad969ecc1613b9f5dd4259bfc812e55c78",
+    "prompts/l2-v3/wrapup_teaching_rules_l2_step_pre_video.md": "5df4c2f666cf82c4302d8ba98a59366af741df761a7e0179e9172211c711d4e2"
+  },
+  "case_manifest": {
+    "v3-cow-specific-sound__repeat_1": {
+      "family": "word_cow",
+      "id": "v3-cow-specific-sound__repeat_1",
+      "turns": [
+        "Please help me say the last sound in cow.",
+        "cow",
+        "moo",
+        "no"
+      ],
+      "max_replies": 5,
+      "v3_require": {
+        "2": [
+          "/aʊ/",
+          "cow"
+        ]
+      },
+      "v3_forbid": {
+        "2": [
+          "says",
+          "/k/\\ /aʊ/"
+        ]
+      },
+      "source_case": "v3-cow-specific-sound"
+    },
+    "v3-cow-specific-sound__repeat_2": {
+      "family": "word_cow",
+      "id": "v3-cow-specific-sound__repeat_2",
+      "turns": [
+        "Please help me say the last sound in cow.",
+        "cow",
+        "moo",
+        "no"
+      ],
+      "max_replies": 5,
+      "v3_require": {
+        "2": [
+          "/aʊ/",
+          "cow"
+        ]
+      },
+      "v3_forbid": {
+        "2": [
+          "says",
+          "/k/\\ /aʊ/"
+        ]
+      },
+      "source_case": "v3-cow-specific-sound"
+    },
+    "v3-cow-specific-sound__repeat_3": {
+      "family": "word_cow",
+      "id": "v3-cow-specific-sound__repeat_3",
+      "turns": [
+        "Please help me say the last sound in cow.",
+        "cow",
+        "moo",
+        "no"
+      ],
+      "max_replies": 5,
+      "v3_require": {
+        "2": [
+          "/aʊ/",
+          "cow"
+        ]
+      },
+      "v3_forbid": {
+        "2": [
+          "says",
+          "/k/\\ /aʊ/"
+        ]
+      },
+      "source_case": "v3-cow-specific-sound"
+    },
+    "l2wrap-ask-back__repeat_1": {
+      "family": "wrapup_pre",
+      "id": "l2wrap-ask-back__repeat_1",
+      "note": "Teacher answers Did you like it before continuing",
+      "turns": [
+        "Did you like it?"
+      ],
+      "max_replies": 2,
+      "reply_require": {
+        "2": [
+          "^Yes, I liked it[.!]",
+          "Now, let's hear the song"
+        ]
+      },
+      "source_case": "l2wrap-ask-back"
+    },
+    "l2wrap-ask-back__repeat_2": {
+      "family": "wrapup_pre",
+      "id": "l2wrap-ask-back__repeat_2",
+      "note": "Teacher answers Did you like it before continuing",
+      "turns": [
+        "Did you like it?"
+      ],
+      "max_replies": 2,
+      "reply_require": {
+        "2": [
+          "^Yes, I liked it[.!]",
+          "Now, let's hear the song"
+        ]
+      },
+      "source_case": "l2wrap-ask-back"
+    },
+    "l2wrap-ask-back__repeat_3": {
+      "family": "wrapup_pre",
+      "id": "l2wrap-ask-back__repeat_3",
+      "note": "Teacher answers Did you like it before continuing",
+      "turns": [
+        "Did you like it?"
+      ],
+      "max_replies": 2,
+      "reply_require": {
+        "2": [
+          "^Yes, I liked it[.!]",
+          "Now, let's hear the song"
+        ]
+      },
+      "source_case": "l2wrap-ask-back"
+    }
+  },
+  "cases": {
+    "v3-cow-specific-sound__repeat_1": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103524871942Z/word/v3-cow-specific-sound__repeat_1.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-cow-specific-sound__repeat_2": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103524871942Z/word/v3-cow-specific-sound__repeat_2.json",
+      "passed": true,
+      "issues": []
+    },
+    "v3-cow-specific-sound__repeat_3": {
+      "family": "word_cow",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103524871942Z/word/v3-cow-specific-sound__repeat_3.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2wrap-ask-back__repeat_1": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103524871942Z/wrapup/l2wrap-ask-back__repeat_1.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2wrap-ask-back__repeat_2": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103524871942Z/wrapup/l2wrap-ask-back__repeat_2.json",
+      "passed": true,
+      "issues": []
+    },
+    "l2wrap-ask-back__repeat_3": {
+      "family": "wrapup_pre",
+      "path": "eval/runs/l2_v3_gpt5.6LunaChatModel_20261022T103524871942Z/wrapup/l2wrap-ask-back__repeat_3.json",
+      "passed": true,
+      "issues": []
+    }
+  }
+}

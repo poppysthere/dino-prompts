@@ -1,0 +1,50 @@
+{
+  "family": "word_horse",
+  "case": "v3-horse-help-after-success",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Max",
+  "forbid_phrases": [],
+  "require_phrases": [],
+  "reply_forbid": {},
+  "reply_require": {},
+  "allow_no_question": false,
+  "max_replies": 4,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "Look, Mouse sees a horse. Listen. Horse. /h/ /ɔ/ /ɹ/ /s/ Horse. Your turn. Horse.[TEACHER_RIDE_HORSE][TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "horse"
+    },
+    {
+      "role": "assistant",
+      "text": "Yes, horse. A horse says neigh neigh. Listen. Neigh neigh. Your turn. Neigh neigh.[TEACHER_APPLAUD][TEACHER_RIDE_HORSE][TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "How do I say the last sound in horse?"
+    },
+    {
+      "role": "assistant",
+      "text": "The last sound is /s/. Horse. Now, let's look at the horse. Does the horse have the cake? Say yes or no.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "no"
+    },
+    {
+      "role": "assistant",
+      "text": "Maybe not. Let's watch and find out.[TEACHER_RIDE_HORSE][TEMPLATE_FINISH]"
+    }
+  ],
+  "v3_require": {
+    "3": [
+      "/s/",
+      "Does the horse have the cake"
+    ]
+  },
+  "v3_forbid": {}
+}

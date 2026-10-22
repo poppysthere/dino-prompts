@@ -1,0 +1,29 @@
+{
+  "family": "sent_cow",
+  "case": "l2sent-cow-pass",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Max",
+  "forbid_phrases": [],
+  "require_phrases": [],
+  "reply_forbid": {},
+  "reply_require": {},
+  "allow_no_question": false,
+  "max_replies": 2,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "Look, Mouse found a bell. The bell is for a cow. Listen first. It's a cow. Now you try. It's a cow.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "It's a cow."
+    },
+    {
+      "role": "assistant",
+      "text": "Yes, it's a cow. The bell is for the cow. Let's open the next bag.[TEACHER_APPLAUD][NEXT_STEP]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}

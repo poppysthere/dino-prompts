@@ -1,0 +1,34 @@
+{
+  "family": "leadin_post",
+  "case": "l2post-meaning-question",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Max",
+  "forbid_phrases": [],
+  "require_phrases": [],
+  "reply_forbid": {},
+  "reply_require": {
+    "2": [
+      "^The cake is not here\\.",
+      "This is Mouse"
+    ]
+  },
+  "allow_no_question": false,
+  "max_replies": 2,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "Oh no. The cake is gone. Where is it?[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "What is gone?"
+    },
+    {
+      "role": "assistant",
+      "text": "The cake is not here. The cake is gone. Look, this is Mouse. Mouse can help us. Let's find the cake.[TEMPLATE_FINISH]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}

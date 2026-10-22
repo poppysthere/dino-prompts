@@ -1,0 +1,31 @@
+{
+  "family": "wrapup_pre",
+  "case": "l2wrap-like",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Max",
+  "forbid_phrases": [],
+  "require_phrases": [
+    "Me too"
+  ],
+  "reply_forbid": {},
+  "reply_require": {},
+  "allow_no_question": false,
+  "max_replies": 2,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "The horse ate the cake. Did you like the story?[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "Yes, I liked it!"
+    },
+    {
+      "role": "assistant",
+      "text": "Me too. We met a cow, cat, and horse. Now, let's hear the song.[TEACHER_POINT_TO_SCREEN][NEXT_STEP]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}

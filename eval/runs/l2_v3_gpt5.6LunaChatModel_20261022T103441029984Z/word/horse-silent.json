@@ -1,0 +1,57 @@
+{
+  "family": "word_horse",
+  "case": "horse-silent",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Max",
+  "forbid_phrases": [
+    "you got it",
+    "great job",
+    "amazing"
+  ],
+  "require_phrases": [],
+  "reply_forbid": {},
+  "reply_require": {},
+  "allow_no_question": false,
+  "max_replies": 5,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "Look, Mouse sees a horse. Listen. Horse. /h/ /ɔ/ /ɹ/ /s/ Horse. Your turn. Horse.[TEACHER_RIDE_HORSE][TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "The student has been silent for 5 seconds"
+    },
+    {
+      "role": "assistant",
+      "text": "Let's try again. Horse. Your turn. Horse.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "The student has been silent for 5 seconds"
+    },
+    {
+      "role": "assistant",
+      "text": "That's okay. Horse. A horse says neigh neigh. Listen. Neigh neigh. Your turn. Neigh neigh.[TEACHER_RIDE_HORSE][TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "The student has been silent for 5 seconds"
+    },
+    {
+      "role": "assistant",
+      "text": "Neigh neigh. That's a horse sound. Does the horse have the cake? Say yes or no.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "The student has been silent for 5 seconds"
+    },
+    {
+      "role": "assistant",
+      "text": "Let's watch and find out.[TEACHER_RIDE_HORSE][TEMPLATE_FINISH]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}

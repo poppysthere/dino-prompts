@@ -1,0 +1,58 @@
+{
+  "family": "word_cat",
+  "case": "cat-blind-food",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Max",
+  "forbid_phrases": [],
+  "require_phrases": [],
+  "reply_forbid": {},
+  "reply_require": {
+    "2": [
+      "^I like [A-Za-z]+",
+      "Let's try again"
+    ]
+  },
+  "allow_no_question": false,
+  "max_replies": 5,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "Look, Mouse sees a cat. Listen. Cat. /k/ /æ/ /t/ Cat. Your turn. Cat.[TEACHER_CAT_PAWS][TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "What food do you like?"
+    },
+    {
+      "role": "assistant",
+      "text": "I like cake. Let's try again. Cat. Your turn. Cat.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "cat"
+    },
+    {
+      "role": "assistant",
+      "text": "Yes, cat. A cat says meow meow. Listen. Meow meow. Your turn. Meow meow.[TEACHER_APPLAUD][TEACHER_CAT_PAWS][TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "meow"
+    },
+    {
+      "role": "assistant",
+      "text": "Meow meow. You sound like a cat. Does the cat have the cake? Say yes or no.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "no"
+    },
+    {
+      "role": "assistant",
+      "text": "Maybe not. Let's keep looking, Mouse.[TEACHER_SHOW_MUSCLE][TEMPLATE_FINISH]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}

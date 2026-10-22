@@ -1,0 +1,58 @@
+{
+  "family": "word_cow",
+  "case": "cow-blind-color",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Max",
+  "forbid_phrases": [],
+  "require_phrases": [],
+  "reply_forbid": {},
+  "reply_require": {
+    "2": [
+      "^(?:My favorite color is|I like) (?:blue|red|green|yellow|pink|purple)",
+      "Let's try again"
+    ]
+  },
+  "allow_no_question": false,
+  "max_replies": 5,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "Look, Mouse sees a cow. Listen. Cow. /k/ /aʊ/ Cow. Your turn. Cow.[TEACHER_COW_HORNS][TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "What's your favorite color?"
+    },
+    {
+      "role": "assistant",
+      "text": "I like blue. Let's try again. Cow. Now you try. Cow.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "cow"
+    },
+    {
+      "role": "assistant",
+      "text": "Yes, cow. A cow says moo moo. Listen. Moo moo. Your turn. Moo moo.[TEACHER_APPLAUD][TEACHER_COW_HORNS][TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "moo"
+    },
+    {
+      "role": "assistant",
+      "text": "Moo moo. You sound like a cow. Does the cow have the cake? Say yes or no.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "no"
+    },
+    {
+      "role": "assistant",
+      "text": "Maybe not. Let's keep looking, Mouse.[TEMPLATE_FINISH]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}

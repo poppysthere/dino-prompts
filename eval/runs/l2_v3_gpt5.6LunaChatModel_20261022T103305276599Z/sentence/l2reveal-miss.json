@@ -1,0 +1,24 @@
+{
+  "family": "sent_reveal",
+  "case": "l2reveal-miss",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Max",
+  "forbid_phrases": [
+    "wrong",
+    "you were right"
+  ],
+  "require_phrases": [],
+  "reply_forbid": {},
+  "reply_require": {},
+  "allow_no_question": false,
+  "max_replies": null,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "It was the horse! The horse ate the cake. Oh no.[TEMPLATE_FINISH]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}

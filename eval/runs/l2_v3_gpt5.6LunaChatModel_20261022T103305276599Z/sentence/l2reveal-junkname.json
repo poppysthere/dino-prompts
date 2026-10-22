@@ -1,0 +1,23 @@
+{
+  "family": "sent_reveal",
+  "case": "l2reveal-junkname",
+  "action_timing": true,
+  "student_name": "",
+  "teacher_name": "Max",
+  "forbid_phrases": [
+    "test[_\\s]?user"
+  ],
+  "require_phrases": [],
+  "reply_forbid": {},
+  "reply_require": {},
+  "allow_no_question": false,
+  "max_replies": null,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "It was the horse! The horse ate the cake. You were right.[TEMPLATE_FINISH]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}

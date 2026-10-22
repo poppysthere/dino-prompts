@@ -1,0 +1,48 @@
+{
+  "family": "sent_horse",
+  "case": "l2sent-horse-observation-after-retry",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Max",
+  "forbid_phrases": [],
+  "require_phrases": [],
+  "reply_forbid": {
+    "3": [
+      "Who has the cake",
+      "Your turn",
+      "Good eyes"
+    ]
+  },
+  "reply_require": {
+    "3": [
+      "saw cake on its mouth",
+      "Let's watch and find out"
+    ]
+  },
+  "allow_no_question": true,
+  "max_replies": 3,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "Look, Mouse found a horse. Listen first. It's a horse. Your turn. It's a horse.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "The horse is a."
+    },
+    {
+      "role": "assistant",
+      "text": "That's okay. Let's try again. It's a horse. Your turn. It's a horse.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "The horse has cake on its mouth."
+    },
+    {
+      "role": "assistant",
+      "text": "You saw cake on its mouth. Let's watch and find out.[TEACHER_POINT_TO_SCREEN][NEXT_STEP]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}

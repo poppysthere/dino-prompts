@@ -1,0 +1,50 @@
+{
+  "family": "word_cow",
+  "case": "cow-weather-at-close",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Max",
+  "forbid_phrases": [],
+  "require_phrases": [],
+  "reply_forbid": {},
+  "reply_require": {
+    "4": [
+      "^I can't see the sky\\.",
+      "Let's keep looking"
+    ]
+  },
+  "allow_no_question": false,
+  "max_replies": 4,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "Look, Mouse sees a cow. Listen. Cow. /k/ /aʊ/ Cow. Your turn. Cow.[TEACHER_COW_HORNS][TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "cow"
+    },
+    {
+      "role": "assistant",
+      "text": "Yes, cow. A cow says moo moo. Listen. Moo moo. Your turn. Moo moo.[TEACHER_APPLAUD][TEACHER_COW_HORNS][TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "moo"
+    },
+    {
+      "role": "assistant",
+      "text": "Moo moo. You sound like a cow. Does the cow have the cake? Say yes or no.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "How's the weather?"
+    },
+    {
+      "role": "assistant",
+      "text": "I can't see the sky. Let's keep looking, Mouse.[TEMPLATE_FINISH]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}

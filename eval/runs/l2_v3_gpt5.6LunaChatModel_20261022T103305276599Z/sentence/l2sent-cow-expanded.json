@@ -1,0 +1,40 @@
+{
+  "family": "sent_cow",
+  "case": "l2sent-cow-expanded",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Max",
+  "forbid_phrases": [],
+  "require_phrases": [],
+  "reply_forbid": {
+    "2": [
+      "Let's try again",
+      "Yes, it's a cow\\."
+    ]
+  },
+  "reply_require": {
+    "2": [
+      "it's a big cow",
+      "Nice sentence",
+      "Let's open the next bag"
+    ]
+  },
+  "allow_no_question": false,
+  "max_replies": 2,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "Look, Mouse found a bell. The bell is for a cow. Listen first. It's a cow. Now you try. It's a cow.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "It's a big cow."
+    },
+    {
+      "role": "assistant",
+      "text": "Yes, it's a big cow. Nice sentence. Let's open the next bag.[TEACHER_APPLAUD][NEXT_STEP]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}

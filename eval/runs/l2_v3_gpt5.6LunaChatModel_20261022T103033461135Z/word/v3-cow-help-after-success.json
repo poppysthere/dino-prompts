@@ -1,0 +1,50 @@
+{
+  "family": "word_cow",
+  "case": "v3-cow-help-after-success",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Max",
+  "forbid_phrases": [],
+  "require_phrases": [],
+  "reply_forbid": {},
+  "reply_require": {},
+  "allow_no_question": false,
+  "max_replies": 4,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "Look, Mouse sees a cow. Listen. Cow. /k/ /aʊ/ Cow. Your turn. Cow.[TEACHER_COW_HORNS][TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "cow"
+    },
+    {
+      "role": "assistant",
+      "text": "Yes, cow. A cow says moo moo. Listen. Moo moo. Your turn. Moo moo.[TEACHER_APPLAUSE][TEACHER_COW_HORNS][TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "How do I say the last sound in cow?"
+    },
+    {
+      "role": "assistant",
+      "text": "The last sound is /aʊ/. Cow. Now, let's look at the cow. Does the cow have the cake? Say yes or no.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "no"
+    },
+    {
+      "role": "assistant",
+      "text": "Maybe not. Let's keep looking, Mouse.[TEMPLATE_FINISH]"
+    }
+  ],
+  "v3_require": {
+    "3": [
+      "/aʊ/",
+      "Does the cow have the cake"
+    ]
+  },
+  "v3_forbid": {}
+}

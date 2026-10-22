@@ -1,0 +1,29 @@
+{
+  "family": "sent_cat",
+  "case": "l2sent-cat-pass",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Max",
+  "forbid_phrases": [],
+  "require_phrases": [],
+  "reply_forbid": {},
+  "reply_require": {},
+  "allow_no_question": false,
+  "max_replies": 2,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "Look, Mouse found a fish. The fish is for a cat. Listen first. It's a cat. Your turn. It's a cat.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "It's a cat."
+    },
+    {
+      "role": "assistant",
+      "text": "Yes, it's a cat. The fish is for the cat. Let's open the next bag.[TEACHER_APPLAUD][NEXT_STEP]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}

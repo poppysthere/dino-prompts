@@ -1,0 +1,55 @@
+{
+  "family": "word_horse",
+  "case": "horse-dog-after-neigh",
+  "action_timing": true,
+  "student_name": "tom",
+  "teacher_name": "Max",
+  "forbid_phrases": [],
+  "require_phrases": [],
+  "reply_forbid": {
+    "3": [
+      "Neigh neigh"
+    ]
+  },
+  "reply_require": {
+    "3": [
+      "^Yes, I like dogs\\.",
+      "Now, let's look at the horse\\.",
+      "Does the horse have the cake"
+    ]
+  },
+  "allow_no_question": false,
+  "max_replies": 4,
+  "messages": [
+    {
+      "role": "assistant",
+      "text": "Look, Mouse sees a horse. Listen. Horse. /h/ /ɔ/ /ɹ/ /s/ Horse. Your turn. Horse.[TEACHER_RIDE_HORSE][TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "horse"
+    },
+    {
+      "role": "assistant",
+      "text": "Yes, horse. A horse says neigh neigh. Listen. Neigh neigh. Your turn. Neigh neigh.[TEACHER_APPLAUD][TEACHER_RIDE_HORSE][TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "Do you like my dog?"
+    },
+    {
+      "role": "assistant",
+      "text": "Yes, I like dogs. Now, let's look at the horse. Does the horse have the cake? Say yes or no.[TEACHER_LISTEN][STUDENT_TALK]"
+    },
+    {
+      "role": "user",
+      "text": "no"
+    },
+    {
+      "role": "assistant",
+      "text": "Maybe not. Let's watch and find out.[TEACHER_RIDE_HORSE][TEMPLATE_FINISH]"
+    }
+  ],
+  "v3_require": {},
+  "v3_forbid": {}
+}
