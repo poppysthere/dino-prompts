@@ -3,7 +3,7 @@
 Source: `main/prompts/l1` at commit `829e768bb58a7302ed6987867a36ccc9431419b3`.
 This is a separate copy of that source, not a continuation of L1 V2.
 
-Only three changes are included:
+Teaching changes from the source are:
 
 1. Remove written laughter and cheering noises from spoken examples and forbid
    their generation in the common rule. Use normal warm words instead.
@@ -34,6 +34,11 @@ It includes warm-up, both sentence pages, and the source letter-practice handoff
 
 ## Forge update
 
+For the 2026-10-22 punctuation-only revision, update the common rule, all three
+word templates, warm-up, and both sentence-teaching templates. The stage-file
+edits only replace punctuation in examples; their words, teaching decisions,
+tag order, and IPA are unchanged. Wrap-up and sentence pre-video are unchanged.
+
 For the adaptive syllable/phoneme revision, re-paste only the common rule and the apple, bread, and
 juice vocabulary prompts. Other teaching templates are unchanged by this revision.
 
@@ -49,9 +54,16 @@ teaching prompts until the real source is supplied.
 
 Run `python3 eval/run_l1_v4_forge.py --offline` for source checks and synthetic
 checker validation. Run `python3 eval/run_l1_v4_forge.py` with `FORGE_TOKEN` in
-the environment for 42 live cases on `gpt5.6LunaChatModel` through Prompt Forge.
+the environment for 46 live cases on `gpt5.6LunaChatModel` through Prompt Forge.
 The runner saves prompt hashes, source diffs, transcripts and failures under
 `eval/runs/`. It does not deploy or edit Forge content.
+
+2026-10-22 punctuation-only revision: all **46 cases / 125 teacher replies**
+passed the spoken-punctuation check, including 55 straight U+0027 apostrophes.
+Full regression is **44/46**, not all green: apple/bread synthetic assessment
+cases skipped focused help. No interaction rule was changed to fix those
+out-of-scope failures. See
+[`L1_V4_PUNCTUATION_EVAL_2026-10-22.md`](../../eval/L1_V4_PUNCTUATION_EVAL_2026-10-22.md).
 
 Earlier phoneme-only IPA revision: offline checks and a fresh full Forge run passed,
 **29/29 cases**, including all 18 vocabulary cases. See

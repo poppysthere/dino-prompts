@@ -17,6 +17,7 @@ import sys
 import urllib.request
 
 from backends import ForgeBackend
+from tts_punctuation import punctuation_issues, self_test as punctuation_self_test
 
 ROOT = Path(__file__).resolve().parent.parent
 PROMPTS = ROOT / 'prompts/l1-v4'
@@ -97,6 +98,14 @@ def cases():
         {'id': 'sentence-intro', 'family': 'intro', 'turns': []},
         {'id': 'sentence-like', 'family': 'like', 'turns': ['yes', 'I like bread']},
         {'id': 'sentence-dislike', 'family': 'dislike', 'turns': ['yes', "I don't like apples"]},
+        {'id': 'apple-curly-contraction', 'family': 'apple',
+         'turns': ['I don’t understand. Please say it slowly.', 'apple'], 'phoneme_reply': 2},
+        {'id': 'bread-curly-possessive', 'family': 'bread',
+         'turns': ['Tom’s bread is yummy.', 'bread']},
+        {'id': 'juice-fullwidth-punctuation', 'family': 'juice',
+         'turns': ['I don’t understand！ Please say it slowly？', 'juice'], 'phoneme_reply': 2},
+        {'id': 'wrapup-curly-preference', 'family': 'wrapup',
+         'turns': ['I’d like bread.'], 'reaction': r'^[^.!?]*bread'},
     ])
     return result
 
@@ -133,6 +142,7 @@ def check(case, messages):
         if '[STUDENT_TALK]' in reply and family != 'warmup' and not reply.rstrip().endswith('[TEACHER_LISTEN][STUDENT_TALK]'):
             issues.append(f'Reply {i}: missing listening action')
         body = spoken(reply)
+        issues.extend(f'Reply {i}: {issue}' for issue in punctuation_issues(reply, HELP_UNITS.get(family, set())))
         if NOISE.search(body):
             issues.append(f'Reply {i}: written laughter or cheering noise')
         units = IPA_UNIT.findall(body)
@@ -203,6 +213,7 @@ def check(case, messages):
 
 def offline():
     errors, changes = [], {}
+    punctuation_self_test()
     names = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', SOURCE, 'prompts/l1'], cwd=ROOT, text=True).splitlines()
     for original in names:
         name = Path(original).name
