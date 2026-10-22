@@ -26,7 +26,7 @@ import checker_word
 
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-PROMPT_DIR = ROOT / "prompts/l2"
+PROMPT_DIR = ROOT / "prompts/l2-v2"
 DEFAULT_BASE = "http://dino-test-alb-2087276790.ap-southeast-1.elb.amazonaws.com/cms/api"
 DEFAULT_MODEL = "gpt5.6LunaChatModel"
 CATALOG_IDS = {DEFAULT_MODEL: "gpt-5.6-luna"}

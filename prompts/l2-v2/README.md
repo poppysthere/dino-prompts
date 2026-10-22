@@ -1,6 +1,6 @@
-# L2 V3 lesson prompts
+# L2 V2 lesson prompts
 
-Version: **V3**. This labels the existing L2 prompt set; teaching content is unchanged.
+Version: **V2**. This labels the existing L2 prompt set; teaching content is unchanged.
 
 Level 2 is for children ages 5 to 7 at CEFR A1.
 

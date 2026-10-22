@@ -188,7 +188,7 @@ PATH_BUDGETS = {
 def main():
     bad = 0
     files = []
-    for level in ("l1", "l1-v2", "l2", "l3", "l3-v2", "l5"):
+    for level in ("l1", "l1-v2", "l2", "l2-v2", "l3", "l3-v2", "l5"):
         files += sorted((ROOT / "prompts" / level).glob("*.md"))
     files += sorted((ROOT / "prompts/festival").glob("*.md"))
     files += sorted((ROOT / "prompts/trial").glob("*.md"))

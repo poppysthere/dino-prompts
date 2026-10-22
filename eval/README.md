@@ -146,9 +146,9 @@ python3 eval/run_l1_v2_forge.py --only l1-apple-pass
 python3 eval/run_l1_v2_forge.py
 ```
 
-## L2 no-warm-up harness
+## L2 V2 no-warm-up harness
 
-L2 starts at lead-in. Its harness composes the local `prompts/l2` common rule
+L2 V2 starts at lead-in. Its harness composes the local `prompts/l2-v2` common rule
 with each stage template, calls Prompt Forge's debug API, saves one JSON
 transcript per case, and runs the L2 lead-in, word, and sentence/wrap-up
 checkers. It does not edit or deploy Forge content.
