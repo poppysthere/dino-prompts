@@ -21,7 +21,7 @@ from tts_punctuation import punctuation_issues
 
 ROOT = Path(__file__).resolve().parent.parent
 PROMPTS = ROOT / 'prompts/l1-v4'
-BASELINE = 'b33ddef'
+BASELINE = 'dbf2ad0'
 MODEL = 'gpt5.6LunaChatModel'
 UNITS = {'apple': {'æ', 'p', 'ə', 'l', 'æp', 'əl'},
          'bread': {'b', 'r', 'ɛ', 'd', 'br', 'ɛd'},
@@ -56,12 +56,34 @@ def cases():
             ('terminal-help', ['yes', 'I do not know.', 'Please say it slowly.'], {'terminal_help': True}),
         ]:
             result.append({'id': f'{word}-{name}', 'word': word, 'turns': turns, **extra})
+        for name, turns, extra in [
+            ('partial', [{'apple': 'app', 'bread': 'bre', 'juice': 'jew'}[word], word], {'partial_help': True}),
+            ('real-short-comment', ['my dog black', word], {'topic_reply': 2, 'topic': r'black.*dog|dog.*black'}),
+            ('real-question', [f'Do you like {word}?', word], {'answer_reply': 2}),
+            ('real-need', ['I need water.', word], {'topic_reply': 2, 'topic': r'water'}),
+        ]:
+            result.append({'id': f'{word}-{name}', 'word': word, 'turns': turns, **extra})
+    result.extend([
+        {'id': 'bread-bed-black-brad', 'word': 'bread', 'turns': ['bed', 'black', 'brad'],
+         'asr_help': True, 'neutral_reply': 3, 'no_colour_reply': 3},
+        {'id': 'bread-topic-correction', 'word': 'bread', 'turns': ['bed', 'No, I mean my bed.', 'bread'],
+         'asr_help': True, 'topic_reply': 3, 'topic': r'bed'},
+        {'id': 'juice-unseen-partial', 'word': 'juice', 'turns': ['ju', 'juice'], 'partial_help': True},
+        {'id': 'bread-one-word-real-answer', 'word': 'bread', 'turns': ['I have a dog.', 'black', 'bread'],
+         'scripted_teacher': {'2': 'What color is your dog?[TEACHER_LISTEN][STUDENT_TALK]'},
+         'topic_reply': 3, 'topic': r'black'},
+    ])
     return result
 
 
 def check_reply(word, text, repetition=False):
     issues = punctuation_issues(text, UNITS[word])
     body = spoken(text)
+    first_tag = re.search(r'\[[A-Z_]+\]', text)
+    if first_tag and spoken(text[first_tag.start():]):
+        issues.append('Speech follows an action/control tag')
+    if re.search(r'\b(?:crunch|glug|munch|so brave|big thumbs up|you said|you tried so hard)\b', body, re.I):
+        issues.append('Scripted victory speech or action noise')
     tags = CONTROL.findall(text)
     if len(tags) != 1 or not text.endswith(tags[0]):
         issues.append('Invalid terminal control tag')
@@ -92,7 +114,8 @@ def check(case, messages):
     replies = [m['text'] for m in messages if m['role'] == 'assistant']
     errors = []
     for i, reply in enumerate(replies, 1):
-        errors.extend(f'Reply {i}: {e}' for e in check_reply(word, reply, '[STUDENT_TALK]' in reply))
+        repetition = '[STUDENT_TALK]' in reply and str(i) not in case.get('scripted_teacher', {})
+        errors.extend(f'Reply {i}: {e}' for e in check_reply(word, reply, repetition))
     if not 2 <= len(replies) <= 4 or not replies[-1].endswith('[TEMPLATE_FINISH]'):
         errors.append('Wrong finish/turn budget')
     opening = re.search(r'Say exactly this, nothing more:\n([^\n]+)', template(word)).group(1)
@@ -101,8 +124,29 @@ def check(case, messages):
     finish = re.search(r'(?:HANDOVER|FINISH) LINE[^\n]*: "([^"]+)"', template(word)).group(1)
     if finish not in replies[-1]:
         errors.append('Inherited handoff missing')
+    if word == 'juice' and not replies[-1].endswith('[TEACHER_DRINK_JUICE][TEMPLATE_FINISH]'):
+        errors.append('Missing final drinking action suffix')
     if case.get('no_drill') and (len(replies) != 2 or IPA.search(replies[-1])):
         errors.append('Unnecessary drill after understandable attempt')
+    if case.get('partial_help'):
+        if len(replies) < 3 or '[TEMPLATE_FINISH]' in replies[1]:
+            errors.append('Partial attempt treated as immediate whole-word success')
+        if not IPA.search(replies[1]):
+            errors.append('Partial attempt received no focused model')
+    if case.get('topic_reply'):
+        index = case['topic_reply'] - 1
+        if index >= len(replies) or not re.search(case['topic'], spoken(replies[index]), re.I):
+            errors.append('Real conversational meaning not acknowledged')
+        elif IPA.search(replies[index]):
+            errors.append('Genuine conversation treated as a pronunciation error')
+    if case.get('answer_reply'):
+        index = case['answer_reply'] - 1
+        if index >= len(replies) or not re.search(r"\b(?:yes|I like|I love|I do|I don't|I cannot|I can't)\b", spoken(replies[index]), re.I):
+            errors.append('Preference question not answered')
+    if case.get('no_colour_reply'):
+        index = case['no_colour_reply'] - 1
+        if index < len(replies) and re.search(r'black|colou?r', spoken(replies[index]), re.I):
+            errors.append('Ambiguous repetition interpreted as a colour topic')
     if case.get('asr_help'):
         if len(replies) < 3 or not IPA.search(replies[1]) or '[TEMPLATE_FINISH]' in replies[1]:
             errors.append('Ambiguous ASR skipped tentative support')
@@ -144,8 +188,9 @@ def offline():
             assert new == old, f'Unrelated prompt changed: {path}'
         assert set(re.findall(r'\[[A-Z_]+\]', old)) == set(re.findall(r'\[[A-Z_]+\]', new)), path
         if Path(path).name.startswith('word_'):
-            handoff = r'(?:HANDOVER|FINISH) LINE[^\n]+'
-            assert re.search(handoff, old).group() == re.search(handoff, new).group(), path
+            assert 'maximum of four teacher replies' in new, path
+            destination = 'play with A' if 'apple.md' in path else 'play with B' if 'bread.md' in path else 'drink like Boo'
+            assert destination in new, path
     for word, sound in FIRST.items():
         good = f'Listen. /{sound}/ /{sound}/ {word}. Your turn. {word.capitalize()}.[TEACHER_LISTEN][STUDENT_TALK]'
         assert not check_reply(word, good, True)
@@ -155,6 +200,8 @@ def offline():
                     good.replace('Listen.', "I'll speak slowly."),
                     good.replace(f'/{sound}/', '/x/'),
                     good.replace('Listen.', 'Let’s try.'),
+                    good.replace('Listen.', 'CRUNCH.'),
+                    good.replace('Listen.', '[TEACHER_APPLAUD]Listen.'),
                     good + '[NEXT_STEP]']:
             assert check_reply(word, bad, True)
         assert not check_reply(word, f'Listen. /{next(iter(CHUNKS[word]))}/. Your turn. {word}.[TEACHER_LISTEN][STUDENT_TALK]', True)
@@ -198,7 +245,9 @@ def main():
         system = common + '\n\n' + fill(template(case['word']))
         try:
             for turn in range(4):
-                reply = backend.chat(system, history)
+                reply = case.get('scripted_teacher', {}).get(str(turn + 1))
+                if reply is None:
+                    reply = backend.chat(system, history)
                 messages.append({'role': 'assistant', 'text': reply})
                 history.append({'role': 'assistant', 'content': reply})
                 if '[TEMPLATE_FINISH]' in reply or '[NEXT_STEP]' in reply:

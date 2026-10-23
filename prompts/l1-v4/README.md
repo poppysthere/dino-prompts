@@ -31,10 +31,19 @@ do not count "I can't say apple" as success or a part attempt as a whole word.
 These cues represent sounds, not alphabet letter names. Actual pronunciation
 must be checked through the new TTS voice. Text eval cannot verify audio.
 
-The source lesson flow, action tags, handoff lines, and turn limits are retained.
-It includes warm-up, both sentence pages, and the source letter-practice handoffs.
+The lesson flow, tag vocabulary, and turn limits are retained. Vocabulary
+handoff wording is now shorter and natural, with the same A/B practice and
+Boo drinking destinations. Vocabulary actions play after all speech.
+Warm-up, both sentence pages, lead-in placeholders and wrap-up are unchanged.
 
 ## Forge update
+
+For the 2026-10-23 natural-response follow-up, update ONLY the common rule
+and apple, bread, and juice vocabulary templates. This distinguishes likely
+ASR attempts from real comments/questions, offers one useful retry for partial
+attempts, removes scripted victory/noise lines, and moves vocabulary actions
+after speech. The existing IPA notation is retained; the user reports that
+phoneme playback now works. No independent audio check was performed here.
 
 For the 2026-10-23 first-sound/chunk revision, re-paste ONLY the common rule
 and the apple, bread, and juice vocabulary templates from this folder.
@@ -60,13 +69,17 @@ teaching prompts until the real source is supplied.
 
 ## Evaluation
 
-2026-10-23 first-sound/chunk revision: **36/36 focused Forge cases passed**.
+Latest natural-response follow-up: **52/52 focused Forge scenarios passed**,
+including 51 generated conversations and one seeded context contrast.
+See [results and limits](../../eval/L1_V4_NATURAL_RESPONSE_EVAL_2026-10-23.md).
+
+Earlier 2026-10-23 first-sound/chunk revision: **36/36 focused Forge cases passed**.
 See [scope, iteration history and limitations](../../eval/L1_V4_BOUNCE_EVAL_2026-10-23.md).
 This verifies text behaviour, not actual TTS pronunciation or learning outcomes.
 
 For the current pronunciation policy, run `python3 eval/run_l1_v4_bounce.py`
 for scope checks and checker fixtures. Add `--live` with `FORGE_TOKEN` in the
-environment for 36 focused cases on `gpt5.6LunaChatModel` through Prompt Forge.
+environment for 52 focused cases on `gpt5.6LunaChatModel` through Prompt Forge.
 The older `run_l1_v4_forge.py` contains superseded full-decomposition and
 small-unit-only expectations; do not use its pronunciation scores for this revision.
 The runner saves prompt hashes, transcripts and failures under
