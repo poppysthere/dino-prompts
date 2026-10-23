@@ -9,23 +9,25 @@ Teaching changes from the source are:
    their generation in the common rule. Use normal warm words instead.
 2. Wrap-up asks `So, what do you like?` Accept one food word and respond to the
    child's actual preference before the existing song handoff.
-3. Vocabulary invitations use IPA teaching units in separate `/ /` pairs:
-   syllables for words with two or more syllables, phonemes for one-syllable
-   words, then the whole word. The first invitation uses the model unless the
-   child already made an understandable attempt. Targeted pronunciation help
-   takes priority when requested or supported by reliable assessment.
+3. Vocabulary opens with a short first-sound bounce and the whole word.
+   Later support uses one useful phoneme, cluster, chunk, or syllable rather
+   than a compulsory full breakdown. Every repetition invitation puts the
+   instruction before the final spoken target word. Questions are answered
+   first; understandable attempts do not trigger unnecessary drills.
 
-| Word | TTS sound cues |
-| --- | --- |
-| apple (two syllables) | `/æp/ /əl/` |
-| bread | `/b/ /r/ /ɛ/ /d/` |
-| juice | `/dʒ/ /uː/ /s/` |
+| Word | Opening bounce | Examples of targeted support |
+| --- | --- | --- |
+| apple (two syllables) | `/æ/ /æ/ apple` | `/æp/` or `/əl/`, then apple |
+| bread | `/b/ /b/ bread` | `/br/` or one relevant sound, then bread |
+| juice | `/dʒ/ /dʒ/ juice` | `/dʒuː/` or `/s/`, then juice |
 
 Separate units with spaces, not dots. `/dʒ/` is one phoneme, not two.
-For a specific difficulty, model just that phoneme or syllable and blend back
-to the word. For continued struggle, invite one small unit. Accept an
-understandable approximation without drilling for perfection. Never infer an
-exact sound error from ASR spelling alone or count "I can't say apple" as success.
+For a specific difficulty, model just one useful unit and blend back to the
+word. For "slower", use a smaller chunk, not a speed-change promise. Put
+"Your turn" or "Now you try" before the final target word, never after it.
+ASR substitutions can guide tentative support, not a definite diagnosis.
+Silence or unclear ASR gets a neutral model. Accept understandable attempts;
+do not count "I can't say apple" as success or a part attempt as a whole word.
 These cues represent sounds, not alphabet letter names. Actual pronunciation
 must be checked through the new TTS voice. Text eval cannot verify audio.
 
@@ -33,6 +35,12 @@ The source lesson flow, action tags, handoff lines, and turn limits are retained
 It includes warm-up, both sentence pages, and the source letter-practice handoffs.
 
 ## Forge update
+
+For the 2026-10-23 first-sound/chunk revision, re-paste ONLY the common rule
+and the apple, bread, and juice vocabulary templates from this folder.
+The word openings now invite repetition rather than asking a preference
+question. Other stage files, source handoffs, tag rules and turn limits are
+unchanged. No changes are made to L2 V3.
 
 For the 2026-10-22 punctuation-only revision, update the common rule, all three
 word templates, warm-up, and both sentence-teaching templates. The stage-file
@@ -52,10 +60,16 @@ teaching prompts until the real source is supplied.
 
 ## Evaluation
 
-Run `python3 eval/run_l1_v4_forge.py --offline` for source checks and synthetic
-checker validation. Run `python3 eval/run_l1_v4_forge.py` with `FORGE_TOKEN` in
-the environment for 46 live cases on `gpt5.6LunaChatModel` through Prompt Forge.
-The runner saves prompt hashes, source diffs, transcripts and failures under
+2026-10-23 first-sound/chunk revision: **36/36 focused Forge cases passed**.
+See [scope, iteration history and limitations](../../eval/L1_V4_BOUNCE_EVAL_2026-10-23.md).
+This verifies text behaviour, not actual TTS pronunciation or learning outcomes.
+
+For the current pronunciation policy, run `python3 eval/run_l1_v4_bounce.py`
+for scope checks and checker fixtures. Add `--live` with `FORGE_TOKEN` in the
+environment for 36 focused cases on `gpt5.6LunaChatModel` through Prompt Forge.
+The older `run_l1_v4_forge.py` contains superseded full-decomposition and
+small-unit-only expectations; do not use its pronunciation scores for this revision.
+The runner saves prompt hashes, transcripts and failures under
 `eval/runs/`. It does not deploy or edit Forge content.
 
 2026-10-22 punctuation-only revision: all **46 cases / 125 teacher replies**
@@ -70,7 +84,7 @@ Earlier phoneme-only IPA revision: offline checks and a fresh full Forge run pas
 [`L1_V4_IPA_EVAL_2026-10-21.md`](../../eval/L1_V4_IPA_EVAL_2026-10-21.md).
 Actual TTS audio pronunciation remains untested.
 
-Latest adaptive syllable/phoneme revision: **42/42 cases pass** under the final
+Earlier adaptive syllable/phoneme revision: **42/42 cases pass** under the final
 checker, across three test groups with matching prompt hashes. One checker
 false positive for a small-unit invitation after repeated silence was corrected;
 that case also passed a fresh live rerun. See
