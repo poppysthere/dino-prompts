@@ -21,13 +21,13 @@ from tts_punctuation import punctuation_issues
 
 ROOT = Path(__file__).resolve().parent.parent
 PROMPTS = ROOT / 'prompts/l1-v4'
-BASELINE = 'ba8caee'
+BASELINE = '83a3b5a'
 MODEL = 'gpt5.6LunaChatModel'
 UNITS = {'apple': {'æ', 'p', 'ə', 'l', 'æp', 'əl'},
-         'bread': {'b', 'r', 'ɛ', 'd', 'br', 'ɛd'},
+         'bread': {'b', 'r', 'ɛ', 'd', 'br', 'ɛd', 'rɛd'},
          'juice': {'dʒ', 'uː', 's', 'dʒuː'}}
 FIRST = {'apple': 'æ', 'bread': 'b', 'juice': 'dʒ'}
-CHUNKS = {'apple': {'æp', 'əl'}, 'bread': {'br', 'ɛd'}, 'juice': {'dʒuː'}}
+CHUNKS = {'apple': {'æp', 'əl'}, 'bread': {'br', 'ɛd', 'rɛd'}, 'juice': {'dʒuː'}}
 IPA = re.compile(r'/([^/\s]+)/')
 CONTROL = re.compile(r'\[(?:STUDENT_TALK|NEXT_STEP|TEMPLATE_FINISH)\]')
 
@@ -72,7 +72,16 @@ def cases():
         {'id': 'bread-one-word-real-answer', 'word': 'bread', 'turns': ['I have a dog.', 'black', 'bread'],
          'scripted_teacher': {'2': 'What color is your dog?[TEACHER_LISTEN][STUDENT_TALK]'},
          'topic_reply': 3, 'topic': r'black'},
+        {'id': 'bread-joining-help', 'word': 'bread',
+         'turns': ['Help me join the beginning of bread.', 'bread'], 'joining_reply': 2},
+        {'id': 'bread-switch-joining-model', 'word': 'bread',
+         'turns': ['Help me with the beginning.', 'I still cannot join those sounds.', 'bread'],
+         'scripted_teacher': {'2': 'Listen. /br/ bread. Your turn. Bread.[TEACHER_LISTEN][STUDENT_TALK]'},
+         'joining_reply': 3},
     ])
+    for case in result:
+        if case['word'] == 'bread' and case.get('asr_help'):
+            case['joining_reply'] = 2
     return result
 
 
@@ -140,6 +149,12 @@ def check(case, messages):
             errors.append('Partial attempt treated as immediate whole-word success')
         if not IPA.search(replies[1]):
             errors.append('Partial attempt received no focused model')
+    if case.get('joining_reply'):
+        index = case['joining_reply'] - 1
+        if index >= len(replies) or not re.search(r'/b/\s+/rɛd/[\s.,]*bread\b', spoken(replies[index]), re.I):
+            errors.append('Joining help did not use b plus red then whole bread')
+        elif re.search(r'\b(?:read|reed|buh|two syllables|colou?r)\b', spoken(replies[index]), re.I):
+            errors.append('Joining model introduced spelling or syllable confusion')
     if case.get('topic_reply'):
         index = case['topic_reply'] - 1
         if index >= len(replies) or not re.search(case['topic'], spoken(replies[index]), re.I):
@@ -186,7 +201,7 @@ def check(case, messages):
 
 
 def offline():
-    allowed = {'common_teaching_simple_rules.md', *(f'word_teaching_rules_l1l2_{w}.md' for w in UNITS), 'README.md'}
+    allowed = {'word_teaching_rules_l1l2_bread.md', 'README.md'}
     paths = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', BASELINE, 'prompts/l1-v4'], cwd=ROOT, text=True).splitlines()
     for path in paths:
         old = subprocess.check_output(['git', 'show', f'{BASELINE}:{path}'], cwd=ROOT, text=True)
@@ -216,6 +231,9 @@ def offline():
         assert check_reply(word, f'Listen. /{chunk}/. Your turn. {word}.[TEACHER_LISTEN][STUDENT_TALK]', True)
         assert check_reply(word, f'Listen. /{chunk}/. Nice try. {word}.[TEMPLATE_FINISH]')
         assert check_reply(word, f'The /{chunk}/ sound is hard. Listen. /{chunk}/ {word}. Your turn. {word}.[TEACHER_LISTEN][STUDENT_TALK]', True)
+    joining = 'Listen. /b/ /rɛd/ bread. Your turn. Bread.[TEACHER_LISTEN][STUDENT_TALK]'
+    assert not check_reply('bread', joining, True)
+    assert check_reply('bread', joining.replace('/rɛd/ bread.', '/rɛd/.'), True)
     print('Scope, handoff, tag vocabulary, punctuation and checker fixtures: PASS')
 
 
@@ -223,6 +241,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--live', action='store_true')
     parser.add_argument('--only', action='append')
+    parser.add_argument('--word', choices=sorted(UNITS))
     args = parser.parse_args()
     offline()
     if not args.live:
@@ -272,7 +291,8 @@ def main():
         result = {'case': case, 'messages': messages, 'issues': issues}
         (output / (case['id'] + '.json')).write_text(json.dumps(result, ensure_ascii=False, indent=2))
         return case['id'], issues
-    selected = [c for c in cases() if not args.only or c['id'] in args.only]
+    selected = [c for c in cases() if (not args.only or c['id'] in args.only)
+                and (not args.word or c['word'] == args.word)]
     if not selected:
         parser.error('No matching cases')
     with ThreadPoolExecutor(max_workers=3) as pool:

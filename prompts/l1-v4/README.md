@@ -18,11 +18,11 @@ Teaching changes from the source are:
 | Word | Opening bounce | Examples of targeted support |
 | --- | --- | --- |
 | apple (two syllables) | `/æ/ /æ/ apple` | `/æp/` or `/əl/`, then apple |
-| bread | `/b/ /b/ bread` | `/br/` or one relevant sound, then bread |
+| bread | `/b/ /b/ bread` | `/b/ /rɛd/ bread` for joining help; one requested sound, then bread |
 | juice | `/dʒ/ /dʒ/ juice` | `/dʒuː/` or `/s/`, then juice |
 
 Separate units with spaces, not dots. `/dʒ/` is one phoneme, not two.
-For a specific difficulty, model just one useful unit and immediately model
+For a specific difficulty, model one useful unit or support group and immediately model
 the whole word before any invitation or other speech. For example,
 `/s/ juice. Your turn. Juice.`, not `/s/. Your turn. Juice.`
 For "slower", use a smaller chunk, not a speed-change promise. Put
@@ -40,6 +40,12 @@ by this correction. Vocabulary actions play after all speech.
 Warm-up, both sentence pages, lead-in placeholders and wrap-up are unchanged.
 
 ## Forge update
+
+Latest bread joining-help change: re-paste ONLY
+`word_teaching_rules_l1l2_bread.md`. For a likely bed-like repeat or joining
+request, use `Listen. /b/ /rɛd/ bread. Your turn. Bread.` The chunks are a
+practice split, not two syllables. Common rules and other words are unchanged.
+Check the new chunk with your TTS voice; this revision was text-tested only.
 
 For the sound-to-whole-word correction, update the common rule and all three
 word templates. Apple now ends with `Let's play with apple.` Every sound or
@@ -77,7 +83,10 @@ teaching prompts until the real source is supplied.
 
 ## Evaluation
 
-Latest sound-to-word/ apple-game correction: **52/52 focused Forge cases passed**.
+Latest bread joining-help change: **21/21 focused bread Forge cases passed**.
+See [results and limits](../../eval/L1_V4_BREAD_JOINING_EVAL_2026-10-23.md).
+
+Earlier sound-to-word/ apple-game correction: **52/52 focused Forge cases passed**.
 See [results and limits](../../eval/L1_V4_SOUND_WORD_LINK_EVAL_2026-10-23.md).
 
 Earlier natural-response follow-up: **52/52 focused Forge scenarios passed**,
@@ -90,7 +99,8 @@ This verifies text behaviour, not actual TTS pronunciation or learning outcomes.
 
 For the current pronunciation policy, run `python3 eval/run_l1_v4_bounce.py`
 for scope checks and checker fixtures. Add `--live` with `FORGE_TOKEN` in the
-environment for 52 focused cases on `gpt5.6LunaChatModel` through Prompt Forge.
+environment for 54 focused cases on `gpt5.6LunaChatModel` through Prompt Forge.
+Use `--live --word bread` for the 21-case scope tested in this revision.
 The older `run_l1_v4_forge.py` contains superseded full-decomposition and
 small-unit-only expectations; do not use its pronunciation scores for this revision.
 The runner saves prompt hashes, transcripts and failures under
