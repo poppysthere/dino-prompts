@@ -21,7 +21,7 @@ from tts_punctuation import punctuation_issues
 
 ROOT = Path(__file__).resolve().parent.parent
 PROMPTS = ROOT / 'prompts/l1-v4'
-BASELINE = 'dbf2ad0'
+BASELINE = 'ba8caee'
 MODEL = 'gpt5.6LunaChatModel'
 UNITS = {'apple': {'æ', 'p', 'ə', 'l', 'æp', 'əl'},
          'bread': {'b', 'r', 'ɛ', 'd', 'br', 'ɛd'},
@@ -106,6 +106,13 @@ def check_reply(word, text, repetition=False):
         issues.append('No clear repetition instruction')
     if units and not re.search(r'\b' + word + r'\b', body[body.rfind('/') + 1:], re.I):
         issues.append('No whole word after support unit')
+    for match in IPA.finditer(body):
+        following = body[match.end():]
+        if not re.match(r'[\s.,]*(?:/[^/\s]+/|' + re.escape(word) + r'\b)', following, re.I):
+            issues.append('Sound/group not immediately connected to whole word')
+            break
+    if word == 'apple' and re.search(r"play with (?:the letter )?a[.!?]|apple starts with", body, re.I):
+        issues.append('Obsolete apple letter-game handoff')
     return issues
 
 
@@ -189,7 +196,7 @@ def offline():
         assert set(re.findall(r'\[[A-Z_]+\]', old)) == set(re.findall(r'\[[A-Z_]+\]', new)), path
         if Path(path).name.startswith('word_'):
             assert 'maximum of four teacher replies' in new, path
-            destination = 'play with A' if 'apple.md' in path else 'play with B' if 'bread.md' in path else 'drink like Boo'
+            destination = 'play with apple' if 'apple.md' in path else 'play with B' if 'bread.md' in path else 'drink like Boo'
             assert destination in new, path
     for word, sound in FIRST.items():
         good = f'Listen. /{sound}/ /{sound}/ {word}. Your turn. {word.capitalize()}.[TEACHER_LISTEN][STUDENT_TALK]'
@@ -204,7 +211,11 @@ def offline():
                     good.replace('Listen.', '[TEACHER_APPLAUD]Listen.'),
                     good + '[NEXT_STEP]']:
             assert check_reply(word, bad, True)
-        assert not check_reply(word, f'Listen. /{next(iter(CHUNKS[word]))}/. Your turn. {word}.[TEACHER_LISTEN][STUDENT_TALK]', True)
+        chunk = next(iter(CHUNKS[word]))
+        assert not check_reply(word, f'Listen. /{chunk}/ {word}. Your turn. {word}.[TEACHER_LISTEN][STUDENT_TALK]', True)
+        assert check_reply(word, f'Listen. /{chunk}/. Your turn. {word}.[TEACHER_LISTEN][STUDENT_TALK]', True)
+        assert check_reply(word, f'Listen. /{chunk}/. Nice try. {word}.[TEMPLATE_FINISH]')
+        assert check_reply(word, f'The /{chunk}/ sound is hard. Listen. /{chunk}/ {word}. Your turn. {word}.[TEACHER_LISTEN][STUDENT_TALK]', True)
     print('Scope, handoff, tag vocabulary, punctuation and checker fixtures: PASS')
 
 

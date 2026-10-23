@@ -22,8 +22,10 @@ Teaching changes from the source are:
 | juice | `/dʒ/ /dʒ/ juice` | `/dʒuː/` or `/s/`, then juice |
 
 Separate units with spaces, not dots. `/dʒ/` is one phoneme, not two.
-For a specific difficulty, model just one useful unit and blend back to the
-word. For "slower", use a smaller chunk, not a speed-change promise. Put
+For a specific difficulty, model just one useful unit and immediately model
+the whole word before any invitation or other speech. For example,
+`/s/ juice. Your turn. Juice.`, not `/s/. Your turn. Juice.`
+For "slower", use a smaller chunk, not a speed-change promise. Put
 "Your turn" or "Now you try" before the final target word, never after it.
 ASR substitutions can guide tentative support, not a definite diagnosis.
 Silence or unclear ASR gets a neutral model. Accept understandable attempts;
@@ -32,11 +34,17 @@ These cues represent sounds, not alphabet letter names. Actual pronunciation
 must be checked through the new TTS voice. Text eval cannot verify audio.
 
 The lesson flow, tag vocabulary, and turn limits are retained. Vocabulary
-handoff wording is now shorter and natural, with the same A/B practice and
-Boo drinking destinations. Vocabulary actions play after all speech.
+handoff wording is now shorter and natural. Apple leads to games with apple,
+not letter A. Bread's B handoff and the Boo drinking destination are unchanged
+by this correction. Vocabulary actions play after all speech.
 Warm-up, both sentence pages, lead-in placeholders and wrap-up are unchanged.
 
 ## Forge update
+
+For the sound-to-whole-word correction, update the common rule and all three
+word templates. Apple now ends with `Let's play with apple.` Every sound or
+sound group connects immediately to its whole word, including in final-turn
+help, before the invitation or handoff. Other teaching decisions are unchanged.
 
 For the 2026-10-23 natural-response follow-up, update ONLY the common rule
 and apple, bread, and juice vocabulary templates. This distinguishes likely
@@ -69,7 +77,10 @@ teaching prompts until the real source is supplied.
 
 ## Evaluation
 
-Latest natural-response follow-up: **52/52 focused Forge scenarios passed**,
+Latest sound-to-word/ apple-game correction: **52/52 focused Forge cases passed**.
+See [results and limits](../../eval/L1_V4_SOUND_WORD_LINK_EVAL_2026-10-23.md).
+
+Earlier natural-response follow-up: **52/52 focused Forge scenarios passed**,
 including 51 generated conversations and one seeded context contrast.
 See [results and limits](../../eval/L1_V4_NATURAL_RESPONSE_EVAL_2026-10-23.md).
 
