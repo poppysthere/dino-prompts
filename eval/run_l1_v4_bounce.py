@@ -21,7 +21,7 @@ from tts_punctuation import punctuation_issues
 
 ROOT = Path(__file__).resolve().parent.parent
 PROMPTS = ROOT / 'prompts/l1-v4'
-BASELINE = '413f089'
+BASELINE = 'f8a25fc'
 MODEL = 'gpt5.6LunaChatModel'
 UNITS = {'apple': {'æ', 'p', 'ə', 'l', 'æp', 'əl'},
          'bread': {'b', 'r', 'ɛ', 'd', 'br', 'ɛd', 'rɛd'},
@@ -30,6 +30,7 @@ FIRST = {'apple': 'æ', 'bread': 'b', 'juice': 'dʒ'}
 CHUNKS = {'apple': {'æp', 'əl'}, 'bread': {'br', 'ɛd', 'rɛd'}, 'juice': {'dʒuː'}}
 IPA = re.compile(r'/([^/\s]+)/')
 CONTROL = re.compile(r'\[(?:STUDENT_TALK|NEXT_STEP|TEMPLATE_FINISH)\]')
+PREFERENCE = re.compile(r'\bdo you like (?:apples|bread|juice)\?', re.I)
 
 
 def template(word):
@@ -42,9 +43,9 @@ def cases():
         unit = {'apple': 'l', 'bread': 'r', 'juice': 's'}[word]
         request = f'The {unit} sound is hard. Help me say {word}.'
         for name, turns, extra in [
-            ('instant', [word], {'no_drill': True}),
+            ('instant', [word, 'Yes.'], {'no_drill': True}),
             ('meaningful', [f'I like {word}.'], {'no_drill': True}),
-            ('approximation', [{'apple': 'appo', 'bread': 'bred', 'juice': 'joos'}[word]], {'no_drill': True}),
+            ('approximation', [{'apple': 'appo', 'bread': 'bred', 'juice': 'joos'}[word], 'No.'], {'no_drill': True}),
             ('slower', ['Please say it slowly.', word], {'chunk_reply': 2}),
             ('specific-sound', [request, word], {'unit_reply': 2, 'unit': unit}),
             ('help-after-attempt', ['yes', f'{word}. But {request}', word], {'unit_reply': 3, 'unit': unit}),
@@ -82,6 +83,21 @@ def cases():
     for case in result:
         if case['word'] == 'bread' and case.get('asr_help'):
             case['joining_reply'] = 2
+    for word in UNITS:
+        food = 'apples' if word == 'apple' else word
+        for name, answer in [('yes', 'Yes.'), ('no', 'No.'),
+                             ('confused', 'I do not understand.'), ('silent', SILENCE),
+                             ('other-food', 'I like bananas.'),
+                             ('question', "What's your name?"),
+                             ('help', 'Help me say it again.')]:
+            result.append({'id': f'{word}-personal-{name}', 'word': word,
+                           'turns': [word, answer], 'personal_answer': name,
+                           'scripted_teacher': {'2': f'{word.capitalize()}. Do you like {food}?[TEACHER_LISTEN][STUDENT_TALK]'}})
+        result.append({'id': f'{word}-skip-recent-preference', 'word': word,
+                       'turns': [word], 'no_drill': True, 'skip_personal': True,
+                       'prefix_history': [{'role': 'assistant', 'content': 'Do you like bananas?'},
+                                          {'role': 'user', 'content': 'Yes.'},
+                                          {'role': 'assistant', 'content': 'You like bananas. Now another word.'}]})
     return result
 
 
@@ -130,7 +146,8 @@ def check(case, messages):
     replies = [m['text'] for m in messages if m['role'] == 'assistant']
     errors = []
     for i, reply in enumerate(replies, 1):
-        repetition = '[STUDENT_TALK]' in reply and str(i) not in case.get('scripted_teacher', {})
+        repetition = ('[STUDENT_TALK]' in reply and not PREFERENCE.search(spoken(reply))
+                      and str(i) not in case.get('scripted_teacher', {}))
         errors.extend(f'Reply {i}: {e}' for e in check_reply(word, reply, repetition))
     if not 2 <= len(replies) <= 4 or not replies[-1].endswith('[TEMPLATE_FINISH]'):
         errors.append('Wrong finish/turn budget')
@@ -142,7 +159,43 @@ def check(case, messages):
         errors.append('Inherited handoff missing')
     if word == 'juice' and not replies[-1].endswith('[TEACHER_DRINK_JUICE][TEMPLATE_FINISH]'):
         errors.append('Missing final drinking action suffix')
-    if case.get('no_drill') and (len(replies) != 2 or IPA.search(replies[-1])):
+    personal_indices = [i for i, reply in enumerate(replies) if PREFERENCE.search(spoken(reply))]
+    if personal_indices:
+        if personal_indices != [1] or len(replies) != 3:
+            errors.append('Personal question repeated, late, or not followed by finish')
+        if case.get('skip_personal') or case['id'].endswith('-meaningful'):
+            errors.append('Asked a preference already supplied or recently discussed')
+        if not (case.get('no_drill') or case.get('personal_answer')):
+            errors.append('Personal question added despite support needs')
+        personal_reply = replies[personal_indices[0]]
+        if IPA.search(personal_reply) or re.search(r'\b(?:your turn|now you try|say)\b', spoken(personal_reply), re.I):
+            errors.append('Personal question mixed with pronunciation drill')
+        answer = case.get('personal_answer')
+        if answer is None:
+            answer_turn = case['turns'][personal_indices[0]] if len(case['turns']) > personal_indices[0] else SILENCE
+            answer = 'silent' if answer_turn == SILENCE else 'no' if answer_turn.lower() == 'no.' else 'yes'
+        final = spoken(replies[-1])
+        if (answer != 'help' and IPA.search(final)) or re.search(r'\b(?:your turn|now you try|say it|repeat)\b', final, re.I):
+            errors.append('Personal answer triggered an unnecessary pronunciation drill')
+        if '?' in final:
+            errors.append('Personal answer led to another question')
+        if answer == 'yes' and not re.search(r'like|yes|nice|good|great|yum', final, re.I):
+            errors.append('Positive preference not acknowledged')
+        if answer == 'no' and not re.search(r"okay|ok\b|fine|don't|do not|not for you", final, re.I):
+            errors.append('Negative preference not acknowledged')
+        if answer in ('no', 'confused', 'silent', 'other-food') and re.search(r'(?:^|[.!]\s+|yes,\s+|so,\s+)you (?:like|love) (?:apples|bread|juice)', final, re.I):
+            errors.append('Invented target-food preference')
+        if answer == 'confused' and not re.search(r'asked|like|okay|ok\b', final, re.I):
+            errors.append('Confusion ignored')
+        if answer == 'other-food' and 'banana' not in final.lower():
+            errors.append('Different food preference ignored')
+        if answer == 'question' and not re.search(r"(?:I am|I'm|my name is) Kim", final, re.I):
+            errors.append('Question after personal invitation ignored')
+        if answer == 'help' and not re.search(r'\b' + word + r'\b', final.replace(finish, ''), re.I):
+            errors.append('Requested word model after personal question ignored')
+    if case.get('personal_answer') and not personal_indices:
+        errors.append('Seeded personal-question scenario missing question')
+    if case.get('no_drill') and (len(replies) != (3 if personal_indices else 2) or IPA.search(replies[-1])):
         errors.append('Unnecessary drill after understandable attempt')
     if case.get('partial_help'):
         if len(replies) < 3 or '[TEMPLATE_FINISH]' in replies[1]:
@@ -201,7 +254,7 @@ def check(case, messages):
 
 
 def offline():
-    allowed = {'word_teaching_rules_l1l2_bread.md', 'README.md'}
+    allowed = {*(f'word_teaching_rules_l1l2_{w}.md' for w in UNITS), 'README.md'}
     paths = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', BASELINE, 'prompts/l1-v4'], cwd=ROOT, text=True).splitlines()
     for path in paths:
         old = subprocess.check_output(['git', 'show', f'{BASELINE}:{path}'], cwd=ROOT, text=True)
@@ -234,6 +287,17 @@ def offline():
     joining = 'Listen. /b/ /rɛd/ bread. Your turn. Bread.[TEACHER_LISTEN][STUDENT_TALK]'
     assert not check_reply('bread', joining, True)
     assert check_reply('bread', joining.replace('/rɛd/ bread.', '/rɛd/.'), True)
+    fixture_case = {'id': 'bread-personal-no-fixture', 'word': 'bread',
+                    'turns': ['bread', 'No.'], 'personal_answer': 'no',
+                    'scripted_teacher': {'2': 'Bread. Do you like bread?[TEACHER_LISTEN][STUDENT_TALK]'}}
+    fixture_replies = [re.search(r'Say exactly this, nothing more:\n([^\n]+)', template('bread')).group(1),
+                       fixture_case['scripted_teacher']['2'],
+                       "That's okay. Let's play with bread.[TEMPLATE_FINISH]"]
+    fixture_messages = [{'role': 'assistant', 'text': reply} for reply in fixture_replies]
+    assert not check(fixture_case, fixture_messages)
+    bad_messages = fixture_messages[:-1] + [{'role': 'assistant', 'text':
+                                            'You like bread. Your turn. Bread.[TEACHER_LISTEN][STUDENT_TALK]'}]
+    assert check(fixture_case, bad_messages)
     print('Scope, handoff, tag vocabulary, punctuation and checker fixtures: PASS')
 
 
@@ -271,7 +335,10 @@ def main():
     common = fill((PROMPTS / 'common_teaching_simple_rules.md').read_text())
     def run(case):
         messages = []
-        history = [{'role': 'user', 'content': 'The UI is ready. Start the current stage.'}]
+        start = 'The UI is ready. Start the current stage.'
+        if case.get('prefix_history'):
+            start = 'The preceding conversation was on an earlier page. The UI is now ready for this new word-teaching page. Start its first reply.'
+        history = list(case.get('prefix_history', [])) + [{'role': 'user', 'content': start}]
         system = common + '\n\n' + fill(template(case['word']))
         try:
             for turn in range(4):

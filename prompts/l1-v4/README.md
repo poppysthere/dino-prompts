@@ -14,6 +14,11 @@ Teaching changes from the source are:
    than a compulsory full breakdown. Every repetition invitation puts the
    instruction before the final spoken target word. Questions are answered
    first; understandable attempts do not trigger unnecessary drills.
+4. After an easy first word attempt, optionally ask one simple food-preference
+   question before the handoff. Skip it after support needs, if the preference
+   was already given, or if a similar question appears in recent context.
+   Respond to yes/no/another food naturally; confusion or silence does not
+   trigger another question or drill. Do not extend the four-reply budget.
 
 | Word | Opening bounce | Examples of targeted support |
 | --- | --- | --- |
@@ -40,6 +45,11 @@ drinking destination is unchanged. Vocabulary actions play after all speech.
 Warm-up, both sentence pages, lead-in placeholders and wrap-up are unchanged.
 
 ## Forge update
+
+Latest optional personal-question change: re-paste all THREE vocabulary
+templates (apple, bread, juice). The common rule is unchanged. Openings,
+pronunciation support, action tags and handoffs are retained. The optional
+question is a conversational turn, not a repetition invitation.
 
 Latest handoff correction: re-paste ONLY the bread template. Its final line
 is now `Let's play with bread.` Pronunciation support and all other teaching
@@ -87,7 +97,13 @@ teaching prompts until the real source is supplied.
 
 ## Evaluation
 
-Latest bread-game handoff correction: **21/21 focused bread Forge cases passed**.
+Latest optional personal questions: **77/78** in the full Forge run, followed
+by **1/1** on an unchanged rerun of the apple silence punctuation failure.
+All 24 added personal-question/recent-history cases passed in the full run.
+This is not a clean 78/78 single run. See
+[results, iteration and limits](../../eval/L1_V4_PERSONAL_QUESTION_EVAL_2026-10-23.md).
+
+Earlier bread-game handoff correction: **21/21 focused bread Forge cases passed**.
 Only the handoff and its example changed to `Let's play with bread.`
 Model: `gpt5.6LunaChatModel`, through Prompt Forge. Local evidence with
 hashes and transcripts: `eval/runs/l1_v4_bounce_20261023T103353Z/`.
@@ -110,8 +126,8 @@ This verifies text behaviour, not actual TTS pronunciation or learning outcomes.
 
 For the current pronunciation policy, run `python3 eval/run_l1_v4_bounce.py`
 for scope checks and checker fixtures. Add `--live` with `FORGE_TOKEN` in the
-environment for 54 focused cases on `gpt5.6LunaChatModel` through Prompt Forge.
-Use `--live --word bread` for the 21-case scope tested in this revision.
+environment for 78 focused cases on `gpt5.6LunaChatModel` through Prompt Forge.
+Use `--live --word bread` for the current 29-case bread subset.
 The older `run_l1_v4_forge.py` contains superseded full-decomposition and
 small-unit-only expectations; do not use its pronunciation scores for this revision.
 The runner saves prompt hashes, transcripts and failures under
