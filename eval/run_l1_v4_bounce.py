@@ -21,7 +21,7 @@ from tts_punctuation import punctuation_issues
 
 ROOT = Path(__file__).resolve().parent.parent
 PROMPTS = ROOT / 'prompts/l1-v4'
-BASELINE = '83a3b5a'
+BASELINE = '413f089'
 MODEL = 'gpt5.6LunaChatModel'
 UNITS = {'apple': {'æ', 'p', 'ə', 'l', 'æp', 'əl'},
          'bread': {'b', 'r', 'ɛ', 'd', 'br', 'ɛd', 'rɛd'},
@@ -211,7 +211,7 @@ def offline():
         assert set(re.findall(r'\[[A-Z_]+\]', old)) == set(re.findall(r'\[[A-Z_]+\]', new)), path
         if Path(path).name.startswith('word_'):
             assert 'maximum of four teacher replies' in new, path
-            destination = 'play with apple' if 'apple.md' in path else 'play with B' if 'bread.md' in path else 'drink like Boo'
+            destination = 'play with apple' if 'apple.md' in path else 'play with bread' if 'bread.md' in path else 'drink like Boo'
             assert destination in new, path
     for word, sound in FIRST.items():
         good = f'Listen. /{sound}/ /{sound}/ {word}. Your turn. {word.capitalize()}.[TEACHER_LISTEN][STUDENT_TALK]'

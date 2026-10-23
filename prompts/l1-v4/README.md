@@ -35,11 +35,15 @@ must be checked through the new TTS voice. Text eval cannot verify audio.
 
 The lesson flow, tag vocabulary, and turn limits are retained. Vocabulary
 handoff wording is now shorter and natural. Apple leads to games with apple,
-not letter A. Bread's B handoff and the Boo drinking destination are unchanged
-by this correction. Vocabulary actions play after all speech.
+not letter A. Bread now leads to games with bread, not letter B. The Boo
+drinking destination is unchanged. Vocabulary actions play after all speech.
 Warm-up, both sentence pages, lead-in placeholders and wrap-up are unchanged.
 
 ## Forge update
+
+Latest handoff correction: re-paste ONLY the bread template. Its final line
+is now `Let's play with bread.` Pronunciation support and all other teaching
+behaviour are unchanged by this correction.
 
 Latest bread joining-help change: re-paste ONLY
 `word_teaching_rules_l1l2_bread.md`. For a likely bed-like repeat or joining
@@ -83,7 +87,14 @@ teaching prompts until the real source is supplied.
 
 ## Evaluation
 
-Latest bread joining-help change: **21/21 focused bread Forge cases passed**.
+Latest bread-game handoff correction: **21/21 focused bread Forge cases passed**.
+Only the handoff and its example changed to `Let's play with bread.`
+Model: `gpt5.6LunaChatModel`, through Prompt Forge. Local evidence with
+hashes and transcripts: `eval/runs/l1_v4_bounce_20261023T103353Z/`.
+This is the bread-only suite (19 generated conversations and two seeded-context
+scenarios), not a full-lesson or TTS audio test. No Forge templates were deployed.
+
+Earlier bread joining-help change: **21/21 focused bread Forge cases passed**.
 See [results and limits](../../eval/L1_V4_BREAD_JOINING_EVAL_2026-10-23.md).
 
 Earlier sound-to-word/ apple-game correction: **52/52 focused Forge cases passed**.
