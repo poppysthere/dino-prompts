@@ -1,0 +1,35 @@
+{
+  "level": 4,
+  "unit": 1,
+  "lesson": 3,
+  "lesson_id": 773,
+  "lesson_version": 1,
+  "lesson_title": "Wild Homes on Landforms",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 24217,
+  "node_name": "词汇教学",
+  "sequence": 4,
+  "instance_id": 6923,
+  "template_code": "word_teach_image_l3l4",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L4/公共规则/test02_l4_common_20261109_420755a8b5a9.md",
+    "sha256": "420755a8b5a9aef59846e404135a61beb63f95d41228c7e9e8fb38943fd4903f",
+    "source_sha256": "420755a8b5a9aef59846e404135a61beb63f95d41228c7e9e8fb38943fd4903f",
+    "terminal_newline_added": false,
+    "bytes": 9840,
+    "prompt_id": 2015,
+    "prompt_code": "test02_l4_common_20261109_420755a8b5a9"
+  },
+  "template": {
+    "path": "L4/U1/Lesson3/04-word_teach_image_l3l4/instance-6923/template.md",
+    "sha256": "3df260c83d0e72976793586727d30d9a28c01a8789fa9b5e7db5425235c832ce",
+    "source_sha256": "3df260c83d0e72976793586727d30d9a28c01a8789fa9b5e7db5425235c832ce",
+    "terminal_newline_added": false,
+    "bytes": 10028,
+    "prompt_id": 1926,
+    "prompt_code": "word_teach_image_l3l4-X-773-v1-24217"
+  },
+  "steps": []
+}

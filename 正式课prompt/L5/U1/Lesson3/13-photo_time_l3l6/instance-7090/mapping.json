@@ -1,0 +1,27 @@
+{
+  "level": 5,
+  "unit": 1,
+  "lesson": 3,
+  "lesson_id": 785,
+  "lesson_version": 1,
+  "lesson_title": "Choosing a Friend",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 26096,
+  "node_name": "Photo Time",
+  "sequence": 13,
+  "instance_id": 7090,
+  "template_code": "photo_time_l3l6",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": null,
+  "template": {
+    "path": "L5/U1/Lesson3/13-photo_time_l3l6/instance-7090/template.md",
+    "sha256": "e1aa1f53407e6de1aef5492b668b2c0e804103394dfc1996cbad465a12b5e950",
+    "source_sha256": "e1aa1f53407e6de1aef5492b668b2c0e804103394dfc1996cbad465a12b5e950",
+    "terminal_newline_added": false,
+    "bytes": 315,
+    "prompt_id": 1979,
+    "prompt_code": "photo_time_l1l2_rules-X-785-v1-26096"
+  },
+  "steps": []
+}

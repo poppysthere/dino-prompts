@@ -1,0 +1,27 @@
+{
+  "level": 3,
+  "unit": 1,
+  "lesson": 3,
+  "lesson_id": 761,
+  "lesson_version": 1,
+  "lesson_title": "Activities in a Week",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 22523,
+  "node_name": "Photo Time",
+  "sequence": 14,
+  "instance_id": 6869,
+  "template_code": "photo_time_l3l6",
+  "active_prompt_scope": "TEMPLATE",
+  "lesson_config_enabled": false,
+  "common": null,
+  "template": {
+    "path": "L3/U1/Lesson3/14-photo_time_l3l6/instance-6869/template.md",
+    "sha256": "59318bc85ebe596e7ba59128e9b57175633cc8697a31b235e3e0c1c2a8873463",
+    "source_sha256": "59318bc85ebe596e7ba59128e9b57175633cc8697a31b235e3e0c1c2a8873463",
+    "terminal_newline_added": false,
+    "bytes": 315,
+    "prompt_id": 50,
+    "prompt_code": "photo_time_l1l2_rules"
+  },
+  "steps": []
+}

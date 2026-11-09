@@ -1,0 +1,40 @@
+{
+  "level": 3,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 760,
+  "lesson_version": 1,
+  "lesson_title": "Before and After",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 22505,
+  "node_name": "Reward Collection 2",
+  "sequence": 11,
+  "instance_id": 6858,
+  "template_code": "reward-chest-step2-template",
+  "active_prompt_scope": "TEMPLATE",
+  "lesson_config_enabled": false,
+  "common": null,
+  "template": {
+    "path": "L3/U1/Lesson2/11-reward-chest-step2-template/instance-6858/template.md",
+    "sha256": "d4545f9782b2f4f15e23faed73b43d851a913f98b9562e12c9b3f237f2374236",
+    "source_sha256": "d4545f9782b2f4f15e23faed73b43d851a913f98b9562e12c9b3f237f2374236",
+    "terminal_newline_added": false,
+    "bytes": 410,
+    "prompt_id": 106,
+    "prompt_code": "reward-chest-step2-rules"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "reward-chest-before-open",
+      "type": "reward-chest-before-open",
+      "title": "Before Open",
+      "isLastStep": true,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    }
+  ]
+}

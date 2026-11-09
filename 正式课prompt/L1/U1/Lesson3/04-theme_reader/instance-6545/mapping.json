@@ -1,0 +1,155 @@
+{
+  "level": 1,
+  "unit": 1,
+  "lesson": 3,
+  "lesson_id": 737,
+  "lesson_version": 1,
+  "lesson_title": "What's This?",
+  "lesson_type": "theme_reader",
+  "node_id": 20019,
+  "node_name": "Theme Reader 阅读讲解",
+  "sequence": 4,
+  "instance_id": 6545,
+  "template_code": "theme_reader",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L1/公共规则/test02_l1_common_20261109_976535d33283.md",
+    "sha256": "976535d3328360b98902642f5a236e4be5f676caa632c9710c911d8328cecc3a",
+    "source_sha256": "976535d3328360b98902642f5a236e4be5f676caa632c9710c911d8328cecc3a",
+    "terminal_newline_added": false,
+    "bytes": 9647,
+    "prompt_id": 2010,
+    "prompt_code": "test02_l1_common_20261109_976535d33283"
+  },
+  "template": {
+    "path": "L1/U1/Lesson3/04-theme_reader/instance-6545/template.md",
+    "sha256": "0c7359f9121ac49bf1e56b182e3f903a977fc4bf1068e54f13f2bea6112ef36d",
+    "source_sha256": "0c7359f9121ac49bf1e56b182e3f903a977fc4bf1068e54f13f2bea6112ef36d",
+    "terminal_newline_added": false,
+    "bytes": 1903,
+    "prompt_id": 1826,
+    "prompt_code": "theme_reader_rules-X-737-v1-20019"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "page_0",
+      "type": "cover",
+      "title": "page 0",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1828,
+      "promptCode": "theme_reader_rules_cover-X-737-v1-20019",
+      "prompt": {
+        "path": "L1/U1/Lesson3/04-theme_reader/instance-6545/steps/01-page_0.md",
+        "sha256": "226d04cd88912b56ce57b6ac814102e47d85ebc71c4dda20ae7abf21de711a02",
+        "source_sha256": "226d04cd88912b56ce57b6ac814102e47d85ebc71c4dda20ae7abf21de711a02",
+        "terminal_newline_added": false,
+        "bytes": 1130
+      }
+    },
+    {
+      "seq": 2,
+      "stepCode": "page_1",
+      "type": "page",
+      "title": "page 1",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1827,
+      "promptCode": "theme_reader_rules_page-X-737-v1-20019",
+      "prompt": {
+        "path": "L1/U1/Lesson3/04-theme_reader/instance-6545/steps/02-page_1.md",
+        "sha256": "9bc362169b4bf4f8511c7f6d6f129672cf987eba65c79deea0556aeed7d20654",
+        "source_sha256": "9bc362169b4bf4f8511c7f6d6f129672cf987eba65c79deea0556aeed7d20654",
+        "terminal_newline_added": false,
+        "bytes": 3198
+      }
+    },
+    {
+      "seq": 3,
+      "stepCode": "page_2",
+      "type": "page",
+      "title": "page 2",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1827,
+      "promptCode": "theme_reader_rules_page-X-737-v1-20019",
+      "prompt": {
+        "path": "L1/U1/Lesson3/04-theme_reader/instance-6545/steps/03-page_2.md",
+        "sha256": "9bc362169b4bf4f8511c7f6d6f129672cf987eba65c79deea0556aeed7d20654",
+        "source_sha256": "9bc362169b4bf4f8511c7f6d6f129672cf987eba65c79deea0556aeed7d20654",
+        "terminal_newline_added": false,
+        "bytes": 3198
+      }
+    },
+    {
+      "seq": 4,
+      "stepCode": "page_3",
+      "type": "page",
+      "title": "page 3",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1827,
+      "promptCode": "theme_reader_rules_page-X-737-v1-20019",
+      "prompt": {
+        "path": "L1/U1/Lesson3/04-theme_reader/instance-6545/steps/04-page_3.md",
+        "sha256": "9bc362169b4bf4f8511c7f6d6f129672cf987eba65c79deea0556aeed7d20654",
+        "source_sha256": "9bc362169b4bf4f8511c7f6d6f129672cf987eba65c79deea0556aeed7d20654",
+        "terminal_newline_added": false,
+        "bytes": 3198
+      }
+    },
+    {
+      "seq": 5,
+      "stepCode": "page_4",
+      "type": "page",
+      "title": "page 4",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1827,
+      "promptCode": "theme_reader_rules_page-X-737-v1-20019",
+      "prompt": {
+        "path": "L1/U1/Lesson3/04-theme_reader/instance-6545/steps/05-page_4.md",
+        "sha256": "9bc362169b4bf4f8511c7f6d6f129672cf987eba65c79deea0556aeed7d20654",
+        "source_sha256": "9bc362169b4bf4f8511c7f6d6f129672cf987eba65c79deea0556aeed7d20654",
+        "terminal_newline_added": false,
+        "bytes": 3198
+      }
+    },
+    {
+      "seq": 6,
+      "stepCode": "page_5",
+      "type": "page",
+      "title": "page 5",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1827,
+      "promptCode": "theme_reader_rules_page-X-737-v1-20019",
+      "prompt": {
+        "path": "L1/U1/Lesson3/04-theme_reader/instance-6545/steps/06-page_5.md",
+        "sha256": "9bc362169b4bf4f8511c7f6d6f129672cf987eba65c79deea0556aeed7d20654",
+        "source_sha256": "9bc362169b4bf4f8511c7f6d6f129672cf987eba65c79deea0556aeed7d20654",
+        "terminal_newline_added": false,
+        "bytes": 3198
+      }
+    },
+    {
+      "seq": 7,
+      "stepCode": "page_6",
+      "type": "page",
+      "title": "page 6",
+      "isLastStep": true,
+      "isLastSentence": true,
+      "promptId": 1827,
+      "promptCode": "theme_reader_rules_page-X-737-v1-20019",
+      "prompt": {
+        "path": "L1/U1/Lesson3/04-theme_reader/instance-6545/steps/07-page_6.md",
+        "sha256": "9bc362169b4bf4f8511c7f6d6f129672cf987eba65c79deea0556aeed7d20654",
+        "source_sha256": "9bc362169b4bf4f8511c7f6d6f129672cf987eba65c79deea0556aeed7d20654",
+        "terminal_newline_added": false,
+        "bytes": 3198
+      }
+    }
+  ]
+}

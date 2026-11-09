@@ -1,0 +1,70 @@
+{
+  "level": 4,
+  "unit": 1,
+  "lesson": 1,
+  "lesson_id": 771,
+  "lesson_version": 1,
+  "lesson_title": "Landforms",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 24197,
+  "node_name": "IP Call",
+  "sequence": 11,
+  "instance_id": 6963,
+  "template_code": "ip_call_l4",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L4/公共规则/test02_l4_common_20261109_0a68ac2335c6.md",
+    "sha256": "0a68ac2335c615e736bf7fc53dff07135353dafcc3e9d664eddae0d7cefc5f30",
+    "source_sha256": "0a68ac2335c615e736bf7fc53dff07135353dafcc3e9d664eddae0d7cefc5f30",
+    "terminal_newline_added": false,
+    "bytes": 10652,
+    "prompt_id": 2022,
+    "prompt_code": "test02_l4_common_20261109_0a68ac2335c6"
+  },
+  "template": {
+    "path": "L4/U1/Lesson1/11-ip_call_l4/instance-6963/template.md",
+    "sha256": "ef122387a657a9a4c4404549add738fd84f882fb8b85469d1475b8859561fb96",
+    "source_sha256": "27ab60d6dbfdd3a6ac31183e35c9871868d5495485c35cfc0098c6219356a39d",
+    "terminal_newline_added": true,
+    "bytes": 2391,
+    "prompt_id": 1932,
+    "prompt_code": "ip_call_l1_rules-X-771-v1-24197"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "intro",
+      "type": "intro",
+      "title": null,
+      "isLastStep": false,
+      "isLastSentence": null,
+      "promptId": 1933,
+      "promptCode": "ip_call_l1_rules_step_intro-X-771-v1-24197",
+      "prompt": {
+        "path": "L4/U1/Lesson1/11-ip_call_l4/instance-6963/steps/01-intro.md",
+        "sha256": "f0a383f23856fee3f9505580a8f16c8015eb781caf745db966590d83416be860",
+        "source_sha256": "4ffd535d503491efe438bdf1ca0f6b22cd681d2bab9ac859f4f8f97546476004",
+        "terminal_newline_added": true,
+        "bytes": 1259
+      }
+    },
+    {
+      "seq": 2,
+      "stepCode": "ipcall",
+      "type": "ipcall",
+      "title": null,
+      "isLastStep": true,
+      "isLastSentence": null,
+      "promptId": 1934,
+      "promptCode": "ip_call_l1_rules_step_ipcall-X-771-v1-24197",
+      "prompt": {
+        "path": "L4/U1/Lesson1/11-ip_call_l4/instance-6963/steps/02-ipcall.md",
+        "sha256": "58bc671d31ebaf60c702547c5024868581f44fa8c853ee54c3b82089281cd1c5",
+        "source_sha256": "28ef62eed944f255419c07aba23051a1508f9bedcd2288faade03ef212f006a8",
+        "terminal_newline_added": true,
+        "bytes": 7703
+      }
+    }
+  ]
+}

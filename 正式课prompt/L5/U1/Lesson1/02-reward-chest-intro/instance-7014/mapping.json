@@ -1,0 +1,27 @@
+{
+  "level": 5,
+  "unit": 1,
+  "lesson": 1,
+  "lesson_id": 783,
+  "lesson_version": 1,
+  "lesson_title": "Being a Good Friend",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 26060,
+  "node_name": "Rewarding Map",
+  "sequence": 2,
+  "instance_id": 7014,
+  "template_code": "reward-chest-intro",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": null,
+  "template": {
+    "path": "L5/U1/Lesson1/02-reward-chest-intro/instance-7014/template.md",
+    "sha256": "41f481fd00da96cff09ca2423e716a084f7ddeeabe1e5d0a51b2922cb28f63e1",
+    "source_sha256": "41f481fd00da96cff09ca2423e716a084f7ddeeabe1e5d0a51b2922cb28f63e1",
+    "terminal_newline_added": false,
+    "bytes": 564,
+    "prompt_id": 1948,
+    "prompt_code": "reward-chest-intro-rules-X-783-v1-26060"
+  },
+  "steps": []
+}

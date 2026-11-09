@@ -1,0 +1,40 @@
+{
+  "level": 6,
+  "unit": 1,
+  "lesson": 1,
+  "lesson_id": 795,
+  "lesson_version": 1,
+  "lesson_title": "Animal Survival Secrets",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 30419,
+  "node_name": "Reward Collection",
+  "sequence": 14,
+  "instance_id": 7140,
+  "template_code": "reward-chest-step3-template",
+  "active_prompt_scope": "TEMPLATE",
+  "lesson_config_enabled": false,
+  "common": null,
+  "template": {
+    "path": "L6/U1/Lesson1/14-reward-chest-step3-template/instance-7140/template.md",
+    "sha256": "b8b093fd3331adfa6719a4d120596629d95856724867d36f85c5a399553ec1f7",
+    "source_sha256": "b8b093fd3331adfa6719a4d120596629d95856724867d36f85c5a399553ec1f7",
+    "terminal_newline_added": false,
+    "bytes": 429,
+    "prompt_id": 107,
+    "prompt_code": "reward-chest-step3-rules"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "reward-chest-before-open",
+      "type": "reward-chest-before-open",
+      "title": "Before Open",
+      "isLastStep": true,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    }
+  ]
+}

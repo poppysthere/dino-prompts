@@ -1,0 +1,82 @@
+{
+  "level": 3,
+  "unit": 1,
+  "lesson": 3,
+  "lesson_id": 761,
+  "lesson_version": 1,
+  "lesson_title": "Activities in a Week",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 22513,
+  "node_name": "词汇 Lead In",
+  "sequence": 4,
+  "instance_id": 6799,
+  "template_code": "lead-in-template_l3l4",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L3/公共规则/test02_l3_common_20261109_70bd215ca23a.md",
+    "sha256": "70bd215ca23a540320fabaf8dc9013def4a7f5760a78c6daf5e88fee592ac1d7",
+    "source_sha256": "70bd215ca23a540320fabaf8dc9013def4a7f5760a78c6daf5e88fee592ac1d7",
+    "terminal_newline_added": false,
+    "bytes": 11519,
+    "prompt_id": 2013,
+    "prompt_code": "test02_l3_common_20261109_70bd215ca23a"
+  },
+  "template": {
+    "path": "L3/U1/Lesson3/04-lead-in-template_l3l4/instance-6799/template.md",
+    "sha256": "7893ee298228476047b1b86cc583e0e753c8c85c10b0ca4c3fa3b931dd5b6001",
+    "source_sha256": "7893ee298228476047b1b86cc583e0e753c8c85c10b0ca4c3fa3b931dd5b6001",
+    "terminal_newline_added": false,
+    "bytes": 1212,
+    "prompt_id": 1877,
+    "prompt_code": "leadin_teaching_rules_l1l2-X-761-v1-22513"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "pre-video",
+      "type": "pre-video",
+      "title": null,
+      "isLastStep": false,
+      "isLastSentence": null,
+      "promptId": 1878,
+      "promptCode": "leadin_teaching_rules_l1l2_step_pre_video-X-761-v1-22513",
+      "prompt": {
+        "path": "L3/U1/Lesson3/04-lead-in-template_l3l4/instance-6799/steps/01-pre-video.md",
+        "sha256": "6a08dbe0a488b064ec121b6d2dc626be05ea5e5d0cf40445da907522e76fb2e8",
+        "source_sha256": "6a08dbe0a488b064ec121b6d2dc626be05ea5e5d0cf40445da907522e76fb2e8",
+        "terminal_newline_added": false,
+        "bytes": 853
+      }
+    },
+    {
+      "seq": 2,
+      "stepCode": "video",
+      "type": "video",
+      "title": null,
+      "isLastStep": false,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 3,
+      "stepCode": "post-video",
+      "type": "post-video",
+      "title": null,
+      "isLastStep": true,
+      "isLastSentence": null,
+      "promptId": 1879,
+      "promptCode": "leadin_teaching_rules_l1l2_step_post_video-X-761-v1-22513",
+      "prompt": {
+        "path": "L3/U1/Lesson3/04-lead-in-template_l3l4/instance-6799/steps/03-post-video.md",
+        "sha256": "24178243bb23f7667e100b56578a26061a87342cc53cffa86634614489c5dc7d",
+        "source_sha256": "24178243bb23f7667e100b56578a26061a87342cc53cffa86634614489c5dc7d",
+        "terminal_newline_added": false,
+        "bytes": 902
+      }
+    }
+  ]
+}

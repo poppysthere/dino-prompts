@@ -1,0 +1,35 @@
+{
+  "level": 6,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 796,
+  "lesson_version": 1,
+  "lesson_title": "Built to Survive",
+  "lesson_type": "passage_reading",
+  "node_id": 30429,
+  "node_name": "Retell",
+  "sequence": 10,
+  "instance_id": 7127,
+  "template_code": "retell_l6",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L6/公共规则/test02_l6_common_20261109_69e0b8cc1a06.md",
+    "sha256": "69e0b8cc1a060b6b85eaca4e300554d04ffdbf898deec56eca389e76fea9c2d7",
+    "source_sha256": "69e0b8cc1a060b6b85eaca4e300554d04ffdbf898deec56eca389e76fea9c2d7",
+    "terminal_newline_added": false,
+    "bytes": 10848,
+    "prompt_id": 2018,
+    "prompt_code": "test02_l6_common_20261109_69e0b8cc1a06"
+  },
+  "template": {
+    "path": "L6/U1/Lesson2/10-retell_l6/instance-7127/template.md",
+    "sha256": "5f703fc0c8f9bfb2fe20bab8f0e836902ab76a1059152ea3031c48447b33fc69",
+    "source_sha256": "5f703fc0c8f9bfb2fe20bab8f0e836902ab76a1059152ea3031c48447b33fc69",
+    "terminal_newline_added": false,
+    "bytes": 6279,
+    "prompt_id": 1998,
+    "prompt_code": "retell_rules-X-796-v1-30429"
+  },
+  "steps": []
+}

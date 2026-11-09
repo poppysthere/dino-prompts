@@ -1,0 +1,104 @@
+{
+  "level": 2,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 748,
+  "lesson_version": 1,
+  "lesson_title": "What Class Is It?",
+  "lesson_type": "sentence",
+  "node_id": 21267,
+  "node_name": "句子教学",
+  "sequence": 4,
+  "instance_id": 6619,
+  "template_code": "sentence_teach_explain",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L2/公共规则/test02_l2_common_20261109_d7d1538f9439.md",
+    "sha256": "d7d1538f94393414e98544379aa23e0fe42649fb2070fdf2549ea77420856d93",
+    "source_sha256": "d7d1538f94393414e98544379aa23e0fe42649fb2070fdf2549ea77420856d93",
+    "terminal_newline_added": false,
+    "bytes": 10865,
+    "prompt_id": 2020,
+    "prompt_code": "test02_l2_common_20261109_d7d1538f9439"
+  },
+  "template": {
+    "path": "L2/U1/Lesson2/04-sentence_teach_explain/instance-6619/template.md",
+    "sha256": "6005040dd20e018feafa84cc3f3b536c420524673209eb4a18a28a184650cbeb",
+    "source_sha256": "6005040dd20e018feafa84cc3f3b536c420524673209eb4a18a28a184650cbeb",
+    "terminal_newline_added": false,
+    "bytes": 1866,
+    "prompt_id": 1849,
+    "prompt_code": "sentence_teach_explain_rules-X-748-v1-21267"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "sentence_0",
+      "type": "context",
+      "title": "sentence 0",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1850,
+      "promptCode": "sentence_teach_explain_rules_context-X-748-v1-21267",
+      "prompt": {
+        "path": "L2/U1/Lesson2/04-sentence_teach_explain/instance-6619/steps/01-sentence_0.md",
+        "sha256": "417734847d700be4d8ba1d7e06befe914ae7626111c0f57a1091bcdbbc6f457c",
+        "source_sha256": "417734847d700be4d8ba1d7e06befe914ae7626111c0f57a1091bcdbbc6f457c",
+        "terminal_newline_added": false,
+        "bytes": 2450
+      }
+    },
+    {
+      "seq": 2,
+      "stepCode": "sentence_1",
+      "type": "context",
+      "title": "sentence 1",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1850,
+      "promptCode": "sentence_teach_explain_rules_context-X-748-v1-21267",
+      "prompt": {
+        "path": "L2/U1/Lesson2/04-sentence_teach_explain/instance-6619/steps/02-sentence_1.md",
+        "sha256": "417734847d700be4d8ba1d7e06befe914ae7626111c0f57a1091bcdbbc6f457c",
+        "source_sha256": "417734847d700be4d8ba1d7e06befe914ae7626111c0f57a1091bcdbbc6f457c",
+        "terminal_newline_added": false,
+        "bytes": 2450
+      }
+    },
+    {
+      "seq": 3,
+      "stepCode": "sentence_2",
+      "type": "context",
+      "title": "sentence 2",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1850,
+      "promptCode": "sentence_teach_explain_rules_context-X-748-v1-21267",
+      "prompt": {
+        "path": "L2/U1/Lesson2/04-sentence_teach_explain/instance-6619/steps/03-sentence_2.md",
+        "sha256": "417734847d700be4d8ba1d7e06befe914ae7626111c0f57a1091bcdbbc6f457c",
+        "source_sha256": "417734847d700be4d8ba1d7e06befe914ae7626111c0f57a1091bcdbbc6f457c",
+        "terminal_newline_added": false,
+        "bytes": 2450
+      }
+    },
+    {
+      "seq": 4,
+      "stepCode": "sentence_3",
+      "type": "frame_example",
+      "title": "sentence 3",
+      "isLastStep": true,
+      "isLastSentence": true,
+      "promptId": 1851,
+      "promptCode": "sentence_teach_explain_rules_frame_example-X-748-v1-21267",
+      "prompt": {
+        "path": "L2/U1/Lesson2/04-sentence_teach_explain/instance-6619/steps/04-sentence_3.md",
+        "sha256": "adba60a250ac82e2d288c60a9159330828651cd78114146ec0977a4cfdfd2e67",
+        "source_sha256": "adba60a250ac82e2d288c60a9159330828651cd78114146ec0977a4cfdfd2e67",
+        "terminal_newline_added": false,
+        "bytes": 1939
+      }
+    }
+  ]
+}

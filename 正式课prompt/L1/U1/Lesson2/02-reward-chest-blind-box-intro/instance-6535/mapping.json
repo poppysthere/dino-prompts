@@ -1,0 +1,27 @@
+{
+  "level": 1,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 736,
+  "lesson_version": 1,
+  "lesson_title": "School Supplies 2",
+  "lesson_type": "sentence",
+  "node_id": 20009,
+  "node_name": "Rewarding Map",
+  "sequence": 2,
+  "instance_id": 6535,
+  "template_code": "reward-chest-blind-box-intro",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": null,
+  "template": {
+    "path": "L1/U1/Lesson2/02-reward-chest-blind-box-intro/instance-6535/template.md",
+    "sha256": "4a049126bf46705dcf9bcdb0b656abdc5e77a1b6387f06839580c71bd5b25750",
+    "source_sha256": "4a049126bf46705dcf9bcdb0b656abdc5e77a1b6387f06839580c71bd5b25750",
+    "terminal_newline_added": false,
+    "bytes": 1672,
+    "prompt_id": 1819,
+    "prompt_code": "reward-chest-blind-box-intro-rules-X-736-v1-20009"
+  },
+  "steps": []
+}

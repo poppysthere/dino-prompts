@@ -1,0 +1,35 @@
+{
+  "level": 4,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 772,
+  "lesson_version": 1,
+  "lesson_title": "Landforms on Earth",
+  "lesson_type": "passage_reading",
+  "node_id": 24209,
+  "node_name": "Retell",
+  "sequence": 10,
+  "instance_id": 6942,
+  "template_code": "retell_l6",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L4/公共规则/test02_l4_common_20261109_420755a8b5a9.md",
+    "sha256": "420755a8b5a9aef59846e404135a61beb63f95d41228c7e9e8fb38943fd4903f",
+    "source_sha256": "420755a8b5a9aef59846e404135a61beb63f95d41228c7e9e8fb38943fd4903f",
+    "terminal_newline_added": false,
+    "bytes": 9840,
+    "prompt_id": 2015,
+    "prompt_code": "test02_l4_common_20261109_420755a8b5a9"
+  },
+  "template": {
+    "path": "L4/U1/Lesson2/10-retell_l6/instance-6942/template.md",
+    "sha256": "01a171041d6529f9bd4b5a8bf348a0c989352ad52f746d39fb71d8ea28f3cc6f",
+    "source_sha256": "a8ae750242eca414076c06e7ab1aab86121cb694d614eb7f864be240d954651f",
+    "terminal_newline_added": true,
+    "bytes": 5706,
+    "prompt_id": 1927,
+    "prompt_code": "retell_rules-X-772-v1-24209"
+  },
+  "steps": []
+}

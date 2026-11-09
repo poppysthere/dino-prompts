@@ -1,0 +1,108 @@
+{
+  "level": 5,
+  "unit": 1,
+  "lesson": 3,
+  "lesson_id": 785,
+  "lesson_version": 1,
+  "lesson_title": "Choosing a Friend",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 26091,
+  "node_name": "Free Talk",
+  "sequence": 9,
+  "instance_id": 7078,
+  "template_code": "free_talk_images",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L5/公共规则/test02_l5_common_20261109_e06096958dd7.md",
+    "sha256": "e06096958dd7d939b489bca70888a93577c811b115aa5c1dd76c80a476021b1b",
+    "source_sha256": "e06096958dd7d939b489bca70888a93577c811b115aa5c1dd76c80a476021b1b",
+    "terminal_newline_added": false,
+    "bytes": 10397,
+    "prompt_id": 2017,
+    "prompt_code": "test02_l5_common_20261109_e06096958dd7"
+  },
+  "template": {
+    "path": "L5/U1/Lesson3/09-free_talk_images/instance-7078/template.md",
+    "sha256": "323b0635e7b08f2e65cd3cede3b9e991d60eefdd91caeafe1f90eb95eabd08d6",
+    "source_sha256": "323b0635e7b08f2e65cd3cede3b9e991d60eefdd91caeafe1f90eb95eabd08d6",
+    "terminal_newline_added": false,
+    "bytes": 3397,
+    "prompt_id": 1973,
+    "prompt_code": "free_talk_rules-X-785-v1-26091"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "free_talk_0",
+      "type": "free_talk",
+      "title": "free talk 0",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 2,
+      "stepCode": "free_talk_1",
+      "type": "free_talk",
+      "title": "free talk 1",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 3,
+      "stepCode": "free_talk_2",
+      "type": "free_talk",
+      "title": "free talk 2",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 4,
+      "stepCode": "free_talk_3",
+      "type": "free_talk",
+      "title": "free talk 3",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 5,
+      "stepCode": "free_talk_4",
+      "type": "free_talk",
+      "title": "free talk 4",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 6,
+      "stepCode": "free_talk_5",
+      "type": "free_talk",
+      "title": "free talk 5",
+      "isLastStep": true,
+      "isLastSentence": true,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    }
+  ]
+}

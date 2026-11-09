@@ -1,0 +1,108 @@
+{
+  "level": 6,
+  "unit": 1,
+  "lesson": 1,
+  "lesson_id": 795,
+  "lesson_version": 1,
+  "lesson_title": "Animal Survival Secrets",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 30414,
+  "node_name": "Free Talk",
+  "sequence": 9,
+  "instance_id": 7128,
+  "template_code": "free_talk_images",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L6/公共规则/test02_l6_common_20261109_69e0b8cc1a06.md",
+    "sha256": "69e0b8cc1a060b6b85eaca4e300554d04ffdbf898deec56eca389e76fea9c2d7",
+    "source_sha256": "69e0b8cc1a060b6b85eaca4e300554d04ffdbf898deec56eca389e76fea9c2d7",
+    "terminal_newline_added": false,
+    "bytes": 10848,
+    "prompt_id": 2018,
+    "prompt_code": "test02_l6_common_20261109_69e0b8cc1a06"
+  },
+  "template": {
+    "path": "L6/U1/Lesson1/09-free_talk_images/instance-7128/template.md",
+    "sha256": "a02099d608955cdf6caea4541f8e39e9b1c4aabbb6052c9a75e143325a7db6e7",
+    "source_sha256": "a02099d608955cdf6caea4541f8e39e9b1c4aabbb6052c9a75e143325a7db6e7",
+    "terminal_newline_added": false,
+    "bytes": 5523,
+    "prompt_id": 1999,
+    "prompt_code": "free_talk_rules-X-795-v1-30414"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "free_talk_0",
+      "type": "free_talk",
+      "title": "free talk 0",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 2,
+      "stepCode": "free_talk_1",
+      "type": "free_talk",
+      "title": "free talk 1",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 3,
+      "stepCode": "free_talk_2",
+      "type": "free_talk",
+      "title": "free talk 2",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 4,
+      "stepCode": "free_talk_3",
+      "type": "free_talk",
+      "title": "free talk 3",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 5,
+      "stepCode": "free_talk_4",
+      "type": "free_talk",
+      "title": "free talk 4",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 6,
+      "stepCode": "free_talk_5",
+      "type": "free_talk",
+      "title": "free talk 5",
+      "isLastStep": true,
+      "isLastSentence": true,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    }
+  ]
+}

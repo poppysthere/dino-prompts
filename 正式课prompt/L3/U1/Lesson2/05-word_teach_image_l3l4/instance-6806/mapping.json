@@ -1,0 +1,35 @@
+{
+  "level": 3,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 760,
+  "lesson_version": 1,
+  "lesson_title": "Before and After",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 22499,
+  "node_name": "词汇教学",
+  "sequence": 5,
+  "instance_id": 6806,
+  "template_code": "word_teach_image_l3l4",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L3/公共规则/test02_l3_common_20261109_70bd215ca23a.md",
+    "sha256": "70bd215ca23a540320fabaf8dc9013def4a7f5760a78c6daf5e88fee592ac1d7",
+    "source_sha256": "70bd215ca23a540320fabaf8dc9013def4a7f5760a78c6daf5e88fee592ac1d7",
+    "terminal_newline_added": false,
+    "bytes": 11519,
+    "prompt_id": 2013,
+    "prompt_code": "test02_l3_common_20261109_70bd215ca23a"
+  },
+  "template": {
+    "path": "L3/U1/Lesson2/05-word_teach_image_l3l4/instance-6806/template.md",
+    "sha256": "b745c078ab45d8565fbda759d4658a46302b671e03f7d19a565014b64aae0699",
+    "source_sha256": "256077c3cdd5cbae9776eb97e394ee8bcd5a455bec23102fde636c332bdcd855",
+    "terminal_newline_added": true,
+    "bytes": 6532,
+    "prompt_id": 1888,
+    "prompt_code": "word_teach_image_l3l4-X-760-v1-22499"
+  },
+  "steps": []
+}

@@ -1,0 +1,72 @@
+{
+  "level": 3,
+  "unit": 1,
+  "lesson": 3,
+  "lesson_id": 761,
+  "lesson_version": 1,
+  "lesson_title": "Activities in a Week",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 22522,
+  "node_name": "Wrap Up",
+  "sequence": 13,
+  "instance_id": 6864,
+  "template_code": "wrapup_summary_video",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L3/公共规则/test02_l3_common_20261109_70bd215ca23a.md",
+    "sha256": "70bd215ca23a540320fabaf8dc9013def4a7f5760a78c6daf5e88fee592ac1d7",
+    "source_sha256": "70bd215ca23a540320fabaf8dc9013def4a7f5760a78c6daf5e88fee592ac1d7",
+    "terminal_newline_added": false,
+    "bytes": 11519,
+    "prompt_id": 2013,
+    "prompt_code": "test02_l3_common_20261109_70bd215ca23a"
+  },
+  "template": {
+    "path": "L3/U1/Lesson3/13-wrapup_summary_video/instance-6864/template.md",
+    "sha256": "f6fd27ef96cc798c5f180ca001c498d5df254fb9454e7c64d5b62b7331639d85",
+    "source_sha256": "f6fd27ef96cc798c5f180ca001c498d5df254fb9454e7c64d5b62b7331639d85",
+    "terminal_newline_added": false,
+    "bytes": 2656,
+    "prompt_id": 1907,
+    "prompt_code": "wrapup_summary_video_rules-X-761-v1-22522"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "pre-video",
+      "type": "pre-video",
+      "title": null,
+      "isLastStep": false,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 2,
+      "stepCode": "video",
+      "type": "video",
+      "title": null,
+      "isLastStep": false,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 3,
+      "stepCode": "post-video",
+      "type": "post-video",
+      "title": null,
+      "isLastStep": true,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    }
+  ]
+}

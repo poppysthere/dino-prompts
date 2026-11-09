@@ -1,0 +1,40 @@
+{
+  "level": 2,
+  "unit": 1,
+  "lesson": 1,
+  "lesson_id": 747,
+  "lesson_version": 1,
+  "lesson_title": "My Classes",
+  "lesson_type": "word",
+  "node_id": 21262,
+  "node_name": "Reward Collection",
+  "sequence": 8,
+  "instance_id": 6656,
+  "template_code": "reward-chest-blind-box-template",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": null,
+  "template": {
+    "path": "L2/U1/Lesson1/08-reward-chest-blind-box-template/instance-6656/template.md",
+    "sha256": "5b468eb8273903f22bc489865b0a4bb90fde4c2d203872d023b960c95927c928",
+    "source_sha256": "5b468eb8273903f22bc489865b0a4bb90fde4c2d203872d023b960c95927c928",
+    "terminal_newline_added": false,
+    "bytes": 1726,
+    "prompt_id": 1863,
+    "prompt_code": "reward-chest-blind-box-rules-X-747-v1-21262"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "reward-chest-before-open",
+      "type": "reward-chest-before-open",
+      "title": "Before Open",
+      "isLastStep": true,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "level": 6,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 796,
+  "lesson_version": 1,
+  "lesson_title": "Built to Survive",
+  "lesson_type": "passage_reading",
+  "node_id": 30430,
+  "node_name": "Wrap Up",
+  "sequence": 11,
+  "instance_id": 7132,
+  "template_code": "wrapup_summary_video",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L6/公共规则/test02_l6_common_20261109_69e0b8cc1a06.md",
+    "sha256": "69e0b8cc1a060b6b85eaca4e300554d04ffdbf898deec56eca389e76fea9c2d7",
+    "source_sha256": "69e0b8cc1a060b6b85eaca4e300554d04ffdbf898deec56eca389e76fea9c2d7",
+    "terminal_newline_added": false,
+    "bytes": 10848,
+    "prompt_id": 2018,
+    "prompt_code": "test02_l6_common_20261109_69e0b8cc1a06"
+  },
+  "template": {
+    "path": "L6/U1/Lesson2/11-wrapup_summary_video/instance-7132/template.md",
+    "sha256": "c7dc4ad2916d4073fed2e42fbcd59d23062be28e4173b6144be09bbf04c33d5a",
+    "source_sha256": "c7dc4ad2916d4073fed2e42fbcd59d23062be28e4173b6144be09bbf04c33d5a",
+    "terminal_newline_added": false,
+    "bytes": 2657,
+    "prompt_id": 2000,
+    "prompt_code": "wrapup_summary_video_rules-X-796-v1-30430"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "pre-video",
+      "type": "pre-video",
+      "title": null,
+      "isLastStep": false,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 2,
+      "stepCode": "video",
+      "type": "video",
+      "title": null,
+      "isLastStep": false,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 3,
+      "stepCode": "post-video",
+      "type": "post-video",
+      "title": null,
+      "isLastStep": true,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    }
+  ]
+}

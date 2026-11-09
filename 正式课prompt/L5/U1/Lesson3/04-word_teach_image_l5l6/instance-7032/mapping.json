@@ -1,0 +1,35 @@
+{
+  "level": 5,
+  "unit": 1,
+  "lesson": 3,
+  "lesson_id": 785,
+  "lesson_version": 1,
+  "lesson_title": "Choosing a Friend",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 26087,
+  "node_name": "单词教学",
+  "sequence": 4,
+  "instance_id": 7032,
+  "template_code": "word_teach_image_l5l6",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L5/公共规则/test02_l5_common_20261109_e06096958dd7.md",
+    "sha256": "e06096958dd7d939b489bca70888a93577c811b115aa5c1dd76c80a476021b1b",
+    "source_sha256": "e06096958dd7d939b489bca70888a93577c811b115aa5c1dd76c80a476021b1b",
+    "terminal_newline_added": false,
+    "bytes": 10397,
+    "prompt_id": 2017,
+    "prompt_code": "test02_l5_common_20261109_e06096958dd7"
+  },
+  "template": {
+    "path": "L5/U1/Lesson3/04-word_teach_image_l5l6/instance-7032/template.md",
+    "sha256": "351c249ae3631b2206a6934d0646a6aac9c3702db68f9d869d7e977d8de317dc",
+    "source_sha256": "351c249ae3631b2206a6934d0646a6aac9c3702db68f9d869d7e977d8de317dc",
+    "terminal_newline_added": false,
+    "bytes": 8480,
+    "prompt_id": 1961,
+    "prompt_code": "word_teach_image_l5l6-X-785-v1-26087"
+  },
+  "steps": []
+}

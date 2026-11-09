@@ -1,0 +1,40 @@
+{
+  "level": 3,
+  "unit": 1,
+  "lesson": 3,
+  "lesson_id": 761,
+  "lesson_version": 1,
+  "lesson_title": "Activities in a Week",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 22516,
+  "node_name": "Reward Collection 1",
+  "sequence": 7,
+  "instance_id": 6830,
+  "template_code": "reward-chest-step1-template",
+  "active_prompt_scope": "TEMPLATE",
+  "lesson_config_enabled": false,
+  "common": null,
+  "template": {
+    "path": "L3/U1/Lesson3/07-reward-chest-step1-template/instance-6830/template.md",
+    "sha256": "288ed90dbafbe73ea99cd023ee3950fe59765063441da8f13bfe5233dc1fbfe9",
+    "source_sha256": "288ed90dbafbe73ea99cd023ee3950fe59765063441da8f13bfe5233dc1fbfe9",
+    "terminal_newline_added": false,
+    "bytes": 413,
+    "prompt_id": 105,
+    "prompt_code": "reward-chest-step1-rules"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "reward-chest-before-open",
+      "type": "reward-chest-before-open",
+      "title": "Before Open",
+      "isLastStep": true,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    }
+  ]
+}

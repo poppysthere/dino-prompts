@@ -1,0 +1,27 @@
+{
+  "level": 2,
+  "unit": 1,
+  "lesson": 3,
+  "lesson_id": 749,
+  "lesson_version": 1,
+  "lesson_title": "What's This?",
+  "lesson_type": "theme_reader",
+  "node_id": 21280,
+  "node_name": "Photo Time",
+  "sequence": 13,
+  "instance_id": 7269,
+  "template_code": "photo_time_l1l2",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": null,
+  "template": {
+    "path": "L2/U1/Lesson3/13-photo_time_l1l2/instance-7269/template.md",
+    "sha256": "e1aa1f53407e6de1aef5492b668b2c0e804103394dfc1996cbad465a12b5e950",
+    "source_sha256": "e1aa1f53407e6de1aef5492b668b2c0e804103394dfc1996cbad465a12b5e950",
+    "terminal_newline_added": false,
+    "bytes": 315,
+    "prompt_id": 1867,
+    "prompt_code": "photo_time_l1l2_rules-X-749-v1-21280"
+  },
+  "steps": []
+}

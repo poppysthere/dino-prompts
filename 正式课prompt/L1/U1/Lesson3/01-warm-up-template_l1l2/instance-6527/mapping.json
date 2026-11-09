@@ -1,0 +1,35 @@
+{
+  "level": 1,
+  "unit": 1,
+  "lesson": 3,
+  "lesson_id": 737,
+  "lesson_version": 1,
+  "lesson_title": "What's This?",
+  "lesson_type": "theme_reader",
+  "node_id": 20016,
+  "node_name": "Warm Up",
+  "sequence": 1,
+  "instance_id": 6527,
+  "template_code": "warm-up-template_l1l2",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L1/公共规则/test02_l1_common_20261109_3da0eaf107a8.md",
+    "sha256": "3da0eaf107a8bd62018efd06aa76f6327c8221dad39c38a5401b3e5d842e63f3",
+    "source_sha256": "3da0eaf107a8bd62018efd06aa76f6327c8221dad39c38a5401b3e5d842e63f3",
+    "terminal_newline_added": false,
+    "bytes": 10123,
+    "prompt_id": 2008,
+    "prompt_code": "test02_l1_common_20261109_3da0eaf107a8"
+  },
+  "template": {
+    "path": "L1/U1/Lesson3/01-warm-up-template_l1l2/instance-6527/template.md",
+    "sha256": "3f7c6b1e56a6fa83e575d03351e8703583f09a600d378e91d26da9d5fc24dc28",
+    "source_sha256": "3f7c6b1e56a6fa83e575d03351e8703583f09a600d378e91d26da9d5fc24dc28",
+    "terminal_newline_added": false,
+    "bytes": 14286,
+    "prompt_id": 1816,
+    "prompt_code": "warmup_teaching_rules_l1l2-X-737-v1-20016"
+  },
+  "steps": []
+}

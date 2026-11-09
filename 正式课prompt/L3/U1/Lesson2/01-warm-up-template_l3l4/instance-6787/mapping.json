@@ -1,0 +1,35 @@
+{
+  "level": 3,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 760,
+  "lesson_version": 1,
+  "lesson_title": "Before and After",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 22495,
+  "node_name": "Warm Up",
+  "sequence": 1,
+  "instance_id": 6787,
+  "template_code": "warm-up-template_l3l4",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L3/公共规则/test02_l3_common_20261109_70bd215ca23a.md",
+    "sha256": "70bd215ca23a540320fabaf8dc9013def4a7f5760a78c6daf5e88fee592ac1d7",
+    "source_sha256": "70bd215ca23a540320fabaf8dc9013def4a7f5760a78c6daf5e88fee592ac1d7",
+    "terminal_newline_added": false,
+    "bytes": 11519,
+    "prompt_id": 2013,
+    "prompt_code": "test02_l3_common_20261109_70bd215ca23a"
+  },
+  "template": {
+    "path": "L3/U1/Lesson2/01-warm-up-template_l3l4/instance-6787/template.md",
+    "sha256": "2718acd195838c1539beef7b7ccfa320b441fad710656ad910eddaba5cc1917f",
+    "source_sha256": "2718acd195838c1539beef7b7ccfa320b441fad710656ad910eddaba5cc1917f",
+    "terminal_newline_added": false,
+    "bytes": 6097,
+    "prompt_id": 1872,
+    "prompt_code": "warmup_teaching_rules_l3l4-X-760-v1-22495"
+  },
+  "steps": []
+}

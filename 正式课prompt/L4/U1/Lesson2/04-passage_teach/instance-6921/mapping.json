@@ -1,0 +1,138 @@
+{
+  "level": 4,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 772,
+  "lesson_version": 1,
+  "lesson_title": "Landforms on Earth",
+  "lesson_type": "passage_reading",
+  "node_id": 24204,
+  "node_name": "语篇教学",
+  "sequence": 4,
+  "instance_id": 6921,
+  "template_code": "passage_teach",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L4/公共规则/test02_l4_common_20261109_420755a8b5a9.md",
+    "sha256": "420755a8b5a9aef59846e404135a61beb63f95d41228c7e9e8fb38943fd4903f",
+    "source_sha256": "420755a8b5a9aef59846e404135a61beb63f95d41228c7e9e8fb38943fd4903f",
+    "terminal_newline_added": false,
+    "bytes": 9840,
+    "prompt_id": 2015,
+    "prompt_code": "test02_l4_common_20261109_420755a8b5a9"
+  },
+  "template": {
+    "path": "L4/U1/Lesson2/04-passage_teach/instance-6921/template.md",
+    "sha256": "86fe957468746c2ee823132a847722f88f2f7b3c761bf53193e71387876b4655",
+    "source_sha256": "86fe957468746c2ee823132a847722f88f2f7b3c761bf53193e71387876b4655",
+    "terminal_newline_added": false,
+    "bytes": 1590,
+    "prompt_id": 1922,
+    "prompt_code": "reader_teach_rules-X-772-v1-24204"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "page_0",
+      "type": "cover",
+      "title": "page 0",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1924,
+      "promptCode": "reader_teach_rules_cover-X-772-v1-24204",
+      "prompt": {
+        "path": "L4/U1/Lesson2/04-passage_teach/instance-6921/steps/01-page_0.md",
+        "sha256": "4c07e6d2b3970afc21f7b90a493b0c910a8d3ab11133f1c9b84e77f5b166f7ca",
+        "source_sha256": "4c07e6d2b3970afc21f7b90a493b0c910a8d3ab11133f1c9b84e77f5b166f7ca",
+        "terminal_newline_added": false,
+        "bytes": 977
+      }
+    },
+    {
+      "seq": 2,
+      "stepCode": "page_1",
+      "type": "page",
+      "title": "page 1",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1923,
+      "promptCode": "reader_teach_rules_page-X-772-v1-24204",
+      "prompt": {
+        "path": "L4/U1/Lesson2/04-passage_teach/instance-6921/steps/02-page_1.md",
+        "sha256": "3b0ceb809c84e962306e0f9cd025c9cd364aaa7f75867428167a4cfc50e1f2e7",
+        "source_sha256": "3b0ceb809c84e962306e0f9cd025c9cd364aaa7f75867428167a4cfc50e1f2e7",
+        "terminal_newline_added": false,
+        "bytes": 3829
+      }
+    },
+    {
+      "seq": 3,
+      "stepCode": "page_2",
+      "type": "page",
+      "title": "page 2",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1923,
+      "promptCode": "reader_teach_rules_page-X-772-v1-24204",
+      "prompt": {
+        "path": "L4/U1/Lesson2/04-passage_teach/instance-6921/steps/03-page_2.md",
+        "sha256": "3b0ceb809c84e962306e0f9cd025c9cd364aaa7f75867428167a4cfc50e1f2e7",
+        "source_sha256": "3b0ceb809c84e962306e0f9cd025c9cd364aaa7f75867428167a4cfc50e1f2e7",
+        "terminal_newline_added": false,
+        "bytes": 3829
+      }
+    },
+    {
+      "seq": 4,
+      "stepCode": "page_3",
+      "type": "page",
+      "title": "page 3",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1923,
+      "promptCode": "reader_teach_rules_page-X-772-v1-24204",
+      "prompt": {
+        "path": "L4/U1/Lesson2/04-passage_teach/instance-6921/steps/04-page_3.md",
+        "sha256": "3b0ceb809c84e962306e0f9cd025c9cd364aaa7f75867428167a4cfc50e1f2e7",
+        "source_sha256": "3b0ceb809c84e962306e0f9cd025c9cd364aaa7f75867428167a4cfc50e1f2e7",
+        "terminal_newline_added": false,
+        "bytes": 3829
+      }
+    },
+    {
+      "seq": 5,
+      "stepCode": "page_4",
+      "type": "page",
+      "title": "page 4",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1923,
+      "promptCode": "reader_teach_rules_page-X-772-v1-24204",
+      "prompt": {
+        "path": "L4/U1/Lesson2/04-passage_teach/instance-6921/steps/05-page_4.md",
+        "sha256": "3b0ceb809c84e962306e0f9cd025c9cd364aaa7f75867428167a4cfc50e1f2e7",
+        "source_sha256": "3b0ceb809c84e962306e0f9cd025c9cd364aaa7f75867428167a4cfc50e1f2e7",
+        "terminal_newline_added": false,
+        "bytes": 3829
+      }
+    },
+    {
+      "seq": 6,
+      "stepCode": "page_5",
+      "type": "page",
+      "title": "page 5",
+      "isLastStep": true,
+      "isLastSentence": true,
+      "promptId": 1923,
+      "promptCode": "reader_teach_rules_page-X-772-v1-24204",
+      "prompt": {
+        "path": "L4/U1/Lesson2/04-passage_teach/instance-6921/steps/06-page_5.md",
+        "sha256": "3b0ceb809c84e962306e0f9cd025c9cd364aaa7f75867428167a4cfc50e1f2e7",
+        "source_sha256": "3b0ceb809c84e962306e0f9cd025c9cd364aaa7f75867428167a4cfc50e1f2e7",
+        "terminal_newline_added": false,
+        "bytes": 3829
+      }
+    }
+  ]
+}

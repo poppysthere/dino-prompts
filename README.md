@@ -1,5 +1,10 @@
 # Dino Prompts
 
+## 正式课 / Formal courses（2026-11-09）
+
+最新正式课 Test02、L1–L6 Unit 1 前三课的规则独立放在 [正式课prompt](正式课prompt/README.md)。
+本目录与公司仓库 `dinoclass/MajorCourse-prompts` 的正式课快照一致；公共规则、模板、step 和 Forge 映射分开保存，不与原有体验课/历史版本混用。
+
 Version-controlled source of truth for the AI teacher prompts managed in Prompt Forge
 (`ai-dino-prompt-forge-web` / prompt-forge-api).
 

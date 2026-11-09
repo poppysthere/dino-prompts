@@ -1,0 +1,35 @@
+{
+  "level": 2,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 748,
+  "lesson_version": 1,
+  "lesson_title": "What Class Is It?",
+  "lesson_type": "sentence",
+  "node_id": 21264,
+  "node_name": "Warm Up",
+  "sequence": 1,
+  "instance_id": 6602,
+  "template_code": "warm-up-template_l1l2",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L2/公共规则/test02_l2_common_20261109_6d781ca984a0.md",
+    "sha256": "6d781ca984a0cac820344a95f38fd5f040ef01af770c612ae54a5fe13d17735e",
+    "source_sha256": "6d781ca984a0cac820344a95f38fd5f040ef01af770c612ae54a5fe13d17735e",
+    "terminal_newline_added": false,
+    "bytes": 11341,
+    "prompt_id": 2019,
+    "prompt_code": "test02_l2_common_20261109_6d781ca984a0"
+  },
+  "template": {
+    "path": "L2/U1/Lesson2/01-warm-up-template_l1l2/instance-6602/template.md",
+    "sha256": "9a683ebc1d3f8755341da9bcbc8a2d0c3acf175415086d81711653b3574f72dd",
+    "source_sha256": "9a683ebc1d3f8755341da9bcbc8a2d0c3acf175415086d81711653b3574f72dd",
+    "terminal_newline_added": false,
+    "bytes": 3755,
+    "prompt_id": 1830,
+    "prompt_code": "warmup_teaching_rules_l1l2-X-748-v1-21264"
+  },
+  "steps": []
+}

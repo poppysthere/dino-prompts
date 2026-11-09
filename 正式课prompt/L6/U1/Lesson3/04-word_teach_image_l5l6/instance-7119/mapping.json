@@ -1,0 +1,35 @@
+{
+  "level": 6,
+  "unit": 1,
+  "lesson": 3,
+  "lesson_id": 797,
+  "lesson_version": 1,
+  "lesson_title": "Animal Instincts at Work",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 30436,
+  "node_name": "单词教学",
+  "sequence": 4,
+  "instance_id": 7119,
+  "template_code": "word_teach_image_l5l6",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L6/公共规则/test02_l6_common_20261109_69e0b8cc1a06.md",
+    "sha256": "69e0b8cc1a060b6b85eaca4e300554d04ffdbf898deec56eca389e76fea9c2d7",
+    "source_sha256": "69e0b8cc1a060b6b85eaca4e300554d04ffdbf898deec56eca389e76fea9c2d7",
+    "terminal_newline_added": false,
+    "bytes": 10848,
+    "prompt_id": 2018,
+    "prompt_code": "test02_l6_common_20261109_69e0b8cc1a06"
+  },
+  "template": {
+    "path": "L6/U1/Lesson3/04-word_teach_image_l5l6/instance-7119/template.md",
+    "sha256": "bd0de9425f2f8b18aa083bb52e87f14f1d7783673132234e97c4a50081d84320",
+    "source_sha256": "bd0de9425f2f8b18aa083bb52e87f14f1d7783673132234e97c4a50081d84320",
+    "terminal_newline_added": false,
+    "bytes": 12035,
+    "prompt_id": 1997,
+    "prompt_code": "word_teach_image_l5l6-X-797-v1-30436"
+  },
+  "steps": []
+}

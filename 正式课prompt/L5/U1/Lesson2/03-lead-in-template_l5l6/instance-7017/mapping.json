@@ -1,0 +1,82 @@
+{
+  "level": 5,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 784,
+  "lesson_version": 1,
+  "lesson_title": "Emma and Stella's Caring Day",
+  "lesson_type": "passage_reading",
+  "node_id": 26074,
+  "node_name": "Lead In",
+  "sequence": 3,
+  "instance_id": 7017,
+  "template_code": "lead-in-template_l5l6",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L5/公共规则/test02_l5_common_20261109_e06096958dd7.md",
+    "sha256": "e06096958dd7d939b489bca70888a93577c811b115aa5c1dd76c80a476021b1b",
+    "source_sha256": "e06096958dd7d939b489bca70888a93577c811b115aa5c1dd76c80a476021b1b",
+    "terminal_newline_added": false,
+    "bytes": 10397,
+    "prompt_id": 2017,
+    "prompt_code": "test02_l5_common_20261109_e06096958dd7"
+  },
+  "template": {
+    "path": "L5/U1/Lesson2/03-lead-in-template_l5l6/instance-7017/template.md",
+    "sha256": "75aa1db932f708210812966e0c61cb1f7fb9a936548f8858e6fe540803f331e0",
+    "source_sha256": "75aa1db932f708210812966e0c61cb1f7fb9a936548f8858e6fe540803f331e0",
+    "terminal_newline_added": false,
+    "bytes": 1315,
+    "prompt_id": 1952,
+    "prompt_code": "leadin_teaching_rules_l1l2-X-784-v1-26074"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "pre-video",
+      "type": "pre-video",
+      "title": null,
+      "isLastStep": false,
+      "isLastSentence": null,
+      "promptId": 1953,
+      "promptCode": "leadin_teaching_rules_l1l2_step_pre_video-X-784-v1-26074",
+      "prompt": {
+        "path": "L5/U1/Lesson2/03-lead-in-template_l5l6/instance-7017/steps/01-pre-video.md",
+        "sha256": "0b796323464667bffb2759839f0797bc1bd591780b236dbebc6a1db1cce7fecb",
+        "source_sha256": "0b796323464667bffb2759839f0797bc1bd591780b236dbebc6a1db1cce7fecb",
+        "terminal_newline_added": false,
+        "bytes": 1650
+      }
+    },
+    {
+      "seq": 2,
+      "stepCode": "video",
+      "type": "video",
+      "title": null,
+      "isLastStep": false,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 3,
+      "stepCode": "post-video",
+      "type": "post-video",
+      "title": null,
+      "isLastStep": true,
+      "isLastSentence": null,
+      "promptId": 1954,
+      "promptCode": "leadin_teaching_rules_l1l2_step_post_video-X-784-v1-26074",
+      "prompt": {
+        "path": "L5/U1/Lesson2/03-lead-in-template_l5l6/instance-7017/steps/03-post-video.md",
+        "sha256": "cf6a0ef7762d526a085113b19cc051523a945ef843dc68c38533b4a4a280f248",
+        "source_sha256": "cf6a0ef7762d526a085113b19cc051523a945ef843dc68c38533b4a4a280f248",
+        "terminal_newline_added": false,
+        "bytes": 2514
+      }
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "level": 6,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 796,
+  "lesson_version": 1,
+  "lesson_title": "Built to Survive",
+  "lesson_type": "passage_reading",
+  "node_id": 30423,
+  "node_name": "语篇教学",
+  "sequence": 4,
+  "instance_id": 7105,
+  "template_code": "passage_teach",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L6/公共规则/test02_l6_common_20261109_69e0b8cc1a06.md",
+    "sha256": "69e0b8cc1a060b6b85eaca4e300554d04ffdbf898deec56eca389e76fea9c2d7",
+    "source_sha256": "69e0b8cc1a060b6b85eaca4e300554d04ffdbf898deec56eca389e76fea9c2d7",
+    "terminal_newline_added": false,
+    "bytes": 10848,
+    "prompt_id": 2018,
+    "prompt_code": "test02_l6_common_20261109_69e0b8cc1a06"
+  },
+  "template": {
+    "path": "L6/U1/Lesson2/04-passage_teach/instance-7105/template.md",
+    "sha256": "395cf1c0088a39191c9991c74c939eab3083d84f107c52c6c33bf244ee62e2a0",
+    "source_sha256": "395cf1c0088a39191c9991c74c939eab3083d84f107c52c6c33bf244ee62e2a0",
+    "terminal_newline_added": false,
+    "bytes": 1884,
+    "prompt_id": 1991,
+    "prompt_code": "reader_teach_rules-X-796-v1-30423"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "page_0",
+      "type": "cover",
+      "title": "page 0",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1993,
+      "promptCode": "reader_teach_rules_cover-X-796-v1-30423",
+      "prompt": {
+        "path": "L6/U1/Lesson2/04-passage_teach/instance-7105/steps/01-page_0.md",
+        "sha256": "ddee9aa2886065d3c6b9f5dea338a4f2b1a810c7491a6c71d2c8a2ef52fe22b6",
+        "source_sha256": "ddee9aa2886065d3c6b9f5dea338a4f2b1a810c7491a6c71d2c8a2ef52fe22b6",
+        "terminal_newline_added": false,
+        "bytes": 2016
+      }
+    },
+    {
+      "seq": 2,
+      "stepCode": "page_1",
+      "type": "page",
+      "title": "page 1",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1992,
+      "promptCode": "reader_teach_rules_page-X-796-v1-30423",
+      "prompt": {
+        "path": "L6/U1/Lesson2/04-passage_teach/instance-7105/steps/02-page_1.md",
+        "sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "source_sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "terminal_newline_added": false,
+        "bytes": 4158
+      }
+    },
+    {
+      "seq": 3,
+      "stepCode": "page_2",
+      "type": "page",
+      "title": "page 2",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1992,
+      "promptCode": "reader_teach_rules_page-X-796-v1-30423",
+      "prompt": {
+        "path": "L6/U1/Lesson2/04-passage_teach/instance-7105/steps/03-page_2.md",
+        "sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "source_sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "terminal_newline_added": false,
+        "bytes": 4158
+      }
+    },
+    {
+      "seq": 4,
+      "stepCode": "page_3",
+      "type": "page",
+      "title": "page 3",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1992,
+      "promptCode": "reader_teach_rules_page-X-796-v1-30423",
+      "prompt": {
+        "path": "L6/U1/Lesson2/04-passage_teach/instance-7105/steps/04-page_3.md",
+        "sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "source_sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "terminal_newline_added": false,
+        "bytes": 4158
+      }
+    },
+    {
+      "seq": 5,
+      "stepCode": "page_4",
+      "type": "page",
+      "title": "page 4",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1992,
+      "promptCode": "reader_teach_rules_page-X-796-v1-30423",
+      "prompt": {
+        "path": "L6/U1/Lesson2/04-passage_teach/instance-7105/steps/05-page_4.md",
+        "sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "source_sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "terminal_newline_added": false,
+        "bytes": 4158
+      }
+    },
+    {
+      "seq": 6,
+      "stepCode": "page_5",
+      "type": "page",
+      "title": "page 5",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1992,
+      "promptCode": "reader_teach_rules_page-X-796-v1-30423",
+      "prompt": {
+        "path": "L6/U1/Lesson2/04-passage_teach/instance-7105/steps/06-page_5.md",
+        "sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "source_sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "terminal_newline_added": false,
+        "bytes": 4158
+      }
+    },
+    {
+      "seq": 7,
+      "stepCode": "page_6",
+      "type": "page",
+      "title": "page 6",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1992,
+      "promptCode": "reader_teach_rules_page-X-796-v1-30423",
+      "prompt": {
+        "path": "L6/U1/Lesson2/04-passage_teach/instance-7105/steps/07-page_6.md",
+        "sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "source_sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "terminal_newline_added": false,
+        "bytes": 4158
+      }
+    },
+    {
+      "seq": 8,
+      "stepCode": "page_7",
+      "type": "page",
+      "title": "page 7",
+      "isLastStep": true,
+      "isLastSentence": true,
+      "promptId": 1992,
+      "promptCode": "reader_teach_rules_page-X-796-v1-30423",
+      "prompt": {
+        "path": "L6/U1/Lesson2/04-passage_teach/instance-7105/steps/08-page_7.md",
+        "sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "source_sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "terminal_newline_added": false,
+        "bytes": 4158
+      }
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "level": 6,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 796,
+  "lesson_version": 1,
+  "lesson_title": "Built to Survive",
+  "lesson_type": "passage_reading",
+  "node_id": 30422,
+  "node_name": "Lead In",
+  "sequence": 3,
+  "instance_id": 7102,
+  "template_code": "lead-in-template_l5l6",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L6/公共规则/test02_l6_common_20261109_69e0b8cc1a06.md",
+    "sha256": "69e0b8cc1a060b6b85eaca4e300554d04ffdbf898deec56eca389e76fea9c2d7",
+    "source_sha256": "69e0b8cc1a060b6b85eaca4e300554d04ffdbf898deec56eca389e76fea9c2d7",
+    "terminal_newline_added": false,
+    "bytes": 10848,
+    "prompt_id": 2018,
+    "prompt_code": "test02_l6_common_20261109_69e0b8cc1a06"
+  },
+  "template": {
+    "path": "L6/U1/Lesson2/03-lead-in-template_l5l6/instance-7102/template.md",
+    "sha256": "dedf88786aff926d40ca4a71fa6c5e599fc62bbd43711861d7a5e822411d08d1",
+    "source_sha256": "dedf88786aff926d40ca4a71fa6c5e599fc62bbd43711861d7a5e822411d08d1",
+    "terminal_newline_added": false,
+    "bytes": 1213,
+    "prompt_id": 1988,
+    "prompt_code": "leadin_teaching_rules_l1l2-X-796-v1-30422"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "pre-video",
+      "type": "pre-video",
+      "title": null,
+      "isLastStep": false,
+      "isLastSentence": null,
+      "promptId": 1989,
+      "promptCode": "leadin_teaching_rules_l1l2_step_pre_video-X-796-v1-30422",
+      "prompt": {
+        "path": "L6/U1/Lesson2/03-lead-in-template_l5l6/instance-7102/steps/01-pre-video.md",
+        "sha256": "0329178e2f02cba5f22c7086f8e2b8956bd8f21a69415d11a513e6cca0f001b7",
+        "source_sha256": "0329178e2f02cba5f22c7086f8e2b8956bd8f21a69415d11a513e6cca0f001b7",
+        "terminal_newline_added": false,
+        "bytes": 854
+      }
+    },
+    {
+      "seq": 2,
+      "stepCode": "video",
+      "type": "video",
+      "title": null,
+      "isLastStep": false,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 3,
+      "stepCode": "post-video",
+      "type": "post-video",
+      "title": null,
+      "isLastStep": true,
+      "isLastSentence": null,
+      "promptId": 1990,
+      "promptCode": "leadin_teaching_rules_l1l2_step_post_video-X-796-v1-30422",
+      "prompt": {
+        "path": "L6/U1/Lesson2/03-lead-in-template_l5l6/instance-7102/steps/03-post-video.md",
+        "sha256": "0d1ddfeba2aadd55d8bcad4464d24705bfdbfd61a68849c3c7caa05707b281d3",
+        "source_sha256": "0d1ddfeba2aadd55d8bcad4464d24705bfdbfd61a68849c3c7caa05707b281d3",
+        "terminal_newline_added": false,
+        "bytes": 903
+      }
+    }
+  ]
+}

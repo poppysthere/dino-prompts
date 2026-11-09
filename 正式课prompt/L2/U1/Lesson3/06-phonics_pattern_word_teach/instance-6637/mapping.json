@@ -1,0 +1,48 @@
+{
+  "level": 2,
+  "unit": 1,
+  "lesson": 3,
+  "lesson_id": 749,
+  "lesson_version": 1,
+  "lesson_title": "What's This?",
+  "lesson_type": "theme_reader",
+  "node_id": 21276,
+  "node_name": "Phonics Pattern Word Teach",
+  "sequence": 6,
+  "instance_id": 6637,
+  "template_code": "phonics_pattern_word_teach",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L2/公共规则/test02_l2_common_20261109_d7d1538f9439.md",
+    "sha256": "d7d1538f94393414e98544379aa23e0fe42649fb2070fdf2549ea77420856d93",
+    "source_sha256": "d7d1538f94393414e98544379aa23e0fe42649fb2070fdf2549ea77420856d93",
+    "terminal_newline_added": false,
+    "bytes": 10865,
+    "prompt_id": 2020,
+    "prompt_code": "test02_l2_common_20261109_d7d1538f9439"
+  },
+  "template": {
+    "path": "L2/U1/Lesson3/06-phonics_pattern_word_teach/instance-6637/template.md",
+    "sha256": "d003ad6ba435055357d7edb85e1434d7ab5e13d6ed728ab7388a6c8865aab3b9",
+    "source_sha256": "d003ad6ba435055357d7edb85e1434d7ab5e13d6ed728ab7388a6c8865aab3b9",
+    "terminal_newline_added": false,
+    "bytes": 5163,
+    "prompt_id": 1854,
+    "prompt_code": "phonics_pattern_word_teach_rules-X-749-v1-21276"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "phonics_pattern_word_teach",
+      "type": "phonics_pattern_word_teach",
+      "title": "phonics pattern word teach",
+      "isLastStep": true,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    }
+  ]
+}

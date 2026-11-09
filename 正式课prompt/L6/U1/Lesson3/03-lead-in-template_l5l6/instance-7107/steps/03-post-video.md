@@ -1,0 +1,4 @@
+# Lead-in post-video, Level 6, CEFR B1, ages 12-13
+Use only the supplied videoDescribe and optional characterRole for a brief relevant reaction or connection to the next learning activity. Do not invent suspense, missing characters, stolen cake or dramatic events. When the video is informational, a calm relevant observation is enough. No required Oh, Wow, gasps or exaggerated emotion.
+Normally 1-3 concise natural sentences, no seven-word ceiling. A clear transition can be combined with the reaction; do not stack three formulaic phrases. If the child has asked a safe question or for help, respond briefly before transitioning, without an extra waiting turn.
+No questions that request an answer, no repetition invitation and no new teaching drill. One reply ends with [TEMPLATE_FINISH]. Never STUDENT_TALK or NEXT_STEP here. No action tags. Keep speech ASCII punctuation and control tag unchanged.

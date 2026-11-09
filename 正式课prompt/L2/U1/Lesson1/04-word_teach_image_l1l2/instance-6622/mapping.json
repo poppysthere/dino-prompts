@@ -1,0 +1,35 @@
+{
+  "level": 2,
+  "unit": 1,
+  "lesson": 1,
+  "lesson_id": 747,
+  "lesson_version": 1,
+  "lesson_title": "My Classes",
+  "lesson_type": "word",
+  "node_id": 21259,
+  "node_name": "单词教学",
+  "sequence": 4,
+  "instance_id": 6622,
+  "template_code": "word_teach_image_l1l2",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L2/公共规则/test02_l2_common_20261109_d7d1538f9439.md",
+    "sha256": "d7d1538f94393414e98544379aa23e0fe42649fb2070fdf2549ea77420856d93",
+    "source_sha256": "d7d1538f94393414e98544379aa23e0fe42649fb2070fdf2549ea77420856d93",
+    "terminal_newline_added": false,
+    "bytes": 10865,
+    "prompt_id": 2020,
+    "prompt_code": "test02_l2_common_20261109_d7d1538f9439"
+  },
+  "template": {
+    "path": "L2/U1/Lesson1/04-word_teach_image_l1l2/instance-6622/template.md",
+    "sha256": "c5dfa57cf85163197d692191bb82a2101b46405031dbf364ea96be078da67643",
+    "source_sha256": "c5dfa57cf85163197d692191bb82a2101b46405031dbf364ea96be078da67643",
+    "terminal_newline_added": false,
+    "bytes": 6551,
+    "prompt_id": 1848,
+    "prompt_code": "word_teach_image_l1l2-X-747-v1-21259"
+  },
+  "steps": []
+}

@@ -1,0 +1,70 @@
+{
+  "level": 3,
+  "unit": 1,
+  "lesson": 3,
+  "lesson_id": 761,
+  "lesson_version": 1,
+  "lesson_title": "Activities in a Week",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 22521,
+  "node_name": "IP Call",
+  "sequence": 12,
+  "instance_id": 6857,
+  "template_code": "ip_call_l3",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L3/公共规则/test02_l3_common_20261109_30d979879c18.md",
+    "sha256": "30d979879c18a851a038b2f5f55ace087e384b779f8ac18e21ab8e4d6ded8c85",
+    "source_sha256": "30d979879c18a851a038b2f5f55ace087e384b779f8ac18e21ab8e4d6ded8c85",
+    "terminal_newline_added": false,
+    "bytes": 11761,
+    "prompt_id": 2021,
+    "prompt_code": "test02_l3_common_20261109_30d979879c18"
+  },
+  "template": {
+    "path": "L3/U1/Lesson3/12-ip_call_l3/instance-6857/template.md",
+    "sha256": "301068848d5c8ae2182619ebbb743f6521f3d20821a64e43438f360132e89183",
+    "source_sha256": "42bca9966bef6736e8b3245e8fd87fe6be87be017e97c94210de027f6b63ae74",
+    "terminal_newline_added": true,
+    "bytes": 2750,
+    "prompt_id": 1898,
+    "prompt_code": "ip_call_l1_rules-X-761-v1-22521"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "intro",
+      "type": "intro",
+      "title": null,
+      "isLastStep": false,
+      "isLastSentence": null,
+      "promptId": 1899,
+      "promptCode": "ip_call_l1_rules_step_intro-X-761-v1-22521",
+      "prompt": {
+        "path": "L3/U1/Lesson3/12-ip_call_l3/instance-6857/steps/01-intro.md",
+        "sha256": "f0a383f23856fee3f9505580a8f16c8015eb781caf745db966590d83416be860",
+        "source_sha256": "4ffd535d503491efe438bdf1ca0f6b22cd681d2bab9ac859f4f8f97546476004",
+        "terminal_newline_added": true,
+        "bytes": 1259
+      }
+    },
+    {
+      "seq": 2,
+      "stepCode": "ipcall",
+      "type": "ipcall",
+      "title": null,
+      "isLastStep": true,
+      "isLastSentence": null,
+      "promptId": 1900,
+      "promptCode": "ip_call_l1_rules_step_ipcall-X-761-v1-22521",
+      "prompt": {
+        "path": "L3/U1/Lesson3/12-ip_call_l3/instance-6857/steps/02-ipcall.md",
+        "sha256": "4827c3564210d1e6e3e213a4d33df769abde83ca61f6e95226ff5cbf7cb3ef74",
+        "source_sha256": "dabdc0347c9009116b1ad649eb146a6d4d0e76601215e59da3e581d3f2ddb44b",
+        "terminal_newline_added": true,
+        "bytes": 7998
+      }
+    }
+  ]
+}

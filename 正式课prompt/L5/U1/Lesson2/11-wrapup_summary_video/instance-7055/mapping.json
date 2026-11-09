@@ -1,0 +1,72 @@
+{
+  "level": 5,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 784,
+  "lesson_version": 1,
+  "lesson_title": "Emma and Stella's Caring Day",
+  "lesson_type": "passage_reading",
+  "node_id": 26081,
+  "node_name": "Wrap Up",
+  "sequence": 11,
+  "instance_id": 7055,
+  "template_code": "wrapup_summary_video",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L5/公共规则/test02_l5_common_20261109_8d47f6612e62.md",
+    "sha256": "8d47f6612e620e915d29e2904e317460e5516f784c394cd607331491ddbc4c03",
+    "source_sha256": "8d47f6612e620e915d29e2904e317460e5516f784c394cd607331491ddbc4c03",
+    "terminal_newline_added": false,
+    "bytes": 10873,
+    "prompt_id": 2016,
+    "prompt_code": "test02_l5_common_20261109_8d47f6612e62"
+  },
+  "template": {
+    "path": "L5/U1/Lesson2/11-wrapup_summary_video/instance-7055/template.md",
+    "sha256": "0b065cca7c36700bf97dad82e4ea74856793db3d1d124d8184703098297eb103",
+    "source_sha256": "0b065cca7c36700bf97dad82e4ea74856793db3d1d124d8184703098297eb103",
+    "terminal_newline_added": false,
+    "bytes": 8663,
+    "prompt_id": 1966,
+    "prompt_code": "wrapup_summary_video_rules-X-784-v1-26081"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "pre-video",
+      "type": "pre-video",
+      "title": null,
+      "isLastStep": false,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 2,
+      "stepCode": "video",
+      "type": "video",
+      "title": null,
+      "isLastStep": false,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 3,
+      "stepCode": "post-video",
+      "type": "post-video",
+      "title": null,
+      "isLastStep": true,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "level": 4,
+  "unit": 1,
+  "lesson": 1,
+  "lesson_id": 771,
+  "lesson_version": 1,
+  "lesson_title": "Landforms",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 24186,
+  "node_name": "Warm Up",
+  "sequence": 1,
+  "instance_id": 6904,
+  "template_code": "warm-up-template_l3l4",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L4/公共规则/test02_l4_common_20261109_89d1a5c4e2ff.md",
+    "sha256": "89d1a5c4e2ff1657983939aaae40b99f8e01e081d3414f29ebbcf7f3dfb56a34",
+    "source_sha256": "89d1a5c4e2ff1657983939aaae40b99f8e01e081d3414f29ebbcf7f3dfb56a34",
+    "terminal_newline_added": false,
+    "bytes": 10316,
+    "prompt_id": 2014,
+    "prompt_code": "test02_l4_common_20261109_89d1a5c4e2ff"
+  },
+  "template": {
+    "path": "L4/U1/Lesson1/01-warm-up-template_l3l4/instance-6904/template.md",
+    "sha256": "9ad78ba609fb243c515c9c391f277bf255c10a8ddda7240cfc84f7e89198642e",
+    "source_sha256": "9ad78ba609fb243c515c9c391f277bf255c10a8ddda7240cfc84f7e89198642e",
+    "terminal_newline_added": false,
+    "bytes": 3096,
+    "prompt_id": 1910,
+    "prompt_code": "warmup_teaching_rules_l3l4-X-771-v1-24186"
+  },
+  "steps": []
+}

@@ -1,0 +1,72 @@
+{
+  "level": 1,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 736,
+  "lesson_version": 1,
+  "lesson_title": "School Supplies 2",
+  "lesson_type": "sentence",
+  "node_id": 20013,
+  "node_name": "Wrap Up",
+  "sequence": 6,
+  "instance_id": 7355,
+  "template_code": "wrapup_summary_video",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L1/公共规则/test02_l1_common_20261109_6e9cc0a059ea.md",
+    "sha256": "6e9cc0a059ea09f49fb22a45443976da3444b60159d8acbff92191628e8db1a0",
+    "source_sha256": "6e9cc0a059ea09f49fb22a45443976da3444b60159d8acbff92191628e8db1a0",
+    "terminal_newline_added": false,
+    "bytes": 9801,
+    "prompt_id": 2009,
+    "prompt_code": "test02_l1_common_20261109_6e9cc0a059ea"
+  },
+  "template": {
+    "path": "L1/U1/Lesson2/06-wrapup_summary_video/instance-7355/template.md",
+    "sha256": "6253eeffca17c0e6fd50512f9c23159faac6abaaa35272612fd2540b17f8b77d",
+    "source_sha256": "a9bb6653c4a4dbec10bc6c1c0b4ad051f8af0a453852c0eee6c159b239c09eb6",
+    "terminal_newline_added": true,
+    "bytes": 4844,
+    "prompt_id": 1180,
+    "prompt_code": "wrapup_summary_video_rules-X-736-v1-20013"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "pre-video",
+      "type": "pre-video",
+      "title": null,
+      "isLastStep": false,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 2,
+      "stepCode": "video",
+      "type": "video",
+      "title": null,
+      "isLastStep": false,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    },
+    {
+      "seq": 3,
+      "stepCode": "post-video",
+      "type": "post-video",
+      "title": null,
+      "isLastStep": true,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    }
+  ]
+}

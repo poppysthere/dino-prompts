@@ -1,0 +1,27 @@
+{
+  "level": 2,
+  "unit": 1,
+  "lesson": 3,
+  "lesson_id": 749,
+  "lesson_version": 1,
+  "lesson_title": "What's This?",
+  "lesson_type": "theme_reader",
+  "node_id": 21273,
+  "node_name": "Rewarding Map",
+  "sequence": 2,
+  "instance_id": 6610,
+  "template_code": "reward-chest-blind-box-intro",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": null,
+  "template": {
+    "path": "L2/U1/Lesson3/02-reward-chest-blind-box-intro/instance-6610/template.md",
+    "sha256": "7421bc59bcd111c87f609882ee0c19322259597d4d94af321b6487c0ef09e025",
+    "source_sha256": "7421bc59bcd111c87f609882ee0c19322259597d4d94af321b6487c0ef09e025",
+    "terminal_newline_added": false,
+    "bytes": 1663,
+    "prompt_id": 1836,
+    "prompt_code": "reward-chest-blind-box-intro-rules-X-749-v1-21273"
+  },
+  "steps": []
+}

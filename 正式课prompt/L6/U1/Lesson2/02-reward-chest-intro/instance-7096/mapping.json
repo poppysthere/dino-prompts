@@ -1,0 +1,27 @@
+{
+  "level": 6,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 796,
+  "lesson_version": 1,
+  "lesson_title": "Built to Survive",
+  "lesson_type": "passage_reading",
+  "node_id": 30421,
+  "node_name": "Rewarding Map",
+  "sequence": 2,
+  "instance_id": 7096,
+  "template_code": "reward-chest-intro",
+  "active_prompt_scope": "TEMPLATE",
+  "lesson_config_enabled": false,
+  "common": null,
+  "template": {
+    "path": "L6/U1/Lesson2/02-reward-chest-intro/instance-7096/template.md",
+    "sha256": "21a7c4b482dbebacf82590d8f5f36af2cea7739a86103f92eda97f7af87c5ac9",
+    "source_sha256": "21a7c4b482dbebacf82590d8f5f36af2cea7739a86103f92eda97f7af87c5ac9",
+    "terminal_newline_added": false,
+    "bytes": 594,
+    "prompt_id": 96,
+    "prompt_code": "reward-chest-intro-rules"
+  },
+  "steps": []
+}

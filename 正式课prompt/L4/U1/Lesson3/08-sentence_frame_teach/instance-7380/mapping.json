@@ -1,0 +1,189 @@
+{
+  "level": 4,
+  "unit": 1,
+  "lesson": 3,
+  "lesson_id": 773,
+  "lesson_version": 1,
+  "lesson_title": "Wild Homes on Landforms",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 24221,
+  "node_name": "句型教学",
+  "sequence": 8,
+  "instance_id": 7380,
+  "template_code": "sentence_frame_teach",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L4/公共规则/test02_l4_common_20261109_420755a8b5a9.md",
+    "sha256": "420755a8b5a9aef59846e404135a61beb63f95d41228c7e9e8fb38943fd4903f",
+    "source_sha256": "420755a8b5a9aef59846e404135a61beb63f95d41228c7e9e8fb38943fd4903f",
+    "terminal_newline_added": false,
+    "bytes": 9840,
+    "prompt_id": 2015,
+    "prompt_code": "test02_l4_common_20261109_420755a8b5a9"
+  },
+  "template": {
+    "path": "L4/U1/Lesson3/08-sentence_frame_teach/instance-7380/template.md",
+    "sha256": "89c14e84f47f067a46b0a228a7ca13d403d2eff1a7574a98fff0df7ee0965305",
+    "source_sha256": "89c14e84f47f067a46b0a228a7ca13d403d2eff1a7574a98fff0df7ee0965305",
+    "terminal_newline_added": false,
+    "bytes": 2611,
+    "prompt_id": 1935,
+    "prompt_code": "sentence_frame_teach_rules-X-773-v1-24221"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "step_0",
+      "type": "frame",
+      "title": "step 0",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1936,
+      "promptCode": "sentence_frame_teach_rules_frame-X-773-v1-24221",
+      "prompt": {
+        "path": "L4/U1/Lesson3/08-sentence_frame_teach/instance-7380/steps/01-step_0.md",
+        "sha256": "aa8c594a5c415f15273c9dac651e13a16a1f6a4b502fb034c7f97cc57b8a9955",
+        "source_sha256": "aa8c594a5c415f15273c9dac651e13a16a1f6a4b502fb034c7f97cc57b8a9955",
+        "terminal_newline_added": false,
+        "bytes": 1442
+      }
+    },
+    {
+      "seq": 2,
+      "stepCode": "step_1",
+      "type": "example",
+      "title": "step 1",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1937,
+      "promptCode": "sentence_frame_teach_rules_example-X-773-v1-24221",
+      "prompt": {
+        "path": "L4/U1/Lesson3/08-sentence_frame_teach/instance-7380/steps/02-step_1.md",
+        "sha256": "e3a46453d87dffb4893112eceea819d26ba1194155e75ca3cda229e22d375553",
+        "source_sha256": "e3a46453d87dffb4893112eceea819d26ba1194155e75ca3cda229e22d375553",
+        "terminal_newline_added": false,
+        "bytes": 1700
+      }
+    },
+    {
+      "seq": 3,
+      "stepCode": "step_2",
+      "type": "frame",
+      "title": "step 2",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1936,
+      "promptCode": "sentence_frame_teach_rules_frame-X-773-v1-24221",
+      "prompt": {
+        "path": "L4/U1/Lesson3/08-sentence_frame_teach/instance-7380/steps/03-step_2.md",
+        "sha256": "aa8c594a5c415f15273c9dac651e13a16a1f6a4b502fb034c7f97cc57b8a9955",
+        "source_sha256": "aa8c594a5c415f15273c9dac651e13a16a1f6a4b502fb034c7f97cc57b8a9955",
+        "terminal_newline_added": false,
+        "bytes": 1442
+      }
+    },
+    {
+      "seq": 4,
+      "stepCode": "step_3",
+      "type": "example",
+      "title": "step 3",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1937,
+      "promptCode": "sentence_frame_teach_rules_example-X-773-v1-24221",
+      "prompt": {
+        "path": "L4/U1/Lesson3/08-sentence_frame_teach/instance-7380/steps/04-step_3.md",
+        "sha256": "e3a46453d87dffb4893112eceea819d26ba1194155e75ca3cda229e22d375553",
+        "source_sha256": "e3a46453d87dffb4893112eceea819d26ba1194155e75ca3cda229e22d375553",
+        "terminal_newline_added": false,
+        "bytes": 1700
+      }
+    },
+    {
+      "seq": 5,
+      "stepCode": "step_4",
+      "type": "frame",
+      "title": "step 4",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1936,
+      "promptCode": "sentence_frame_teach_rules_frame-X-773-v1-24221",
+      "prompt": {
+        "path": "L4/U1/Lesson3/08-sentence_frame_teach/instance-7380/steps/05-step_4.md",
+        "sha256": "aa8c594a5c415f15273c9dac651e13a16a1f6a4b502fb034c7f97cc57b8a9955",
+        "source_sha256": "aa8c594a5c415f15273c9dac651e13a16a1f6a4b502fb034c7f97cc57b8a9955",
+        "terminal_newline_added": false,
+        "bytes": 1442
+      }
+    },
+    {
+      "seq": 6,
+      "stepCode": "step_5",
+      "type": "example",
+      "title": "step 5",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1937,
+      "promptCode": "sentence_frame_teach_rules_example-X-773-v1-24221",
+      "prompt": {
+        "path": "L4/U1/Lesson3/08-sentence_frame_teach/instance-7380/steps/06-step_5.md",
+        "sha256": "e3a46453d87dffb4893112eceea819d26ba1194155e75ca3cda229e22d375553",
+        "source_sha256": "e3a46453d87dffb4893112eceea819d26ba1194155e75ca3cda229e22d375553",
+        "terminal_newline_added": false,
+        "bytes": 1700
+      }
+    },
+    {
+      "seq": 7,
+      "stepCode": "step_6",
+      "type": "example",
+      "title": "step 6",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1937,
+      "promptCode": "sentence_frame_teach_rules_example-X-773-v1-24221",
+      "prompt": {
+        "path": "L4/U1/Lesson3/08-sentence_frame_teach/instance-7380/steps/07-step_6.md",
+        "sha256": "e3a46453d87dffb4893112eceea819d26ba1194155e75ca3cda229e22d375553",
+        "source_sha256": "e3a46453d87dffb4893112eceea819d26ba1194155e75ca3cda229e22d375553",
+        "terminal_newline_added": false,
+        "bytes": 1700
+      }
+    },
+    {
+      "seq": 8,
+      "stepCode": "step_7",
+      "type": "frame",
+      "title": "step 7",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1936,
+      "promptCode": "sentence_frame_teach_rules_frame-X-773-v1-24221",
+      "prompt": {
+        "path": "L4/U1/Lesson3/08-sentence_frame_teach/instance-7380/steps/08-step_7.md",
+        "sha256": "aa8c594a5c415f15273c9dac651e13a16a1f6a4b502fb034c7f97cc57b8a9955",
+        "source_sha256": "aa8c594a5c415f15273c9dac651e13a16a1f6a4b502fb034c7f97cc57b8a9955",
+        "terminal_newline_added": false,
+        "bytes": 1442
+      }
+    },
+    {
+      "seq": 9,
+      "stepCode": "step_8",
+      "type": "example",
+      "title": "step 8",
+      "isLastStep": true,
+      "isLastSentence": true,
+      "promptId": 1937,
+      "promptCode": "sentence_frame_teach_rules_example-X-773-v1-24221",
+      "prompt": {
+        "path": "L4/U1/Lesson3/08-sentence_frame_teach/instance-7380/steps/09-step_8.md",
+        "sha256": "e3a46453d87dffb4893112eceea819d26ba1194155e75ca3cda229e22d375553",
+        "source_sha256": "e3a46453d87dffb4893112eceea819d26ba1194155e75ca3cda229e22d375553",
+        "terminal_newline_added": false,
+        "bytes": 1700
+      }
+    }
+  ]
+}

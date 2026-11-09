@@ -1,0 +1,27 @@
+{
+  "level": 4,
+  "unit": 1,
+  "lesson": 3,
+  "lesson_id": 773,
+  "lesson_version": 1,
+  "lesson_title": "Wild Homes on Landforms",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 24214,
+  "node_name": "Rewarding Map",
+  "sequence": 2,
+  "instance_id": 6913,
+  "template_code": "reward-chest-intro",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": null,
+  "template": {
+    "path": "L4/U1/Lesson3/02-reward-chest-intro/instance-6913/template.md",
+    "sha256": "8caf055fe3006910bc0efc23c4752e7645bc475ace3cba542e1ab8551f79913c",
+    "source_sha256": "8caf055fe3006910bc0efc23c4752e7645bc475ace3cba542e1ab8551f79913c",
+    "terminal_newline_added": false,
+    "bytes": 544,
+    "prompt_id": 2006,
+    "prompt_code": "reward-chest-intro-rules-X-773-v1-24214"
+  },
+  "steps": []
+}

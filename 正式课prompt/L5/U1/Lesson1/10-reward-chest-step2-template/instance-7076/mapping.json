@@ -1,0 +1,40 @@
+{
+  "level": 5,
+  "unit": 1,
+  "lesson": 1,
+  "lesson_id": 783,
+  "lesson_version": 1,
+  "lesson_title": "Being a Good Friend",
+  "lesson_type": "word_sentence_listening_speaking",
+  "node_id": 26067,
+  "node_name": "Reward Collection 2",
+  "sequence": 10,
+  "instance_id": 7076,
+  "template_code": "reward-chest-step2-template",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": null,
+  "template": {
+    "path": "L5/U1/Lesson1/10-reward-chest-step2-template/instance-7076/template.md",
+    "sha256": "899775392076c962706074fe4059604dd7bcb6cddd0e597f732460740365aae6",
+    "source_sha256": "899775392076c962706074fe4059604dd7bcb6cddd0e597f732460740365aae6",
+    "terminal_newline_added": false,
+    "bytes": 407,
+    "prompt_id": 1972,
+    "prompt_code": "reward-chest-step2-rules-X-783-v1-26067"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "reward-chest-before-open",
+      "type": "reward-chest-before-open",
+      "title": "Before Open",
+      "isLastStep": true,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    }
+  ]
+}

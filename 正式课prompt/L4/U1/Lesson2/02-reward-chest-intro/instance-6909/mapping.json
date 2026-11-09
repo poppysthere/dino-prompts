@@ -1,0 +1,27 @@
+{
+  "level": 4,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 772,
+  "lesson_version": 1,
+  "lesson_title": "Landforms on Earth",
+  "lesson_type": "passage_reading",
+  "node_id": 24202,
+  "node_name": "Rewarding Map",
+  "sequence": 2,
+  "instance_id": 6909,
+  "template_code": "reward-chest-intro",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": null,
+  "template": {
+    "path": "L4/U1/Lesson2/02-reward-chest-intro/instance-6909/template.md",
+    "sha256": "8caf055fe3006910bc0efc23c4752e7645bc475ace3cba542e1ab8551f79913c",
+    "source_sha256": "8caf055fe3006910bc0efc23c4752e7645bc475ace3cba542e1ab8551f79913c",
+    "terminal_newline_added": false,
+    "bytes": 544,
+    "prompt_id": 2004,
+    "prompt_code": "reward-chest-intro-rules-X-772-v1-24202"
+  },
+  "steps": []
+}

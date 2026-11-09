@@ -1,0 +1,35 @@
+{
+  "level": 1,
+  "unit": 1,
+  "lesson": 1,
+  "lesson_id": 735,
+  "lesson_version": 1,
+  "lesson_title": "School Supplies 1",
+  "lesson_type": "word",
+  "node_id": 20000,
+  "node_name": "Warm Up",
+  "sequence": 1,
+  "instance_id": 6528,
+  "template_code": "warm-up-template_l1l2",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L1/公共规则/test02_l1_common_20261109_6e9cc0a059ea.md",
+    "sha256": "6e9cc0a059ea09f49fb22a45443976da3444b60159d8acbff92191628e8db1a0",
+    "source_sha256": "6e9cc0a059ea09f49fb22a45443976da3444b60159d8acbff92191628e8db1a0",
+    "terminal_newline_added": false,
+    "bytes": 9801,
+    "prompt_id": 2009,
+    "prompt_code": "test02_l1_common_20261109_6e9cc0a059ea"
+  },
+  "template": {
+    "path": "L1/U1/Lesson1/01-warm-up-template_l1l2/instance-6528/template.md",
+    "sha256": "e6a30c7e8a345f5502f1e30787dc9343f71ca36505d05aa750c32814c26f38b3",
+    "source_sha256": "5736981a5070eb5ba79ad0f3d2f0921ff2bfc7fd31c0e6b5afde8247ecce5a51",
+    "terminal_newline_added": true,
+    "bytes": 14278,
+    "prompt_id": 1164,
+    "prompt_code": "warmup_teaching_rules_l1l2-X-735-v1-20000"
+  },
+  "steps": []
+}

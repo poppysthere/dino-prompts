@@ -1,0 +1,121 @@
+{
+  "level": 1,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 736,
+  "lesson_version": 1,
+  "lesson_title": "School Supplies 2",
+  "lesson_type": "sentence",
+  "node_id": 20011,
+  "node_name": "句子教学",
+  "sequence": 4,
+  "instance_id": 6546,
+  "template_code": "sentence_teach_explain",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": {
+    "path": "L1/公共规则/test02_l1_common_20261109_6786ab1444b1.md",
+    "sha256": "f4ca00447d4790b43d48668faf67a6c733255d2c7be5d563021bd6115b01bd2e",
+    "source_sha256": "6786ab1444b17c81cd2e12e2f1462884861bf39f7877aa2a17ab8c18c131e164",
+    "terminal_newline_added": true,
+    "bytes": 15330,
+    "prompt_id": 2007,
+    "prompt_code": "test02_l1_common_20261109_6786ab1444b1"
+  },
+  "template": {
+    "path": "L1/U1/Lesson2/04-sentence_teach_explain/instance-6546/template.md",
+    "sha256": "f465c3739385890c221dff1a05e578c6cae0d0430e46996d319db7439f884336",
+    "source_sha256": "8a5edab282632443219e051e4ade2d1d5bbc671c781051bf1437897cbdfea0f1",
+    "terminal_newline_added": true,
+    "bytes": 2,
+    "prompt_id": 1177,
+    "prompt_code": "sentence_teach_explain_rules-X-736-v1-20011"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "sentence_0",
+      "type": "context",
+      "title": "sentence 0",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1178,
+      "promptCode": "sentence_teach_explain_rules_context-X-736-v1-20011",
+      "prompt": {
+        "path": "L1/U1/Lesson2/04-sentence_teach_explain/instance-6546/steps/01-sentence_0.md",
+        "sha256": "11ed3c7afbb6dcb2bb0c61b748c38bd7821b3843de245f5ea5f61831d1188110",
+        "source_sha256": "25df781f34fbc24a898efd1c4355a02448481e4d14406dfc07ee789d207d08d7",
+        "terminal_newline_added": true,
+        "bytes": 19287
+      }
+    },
+    {
+      "seq": 2,
+      "stepCode": "sentence_1",
+      "type": "context",
+      "title": "sentence 1",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1178,
+      "promptCode": "sentence_teach_explain_rules_context-X-736-v1-20011",
+      "prompt": {
+        "path": "L1/U1/Lesson2/04-sentence_teach_explain/instance-6546/steps/02-sentence_1.md",
+        "sha256": "11ed3c7afbb6dcb2bb0c61b748c38bd7821b3843de245f5ea5f61831d1188110",
+        "source_sha256": "25df781f34fbc24a898efd1c4355a02448481e4d14406dfc07ee789d207d08d7",
+        "terminal_newline_added": true,
+        "bytes": 19287
+      }
+    },
+    {
+      "seq": 3,
+      "stepCode": "sentence_2",
+      "type": "context",
+      "title": "sentence 2",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1178,
+      "promptCode": "sentence_teach_explain_rules_context-X-736-v1-20011",
+      "prompt": {
+        "path": "L1/U1/Lesson2/04-sentence_teach_explain/instance-6546/steps/03-sentence_2.md",
+        "sha256": "11ed3c7afbb6dcb2bb0c61b748c38bd7821b3843de245f5ea5f61831d1188110",
+        "source_sha256": "25df781f34fbc24a898efd1c4355a02448481e4d14406dfc07ee789d207d08d7",
+        "terminal_newline_added": true,
+        "bytes": 19287
+      }
+    },
+    {
+      "seq": 4,
+      "stepCode": "sentence_3",
+      "type": "context",
+      "title": "sentence 3",
+      "isLastStep": false,
+      "isLastSentence": false,
+      "promptId": 1178,
+      "promptCode": "sentence_teach_explain_rules_context-X-736-v1-20011",
+      "prompt": {
+        "path": "L1/U1/Lesson2/04-sentence_teach_explain/instance-6546/steps/04-sentence_3.md",
+        "sha256": "11ed3c7afbb6dcb2bb0c61b748c38bd7821b3843de245f5ea5f61831d1188110",
+        "source_sha256": "25df781f34fbc24a898efd1c4355a02448481e4d14406dfc07ee789d207d08d7",
+        "terminal_newline_added": true,
+        "bytes": 19287
+      }
+    },
+    {
+      "seq": 5,
+      "stepCode": "sentence_4",
+      "type": "frame_example",
+      "title": "sentence 4",
+      "isLastStep": true,
+      "isLastSentence": true,
+      "promptId": 1179,
+      "promptCode": "sentence_teach_explain_rules_frame_example-X-736-v1-20011",
+      "prompt": {
+        "path": "L1/U1/Lesson2/04-sentence_teach_explain/instance-6546/steps/05-sentence_4.md",
+        "sha256": "2376484f4e1b6e82c213513abbd7446c13c6b06eea927bfc5b633ffa6b9d20bc",
+        "source_sha256": "94dede6430d135e3d33de50593d73a618791288850f95bb8449a9d2dc8d7687c",
+        "terminal_newline_added": true,
+        "bytes": 10794
+      }
+    }
+  ]
+}

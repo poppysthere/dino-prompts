@@ -1,0 +1,27 @@
+{
+  "level": 2,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 748,
+  "lesson_version": 1,
+  "lesson_title": "What Class Is It?",
+  "lesson_type": "sentence",
+  "node_id": 21271,
+  "node_name": "Photo Time",
+  "sequence": 7,
+  "instance_id": 6642,
+  "template_code": "photo_time_l1l2",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": null,
+  "template": {
+    "path": "L2/U1/Lesson2/07-photo_time_l1l2/instance-6642/template.md",
+    "sha256": "e1aa1f53407e6de1aef5492b668b2c0e804103394dfc1996cbad465a12b5e950",
+    "source_sha256": "e1aa1f53407e6de1aef5492b668b2c0e804103394dfc1996cbad465a12b5e950",
+    "terminal_newline_added": false,
+    "bytes": 315,
+    "prompt_id": 1856,
+    "prompt_code": "photo_time_l1l2_rules-X-748-v1-21271"
+  },
+  "steps": []
+}

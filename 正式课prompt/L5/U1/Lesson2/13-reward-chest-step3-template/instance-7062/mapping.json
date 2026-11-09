@@ -1,0 +1,40 @@
+{
+  "level": 5,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 784,
+  "lesson_version": 1,
+  "lesson_title": "Emma and Stella's Caring Day",
+  "lesson_type": "passage_reading",
+  "node_id": 26082,
+  "node_name": "Reward Collection",
+  "sequence": 13,
+  "instance_id": 7062,
+  "template_code": "reward-chest-step3-template",
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
+  "common": null,
+  "template": {
+    "path": "L5/U1/Lesson2/13-reward-chest-step3-template/instance-7062/template.md",
+    "sha256": "50d93ffe900085563e94c85e14a79e2da188b8576022f0fb12d630d43cd4f73e",
+    "source_sha256": "50d93ffe900085563e94c85e14a79e2da188b8576022f0fb12d630d43cd4f73e",
+    "terminal_newline_added": false,
+    "bytes": 429,
+    "prompt_id": 1969,
+    "prompt_code": "reward-chest-step3-rules-X-784-v1-26082"
+  },
+  "steps": [
+    {
+      "seq": 1,
+      "stepCode": "reward-chest-before-open",
+      "type": "reward-chest-before-open",
+      "title": "Before Open",
+      "isLastStep": true,
+      "isLastSentence": null,
+      "promptId": null,
+      "promptCode": null,
+      "prompt": null,
+      "note": "No editable step prompt returned by Forge. Native/code/empty step is retained in the manifest; do not invent a replacement."
+    }
+  ]
+}
