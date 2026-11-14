@@ -11,17 +11,17 @@
   "sequence": 2,
   "instance_id": 7072,
   "template_code": "reward-chest-intro",
-  "active_prompt_scope": "TEMPLATE",
-  "lesson_config_enabled": false,
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
   "common": null,
   "template": {
     "path": "L6/U1/Lesson1/02-reward-chest-intro/instance-7072/template.md",
-    "sha256": "21a7c4b482dbebacf82590d8f5f36af2cea7739a86103f92eda97f7af87c5ac9",
-    "source_sha256": "21a7c4b482dbebacf82590d8f5f36af2cea7739a86103f92eda97f7af87c5ac9",
+    "sha256": "1238f2065c75672c9803c9bc5124e6910a54ca86f5f9dbddee9e6c86a541a4c0",
+    "source_sha256": "1238f2065c75672c9803c9bc5124e6910a54ca86f5f9dbddee9e6c86a541a4c0",
     "terminal_newline_added": false,
-    "bytes": 594,
-    "prompt_id": 96,
-    "prompt_code": "reward-chest-intro-rules"
+    "bytes": 550,
+    "prompt_id": 2070,
+    "prompt_code": "reward-chest-intro-rules-X-795-v1-30407"
   },
   "steps": []
 }

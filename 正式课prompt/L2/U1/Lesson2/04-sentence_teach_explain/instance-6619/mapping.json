@@ -14,20 +14,20 @@
   "active_prompt_scope": "LESSON",
   "lesson_config_enabled": true,
   "common": {
-    "path": "L2/公共规则/test02_l2_common_20261109_d7d1538f9439.md",
-    "sha256": "d7d1538f94393414e98544379aa23e0fe42649fb2070fdf2549ea77420856d93",
-    "source_sha256": "d7d1538f94393414e98544379aa23e0fe42649fb2070fdf2549ea77420856d93",
+    "path": "L2/公共规则/test02_l2_natural_pacing_20261114_4a99c6b2d028.md",
+    "sha256": "4a99c6b2d02895d7a846c7ddd675d8af735bfd749d7c7adb59939002b4e6a1db",
+    "source_sha256": "4a99c6b2d02895d7a846c7ddd675d8af735bfd749d7c7adb59939002b4e6a1db",
     "terminal_newline_added": false,
-    "bytes": 10865,
-    "prompt_id": 2020,
-    "prompt_code": "test02_l2_common_20261109_d7d1538f9439"
+    "bytes": 19866,
+    "prompt_id": 2102,
+    "prompt_code": "test02_l2_natural_pacing_20261114_4a99c6b2d028"
   },
   "template": {
     "path": "L2/U1/Lesson2/04-sentence_teach_explain/instance-6619/template.md",
-    "sha256": "6005040dd20e018feafa84cc3f3b536c420524673209eb4a18a28a184650cbeb",
-    "source_sha256": "6005040dd20e018feafa84cc3f3b536c420524673209eb4a18a28a184650cbeb",
+    "sha256": "6a023cf049a3523898e162644c14b73c0918ed5955f9dee1dcd31e81d971b85a",
+    "source_sha256": "6a023cf049a3523898e162644c14b73c0918ed5955f9dee1dcd31e81d971b85a",
     "terminal_newline_added": false,
-    "bytes": 1866,
+    "bytes": 2474,
     "prompt_id": 1849,
     "prompt_code": "sentence_teach_explain_rules-X-748-v1-21267"
   },
@@ -43,10 +43,10 @@
       "promptCode": "sentence_teach_explain_rules_context-X-748-v1-21267",
       "prompt": {
         "path": "L2/U1/Lesson2/04-sentence_teach_explain/instance-6619/steps/01-sentence_0.md",
-        "sha256": "417734847d700be4d8ba1d7e06befe914ae7626111c0f57a1091bcdbbc6f457c",
-        "source_sha256": "417734847d700be4d8ba1d7e06befe914ae7626111c0f57a1091bcdbbc6f457c",
+        "sha256": "179b7f510dd2094561b72b37d105e7dd0133dbeb711557ebaf00d585fa470fc7",
+        "source_sha256": "179b7f510dd2094561b72b37d105e7dd0133dbeb711557ebaf00d585fa470fc7",
         "terminal_newline_added": false,
-        "bytes": 2450
+        "bytes": 4274
       }
     },
     {
@@ -60,10 +60,10 @@
       "promptCode": "sentence_teach_explain_rules_context-X-748-v1-21267",
       "prompt": {
         "path": "L2/U1/Lesson2/04-sentence_teach_explain/instance-6619/steps/02-sentence_1.md",
-        "sha256": "417734847d700be4d8ba1d7e06befe914ae7626111c0f57a1091bcdbbc6f457c",
-        "source_sha256": "417734847d700be4d8ba1d7e06befe914ae7626111c0f57a1091bcdbbc6f457c",
+        "sha256": "179b7f510dd2094561b72b37d105e7dd0133dbeb711557ebaf00d585fa470fc7",
+        "source_sha256": "179b7f510dd2094561b72b37d105e7dd0133dbeb711557ebaf00d585fa470fc7",
         "terminal_newline_added": false,
-        "bytes": 2450
+        "bytes": 4274
       }
     },
     {
@@ -77,10 +77,10 @@
       "promptCode": "sentence_teach_explain_rules_context-X-748-v1-21267",
       "prompt": {
         "path": "L2/U1/Lesson2/04-sentence_teach_explain/instance-6619/steps/03-sentence_2.md",
-        "sha256": "417734847d700be4d8ba1d7e06befe914ae7626111c0f57a1091bcdbbc6f457c",
-        "source_sha256": "417734847d700be4d8ba1d7e06befe914ae7626111c0f57a1091bcdbbc6f457c",
+        "sha256": "179b7f510dd2094561b72b37d105e7dd0133dbeb711557ebaf00d585fa470fc7",
+        "source_sha256": "179b7f510dd2094561b72b37d105e7dd0133dbeb711557ebaf00d585fa470fc7",
         "terminal_newline_added": false,
-        "bytes": 2450
+        "bytes": 4274
       }
     },
     {
@@ -94,10 +94,10 @@
       "promptCode": "sentence_teach_explain_rules_frame_example-X-748-v1-21267",
       "prompt": {
         "path": "L2/U1/Lesson2/04-sentence_teach_explain/instance-6619/steps/04-sentence_3.md",
-        "sha256": "adba60a250ac82e2d288c60a9159330828651cd78114146ec0977a4cfdfd2e67",
-        "source_sha256": "adba60a250ac82e2d288c60a9159330828651cd78114146ec0977a4cfdfd2e67",
+        "sha256": "1576d33710cfb0bd26690d52e5e44b9713d0b3a8f86a596ada508df7322460f2",
+        "source_sha256": "1576d33710cfb0bd26690d52e5e44b9713d0b3a8f86a596ada508df7322460f2",
         "terminal_newline_added": false,
-        "bytes": 1939
+        "bytes": 3764
       }
     }
   ]

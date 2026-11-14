@@ -14,20 +14,20 @@
   "active_prompt_scope": "LESSON",
   "lesson_config_enabled": true,
   "common": {
-    "path": "L6/公共规则/test02_l6_common_20261109_69e0b8cc1a06.md",
-    "sha256": "69e0b8cc1a060b6b85eaca4e300554d04ffdbf898deec56eca389e76fea9c2d7",
-    "source_sha256": "69e0b8cc1a060b6b85eaca4e300554d04ffdbf898deec56eca389e76fea9c2d7",
+    "path": "L6/公共规则/test02_l6_common_20261113_05ba1d475562.md",
+    "sha256": "05ba1d475562300e816e5d7bd58663ae112d76c47f9541252f7205860c628194",
+    "source_sha256": "05ba1d475562300e816e5d7bd58663ae112d76c47f9541252f7205860c628194",
     "terminal_newline_added": false,
-    "bytes": 10848,
-    "prompt_id": 2018,
-    "prompt_code": "test02_l6_common_20261109_69e0b8cc1a06"
+    "bytes": 14247,
+    "prompt_id": 2036,
+    "prompt_code": "test02_l6_common_20261113_05ba1d475562"
   },
   "template": {
     "path": "L6/U1/Lesson1/03-lead-in-template_l5l6/instance-7080/template.md",
-    "sha256": "dedf88786aff926d40ca4a71fa6c5e599fc62bbd43711861d7a5e822411d08d1",
-    "source_sha256": "dedf88786aff926d40ca4a71fa6c5e599fc62bbd43711861d7a5e822411d08d1",
+    "sha256": "43949669072fd0e6421e2c2c02f49ba4b7acbba0920f9c93ab1915a22b6c57e6",
+    "source_sha256": "43949669072fd0e6421e2c2c02f49ba4b7acbba0920f9c93ab1915a22b6c57e6",
     "terminal_newline_added": false,
-    "bytes": 1213,
+    "bytes": 1845,
     "prompt_id": 1982,
     "prompt_code": "leadin_teaching_rules_l1l2-X-795-v1-30408"
   },
@@ -43,10 +43,10 @@
       "promptCode": "leadin_teaching_rules_l1l2_step_pre_video-X-795-v1-30408",
       "prompt": {
         "path": "L6/U1/Lesson1/03-lead-in-template_l5l6/instance-7080/steps/01-pre-video.md",
-        "sha256": "0329178e2f02cba5f22c7086f8e2b8956bd8f21a69415d11a513e6cca0f001b7",
-        "source_sha256": "0329178e2f02cba5f22c7086f8e2b8956bd8f21a69415d11a513e6cca0f001b7",
+        "sha256": "f01ddf47d8baa8a5b09062e7f76a3a33eb7fb56c66901ce70b62e555cbfb5c68",
+        "source_sha256": "f01ddf47d8baa8a5b09062e7f76a3a33eb7fb56c66901ce70b62e555cbfb5c68",
         "terminal_newline_added": false,
-        "bytes": 854
+        "bytes": 395
       }
     },
     {
@@ -72,10 +72,10 @@
       "promptCode": "leadin_teaching_rules_l1l2_step_post_video-X-795-v1-30408",
       "prompt": {
         "path": "L6/U1/Lesson1/03-lead-in-template_l5l6/instance-7080/steps/03-post-video.md",
-        "sha256": "0d1ddfeba2aadd55d8bcad4464d24705bfdbfd61a68849c3c7caa05707b281d3",
-        "source_sha256": "0d1ddfeba2aadd55d8bcad4464d24705bfdbfd61a68849c3c7caa05707b281d3",
+        "sha256": "a93fca65fcf730d53dcea4dec932cdef8a81796dbac70e770690f8dbb403bba6",
+        "source_sha256": "a93fca65fcf730d53dcea4dec932cdef8a81796dbac70e770690f8dbb403bba6",
         "terminal_newline_added": false,
-        "bytes": 903
+        "bytes": 639
       }
     }
   ]

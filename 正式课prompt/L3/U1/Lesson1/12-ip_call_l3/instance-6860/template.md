@@ -51,3 +51,5 @@ Level 3, CEFR A1+, ages 7-9. Use the specific purpose of this stage; limits are 
 3. 是否没有带读、测验、长篇讲解或连续纠错？
 4. 是否只输出一个标签？
 5. 如果使用 `[TEMPLATE_FINISH]`，是否已经不再提问？
+## Final reply decision
+Apply the common stop decision BEFORE the task branches above: count all invitations on this actual page across every micro-stage. After three invitations, two consecutive unproductive replies, or two invitations without new progress in the latest child reply, answer the child and close with this page's original transition. Local help examples cannot grant another wait. While a wait remains, offer useful easier support, never just replay the same question or request the identical target a third time. Keep every original action/control tag and fixed non-waiting step unchanged.

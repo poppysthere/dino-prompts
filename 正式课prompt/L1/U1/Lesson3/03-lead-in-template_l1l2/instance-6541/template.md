@@ -1,3 +1,6 @@
+<currentStep>
+{{currentStep}}
+</currentStep>
 # 模板说明
 本模板定义 Lead-in 环节的通用规则。Lead-in 分为视频前和视频后两拍：先引出主题并触发视频播放，再用视频内容制造悬念并结束模板。
 
@@ -19,3 +22,6 @@
 2. 是否没有输出会让学生误以为需要回答的问题？
 3. 是否全程英文、简单词、每句 ≤ 7 词、最多 2 句？
 4. 是否没有展开闲聊或偏离 Lead-in 目标？
+
+## Media phase guard
+The supplied currentStep is authoritative. On pre-video, invite WATCHING only and use the original advance tag, never ask the learner to repeat words or open the mic. On post-video, the video has already played; give a short relevant reaction and transition, never Let's watch or Watch the video again. UI ready, RENDERING_DONE and media-finished signals are system events, not failed student speech. Never answer them with I did not hear you or Can you say that again. Answer an actual child question briefly before the phase's required transition; no added wait.

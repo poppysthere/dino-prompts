@@ -14,20 +14,20 @@
   "active_prompt_scope": "LESSON",
   "lesson_config_enabled": true,
   "common": {
-    "path": "L6/公共规则/test02_l6_common_20261109_69e0b8cc1a06.md",
-    "sha256": "69e0b8cc1a060b6b85eaca4e300554d04ffdbf898deec56eca389e76fea9c2d7",
-    "source_sha256": "69e0b8cc1a060b6b85eaca4e300554d04ffdbf898deec56eca389e76fea9c2d7",
+    "path": "L6/公共规则/test02_l6_natural_pacing_20261114_a6f82470f64f.md",
+    "sha256": "a6f82470f64f05ac0f2ddbbb41c64288952249b572b8a5fdf4352d13a7d6887b",
+    "source_sha256": "a6f82470f64f05ac0f2ddbbb41c64288952249b572b8a5fdf4352d13a7d6887b",
     "terminal_newline_added": false,
-    "bytes": 10848,
-    "prompt_id": 2018,
-    "prompt_code": "test02_l6_common_20261109_69e0b8cc1a06"
+    "bytes": 19376,
+    "prompt_id": 2113,
+    "prompt_code": "test02_l6_natural_pacing_20261114_a6f82470f64f"
   },
   "template": {
     "path": "L6/U1/Lesson2/04-passage_teach/instance-7105/template.md",
-    "sha256": "395cf1c0088a39191c9991c74c939eab3083d84f107c52c6c33bf244ee62e2a0",
-    "source_sha256": "395cf1c0088a39191c9991c74c939eab3083d84f107c52c6c33bf244ee62e2a0",
+    "sha256": "e360f04cc76b44ace709ce824c71ee28ce2c6c80223cea88d88b7befdd2ece2f",
+    "source_sha256": "e360f04cc76b44ace709ce824c71ee28ce2c6c80223cea88d88b7befdd2ece2f",
     "terminal_newline_added": false,
-    "bytes": 1884,
+    "bytes": 3398,
     "prompt_id": 1991,
     "prompt_code": "reader_teach_rules-X-796-v1-30423"
   },
@@ -43,10 +43,10 @@
       "promptCode": "reader_teach_rules_cover-X-796-v1-30423",
       "prompt": {
         "path": "L6/U1/Lesson2/04-passage_teach/instance-7105/steps/01-page_0.md",
-        "sha256": "ddee9aa2886065d3c6b9f5dea338a4f2b1a810c7491a6c71d2c8a2ef52fe22b6",
-        "source_sha256": "ddee9aa2886065d3c6b9f5dea338a4f2b1a810c7491a6c71d2c8a2ef52fe22b6",
+        "sha256": "bf62190a0c55c5f20be431f42ce0944be103b6381de5c6abee7040fb8883934e",
+        "source_sha256": "bf62190a0c55c5f20be431f42ce0944be103b6381de5c6abee7040fb8883934e",
         "terminal_newline_added": false,
-        "bytes": 2016
+        "bytes": 5247
       }
     },
     {
@@ -60,10 +60,10 @@
       "promptCode": "reader_teach_rules_page-X-796-v1-30423",
       "prompt": {
         "path": "L6/U1/Lesson2/04-passage_teach/instance-7105/steps/02-page_1.md",
-        "sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
-        "source_sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "sha256": "d2524cff2ac6b96398acfaeb4a43485f8e77e0ff894846fd00d71f6aa27dc434",
+        "source_sha256": "d2524cff2ac6b96398acfaeb4a43485f8e77e0ff894846fd00d71f6aa27dc434",
         "terminal_newline_added": false,
-        "bytes": 4158
+        "bytes": 8878
       }
     },
     {
@@ -77,10 +77,10 @@
       "promptCode": "reader_teach_rules_page-X-796-v1-30423",
       "prompt": {
         "path": "L6/U1/Lesson2/04-passage_teach/instance-7105/steps/03-page_2.md",
-        "sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
-        "source_sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "sha256": "d2524cff2ac6b96398acfaeb4a43485f8e77e0ff894846fd00d71f6aa27dc434",
+        "source_sha256": "d2524cff2ac6b96398acfaeb4a43485f8e77e0ff894846fd00d71f6aa27dc434",
         "terminal_newline_added": false,
-        "bytes": 4158
+        "bytes": 8878
       }
     },
     {
@@ -94,10 +94,10 @@
       "promptCode": "reader_teach_rules_page-X-796-v1-30423",
       "prompt": {
         "path": "L6/U1/Lesson2/04-passage_teach/instance-7105/steps/04-page_3.md",
-        "sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
-        "source_sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "sha256": "d2524cff2ac6b96398acfaeb4a43485f8e77e0ff894846fd00d71f6aa27dc434",
+        "source_sha256": "d2524cff2ac6b96398acfaeb4a43485f8e77e0ff894846fd00d71f6aa27dc434",
         "terminal_newline_added": false,
-        "bytes": 4158
+        "bytes": 8878
       }
     },
     {
@@ -111,10 +111,10 @@
       "promptCode": "reader_teach_rules_page-X-796-v1-30423",
       "prompt": {
         "path": "L6/U1/Lesson2/04-passage_teach/instance-7105/steps/05-page_4.md",
-        "sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
-        "source_sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "sha256": "d2524cff2ac6b96398acfaeb4a43485f8e77e0ff894846fd00d71f6aa27dc434",
+        "source_sha256": "d2524cff2ac6b96398acfaeb4a43485f8e77e0ff894846fd00d71f6aa27dc434",
         "terminal_newline_added": false,
-        "bytes": 4158
+        "bytes": 8878
       }
     },
     {
@@ -128,10 +128,10 @@
       "promptCode": "reader_teach_rules_page-X-796-v1-30423",
       "prompt": {
         "path": "L6/U1/Lesson2/04-passage_teach/instance-7105/steps/06-page_5.md",
-        "sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
-        "source_sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "sha256": "d2524cff2ac6b96398acfaeb4a43485f8e77e0ff894846fd00d71f6aa27dc434",
+        "source_sha256": "d2524cff2ac6b96398acfaeb4a43485f8e77e0ff894846fd00d71f6aa27dc434",
         "terminal_newline_added": false,
-        "bytes": 4158
+        "bytes": 8878
       }
     },
     {
@@ -145,10 +145,10 @@
       "promptCode": "reader_teach_rules_page-X-796-v1-30423",
       "prompt": {
         "path": "L6/U1/Lesson2/04-passage_teach/instance-7105/steps/07-page_6.md",
-        "sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
-        "source_sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "sha256": "d2524cff2ac6b96398acfaeb4a43485f8e77e0ff894846fd00d71f6aa27dc434",
+        "source_sha256": "d2524cff2ac6b96398acfaeb4a43485f8e77e0ff894846fd00d71f6aa27dc434",
         "terminal_newline_added": false,
-        "bytes": 4158
+        "bytes": 8878
       }
     },
     {
@@ -162,10 +162,10 @@
       "promptCode": "reader_teach_rules_page-X-796-v1-30423",
       "prompt": {
         "path": "L6/U1/Lesson2/04-passage_teach/instance-7105/steps/08-page_7.md",
-        "sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
-        "source_sha256": "f14addc5569a5d3c96f460289a1298276fb29658628f359d3e51c06db4b6dad4",
+        "sha256": "d2524cff2ac6b96398acfaeb4a43485f8e77e0ff894846fd00d71f6aa27dc434",
+        "source_sha256": "d2524cff2ac6b96398acfaeb4a43485f8e77e0ff894846fd00d71f6aa27dc434",
         "terminal_newline_added": false,
-        "bytes": 4158
+        "bytes": 8878
       }
     }
   ]

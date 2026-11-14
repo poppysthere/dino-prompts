@@ -14,20 +14,20 @@
   "active_prompt_scope": "LESSON",
   "lesson_config_enabled": true,
   "common": {
-    "path": "L6/公共规则/test02_l6_common_20261109_69e0b8cc1a06.md",
-    "sha256": "69e0b8cc1a060b6b85eaca4e300554d04ffdbf898deec56eca389e76fea9c2d7",
-    "source_sha256": "69e0b8cc1a060b6b85eaca4e300554d04ffdbf898deec56eca389e76fea9c2d7",
+    "path": "L6/公共规则/test02_l6_common_20261113_05ba1d475562.md",
+    "sha256": "05ba1d475562300e816e5d7bd58663ae112d76c47f9541252f7205860c628194",
+    "source_sha256": "05ba1d475562300e816e5d7bd58663ae112d76c47f9541252f7205860c628194",
     "terminal_newline_added": false,
-    "bytes": 10848,
-    "prompt_id": 2018,
-    "prompt_code": "test02_l6_common_20261109_69e0b8cc1a06"
+    "bytes": 14247,
+    "prompt_id": 2036,
+    "prompt_code": "test02_l6_common_20261113_05ba1d475562"
   },
   "template": {
     "path": "L6/U1/Lesson2/11-wrapup_summary_video/instance-7132/template.md",
-    "sha256": "c7dc4ad2916d4073fed2e42fbcd59d23062be28e4173b6144be09bbf04c33d5a",
-    "source_sha256": "c7dc4ad2916d4073fed2e42fbcd59d23062be28e4173b6144be09bbf04c33d5a",
+    "sha256": "e97a250cce512f06a0e0fd69ca52942aadeea8c2572a79d41312013d5d8fb8fa",
+    "source_sha256": "e97a250cce512f06a0e0fd69ca52942aadeea8c2572a79d41312013d5d8fb8fa",
     "terminal_newline_added": false,
-    "bytes": 2657,
+    "bytes": 1757,
     "prompt_id": 2000,
     "prompt_code": "wrapup_summary_video_rules-X-796-v1-30430"
   },

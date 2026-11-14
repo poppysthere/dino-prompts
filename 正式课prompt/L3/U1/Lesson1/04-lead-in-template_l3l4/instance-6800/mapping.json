@@ -14,20 +14,20 @@
   "active_prompt_scope": "LESSON",
   "lesson_config_enabled": true,
   "common": {
-    "path": "L3/公共规则/test02_l3_common_20261109_70bd215ca23a.md",
-    "sha256": "70bd215ca23a540320fabaf8dc9013def4a7f5760a78c6daf5e88fee592ac1d7",
-    "source_sha256": "70bd215ca23a540320fabaf8dc9013def4a7f5760a78c6daf5e88fee592ac1d7",
+    "path": "L3/公共规则/test02_l3_natural_pacing_20261114_b0823ebda526.md",
+    "sha256": "b0823ebda526d32a58d4561c0c2883875b68ddd2d26e6a39f99ba8f3659cd4cd",
+    "source_sha256": "b0823ebda526d32a58d4561c0c2883875b68ddd2d26e6a39f99ba8f3659cd4cd",
     "terminal_newline_added": false,
-    "bytes": 11519,
-    "prompt_id": 2013,
-    "prompt_code": "test02_l3_common_20261109_70bd215ca23a"
+    "bytes": 16507,
+    "prompt_id": 2104,
+    "prompt_code": "test02_l3_natural_pacing_20261114_b0823ebda526"
   },
   "template": {
     "path": "L3/U1/Lesson1/04-lead-in-template_l3l4/instance-6800/template.md",
-    "sha256": "7893ee298228476047b1b86cc583e0e753c8c85c10b0ca4c3fa3b931dd5b6001",
-    "source_sha256": "7893ee298228476047b1b86cc583e0e753c8c85c10b0ca4c3fa3b931dd5b6001",
+    "sha256": "8fadfb9d722c7b72c4ca8087440665e63bea3a5e0e294feacb1f13bf84a46e18",
+    "source_sha256": "8fadfb9d722c7b72c4ca8087440665e63bea3a5e0e294feacb1f13bf84a46e18",
     "terminal_newline_added": false,
-    "bytes": 1212,
+    "bytes": 1844,
     "prompt_id": 1880,
     "prompt_code": "leadin_teaching_rules_l1l2-X-759-v1-22483"
   },
@@ -43,10 +43,10 @@
       "promptCode": "leadin_teaching_rules_l1l2_step_pre_video-X-759-v1-22483",
       "prompt": {
         "path": "L3/U1/Lesson1/04-lead-in-template_l3l4/instance-6800/steps/01-pre-video.md",
-        "sha256": "6a08dbe0a488b064ec121b6d2dc626be05ea5e5d0cf40445da907522e76fb2e8",
-        "source_sha256": "6a08dbe0a488b064ec121b6d2dc626be05ea5e5d0cf40445da907522e76fb2e8",
+        "sha256": "f01ddf47d8baa8a5b09062e7f76a3a33eb7fb56c66901ce70b62e555cbfb5c68",
+        "source_sha256": "f01ddf47d8baa8a5b09062e7f76a3a33eb7fb56c66901ce70b62e555cbfb5c68",
         "terminal_newline_added": false,
-        "bytes": 853
+        "bytes": 395
       }
     },
     {
@@ -72,10 +72,10 @@
       "promptCode": "leadin_teaching_rules_l1l2_step_post_video-X-759-v1-22483",
       "prompt": {
         "path": "L3/U1/Lesson1/04-lead-in-template_l3l4/instance-6800/steps/03-post-video.md",
-        "sha256": "24178243bb23f7667e100b56578a26061a87342cc53cffa86634614489c5dc7d",
-        "source_sha256": "24178243bb23f7667e100b56578a26061a87342cc53cffa86634614489c5dc7d",
+        "sha256": "a93fca65fcf730d53dcea4dec932cdef8a81796dbac70e770690f8dbb403bba6",
+        "source_sha256": "a93fca65fcf730d53dcea4dec932cdef8a81796dbac70e770690f8dbb403bba6",
         "terminal_newline_added": false,
-        "bytes": 902
+        "bytes": 639
       }
     }
   ]

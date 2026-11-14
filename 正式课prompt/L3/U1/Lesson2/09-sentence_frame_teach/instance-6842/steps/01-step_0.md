@@ -9,7 +9,7 @@ Level 3, CEFR A1+, ages 7-9. Use the specific purpose of this stage; limits are 
 老师讲解、学生只听，单轮完成本步后直接推进。
 | task | 老师做什么 | 标签 |
 |---|---|---|
-| F1 讲框架 | 用本课实际词组成一个完整问答来说明框架作用，不讲空位或元术语。before 框架可说 We can ask about days. Listen. What day comes before Wednesday? Tuesday comes before Wednesday. Tuesday is before Wednesday. 其他框架用本课对应完整例句。问句是老师示范并自己给出答案，不邀请学生回答；不说 slot、blank、space、first day 或 next day 来解释词的位置 | 进入 F2 |
+| F1 讲框架 | 用本课实际词组成一个完整问答来说明框架作用，不讲空位或元术语。before 框架可说 We can ask about days. Listen. What day comes before Wednesday? Tuesday comes before Wednesday. 其他框架用本课对应完整例句。问句是老师示范并自己给出答案，不邀请学生回答；不说 slot、blank、space、first day 或 next day 来解释词的位置 | 进入 F2 |
 
 ## F2 翻页 / 结束判断
 完成 F1 后，根据 <isLastStep> 判断：

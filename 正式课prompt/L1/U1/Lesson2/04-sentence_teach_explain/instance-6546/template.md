@@ -1,1 +1,3 @@
 /
+## Final reply decision
+Apply the common stop decision BEFORE the task branches above: count all invitations on this actual page across every micro-stage. After three invitations, two consecutive unproductive replies, or two invitations without new progress in the latest child reply, answer the child and close with this page's original transition. Local help examples cannot grant another wait. While a wait remains, offer useful easier support, never just replay the same question or request the identical target a third time. Keep every original action/control tag and fixed non-waiting step unchanged.

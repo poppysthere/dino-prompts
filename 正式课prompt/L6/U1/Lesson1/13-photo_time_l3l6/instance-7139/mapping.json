@@ -11,17 +11,17 @@
   "sequence": 13,
   "instance_id": 7139,
   "template_code": "photo_time_l3l6",
-  "active_prompt_scope": "TEMPLATE",
-  "lesson_config_enabled": false,
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
   "common": null,
   "template": {
     "path": "L6/U1/Lesson1/13-photo_time_l3l6/instance-7139/template.md",
-    "sha256": "59318bc85ebe596e7ba59128e9b57175633cc8697a31b235e3e0c1c2a8873463",
-    "source_sha256": "59318bc85ebe596e7ba59128e9b57175633cc8697a31b235e3e0c1c2a8873463",
+    "sha256": "e1aa1f53407e6de1aef5492b668b2c0e804103394dfc1996cbad465a12b5e950",
+    "source_sha256": "e1aa1f53407e6de1aef5492b668b2c0e804103394dfc1996cbad465a12b5e950",
     "terminal_newline_added": false,
     "bytes": 315,
-    "prompt_id": 50,
-    "prompt_code": "photo_time_l1l2_rules"
+    "prompt_id": 2079,
+    "prompt_code": "photo_time_l1l2_rules-X-795-v1-30418"
   },
   "steps": []
 }

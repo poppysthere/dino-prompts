@@ -14,20 +14,20 @@
   "active_prompt_scope": "LESSON",
   "lesson_config_enabled": true,
   "common": {
-    "path": "L2/公共规则/test02_l2_common_20261109_d7d1538f9439.md",
-    "sha256": "d7d1538f94393414e98544379aa23e0fe42649fb2070fdf2549ea77420856d93",
-    "source_sha256": "d7d1538f94393414e98544379aa23e0fe42649fb2070fdf2549ea77420856d93",
+    "path": "L2/公共规则/test02_l2_natural_pacing_20261114_4a99c6b2d028.md",
+    "sha256": "4a99c6b2d02895d7a846c7ddd675d8af735bfd749d7c7adb59939002b4e6a1db",
+    "source_sha256": "4a99c6b2d02895d7a846c7ddd675d8af735bfd749d7c7adb59939002b4e6a1db",
     "terminal_newline_added": false,
-    "bytes": 10865,
-    "prompt_id": 2020,
-    "prompt_code": "test02_l2_common_20261109_d7d1538f9439"
+    "bytes": 19866,
+    "prompt_id": 2102,
+    "prompt_code": "test02_l2_natural_pacing_20261114_4a99c6b2d028"
   },
   "template": {
     "path": "L2/U1/Lesson3/06-phonics_pattern_word_teach/instance-6639/template.md",
-    "sha256": "d003ad6ba435055357d7edb85e1434d7ab5e13d6ed728ab7388a6c8865aab3b9",
-    "source_sha256": "d003ad6ba435055357d7edb85e1434d7ab5e13d6ed728ab7388a6c8865aab3b9",
+    "sha256": "f78bef64197e4742e94e102a024a794858bd7f82353b5020327716c5b18dd67c",
+    "source_sha256": "f78bef64197e4742e94e102a024a794858bd7f82353b5020327716c5b18dd67c",
     "terminal_newline_added": false,
-    "bytes": 5163,
+    "bytes": 3424,
     "prompt_id": 1854,
     "prompt_code": "phonics_pattern_word_teach_rules-X-749-v1-21276"
   },

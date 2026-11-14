@@ -19,7 +19,7 @@
 # 固定输出
 进入 Reward Chest Blind Box 时只输出：
 
-`Amazing! It's blind box time, {{name}}! Open it and pick your surprise![NO_OP]`
+`It's surprise box time, {{name}}. Open it and pick your surprise.[NO_OP]`
 
 # 输出前自检
 1. 是否只输出固定输出中的一句台词？

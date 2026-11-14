@@ -11,17 +11,17 @@
   "sequence": 8,
   "instance_id": 6571,
   "template_code": "reward-chest-blind-box-template",
-  "active_prompt_scope": "TEMPLATE",
-  "lesson_config_enabled": false,
+  "active_prompt_scope": "LESSON",
+  "lesson_config_enabled": true,
   "common": null,
   "template": {
     "path": "L1/U1/Lesson2/08-reward-chest-blind-box-template/instance-6571/template.md",
-    "sha256": "086b770c89092faf405da1847d9dd7644f01fedb69c9680852ab712d0548b3f7",
-    "source_sha256": "086b770c89092faf405da1847d9dd7644f01fedb69c9680852ab712d0548b3f7",
+    "sha256": "e6ea7fc76cc31a40fe4e9ef9dee99b3887c3cb9aa29c2b489c55c2774f9a1fac",
+    "source_sha256": "e6ea7fc76cc31a40fe4e9ef9dee99b3887c3cb9aa29c2b489c55c2774f9a1fac",
     "terminal_newline_added": false,
-    "bytes": 1733,
-    "prompt_id": 350,
-    "prompt_code": "reward-chest-blind-box-rules"
+    "bytes": 1727,
+    "prompt_id": 2039,
+    "prompt_code": "reward-chest-blind-box-rules-X-736-v1-20014"
   },
   "steps": [
     {

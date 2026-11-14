@@ -14,20 +14,20 @@
   "active_prompt_scope": "LESSON",
   "lesson_config_enabled": true,
   "common": {
-    "path": "L5/公共规则/test02_l5_common_20261109_e06096958dd7.md",
-    "sha256": "e06096958dd7d939b489bca70888a93577c811b115aa5c1dd76c80a476021b1b",
-    "source_sha256": "e06096958dd7d939b489bca70888a93577c811b115aa5c1dd76c80a476021b1b",
+    "path": "L5/公共规则/test02_l5_natural_pacing_20261114_70851ed25b5d.md",
+    "sha256": "70851ed25b5d82ff77c8abf941fccf50da6953d2fa66188c1b6caf1c8916dd6d",
+    "source_sha256": "70851ed25b5d82ff77c8abf941fccf50da6953d2fa66188c1b6caf1c8916dd6d",
     "terminal_newline_added": false,
-    "bytes": 10397,
-    "prompt_id": 2017,
-    "prompt_code": "test02_l5_common_20261109_e06096958dd7"
+    "bytes": 19039,
+    "prompt_id": 2112,
+    "prompt_code": "test02_l5_natural_pacing_20261114_70851ed25b5d"
   },
   "template": {
     "path": "L5/U1/Lesson3/09-free_talk_images/instance-7078/template.md",
-    "sha256": "323b0635e7b08f2e65cd3cede3b9e991d60eefdd91caeafe1f90eb95eabd08d6",
-    "source_sha256": "323b0635e7b08f2e65cd3cede3b9e991d60eefdd91caeafe1f90eb95eabd08d6",
+    "sha256": "fb8c899424c8007a95ee12632468fe98b0491581bd8bd813514f693385f1128d",
+    "source_sha256": "fb8c899424c8007a95ee12632468fe98b0491581bd8bd813514f693385f1128d",
     "terminal_newline_added": false,
-    "bytes": 3397,
+    "bytes": 6629,
     "prompt_id": 1973,
     "prompt_code": "free_talk_rules-X-785-v1-26091"
   },

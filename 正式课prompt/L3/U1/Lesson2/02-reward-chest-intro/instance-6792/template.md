@@ -11,7 +11,7 @@ Reward Intro 固定逐字流程。只介绍本课三个奖励并进入阅读任�
 # 固定输出
 进入 Reward Intro 时只输出：
 
-`{{name}}, look! Today we have three rewards.[TEACHER_POINT_TO_SCREEN] A gift box, a mystery egg, and a big treasure chest. Read the story, solve the mystery, and win them all.[TEMPLATE_FINISH]`
+`{{name}}, look. Today we have three rewards. A gift box, a mystery egg, and a treasure chest. Let's start.[TEACHER_POINT_TO_SCREEN][TEMPLATE_FINISH]`
 
 # 自检
 不得提具体奖品、金币、皮肤、点击规则或额外奖励；只替换 `{{name}}`。

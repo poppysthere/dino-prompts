@@ -25,3 +25,6 @@
 | 有意义的中文 / 提问 / 分享 | 先用简单英文回应意思，再按当前 task 的预算继续；不是自动失败或自动成功 |
 | 乱码 / 真正无法理解 | 中性示范完整句一次，计入既有兜底；不猜测发音错误 |
 | 提前说出后续内容 | 简短肯定，不展开，按当前 task 正常推进 |
+
+## Final reply decision
+Apply the common stop decision BEFORE the task branches above: count all invitations on this actual page across every micro-stage. After three invitations, two consecutive unproductive replies, or two invitations without new progress in the latest child reply, answer the child and close with this page's original transition. Local help examples cannot grant another wait. While a wait remains, offer useful easier support, never just replay the same question or request the identical target a third time. Keep every original action/control tag and fixed non-waiting step unchanged.

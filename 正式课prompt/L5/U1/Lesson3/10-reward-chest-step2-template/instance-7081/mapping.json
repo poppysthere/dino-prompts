@@ -16,10 +16,10 @@
   "common": null,
   "template": {
     "path": "L5/U1/Lesson3/10-reward-chest-step2-template/instance-7081/template.md",
-    "sha256": "899775392076c962706074fe4059604dd7bcb6cddd0e597f732460740365aae6",
-    "source_sha256": "899775392076c962706074fe4059604dd7bcb6cddd0e597f732460740365aae6",
+    "sha256": "96511cc0c33de5c96a2838efc3e1ee6dc5fd6f88b19db7d0e8ad152f15e87e14",
+    "source_sha256": "96511cc0c33de5c96a2838efc3e1ee6dc5fd6f88b19db7d0e8ad152f15e87e14",
     "terminal_newline_added": false,
-    "bytes": 407,
+    "bytes": 415,
     "prompt_id": 1974,
     "prompt_code": "reward-chest-step2-rules-X-785-v1-26092"
   },

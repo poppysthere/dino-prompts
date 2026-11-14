@@ -14,20 +14,20 @@
   "active_prompt_scope": "LESSON",
   "lesson_config_enabled": true,
   "common": {
-    "path": "L4/公共规则/test02_l4_common_20261109_0a68ac2335c6.md",
-    "sha256": "0a68ac2335c615e736bf7fc53dff07135353dafcc3e9d664eddae0d7cefc5f30",
-    "source_sha256": "0a68ac2335c615e736bf7fc53dff07135353dafcc3e9d664eddae0d7cefc5f30",
+    "path": "L4/公共规则/test02_l4_natural_pacing_20261114_2ded67989406.md",
+    "sha256": "2ded6798940633db3246dd6dd55bfe9da85f85eec681c2aff52bcd5e691b69f1",
+    "source_sha256": "2ded6798940633db3246dd6dd55bfe9da85f85eec681c2aff52bcd5e691b69f1",
     "terminal_newline_added": false,
-    "bytes": 10652,
-    "prompt_id": 2022,
-    "prompt_code": "test02_l4_common_20261109_0a68ac2335c6"
+    "bytes": 18621,
+    "prompt_id": 2110,
+    "prompt_code": "test02_l4_natural_pacing_20261114_2ded67989406"
   },
   "template": {
     "path": "L4/U1/Lesson3/11-ip_call_l4/instance-6973/template.md",
-    "sha256": "ef122387a657a9a4c4404549add738fd84f882fb8b85469d1475b8859561fb96",
-    "source_sha256": "27ab60d6dbfdd3a6ac31183e35c9871868d5495485c35cfc0098c6219356a39d",
-    "terminal_newline_added": true,
-    "bytes": 2391,
+    "sha256": "78349224226c5b512e3c3c0d9069c651a955788cc74789ae0204892ff361a9a4",
+    "source_sha256": "78349224226c5b512e3c3c0d9069c651a955788cc74789ae0204892ff361a9a4",
+    "terminal_newline_added": false,
+    "bytes": 2998,
     "prompt_id": 1939,
     "prompt_code": "ip_call_l1_rules-X-773-v1-24224"
   },
@@ -60,10 +60,10 @@
       "promptCode": "ip_call_l1_rules_step_ipcall-X-773-v1-24224",
       "prompt": {
         "path": "L4/U1/Lesson3/11-ip_call_l4/instance-6973/steps/02-ipcall.md",
-        "sha256": "58bc671d31ebaf60c702547c5024868581f44fa8c853ee54c3b82089281cd1c5",
-        "source_sha256": "28ef62eed944f255419c07aba23051a1508f9bedcd2288faade03ef212f006a8",
-        "terminal_newline_added": true,
-        "bytes": 7703
+        "sha256": "c19e03eb839d737c86b5390aa28460d40eba71646ac92566aad5cf53084366e9",
+        "source_sha256": "c19e03eb839d737c86b5390aa28460d40eba71646ac92566aad5cf53084366e9",
+        "terminal_newline_added": false,
+        "bytes": 10193
       }
     }
   ]

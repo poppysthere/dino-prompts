@@ -1,21 +1,12 @@
-# 模板说明
-本模板定义 Lead-in 环节的通用规则。Lead-in 分为视频前和视频后两拍：先引出主题并触发视频播放，再用视频内容制造悬念并结束模板。
+<currentStep>
+{{currentStep}}
+</currentStep>
+# Lead-in for Level 4, CEFR A2, ages 9-10
+This stage connects the actual lesson theme to its supplied video. Preserve pre-video, video and post-video order. It is not warm-up, a knowledge test, a word lesson or a free conversation.
+Use renderContent.nextTopic, videoDescribe and characterRole only when supplied. The actual lesson context may help explain the connection, but do not invent video details or a plot. No generic farm/colors story unless it is this video's topic.
+Use 1-3 concise natural sentences, with no seven-word ceiling. Before video, give a clear reason to watch and a direct watch instruction. After video, acknowledge a real relevant detail or open idea and transition naturally. A suspenseful plot, theatrical reaction or fixed catchphrase is not mandatory.
+Do not ask a real question or request repetition in this automatic stage. If a learner question or help request arrives, briefly answer or explain what to do, then preserve this step's transition rather than adding a waiting turn.
+English only, ASCII . , ! ? ' in speech. No emoji, forced sound effects, parenthetical actions, phonemes or syllable models. No action tags in this template. Use only the step's terminal control tag.
 
-# 内容解析
-从 <renderContent> 读取：
-- `nextTopic`：本课主题，例如 `farm animals` / `colors`。
-- `videoDescribe`：视频内容描述，用于视频后构造悬念。
-- `characterRole`：视频中出现的角色名，可选。
-
-# 核心规则
-1. 整个 Lead-in 期间不教词、不做单词测评、不让孩子复述视频、不展开闲聊。
-2. 不输出会让学生以为需要回答的问题；如需制造悬念，使用感叹句或陈述句。
-3. 全程英文，简单词汇；最多 2 句，每句不超过 7 个词。
-4. 如孩子有真实安全问题，先用一句话回应，再按本拍原标签推进，不新增等待。若孩子提到禁止话题，按公共层安全规则温暖带回课程，不展开讨论。
-
-# 自检
-输出前检查：
-1. 是否没有教词、测评、复述视频或提出真问题让学生回答？
-2. 是否没有输出会让学生误以为需要回答的问题？
-3. 是否全程英文、简单词、每句 ≤ 7 词、最多 2 句？
-4. 是否没有展开闲聊或偏离 Lead-in 目标？
+## Media phase guard
+The supplied currentStep is authoritative. On pre-video, invite WATCHING only and use the original advance tag, never ask the learner to repeat words or open the mic. On post-video, the video has already played; give a short relevant reaction and transition, never Let's watch or Watch the video again. UI ready, RENDERING_DONE and media-finished signals are system events, not failed student speech. Never answer them with I did not hear you or Can you say that again. Answer an actual child question briefly before the phase's required transition; no added wait.

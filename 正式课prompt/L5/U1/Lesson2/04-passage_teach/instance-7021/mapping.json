@@ -14,20 +14,20 @@
   "active_prompt_scope": "LESSON",
   "lesson_config_enabled": true,
   "common": {
-    "path": "L5/公共规则/test02_l5_common_20261109_e06096958dd7.md",
-    "sha256": "e06096958dd7d939b489bca70888a93577c811b115aa5c1dd76c80a476021b1b",
-    "source_sha256": "e06096958dd7d939b489bca70888a93577c811b115aa5c1dd76c80a476021b1b",
+    "path": "L5/公共规则/test02_l5_natural_pacing_20261114_70851ed25b5d.md",
+    "sha256": "70851ed25b5d82ff77c8abf941fccf50da6953d2fa66188c1b6caf1c8916dd6d",
+    "source_sha256": "70851ed25b5d82ff77c8abf941fccf50da6953d2fa66188c1b6caf1c8916dd6d",
     "terminal_newline_added": false,
-    "bytes": 10397,
-    "prompt_id": 2017,
-    "prompt_code": "test02_l5_common_20261109_e06096958dd7"
+    "bytes": 19039,
+    "prompt_id": 2112,
+    "prompt_code": "test02_l5_natural_pacing_20261114_70851ed25b5d"
   },
   "template": {
     "path": "L5/U1/Lesson2/04-passage_teach/instance-7021/template.md",
-    "sha256": "dfa65699bd9abda4583ea2d6cc540afc3fbcb2265d3c6b7f1e09e7e264c637f0",
-    "source_sha256": "dfa65699bd9abda4583ea2d6cc540afc3fbcb2265d3c6b7f1e09e7e264c637f0",
+    "sha256": "6d44a838a137ee248e5241fa8ce371fe1d861c528d8afeb440db11898bd7f998",
+    "source_sha256": "6d44a838a137ee248e5241fa8ce371fe1d861c528d8afeb440db11898bd7f998",
     "terminal_newline_added": false,
-    "bytes": 2100,
+    "bytes": 3574,
     "prompt_id": 1958,
     "prompt_code": "reader_teach_rules-X-784-v1-26075"
   },
@@ -43,10 +43,10 @@
       "promptCode": "reader_teach_rules_cover-X-784-v1-26075",
       "prompt": {
         "path": "L5/U1/Lesson2/04-passage_teach/instance-7021/steps/01-page_0.md",
-        "sha256": "818197fdeaf79ce0e852cd3fb95b873dc00218539cd465cee11d58bf1b9758eb",
-        "source_sha256": "818197fdeaf79ce0e852cd3fb95b873dc00218539cd465cee11d58bf1b9758eb",
+        "sha256": "7bc0f90b5a1f63f9891e80c2087ed487658d0e9c59102b3e9769caa47d8112fb",
+        "source_sha256": "7bc0f90b5a1f63f9891e80c2087ed487658d0e9c59102b3e9769caa47d8112fb",
         "terminal_newline_added": false,
-        "bytes": 1706
+        "bytes": 5248
       }
     },
     {
@@ -60,10 +60,10 @@
       "promptCode": "reader_teach_rules_page-X-784-v1-26075",
       "prompt": {
         "path": "L5/U1/Lesson2/04-passage_teach/instance-7021/steps/02-page_1.md",
-        "sha256": "88445bf2d2bc3ef00bfc88faba859476827cab4fdf37996d903cf141e90cbdac",
-        "source_sha256": "88445bf2d2bc3ef00bfc88faba859476827cab4fdf37996d903cf141e90cbdac",
+        "sha256": "bd236bf27d24a65db7b115632854ca8972f7185d1f8fcc1ed0fc88d58d342821",
+        "source_sha256": "bd236bf27d24a65db7b115632854ca8972f7185d1f8fcc1ed0fc88d58d342821",
         "terminal_newline_added": false,
-        "bytes": 4886
+        "bytes": 8694
       }
     },
     {
@@ -77,10 +77,10 @@
       "promptCode": "reader_teach_rules_page-X-784-v1-26075",
       "prompt": {
         "path": "L5/U1/Lesson2/04-passage_teach/instance-7021/steps/03-page_2.md",
-        "sha256": "88445bf2d2bc3ef00bfc88faba859476827cab4fdf37996d903cf141e90cbdac",
-        "source_sha256": "88445bf2d2bc3ef00bfc88faba859476827cab4fdf37996d903cf141e90cbdac",
+        "sha256": "bd236bf27d24a65db7b115632854ca8972f7185d1f8fcc1ed0fc88d58d342821",
+        "source_sha256": "bd236bf27d24a65db7b115632854ca8972f7185d1f8fcc1ed0fc88d58d342821",
         "terminal_newline_added": false,
-        "bytes": 4886
+        "bytes": 8694
       }
     },
     {
@@ -94,10 +94,10 @@
       "promptCode": "reader_teach_rules_page-X-784-v1-26075",
       "prompt": {
         "path": "L5/U1/Lesson2/04-passage_teach/instance-7021/steps/04-page_3.md",
-        "sha256": "88445bf2d2bc3ef00bfc88faba859476827cab4fdf37996d903cf141e90cbdac",
-        "source_sha256": "88445bf2d2bc3ef00bfc88faba859476827cab4fdf37996d903cf141e90cbdac",
+        "sha256": "bd236bf27d24a65db7b115632854ca8972f7185d1f8fcc1ed0fc88d58d342821",
+        "source_sha256": "bd236bf27d24a65db7b115632854ca8972f7185d1f8fcc1ed0fc88d58d342821",
         "terminal_newline_added": false,
-        "bytes": 4886
+        "bytes": 8694
       }
     },
     {
@@ -111,10 +111,10 @@
       "promptCode": "reader_teach_rules_page-X-784-v1-26075",
       "prompt": {
         "path": "L5/U1/Lesson2/04-passage_teach/instance-7021/steps/05-page_4.md",
-        "sha256": "88445bf2d2bc3ef00bfc88faba859476827cab4fdf37996d903cf141e90cbdac",
-        "source_sha256": "88445bf2d2bc3ef00bfc88faba859476827cab4fdf37996d903cf141e90cbdac",
+        "sha256": "bd236bf27d24a65db7b115632854ca8972f7185d1f8fcc1ed0fc88d58d342821",
+        "source_sha256": "bd236bf27d24a65db7b115632854ca8972f7185d1f8fcc1ed0fc88d58d342821",
         "terminal_newline_added": false,
-        "bytes": 4886
+        "bytes": 8694
       }
     },
     {
@@ -128,10 +128,10 @@
       "promptCode": "reader_teach_rules_page-X-784-v1-26075",
       "prompt": {
         "path": "L5/U1/Lesson2/04-passage_teach/instance-7021/steps/06-page_5.md",
-        "sha256": "88445bf2d2bc3ef00bfc88faba859476827cab4fdf37996d903cf141e90cbdac",
-        "source_sha256": "88445bf2d2bc3ef00bfc88faba859476827cab4fdf37996d903cf141e90cbdac",
+        "sha256": "bd236bf27d24a65db7b115632854ca8972f7185d1f8fcc1ed0fc88d58d342821",
+        "source_sha256": "bd236bf27d24a65db7b115632854ca8972f7185d1f8fcc1ed0fc88d58d342821",
         "terminal_newline_added": false,
-        "bytes": 4886
+        "bytes": 8694
       }
     }
   ]

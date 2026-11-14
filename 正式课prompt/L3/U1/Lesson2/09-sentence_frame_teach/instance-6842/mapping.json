@@ -14,20 +14,20 @@
   "active_prompt_scope": "LESSON",
   "lesson_config_enabled": true,
   "common": {
-    "path": "L3/公共规则/test02_l3_common_20261109_70bd215ca23a.md",
-    "sha256": "70bd215ca23a540320fabaf8dc9013def4a7f5760a78c6daf5e88fee592ac1d7",
-    "source_sha256": "70bd215ca23a540320fabaf8dc9013def4a7f5760a78c6daf5e88fee592ac1d7",
+    "path": "L3/公共规则/test02_l3_natural_pacing_20261114_22eca891b3e4.md",
+    "sha256": "22eca891b3e4cde805f404a9829e2c6b966a9eb44b24d1e184810c777bbd0976",
+    "source_sha256": "22eca891b3e4cde805f404a9829e2c6b966a9eb44b24d1e184810c777bbd0976",
     "terminal_newline_added": false,
-    "bytes": 11519,
-    "prompt_id": 2013,
-    "prompt_code": "test02_l3_common_20261109_70bd215ca23a"
+    "bytes": 19545,
+    "prompt_id": 2103,
+    "prompt_code": "test02_l3_natural_pacing_20261114_22eca891b3e4"
   },
   "template": {
     "path": "L3/U1/Lesson2/09-sentence_frame_teach/instance-6842/template.md",
-    "sha256": "1e95e0c88baf638277547c943254a9e4fd8b30b461e7ef1a7ee98769609ae29b",
-    "source_sha256": "1e95e0c88baf638277547c943254a9e4fd8b30b461e7ef1a7ee98769609ae29b",
+    "sha256": "33caf22f7dc412219d3087795138235c09c47dc2f44803b7d5ee2a6d2d94c56d",
+    "source_sha256": "33caf22f7dc412219d3087795138235c09c47dc2f44803b7d5ee2a6d2d94c56d",
     "terminal_newline_added": false,
-    "bytes": 2991,
+    "bytes": 4519,
     "prompt_id": 1895,
     "prompt_code": "sentence_frame_teach_rules-X-760-v1-22503"
   },
@@ -43,10 +43,10 @@
       "promptCode": "sentence_frame_teach_rules_frame-X-760-v1-22503",
       "prompt": {
         "path": "L3/U1/Lesson2/09-sentence_frame_teach/instance-6842/steps/01-step_0.md",
-        "sha256": "6c912d1f3689f4ac4528c9230f7e8f2e283d330f5cb63cd32e1946e7e9816144",
-        "source_sha256": "6c912d1f3689f4ac4528c9230f7e8f2e283d330f5cb63cd32e1946e7e9816144",
+        "sha256": "45348bc45e6471a3dd0bd485f8ea88bb1bcca6029d39db90e0eea81635d6b427",
+        "source_sha256": "45348bc45e6471a3dd0bd485f8ea88bb1bcca6029d39db90e0eea81635d6b427",
         "terminal_newline_added": false,
-        "bytes": 1999
+        "bytes": 1970
       }
     },
     {
@@ -60,10 +60,10 @@
       "promptCode": "sentence_frame_teach_rules_example-X-760-v1-22503",
       "prompt": {
         "path": "L3/U1/Lesson2/09-sentence_frame_teach/instance-6842/steps/02-step_1.md",
-        "sha256": "876840c1798e9fafeac73d292313e4116c0ed0f4c6c3f69eebbdb682fb9cb728",
-        "source_sha256": "876840c1798e9fafeac73d292313e4116c0ed0f4c6c3f69eebbdb682fb9cb728",
+        "sha256": "7224a6267b150c3a9e2252e09b663c3c1e8c7a363f466244c5c1c6e895281cc8",
+        "source_sha256": "7224a6267b150c3a9e2252e09b663c3c1e8c7a363f466244c5c1c6e895281cc8",
         "terminal_newline_added": false,
-        "bytes": 3034
+        "bytes": 7466
       }
     },
     {
@@ -77,10 +77,10 @@
       "promptCode": "sentence_frame_teach_rules_frame-X-760-v1-22503",
       "prompt": {
         "path": "L3/U1/Lesson2/09-sentence_frame_teach/instance-6842/steps/03-step_2.md",
-        "sha256": "6c912d1f3689f4ac4528c9230f7e8f2e283d330f5cb63cd32e1946e7e9816144",
-        "source_sha256": "6c912d1f3689f4ac4528c9230f7e8f2e283d330f5cb63cd32e1946e7e9816144",
+        "sha256": "45348bc45e6471a3dd0bd485f8ea88bb1bcca6029d39db90e0eea81635d6b427",
+        "source_sha256": "45348bc45e6471a3dd0bd485f8ea88bb1bcca6029d39db90e0eea81635d6b427",
         "terminal_newline_added": false,
-        "bytes": 1999
+        "bytes": 1970
       }
     },
     {
@@ -94,10 +94,10 @@
       "promptCode": "sentence_frame_teach_rules_example-X-760-v1-22503",
       "prompt": {
         "path": "L3/U1/Lesson2/09-sentence_frame_teach/instance-6842/steps/04-step_3.md",
-        "sha256": "876840c1798e9fafeac73d292313e4116c0ed0f4c6c3f69eebbdb682fb9cb728",
-        "source_sha256": "876840c1798e9fafeac73d292313e4116c0ed0f4c6c3f69eebbdb682fb9cb728",
+        "sha256": "7224a6267b150c3a9e2252e09b663c3c1e8c7a363f466244c5c1c6e895281cc8",
+        "source_sha256": "7224a6267b150c3a9e2252e09b663c3c1e8c7a363f466244c5c1c6e895281cc8",
         "terminal_newline_added": false,
-        "bytes": 3034
+        "bytes": 7466
       }
     }
   ]

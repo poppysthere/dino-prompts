@@ -14,20 +14,20 @@
   "active_prompt_scope": "LESSON",
   "lesson_config_enabled": true,
   "common": {
-    "path": "L1/公共规则/test02_l1_common_20261109_6786ab1444b1.md",
-    "sha256": "f4ca00447d4790b43d48668faf67a6c733255d2c7be5d563021bd6115b01bd2e",
-    "source_sha256": "6786ab1444b17c81cd2e12e2f1462884861bf39f7877aa2a17ab8c18c131e164",
-    "terminal_newline_added": true,
-    "bytes": 15330,
-    "prompt_id": 2007,
-    "prompt_code": "test02_l1_common_20261109_6786ab1444b1"
+    "path": "L1/公共规则/test02_l1_natural_pacing_20261114_5ae02cb1038d.md",
+    "sha256": "5ae02cb1038df76f5a69ae58fecfa3d2fe263757ebc311b3069c79dbd9c12e99",
+    "source_sha256": "5ae02cb1038df76f5a69ae58fecfa3d2fe263757ebc311b3069c79dbd9c12e99",
+    "terminal_newline_added": false,
+    "bytes": 19033,
+    "prompt_id": 2097,
+    "prompt_code": "test02_l1_natural_pacing_20261114_5ae02cb1038d"
   },
   "template": {
     "path": "L1/U1/Lesson2/01-warm-up-template_l1l2/instance-6526/template.md",
-    "sha256": "e6a30c7e8a345f5502f1e30787dc9343f71ca36505d05aa750c32814c26f38b3",
-    "source_sha256": "5736981a5070eb5ba79ad0f3d2f0921ff2bfc7fd31c0e6b5afde8247ecce5a51",
-    "terminal_newline_added": true,
-    "bytes": 14278,
+    "sha256": "447d2c038d001debeffff73fe59a80828f745e6ef44dd615f5eefdbe3c8655d6",
+    "source_sha256": "447d2c038d001debeffff73fe59a80828f745e6ef44dd615f5eefdbe3c8655d6",
+    "terminal_newline_added": false,
+    "bytes": 15954,
     "prompt_id": 1054,
     "prompt_code": "warmup_teaching_rules_l1l2-L736-lesson_level"
   },
