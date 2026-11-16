@@ -1,0 +1,77 @@
+{
+  "count": 3,
+  "results": [
+    {
+      "id": "pre-ready",
+      "step": "pre-video",
+      "source": "baseline",
+      "model": "gpt-5.6-luna",
+      "harness_version": "wrapup-retrospective-v1",
+      "prompt_sha256": "98515679f5672c452511959ac0dcd686b7ec729d8e515a5270eeddb66a1ee9ff",
+      "input_sha256": "822346e5b1a321b0e1ab653567ec257df5844fcb6f94bb6ba84eea37a5c3c959",
+      "messages": [
+        {
+          "role": "user",
+          "content": "<system_control_message>\nThe UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n\n</system_control_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "status": "completed",
+      "reply": "Good friends are caring and friendly to each other. Now let's watch a short video about it. [NEXT_STEP]",
+      "issues": [
+        "missing_retrospective_framing"
+      ],
+      "transport_errors": []
+    },
+    {
+      "id": "pre-after-retell",
+      "step": "pre-video",
+      "source": "baseline",
+      "model": "gpt-5.6-luna",
+      "harness_version": "wrapup-retrospective-v1",
+      "prompt_sha256": "98515679f5672c452511959ac0dcd686b7ec729d8e515a5270eeddb66a1ee9ff",
+      "input_sha256": "daf22cbb497304b54f2c9a39c650e74266dbe4236b89606b3b0b92ffcfced24c",
+      "messages": [
+        {
+          "role": "user",
+          "content": "[Context: 当前模块已完成STEP的对话记录]\n[STEP: retell]\nassistant: Tell me how Emma and Stella helped each other.\nuser: Emma helped Stella with math. Stella helped Emma when she fell.\nassistant: They helped each other in different ways."
+        },
+        {
+          "role": "user",
+          "content": "<system_control_message>\nThe UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n\n</system_control_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "status": "completed",
+      "reply": "Emma and Stella helped each other. Now, watch a short video about caring friends. [NEXT_STEP]",
+      "issues": [
+        "missing_retrospective_framing"
+      ],
+      "transport_errors": []
+    },
+    {
+      "id": "pre-historic-opening",
+      "step": "pre-video",
+      "source": "baseline",
+      "model": "gpt-5.6-luna",
+      "harness_version": "wrapup-retrospective-v1",
+      "prompt_sha256": "98515679f5672c452511959ac0dcd686b7ec729d8e515a5270eeddb66a1ee9ff",
+      "input_sha256": "b6b1b60c99d221338cda71055e4f5ba4a87f2570dcca6d43683d17c84700e526",
+      "messages": [
+        {
+          "role": "user",
+          "content": "[Context: 当前模块已完成STEP的对话记录]\n[STEP: lead-in]\nassistant: Today we will learn about caring friends."
+        },
+        {
+          "role": "user",
+          "content": "<system_control_message>\nThe UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n\n</system_control_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "status": "completed",
+      "reply": "Today we will learn how caring friends help each other. Let's watch a short video about it. [NEXT_STEP]",
+      "issues": [
+        "future_learning_in_wrapup",
+        "missing_retrospective_framing"
+      ],
+      "transport_errors": []
+    }
+  ]
+}

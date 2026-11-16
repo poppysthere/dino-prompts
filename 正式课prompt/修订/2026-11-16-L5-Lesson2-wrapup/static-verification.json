@@ -1,0 +1,12 @@
+{
+  "issues": [],
+  "instance_id": 7055,
+  "lesson_id": 784,
+  "prompt_id": 1966,
+  "segments_changed": 1,
+  "source_sha256": "4fec5fbfe2d74e62e85134049654356351d0402dd4193bfa1436aa22e2e9419a",
+  "candidate_sha256": "2a49e3025d102c4bff9f48aae3cafe77af0a0239e95bc564899fe90159b80155",
+  "placeholders_unchanged": true,
+  "tags_unchanged": true,
+  "steps_and_media_unchanged": true
+}

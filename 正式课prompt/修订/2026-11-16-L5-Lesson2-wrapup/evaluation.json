@@ -1,0 +1,16 @@
+{
+  "prompt_regression_accepted": true,
+  "production_acceptance": false,
+  "model": "gpt-5.6-luna",
+  "candidate_cases": 12,
+  "candidate_issues": [],
+  "candidate_sha256": "2a49e3025d102c4bff9f48aae3cafe77af0a0239e95bc564899fe90159b80155",
+  "candidate_evidence_sha256": "dd1047ec5fb8d11c7ee167cb92ccca329e98667ff0a9b583b2618c44e23eb716",
+  "baseline_cases": 3,
+  "baseline_reported_issue_reproduced": true,
+  "review": "All 15 actual baseline/candidate replies manually read. Historical opening speech reproduced Today we will learn under the old template. All candidate pre-video replies retrospectively refer to the story already read, all post-video replies summarize and advance, media-only step preserves NEXT_STEP. No new question/wait, false mastery or final-class goodbye.",
+  "limitations": [
+    "Prompt-only Forge debug replay. No actual App/ASR/TTS test.",
+    "The reported wording is reproduced in generated pre-video teacher speech; prerecorded video narration was not transcribed or edited."
+  ]
+}

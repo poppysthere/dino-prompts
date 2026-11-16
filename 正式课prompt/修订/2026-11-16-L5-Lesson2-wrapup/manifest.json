@@ -1,0 +1,49 @@
+{
+  "revision": "2026-11-16-L5-Lesson2-wrapup",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "7e5498ddb6d4b6ada33f7bb64cd8ccc003e3241a057173a3b2b531c94e7e8a0a"
+    },
+    {
+      "path": "baseline-results.json",
+      "sha256": "dd65b43d8fff75941ce5285f44ef45c0c66e2c8ee6a013b07c1b4ebd1425d0ed"
+    },
+    {
+      "path": "candidate-results.json",
+      "sha256": "dd1047ec5fb8d11c7ee167cb92ccca329e98667ff0a9b583b2618c44e23eb716"
+    },
+    {
+      "path": "evaluation.json",
+      "sha256": "3f8084623dba0b37a4bbf43815a8929aa7cea3a9751f34288fbe904bbd5af0f6"
+    },
+    {
+      "path": "mapping.json",
+      "sha256": "6e1ff32ae03614de41e2c62600e7cf8a57747f86dffadef2b04d36f3a1168b80"
+    },
+    {
+      "path": "release.json",
+      "sha256": "bd169baaf1aa2f1a940fca84f333879fc44980cca87f1bc791fb92efda27381d"
+    },
+    {
+      "path": "static-verification.json",
+      "sha256": "101f04c2c873eb301b59e5c932f23f5446e58134e72b597bdbc9a2e120d57b69"
+    },
+    {
+      "path": "template-before.md",
+      "sha256": "4fec5fbfe2d74e62e85134049654356351d0402dd4193bfa1436aa22e2e9419a"
+    },
+    {
+      "path": "template.diff",
+      "sha256": "5a4b78addbce18819ff06f3ef33b2f06096e665fc52bf71fc1d00024d10c5257"
+    },
+    {
+      "path": "template.md",
+      "sha256": "2a49e3025d102c4bff9f48aae3cafe77af0a0239e95bc564899fe90159b80155"
+    },
+    {
+      "path": "verify.py",
+      "sha256": "2164d90bbd3f69a1c9da89bfec42e596da0413bdc8fcc2f40151f43186306104"
+    }
+  ]
+}

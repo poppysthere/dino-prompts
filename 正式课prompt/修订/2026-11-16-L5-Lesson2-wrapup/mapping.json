@@ -1,0 +1,32 @@
+{
+  "tree_id": 998,
+  "lesson_id": 784,
+  "instance_id": 7055,
+  "template_code": "wrapup_summary_video",
+  "scope": "LESSON",
+  "lesson_prompt_config_id": 1031,
+  "path": "template.md",
+  "prompt_id": 1966,
+  "prompt_code": "wrapup_summary_video_rules-X-784-v1-26081",
+  "version_id": 3416,
+  "previous_version_id": 3392,
+  "sha256": "2a49e3025d102c4bff9f48aae3cafe77af0a0239e95bc564899fe90159b80155",
+  "unchanged_common_prompt_id": 2095,
+  "steps": [
+    {
+      "stepCode": "pre-video",
+      "promptId": null,
+      "isLastStep": false
+    },
+    {
+      "stepCode": "video",
+      "promptId": null,
+      "isLastStep": false
+    },
+    {
+      "stepCode": "post-video",
+      "promptId": null,
+      "isLastStep": true
+    }
+  ]
+}
