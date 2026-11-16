@@ -2,7 +2,7 @@
 
 Landforms on Earth · `passage_reading`
 
-Forge lessonId `772`，Lesson 版本 `1`。这是正式课 Test02 的当前规则，不是体验课。
+Forge lessonId `772`，Lesson 版本 `1`。本目录保留 2026-11-14 的历史回读快照。当前阅读规则见[2026-11-16 阅读理解互动修订](../../../修订/2026-11-16-L4-Lesson2-reading/README.md)，已发布 Test02。其他环节的现行状态见正式课根目录发布记录。
 
 每个实例的 `mapping.json` 指定其公共规则、模板和 step 对应文件。空 step 不需要粘贴规则；不改变原页面/媒体/交互顺序。
 

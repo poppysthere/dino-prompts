@@ -1,0 +1,38 @@
+{
+  "status": "completed",
+  "reply": "Yes, water surrounds an island. What is one thing you can find on some islands: a mountain, a valley, or a cliff? [STUDENT_TALK]",
+  "issues": [
+    "tts_punctuation"
+  ],
+  "case": {
+    "id": "island-mandarin",
+    "code": "page_3",
+    "turns": [
+      {
+        "who": "T",
+        "text": "What is all around an island? [STUDENT_TALK]"
+      },
+      {
+        "who": "K",
+        "text": "水，四周都是水。"
+      }
+    ],
+    "wait": null,
+    "mode": "runtime"
+  },
+  "prompt_sha256": "3e8b2943d6a8aafbe7e9b3a5ca1639539e14f33b48f1f2c848c79c0f695beb94",
+  "input_sha256": "0b8feaf34375b9f213c3bbcd87e59e8d6238d81683e13be876e6248bcfadf36f",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "What is all around an island?"
+    },
+    {
+      "role": "user",
+      "content": "<student_message>\n水，四周都是水。\n</student_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+    }
+  ],
+  "model": "gpt-5.6-luna",
+  "harness_version": "l4-meaning-first-v1-runtime-tag-history",
+  "transport_errors": []
+}

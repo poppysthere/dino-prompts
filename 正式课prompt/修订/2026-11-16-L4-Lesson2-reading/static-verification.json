@@ -1,0 +1,55 @@
+{
+  "issues": [],
+  "instance": 6921,
+  "lesson": 772,
+  "segments": [
+    {
+      "segment": "common",
+      "source_prompt_id": 2125,
+      "before_sha256": "08a59718e31598af27bf7d7a94b4ddd086c519d32fe49a90d73ca22d50d9f429",
+      "candidate_sha256": "043d098ac5cf004fd57f94bf520bc705f304b48472b3c8c6ff00d59c8a602fb2"
+    },
+    {
+      "segment": "template",
+      "source_prompt_id": 1922,
+      "before_sha256": "959063badb4b264ec3d3c8eddd59e4a4d107a7eb70df96facafcbd861e9e4a91",
+      "candidate_sha256": "368c999f74d2b163d1fc08688a40a3c594c7bc35a734b04943688b9a10eb90ad"
+    },
+    {
+      "segment": "page_0",
+      "source_prompt_id": 1924,
+      "before_sha256": "3720257aa9cfb5b9f0894a71c61912118c9bb2d2f5c026bdefd73c8f664b0cbe",
+      "candidate_sha256": "9753f712b49b133ced948284d133fd36e468c3a1912e34cccca66028e77f3f99"
+    },
+    {
+      "segment": "page_1",
+      "source_prompt_id": 1923,
+      "before_sha256": "56f25f469c1bb6d3bfc9ea0e182c9162b24a3ba33c7addc3d3c77f980a4dbd2c",
+      "candidate_sha256": "5ff7734667650576d1710d22c978a64a2621953b5bdf3391de7a5d43c2aca0ef"
+    },
+    {
+      "segment": "page_2",
+      "source_prompt_id": 1923,
+      "before_sha256": "56f25f469c1bb6d3bfc9ea0e182c9162b24a3ba33c7addc3d3c77f980a4dbd2c",
+      "candidate_sha256": "5ff7734667650576d1710d22c978a64a2621953b5bdf3391de7a5d43c2aca0ef"
+    },
+    {
+      "segment": "page_3",
+      "source_prompt_id": 1923,
+      "before_sha256": "56f25f469c1bb6d3bfc9ea0e182c9162b24a3ba33c7addc3d3c77f980a4dbd2c",
+      "candidate_sha256": "5ff7734667650576d1710d22c978a64a2621953b5bdf3391de7a5d43c2aca0ef"
+    },
+    {
+      "segment": "page_4",
+      "source_prompt_id": 1923,
+      "before_sha256": "56f25f469c1bb6d3bfc9ea0e182c9162b24a3ba33c7addc3d3c77f980a4dbd2c",
+      "candidate_sha256": "5ff7734667650576d1710d22c978a64a2621953b5bdf3391de7a5d43c2aca0ef"
+    },
+    {
+      "segment": "page_5",
+      "source_prompt_id": 1923,
+      "before_sha256": "56f25f469c1bb6d3bfc9ea0e182c9162b24a3ba33c7addc3d3c77f980a4dbd2c",
+      "candidate_sha256": "5ff7734667650576d1710d22c978a64a2621953b5bdf3391de7a5d43c2aca0ef"
+    }
+  ]
+}

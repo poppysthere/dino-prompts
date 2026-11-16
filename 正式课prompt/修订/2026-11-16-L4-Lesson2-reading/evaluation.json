@@ -1,0 +1,52 @@
+{
+  "prompt_regression_accepted": true,
+  "production_acceptance": false,
+  "purpose": "Test02 user manual test; focused comprehension correction",
+  "model": "gpt-5.6-luna",
+  "fixed_cases": 22,
+  "fixed_behavior_failures": 0,
+  "whole_conversations": 7,
+  "pages": 42,
+  "whole_teacher_replies": 106,
+  "whole_behavior_failures": 0,
+  "style_flags": [
+    {
+      "persona": "fluent",
+      "step": "page_0",
+      "issue": "tts_punctuation",
+      "reply": "Today’s reading is about Landforms on Earth. What do you think it may be about? [STUDENT_TALK]",
+      "disposition": "Non-blocking typographic apostrophe in cover introduction. Preserved; no semantic retry. TTS still requires App testing."
+    },
+    {
+      "persona": "mandarin",
+      "step": "page_0",
+      "issue": "tts_punctuation",
+      "reply": "Today’s reading is called Landforms on Earth. What do you think it may be about? [STUDENT_TALK]",
+      "disposition": "Non-blocking typographic apostrophe in cover introduction. Preserved; no semantic retry. TTS still requires App testing."
+    },
+    {
+      "persona": "reciter",
+      "step": "page_0",
+      "issue": "tts_punctuation",
+      "reply": "Today’s reading is called Landforms on Earth. What do you think it may be about? [STUDENT_TALK]",
+      "disposition": "Non-blocking typographic apostrophe in cover introduction. Preserved; no semantic retry. TTS still requires App testing."
+    }
+  ],
+  "source_lock": {
+    "prompts/common.md": "043d098ac5cf004fd57f94bf520bc705f304b48472b3c8c6ff00d59c8a602fb2",
+    "prompts/cover.md": "9753f712b49b133ced948284d133fd36e468c3a1912e34cccca66028e77f3f99",
+    "prompts/page.md": "5ff7734667650576d1710d22c978a64a2621953b5bdf3391de7a5d43c2aca0ef",
+    "prompts/template.md": "368c999f74d2b163d1fc08688a40a3c594c7bc35a734b04943688b9a10eb90ad",
+    "overrides.json": "88632067a6a7560cfdcad65a806a7e04f7944ccef98bad97b31a9d1d708b79e7"
+  },
+  "evidence_lock": {
+    "fixed-results.json": "426f44e3dc1bae35c6d17392bc080cb341907c9b4358ebae764d61da76d71186",
+    "whole-results.json": "0bbb6562e7a1da9d65ad3720f9942d37759cbe21e31a4831dc8d4071ea255e20"
+  },
+  "manual_review": "All final fixed replies and 42 page conversations read. Questions probe current text meaning, short/Mandarin answers accepted, no reading/copying requests, correct second-turn exit and last-page tag. Curly apostrophes retained as style notes.",
+  "limitations": [
+    "Prompt-only synthetic replay through Forge /debug; no ASR, TTS, RTC, or real-child validation.",
+    "Primarily literal comprehension with one optional different-detail follow-up, not a full inferential reading assessment.",
+    "Prior broad-release runtime limitations remain unchanged."
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "tree_id": 998,
+  "tree_name": "Test02MCL1_6U1",
+  "level": 4,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 772,
+  "lesson_version": 1,
+  "instance_id": 6921,
+  "template_code": "passage_teach",
+  "scope": "LESSON",
+  "lesson_prompt_config_id": 1005,
+  "segments": [
+    {
+      "segment": "common",
+      "path": "prompts/common.md",
+      "source_prompt_id": 2125,
+      "deployed_prompt_id": 2135,
+      "deployed_prompt_code": "test02_l4_reading_meaning_20261116_043d098ac5cf",
+      "deployed_version_id": 3412,
+      "sha256": "043d098ac5cf004fd57f94bf520bc705f304b48472b3c8c6ff00d59c8a602fb2",
+      "before_sha256": "08a59718e31598af27bf7d7a94b4ddd086c519d32fe49a90d73ca22d50d9f429"
+    },
+    {
+      "segment": "template",
+      "path": "prompts/template.md",
+      "source_prompt_id": 1922,
+      "deployed_prompt_id": 1922,
+      "deployed_prompt_code": "reader_teach_rules-X-772-v1-24204",
+      "deployed_version_id": 3413,
+      "sha256": "368c999f74d2b163d1fc08688a40a3c594c7bc35a734b04943688b9a10eb90ad",
+      "before_sha256": "959063badb4b264ec3d3c8eddd59e4a4d107a7eb70df96facafcbd861e9e4a91"
+    },
+    {
+      "segment": "page_0",
+      "path": "prompts/cover.md",
+      "source_prompt_id": 1924,
+      "deployed_prompt_id": 1924,
+      "deployed_prompt_code": "reader_teach_rules_cover-X-772-v1-24204",
+      "deployed_version_id": 3415,
+      "sha256": "9753f712b49b133ced948284d133fd36e468c3a1912e34cccca66028e77f3f99",
+      "before_sha256": "3720257aa9cfb5b9f0894a71c61912118c9bb2d2f5c026bdefd73c8f664b0cbe"
+    },
+    {
+      "segment": "page_1",
+      "path": "prompts/page.md",
+      "source_prompt_id": 1923,
+      "deployed_prompt_id": 1923,
+      "deployed_prompt_code": "reader_teach_rules_page-X-772-v1-24204",
+      "deployed_version_id": 3414,
+      "sha256": "5ff7734667650576d1710d22c978a64a2621953b5bdf3391de7a5d43c2aca0ef",
+      "before_sha256": "56f25f469c1bb6d3bfc9ea0e182c9162b24a3ba33c7addc3d3c77f980a4dbd2c"
+    },
+    {
+      "segment": "page_2",
+      "path": "prompts/page.md",
+      "source_prompt_id": 1923,
+      "deployed_prompt_id": 1923,
+      "deployed_prompt_code": "reader_teach_rules_page-X-772-v1-24204",
+      "deployed_version_id": 3414,
+      "sha256": "5ff7734667650576d1710d22c978a64a2621953b5bdf3391de7a5d43c2aca0ef",
+      "before_sha256": "56f25f469c1bb6d3bfc9ea0e182c9162b24a3ba33c7addc3d3c77f980a4dbd2c"
+    },
+    {
+      "segment": "page_3",
+      "path": "prompts/page.md",
+      "source_prompt_id": 1923,
+      "deployed_prompt_id": 1923,
+      "deployed_prompt_code": "reader_teach_rules_page-X-772-v1-24204",
+      "deployed_version_id": 3414,
+      "sha256": "5ff7734667650576d1710d22c978a64a2621953b5bdf3391de7a5d43c2aca0ef",
+      "before_sha256": "56f25f469c1bb6d3bfc9ea0e182c9162b24a3ba33c7addc3d3c77f980a4dbd2c"
+    },
+    {
+      "segment": "page_4",
+      "path": "prompts/page.md",
+      "source_prompt_id": 1923,
+      "deployed_prompt_id": 1923,
+      "deployed_prompt_code": "reader_teach_rules_page-X-772-v1-24204",
+      "deployed_version_id": 3414,
+      "sha256": "5ff7734667650576d1710d22c978a64a2621953b5bdf3391de7a5d43c2aca0ef",
+      "before_sha256": "56f25f469c1bb6d3bfc9ea0e182c9162b24a3ba33c7addc3d3c77f980a4dbd2c"
+    },
+    {
+      "segment": "page_5",
+      "path": "prompts/page.md",
+      "source_prompt_id": 1923,
+      "deployed_prompt_id": 1923,
+      "deployed_prompt_code": "reader_teach_rules_page-X-772-v1-24204",
+      "deployed_version_id": 3414,
+      "sha256": "5ff7734667650576d1710d22c978a64a2621953b5bdf3391de7a5d43c2aca0ef",
+      "before_sha256": "56f25f469c1bb6d3bfc9ea0e182c9162b24a3ba33c7addc3d3c77f980a4dbd2c"
+    }
+  ]
+}

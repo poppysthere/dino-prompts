@@ -1,0 +1,788 @@
+{
+  "count": 22,
+  "failures": 0,
+  "results": [
+    {
+      "status": "completed",
+      "reply": "The title is Landforms on Earth. What do you think this reading may be about? [STUDENT_TALK]",
+      "issues": [],
+      "case": {
+        "id": "opening-page_0",
+        "code": "page_0",
+        "turns": [],
+        "wait": true,
+        "mode": "runtime"
+      },
+      "prompt_sha256": "d3c0fb76afaddcf67d6a712dcc66bc4bf84be26ddaac288146c0698234d9eea6",
+      "input_sha256": "4a9b4f0602ed93c8d5f7b103030c8a37fb654463c251b6ca0a078b4d3d1a2254",
+      "messages": [
+        {
+          "role": "user",
+          "content": "<system_control_message>\nThe UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n\n</system_control_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "Where does a valley lie? [STUDENT_TALK]",
+      "issues": [],
+      "case": {
+        "id": "opening-page_1",
+        "code": "page_1",
+        "turns": [],
+        "wait": true,
+        "mode": "runtime"
+      },
+      "prompt_sha256": "1ce275ff52d05e12e7650d13f7ca2b559347215aaa4af1a3f347a4d325ea6e3a",
+      "input_sha256": "cec6bf7d2970a03139278eb4a7a4e0b0f2a12e780739cef4ec32b77bdf20dbc1",
+      "messages": [
+        {
+          "role": "user",
+          "content": "<system_control_message>\nThe UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n\n</system_control_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "What is a glacier made of? [STUDENT_TALK]",
+      "issues": [],
+      "case": {
+        "id": "opening-page_2",
+        "code": "page_2",
+        "turns": [],
+        "wait": true,
+        "mode": "runtime"
+      },
+      "prompt_sha256": "2f924c955fb9bdd50ce19a955c065c541196060bd3cb331eeb9b627ec58341e7",
+      "input_sha256": "95f64134f42608d7eb4282a6b5c6c1da4fd4be0f05af0cb9c34a1f5f348275f3",
+      "messages": [
+        {
+          "role": "user",
+          "content": "<system_control_message>\nThe UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n\n</system_control_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "What surrounds an island? [STUDENT_TALK]",
+      "issues": [],
+      "case": {
+        "id": "opening-page_3",
+        "code": "page_3",
+        "turns": [],
+        "wait": true,
+        "mode": "runtime"
+      },
+      "prompt_sha256": "1e7c9e42a37970c0c5e4a68247771ae1e3af5f888884dbfd0454f093a29d50cb",
+      "input_sha256": "e49734292df78efc5d20350856786331e0475cb2d3387540d954f755b2162621",
+      "messages": [
+        {
+          "role": "user",
+          "content": "<system_control_message>\nThe UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n\n</system_control_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "Where does the text say a cave is often found? [STUDENT_TALK]",
+      "issues": [],
+      "case": {
+        "id": "opening-page_4",
+        "code": "page_4",
+        "turns": [],
+        "wait": true,
+        "mode": "runtime"
+      },
+      "prompt_sha256": "93939a5f1f1b8533ff3e220b5f9d2486dd2679ef859bd5ca49fab025e5e2d262",
+      "input_sha256": "bfbb8857fbc8bab555ccf59b745af252f8d220f01a8e0c50e31ce549ff85f0ba",
+      "messages": [
+        {
+          "role": "user",
+          "content": "<system_control_message>\nThe UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n\n</system_control_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "What kind of islands do people especially love? [STUDENT_TALK]",
+      "issues": [],
+      "case": {
+        "id": "opening-page_5",
+        "code": "page_5",
+        "turns": [],
+        "wait": true,
+        "mode": "runtime"
+      },
+      "prompt_sha256": "9756945b14313c30bc1e9eab5ad77881046761514c5cddba06abda9c19bcc7d8",
+      "input_sha256": "c88d4a1d33c0aac56dc08b5851dd167af7fe27636471df534bc716892fbfefd1",
+      "messages": [
+        {
+          "role": "user",
+          "content": "<system_control_message>\nThe UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n\n</system_control_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "You can use the text to answer. A glacier is a huge piece of ice. Where are glaciers found? [STUDENT_TALK]",
+      "issues": [],
+      "case": {
+        "id": "legacy-reading-help",
+        "code": "page_2",
+        "turns": [
+          {
+            "who": "T",
+            "text": "Read this part aloud. [STUDENT_TALK]"
+          },
+          {
+            "who": "K",
+            "text": "What do I do?"
+          }
+        ],
+        "wait": true,
+        "mode": "runtime"
+      },
+      "prompt_sha256": "2f924c955fb9bdd50ce19a955c065c541196060bd3cb331eeb9b627ec58341e7",
+      "input_sha256": "ae57919ab53f71ff9fa4fce1554c9d7ec55aa70aa6850868ea49b1090d23f1ed",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "Read this part aloud."
+        },
+        {
+          "role": "user",
+          "content": "<student_message>\nWhat do I do?\n</student_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "Think about something very cold and hard. Is a glacier made of ice or sand? [STUDENT_TALK]",
+      "issues": [],
+      "case": {
+        "id": "glacier-help",
+        "code": "page_2",
+        "turns": [
+          {
+            "who": "T",
+            "text": "What is a glacier made of? [STUDENT_TALK]"
+          },
+          {
+            "who": "K",
+            "text": "I don't know."
+          }
+        ],
+        "wait": true,
+        "mode": "runtime"
+      },
+      "prompt_sha256": "2f924c955fb9bdd50ce19a955c065c541196060bd3cb331eeb9b627ec58341e7",
+      "input_sha256": "6c5918fa2c363f20556981231fb0c166bfef7ca5c7226e0d370820f906eeb0a7",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "What is a glacier made of?"
+        },
+        {
+          "role": "user",
+          "content": "<student_message>\nI don't know.\n</student_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "Mountains can be on some islands. What surrounds an island, water or roads? [STUDENT_TALK]",
+      "issues": [],
+      "case": {
+        "id": "island-wrong",
+        "code": "page_3",
+        "turns": [
+          {
+            "who": "T",
+            "text": "What is all around an island? [STUDENT_TALK]"
+          },
+          {
+            "who": "K",
+            "text": "Mountains."
+          }
+        ],
+        "wait": true,
+        "mode": "runtime"
+      },
+      "prompt_sha256": "1e7c9e42a37970c0c5e4a68247771ae1e3af5f888884dbfd0454f093a29d50cb",
+      "input_sha256": "a45b645e9def4d653665fdb9a6ac694598cacc959e94da4abd67fb2ee21663d8",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "What is all around an island?"
+        },
+        {
+          "role": "user",
+          "content": "<student_message>\nMountains.\n</student_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "Right, water surrounds an island. What is one landform that can be on an island? [STUDENT_TALK]",
+      "issues": [],
+      "case": {
+        "id": "island-mandarin",
+        "code": "page_3",
+        "turns": [
+          {
+            "who": "T",
+            "text": "What is all around an island? [STUDENT_TALK]"
+          },
+          {
+            "who": "K",
+            "text": "水，四周都是水。"
+          }
+        ],
+        "wait": null,
+        "mode": "runtime"
+      },
+      "prompt_sha256": "1e7c9e42a37970c0c5e4a68247771ae1e3af5f888884dbfd0454f093a29d50cb",
+      "input_sha256": "f15d2e27ec578e0b072c7c1247a4ddfd3dd271e21d7b205abe6d6e384e47d141",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "What is all around an island?"
+        },
+        {
+          "role": "user",
+          "content": "<student_message>\n水，四周都是水。\n</student_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "Yes, a valley lies between mountains. What may flow through a valley? [STUDENT_TALK]",
+      "issues": [],
+      "case": {
+        "id": "valley-understood",
+        "code": "page_1",
+        "turns": [
+          {
+            "who": "T",
+            "text": "What is a valley between? [STUDENT_TALK]"
+          },
+          {
+            "who": "K",
+            "text": "Mountains."
+          }
+        ],
+        "wait": true,
+        "mode": "runtime"
+      },
+      "prompt_sha256": "1ce275ff52d05e12e7650d13f7ca2b559347215aaa4af1a3f347a4d325ea6e3a",
+      "input_sha256": "6a6e4e194e2dc710ae0c06f0a255145ae52108efbb97b5d15629554d73a0fd5f",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "What is a valley between?"
+        },
+        {
+          "role": "user",
+          "content": "<student_message>\nMountains.\n</student_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "Yes, a glacier is a huge piece of ice. Where are glaciers found? [STUDENT_TALK]",
+      "issues": [],
+      "case": {
+        "id": "glacier-understood",
+        "code": "page_2",
+        "turns": [
+          {
+            "who": "T",
+            "text": "What is a glacier made of? [STUDENT_TALK]"
+          },
+          {
+            "who": "K",
+            "text": "Ice."
+          }
+        ],
+        "wait": true,
+        "mode": "runtime"
+      },
+      "prompt_sha256": "2f924c955fb9bdd50ce19a955c065c541196060bd3cb331eeb9b627ec58341e7",
+      "input_sha256": "057271b83f19d2fc6e6107d86b403c9cdd5c3e800d50ff1b1018695058ea82d2",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "What is a glacier made of?"
+        },
+        {
+          "role": "user",
+          "content": "<student_message>\nIce.\n</student_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "Yes, a cave is often found in a mountain or a cliff. [NEXT_STEP]",
+      "issues": [],
+      "case": {
+        "id": "cave-understood",
+        "code": "page_4",
+        "turns": [
+          {
+            "who": "T",
+            "text": "Where can a cave often be found? [STUDENT_TALK]"
+          },
+          {
+            "who": "K",
+            "text": "In a mountain or a cliff."
+          }
+        ],
+        "wait": false,
+        "mode": "runtime"
+      },
+      "prompt_sha256": "93939a5f1f1b8533ff3e220b5f9d2486dd2679ef859bd5ca49fab025e5e2d262",
+      "input_sha256": "21beafaa9f1c4b4e12cb28f92863b74ad25e7ed3c2de638bd7525920b5df6a96",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "Where can a cave often be found?"
+        },
+        {
+          "role": "user",
+          "content": "<student_message>\nIn a mountain or a cliff.\n</student_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "Yes, people especially love islands with beaches. [TEMPLATE_FINISH]",
+      "issues": [],
+      "case": {
+        "id": "beach-final",
+        "code": "page_5",
+        "turns": [
+          {
+            "who": "T",
+            "text": "What kind of islands do people especially love? [STUDENT_TALK]"
+          },
+          {
+            "who": "K",
+            "text": "Islands with beaches."
+          }
+        ],
+        "wait": false,
+        "mode": "runtime"
+      },
+      "prompt_sha256": "9756945b14313c30bc1e9eab5ad77881046761514c5cddba06abda9c19bcc7d8",
+      "input_sha256": "1f682ef782920f182b02776bf8230acfdc49105900f503ca8ccbade398b25625",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "What kind of islands do people especially love?"
+        },
+        {
+          "role": "user",
+          "content": "<student_message>\nIslands with beaches.\n</student_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "Does an island have water around it or roads around it? [STUDENT_TALK]",
+      "issues": [],
+      "case": {
+        "id": "island-yes",
+        "code": "page_3",
+        "turns": [
+          {
+            "who": "T",
+            "text": "What is all around an island? [STUDENT_TALK]"
+          },
+          {
+            "who": "K",
+            "text": "Yes."
+          }
+        ],
+        "wait": true,
+        "mode": "runtime"
+      },
+      "prompt_sha256": "1e7c9e42a37970c0c5e4a68247771ae1e3af5f888884dbfd0454f093a29d50cb",
+      "input_sha256": "9af929644bc07fb5755c51054527d4b3191c6e8b27a0ea615010ade47a9c4983",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "What is all around an island?"
+        },
+        {
+          "role": "user",
+          "content": "<student_message>\nYes.\n</student_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "That's okay. [NEXT_STEP]",
+      "issues": [],
+      "case": {
+        "id": "refusal",
+        "code": "page_1",
+        "turns": [
+          {
+            "who": "T",
+            "text": "Where is a valley? [STUDENT_TALK]"
+          },
+          {
+            "who": "K",
+            "text": "No, I'm tired."
+          }
+        ],
+        "wait": false,
+        "mode": "runtime"
+      },
+      "prompt_sha256": "1ce275ff52d05e12e7650d13f7ca2b559347215aaa4af1a3f347a4d325ea6e3a",
+      "input_sha256": "5210980db3d6f11abc4bfebad31c5ff3ddaabbecea1ba1246ee97d71a0aec642",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "Where is a valley?"
+        },
+        {
+          "role": "user",
+          "content": "<student_message>\nNo, I'm tired.\n</student_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "A glacier is a huge piece of ice that moves over the land. Where are glaciers found? [STUDENT_TALK]",
+      "issues": [],
+      "case": {
+        "id": "glacier-reading-request",
+        "code": "page_2",
+        "turns": [
+          {
+            "who": "T",
+            "text": "What is a glacier made of? [STUDENT_TALK]"
+          },
+          {
+            "who": "K",
+            "text": "Can you read it for me?"
+          }
+        ],
+        "wait": null,
+        "mode": "runtime"
+      },
+      "prompt_sha256": "2f924c955fb9bdd50ce19a955c065c541196060bd3cb331eeb9b627ec58341e7",
+      "input_sha256": "13bdb04a4a87e573fccddb277721a5835edded903503e728b5d83c5012ce3384",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "What is a glacier made of?"
+        },
+        {
+          "role": "user",
+          "content": "<student_message>\nCan you read it for me?\n</student_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "What is one landform that can be on an island? [STUDENT_TALK]",
+      "issues": [],
+      "case": {
+        "id": "whole-paragraph-recital",
+        "code": "page_3",
+        "turns": [
+          {
+            "who": "T",
+            "text": "What is all around an island? [STUDENT_TALK]"
+          },
+          {
+            "who": "K",
+            "text": "An island is another type of landform. An island is land surrounded by water. On some islands, there are mountains, valleys, and cliffs."
+          }
+        ],
+        "wait": true,
+        "mode": "runtime"
+      },
+      "prompt_sha256": "1e7c9e42a37970c0c5e4a68247771ae1e3af5f888884dbfd0454f093a29d50cb",
+      "input_sha256": "44f02f959fac30b38ef35ca504d02d221371e443ef8c5facc5e0e0c727953bbc",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "What is all around an island?"
+        },
+        {
+          "role": "user",
+          "content": "<student_message>\nAn island is another type of landform. An island is land surrounded by water. On some islands, there are mountains, valleys, and cliffs.\n</student_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "A glacier is a huge piece of ice. It is found in colder areas and moves over the land. [NEXT_STEP]",
+      "issues": [],
+      "case": {
+        "id": "two-silences-runtime",
+        "code": "page_2",
+        "turns": [
+          {
+            "who": "T",
+            "text": "What is a glacier made of? [STUDENT_TALK]"
+          },
+          {
+            "who": "K",
+            "text": "(silent)"
+          },
+          {
+            "who": "T",
+            "text": "Is it made of ice or sand? [STUDENT_TALK]"
+          },
+          {
+            "who": "K",
+            "text": "(silent)"
+          }
+        ],
+        "wait": false,
+        "mode": "runtime"
+      },
+      "prompt_sha256": "2f924c955fb9bdd50ce19a955c065c541196060bd3cb331eeb9b627ec58341e7",
+      "input_sha256": "86c5c4f4f6a8e42b749c9b79125f852bdb15bb8e7cba9ee7406b80429f86b4eb",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "What is a glacier made of?"
+        },
+        {
+          "role": "assistant",
+          "content": "Is it made of ice or sand?"
+        },
+        {
+          "role": "user",
+          "content": "<system_control_message>\nThe student has been silent for 8 seconds and has been silent multiple times in a short period.\nPlease do not wait for the student, do not ask another confirmation question, and continue moving forward with the lesson.\n\n</system_control_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\nConsecutive student silence count: 2\n</system_teaching_step_context>"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "Yes, water surrounds an island. Some islands have mountains, valleys, or cliffs. [NEXT_STEP]",
+      "issues": [],
+      "case": {
+        "id": "support-success-runtime",
+        "code": "page_3",
+        "turns": [
+          {
+            "who": "T",
+            "text": "What is all around an island? [STUDENT_TALK]"
+          },
+          {
+            "who": "K",
+            "text": "I don't know."
+          },
+          {
+            "who": "T",
+            "text": "Is there water or more land on every side? [STUDENT_TALK]"
+          },
+          {
+            "who": "K",
+            "text": "Water."
+          }
+        ],
+        "wait": false,
+        "mode": "runtime"
+      },
+      "prompt_sha256": "1e7c9e42a37970c0c5e4a68247771ae1e3af5f888884dbfd0454f093a29d50cb",
+      "input_sha256": "e769fa7043ce68320c336428ce295046e5462fa249652841835cf663e0a4e49a",
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "What is all around an island?"
+        },
+        {
+          "role": "user",
+          "content": "I don't know."
+        },
+        {
+          "role": "assistant",
+          "content": "Is there water or more land on every side?"
+        },
+        {
+          "role": "user",
+          "content": "<student_message>\nWater.\n</student_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 1\nCurrent conversation round: Round 2\n</system_teaching_step_context>"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "A glacier is a huge piece of ice. It is found in colder areas and moves over the land. [NEXT_STEP]",
+      "issues": [],
+      "case": {
+        "id": "two-silences-legacy",
+        "code": "page_2",
+        "turns": [
+          {
+            "who": "T",
+            "text": "What is a glacier made of? [STUDENT_TALK]"
+          },
+          {
+            "who": "K",
+            "text": "(silent)"
+          },
+          {
+            "who": "T",
+            "text": "Is it made of ice or sand? [STUDENT_TALK]"
+          },
+          {
+            "who": "K",
+            "text": "(silent)"
+          }
+        ],
+        "wait": false,
+        "mode": "legacy"
+      },
+      "prompt_sha256": "2f924c955fb9bdd50ce19a955c065c541196060bd3cb331eeb9b627ec58341e7",
+      "input_sha256": "961f090dc7b0089eec791d9fa41da90bad5ae80fe6d6f061c7efcb17adfa8b58",
+      "messages": [
+        {
+          "role": "user",
+          "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+        },
+        {
+          "role": "assistant",
+          "content": "What is a glacier made of? [STUDENT_TALK]"
+        },
+        {
+          "role": "user",
+          "content": "The student has been silent for 8 seconds. Give one short encouraging nudge and continue.\n"
+        },
+        {
+          "role": "assistant",
+          "content": "Is it made of ice or sand? [STUDENT_TALK]"
+        },
+        {
+          "role": "user",
+          "content": "The student has been silent for 8 seconds and has been silent multiple times in a short period.\nPlease do not wait for the student, do not ask another confirmation question, and continue moving forward with the lesson.\n"
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    },
+    {
+      "status": "completed",
+      "reply": "Right, water surrounds an island. Some islands also have mountains, valleys, or cliffs. [NEXT_STEP]",
+      "issues": [],
+      "case": {
+        "id": "support-success-legacy",
+        "code": "page_3",
+        "turns": [
+          {
+            "who": "T",
+            "text": "What is all around an island? [STUDENT_TALK]"
+          },
+          {
+            "who": "K",
+            "text": "I don't know."
+          },
+          {
+            "who": "T",
+            "text": "Is there water or more land on every side? [STUDENT_TALK]"
+          },
+          {
+            "who": "K",
+            "text": "Water."
+          }
+        ],
+        "wait": false,
+        "mode": "legacy"
+      },
+      "prompt_sha256": "1e7c9e42a37970c0c5e4a68247771ae1e3af5f888884dbfd0454f093a29d50cb",
+      "input_sha256": "6c733d072dc539c66a43afd62d72e1d6ce0e2edce4e004ee146b52b8281051d8",
+      "messages": [
+        {
+          "role": "user",
+          "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+        },
+        {
+          "role": "assistant",
+          "content": "What is all around an island? [STUDENT_TALK]"
+        },
+        {
+          "role": "user",
+          "content": "I don't know."
+        },
+        {
+          "role": "assistant",
+          "content": "Is there water or more land on every side? [STUDENT_TALK]"
+        },
+        {
+          "role": "user",
+          "content": "Water."
+        }
+      ],
+      "model": "gpt-5.6-luna",
+      "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+      "transport_errors": []
+    }
+  ]
+}

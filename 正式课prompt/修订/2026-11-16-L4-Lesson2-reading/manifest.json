@@ -1,0 +1,153 @@
+{
+  "revision": "2026-11-16-L4-Lesson2-reading",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "51374ed97cd28690073488a6ab2a0dfd4b9f6dcba73ac9c6c0369f84542c500c"
+    },
+    {
+      "path": "before-prompts/common.md",
+      "sha256": "08a59718e31598af27bf7d7a94b4ddd086c519d32fe49a90d73ca22d50d9f429"
+    },
+    {
+      "path": "before-prompts/cover.md",
+      "sha256": "3720257aa9cfb5b9f0894a71c61912118c9bb2d2f5c026bdefd73c8f664b0cbe"
+    },
+    {
+      "path": "before-prompts/page.md",
+      "sha256": "56f25f469c1bb6d3bfc9ea0e182c9162b24a3ba33c7addc3d3c77f980a4dbd2c"
+    },
+    {
+      "path": "before-prompts/template.md",
+      "sha256": "959063badb4b264ec3d3c8eddd59e4a4d107a7eb70df96facafcbd861e9e4a91"
+    },
+    {
+      "path": "diffs/common.diff",
+      "sha256": "b0d4d159d49d320610e730a13b29263af7f1382515c7caa8415af50bb800f9ae"
+    },
+    {
+      "path": "diffs/cover.diff",
+      "sha256": "e7b420283eead6a5248198d318698b538a940228dbd8416a74b19fd461006936"
+    },
+    {
+      "path": "diffs/page.diff",
+      "sha256": "d5d143cf3b03787b19e91cc28c6c4897957f92fb4438877ebe7876fa29d74cc1"
+    },
+    {
+      "path": "diffs/template.diff",
+      "sha256": "bd538a014f9ddf7a3125de349142fcc6cd86e9c5775409a5ce6054dbd9b523a7"
+    },
+    {
+      "path": "evaluation/fixed-results.json",
+      "sha256": "426f44e3dc1bae35c6d17392bc080cb341907c9b4358ebae764d61da76d71186"
+    },
+    {
+      "path": "evaluation/history/beach-final-592b1a63a844.json",
+      "sha256": "84c64dff30e45afed81e457904130f58af05a2dbd0a00d26344d50123529bd87"
+    },
+    {
+      "path": "evaluation/history/fluent-a4d6c9309e44.json",
+      "sha256": "60621f5bc3dd823b2bdadf4aa146a6555321929196f6131f74cb0abcc6c63d46"
+    },
+    {
+      "path": "evaluation/history/glacier-reading-request-0f6f0dd57317.json",
+      "sha256": "0e470c6870759e95038f81dbcd1bc0542ba049ce9ff98fa869b0748f1d75d7d1"
+    },
+    {
+      "path": "evaluation/history/island-mandarin-0b8feaf34375.json",
+      "sha256": "c00cb7ce93e11af37a94bb7608bd9d27a808db8a9d58944223edfdeb82607a2b"
+    },
+    {
+      "path": "evaluation/history/island-wrong-b2988dafca83.json",
+      "sha256": "4b23e7536236afbd9a8d3696de01553caccfad84c3040a88182df7b8e2715c4b"
+    },
+    {
+      "path": "evaluation/history/mandarin-08dc51623698.json",
+      "sha256": "28e861bc335039b464c20b7cbb3c048434a28d1c6022731b52e6cac4de568fe9"
+    },
+    {
+      "path": "evaluation/history/okay-817a6794b814.json",
+      "sha256": "1aaa3937f989b2c6fdcc09c945cc0a97fe279ed61a631ae6e7d7c8aa8cdf8d39"
+    },
+    {
+      "path": "evaluation/history/opening-page_4-427b9bf309d9.json",
+      "sha256": "c25b2da8fd61dbe680cba8868a51a1fa1395fe6c4f8bf3d27d164b1a9cca1fa8"
+    },
+    {
+      "path": "evaluation/history/reciter-83dafd714830.json",
+      "sha256": "2a654a1642f7666b7cba84ece98c31f7bb87672a9a7e7f1f37675b056b885615"
+    },
+    {
+      "path": "evaluation/history/v4-okay.json",
+      "sha256": "7db80003c18a4df91400ebd0f7a62279641f4b22b7ebbfa35ec84789b7e725cc"
+    },
+    {
+      "path": "evaluation/history/v4-refusal.json",
+      "sha256": "bb3a66a941aa2da072ba1eb15e36828e0ea2f66f859612ac90140a62026257b1"
+    },
+    {
+      "path": "evaluation/history/v4-wrong-page-opening.json",
+      "sha256": "da4c68032198861a381437fe9c0a3a6e7437bce27477002150f301763dd3eb7b"
+    },
+    {
+      "path": "evaluation/history/v5-refusal.json",
+      "sha256": "92d16945dc895cc7b4992fdf509ff6e119b9c58522999a1f31494f5bad188e13"
+    },
+    {
+      "path": "evaluation/history/v5-struggling.json",
+      "sha256": "d37017e46ebffe002323a51db0ca81ec8f4373c41b2d07fe71b68ef4d7cb4278"
+    },
+    {
+      "path": "evaluation/whole-results.json",
+      "sha256": "0bbb6562e7a1da9d65ad3720f9942d37759cbe21e31a4831dc8d4071ea255e20"
+    },
+    {
+      "path": "evaluation.json",
+      "sha256": "6c8c3d2eb4338b15f3f01fd316088710bb3be691910c2ae90575fd5f58b9e351"
+    },
+    {
+      "path": "mapping.json",
+      "sha256": "0460f61b05ba84df814f2ee58b4f1aca0f199f3f2c9bfcff8874f772cbab6ad9"
+    },
+    {
+      "path": "overrides.json",
+      "sha256": "88632067a6a7560cfdcad65a806a7e04f7944ccef98bad97b31a9d1d708b79e7"
+    },
+    {
+      "path": "prompts/common.md",
+      "sha256": "043d098ac5cf004fd57f94bf520bc705f304b48472b3c8c6ff00d59c8a602fb2"
+    },
+    {
+      "path": "prompts/cover.md",
+      "sha256": "9753f712b49b133ced948284d133fd36e468c3a1912e34cccca66028e77f3f99"
+    },
+    {
+      "path": "prompts/page.md",
+      "sha256": "5ff7734667650576d1710d22c978a64a2621953b5bdf3391de7a5d43c2aca0ef"
+    },
+    {
+      "path": "prompts/template.md",
+      "sha256": "368c999f74d2b163d1fc08688a40a3c594c7bc35a734b04943688b9a10eb90ad"
+    },
+    {
+      "path": "release.json",
+      "sha256": "e773a43d57ce8e7c4a69ae835fe2fdb639cb6e85445180b62e38f9dcc6cc09f3"
+    },
+    {
+      "path": "semantic-review.md",
+      "sha256": "3e7febeed365116547eaa645e6aa1d61a9a4b1329a7bd3b971d8fdf708d343f6"
+    },
+    {
+      "path": "static-verification.json",
+      "sha256": "f6dde5f23756b05ccc8d28b1a35e8772aed846e8365c9b7a1c435e0bf8ee5782"
+    },
+    {
+      "path": "transcripts.md",
+      "sha256": "c0950bbc37ad3c0581f3b5d5a0f78c58edf1363984c019e000a3fff765c5aa8e"
+    },
+    {
+      "path": "verify.py",
+      "sha256": "52b8428965a2e5995260d88ef76a40da1fb00aa4d565f272531337f21894114f"
+    }
+  ]
+}

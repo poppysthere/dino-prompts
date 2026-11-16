@@ -1,0 +1,132 @@
+{
+  "status": "completed",
+  "issues": [],
+  "persona": "refusal",
+  "pages": [
+    {
+      "step": "page_0",
+      "text": "Landforms on Earth",
+      "turns": [
+        {
+          "who": "T",
+          "text": "Today we are learning about Landforms on Earth. What do you think this reading may be about? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "No, I'm tired."
+        },
+        {
+          "who": "T",
+          "text": "Okay, Mia. You are tired, so we will pause here. [NEXT_STEP]"
+        }
+      ],
+      "prompt_sha256": "bfb001c4447c4242ed7c60312c0381c726de13ce3029d15f4bb56afe0b0fcf91"
+    },
+    {
+      "step": "page_1",
+      "text": "One interesting landform is a valley. A valley is a low area of land. It lies between mountains. Sometimes, there may be a river that flows through the valley.",
+      "turns": [
+        {
+          "who": "T",
+          "text": "Where does a valley lie? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "No, I'm tired."
+        },
+        {
+          "who": "T",
+          "text": "Okay, Mia. We can stop here. [NEXT_STEP]"
+        }
+      ],
+      "prompt_sha256": "d99ee043fad00d969ffa0197be8ee32255fa6570897572aa1a240e7434086f38"
+    },
+    {
+      "step": "page_2",
+      "text": "Glaciers are an important landform. However, most people will never see a glacier. Glaciers are found in colder areas. Each glacier is a huge piece of ice. It moves over the land.",
+      "turns": [
+        {
+          "who": "T",
+          "text": "What is a glacier made of? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "No, I'm tired."
+        },
+        {
+          "who": "T",
+          "text": "Okay, Mia. You are tired, so we will pause here. [NEXT_STEP]"
+        }
+      ],
+      "prompt_sha256": "0fd7ca2f5b27294e3fc03da85274a2999f79dd4a053804dadb2b0f3ccccbbe11"
+    },
+    {
+      "step": "page_3",
+      "text": "An island is another type of landform. An island is land surrounded by water. On some islands, there are mountains, valleys, and cliffs.",
+      "turns": [
+        {
+          "who": "T",
+          "text": "What surrounds an island? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "No, I'm tired."
+        },
+        {
+          "who": "T",
+          "text": "Okay, Mia. We can pause here. [NEXT_STEP]"
+        }
+      ],
+      "prompt_sha256": "96a1544326279b557ae22c086fc5fb818367813aa3b07ff86ff7cb40c345eee8"
+    },
+    {
+      "step": "page_4",
+      "text": "A cave is often found in a cliff or a mountain.",
+      "turns": [
+        {
+          "who": "T",
+          "text": "Where does the text say a cave is often found? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "No, I'm tired."
+        },
+        {
+          "who": "T",
+          "text": "Okay, Mia. We will pause here. [NEXT_STEP]"
+        }
+      ],
+      "prompt_sha256": "14177a535d7c4cf3b98f65dd74dc02b0786ae18934dd9bea5567bef0efdf1efc"
+    },
+    {
+      "step": "page_5",
+      "text": "Most people love islands. They especially love islands with beaches on them.",
+      "turns": [
+        {
+          "who": "T",
+          "text": "What kind of islands do people especially love? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "No, I'm tired."
+        },
+        {
+          "who": "T",
+          "text": "Okay, Mia. You are tired, so we will pause here. [TEMPLATE_FINISH]"
+        }
+      ],
+      "prompt_sha256": "6250af0b020473f5230ca0e86e4810600fb5bfca69a77857b3b461e5b1e64723"
+    }
+  ],
+  "prompt_hashes": [
+    "bfb001c4447c4242ed7c60312c0381c726de13ce3029d15f4bb56afe0b0fcf91",
+    "d99ee043fad00d969ffa0197be8ee32255fa6570897572aa1a240e7434086f38",
+    "0fd7ca2f5b27294e3fc03da85274a2999f79dd4a053804dadb2b0f3ccccbbe11",
+    "96a1544326279b557ae22c086fc5fb818367813aa3b07ff86ff7cb40c345eee8",
+    "14177a535d7c4cf3b98f65dd74dc02b0786ae18934dd9bea5567bef0efdf1efc",
+    "6250af0b020473f5230ca0e86e4810600fb5bfca69a77857b3b461e5b1e64723"
+  ],
+  "model": "gpt-5.6-luna",
+  "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+  "transport_errors": []
+}

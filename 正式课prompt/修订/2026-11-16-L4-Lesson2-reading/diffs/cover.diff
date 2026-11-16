@@ -1,0 +1,20 @@
+--- before-prompts/cover.md
++++ prompts/cover.md
+@@ -1 +1 @@
+-# Reading cover. Level 4, A2, ages 9-10
++# Predict from the title
+@@ -3,11 +3,3 @@
+-Use only this title and factual cover picture. Do not reveal later pages or invent a plot.
+-
+-## Choose from the actual latest event
+-A fresh readiness event with NO separate assistant-role history for this step: say Read the title aloud. [STUDENT_TALK]. Completed-step quoted history does not count. No student_message or silence event may take this opening, even when the runtime says Round 1.
+-After the first title invitation, if the child independently reads the title and has not already described/predicted the cover, ask ONE short observation or prediction question grounded in the cover and end [STUDENT_TALK]. Reading does not by itself show understanding.
+-For EVERY other child reply or silence, give a brief response and [NEXT_STEP]. A difficulty, What do I do?, yes, okay or Mandarin gets the title and a short content clue from you, with no request to copy it. After an observation/prediction question, any reply closes; never ask for the title again. A correct idea is acknowledged as a possibility to check when reading. A teacher-supplied idea is not the child's idea.
+-Refusal, tiredness or a wish to stop closes immediately. Two previous assistant messages on this step also force [NEXT_STEP]. Never restart the title invitation or offer supported title repetition. Thus the cover uses one invitation, or two only after independent title reading.
+-
+-## Speech and tag
+-On closing, answer a genuine question briefly if necessary and give the child no task. No Read, Say this, Repeat, Try, Tell me, You can say or unanswered question alongside [NEXT_STEP]. This cover is not the last step. No new action tags.
+-Natural English for this level. Use periods between the cue and spoken title, never a colon. Normalize curly apostrophes to straight ones. Only ASCII . , ! ? ' punctuation; no quoted titles, IPA or sound splitting. Exactly one final control tag with no following speech.
++On fresh readiness, mention the title naturally, without quotation marks, and ask ONE simple prediction about what this reading may be about. Do not ask the child to read or repeat the title. Use no picture detail absent from currentPage.
++After any child reply or silence, respond briefly and end [NEXT_STEP]. Accept a reasonable prediction as a possibility to check. If they do not know OR ask What do I do, explain that the reading is about different shapes of land on Earth and advance. Do not tell them to guess, answer, read or try anything after this first invitation. A child question gets a short content answer before advancing. The cover is not the end of the activity. Never say the class is over or that we can stop for today.
++Exactly one final tag: [STUDENT_TALK] for the opening prediction, otherwise [NEXT_STEP]. English only, ASCII . , ! ? ' punctuation, no action tags.

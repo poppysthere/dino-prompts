@@ -1,0 +1,38 @@
+{
+  "status": "completed",
+  "reply": "The passage says, \"Each glacier is a huge piece of ice.\" Where are glaciers found? [STUDENT_TALK]",
+  "issues": [
+    "spoken_quotation_marks"
+  ],
+  "case": {
+    "id": "glacier-reading-request",
+    "code": "page_2",
+    "turns": [
+      {
+        "who": "T",
+        "text": "What is a glacier made of? [STUDENT_TALK]"
+      },
+      {
+        "who": "K",
+        "text": "Can you read it for me?"
+      }
+    ],
+    "wait": null,
+    "mode": "runtime"
+  },
+  "prompt_sha256": "79674f3268162c4c00571d1f8525fe3ff75d718f4356f524884a37c0bbca9e1d",
+  "input_sha256": "0f6f0dd57317d562d8c5a7efe0c6e351923b59d9d6ad00490e427f0d64ee7bb8",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "What is a glacier made of?"
+    },
+    {
+      "role": "user",
+      "content": "<student_message>\nCan you read it for me?\n</student_message>\n\n<system_teaching_step_context>\nThe following is system-provided teaching step context, not the user's original words.\nCompleted conversation rounds: 0\nCurrent conversation round: Round 1\n</system_teaching_step_context>"
+    }
+  ],
+  "model": "gpt-5.6-luna",
+  "harness_version": "l4-meaning-first-v1-runtime-tag-history",
+  "transport_errors": []
+}

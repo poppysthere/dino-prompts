@@ -1,0 +1,161 @@
+{
+  "status": "completed",
+  "issues": [
+    [
+      "page_0",
+      "assignment_while_advancing"
+    ]
+  ],
+  "persona": "okay",
+  "pages": [
+    {
+      "step": "page_0",
+      "text": "Landforms on Earth",
+      "turns": [
+        {
+          "who": "T",
+          "text": "Today we will read Landforms on Earth. What do you think this reading may be about? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "What do I do?"
+        },
+        {
+          "who": "T",
+          "text": "Just tell me what you think Landforms on Earth may be about. It is okay to guess. [NEXT_STEP]"
+        }
+      ],
+      "prompt_sha256": "18f275762c8e64d910c4c63baf0f6dae353903bb357675d728a1a04fee4cd4dc"
+    },
+    {
+      "step": "page_1",
+      "text": "One interesting landform is a valley. A valley is a low area of land. It lies between mountains. Sometimes, there may be a river that flows through the valley.",
+      "turns": [
+        {
+          "who": "T",
+          "text": "What is a valley? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "What do I do?"
+        },
+        {
+          "who": "T",
+          "text": "You can look at the text for help. A valley is low land between mountains. Where may a river flow? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "A river can flow through it."
+        },
+        {
+          "who": "T",
+          "text": "Yes, a river may flow through a valley. A valley is low land between mountains. [NEXT_STEP]"
+        }
+      ],
+      "prompt_sha256": "c85050a15e9ea2920355f9c5cf78dfcd910355067a8af9f7c3f3cfa8737345f9"
+    },
+    {
+      "step": "page_2",
+      "text": "Glaciers are an important landform. However, most people will never see a glacier. Glaciers are found in colder areas. Each glacier is a huge piece of ice. It moves over the land.",
+      "turns": [
+        {
+          "who": "T",
+          "text": "What is a glacier made of? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "What do I do?"
+        },
+        {
+          "who": "T",
+          "text": "Look at the text for help. A glacier is a huge piece of ice. Where are glaciers found? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "In cold areas."
+        },
+        {
+          "who": "T",
+          "text": "Yes, glaciers are found in cold areas. They are huge pieces of ice that move over the land. [NEXT_STEP]"
+        }
+      ],
+      "prompt_sha256": "757e27c8cf6e33c4e4d355bf8e6b8033188d212ebf045719bcb892701b7d6648"
+    },
+    {
+      "step": "page_3",
+      "text": "An island is another type of landform. An island is land surrounded by water. On some islands, there are mountains, valleys, and cliffs.",
+      "turns": [
+        {
+          "who": "T",
+          "text": "Let's look at another landform. What is an island? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "What do I do?"
+        },
+        {
+          "who": "T",
+          "text": "You can look at the text for help. An island is land with water all around it. What landforms may be on some islands? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "Mountains, valleys and cliffs."
+        },
+        {
+          "who": "T",
+          "text": "Yes, some islands have mountains, valleys, and cliffs. An island is land surrounded by water. [NEXT_STEP]"
+        }
+      ],
+      "prompt_sha256": "3e8b2943d6a8aafbe7e9b3a5ca1639539e14f33b48f1f2c848c79c0f695beb94"
+    },
+    {
+      "step": "page_4",
+      "text": "A cave is often found in a cliff or a mountain.",
+      "turns": [
+        {
+          "who": "T",
+          "text": "Where may a cave be found? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "What do I do?"
+        },
+        {
+          "who": "T",
+          "text": "You can look at the text for help. A cave is often found in a cliff or a mountain. [NEXT_STEP]"
+        }
+      ],
+      "prompt_sha256": "bac235a681bfd18084d571ab2b9f7559edaf599afc5fa2a75e3ca685f4ea9401"
+    },
+    {
+      "step": "page_5",
+      "text": "Most people love islands. They especially love islands with beaches on them.",
+      "turns": [
+        {
+          "who": "T",
+          "text": "What do people especially love on islands? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "What do I do?"
+        },
+        {
+          "who": "T",
+          "text": "You can look at the text for help. It says people especially love islands with beaches. [TEMPLATE_FINISH]"
+        }
+      ],
+      "prompt_sha256": "a37dd6eeba5b60ae7a0ca62aedb66cbfca203c7a2a33e86fe8a3a381d08d6a54"
+    }
+  ],
+  "prompt_hashes": [
+    "18f275762c8e64d910c4c63baf0f6dae353903bb357675d728a1a04fee4cd4dc",
+    "c85050a15e9ea2920355f9c5cf78dfcd910355067a8af9f7c3f3cfa8737345f9",
+    "757e27c8cf6e33c4e4d355bf8e6b8033188d212ebf045719bcb892701b7d6648",
+    "3e8b2943d6a8aafbe7e9b3a5ca1639539e14f33b48f1f2c848c79c0f695beb94",
+    "bac235a681bfd18084d571ab2b9f7559edaf599afc5fa2a75e3ca685f4ea9401",
+    "a37dd6eeba5b60ae7a0ca62aedb66cbfca203c7a2a33e86fe8a3a381d08d6a54"
+  ],
+  "model": "gpt-5.6-luna",
+  "harness_version": "l4-meaning-first-v1-runtime-tag-history",
+  "transport_errors": []
+}

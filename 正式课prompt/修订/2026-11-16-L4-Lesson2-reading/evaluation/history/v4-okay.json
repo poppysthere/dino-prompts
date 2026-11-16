@@ -1,0 +1,156 @@
+{
+  "status": "completed",
+  "issues": [],
+  "persona": "okay",
+  "pages": [
+    {
+      "step": "page_0",
+      "text": "Landforms on Earth",
+      "turns": [
+        {
+          "who": "T",
+          "text": "Today we will learn about Landforms on Earth. What do you think this reading may be about? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "What do I do?"
+        },
+        {
+          "who": "T",
+          "text": "It is about different shapes of land on Earth. [NEXT_STEP]"
+        }
+      ],
+      "prompt_sha256": "bfb001c4447c4242ed7c60312c0381c726de13ce3029d15f4bb56afe0b0fcf91"
+    },
+    {
+      "step": "page_1",
+      "text": "One interesting landform is a valley. A valley is a low area of land. It lies between mountains. Sometimes, there may be a river that flows through the valley.",
+      "turns": [
+        {
+          "who": "T",
+          "text": "Where does a valley lie? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "What do I do?"
+        },
+        {
+          "who": "T",
+          "text": "Look at the text. A river may flow through a valley. What may flow through a valley? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "A river can flow through it."
+        },
+        {
+          "who": "T",
+          "text": "Yes, a river can flow through a valley. A valley is a low area between mountains. [NEXT_STEP]"
+        }
+      ],
+      "prompt_sha256": "f1f8e7867785846474fee76060f2af25a14d1e327f617437851db9525a0fb032"
+    },
+    {
+      "step": "page_2",
+      "text": "Glaciers are an important landform. However, most people will never see a glacier. Glaciers are found in colder areas. Each glacier is a huge piece of ice. It moves over the land.",
+      "turns": [
+        {
+          "who": "T",
+          "text": "What is a glacier made of? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "What do I do?"
+        },
+        {
+          "who": "T",
+          "text": "You can look at the text to find the answer. A glacier is a huge piece of ice. Where are glaciers found? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "In cold areas."
+        },
+        {
+          "who": "T",
+          "text": "Right. Glaciers are found in colder areas. They are huge pieces of ice that move over the land. [NEXT_STEP]"
+        }
+      ],
+      "prompt_sha256": "85b046aab7464bb20b49ef87bbe8eb43775472b508c5f8d3c5b862861b142d59"
+    },
+    {
+      "step": "page_3",
+      "text": "An island is another type of landform. An island is land surrounded by water. On some islands, there are mountains, valleys, and cliffs.",
+      "turns": [
+        {
+          "who": "T",
+          "text": "What surrounds an island? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "What do I do?"
+        },
+        {
+          "who": "T",
+          "text": "Look at the text. An island is land with water all around it. What landform can be on some islands? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "Mountains, valleys and cliffs."
+        },
+        {
+          "who": "T",
+          "text": "Yes. Some islands have mountains, valleys, or cliffs. An island is land surrounded by water. [NEXT_STEP]"
+        }
+      ],
+      "prompt_sha256": "0809bc9c2a94fdae9c816b17684a0aa6aafce2ed2678e2729984ccacd5f4473b"
+    },
+    {
+      "step": "page_4",
+      "text": "A cave is often found in a cliff or a mountain.",
+      "turns": [
+        {
+          "who": "T",
+          "text": "Where does the text say a cave is often found? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "What do I do?"
+        },
+        {
+          "who": "T",
+          "text": "You can look at the sentence. A cave is often found in a cliff or a mountain. [NEXT_STEP]"
+        }
+      ],
+      "prompt_sha256": "3176e2f8c6aed4d5331f8844f39ae921c0f95fd37099079497d8767fffb3bd1b"
+    },
+    {
+      "step": "page_5",
+      "text": "Most people love islands. They especially love islands with beaches on them.",
+      "turns": [
+        {
+          "who": "T",
+          "text": "What kind of islands do people especially love? [STUDENT_TALK]"
+        },
+        {
+          "who": "K",
+          "text": "What do I do?"
+        },
+        {
+          "who": "T",
+          "text": "Look at the text. It says people especially love islands with beaches. [TEMPLATE_FINISH]"
+        }
+      ],
+      "prompt_sha256": "61c3c1a4d47db0a95b9aa0153ddacf485e746c7c2fe2e1ccf8680e37909c9205"
+    }
+  ],
+  "prompt_hashes": [
+    "bfb001c4447c4242ed7c60312c0381c726de13ce3029d15f4bb56afe0b0fcf91",
+    "f1f8e7867785846474fee76060f2af25a14d1e327f617437851db9525a0fb032",
+    "85b046aab7464bb20b49ef87bbe8eb43775472b508c5f8d3c5b862861b142d59",
+    "0809bc9c2a94fdae9c816b17684a0aa6aafce2ed2678e2729984ccacd5f4473b",
+    "3176e2f8c6aed4d5331f8844f39ae921c0f95fd37099079497d8767fffb3bd1b",
+    "61c3c1a4d47db0a95b9aa0153ddacf485e746c7c2fe2e1ccf8680e37909c9205"
+  ],
+  "model": "gpt-5.6-luna",
+  "harness_version": "l4-meaning-first-v2-question-only-child-routing",
+  "transport_errors": []
+}

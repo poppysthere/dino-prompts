@@ -1,0 +1,128 @@
+{
+  "status": "published_to_test02_for_user_manual_test",
+  "published_at": "2026-11-16T10:49:27.909034+00:00",
+  "tree_id": 998,
+  "tree_name": "Test02MCL1_6U1",
+  "lesson_id": 772,
+  "instance_id": 6921,
+  "segments_verified": 8,
+  "raw_texts": 4,
+  "readback_verified": true,
+  "production_acceptance": false,
+  "unchanged_contexts": [
+    6904,
+    6905,
+    6908,
+    6909,
+    6910,
+    6913,
+    6914,
+    6917,
+    6918,
+    6922,
+    6923,
+    6924,
+    6925,
+    6928,
+    6929,
+    6930,
+    6931,
+    6933,
+    6940,
+    6942,
+    6945,
+    6946,
+    6948,
+    6951,
+    6954,
+    6958,
+    6962,
+    6963,
+    6964,
+    6967,
+    6968,
+    6970,
+    6971,
+    6973,
+    6976,
+    6978,
+    6981,
+    7380
+  ],
+  "unchanged_common_prompt_id": 2125,
+  "course_tree_unchanged": true,
+  "common": {
+    "promptId": 2135,
+    "promptCode": "test02_l4_reading_meaning_20261116_043d098ac5cf",
+    "versionId": 3412,
+    "sha256": "043d098ac5cf004fd57f94bf520bc705f304b48472b3c8c6ff00d59c8a602fb2"
+  },
+  "versions": [
+    {
+      "promptId": 1922,
+      "promptCode": "reader_teach_rules-X-772-v1-24204",
+      "versionId": 3413,
+      "sha256": "368c999f74d2b163d1fc08688a40a3c594c7bc35a734b04943688b9a10eb90ad",
+      "previousVersionId": 3364
+    },
+    {
+      "promptId": 1923,
+      "promptCode": "reader_teach_rules_page-X-772-v1-24204",
+      "versionId": 3414,
+      "sha256": "5ff7734667650576d1710d22c978a64a2621953b5bdf3391de7a5d43c2aca0ef",
+      "previousVersionId": 3366
+    },
+    {
+      "promptId": 1924,
+      "promptCode": "reader_teach_rules_cover-X-772-v1-24204",
+      "versionId": 3415,
+      "sha256": "9753f712b49b133ced948284d133fd36e468c3a1912e34cccca66028e77f3f99",
+      "previousVersionId": 3365
+    }
+  ],
+  "steps": [
+    {
+      "stepCode": "page_0",
+      "promptId": 1924,
+      "isLastStep": false,
+      "sha256": "9753f712b49b133ced948284d133fd36e468c3a1912e34cccca66028e77f3f99"
+    },
+    {
+      "stepCode": "page_1",
+      "promptId": 1923,
+      "isLastStep": false,
+      "sha256": "5ff7734667650576d1710d22c978a64a2621953b5bdf3391de7a5d43c2aca0ef"
+    },
+    {
+      "stepCode": "page_2",
+      "promptId": 1923,
+      "isLastStep": false,
+      "sha256": "5ff7734667650576d1710d22c978a64a2621953b5bdf3391de7a5d43c2aca0ef"
+    },
+    {
+      "stepCode": "page_3",
+      "promptId": 1923,
+      "isLastStep": false,
+      "sha256": "5ff7734667650576d1710d22c978a64a2621953b5bdf3391de7a5d43c2aca0ef"
+    },
+    {
+      "stepCode": "page_4",
+      "promptId": 1923,
+      "isLastStep": false,
+      "sha256": "5ff7734667650576d1710d22c978a64a2621953b5bdf3391de7a5d43c2aca0ef"
+    },
+    {
+      "stepCode": "page_5",
+      "promptId": 1923,
+      "isLastStep": true,
+      "sha256": "5ff7734667650576d1710d22c978a64a2621953b5bdf3391de7a5d43c2aca0ef"
+    }
+  ],
+  "source_lock": {
+    "prompts/common.md": "043d098ac5cf004fd57f94bf520bc705f304b48472b3c8c6ff00d59c8a602fb2",
+    "prompts/cover.md": "9753f712b49b133ced948284d133fd36e468c3a1912e34cccca66028e77f3f99",
+    "prompts/page.md": "5ff7734667650576d1710d22c978a64a2621953b5bdf3391de7a5d43c2aca0ef",
+    "prompts/template.md": "368c999f74d2b163d1fc08688a40a3c594c7bc35a734b04943688b9a10eb90ad",
+    "overrides.json": "88632067a6a7560cfdcad65a806a7e04f7944ccef98bad97b31a9d1d708b79e7"
+  }
+}
