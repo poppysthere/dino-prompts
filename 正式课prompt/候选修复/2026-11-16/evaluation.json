@@ -1,0 +1,974 @@
+{
+  "revision": "2026-11-16-prompt-repair",
+  "accepted": false,
+  "deployed_to_forge": false,
+  "model": "gpt-5.6-luna",
+  "harness_version": "2026-11-16-tag-history-v2-controls-omitted",
+  "scope": "Candidate source repair; Forge debug synthetic text replay, not App/RTC/ASR/TTS validation.",
+  "static": {
+    "changed_instances": 132,
+    "changed_segments": 322,
+    "assembled_pages": 288,
+    "issues": []
+  },
+  "fixed_cases": {
+    "planned": 28,
+    "current": 28,
+    "behavior_failures": 0,
+    "results": [
+      {
+        "id": "C1",
+        "mode": "runtime",
+        "level": 4,
+        "instance": 6964,
+        "step": "step_6",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "You ask me. What lives in mountains? [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "老师你说什么"
+          },
+          {
+            "role": "assistant",
+            "content": "What lives in mountains? [STUDENT_TALK]"
+          },
+          {
+            "role": "control",
+            "content": "The student has been silent for 8 seconds. Give one short encouraging nudge and continue.\n"
+          }
+        ],
+        "reply": "Wild animals live in mountains. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "1a11e2addba9be20d48c920ccfb384c0bcf80c4a7ad19be8e40674a8dd8c2c8b",
+        "input_sha256": "994f6b632a61df86ba69b559fa074109fe2146716be1e23d0253ebac3cd279af"
+      },
+      {
+        "id": "C1",
+        "mode": "legacy",
+        "level": 4,
+        "instance": 6964,
+        "step": "step_6",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "You ask me. What lives in mountains? [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "老师你说什么"
+          },
+          {
+            "role": "assistant",
+            "content": "What lives in mountains? [STUDENT_TALK]"
+          },
+          {
+            "role": "control",
+            "content": "The student has been silent for 8 seconds. Give one short encouraging nudge and continue.\n"
+          }
+        ],
+        "reply": "Wild animals live in mountains. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "1a11e2addba9be20d48c920ccfb384c0bcf80c4a7ad19be8e40674a8dd8c2c8b",
+        "input_sha256": "1e62a11193a8400b35917fe5bd3f122b5a7fac400f0e124d9917d1dce78bce2a"
+      },
+      {
+        "id": "C2",
+        "mode": "runtime",
+        "level": 4,
+        "instance": 7380,
+        "step": "step_7",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          }
+        ],
+        "reply": "We use this question to ask about the number of things in a place. Listen. How many elephants do you see on the plain? I see seven elephants on the plain. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "e778a8b1d54c84237123b1f27c9a210322cd09faab4dfebba2ecd71d11dfcc7e",
+        "input_sha256": "4ef91b1ba387340ae405673fcf1fae990919ead905c10dcc985230488f5d7d84"
+      },
+      {
+        "id": "C2",
+        "mode": "legacy",
+        "level": 4,
+        "instance": 7380,
+        "step": "step_7",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          }
+        ],
+        "reply": "We use this question to ask how many things are in a place. Listen. How many elephants do you see on the plain? I see seven elephants on the plain. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "e778a8b1d54c84237123b1f27c9a210322cd09faab4dfebba2ecd71d11dfcc7e",
+        "input_sha256": "b401a0a8d6a5aa5ea71a49e5afeca8d69a95365096ea52a79faa30ee3900f5fa"
+      },
+      {
+        "id": "C3",
+        "mode": "runtime",
+        "level": 4,
+        "instance": 7380,
+        "step": "step_6",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "You ask me. What lives in mountains? [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "What do I do?"
+          }
+        ],
+        "reply": "Wild animals live in mountains. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "4d23055a982a4fe99b70afe4465358def60fa00e1cd484153297478fc480bc2c",
+        "input_sha256": "cd5155449872e0bd04f871cd4b084a5904d60c697612f9c2475d8fe1d99479f6"
+      },
+      {
+        "id": "C3",
+        "mode": "legacy",
+        "level": 4,
+        "instance": 7380,
+        "step": "step_6",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "You ask me. What lives in mountains? [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "What do I do?"
+          }
+        ],
+        "reply": "Wild animals live in mountains. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "4d23055a982a4fe99b70afe4465358def60fa00e1cd484153297478fc480bc2c",
+        "input_sha256": "ff08dff4c967d8e0c98d04593f875786f67937fd0e71b72dba332f511d919b10"
+      },
+      {
+        "id": "C4",
+        "mode": "runtime",
+        "level": 5,
+        "instance": 7021,
+        "step": "page_3",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "This part is about Emma helping Stella with schoolwork. Read the whole part aloud. [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "Yes."
+          },
+          {
+            "role": "assistant",
+            "content": "Let's do a short sentence together. Say this. Emma helped her find out how to solve the problems. [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "Yes."
+          }
+        ],
+        "reply": "Emma helped Stella with her math homework, and Stella was happy and grateful. They helped each other all the time. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "9a6e66e200dfc08f3084acd0ec51b3289ba91bd70b8b8f8eaa0336997a878832",
+        "input_sha256": "fa1eb331a062dd3203a25b387041dcfc88760de1b99617e8c8fa62d6f65549b4"
+      },
+      {
+        "id": "C4",
+        "mode": "legacy",
+        "level": 5,
+        "instance": 7021,
+        "step": "page_3",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "This part is about Emma helping Stella with schoolwork. Read the whole part aloud. [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "Yes."
+          },
+          {
+            "role": "assistant",
+            "content": "Let's do a short sentence together. Say this. Emma helped her find out how to solve the problems. [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "Yes."
+          }
+        ],
+        "reply": "Stella had difficulty with her math homework. Emma helped her solve the problems, and Stella was happy and grateful. They helped each other all the time. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "9a6e66e200dfc08f3084acd0ec51b3289ba91bd70b8b8f8eaa0336997a878832",
+        "input_sha256": "d2647ec08e29a9e42cb69cb3988bac0708ddfe988ee49eca6bf5d67d3d8e213a"
+      },
+      {
+        "id": "C5",
+        "mode": "runtime",
+        "level": 4,
+        "instance": 6954,
+        "step": "step_2",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "You ask me. What do you see? [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "I see a cave."
+          }
+        ],
+        "reply": "Yes, I see a cave. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "dfb01120dd3d5d9bc901ee03c3cfc0825bc6888376206e12d915c55d04e8485a",
+        "input_sha256": "5a9b1f1a65ec2d8af0cdc6e117f511e396efff4e07bbc2ec47627a299b1cbe7c"
+      },
+      {
+        "id": "C5",
+        "mode": "legacy",
+        "level": 4,
+        "instance": 6954,
+        "step": "step_2",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "You ask me. What do you see? [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "I see a cave."
+          }
+        ],
+        "reply": "Great! [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "dfb01120dd3d5d9bc901ee03c3cfc0825bc6888376206e12d915c55d04e8485a",
+        "input_sha256": "d08939b4e0408906a038180472f9ada21d956e46ddf5b58bd8f3c3f70cdc2752"
+      },
+      {
+        "id": "C6",
+        "mode": "runtime",
+        "level": 4,
+        "instance": 6964,
+        "step": "step_5",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "You ask me. What lives in mountains? [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "What do I do?"
+          }
+        ],
+        "reply": "Rabbits, foxes, and bears live in mountains. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "da14db87321440e4fbf23e05644e6c2ea122d52196eef9d73ada62d3a03d81c1",
+        "input_sha256": "89e32bdc52c0f0071ddf0caffec6628390745ec11b943c181bb02ed06bf64b82"
+      },
+      {
+        "id": "C6",
+        "mode": "legacy",
+        "level": 4,
+        "instance": 6964,
+        "step": "step_5",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "You ask me. What lives in mountains? [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "What do I do?"
+          }
+        ],
+        "reply": "Rabbits, foxes, and bears live in mountains. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "da14db87321440e4fbf23e05644e6c2ea122d52196eef9d73ada62d3a03d81c1",
+        "input_sha256": "b41000c62763fc8c0d9c9c8e5af9b00dceb97cdb848eb289bb74d7aa8dd0822d"
+      },
+      {
+        "id": "R1",
+        "mode": "runtime",
+        "level": 6,
+        "instance": 7105,
+        "step": "page_2",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "This part explains two ways structural adaptations help animals survive. Read the whole part aloud. [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "What do I do?"
+          },
+          {
+            "role": "assistant",
+            "content": "This part explains how structural adaptations help animals catch food or avoid becoming food. Read the whole part aloud. [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "Yes."
+          }
+        ],
+        "reply": "Structural adaptations help animals survive. Some help animals catch food, while others keep them from becoming other animals' food. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "1e9a65e0ab6b08da9414322958c68233a3b3cc018977a830233f1e81a6c24ada",
+        "input_sha256": "71702051b24c4888f1293d757e8d7740500766779cb8ad1dc04ba8d1fe86fe0f"
+      },
+      {
+        "id": "R1",
+        "mode": "legacy",
+        "level": 6,
+        "instance": 7105,
+        "step": "page_2",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "This part explains two ways structural adaptations help animals survive. Read the whole part aloud. [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "What do I do?"
+          },
+          {
+            "role": "assistant",
+            "content": "This part explains how structural adaptations help animals catch food or avoid becoming food. Read the whole part aloud. [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "Yes."
+          }
+        ],
+        "reply": "Structural adaptations can help animals catch food or keep them from becoming other animals' food. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "1e9a65e0ab6b08da9414322958c68233a3b3cc018977a830233f1e81a6c24ada",
+        "input_sha256": "4a22a77f7d0bc1c50efa1b81e0e5fe3ff6713e06ccc69e8dec9c44224a4d9827"
+      },
+      {
+        "id": "R2",
+        "mode": "runtime",
+        "level": 1,
+        "instance": 6546,
+        "step": "sentence_0",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "Say this. What's this? [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "What do I do?"
+          }
+        ],
+        "reply": "Listen. What's this? [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "b2407ad4156dbc6c9d24ca91d9ce14d547cb1a4ba9bbc8ed3ddaa9f7306cd8ad",
+        "input_sha256": "a81b4a8a7173c8aab7e9e2df58705e7030be5c005944912418a4008f3278ed03"
+      },
+      {
+        "id": "R2",
+        "mode": "legacy",
+        "level": 1,
+        "instance": 6546,
+        "step": "sentence_0",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "Say this. What's this? [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "What do I do?"
+          }
+        ],
+        "reply": "Listen. What's this? [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "b2407ad4156dbc6c9d24ca91d9ce14d547cb1a4ba9bbc8ed3ddaa9f7306cd8ad",
+        "input_sha256": "9ef17ce119e0eede5db15be9e97c614fe61947df6ca578756092334f969d2e7e"
+      },
+      {
+        "id": "R3",
+        "mode": "runtime",
+        "level": 2,
+        "instance": 6619,
+        "step": "sentence_1",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "Look, a student is painting. Say this. It is art class. [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "What do I do?"
+          }
+        ],
+        "reply": "It is art class. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "66dbabaa394164ef1e785f64b89a88c349af8a89aef60c0ee40733090d407bd0",
+        "input_sha256": "f4577b7d051e2ada58d0ddb9e2196408d942720b17bef08a84cbac2c78cafa94"
+      },
+      {
+        "id": "R3",
+        "mode": "legacy",
+        "level": 2,
+        "instance": 6619,
+        "step": "sentence_1",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "Look, a student is painting. Say this. It is art class. [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "What do I do?"
+          }
+        ],
+        "reply": "It is art class. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "66dbabaa394164ef1e785f64b89a88c349af8a89aef60c0ee40733090d407bd0",
+        "input_sha256": "511301fa4a0707f2ba07a8ed27edeb77bdf711fa27d19ed7a8dfcb0a181a6eb2"
+      },
+      {
+        "id": "R4",
+        "mode": "runtime",
+        "level": 3,
+        "instance": 6839,
+        "step": "step_1",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "What classes do you have on Friday? [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "What do I do?"
+          }
+        ],
+        "reply": "I have English and math on Friday. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "e1d2a1a34c31e028c379cd06c524f328f1d6cd7c6670f1f25f96b5212501ba94",
+        "input_sha256": "0585a160773532c780bce4aa98ece6eb337b8c03a6f43aadf62853a0ad7fd3b3"
+      },
+      {
+        "id": "R4",
+        "mode": "legacy",
+        "level": 3,
+        "instance": 6839,
+        "step": "step_1",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "What classes do you have on Friday? [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "What do I do?"
+          }
+        ],
+        "reply": "I have English and math on Friday. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "e1d2a1a34c31e028c379cd06c524f328f1d6cd7c6670f1f25f96b5212501ba94",
+        "input_sha256": "48c776f22ed27362e589a6a3f7eba2028f30baa647248716bf08bcaaff2e6b9a"
+      },
+      {
+        "id": "R5",
+        "mode": "runtime",
+        "level": 3,
+        "instance": 6840,
+        "step": "step_3",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "What day is it today? [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "What do I do?"
+          }
+        ],
+        "reply": "What day is it today? It's Sunday. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "903ded59c43b7f851f49ac93666765aca4ba35b5335fa3ef4dff00cd0d6c3b13",
+        "input_sha256": "36844c8942f2ac2b4e7a6eeccc830d7425e4969a602749caf393a6ffeb84e0a1"
+      },
+      {
+        "id": "R5",
+        "mode": "legacy",
+        "level": 3,
+        "instance": 6840,
+        "step": "step_3",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "What day is it today? [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "What do I do?"
+          }
+        ],
+        "reply": "It's Sunday. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "903ded59c43b7f851f49ac93666765aca4ba35b5335fa3ef4dff00cd0d6c3b13",
+        "input_sha256": "32ecd168b2feba939186dac4f16bf329ce07d3e84cae68bd9b17cc443c3e49da"
+      },
+      {
+        "id": "R6",
+        "mode": "runtime",
+        "level": 3,
+        "instance": 6842,
+        "step": "step_1",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "What day comes before Wednesday? [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "What day comes before Wednesday? Tuesday comes before Wednesday."
+          }
+        ],
+        "reply": "That's right. Tuesday comes before Wednesday. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "5537c04a429a48f8585ad852ba9d3adf62f2240274d1b585643e556ae90cd772",
+        "input_sha256": "9609a3c67c0de0b48bd043b7f4c3507373b05f2b82900127993563cf32783dd7"
+      },
+      {
+        "id": "R6",
+        "mode": "legacy",
+        "level": 3,
+        "instance": 6842,
+        "step": "step_1",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "What day comes before Wednesday? [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "What day comes before Wednesday? Tuesday comes before Wednesday."
+          }
+        ],
+        "reply": "That's right. Tuesday comes before Wednesday. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "5537c04a429a48f8585ad852ba9d3adf62f2240274d1b585643e556ae90cd772",
+        "input_sha256": "e0b5d70afc3ec1b58be9d2abcaf5f4f99dd1a1eca0c64e8c12a64a6c691cb1cc"
+      },
+      {
+        "id": "R7",
+        "mode": "runtime",
+        "level": 3,
+        "instance": 6842,
+        "step": "step_1",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "What day comes before Wednesday? [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "What do I do?"
+          }
+        ],
+        "reply": "Tuesday comes before Wednesday. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "5537c04a429a48f8585ad852ba9d3adf62f2240274d1b585643e556ae90cd772",
+        "input_sha256": "db1e9d708706a7f5be351f23491020bd319cedee9c91648c47b1ddb138456b7f"
+      },
+      {
+        "id": "R7",
+        "mode": "legacy",
+        "level": 3,
+        "instance": 6842,
+        "step": "step_1",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "What day comes before Wednesday? [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "What do I do?"
+          }
+        ],
+        "reply": "Tuesday comes before Wednesday. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "5537c04a429a48f8585ad852ba9d3adf62f2240274d1b585643e556ae90cd772",
+        "input_sha256": "431f6e2002ab184a68e9e37f40c6ed60ebedfb6a0299fb6f88147784114e19f1"
+      },
+      {
+        "id": "R8",
+        "mode": "runtime",
+        "level": 6,
+        "instance": 7105,
+        "step": "page_0",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "Please read the title: Structural Adaptations. [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "What do I do?"
+          },
+          {
+            "role": "assistant",
+            "content": "Read the title aloud: Structural Adaptations. [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "Yes."
+          }
+        ],
+        "reply": "Okay. The title is Structural Adaptations. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "bd4320ce618d5b4ac8fd39032609ceb95ce1e104e93a6166521c8ad5ab0154f1",
+        "input_sha256": "e03835a40c78ba94cac69ff93cc82adbdb3b254f243d4f3c00e17ecbde88b2fa"
+      },
+      {
+        "id": "R8",
+        "mode": "legacy",
+        "level": 6,
+        "instance": 7105,
+        "step": "page_0",
+        "input_current_step": [
+          {
+            "role": "control",
+            "content": "The UI is ready. Continue the lesson from where you left off,or start if nothing has begun yet.\n"
+          },
+          {
+            "role": "assistant",
+            "content": "Please read the title: Structural Adaptations. [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "What do I do?"
+          },
+          {
+            "role": "assistant",
+            "content": "Read the title aloud: Structural Adaptations. [STUDENT_TALK]"
+          },
+          {
+            "role": "user",
+            "content": "Yes."
+          }
+        ],
+        "reply": "Structural adaptations are body parts that help animals live in their environments. [NEXT_STEP]",
+        "status": "completed",
+        "issues": [],
+        "prompt_sha256": "bd4320ce618d5b4ac8fd39032609ceb95ce1e104e93a6166521c8ad5ab0154f1",
+        "input_sha256": "ffe46527c3cb81ca8ed9a5c8e082711833a1929f3e77d01b1288865ba60cc045"
+      }
+    ]
+  },
+  "whole_activities": {
+    "planned": 89,
+    "current": 89,
+    "complete_without_model_error": 89,
+    "levels": {
+      "1": 12,
+      "2": 12,
+      "3": 17,
+      "4": 22,
+      "5": 13,
+      "6": 13
+    },
+    "unique_instances": 40,
+    "pages": 296,
+    "teacher_replies": 631,
+    "missing": [],
+    "behavior_findings": [],
+    "style_findings": [
+      {
+        "job": {
+          "level": 1,
+          "instance": 6526,
+          "persona": "help",
+          "kind": "warm-up-template_l1l2"
+        },
+        "issues": [
+          [
+            "TEMPLATE",
+            "tts_punctuation"
+          ]
+        ],
+        "file": "whole-results/1-6526-help-3ae9f564d590.json"
+      },
+      {
+        "job": {
+          "level": 3,
+          "instance": 6840,
+          "persona": "success",
+          "kind": "sentence_frame_teach"
+        },
+        "issues": [
+          [
+            "step_0",
+            "tts_punctuation"
+          ]
+        ],
+        "file": "whole-results/3-6840-success-8d23dec0c2b5.json"
+      },
+      {
+        "job": {
+          "level": 3,
+          "instance": 6840,
+          "persona": "silent",
+          "kind": "sentence_frame_teach"
+        },
+        "issues": [
+          [
+            "step_0",
+            "tts_punctuation"
+          ],
+          [
+            "step_1",
+            "tts_punctuation"
+          ],
+          [
+            "step_3",
+            "tts_punctuation"
+          ]
+        ],
+        "file": "whole-results/3-6840-silent-7e5419d14512.json"
+      }
+    ],
+    "evidence_files": [
+      "whole-results/1-6526-silent-b2790d116572.json",
+      "whole-results/1-6526-help-3ae9f564d590.json",
+      "whole-results/1-6539-silent-7f6aa227f89e.json",
+      "whole-results/1-6539-help-2024eef06bdf.json",
+      "whole-results/1-6545-silent-25b785dc19d9.json",
+      "whole-results/1-6545-help-abf255bb42c7.json",
+      "whole-results/1-6546-silent-cbdd1b2263ac.json",
+      "whole-results/1-6546-help-6a38d7a0b96f.json",
+      "whole-results/1-6547-silent-7a8de4ac9aed.json",
+      "whole-results/1-6547-help-912b69d33734.json",
+      "whole-results/1-6563-silent-063c4079792c.json",
+      "whole-results/1-6563-help-c2c990a0d3b4.json",
+      "whole-results/2-6602-silent-dd2c1e5ed43f.json",
+      "whole-results/2-6602-help-c764e1302157.json",
+      "whole-results/2-6612-silent-63b3147c53cc.json",
+      "whole-results/2-6612-help-014a82cd7208.json",
+      "whole-results/2-6618-silent-9595037d7ef9.json",
+      "whole-results/2-6618-help-73e9cdbe9d62.json",
+      "whole-results/2-6619-silent-582af75ea0d6.json",
+      "whole-results/2-6619-help-873d9f5a04ce.json",
+      "whole-results/2-6633-silent-54bb148560d8.json",
+      "whole-results/2-6633-help-d45c12cb31e5.json",
+      "whole-results/2-6638-silent-cf5e4acd26d8.json",
+      "whole-results/2-6638-help-97c7c7477de7.json",
+      "whole-results/3-6839-success-dbfca8390258.json",
+      "whole-results/3-6839-help-4f33ab77ca4d.json",
+      "whole-results/3-6839-silent-0bb476f0b2af.json",
+      "whole-results/3-6840-success-8d23dec0c2b5.json",
+      "whole-results/3-6840-help-138c6d0d88c8.json",
+      "whole-results/3-6840-silent-7e5419d14512.json",
+      "whole-results/3-6842-success-9deda079233d.json",
+      "whole-results/3-6842-help-4cd870f7a3b8.json",
+      "whole-results/3-6842-silent-4e109c6cb3b3.json",
+      "whole-results/3-6787-silent-9ebe30e465ad.json",
+      "whole-results/3-6787-help-644ae7ab6585.json",
+      "whole-results/3-6804-silent-8001a0aecd88.json",
+      "whole-results/3-6804-help-12d4522c9976.json",
+      "whole-results/3-6857-silent-13cf66985a63.json",
+      "whole-results/3-6857-help-d0b51c790936-retry1.json",
+      "whole-results/3-6864-silent-058fe7379614.json",
+      "whole-results/3-6864-help-934f3920675c.json",
+      "whole-results/4-6921-success-4cde0c002de5.json",
+      "whole-results/4-6921-help-a5a622761b45.json",
+      "whole-results/4-6921-silent-a5b549948a98.json",
+      "whole-results/4-6954-success-c7359fbbf98a.json",
+      "whole-results/4-6954-help-5be36aa5b36f.json",
+      "whole-results/4-6954-silent-871b6db2cbbf.json",
+      "whole-results/4-6964-success-e4f13ddd40cc.json",
+      "whole-results/4-6964-help-cf7b04b104dc.json",
+      "whole-results/4-6964-silent-170f646c0e22.json",
+      "whole-results/4-7380-success-ee446266b5af.json",
+      "whole-results/4-7380-help-6d6b4405ac28-resumed.json",
+      "whole-results/4-7380-silent-4a657b998f51.json",
+      "whole-results/4-6904-silent-fa67984552c9.json",
+      "whole-results/4-6904-help-f7dfd88ca329.json",
+      "whole-results/4-6922-silent-84d053f61131.json",
+      "whole-results/4-6922-help-4468cfbc1709.json",
+      "whole-results/4-6942-silent-6b0221bff504.json",
+      "whole-results/4-6942-help-d682b2a6c40a.json",
+      "whole-results/4-6946-silent-96dd1ded9fe7.json",
+      "whole-results/4-6946-help-298ad8613694.json",
+      "whole-results/4-6963-silent-efebfa5a2e49.json",
+      "whole-results/4-6963-help-f3c6d30866a5.json",
+      "whole-results/5-7021-success-eaa78330e9b3.json",
+      "whole-results/5-7021-help-35ababb389a8.json",
+      "whole-results/5-7021-silent-c5fd076b6cce.json",
+      "whole-results/5-7005-silent-bb50623d4a85.json",
+      "whole-results/5-7005-help-17b2db3ab261.json",
+      "whole-results/5-7023-silent-b0cd5383bc9f.json",
+      "whole-results/5-7023-help-0facfd8b1a97.json",
+      "whole-results/5-7051-silent-fc4e55936452.json",
+      "whole-results/5-7051-help-8590f1c0b9cc.json",
+      "whole-results/5-7055-silent-0140c2defd84.json",
+      "whole-results/5-7055-help-8f8f33dd3072.json",
+      "whole-results/5-7074-silent-78229183b7ab.json",
+      "whole-results/5-7074-help-b7400f604689-retry1.json",
+      "whole-results/6-7105-success-d5eb5f6a3606.json",
+      "whole-results/6-7105-help-2dc70c245819.json",
+      "whole-results/6-7105-silent-bae049407d4a.json",
+      "whole-results/6-7067-silent-380943dc16e8.json",
+      "whole-results/6-7067-help-cb792cd19c7c.json",
+      "whole-results/6-7083-silent-04c06950143d.json",
+      "whole-results/6-7083-help-6a33acc53ecd.json",
+      "whole-results/6-7127-silent-0b6aa6eb5551.json",
+      "whole-results/6-7127-help-dfe1b75c3c3e.json",
+      "whole-results/6-7128-silent-705683203ba2.json",
+      "whole-results/6-7128-help-9c65f6645571.json",
+      "whole-results/6-7132-silent-d17ac0c0a276.json",
+      "whole-results/6-7132-help-b5a0649e1636.json"
+    ]
+  },
+  "known_release_limits": [
+    "Retained C7 Azure content_filter sample from the previous candidate was not retried; provider/runtime handling remains unverified.",
+    "Normal TEMPLATE_FINISH has no last-step guard in the inspected runtime source; prompt-only fixes are not a deterministic runtime guard.",
+    "Source-default forced-finish and silence mechanisms were not executed by this replay. Effective Nacos configuration and Test02 Dino handoff applicability remain unverified.",
+    "Any listed punctuation style findings remain open. No real-child, TTS, ASR, RTC or end-to-end App release acceptance."
+  ],
+  "validation_notes": [
+    "Final sentence/context rules use one child opportunity. All fixed cases now require a content-only closing reply; no second invitation is allowed in these cases.",
+    "The past-tense feedback You read the passage. is not an imperative Read the passage.; its original regex flags were reviewed as false positives.",
+    "Automatic L1 hidden-question pages and fixed IP intro are exempt from first-child-invitation assertions.",
+    "Current-step control rows are omitted by convertToMessage; completed-step context still includes control rows. Latest control/student input is wrapped with runtime context.",
+    "All previous semantic failures remain saved under their original prompt hashes. Transient connection failures have separately retained retry files. One activity interrupted twice resumes from its five completed pages, preserving both failed attempts. No semantic or content-filter failure is retried."
+  ]
+}

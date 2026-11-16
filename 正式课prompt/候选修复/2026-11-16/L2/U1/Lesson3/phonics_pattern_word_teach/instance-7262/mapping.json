@@ -1,0 +1,32 @@
+{
+  "level": 2,
+  "unit": 1,
+  "lesson": 3,
+  "lesson_id": 749,
+  "instance_id": 7262,
+  "template_code": "phonics_pattern_word_teach",
+  "segments": [
+    {
+      "slot": "common",
+      "candidate_path": "prompts/L2/phonics_pattern_word_teach__common__f7248f66b5d0.md",
+      "candidate_sha256": "f7248f66b5d060f1f14ca0cae4f6b03107b095435872ce2f6deffea1d88f6826",
+      "bytes": 23363,
+      "baseline_path": "L2/公共规则/test02_l2_natural_pacing_20261114_4a99c6b2d028.md",
+      "baseline_source_sha256": "4a99c6b2d02895d7a846c7ddd675d8af735bfd749d7c7adb59939002b4e6a1db",
+      "source_prompt_id": 2102,
+      "source_prompt_code": "test02_l2_natural_pacing_20261114_4a99c6b2d028",
+      "candidate_forge_prompt_id": null
+    },
+    {
+      "slot": "template",
+      "candidate_path": "prompts/L2/phonics_pattern_word_teach__template__845a1c0a7e02.md",
+      "candidate_sha256": "845a1c0a7e02ede69e372e5770efe2b66f8306cb39f89a014632619942d75c20",
+      "bytes": 3476,
+      "baseline_path": "L2/U1/Lesson3/09-phonics_pattern_word_teach/instance-7262/template.md",
+      "baseline_source_sha256": "5c1f350e89cc9ba9aaf6b26bdd9a869dee570ba76ae24f8e0af92b04771081d9",
+      "source_prompt_id": 1871,
+      "source_prompt_code": "phonics_pattern_word_teach_rules-X-749-v1-30513",
+      "candidate_forge_prompt_id": null
+    }
+  ]
+}

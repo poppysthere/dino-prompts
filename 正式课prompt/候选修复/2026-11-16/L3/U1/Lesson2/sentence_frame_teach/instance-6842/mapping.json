@@ -1,0 +1,88 @@
+{
+  "level": 3,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 760,
+  "instance_id": 6842,
+  "template_code": "sentence_frame_teach",
+  "segments": [
+    {
+      "slot": "common",
+      "candidate_path": "prompts/L3/sentence_frame_teach__common__a6fd8217ac95.md",
+      "candidate_sha256": "a6fd8217ac9562911d3a5225dbfb85b5f3937b75474f12777c0895182692139e",
+      "bytes": 6880,
+      "baseline_path": "L3/公共规则/test02_l3_natural_pacing_20261114_22eca891b3e4.md",
+      "baseline_source_sha256": "22eca891b3e4cde805f404a9829e2c6b966a9eb44b24d1e184810c777bbd0976",
+      "source_prompt_id": 2103,
+      "source_prompt_code": "test02_l3_natural_pacing_20261114_22eca891b3e4",
+      "candidate_forge_prompt_id": null
+    },
+    {
+      "slot": "template",
+      "candidate_path": "prompts/L3/sentence_frame_teach__template__ac139bd0d9f7.md",
+      "candidate_sha256": "ac139bd0d9f771317e11e18b090c58db5b3085525a3c8758c905ee9b6b847a46",
+      "bytes": 460,
+      "baseline_path": "L3/U1/Lesson2/09-sentence_frame_teach/instance-6842/template.md",
+      "baseline_source_sha256": "33caf22f7dc412219d3087795138235c09c47dc2f44803b7d5ee2a6d2d94c56d",
+      "source_prompt_id": 1895,
+      "source_prompt_code": "sentence_frame_teach_rules-X-760-v1-22503",
+      "candidate_forge_prompt_id": null
+    },
+    {
+      "slot": "step",
+      "candidate_path": "prompts/L3/sentence_frame_teach__step__6c4e25a53e01.md",
+      "candidate_sha256": "6c4e25a53e014e2a88701470820a7487c623d58b9eb673ad0e8488b11fac4571",
+      "bytes": 1383,
+      "baseline_path": "L3/U1/Lesson2/09-sentence_frame_teach/instance-6842/steps/01-step_0.md",
+      "baseline_source_sha256": "45348bc45e6471a3dd0bd485f8ea88bb1bcca6029d39db90e0eea81635d6b427",
+      "source_prompt_id": 1896,
+      "source_prompt_code": "sentence_frame_teach_rules_frame-X-760-v1-22503",
+      "candidate_forge_prompt_id": null,
+      "stepCode": "step_0",
+      "type": "frame",
+      "isLastStep": false
+    },
+    {
+      "slot": "step",
+      "candidate_path": "prompts/L3/sentence_frame_teach__step__6b439dac0831.md",
+      "candidate_sha256": "6b439dac083176ac45560823fe4c446b87e433905b04d57536b48664fa10950d",
+      "bytes": 2802,
+      "baseline_path": "L3/U1/Lesson2/09-sentence_frame_teach/instance-6842/steps/02-step_1.md",
+      "baseline_source_sha256": "7224a6267b150c3a9e2252e09b663c3c1e8c7a363f466244c5c1c6e895281cc8",
+      "source_prompt_id": 1897,
+      "source_prompt_code": "sentence_frame_teach_rules_example-X-760-v1-22503",
+      "candidate_forge_prompt_id": null,
+      "stepCode": "step_1",
+      "type": "example",
+      "isLastStep": false
+    },
+    {
+      "slot": "step",
+      "candidate_path": "prompts/L3/sentence_frame_teach__step__6c4e25a53e01.md",
+      "candidate_sha256": "6c4e25a53e014e2a88701470820a7487c623d58b9eb673ad0e8488b11fac4571",
+      "bytes": 1383,
+      "baseline_path": "L3/U1/Lesson2/09-sentence_frame_teach/instance-6842/steps/03-step_2.md",
+      "baseline_source_sha256": "45348bc45e6471a3dd0bd485f8ea88bb1bcca6029d39db90e0eea81635d6b427",
+      "source_prompt_id": 1896,
+      "source_prompt_code": "sentence_frame_teach_rules_frame-X-760-v1-22503",
+      "candidate_forge_prompt_id": null,
+      "stepCode": "step_2",
+      "type": "frame",
+      "isLastStep": false
+    },
+    {
+      "slot": "step",
+      "candidate_path": "prompts/L3/sentence_frame_teach__step__6b439dac0831.md",
+      "candidate_sha256": "6b439dac083176ac45560823fe4c446b87e433905b04d57536b48664fa10950d",
+      "bytes": 2802,
+      "baseline_path": "L3/U1/Lesson2/09-sentence_frame_teach/instance-6842/steps/04-step_3.md",
+      "baseline_source_sha256": "7224a6267b150c3a9e2252e09b663c3c1e8c7a363f466244c5c1c6e895281cc8",
+      "source_prompt_id": 1897,
+      "source_prompt_code": "sentence_frame_teach_rules_example-X-760-v1-22503",
+      "candidate_forge_prompt_id": null,
+      "stepCode": "step_3",
+      "type": "example",
+      "isLastStep": true
+    }
+  ]
+}

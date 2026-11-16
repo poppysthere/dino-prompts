@@ -1,0 +1,32 @@
+{
+  "level": 6,
+  "unit": 1,
+  "lesson": 3,
+  "lesson_id": 797,
+  "instance_id": 7154,
+  "template_code": "free_talk_images",
+  "segments": [
+    {
+      "slot": "common",
+      "candidate_path": "prompts/L6/free_talk_images__common__6f47769bd630.md",
+      "candidate_sha256": "6f47769bd6307a3c75f9e27adfe26928e10ae201a40fb6fa9b92e3dee36a33c3",
+      "bytes": 22834,
+      "baseline_path": "L6/公共规则/test02_l6_natural_pacing_20261114_a6f82470f64f.md",
+      "baseline_source_sha256": "a6f82470f64f05ac0f2ddbbb41c64288952249b572b8a5fdf4352d13a7d6887b",
+      "source_prompt_id": 2113,
+      "source_prompt_code": "test02_l6_natural_pacing_20261114_a6f82470f64f",
+      "candidate_forge_prompt_id": null
+    },
+    {
+      "slot": "template",
+      "candidate_path": "prompts/L6/free_talk_images__template__ceec805226e4.md",
+      "candidate_sha256": "ceec805226e49335ae3894a2109aa75f99f9baaa69827619163c46df216511a7",
+      "bytes": 12960,
+      "baseline_path": "L6/U1/Lesson3/09-free_talk_images/instance-7154/template.md",
+      "baseline_source_sha256": "ac50e306fd662c565379b69bea9516f2a02fe2dc8adc19fda8a210d5d8c5af1d",
+      "source_prompt_id": 2002,
+      "source_prompt_code": "free_talk_rules-X-797-v1-30441",
+      "candidate_forge_prompt_id": null
+    }
+  ]
+}

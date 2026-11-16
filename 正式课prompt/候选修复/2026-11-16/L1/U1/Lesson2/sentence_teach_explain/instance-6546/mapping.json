@@ -1,0 +1,102 @@
+{
+  "level": 1,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 736,
+  "instance_id": 6546,
+  "template_code": "sentence_teach_explain",
+  "segments": [
+    {
+      "slot": "common",
+      "candidate_path": "prompts/L1/sentence_teach_explain__common__95fca1956fb7.md",
+      "candidate_sha256": "95fca1956fb7f100788bd90790bc6f5812da72a4123b6dd3761df8d7dbf6f0c0",
+      "bytes": 7116,
+      "baseline_path": "L1/公共规则/test02_l1_natural_pacing_20261114_5ae02cb1038d.md",
+      "baseline_source_sha256": "5ae02cb1038df76f5a69ae58fecfa3d2fe263757ebc311b3069c79dbd9c12e99",
+      "source_prompt_id": 2097,
+      "source_prompt_code": "test02_l1_natural_pacing_20261114_5ae02cb1038d",
+      "candidate_forge_prompt_id": null
+    },
+    {
+      "slot": "template",
+      "candidate_path": "prompts/L1/sentence_teach_explain__template__f465c3739385.md",
+      "candidate_sha256": "f465c3739385890c221dff1a05e578c6cae0d0430e46996d319db7439f884336",
+      "bytes": 2,
+      "baseline_path": "L1/U1/Lesson2/04-sentence_teach_explain/instance-6546/template.md",
+      "baseline_source_sha256": "493ab1b68a6da4796b57a71218c8ba9101e8ec6c97e420ee5d17eb9b7f274352",
+      "source_prompt_id": 1177,
+      "source_prompt_code": "sentence_teach_explain_rules-X-736-v1-20011",
+      "candidate_forge_prompt_id": null
+    },
+    {
+      "slot": "step",
+      "candidate_path": "prompts/L1/sentence_teach_explain__step__370952c762be.md",
+      "candidate_sha256": "370952c762be93811d0740113fc96ff5371f78a322ee3b1ca672a13052bb8606",
+      "bytes": 3349,
+      "baseline_path": "L1/U1/Lesson2/04-sentence_teach_explain/instance-6546/steps/01-sentence_0.md",
+      "baseline_source_sha256": "0a68bebc42acb135a2ed3bc042500161cbd0c4172f8612fcf7bd51b74ea2fbf8",
+      "source_prompt_id": 1178,
+      "source_prompt_code": "sentence_teach_explain_rules_context-X-736-v1-20011",
+      "candidate_forge_prompt_id": null,
+      "stepCode": "sentence_0",
+      "type": "context",
+      "isLastStep": false
+    },
+    {
+      "slot": "step",
+      "candidate_path": "prompts/L1/sentence_teach_explain__step__370952c762be.md",
+      "candidate_sha256": "370952c762be93811d0740113fc96ff5371f78a322ee3b1ca672a13052bb8606",
+      "bytes": 3349,
+      "baseline_path": "L1/U1/Lesson2/04-sentence_teach_explain/instance-6546/steps/02-sentence_1.md",
+      "baseline_source_sha256": "0a68bebc42acb135a2ed3bc042500161cbd0c4172f8612fcf7bd51b74ea2fbf8",
+      "source_prompt_id": 1178,
+      "source_prompt_code": "sentence_teach_explain_rules_context-X-736-v1-20011",
+      "candidate_forge_prompt_id": null,
+      "stepCode": "sentence_1",
+      "type": "context",
+      "isLastStep": false
+    },
+    {
+      "slot": "step",
+      "candidate_path": "prompts/L1/sentence_teach_explain__step__370952c762be.md",
+      "candidate_sha256": "370952c762be93811d0740113fc96ff5371f78a322ee3b1ca672a13052bb8606",
+      "bytes": 3349,
+      "baseline_path": "L1/U1/Lesson2/04-sentence_teach_explain/instance-6546/steps/03-sentence_2.md",
+      "baseline_source_sha256": "0a68bebc42acb135a2ed3bc042500161cbd0c4172f8612fcf7bd51b74ea2fbf8",
+      "source_prompt_id": 1178,
+      "source_prompt_code": "sentence_teach_explain_rules_context-X-736-v1-20011",
+      "candidate_forge_prompt_id": null,
+      "stepCode": "sentence_2",
+      "type": "context",
+      "isLastStep": false
+    },
+    {
+      "slot": "step",
+      "candidate_path": "prompts/L1/sentence_teach_explain__step__370952c762be.md",
+      "candidate_sha256": "370952c762be93811d0740113fc96ff5371f78a322ee3b1ca672a13052bb8606",
+      "bytes": 3349,
+      "baseline_path": "L1/U1/Lesson2/04-sentence_teach_explain/instance-6546/steps/04-sentence_3.md",
+      "baseline_source_sha256": "0a68bebc42acb135a2ed3bc042500161cbd0c4172f8612fcf7bd51b74ea2fbf8",
+      "source_prompt_id": 1178,
+      "source_prompt_code": "sentence_teach_explain_rules_context-X-736-v1-20011",
+      "candidate_forge_prompt_id": null,
+      "stepCode": "sentence_3",
+      "type": "context",
+      "isLastStep": false
+    },
+    {
+      "slot": "step",
+      "candidate_path": "prompts/L1/sentence_teach_explain__step__cfd0f5b49481.md",
+      "candidate_sha256": "cfd0f5b4948170d8f5b363c35dd55ad50e6fa2b4c926025706f796d56d1cbca6",
+      "bytes": 2119,
+      "baseline_path": "L1/U1/Lesson2/04-sentence_teach_explain/instance-6546/steps/05-sentence_4.md",
+      "baseline_source_sha256": "8c28a58919c97207b91d6e1d9963f59ade56da6cb5c678ebc4c33d9452f8eff6",
+      "source_prompt_id": 1179,
+      "source_prompt_code": "sentence_teach_explain_rules_frame_example-X-736-v1-20011",
+      "candidate_forge_prompt_id": null,
+      "stepCode": "sentence_4",
+      "type": "frame_example",
+      "isLastStep": true
+    }
+  ]
+}

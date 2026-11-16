@@ -1,0 +1,688 @@
+{
+  "revision": "2026-11-16-prompt-repair",
+  "status": "candidate_not_deployed",
+  "accepted": false,
+  "deployed_to_forge": false,
+  "base_snapshot_date": "2026-11-14",
+  "source_course_tree": "Test02MCL1_6U1",
+  "scope": "L1-L6 Unit 1 Lessons 1-3",
+  "counts": {
+    "instances": 132,
+    "segments": 322,
+    "distinct_prompt_files": 93
+  },
+  "mapping_files": [
+    {
+      "path": "L1/U1/Lesson2/warm-up-template_l1l2/instance-6526/mapping.json",
+      "sha256": "9d62e7c242fdfa72e97eb37a403ffc035ce4e7dd9543ace0e67568affdf30a99",
+      "instance_id": 6526
+    },
+    {
+      "path": "L1/U1/Lesson3/warm-up-template_l1l2/instance-6527/mapping.json",
+      "sha256": "503d1cbda137085e17a652eab7cd202d3771657995e6f9281b73f5ea99092981",
+      "instance_id": 6527
+    },
+    {
+      "path": "L1/U1/Lesson1/warm-up-template_l1l2/instance-6528/mapping.json",
+      "sha256": "7e4eb5b1717e40a8f31db3be5d142a65e835f42b6702fa582ed252192284a45a",
+      "instance_id": 6528
+    },
+    {
+      "path": "L1/U1/Lesson2/lead-in-template_l1l2/instance-6539/mapping.json",
+      "sha256": "b174b302dc76929f2483fac9e9a08d907e8683ad68fb4a05377c65b0b30472fa",
+      "instance_id": 6539
+    },
+    {
+      "path": "L1/U1/Lesson3/lead-in-template_l1l2/instance-6541/mapping.json",
+      "sha256": "bcb6b8da42f9e33f120090c5e60465a314ce7cb81dfee4dacb0966e2d147e76c",
+      "instance_id": 6541
+    },
+    {
+      "path": "L1/U1/Lesson1/lead-in-template_l1l2/instance-6542/mapping.json",
+      "sha256": "fed4b33fd1f89a1f856aab5e72c199d61c46daa93ddec643976a075bc40c65af",
+      "instance_id": 6542
+    },
+    {
+      "path": "L1/U1/Lesson3/theme_reader/instance-6545/mapping.json",
+      "sha256": "60510b0a1c16792478b669df15ab96bc46adde692e38d51f61845ffbebcb3d5c",
+      "instance_id": 6545
+    },
+    {
+      "path": "L1/U1/Lesson2/sentence_teach_explain/instance-6546/mapping.json",
+      "sha256": "bf4c8fdec90b357ec78efeeaa17c9e66b39c16c83622ad91523adf1fb822bb42",
+      "instance_id": 6546
+    },
+    {
+      "path": "L1/U1/Lesson1/word_teach_image_l1l2/instance-6547/mapping.json",
+      "sha256": "089436559cd3e05142cf018e4d6ad9927535e294f13adc5f7cd4bd95185e4918",
+      "instance_id": 6547
+    },
+    {
+      "path": "L1/U1/Lesson1/word_teach_image_l1l2/instance-6549/mapping.json",
+      "sha256": "deff5a953ea8671cb41305beabb0132ffc7d5ef28c2d08ef1e488e84e0b00b9d",
+      "instance_id": 6549
+    },
+    {
+      "path": "L1/U1/Lesson1/word_teach_image_l1l2/instance-6554/mapping.json",
+      "sha256": "79a0ad105f67413ef75f1fd1a33c4e7311f18e88529825753285d0548f59b7a1",
+      "instance_id": 6554
+    },
+    {
+      "path": "L1/U1/Lesson2/wrapup_summary_video/instance-6563/mapping.json",
+      "sha256": "b9970f43cf12e9447c08e09498dfa6fb1a453442c985b7ff11b7c120380d720b",
+      "instance_id": 6563
+    },
+    {
+      "path": "L1/U1/Lesson3/wrapup_summary_video/instance-6564/mapping.json",
+      "sha256": "7c3951117a274c7d16a5c8dbb73317670776f785754c3810c1dc3368dfeceeeb",
+      "instance_id": 6564
+    },
+    {
+      "path": "L1/U1/Lesson1/wrapup_summary_video/instance-6580/mapping.json",
+      "sha256": "3c26215ff5317176af2a1fcc30ecc0284c8983c5e52018494a174dc85517f0bb",
+      "instance_id": 6580
+    },
+    {
+      "path": "L1/U1/Lesson2/lead-in-template_l1l2/instance-7354/mapping.json",
+      "sha256": "c91b171b0566b124e15ba28c0586d55ac6f9a3512af9c476a0bf3974e1121f85",
+      "instance_id": 7354
+    },
+    {
+      "path": "L1/U1/Lesson2/wrapup_summary_video/instance-7355/mapping.json",
+      "sha256": "91c23d0cd21e3e39e915ac0f4ca2d279c3ad5a0aea3aeda07d83976f73b202f8",
+      "instance_id": 7355
+    },
+    {
+      "path": "L1/U1/Lesson3/lead-in-template_l1l2/instance-7356/mapping.json",
+      "sha256": "708b417febffafb733ea7c39e83ba895add2be92d9394206d8741ca4f7439608",
+      "instance_id": 7356
+    },
+    {
+      "path": "L1/U1/Lesson3/wrapup_summary_video/instance-7357/mapping.json",
+      "sha256": "65075540e4e63fd4465b1b868d974c23f6553200c672d32061047f576e3ca663",
+      "instance_id": 7357
+    },
+    {
+      "path": "L2/U1/Lesson2/warm-up-template_l1l2/instance-6602/mapping.json",
+      "sha256": "52ce5320faec71bb5bcf70a1819823e33b4bb89364f7f763112d59435280058d",
+      "instance_id": 6602
+    },
+    {
+      "path": "L2/U1/Lesson1/warm-up-template_l1l2/instance-6603/mapping.json",
+      "sha256": "fe393cfc433d4a6d5e1ef607d87693d0924b7f2ac2d129846f31cd790a3d84ef",
+      "instance_id": 6603
+    },
+    {
+      "path": "L2/U1/Lesson3/warm-up-template_l1l2/instance-6605/mapping.json",
+      "sha256": "bdb0b53f23d799b79e4045b42e52a38525302d39030fbb0c1410dec317976b0e",
+      "instance_id": 6605
+    },
+    {
+      "path": "L2/U1/Lesson2/lead-in-template_l1l2/instance-6612/mapping.json",
+      "sha256": "01e0bce821910aeaa9fd6f146b830a434b85575371b9435476aa8645bc890260",
+      "instance_id": 6612
+    },
+    {
+      "path": "L2/U1/Lesson1/lead-in-template_l1l2/instance-6613/mapping.json",
+      "sha256": "63c50a6791918f0ffdc3fa38b8923cd657333e7d1b9569b20033694a9ce607dd",
+      "instance_id": 6613
+    },
+    {
+      "path": "L2/U1/Lesson3/lead-in-template_l1l2/instance-6615/mapping.json",
+      "sha256": "4d573ff27b422fa6a0ea57ae3b627486519703a344e9f61cca6fadbfe5543f58",
+      "instance_id": 6615
+    },
+    {
+      "path": "L2/U1/Lesson1/word_teach_image_l1l2/instance-6618/mapping.json",
+      "sha256": "71609904d0a9aae2ecb6ced284188b8ef03452aa852ba4d47bb10a7c9cece40a",
+      "instance_id": 6618
+    },
+    {
+      "path": "L2/U1/Lesson2/sentence_teach_explain/instance-6619/mapping.json",
+      "sha256": "543ad4353d82989f5d1f45c525a93bc78cea55134a58a28e39634759331b5722",
+      "instance_id": 6619
+    },
+    {
+      "path": "L2/U1/Lesson1/word_teach_image_l1l2/instance-6622/mapping.json",
+      "sha256": "18b00488148bd5f830aea02cc0e9415848074b3601f2267c4abf7042780c2610",
+      "instance_id": 6622
+    },
+    {
+      "path": "L2/U1/Lesson1/word_teach_image_l1l2/instance-6627/mapping.json",
+      "sha256": "b471d7149200811a55a93c6b53a895d295c96c3a691684538e718c0acd3bdc78",
+      "instance_id": 6627
+    },
+    {
+      "path": "L2/U1/Lesson3/phonics_pattern_word_teach/instance-6633/mapping.json",
+      "sha256": "9062c80ed8e0bcfe972a739129029247c10f7475b440df9b0f6b9dddee2dcc53",
+      "instance_id": 6633
+    },
+    {
+      "path": "L2/U1/Lesson3/phonics_pattern_word_teach/instance-6634/mapping.json",
+      "sha256": "2735c94e69c36630525bf1717598550103760750ee72c74eec5041499e06354f",
+      "instance_id": 6634
+    },
+    {
+      "path": "L2/U1/Lesson3/phonics_pattern_word_teach/instance-6637/mapping.json",
+      "sha256": "ae723edda9a7bcf09bbf92175c483dbb2d65cf05eef6ae37650e029ddc188854",
+      "instance_id": 6637
+    },
+    {
+      "path": "L2/U1/Lesson2/wrapup_summary_video/instance-6638/mapping.json",
+      "sha256": "2847f88b7d5a59904ff5c620e6e7984941c53fc029b1b056e2ab6e31b90b7dda",
+      "instance_id": 6638
+    },
+    {
+      "path": "L2/U1/Lesson3/phonics_pattern_word_teach/instance-6639/mapping.json",
+      "sha256": "d835a149c61391c8587c967314640f5a45a7f8620e90c7bb981c348e2c7c0b10",
+      "instance_id": 6639
+    },
+    {
+      "path": "L2/U1/Lesson1/wrapup_summary_video/instance-6652/mapping.json",
+      "sha256": "8062f619f21adac1bb40103bc558d5adddff6dba017e09431b38988a85e2bbdf",
+      "instance_id": 6652
+    },
+    {
+      "path": "L2/U1/Lesson3/wrapup_summary_video/instance-6662/mapping.json",
+      "sha256": "f7c459dc08d2209245018df406979f4199b5a511be094a058bdfe2b2046f0d13",
+      "instance_id": 6662
+    },
+    {
+      "path": "L2/U1/Lesson3/warm-up-template_l1l2/instance-7253/mapping.json",
+      "sha256": "21b189bfe83a97bcb9e0de2fb82bc6414e02533d9f731627ec96db87d6cd962b",
+      "instance_id": 7253
+    },
+    {
+      "path": "L2/U1/Lesson3/lead-in-template_l1l2/instance-7255/mapping.json",
+      "sha256": "f62a11145f0f8caa3c841289d4e962ba928fdf1d8d4a07a29ac8a814c1beeec4",
+      "instance_id": 7255
+    },
+    {
+      "path": "L2/U1/Lesson3/phonics_pattern_word_teach/instance-7258/mapping.json",
+      "sha256": "57dd57f06234e656b86092e1034cb14a51b831c8a7a96b404dfef06702c52955",
+      "instance_id": 7258
+    },
+    {
+      "path": "L2/U1/Lesson3/phonics_pattern_word_teach/instance-7259/mapping.json",
+      "sha256": "47328d3450012598e987ac0cd63ee5a02c3b640ac32f19d8610d7ba999eb1dab",
+      "instance_id": 7259
+    },
+    {
+      "path": "L2/U1/Lesson3/phonics_pattern_word_teach/instance-7262/mapping.json",
+      "sha256": "4b5a6034483d364d2b1b82a7639d25763d883d98581ee652e38791cc777ff288",
+      "instance_id": 7262
+    },
+    {
+      "path": "L2/U1/Lesson3/phonics_pattern_word_teach/instance-7263/mapping.json",
+      "sha256": "ebb96e53a7993999fea44b7436848215d3c4bfa0083f1fb8db1141c02e631d1f",
+      "instance_id": 7263
+    },
+    {
+      "path": "L2/U1/Lesson3/wrapup_summary_video/instance-7267/mapping.json",
+      "sha256": "f7cc058bfe4fe884d5f415e5285a14c4ddbee621df25fd47f36a27df401d3b83",
+      "instance_id": 7267
+    },
+    {
+      "path": "L2/U1/Lesson2/lead-in-template_l1l2/instance-7362/mapping.json",
+      "sha256": "6e06790c07a93abca908d4dea7d5dfb8f23b21627d4b51aea3a8f682bf7d0b3f",
+      "instance_id": 7362
+    },
+    {
+      "path": "L2/U1/Lesson2/wrapup_summary_video/instance-7363/mapping.json",
+      "sha256": "6576036663a1afdfc086798e906810f4e2040493f232163a44c0652699d1772f",
+      "instance_id": 7363
+    },
+    {
+      "path": "L2/U1/Lesson3/lead-in-template_l1l2/instance-7364/mapping.json",
+      "sha256": "ba354fec9db06ec43414a5061ef3281d91c8987b67f2bda6ff4a07ae46d82536",
+      "instance_id": 7364
+    },
+    {
+      "path": "L2/U1/Lesson3/lead-in-template_l1l2/instance-7365/mapping.json",
+      "sha256": "4624d57d69b27337953ab7affdfb785d36c0a202aaff9f7e214a4efb355f2a86",
+      "instance_id": 7365
+    },
+    {
+      "path": "L2/U1/Lesson3/wrapup_summary_video/instance-7366/mapping.json",
+      "sha256": "402baaf0c821e29abc066af6b68846e4f406c568fa48006e4a6ee38a588d79f3",
+      "instance_id": 7366
+    },
+    {
+      "path": "L2/U1/Lesson3/wrapup_summary_video/instance-7367/mapping.json",
+      "sha256": "f6785dfa345e2ba18fcfee3c7e5176a952b2e30a331df4e830927eb2638895d1",
+      "instance_id": 7367
+    },
+    {
+      "path": "L3/U1/Lesson2/warm-up-template_l3l4/instance-6787/mapping.json",
+      "sha256": "acd541b2423993603413667b27ca153bf560f82830e7dc59b77db09bdd1eff7a",
+      "instance_id": 6787
+    },
+    {
+      "path": "L3/U1/Lesson3/warm-up-template_l3l4/instance-6790/mapping.json",
+      "sha256": "abc7f0292a98c6c6051c8276e0930ac14960d3dde102060bdaf84bc24a681936",
+      "instance_id": 6790
+    },
+    {
+      "path": "L3/U1/Lesson1/warm-up-template_l3l4/instance-6791/mapping.json",
+      "sha256": "5ca3e0d3ae7dc660bde97c4d045c0a6dfbbdf8e0761bdd0b53ab13ec62421cb1",
+      "instance_id": 6791
+    },
+    {
+      "path": "L3/U1/Lesson3/word_teach_image_l3l4/instance-6804/mapping.json",
+      "sha256": "a68fbfbb9a6822c1ebbd31f2f0da0611d979a1b8b66386e78d37b3ebed692874",
+      "instance_id": 6804
+    },
+    {
+      "path": "L3/U1/Lesson1/word_teach_image_l3l4/instance-6805/mapping.json",
+      "sha256": "3200f07c8504886ffed3d3c861901b9c4276371c5137318257724d967cbdf905",
+      "instance_id": 6805
+    },
+    {
+      "path": "L3/U1/Lesson2/word_teach_image_l3l4/instance-6806/mapping.json",
+      "sha256": "b2c583741fb778d5f07825ba4dae85de0131a4f12ae7820e02a28d04f4626dbc",
+      "instance_id": 6806
+    },
+    {
+      "path": "L3/U1/Lesson3/word_teach_image_l3l4/instance-6808/mapping.json",
+      "sha256": "6d61c11088033730f8eaeca08ad252a2630e54575fc1a9f8fd977a3cd71ae891",
+      "instance_id": 6808
+    },
+    {
+      "path": "L3/U1/Lesson1/word_teach_image_l3l4/instance-6809/mapping.json",
+      "sha256": "246fc44cc1e2d72dec496e33de10b2b25a2d2455f9909b903a14a0d244f2a35c",
+      "instance_id": 6809
+    },
+    {
+      "path": "L3/U1/Lesson2/word_teach_image_l3l4/instance-6810/mapping.json",
+      "sha256": "3ac96e6a452d987af33bbeb2e9d79efe62cf2a9b6346abbc91be166ac245bc3b",
+      "instance_id": 6810
+    },
+    {
+      "path": "L3/U1/Lesson1/word_teach_image_l3l4/instance-6812/mapping.json",
+      "sha256": "4b5402f8a9e54d2cce38d81461bb094f64c7a62327f3dd6dd070f83b927441ce",
+      "instance_id": 6812
+    },
+    {
+      "path": "L3/U1/Lesson3/word_teach_image_l3l4/instance-6813/mapping.json",
+      "sha256": "8974e94794ba6c445504864bd9cc05b0d3758d9e5da4800e128cdd338630dde3",
+      "instance_id": 6813
+    },
+    {
+      "path": "L3/U1/Lesson2/word_teach_image_l3l4/instance-6814/mapping.json",
+      "sha256": "3a8fd6a48339d44c9f656032ae09e0d58db39ffbcb98a2366d04042b829748a6",
+      "instance_id": 6814
+    },
+    {
+      "path": "L3/U1/Lesson3/sentence_frame_teach/instance-6839/mapping.json",
+      "sha256": "20471e257aec92eb7f60e3e3de42598006495e750271383c4ce9f233c69fe1cb",
+      "instance_id": 6839
+    },
+    {
+      "path": "L3/U1/Lesson1/sentence_frame_teach/instance-6840/mapping.json",
+      "sha256": "b79ced614426e91de6631de468088186e364face6432535c37a7e86074176bdf",
+      "instance_id": 6840
+    },
+    {
+      "path": "L3/U1/Lesson2/sentence_frame_teach/instance-6842/mapping.json",
+      "sha256": "6929810bb15087a38fab3969643a027b9ade256f0596703672016f67d1d5c40d",
+      "instance_id": 6842
+    },
+    {
+      "path": "L3/U1/Lesson3/ip_call_l3/instance-6857/mapping.json",
+      "sha256": "3feb485a7237163b898511422092ec3b5c9b6bf0083c81ef0a4f5718df6702b2",
+      "instance_id": 6857
+    },
+    {
+      "path": "L3/U1/Lesson1/ip_call_l3/instance-6860/mapping.json",
+      "sha256": "8c725f0502769c76466f4d1e2360c0b5d3cd2873ee749a371873fb63e1114300",
+      "instance_id": 6860
+    },
+    {
+      "path": "L3/U1/Lesson2/ip_call_l3/instance-6862/mapping.json",
+      "sha256": "8385b1148a56bcf9010231d5d2f467ae21442935132657eb6d9d64171e021899",
+      "instance_id": 6862
+    },
+    {
+      "path": "L3/U1/Lesson3/wrapup_summary_video/instance-6864/mapping.json",
+      "sha256": "de6cf9428b72506272d1d23df5d3a1a855b41305bac482e19abaffd7eca59b37",
+      "instance_id": 6864
+    },
+    {
+      "path": "L3/U1/Lesson1/wrapup_summary_video/instance-6866/mapping.json",
+      "sha256": "0f1f893d8c6ea5b529b5fee4980d7a0e0532ebf35522b40d7bb4468782ba1726",
+      "instance_id": 6866
+    },
+    {
+      "path": "L3/U1/Lesson2/wrapup_summary_video/instance-6871/mapping.json",
+      "sha256": "39a3a3871a660d6bb82e67d88716ed67a9c7cbe3612c3dd8293b2894ee6e10c3",
+      "instance_id": 6871
+    },
+    {
+      "path": "L4/U1/Lesson1/warm-up-template_l3l4/instance-6904/mapping.json",
+      "sha256": "982305830d50ad8002d5f5989c1726f0cae05c99ec93fae140c04bdf8305d5bc",
+      "instance_id": 6904
+    },
+    {
+      "path": "L4/U1/Lesson2/warm-up-template_l3l4/instance-6905/mapping.json",
+      "sha256": "99d5deee907a90ddaf1a06bf9a9769147e66c34c97b569c01469dbb7b7eb5096",
+      "instance_id": 6905
+    },
+    {
+      "path": "L4/U1/Lesson3/warm-up-template_l3l4/instance-6908/mapping.json",
+      "sha256": "b5b73fe20f2a0bcc92c5234648e66c4932767999efc3fdd295d0f3321f8b4396",
+      "instance_id": 6908
+    },
+    {
+      "path": "L4/U1/Lesson2/passage_teach/instance-6921/mapping.json",
+      "sha256": "dfc63b405db83ac4ba17479ff5d1f2ce586465da1ed9dc7786337d0ee5e9540d",
+      "instance_id": 6921
+    },
+    {
+      "path": "L4/U1/Lesson1/word_teach_image_l3l4/instance-6922/mapping.json",
+      "sha256": "41d922918102e1e0d454b9ee029408d5c0636a53187a996f0213f74f44fac1d3",
+      "instance_id": 6922
+    },
+    {
+      "path": "L4/U1/Lesson3/word_teach_image_l3l4/instance-6923/mapping.json",
+      "sha256": "7f8cda6a27b79d492e3c607ce55bfbc45180d4f2dff892d29145713ea78f8f93",
+      "instance_id": 6923
+    },
+    {
+      "path": "L4/U1/Lesson1/word_teach_image_l3l4/instance-6924/mapping.json",
+      "sha256": "68d4799fbe40f718198fee176ceca171ff40e79c29d59d4462080f01fcbfcafd",
+      "instance_id": 6924
+    },
+    {
+      "path": "L4/U1/Lesson3/word_teach_image_l3l4/instance-6925/mapping.json",
+      "sha256": "fe88ae7d8f24d6f83eeb4cf3ed7915358fc1e19b057af57f1ab32ddd4bdce8b1",
+      "instance_id": 6925
+    },
+    {
+      "path": "L4/U1/Lesson1/word_teach_image_l3l4/instance-6928/mapping.json",
+      "sha256": "d5425bc318e545936c0fdc5744fa991fff1c4b6ab8df88a57cf9fa4cc855a59d",
+      "instance_id": 6928
+    },
+    {
+      "path": "L4/U1/Lesson3/word_teach_image_l3l4/instance-6929/mapping.json",
+      "sha256": "badff1c77e085c9f64a66a6babbd264c99f4cc8be7a35bc80c05f11bb9764413",
+      "instance_id": 6929
+    },
+    {
+      "path": "L4/U1/Lesson1/word_teach_image_l3l4/instance-6931/mapping.json",
+      "sha256": "0f90d017f54b531fdc255aef14648718830ac6cdbaf4c850fd3ce78b08bd60f7",
+      "instance_id": 6931
+    },
+    {
+      "path": "L4/U1/Lesson3/word_teach_image_l3l4/instance-6933/mapping.json",
+      "sha256": "3e0e8c86af062a649faf5a03c596eb33d48bc5f5120f61ad0779b59868409dfe",
+      "instance_id": 6933
+    },
+    {
+      "path": "L4/U1/Lesson2/retell_l6/instance-6942/mapping.json",
+      "sha256": "8e79530b554f62e837ac5e20bc495221abba7961fdd38f37e79141c1337cd629",
+      "instance_id": 6942
+    },
+    {
+      "path": "L4/U1/Lesson2/wrapup_summary_video/instance-6946/mapping.json",
+      "sha256": "bd9d4901611ab9b63548486557845d9d92e6a7af89dad98242d1c9f900da5ac3",
+      "instance_id": 6946
+    },
+    {
+      "path": "L4/U1/Lesson1/sentence_frame_teach/instance-6954/mapping.json",
+      "sha256": "24a8684a860aa24dedd5cef707364b22b9de745d845669e0d00b6343cb14bd41",
+      "instance_id": 6954
+    },
+    {
+      "path": "L4/U1/Lesson1/ip_call_l4/instance-6963/mapping.json",
+      "sha256": "98535c104dbb54cbd24b330e3b8c1e332157672bd135ba037c8df95c9b605962",
+      "instance_id": 6963
+    },
+    {
+      "path": "L4/U1/Lesson3/sentence_frame_teach/instance-6964/mapping.json",
+      "sha256": "88248c77f8deee00adf9d0f6fd5f9b52369d437820ffef2f585af7ab6b060eb2",
+      "instance_id": 6964
+    },
+    {
+      "path": "L4/U1/Lesson1/wrapup_summary_video/instance-6967/mapping.json",
+      "sha256": "30f7cfb899ce7627318c3f6eae78d632a4e5f5f9e19cbd8845e78cbbb1a16c8d",
+      "instance_id": 6967
+    },
+    {
+      "path": "L4/U1/Lesson3/ip_call_l4/instance-6973/mapping.json",
+      "sha256": "0c99d17c693817e15e1ea82d1215eb40f8fe1dabacf117fa3f77db7d75f9baf2",
+      "instance_id": 6973
+    },
+    {
+      "path": "L4/U1/Lesson3/wrapup_summary_video/instance-6976/mapping.json",
+      "sha256": "4e03801d0c2df412e36d31886644d9c277e2a1f103a48380abde72c3f62ee208",
+      "instance_id": 6976
+    },
+    {
+      "path": "L4/U1/Lesson3/sentence_frame_teach/instance-7380/mapping.json",
+      "sha256": "0c876968d8ae3dff256128ef31980a11a64a4ec0901cf52a9c1ac00f5f4e1b6f",
+      "instance_id": 7380
+    },
+    {
+      "path": "L5/U1/Lesson3/warm-up-template_l5l6/instance-7005/mapping.json",
+      "sha256": "753cebc554bceb8fc725d7a4b9cbb47b52335ecf4be9455c063c5efef2956be0",
+      "instance_id": 7005
+    },
+    {
+      "path": "L5/U1/Lesson1/warm-up-template_l5l6/instance-7006/mapping.json",
+      "sha256": "a20977d331404c96583822d10b081e29f24f3c2526527c712f0a94997c6d238a",
+      "instance_id": 7006
+    },
+    {
+      "path": "L5/U1/Lesson2/warm-up-template_l5l6/instance-7007/mapping.json",
+      "sha256": "c7f98c27a74e2849c61ca01991888d338fa619244a183d98be767df15c8b3f7a",
+      "instance_id": 7007
+    },
+    {
+      "path": "L5/U1/Lesson2/passage_teach/instance-7021/mapping.json",
+      "sha256": "c1c75b0e29ea8c8a3bad0910d52e2d882d89310c4ac951c0d8edc51a924cf289",
+      "instance_id": 7021
+    },
+    {
+      "path": "L5/U1/Lesson3/word_teach_image_l5l6/instance-7023/mapping.json",
+      "sha256": "2a6a2ee81e46a4d264157345cdb72dad6ea92ec8ca2424e5ecffdc0616b6e062",
+      "instance_id": 7023
+    },
+    {
+      "path": "L5/U1/Lesson1/word_teach_image_l5l6/instance-7024/mapping.json",
+      "sha256": "8aff16e13193a0b19647a388f4574fb445655bda1dfb0d8ae2179c30ccbb1843",
+      "instance_id": 7024
+    },
+    {
+      "path": "L5/U1/Lesson3/word_teach_image_l5l6/instance-7027/mapping.json",
+      "sha256": "30e842b44e370ccdfc9419bbe8b0b99ced877addca44f83e34efee3ab8189c89",
+      "instance_id": 7027
+    },
+    {
+      "path": "L5/U1/Lesson1/word_teach_image_l5l6/instance-7028/mapping.json",
+      "sha256": "b4fbc187f592dacd469a1f3ef5cdfd317b70f83fa4015201ebdd2671dfda3c73",
+      "instance_id": 7028
+    },
+    {
+      "path": "L5/U1/Lesson3/word_teach_image_l5l6/instance-7032/mapping.json",
+      "sha256": "e58fbe7657925d3052c79d35e6fe0184b1c061aa8db2be6ed3a530da8f380a04",
+      "instance_id": 7032
+    },
+    {
+      "path": "L5/U1/Lesson1/word_teach_image_l5l6/instance-7033/mapping.json",
+      "sha256": "3945606128998b65b1ec2b935a386406c245bd230aa22ce8337d03a8740dfdc8",
+      "instance_id": 7033
+    },
+    {
+      "path": "L5/U1/Lesson3/word_teach_image_l5l6/instance-7035/mapping.json",
+      "sha256": "a3ef9ec4f6f160e35cd32473bb57c1a48937d83f1dc6f84ea3bb97314e685b9a",
+      "instance_id": 7035
+    },
+    {
+      "path": "L5/U1/Lesson1/word_teach_image_l5l6/instance-7038/mapping.json",
+      "sha256": "aad2db39deffd6a3ed857eac411ca0f61936e1bca30765c352031861cc6f5a3a",
+      "instance_id": 7038
+    },
+    {
+      "path": "L5/U1/Lesson3/word_teach_image_l5l6/instance-7039/mapping.json",
+      "sha256": "80828052ab98a90e853e08308e86e1e69df263013b47b16d08f0747cf97237b1",
+      "instance_id": 7039
+    },
+    {
+      "path": "L5/U1/Lesson1/word_teach_image_l5l6/instance-7040/mapping.json",
+      "sha256": "1a40eb393fc55dfe3b326cf98ac7a6e743e1c7ba651dbe7991928dd653404f74",
+      "instance_id": 7040
+    },
+    {
+      "path": "L5/U1/Lesson3/word_teach_image_l5l6/instance-7041/mapping.json",
+      "sha256": "80092a8189c8cb1ea9349c9007c45028ac616a28de77f011b12ada2dac64b4c8",
+      "instance_id": 7041
+    },
+    {
+      "path": "L5/U1/Lesson2/retell_l6/instance-7051/mapping.json",
+      "sha256": "6a907a185bc8ce39841e711b805368aca66499c28b19874aaff5e12eb3e05823",
+      "instance_id": 7051
+    },
+    {
+      "path": "L5/U1/Lesson2/wrapup_summary_video/instance-7055/mapping.json",
+      "sha256": "941c3362ee2ae00c5a33cdc16fb686160bbfb7ac88f62e458456d2ced84d85fd",
+      "instance_id": 7055
+    },
+    {
+      "path": "L5/U1/Lesson1/free_talk_images/instance-7074/mapping.json",
+      "sha256": "d4f98cfd59e39137a5cb7c79debbf8132b38cebb87c1b081d7ff901fb15cfbfc",
+      "instance_id": 7074
+    },
+    {
+      "path": "L5/U1/Lesson3/free_talk_images/instance-7078/mapping.json",
+      "sha256": "da78c9688cff0831c05784325f67792f1127ef06c1b60d7ec651d66c30bac944",
+      "instance_id": 7078
+    },
+    {
+      "path": "L5/U1/Lesson1/wrapup_summary_video/instance-7082/mapping.json",
+      "sha256": "d07e43453a1a78dd361320b08960fb9e87e4d44c400a4924a77693a82be211d0",
+      "instance_id": 7082
+    },
+    {
+      "path": "L5/U1/Lesson3/wrapup_summary_video/instance-7086/mapping.json",
+      "sha256": "01c62a0063facae780c582bb1e34eb90a0501ccbfea76a342ef6ea37a6445802",
+      "instance_id": 7086
+    },
+    {
+      "path": "L6/U1/Lesson1/warm-up-template_l5l6/instance-7067/mapping.json",
+      "sha256": "fe73484ca473f3e51e399b123861cfb025f944974ee5eb1c3511066f79d7cf6f",
+      "instance_id": 7067
+    },
+    {
+      "path": "L6/U1/Lesson1/word_teach_image_l5l6/instance-7083/mapping.json",
+      "sha256": "1ae1f3cf716ab12035c47b92d6ec0be810c4662d8e7c24202b03c01971a9347b",
+      "instance_id": 7083
+    },
+    {
+      "path": "L6/U1/Lesson1/word_teach_image_l5l6/instance-7085/mapping.json",
+      "sha256": "580dd3f278ef96cda3a45ae68bb8840902db03c96bbf09a9302502eab3256ceb",
+      "instance_id": 7085
+    },
+    {
+      "path": "L6/U1/Lesson1/word_teach_image_l5l6/instance-7089/mapping.json",
+      "sha256": "5491e14519ed0715a791cfe71296ac862bcfe862c1c4e8c3cece9ee485e60b4e",
+      "instance_id": 7089
+    },
+    {
+      "path": "L6/U1/Lesson2/warm-up-template_l5l6/instance-7091/mapping.json",
+      "sha256": "8068becf0c857e1396fa9a295c460336d51b06f39ad5c5daa64bc235d95bace3",
+      "instance_id": 7091
+    },
+    {
+      "path": "L6/U1/Lesson1/word_teach_image_l5l6/instance-7092/mapping.json",
+      "sha256": "9a48d0470aad35980249a029e99f897fb3ddc6336fd539cc8c942d3184ca9f77",
+      "instance_id": 7092
+    },
+    {
+      "path": "L6/U1/Lesson1/word_teach_image_l5l6/instance-7095/mapping.json",
+      "sha256": "785713e23372c7cb801073ca1fe8f19bd01f2302f21b13447ed4f9231e20bed1",
+      "instance_id": 7095
+    },
+    {
+      "path": "L6/U1/Lesson3/warm-up-template_l5l6/instance-7098/mapping.json",
+      "sha256": "2eb0294ed447d41b807da1c2c9ffb12f81853fdc6c5507af3a79daf11c5958bc",
+      "instance_id": 7098
+    },
+    {
+      "path": "L6/U1/Lesson2/passage_teach/instance-7105/mapping.json",
+      "sha256": "73b8e7c267c877130f0f620cb661f95045bf1aae843bb43d9dbf6efe740daff7",
+      "instance_id": 7105
+    },
+    {
+      "path": "L6/U1/Lesson3/word_teach_image_l5l6/instance-7108/mapping.json",
+      "sha256": "455a787450bd7f0562e3c3fe00d2ac36c75396127c0b626107d8e587aa589dde",
+      "instance_id": 7108
+    },
+    {
+      "path": "L6/U1/Lesson3/word_teach_image_l5l6/instance-7112/mapping.json",
+      "sha256": "1371d08961384d1639e0c0d511d61e01e424d1d1716997d182b3b882a3ca5c5a",
+      "instance_id": 7112
+    },
+    {
+      "path": "L6/U1/Lesson3/word_teach_image_l5l6/instance-7115/mapping.json",
+      "sha256": "cac5af36f0a969451077ad6e217ab84c177def7e5cc8aca97d7fd98693c5f42e",
+      "instance_id": 7115
+    },
+    {
+      "path": "L6/U1/Lesson3/word_teach_image_l5l6/instance-7116/mapping.json",
+      "sha256": "32cf854175de50276cc1f88ce14f23d0fbfe0c7f5e0248fc0408a6dc0c77f3df",
+      "instance_id": 7116
+    },
+    {
+      "path": "L6/U1/Lesson3/word_teach_image_l5l6/instance-7119/mapping.json",
+      "sha256": "cfbb064416b908880285aa8e6f6a1bd3fd9197ced58db562761e18ac86e16fc0",
+      "instance_id": 7119
+    },
+    {
+      "path": "L6/U1/Lesson2/retell_l6/instance-7127/mapping.json",
+      "sha256": "935f3b4a1caeb4c6eaae6f73daedcbd36fb31de6170f35d6481baf0c3ba734bd",
+      "instance_id": 7127
+    },
+    {
+      "path": "L6/U1/Lesson1/free_talk_images/instance-7128/mapping.json",
+      "sha256": "0dab990d9ecc66e1f9e0ec03c3549a476b8d082af6c5dc9004a591651c66f8dc",
+      "instance_id": 7128
+    },
+    {
+      "path": "L6/U1/Lesson2/wrapup_summary_video/instance-7132/mapping.json",
+      "sha256": "cec4890dcb81f0e1241ed0732764b4b4408272b98b0a8651a5055ae00945eb02",
+      "instance_id": 7132
+    },
+    {
+      "path": "L6/U1/Lesson1/wrapup_summary_video/instance-7134/mapping.json",
+      "sha256": "dbc4ee733aea646e704ccd34ede7337be0d206386cc9777fdab7e6f78f89361c",
+      "instance_id": 7134
+    },
+    {
+      "path": "L6/U1/Lesson3/free_talk_images/instance-7154/mapping.json",
+      "sha256": "4259488566f61652eb4fd934dc691144a38f1fccf98f2396bb1b17c8a73c6530",
+      "instance_id": 7154
+    },
+    {
+      "path": "L6/U1/Lesson3/wrapup_summary_video/instance-7164/mapping.json",
+      "sha256": "97cdf9329c082d583ee2a45ef8900891736da1fe186e08983e0f74c7d2c186db",
+      "instance_id": 7164
+    },
+    {
+      "path": "L6/U1/Lesson1/word_teach_image_l5l6/instance-7381/mapping.json",
+      "sha256": "723f8f55b032f09372f126bb57fc10a10a145531580d11e3ef4b8028cadb1578",
+      "instance_id": 7381
+    }
+  ],
+  "evaluation": "evaluation.json",
+  "source_rules": "These are new prompt sources, not a Forge readback. source_prompt_id identifies the baseline only. Candidate bindings require lesson isolation and fresh release validation.",
+  "evidence_artifacts": [
+    {
+      "path": "evaluation.json",
+      "sha256": "ba7c2b2c577e81dba9e7279e579361a3d26a5cc2bf3fc717f9984a6ad22d4268"
+    },
+    {
+      "path": "whole-activity-replies.json",
+      "sha256": "77512648e7931f333c839f827da8348dffd75def18bdebd3e0409d42906ebc8f"
+    }
+  ]
+}

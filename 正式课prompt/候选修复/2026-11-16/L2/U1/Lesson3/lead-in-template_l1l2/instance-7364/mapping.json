@@ -1,0 +1,35 @@
+{
+  "level": 2,
+  "unit": 1,
+  "lesson": 3,
+  "lesson_id": 749,
+  "instance_id": 7364,
+  "template_code": "lead-in-template_l1l2",
+  "segments": [
+    {
+      "slot": "template",
+      "candidate_path": "prompts/L2/lead-in-template_l1l2__template__e0b83a6986ee.md",
+      "candidate_sha256": "e0b83a6986ee150bb64e4779d735e2fbeb3f6d5d0385c0caa0a72fe5dca3633b",
+      "bytes": 1980,
+      "baseline_path": "L2/U1/Lesson3/03-lead-in-template_l1l2/instance-7364/template.md",
+      "baseline_source_sha256": "f14f3b88a36b64ebd643631479899d70aee8dcdbda301cee62d050ee18ade07c",
+      "source_prompt_id": 1844,
+      "source_prompt_code": "leadin_teaching_rules_l1l2-X-749-v1-21274",
+      "candidate_forge_prompt_id": null
+    },
+    {
+      "slot": "step",
+      "candidate_path": "prompts/L2/lead-in-template_l1l2__step__131955555a03.md",
+      "candidate_sha256": "131955555a0332be736d5cf1a42363c7568f734a2dda87a50cac2e8b25f6d7c7",
+      "bytes": 801,
+      "baseline_path": "L2/U1/Lesson3/03-lead-in-template_l1l2/instance-7364/steps/03-post-video.md",
+      "baseline_source_sha256": "a93fca65fcf730d53dcea4dec932cdef8a81796dbac70e770690f8dbb403bba6",
+      "source_prompt_id": 1846,
+      "source_prompt_code": "leadin_teaching_rules_l1l2_step_post_video-X-749-v1-21274",
+      "candidate_forge_prompt_id": null,
+      "stepCode": "post-video",
+      "type": "post-video",
+      "isLastStep": true
+    }
+  ]
+}

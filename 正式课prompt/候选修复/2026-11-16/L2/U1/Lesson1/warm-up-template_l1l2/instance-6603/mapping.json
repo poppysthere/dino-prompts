@@ -1,0 +1,32 @@
+{
+  "level": 2,
+  "unit": 1,
+  "lesson": 1,
+  "lesson_id": 747,
+  "instance_id": 6603,
+  "template_code": "warm-up-template_l1l2",
+  "segments": [
+    {
+      "slot": "common",
+      "candidate_path": "prompts/L2/warm-up-template_l1l2__common__75474920f57a.md",
+      "candidate_sha256": "75474920f57ab43facbf249b984561de27a6eff5bf08cd5ded9798de8332a898",
+      "bytes": 24042,
+      "baseline_path": "L2/公共规则/test02_l2_natural_pacing_20261114_b08364786869.md",
+      "baseline_source_sha256": "b083647868695466a545e7e9488d5eb488bf383570d25efe2cce65ef0c80ce25",
+      "source_prompt_id": 2101,
+      "source_prompt_code": "test02_l2_natural_pacing_20261114_b08364786869",
+      "candidate_forge_prompt_id": null
+    },
+    {
+      "slot": "template",
+      "candidate_path": "prompts/L2/warm-up-template_l1l2__template__eae596ad890a.md",
+      "candidate_sha256": "eae596ad890aa53f68bb7261bd693f50451399059e10352c5c8177e7795dcf5c",
+      "bytes": 4869,
+      "baseline_path": "L2/U1/Lesson1/01-warm-up-template_l1l2/instance-6603/template.md",
+      "baseline_source_sha256": "090329a667bc01c0c8ce2faee11c55d6591448656e92a3f689768f125d476df0",
+      "source_prompt_id": 1831,
+      "source_prompt_code": "warmup_teaching_rules_l1l2-X-747-v1-21256",
+      "candidate_forge_prompt_id": null
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "level": 5,
+  "unit": 1,
+  "lesson": 1,
+  "lesson_id": 783,
+  "instance_id": 7028,
+  "template_code": "word_teach_image_l5l6",
+  "segments": [
+    {
+      "slot": "common",
+      "candidate_path": "prompts/L5/word_teach_image_l5l6__common__2fa53e7f2037.md",
+      "candidate_sha256": "2fa53e7f203748aa74f6513f14582c897cfe8062c8f28cb26b4225030a171644",
+      "bytes": 22415,
+      "baseline_path": "L5/公共规则/test02_l5_natural_pacing_20261114_70851ed25b5d.md",
+      "baseline_source_sha256": "70851ed25b5d82ff77c8abf941fccf50da6953d2fa66188c1b6caf1c8916dd6d",
+      "source_prompt_id": 2112,
+      "source_prompt_code": "test02_l5_natural_pacing_20261114_70851ed25b5d",
+      "candidate_forge_prompt_id": null
+    },
+    {
+      "slot": "template",
+      "candidate_path": "prompts/L5/word_teach_image_l5l6__template__017e2967fb6f.md",
+      "candidate_sha256": "017e2967fb6fa630d6deb20cb14bdef98f5f81a9bc3e745cfe6ee23bfd88b3e2",
+      "bytes": 15007,
+      "baseline_path": "L5/U1/Lesson1/04-word_teach_image_l5l6/instance-7028/template.md",
+      "baseline_source_sha256": "017a1fbd409f2c63ffa9ba901d7e0784d41d580fb9fb4f9edde592cdcc2aa1ce",
+      "source_prompt_id": 1962,
+      "source_prompt_code": "word_teach_image_l5l6-X-783-v1-26062",
+      "candidate_forge_prompt_id": null
+    }
+  ]
+}

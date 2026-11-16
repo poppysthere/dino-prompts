@@ -1,0 +1,49 @@
+{
+  "level": 1,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 736,
+  "instance_id": 6539,
+  "template_code": "lead-in-template_l1l2",
+  "segments": [
+    {
+      "slot": "template",
+      "candidate_path": "prompts/L1/lead-in-template_l1l2__template__58722afd59e7.md",
+      "candidate_sha256": "58722afd59e7f665c9ad7d6887b04ca21b1e902f058253207ebbfdc0859856c3",
+      "bytes": 2230,
+      "baseline_path": "L1/U1/Lesson2/03-lead-in-template_l1l2/instance-6539/template.md",
+      "baseline_source_sha256": "908aa20a0a9ab49a18ecd7bad36b0c880e5b1881ef6849b9c073e2684ddd34ea",
+      "source_prompt_id": 1820,
+      "source_prompt_code": "leadin_teaching_rules_l1l2-X-736-v1-20010",
+      "candidate_forge_prompt_id": null
+    },
+    {
+      "slot": "step",
+      "candidate_path": "prompts/L1/lead-in-template_l1l2__step__f22ccaf7d995.md",
+      "candidate_sha256": "f22ccaf7d995b79c2a57a3ecb4b0d9f6d1c343ab47adbcd7f7320e90114ba3d5",
+      "bytes": 623,
+      "baseline_path": "L1/U1/Lesson2/03-lead-in-template_l1l2/instance-6539/steps/01-pre-video.md",
+      "baseline_source_sha256": "f01ddf47d8baa8a5b09062e7f76a3a33eb7fb56c66901ce70b62e555cbfb5c68",
+      "source_prompt_id": 1821,
+      "source_prompt_code": "leadin_teaching_rules_l1l2_step_pre_video-X-736-v1-20010",
+      "candidate_forge_prompt_id": null,
+      "stepCode": "pre-video",
+      "type": "pre-video",
+      "isLastStep": false
+    },
+    {
+      "slot": "step",
+      "candidate_path": "prompts/L1/lead-in-template_l1l2__step__c89ac5ab7c64.md",
+      "candidate_sha256": "c89ac5ab7c64475f8e6c5afa9abf1a4865a0843221e68c0fccf87e85a1a7ee75",
+      "bytes": 843,
+      "baseline_path": "L1/U1/Lesson2/03-lead-in-template_l1l2/instance-6539/steps/03-post-video.md",
+      "baseline_source_sha256": "a93fca65fcf730d53dcea4dec932cdef8a81796dbac70e770690f8dbb403bba6",
+      "source_prompt_id": 1822,
+      "source_prompt_code": "leadin_teaching_rules_l1l2_step_post_video-X-736-v1-20010",
+      "candidate_forge_prompt_id": null,
+      "stepCode": "post-video",
+      "type": "post-video",
+      "isLastStep": true
+    }
+  ]
+}

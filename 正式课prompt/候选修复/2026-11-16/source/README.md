@@ -1,0 +1,1 @@
+These source constants generated the raw prompt files. The raw files and mapping manifest are the review/import artifact. The private local build uses the preserved Forge baseline; no resolved student context or credentials are included here.

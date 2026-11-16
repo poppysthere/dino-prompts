@@ -1,0 +1,88 @@
+{
+  "level": 2,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 748,
+  "instance_id": 6619,
+  "template_code": "sentence_teach_explain",
+  "segments": [
+    {
+      "slot": "common",
+      "candidate_path": "prompts/L2/sentence_teach_explain__common__29976bff65c1.md",
+      "candidate_sha256": "29976bff65c1ec6a863f2cf8ebe864b9028708ed85e177e3520186c7ef0b671e",
+      "bytes": 6994,
+      "baseline_path": "L2/公共规则/test02_l2_natural_pacing_20261114_4a99c6b2d028.md",
+      "baseline_source_sha256": "4a99c6b2d02895d7a846c7ddd675d8af735bfd749d7c7adb59939002b4e6a1db",
+      "source_prompt_id": 2102,
+      "source_prompt_code": "test02_l2_natural_pacing_20261114_4a99c6b2d028",
+      "candidate_forge_prompt_id": null
+    },
+    {
+      "slot": "template",
+      "candidate_path": "prompts/L2/sentence_teach_explain__template__6005040dd20e.md",
+      "candidate_sha256": "6005040dd20e018feafa84cc3f3b536c420524673209eb4a18a28a184650cbeb",
+      "bytes": 1866,
+      "baseline_path": "L2/U1/Lesson2/04-sentence_teach_explain/instance-6619/template.md",
+      "baseline_source_sha256": "6a023cf049a3523898e162644c14b73c0918ed5955f9dee1dcd31e81d971b85a",
+      "source_prompt_id": 1849,
+      "source_prompt_code": "sentence_teach_explain_rules-X-748-v1-21267",
+      "candidate_forge_prompt_id": null
+    },
+    {
+      "slot": "step",
+      "candidate_path": "prompts/L2/sentence_teach_explain__step__c28f2242046e.md",
+      "candidate_sha256": "c28f2242046e43d4739f8241de2be94bbf866556ad2386ded0b20e2122b697b1",
+      "bytes": 1921,
+      "baseline_path": "L2/U1/Lesson2/04-sentence_teach_explain/instance-6619/steps/01-sentence_0.md",
+      "baseline_source_sha256": "179b7f510dd2094561b72b37d105e7dd0133dbeb711557ebaf00d585fa470fc7",
+      "source_prompt_id": 1850,
+      "source_prompt_code": "sentence_teach_explain_rules_context-X-748-v1-21267",
+      "candidate_forge_prompt_id": null,
+      "stepCode": "sentence_0",
+      "type": "context",
+      "isLastStep": false
+    },
+    {
+      "slot": "step",
+      "candidate_path": "prompts/L2/sentence_teach_explain__step__c28f2242046e.md",
+      "candidate_sha256": "c28f2242046e43d4739f8241de2be94bbf866556ad2386ded0b20e2122b697b1",
+      "bytes": 1921,
+      "baseline_path": "L2/U1/Lesson2/04-sentence_teach_explain/instance-6619/steps/02-sentence_1.md",
+      "baseline_source_sha256": "179b7f510dd2094561b72b37d105e7dd0133dbeb711557ebaf00d585fa470fc7",
+      "source_prompt_id": 1850,
+      "source_prompt_code": "sentence_teach_explain_rules_context-X-748-v1-21267",
+      "candidate_forge_prompt_id": null,
+      "stepCode": "sentence_1",
+      "type": "context",
+      "isLastStep": false
+    },
+    {
+      "slot": "step",
+      "candidate_path": "prompts/L2/sentence_teach_explain__step__c28f2242046e.md",
+      "candidate_sha256": "c28f2242046e43d4739f8241de2be94bbf866556ad2386ded0b20e2122b697b1",
+      "bytes": 1921,
+      "baseline_path": "L2/U1/Lesson2/04-sentence_teach_explain/instance-6619/steps/03-sentence_2.md",
+      "baseline_source_sha256": "179b7f510dd2094561b72b37d105e7dd0133dbeb711557ebaf00d585fa470fc7",
+      "source_prompt_id": 1850,
+      "source_prompt_code": "sentence_teach_explain_rules_context-X-748-v1-21267",
+      "candidate_forge_prompt_id": null,
+      "stepCode": "sentence_2",
+      "type": "context",
+      "isLastStep": false
+    },
+    {
+      "slot": "step",
+      "candidate_path": "prompts/L2/sentence_teach_explain__step__5bf7ff74cc4c.md",
+      "candidate_sha256": "5bf7ff74cc4cca9eaf6b189bc104854fcde5ef42e2f4ebca855245b55a51b676",
+      "bytes": 2925,
+      "baseline_path": "L2/U1/Lesson2/04-sentence_teach_explain/instance-6619/steps/04-sentence_3.md",
+      "baseline_source_sha256": "1576d33710cfb0bd26690d52e5e44b9713d0b3a8f86a596ada508df7322460f2",
+      "source_prompt_id": 1851,
+      "source_prompt_code": "sentence_teach_explain_rules_frame_example-X-748-v1-21267",
+      "candidate_forge_prompt_id": null,
+      "stepCode": "sentence_3",
+      "type": "frame_example",
+      "isLastStep": true
+    }
+  ]
+}

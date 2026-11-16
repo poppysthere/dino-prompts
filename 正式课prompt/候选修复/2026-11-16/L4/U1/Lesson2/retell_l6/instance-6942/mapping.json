@@ -1,0 +1,32 @@
+{
+  "level": 4,
+  "unit": 1,
+  "lesson": 2,
+  "lesson_id": 772,
+  "instance_id": 6942,
+  "template_code": "retell_l6",
+  "segments": [
+    {
+      "slot": "common",
+      "candidate_path": "prompts/L4/retell_l6__common__6981b5904100.md",
+      "candidate_sha256": "6981b5904100c5cc0214afdfb05b478fc2091eeba711787251deaeced6dc59b9",
+      "bytes": 21122,
+      "baseline_path": "L4/公共规则/test02_l4_natural_pacing_20261114_891e71365d2c.md",
+      "baseline_source_sha256": "891e71365d2cdbce7fd8b78e11af71828e4c61f1fff71af95b43ca0a9ad3e3ef",
+      "source_prompt_id": 2108,
+      "source_prompt_code": "test02_l4_natural_pacing_20261114_891e71365d2c",
+      "candidate_forge_prompt_id": null
+    },
+    {
+      "slot": "template",
+      "candidate_path": "prompts/L4/retell_l6__template__76422251f18f.md",
+      "candidate_sha256": "76422251f18f1edf0c1c49febb02a63fa244d05a4409d2346b544746cf50fd26",
+      "bytes": 8203,
+      "baseline_path": "L4/U1/Lesson2/10-retell_l6/instance-6942/template.md",
+      "baseline_source_sha256": "acef52e9f7f060ebfae383ad966caca2ec841c96a558dbd3dc304d4b3b636cfb",
+      "source_prompt_id": 1927,
+      "source_prompt_code": "retell_rules-X-772-v1-24209",
+      "candidate_forge_prompt_id": null
+    }
+  ]
+}

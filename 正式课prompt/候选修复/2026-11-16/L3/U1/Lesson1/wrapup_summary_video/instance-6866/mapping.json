@@ -1,0 +1,21 @@
+{
+  "level": 3,
+  "unit": 1,
+  "lesson": 1,
+  "lesson_id": 759,
+  "instance_id": 6866,
+  "template_code": "wrapup_summary_video",
+  "segments": [
+    {
+      "slot": "template",
+      "candidate_path": "prompts/L3/wrapup_summary_video__template__3efd1be36869.md",
+      "candidate_sha256": "3efd1be368699a54caff17059aeee0e0dd096e81fcb9ca57c2c66ecec50c9c5a",
+      "bytes": 2308,
+      "baseline_path": "L3/U1/Lesson1/13-wrapup_summary_video/instance-6866/template.md",
+      "baseline_source_sha256": "8aa287a27e0f770a3e141577199d05948bd74257cf0a2f142b3838cd55dbd8ed",
+      "source_prompt_id": 1908,
+      "source_prompt_code": "wrapup_summary_video_rules-X-759-v1-22492",
+      "candidate_forge_prompt_id": null
+    }
+  ]
+}
