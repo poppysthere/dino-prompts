@@ -1,0 +1,3246 @@
+{
+  "status": "published_to_test02_for_user_manual_test",
+  "published_at": "2026-11-16T08:45:45.240144+00:00",
+  "tree_id": 998,
+  "tree_name": "Test02MCL1_6U1",
+  "scope": "L1-L6 Unit 1 Lessons 1-3",
+  "instances": 132,
+  "segments": 322,
+  "common_prompt_copies": 21,
+  "template_step_prompt_versions": 114,
+  "readback_verified": true,
+  "unchanged_other_contexts": 97,
+  "unchanged_original_shared_prompts": 23,
+  "production_acceptance": false,
+  "manual_classroom_test": "pending_user",
+  "candidate_company_commit": "1156419dd8f8bac4a7212c51e3ed2c51605d67d7",
+  "candidate_personal_commit": "27f0f359ebc1b67f13f8c63838402cefcc909cda",
+  "entries": [
+    {
+      "level": 1,
+      "lesson_id": 736,
+      "instance_id": 6526,
+      "segment": "common",
+      "prompt_id": 2114,
+      "prompt_code": "test02_l1_repair_20261116_41cff0e0c0bd",
+      "version_id": 3277,
+      "readback_sha256": "41cff0e0c0bd62f724cec0e3e04c28b64e34fdce2085739ac815bf13df6ffebe"
+    },
+    {
+      "level": 1,
+      "lesson_id": 736,
+      "instance_id": 6526,
+      "segment": "template",
+      "prompt_id": 1054,
+      "prompt_code": "warmup_teaching_rules_l1l2-L736-lesson_level",
+      "version_id": 3300,
+      "readback_sha256": "e51bc18dc44e1b4eda24c39197dc9979105da013abd53188e16b593777877efa"
+    },
+    {
+      "level": 1,
+      "lesson_id": 737,
+      "instance_id": 6527,
+      "segment": "common",
+      "prompt_id": 2115,
+      "prompt_code": "test02_l1_repair_20261116_bd198efd8ab1",
+      "version_id": 3278,
+      "readback_sha256": "bd198efd8ab16f37ce9a749d14c1b6eb6b7254719669b1a190109c27e74a7e83"
+    },
+    {
+      "level": 1,
+      "lesson_id": 737,
+      "instance_id": 6527,
+      "segment": "template",
+      "prompt_id": 1816,
+      "prompt_code": "warmup_teaching_rules_l1l2-X-737-v1-20016",
+      "version_id": 3299,
+      "readback_sha256": "23179aaf97238a690497ba11ffffaa44c16bb9e5a99d6b5e2956c09646152947"
+    },
+    {
+      "level": 1,
+      "lesson_id": 735,
+      "instance_id": 6528,
+      "segment": "common",
+      "prompt_id": 2116,
+      "prompt_code": "test02_l1_repair_20261116_e1d146cb43ac",
+      "version_id": 3279,
+      "readback_sha256": "e1d146cb43ace8a495757f6d1aa141fd6879924e9e45ddd12f17903c5f9685b4"
+    },
+    {
+      "level": 1,
+      "lesson_id": 735,
+      "instance_id": 6528,
+      "segment": "template",
+      "prompt_id": 1164,
+      "prompt_code": "warmup_teaching_rules_l1l2-X-735-v1-20000",
+      "version_id": 3298,
+      "readback_sha256": "e51bc18dc44e1b4eda24c39197dc9979105da013abd53188e16b593777877efa"
+    },
+    {
+      "level": 1,
+      "lesson_id": 736,
+      "instance_id": 6539,
+      "segment": "template",
+      "prompt_id": 1820,
+      "prompt_code": "leadin_teaching_rules_l1l2-X-736-v1-20010",
+      "version_id": 3302,
+      "readback_sha256": "58722afd59e7f665c9ad7d6887b04ca21b1e902f058253207ebbfdc0859856c3"
+    },
+    {
+      "level": 1,
+      "lesson_id": 736,
+      "instance_id": 6539,
+      "segment": "step-pre-video",
+      "prompt_id": 1821,
+      "prompt_code": "leadin_teaching_rules_l1l2_step_pre_video-X-736-v1-20010",
+      "version_id": 3301,
+      "readback_sha256": "f22ccaf7d995b79c2a57a3ecb4b0d9f6d1c343ab47adbcd7f7320e90114ba3d5"
+    },
+    {
+      "level": 1,
+      "lesson_id": 736,
+      "instance_id": 6539,
+      "segment": "step-post-video",
+      "prompt_id": 1822,
+      "prompt_code": "leadin_teaching_rules_l1l2_step_post_video-X-736-v1-20010",
+      "version_id": 3303,
+      "readback_sha256": "c89ac5ab7c64475f8e6c5afa9abf1a4865a0843221e68c0fccf87e85a1a7ee75"
+    },
+    {
+      "level": 1,
+      "lesson_id": 737,
+      "instance_id": 6541,
+      "segment": "template",
+      "prompt_id": 1823,
+      "prompt_code": "leadin_teaching_rules_l1l2-X-737-v1-20018",
+      "version_id": 3304,
+      "readback_sha256": "58722afd59e7f665c9ad7d6887b04ca21b1e902f058253207ebbfdc0859856c3"
+    },
+    {
+      "level": 1,
+      "lesson_id": 737,
+      "instance_id": 6541,
+      "segment": "step-pre-video",
+      "prompt_id": 1824,
+      "prompt_code": "leadin_teaching_rules_l1l2_step_pre_video-X-737-v1-20018",
+      "version_id": 3305,
+      "readback_sha256": "f22ccaf7d995b79c2a57a3ecb4b0d9f6d1c343ab47adbcd7f7320e90114ba3d5"
+    },
+    {
+      "level": 1,
+      "lesson_id": 737,
+      "instance_id": 6541,
+      "segment": "step-post-video",
+      "prompt_id": 1825,
+      "prompt_code": "leadin_teaching_rules_l1l2_step_post_video-X-737-v1-20018",
+      "version_id": 3306,
+      "readback_sha256": "c89ac5ab7c64475f8e6c5afa9abf1a4865a0843221e68c0fccf87e85a1a7ee75"
+    },
+    {
+      "level": 1,
+      "lesson_id": 735,
+      "instance_id": 6542,
+      "segment": "template",
+      "prompt_id": 1166,
+      "prompt_code": "leadin_teaching_rules_l1l2-X-735-v1-20002",
+      "version_id": 3307,
+      "readback_sha256": "58722afd59e7f665c9ad7d6887b04ca21b1e902f058253207ebbfdc0859856c3"
+    },
+    {
+      "level": 1,
+      "lesson_id": 735,
+      "instance_id": 6542,
+      "segment": "step-pre-video",
+      "prompt_id": 1167,
+      "prompt_code": "leadin_teaching_rules_l1l2_step_pre_video-X-735-v1-20002",
+      "version_id": 3308,
+      "readback_sha256": "f22ccaf7d995b79c2a57a3ecb4b0d9f6d1c343ab47adbcd7f7320e90114ba3d5"
+    },
+    {
+      "level": 1,
+      "lesson_id": 735,
+      "instance_id": 6542,
+      "segment": "step-post-video",
+      "prompt_id": 1168,
+      "prompt_code": "leadin_teaching_rules_l1l2_step_post_video-X-735-v1-20002",
+      "version_id": 3309,
+      "readback_sha256": "c89ac5ab7c64475f8e6c5afa9abf1a4865a0843221e68c0fccf87e85a1a7ee75"
+    },
+    {
+      "level": 1,
+      "lesson_id": 737,
+      "instance_id": 6545,
+      "segment": "common",
+      "prompt_id": 2117,
+      "prompt_code": "test02_l1_repair_20261116_95fca1956fb7",
+      "version_id": 3280,
+      "readback_sha256": "95fca1956fb7f100788bd90790bc6f5812da72a4123b6dd3761df8d7dbf6f0c0"
+    },
+    {
+      "level": 1,
+      "lesson_id": 737,
+      "instance_id": 6545,
+      "segment": "template",
+      "prompt_id": 1826,
+      "prompt_code": "theme_reader_rules-X-737-v1-20019",
+      "version_id": 3310,
+      "readback_sha256": "b7498b503f6cb01d85272092c2196d413ace2c3c89785092da31a10c444b086a"
+    },
+    {
+      "level": 1,
+      "lesson_id": 737,
+      "instance_id": 6545,
+      "segment": "step-page_0",
+      "prompt_id": 1828,
+      "prompt_code": "theme_reader_rules_cover-X-737-v1-20019",
+      "version_id": 3311,
+      "readback_sha256": "e6f823b107894a3303c203b0146c142eea048ef4527b6a82f1de09eb92dca593"
+    },
+    {
+      "level": 1,
+      "lesson_id": 737,
+      "instance_id": 6545,
+      "segment": "step-page_1",
+      "prompt_id": 1827,
+      "prompt_code": "theme_reader_rules_page-X-737-v1-20019",
+      "version_id": 3312,
+      "readback_sha256": "a0e0e9ef4d487613ac2091f6628e9c6dd6d5626169ed36665b00ee8abec213ca"
+    },
+    {
+      "level": 1,
+      "lesson_id": 737,
+      "instance_id": 6545,
+      "segment": "step-page_2",
+      "prompt_id": 1827,
+      "prompt_code": "theme_reader_rules_page-X-737-v1-20019",
+      "version_id": 3312,
+      "readback_sha256": "a0e0e9ef4d487613ac2091f6628e9c6dd6d5626169ed36665b00ee8abec213ca"
+    },
+    {
+      "level": 1,
+      "lesson_id": 737,
+      "instance_id": 6545,
+      "segment": "step-page_3",
+      "prompt_id": 1827,
+      "prompt_code": "theme_reader_rules_page-X-737-v1-20019",
+      "version_id": 3312,
+      "readback_sha256": "a0e0e9ef4d487613ac2091f6628e9c6dd6d5626169ed36665b00ee8abec213ca"
+    },
+    {
+      "level": 1,
+      "lesson_id": 737,
+      "instance_id": 6545,
+      "segment": "step-page_4",
+      "prompt_id": 1827,
+      "prompt_code": "theme_reader_rules_page-X-737-v1-20019",
+      "version_id": 3312,
+      "readback_sha256": "a0e0e9ef4d487613ac2091f6628e9c6dd6d5626169ed36665b00ee8abec213ca"
+    },
+    {
+      "level": 1,
+      "lesson_id": 737,
+      "instance_id": 6545,
+      "segment": "step-page_5",
+      "prompt_id": 1827,
+      "prompt_code": "theme_reader_rules_page-X-737-v1-20019",
+      "version_id": 3312,
+      "readback_sha256": "a0e0e9ef4d487613ac2091f6628e9c6dd6d5626169ed36665b00ee8abec213ca"
+    },
+    {
+      "level": 1,
+      "lesson_id": 737,
+      "instance_id": 6545,
+      "segment": "step-page_6",
+      "prompt_id": 1827,
+      "prompt_code": "theme_reader_rules_page-X-737-v1-20019",
+      "version_id": 3312,
+      "readback_sha256": "a0e0e9ef4d487613ac2091f6628e9c6dd6d5626169ed36665b00ee8abec213ca"
+    },
+    {
+      "level": 1,
+      "lesson_id": 736,
+      "instance_id": 6546,
+      "segment": "common",
+      "prompt_id": 2117,
+      "prompt_code": "test02_l1_repair_20261116_95fca1956fb7",
+      "version_id": 3280,
+      "readback_sha256": "95fca1956fb7f100788bd90790bc6f5812da72a4123b6dd3761df8d7dbf6f0c0"
+    },
+    {
+      "level": 1,
+      "lesson_id": 736,
+      "instance_id": 6546,
+      "segment": "template",
+      "prompt_id": 1177,
+      "prompt_code": "sentence_teach_explain_rules-X-736-v1-20011",
+      "version_id": 3313,
+      "readback_sha256": "f465c3739385890c221dff1a05e578c6cae0d0430e46996d319db7439f884336"
+    },
+    {
+      "level": 1,
+      "lesson_id": 736,
+      "instance_id": 6546,
+      "segment": "step-sentence_0",
+      "prompt_id": 1178,
+      "prompt_code": "sentence_teach_explain_rules_context-X-736-v1-20011",
+      "version_id": 3314,
+      "readback_sha256": "370952c762be93811d0740113fc96ff5371f78a322ee3b1ca672a13052bb8606"
+    },
+    {
+      "level": 1,
+      "lesson_id": 736,
+      "instance_id": 6546,
+      "segment": "step-sentence_1",
+      "prompt_id": 1178,
+      "prompt_code": "sentence_teach_explain_rules_context-X-736-v1-20011",
+      "version_id": 3314,
+      "readback_sha256": "370952c762be93811d0740113fc96ff5371f78a322ee3b1ca672a13052bb8606"
+    },
+    {
+      "level": 1,
+      "lesson_id": 736,
+      "instance_id": 6546,
+      "segment": "step-sentence_2",
+      "prompt_id": 1178,
+      "prompt_code": "sentence_teach_explain_rules_context-X-736-v1-20011",
+      "version_id": 3314,
+      "readback_sha256": "370952c762be93811d0740113fc96ff5371f78a322ee3b1ca672a13052bb8606"
+    },
+    {
+      "level": 1,
+      "lesson_id": 736,
+      "instance_id": 6546,
+      "segment": "step-sentence_3",
+      "prompt_id": 1178,
+      "prompt_code": "sentence_teach_explain_rules_context-X-736-v1-20011",
+      "version_id": 3314,
+      "readback_sha256": "370952c762be93811d0740113fc96ff5371f78a322ee3b1ca672a13052bb8606"
+    },
+    {
+      "level": 1,
+      "lesson_id": 736,
+      "instance_id": 6546,
+      "segment": "step-sentence_4",
+      "prompt_id": 1179,
+      "prompt_code": "sentence_teach_explain_rules_frame_example-X-736-v1-20011",
+      "version_id": 3315,
+      "readback_sha256": "cfd0f5b4948170d8f5b363c35dd55ad50e6fa2b4c926025706f796d56d1cbca6"
+    },
+    {
+      "level": 1,
+      "lesson_id": 735,
+      "instance_id": 6547,
+      "segment": "common",
+      "prompt_id": 2116,
+      "prompt_code": "test02_l1_repair_20261116_e1d146cb43ac",
+      "version_id": 3279,
+      "readback_sha256": "e1d146cb43ace8a495757f6d1aa141fd6879924e9e45ddd12f17903c5f9685b4"
+    },
+    {
+      "level": 1,
+      "lesson_id": 735,
+      "instance_id": 6547,
+      "segment": "template",
+      "prompt_id": 1169,
+      "prompt_code": "word_teach_image_l1l2-X-735-v1-20003",
+      "version_id": 3316,
+      "readback_sha256": "bfffb9e4a9ad2798a1c516827b5c3f539cf6016d119460bb500c21c64dc558f5"
+    },
+    {
+      "level": 1,
+      "lesson_id": 735,
+      "instance_id": 6549,
+      "segment": "common",
+      "prompt_id": 2116,
+      "prompt_code": "test02_l1_repair_20261116_e1d146cb43ac",
+      "version_id": 3279,
+      "readback_sha256": "e1d146cb43ace8a495757f6d1aa141fd6879924e9e45ddd12f17903c5f9685b4"
+    },
+    {
+      "level": 1,
+      "lesson_id": 735,
+      "instance_id": 6549,
+      "segment": "template",
+      "prompt_id": 1169,
+      "prompt_code": "word_teach_image_l1l2-X-735-v1-20003",
+      "version_id": 3316,
+      "readback_sha256": "bfffb9e4a9ad2798a1c516827b5c3f539cf6016d119460bb500c21c64dc558f5"
+    },
+    {
+      "level": 1,
+      "lesson_id": 735,
+      "instance_id": 6554,
+      "segment": "common",
+      "prompt_id": 2116,
+      "prompt_code": "test02_l1_repair_20261116_e1d146cb43ac",
+      "version_id": 3279,
+      "readback_sha256": "e1d146cb43ace8a495757f6d1aa141fd6879924e9e45ddd12f17903c5f9685b4"
+    },
+    {
+      "level": 1,
+      "lesson_id": 735,
+      "instance_id": 6554,
+      "segment": "template",
+      "prompt_id": 1169,
+      "prompt_code": "word_teach_image_l1l2-X-735-v1-20003",
+      "version_id": 3316,
+      "readback_sha256": "bfffb9e4a9ad2798a1c516827b5c3f539cf6016d119460bb500c21c64dc558f5"
+    },
+    {
+      "level": 1,
+      "lesson_id": 736,
+      "instance_id": 6563,
+      "segment": "template",
+      "prompt_id": 1180,
+      "prompt_code": "wrapup_summary_video_rules-X-736-v1-20013",
+      "version_id": 3317,
+      "readback_sha256": "77c7620ce5aea678b79296c21be730cab0360cd952f1509a7b3545eba5ae0fce"
+    },
+    {
+      "level": 1,
+      "lesson_id": 737,
+      "instance_id": 6564,
+      "segment": "template",
+      "prompt_id": 1829,
+      "prompt_code": "wrapup_summary_video_rules-X-737-v1-20021",
+      "version_id": 3318,
+      "readback_sha256": "4cbd2e1e837ef22e40158f28ee6e4337685c820de521af85285a94bd72c9a6d1"
+    },
+    {
+      "level": 1,
+      "lesson_id": 735,
+      "instance_id": 6580,
+      "segment": "template",
+      "prompt_id": 1170,
+      "prompt_code": "wrapup_summary_video_rules-X-735-v1-20005",
+      "version_id": 3319,
+      "readback_sha256": "4cbd2e1e837ef22e40158f28ee6e4337685c820de521af85285a94bd72c9a6d1"
+    },
+    {
+      "level": 1,
+      "lesson_id": 736,
+      "instance_id": 7354,
+      "segment": "template",
+      "prompt_id": 1820,
+      "prompt_code": "leadin_teaching_rules_l1l2-X-736-v1-20010",
+      "version_id": 3302,
+      "readback_sha256": "58722afd59e7f665c9ad7d6887b04ca21b1e902f058253207ebbfdc0859856c3"
+    },
+    {
+      "level": 1,
+      "lesson_id": 736,
+      "instance_id": 7354,
+      "segment": "step-pre-video",
+      "prompt_id": 1821,
+      "prompt_code": "leadin_teaching_rules_l1l2_step_pre_video-X-736-v1-20010",
+      "version_id": 3301,
+      "readback_sha256": "f22ccaf7d995b79c2a57a3ecb4b0d9f6d1c343ab47adbcd7f7320e90114ba3d5"
+    },
+    {
+      "level": 1,
+      "lesson_id": 736,
+      "instance_id": 7354,
+      "segment": "step-post-video",
+      "prompt_id": 1822,
+      "prompt_code": "leadin_teaching_rules_l1l2_step_post_video-X-736-v1-20010",
+      "version_id": 3303,
+      "readback_sha256": "c89ac5ab7c64475f8e6c5afa9abf1a4865a0843221e68c0fccf87e85a1a7ee75"
+    },
+    {
+      "level": 1,
+      "lesson_id": 736,
+      "instance_id": 7355,
+      "segment": "template",
+      "prompt_id": 1180,
+      "prompt_code": "wrapup_summary_video_rules-X-736-v1-20013",
+      "version_id": 3317,
+      "readback_sha256": "77c7620ce5aea678b79296c21be730cab0360cd952f1509a7b3545eba5ae0fce"
+    },
+    {
+      "level": 1,
+      "lesson_id": 737,
+      "instance_id": 7356,
+      "segment": "template",
+      "prompt_id": 1823,
+      "prompt_code": "leadin_teaching_rules_l1l2-X-737-v1-20018",
+      "version_id": 3304,
+      "readback_sha256": "58722afd59e7f665c9ad7d6887b04ca21b1e902f058253207ebbfdc0859856c3"
+    },
+    {
+      "level": 1,
+      "lesson_id": 737,
+      "instance_id": 7356,
+      "segment": "step-pre-video",
+      "prompt_id": 1824,
+      "prompt_code": "leadin_teaching_rules_l1l2_step_pre_video-X-737-v1-20018",
+      "version_id": 3305,
+      "readback_sha256": "f22ccaf7d995b79c2a57a3ecb4b0d9f6d1c343ab47adbcd7f7320e90114ba3d5"
+    },
+    {
+      "level": 1,
+      "lesson_id": 737,
+      "instance_id": 7356,
+      "segment": "step-post-video",
+      "prompt_id": 1825,
+      "prompt_code": "leadin_teaching_rules_l1l2_step_post_video-X-737-v1-20018",
+      "version_id": 3306,
+      "readback_sha256": "c89ac5ab7c64475f8e6c5afa9abf1a4865a0843221e68c0fccf87e85a1a7ee75"
+    },
+    {
+      "level": 1,
+      "lesson_id": 737,
+      "instance_id": 7357,
+      "segment": "template",
+      "prompt_id": 1829,
+      "prompt_code": "wrapup_summary_video_rules-X-737-v1-20021",
+      "version_id": 3318,
+      "readback_sha256": "4cbd2e1e837ef22e40158f28ee6e4337685c820de521af85285a94bd72c9a6d1"
+    },
+    {
+      "level": 2,
+      "lesson_id": 748,
+      "instance_id": 6602,
+      "segment": "common",
+      "prompt_id": 2118,
+      "prompt_code": "test02_l2_repair_20261116_75474920f57a",
+      "version_id": 3281,
+      "readback_sha256": "75474920f57ab43facbf249b984561de27a6eff5bf08cd5ded9798de8332a898"
+    },
+    {
+      "level": 2,
+      "lesson_id": 748,
+      "instance_id": 6602,
+      "segment": "template",
+      "prompt_id": 1830,
+      "prompt_code": "warmup_teaching_rules_l1l2-X-748-v1-21264",
+      "version_id": 3321,
+      "readback_sha256": "eae596ad890aa53f68bb7261bd693f50451399059e10352c5c8177e7795dcf5c"
+    },
+    {
+      "level": 2,
+      "lesson_id": 747,
+      "instance_id": 6603,
+      "segment": "common",
+      "prompt_id": 2118,
+      "prompt_code": "test02_l2_repair_20261116_75474920f57a",
+      "version_id": 3281,
+      "readback_sha256": "75474920f57ab43facbf249b984561de27a6eff5bf08cd5ded9798de8332a898"
+    },
+    {
+      "level": 2,
+      "lesson_id": 747,
+      "instance_id": 6603,
+      "segment": "template",
+      "prompt_id": 1831,
+      "prompt_code": "warmup_teaching_rules_l1l2-X-747-v1-21256",
+      "version_id": 3320,
+      "readback_sha256": "eae596ad890aa53f68bb7261bd693f50451399059e10352c5c8177e7795dcf5c"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 6605,
+      "segment": "common",
+      "prompt_id": 2118,
+      "prompt_code": "test02_l2_repair_20261116_75474920f57a",
+      "version_id": 3281,
+      "readback_sha256": "75474920f57ab43facbf249b984561de27a6eff5bf08cd5ded9798de8332a898"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 6605,
+      "segment": "template",
+      "prompt_id": 1832,
+      "prompt_code": "warmup_teaching_rules_l1l2-X-749-v1-21272",
+      "version_id": 3322,
+      "readback_sha256": "eae596ad890aa53f68bb7261bd693f50451399059e10352c5c8177e7795dcf5c"
+    },
+    {
+      "level": 2,
+      "lesson_id": 748,
+      "instance_id": 6612,
+      "segment": "template",
+      "prompt_id": 1837,
+      "prompt_code": "leadin_teaching_rules_l1l2-X-748-v1-21266",
+      "version_id": 3323,
+      "readback_sha256": "e0b83a6986ee150bb64e4779d735e2fbeb3f6d5d0385c0caa0a72fe5dca3633b"
+    },
+    {
+      "level": 2,
+      "lesson_id": 748,
+      "instance_id": 6612,
+      "segment": "step-post-video",
+      "prompt_id": 1839,
+      "prompt_code": "leadin_teaching_rules_l1l2_step_post_video-X-748-v1-21266",
+      "version_id": 3324,
+      "readback_sha256": "131955555a0332be736d5cf1a42363c7568f734a2dda87a50cac2e8b25f6d7c7"
+    },
+    {
+      "level": 2,
+      "lesson_id": 747,
+      "instance_id": 6613,
+      "segment": "template",
+      "prompt_id": 1841,
+      "prompt_code": "leadin_teaching_rules_l1l2-X-747-v1-21258",
+      "version_id": 3326,
+      "readback_sha256": "e0b83a6986ee150bb64e4779d735e2fbeb3f6d5d0385c0caa0a72fe5dca3633b"
+    },
+    {
+      "level": 2,
+      "lesson_id": 747,
+      "instance_id": 6613,
+      "segment": "step-post-video",
+      "prompt_id": 1843,
+      "prompt_code": "leadin_teaching_rules_l1l2_step_post_video-X-747-v1-21258",
+      "version_id": 3325,
+      "readback_sha256": "131955555a0332be736d5cf1a42363c7568f734a2dda87a50cac2e8b25f6d7c7"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 6615,
+      "segment": "template",
+      "prompt_id": 1844,
+      "prompt_code": "leadin_teaching_rules_l1l2-X-749-v1-21274",
+      "version_id": 3327,
+      "readback_sha256": "e0b83a6986ee150bb64e4779d735e2fbeb3f6d5d0385c0caa0a72fe5dca3633b"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 6615,
+      "segment": "step-post-video",
+      "prompt_id": 1846,
+      "prompt_code": "leadin_teaching_rules_l1l2_step_post_video-X-749-v1-21274",
+      "version_id": 3328,
+      "readback_sha256": "131955555a0332be736d5cf1a42363c7568f734a2dda87a50cac2e8b25f6d7c7"
+    },
+    {
+      "level": 2,
+      "lesson_id": 747,
+      "instance_id": 6618,
+      "segment": "common",
+      "prompt_id": 2119,
+      "prompt_code": "test02_l2_repair_20261116_f7248f66b5d0",
+      "version_id": 3282,
+      "readback_sha256": "f7248f66b5d060f1f14ca0cae4f6b03107b095435872ce2f6deffea1d88f6826"
+    },
+    {
+      "level": 2,
+      "lesson_id": 747,
+      "instance_id": 6618,
+      "segment": "template",
+      "prompt_id": 1848,
+      "prompt_code": "word_teach_image_l1l2-X-747-v1-21259",
+      "version_id": 3329,
+      "readback_sha256": "34fde81d715d04ad5e97e9cf6eaccb031ffb595d8b4b0da91a06ca8a310072d8"
+    },
+    {
+      "level": 2,
+      "lesson_id": 748,
+      "instance_id": 6619,
+      "segment": "common",
+      "prompt_id": 2120,
+      "prompt_code": "test02_l2_repair_20261116_29976bff65c1",
+      "version_id": 3283,
+      "readback_sha256": "29976bff65c1ec6a863f2cf8ebe864b9028708ed85e177e3520186c7ef0b671e"
+    },
+    {
+      "level": 2,
+      "lesson_id": 748,
+      "instance_id": 6619,
+      "segment": "template",
+      "prompt_id": 1849,
+      "prompt_code": "sentence_teach_explain_rules-X-748-v1-21267",
+      "version_id": 2740,
+      "readback_sha256": "6005040dd20e018feafa84cc3f3b536c420524673209eb4a18a28a184650cbeb"
+    },
+    {
+      "level": 2,
+      "lesson_id": 748,
+      "instance_id": 6619,
+      "segment": "step-sentence_0",
+      "prompt_id": 1850,
+      "prompt_code": "sentence_teach_explain_rules_context-X-748-v1-21267",
+      "version_id": 3330,
+      "readback_sha256": "c28f2242046e43d4739f8241de2be94bbf866556ad2386ded0b20e2122b697b1"
+    },
+    {
+      "level": 2,
+      "lesson_id": 748,
+      "instance_id": 6619,
+      "segment": "step-sentence_1",
+      "prompt_id": 1850,
+      "prompt_code": "sentence_teach_explain_rules_context-X-748-v1-21267",
+      "version_id": 3330,
+      "readback_sha256": "c28f2242046e43d4739f8241de2be94bbf866556ad2386ded0b20e2122b697b1"
+    },
+    {
+      "level": 2,
+      "lesson_id": 748,
+      "instance_id": 6619,
+      "segment": "step-sentence_2",
+      "prompt_id": 1850,
+      "prompt_code": "sentence_teach_explain_rules_context-X-748-v1-21267",
+      "version_id": 3330,
+      "readback_sha256": "c28f2242046e43d4739f8241de2be94bbf866556ad2386ded0b20e2122b697b1"
+    },
+    {
+      "level": 2,
+      "lesson_id": 748,
+      "instance_id": 6619,
+      "segment": "step-sentence_3",
+      "prompt_id": 1851,
+      "prompt_code": "sentence_teach_explain_rules_frame_example-X-748-v1-21267",
+      "version_id": 3331,
+      "readback_sha256": "5bf7ff74cc4cca9eaf6b189bc104854fcde5ef42e2f4ebca855245b55a51b676"
+    },
+    {
+      "level": 2,
+      "lesson_id": 747,
+      "instance_id": 6622,
+      "segment": "common",
+      "prompt_id": 2119,
+      "prompt_code": "test02_l2_repair_20261116_f7248f66b5d0",
+      "version_id": 3282,
+      "readback_sha256": "f7248f66b5d060f1f14ca0cae4f6b03107b095435872ce2f6deffea1d88f6826"
+    },
+    {
+      "level": 2,
+      "lesson_id": 747,
+      "instance_id": 6622,
+      "segment": "template",
+      "prompt_id": 1848,
+      "prompt_code": "word_teach_image_l1l2-X-747-v1-21259",
+      "version_id": 3329,
+      "readback_sha256": "34fde81d715d04ad5e97e9cf6eaccb031ffb595d8b4b0da91a06ca8a310072d8"
+    },
+    {
+      "level": 2,
+      "lesson_id": 747,
+      "instance_id": 6627,
+      "segment": "common",
+      "prompt_id": 2119,
+      "prompt_code": "test02_l2_repair_20261116_f7248f66b5d0",
+      "version_id": 3282,
+      "readback_sha256": "f7248f66b5d060f1f14ca0cae4f6b03107b095435872ce2f6deffea1d88f6826"
+    },
+    {
+      "level": 2,
+      "lesson_id": 747,
+      "instance_id": 6627,
+      "segment": "template",
+      "prompt_id": 1848,
+      "prompt_code": "word_teach_image_l1l2-X-747-v1-21259",
+      "version_id": 3329,
+      "readback_sha256": "34fde81d715d04ad5e97e9cf6eaccb031ffb595d8b4b0da91a06ca8a310072d8"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 6633,
+      "segment": "common",
+      "prompt_id": 2119,
+      "prompt_code": "test02_l2_repair_20261116_f7248f66b5d0",
+      "version_id": 3282,
+      "readback_sha256": "f7248f66b5d060f1f14ca0cae4f6b03107b095435872ce2f6deffea1d88f6826"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 6633,
+      "segment": "template",
+      "prompt_id": 1854,
+      "prompt_code": "phonics_pattern_word_teach_rules-X-749-v1-21276",
+      "version_id": 3332,
+      "readback_sha256": "e26793d5414ea2848df528fd4889f3bc3b191d7afaa2e494c46b971f83f995a9"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 6634,
+      "segment": "common",
+      "prompt_id": 2119,
+      "prompt_code": "test02_l2_repair_20261116_f7248f66b5d0",
+      "version_id": 3282,
+      "readback_sha256": "f7248f66b5d060f1f14ca0cae4f6b03107b095435872ce2f6deffea1d88f6826"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 6634,
+      "segment": "template",
+      "prompt_id": 1854,
+      "prompt_code": "phonics_pattern_word_teach_rules-X-749-v1-21276",
+      "version_id": 3332,
+      "readback_sha256": "e26793d5414ea2848df528fd4889f3bc3b191d7afaa2e494c46b971f83f995a9"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 6637,
+      "segment": "common",
+      "prompt_id": 2119,
+      "prompt_code": "test02_l2_repair_20261116_f7248f66b5d0",
+      "version_id": 3282,
+      "readback_sha256": "f7248f66b5d060f1f14ca0cae4f6b03107b095435872ce2f6deffea1d88f6826"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 6637,
+      "segment": "template",
+      "prompt_id": 1854,
+      "prompt_code": "phonics_pattern_word_teach_rules-X-749-v1-21276",
+      "version_id": 3332,
+      "readback_sha256": "e26793d5414ea2848df528fd4889f3bc3b191d7afaa2e494c46b971f83f995a9"
+    },
+    {
+      "level": 2,
+      "lesson_id": 748,
+      "instance_id": 6638,
+      "segment": "template",
+      "prompt_id": 1855,
+      "prompt_code": "wrapup_summary_video_rules-X-748-v1-21269",
+      "version_id": 3333,
+      "readback_sha256": "959ca02f833b11118ad0bd7806a285d0590523eeedb5b7942896038bb6d6ce72"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 6639,
+      "segment": "common",
+      "prompt_id": 2119,
+      "prompt_code": "test02_l2_repair_20261116_f7248f66b5d0",
+      "version_id": 3282,
+      "readback_sha256": "f7248f66b5d060f1f14ca0cae4f6b03107b095435872ce2f6deffea1d88f6826"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 6639,
+      "segment": "template",
+      "prompt_id": 1854,
+      "prompt_code": "phonics_pattern_word_teach_rules-X-749-v1-21276",
+      "version_id": 3332,
+      "readback_sha256": "e26793d5414ea2848df528fd4889f3bc3b191d7afaa2e494c46b971f83f995a9"
+    },
+    {
+      "level": 2,
+      "lesson_id": 747,
+      "instance_id": 6652,
+      "segment": "template",
+      "prompt_id": 1860,
+      "prompt_code": "wrapup_summary_video_rules-X-747-v1-21261",
+      "version_id": 3334,
+      "readback_sha256": "959ca02f833b11118ad0bd7806a285d0590523eeedb5b7942896038bb6d6ce72"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 6662,
+      "segment": "template",
+      "prompt_id": 1864,
+      "prompt_code": "wrapup_summary_video_rules-X-749-v1-21278",
+      "version_id": 3335,
+      "readback_sha256": "959ca02f833b11118ad0bd7806a285d0590523eeedb5b7942896038bb6d6ce72"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 7253,
+      "segment": "common",
+      "prompt_id": 2118,
+      "prompt_code": "test02_l2_repair_20261116_75474920f57a",
+      "version_id": 3281,
+      "readback_sha256": "75474920f57ab43facbf249b984561de27a6eff5bf08cd5ded9798de8332a898"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 7253,
+      "segment": "template",
+      "prompt_id": 1832,
+      "prompt_code": "warmup_teaching_rules_l1l2-X-749-v1-21272",
+      "version_id": 3322,
+      "readback_sha256": "eae596ad890aa53f68bb7261bd693f50451399059e10352c5c8177e7795dcf5c"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 7255,
+      "segment": "template",
+      "prompt_id": 1844,
+      "prompt_code": "leadin_teaching_rules_l1l2-X-749-v1-21274",
+      "version_id": 3327,
+      "readback_sha256": "e0b83a6986ee150bb64e4779d735e2fbeb3f6d5d0385c0caa0a72fe5dca3633b"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 7255,
+      "segment": "step-post-video",
+      "prompt_id": 1846,
+      "prompt_code": "leadin_teaching_rules_l1l2_step_post_video-X-749-v1-21274",
+      "version_id": 3328,
+      "readback_sha256": "131955555a0332be736d5cf1a42363c7568f734a2dda87a50cac2e8b25f6d7c7"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 7258,
+      "segment": "common",
+      "prompt_id": 2119,
+      "prompt_code": "test02_l2_repair_20261116_f7248f66b5d0",
+      "version_id": 3282,
+      "readback_sha256": "f7248f66b5d060f1f14ca0cae4f6b03107b095435872ce2f6deffea1d88f6826"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 7258,
+      "segment": "template",
+      "prompt_id": 1854,
+      "prompt_code": "phonics_pattern_word_teach_rules-X-749-v1-21276",
+      "version_id": 3332,
+      "readback_sha256": "e26793d5414ea2848df528fd4889f3bc3b191d7afaa2e494c46b971f83f995a9"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 7259,
+      "segment": "common",
+      "prompt_id": 2119,
+      "prompt_code": "test02_l2_repair_20261116_f7248f66b5d0",
+      "version_id": 3282,
+      "readback_sha256": "f7248f66b5d060f1f14ca0cae4f6b03107b095435872ce2f6deffea1d88f6826"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 7259,
+      "segment": "template",
+      "prompt_id": 1854,
+      "prompt_code": "phonics_pattern_word_teach_rules-X-749-v1-21276",
+      "version_id": 3332,
+      "readback_sha256": "e26793d5414ea2848df528fd4889f3bc3b191d7afaa2e494c46b971f83f995a9"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 7262,
+      "segment": "common",
+      "prompt_id": 2119,
+      "prompt_code": "test02_l2_repair_20261116_f7248f66b5d0",
+      "version_id": 3282,
+      "readback_sha256": "f7248f66b5d060f1f14ca0cae4f6b03107b095435872ce2f6deffea1d88f6826"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 7262,
+      "segment": "template",
+      "prompt_id": 1871,
+      "prompt_code": "phonics_pattern_word_teach_rules-X-749-v1-30513",
+      "version_id": 3336,
+      "readback_sha256": "845a1c0a7e02ede69e372e5770efe2b66f8306cb39f89a014632619942d75c20"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 7263,
+      "segment": "common",
+      "prompt_id": 2119,
+      "prompt_code": "test02_l2_repair_20261116_f7248f66b5d0",
+      "version_id": 3282,
+      "readback_sha256": "f7248f66b5d060f1f14ca0cae4f6b03107b095435872ce2f6deffea1d88f6826"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 7263,
+      "segment": "template",
+      "prompt_id": 1871,
+      "prompt_code": "phonics_pattern_word_teach_rules-X-749-v1-30513",
+      "version_id": 3336,
+      "readback_sha256": "845a1c0a7e02ede69e372e5770efe2b66f8306cb39f89a014632619942d75c20"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 7267,
+      "segment": "template",
+      "prompt_id": 1864,
+      "prompt_code": "wrapup_summary_video_rules-X-749-v1-21278",
+      "version_id": 3335,
+      "readback_sha256": "959ca02f833b11118ad0bd7806a285d0590523eeedb5b7942896038bb6d6ce72"
+    },
+    {
+      "level": 2,
+      "lesson_id": 748,
+      "instance_id": 7362,
+      "segment": "template",
+      "prompt_id": 1837,
+      "prompt_code": "leadin_teaching_rules_l1l2-X-748-v1-21266",
+      "version_id": 3323,
+      "readback_sha256": "e0b83a6986ee150bb64e4779d735e2fbeb3f6d5d0385c0caa0a72fe5dca3633b"
+    },
+    {
+      "level": 2,
+      "lesson_id": 748,
+      "instance_id": 7362,
+      "segment": "step-post-video",
+      "prompt_id": 1839,
+      "prompt_code": "leadin_teaching_rules_l1l2_step_post_video-X-748-v1-21266",
+      "version_id": 3324,
+      "readback_sha256": "131955555a0332be736d5cf1a42363c7568f734a2dda87a50cac2e8b25f6d7c7"
+    },
+    {
+      "level": 2,
+      "lesson_id": 748,
+      "instance_id": 7363,
+      "segment": "template",
+      "prompt_id": 1855,
+      "prompt_code": "wrapup_summary_video_rules-X-748-v1-21269",
+      "version_id": 3333,
+      "readback_sha256": "959ca02f833b11118ad0bd7806a285d0590523eeedb5b7942896038bb6d6ce72"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 7364,
+      "segment": "template",
+      "prompt_id": 1844,
+      "prompt_code": "leadin_teaching_rules_l1l2-X-749-v1-21274",
+      "version_id": 3327,
+      "readback_sha256": "e0b83a6986ee150bb64e4779d735e2fbeb3f6d5d0385c0caa0a72fe5dca3633b"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 7364,
+      "segment": "step-post-video",
+      "prompt_id": 1846,
+      "prompt_code": "leadin_teaching_rules_l1l2_step_post_video-X-749-v1-21274",
+      "version_id": 3328,
+      "readback_sha256": "131955555a0332be736d5cf1a42363c7568f734a2dda87a50cac2e8b25f6d7c7"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 7365,
+      "segment": "template",
+      "prompt_id": 1844,
+      "prompt_code": "leadin_teaching_rules_l1l2-X-749-v1-21274",
+      "version_id": 3327,
+      "readback_sha256": "e0b83a6986ee150bb64e4779d735e2fbeb3f6d5d0385c0caa0a72fe5dca3633b"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 7365,
+      "segment": "step-post-video",
+      "prompt_id": 1846,
+      "prompt_code": "leadin_teaching_rules_l1l2_step_post_video-X-749-v1-21274",
+      "version_id": 3328,
+      "readback_sha256": "131955555a0332be736d5cf1a42363c7568f734a2dda87a50cac2e8b25f6d7c7"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 7366,
+      "segment": "template",
+      "prompt_id": 1864,
+      "prompt_code": "wrapup_summary_video_rules-X-749-v1-21278",
+      "version_id": 3335,
+      "readback_sha256": "959ca02f833b11118ad0bd7806a285d0590523eeedb5b7942896038bb6d6ce72"
+    },
+    {
+      "level": 2,
+      "lesson_id": 749,
+      "instance_id": 7367,
+      "segment": "template",
+      "prompt_id": 1864,
+      "prompt_code": "wrapup_summary_video_rules-X-749-v1-21278",
+      "version_id": 3335,
+      "readback_sha256": "959ca02f833b11118ad0bd7806a285d0590523eeedb5b7942896038bb6d6ce72"
+    },
+    {
+      "level": 3,
+      "lesson_id": 760,
+      "instance_id": 6787,
+      "segment": "common",
+      "prompt_id": 2121,
+      "prompt_code": "test02_l3_repair_20261116_c9e65bdc1d1b",
+      "version_id": 3284,
+      "readback_sha256": "c9e65bdc1d1b410ff5a6854544d9f10711ac2a2773b592984751958dcc9035bd"
+    },
+    {
+      "level": 3,
+      "lesson_id": 760,
+      "instance_id": 6787,
+      "segment": "template",
+      "prompt_id": 1872,
+      "prompt_code": "warmup_teaching_rules_l3l4-X-760-v1-22495",
+      "version_id": 3337,
+      "readback_sha256": "4a98dcfe45e39b91e5622f29d52a7a2bebb3925b558c780ab69b5fcb2ff234a3"
+    },
+    {
+      "level": 3,
+      "lesson_id": 761,
+      "instance_id": 6790,
+      "segment": "common",
+      "prompt_id": 2121,
+      "prompt_code": "test02_l3_repair_20261116_c9e65bdc1d1b",
+      "version_id": 3284,
+      "readback_sha256": "c9e65bdc1d1b410ff5a6854544d9f10711ac2a2773b592984751958dcc9035bd"
+    },
+    {
+      "level": 3,
+      "lesson_id": 761,
+      "instance_id": 6790,
+      "segment": "template",
+      "prompt_id": 1874,
+      "prompt_code": "warmup_teaching_rules_l3l4-X-761-v1-22510",
+      "version_id": 3338,
+      "readback_sha256": "4a98dcfe45e39b91e5622f29d52a7a2bebb3925b558c780ab69b5fcb2ff234a3"
+    },
+    {
+      "level": 3,
+      "lesson_id": 759,
+      "instance_id": 6791,
+      "segment": "common",
+      "prompt_id": 2121,
+      "prompt_code": "test02_l3_repair_20261116_c9e65bdc1d1b",
+      "version_id": 3284,
+      "readback_sha256": "c9e65bdc1d1b410ff5a6854544d9f10711ac2a2773b592984751958dcc9035bd"
+    },
+    {
+      "level": 3,
+      "lesson_id": 759,
+      "instance_id": 6791,
+      "segment": "template",
+      "prompt_id": 1876,
+      "prompt_code": "warmup_teaching_rules_l3l4-X-759-v1-22480",
+      "version_id": 3339,
+      "readback_sha256": "4a98dcfe45e39b91e5622f29d52a7a2bebb3925b558c780ab69b5fcb2ff234a3"
+    },
+    {
+      "level": 3,
+      "lesson_id": 761,
+      "instance_id": 6804,
+      "segment": "common",
+      "prompt_id": 2121,
+      "prompt_code": "test02_l3_repair_20261116_c9e65bdc1d1b",
+      "version_id": 3284,
+      "readback_sha256": "c9e65bdc1d1b410ff5a6854544d9f10711ac2a2773b592984751958dcc9035bd"
+    },
+    {
+      "level": 3,
+      "lesson_id": 761,
+      "instance_id": 6804,
+      "segment": "template",
+      "prompt_id": 1886,
+      "prompt_code": "word_teach_image_l3l4-X-761-v1-22514",
+      "version_id": 3340,
+      "readback_sha256": "dc73957a83d35f2ecc279bfcc5e3431780dfa41f26d6bad59b15272bec17f282"
+    },
+    {
+      "level": 3,
+      "lesson_id": 759,
+      "instance_id": 6805,
+      "segment": "common",
+      "prompt_id": 2121,
+      "prompt_code": "test02_l3_repair_20261116_c9e65bdc1d1b",
+      "version_id": 3284,
+      "readback_sha256": "c9e65bdc1d1b410ff5a6854544d9f10711ac2a2773b592984751958dcc9035bd"
+    },
+    {
+      "level": 3,
+      "lesson_id": 759,
+      "instance_id": 6805,
+      "segment": "template",
+      "prompt_id": 1887,
+      "prompt_code": "word_teach_image_l3l4-X-759-v1-22484",
+      "version_id": 3341,
+      "readback_sha256": "dc73957a83d35f2ecc279bfcc5e3431780dfa41f26d6bad59b15272bec17f282"
+    },
+    {
+      "level": 3,
+      "lesson_id": 760,
+      "instance_id": 6806,
+      "segment": "common",
+      "prompt_id": 2121,
+      "prompt_code": "test02_l3_repair_20261116_c9e65bdc1d1b",
+      "version_id": 3284,
+      "readback_sha256": "c9e65bdc1d1b410ff5a6854544d9f10711ac2a2773b592984751958dcc9035bd"
+    },
+    {
+      "level": 3,
+      "lesson_id": 760,
+      "instance_id": 6806,
+      "segment": "template",
+      "prompt_id": 1888,
+      "prompt_code": "word_teach_image_l3l4-X-760-v1-22499",
+      "version_id": 3342,
+      "readback_sha256": "dc73957a83d35f2ecc279bfcc5e3431780dfa41f26d6bad59b15272bec17f282"
+    },
+    {
+      "level": 3,
+      "lesson_id": 761,
+      "instance_id": 6808,
+      "segment": "common",
+      "prompt_id": 2121,
+      "prompt_code": "test02_l3_repair_20261116_c9e65bdc1d1b",
+      "version_id": 3284,
+      "readback_sha256": "c9e65bdc1d1b410ff5a6854544d9f10711ac2a2773b592984751958dcc9035bd"
+    },
+    {
+      "level": 3,
+      "lesson_id": 761,
+      "instance_id": 6808,
+      "segment": "template",
+      "prompt_id": 1886,
+      "prompt_code": "word_teach_image_l3l4-X-761-v1-22514",
+      "version_id": 3340,
+      "readback_sha256": "dc73957a83d35f2ecc279bfcc5e3431780dfa41f26d6bad59b15272bec17f282"
+    },
+    {
+      "level": 3,
+      "lesson_id": 759,
+      "instance_id": 6809,
+      "segment": "common",
+      "prompt_id": 2121,
+      "prompt_code": "test02_l3_repair_20261116_c9e65bdc1d1b",
+      "version_id": 3284,
+      "readback_sha256": "c9e65bdc1d1b410ff5a6854544d9f10711ac2a2773b592984751958dcc9035bd"
+    },
+    {
+      "level": 3,
+      "lesson_id": 759,
+      "instance_id": 6809,
+      "segment": "template",
+      "prompt_id": 1887,
+      "prompt_code": "word_teach_image_l3l4-X-759-v1-22484",
+      "version_id": 3341,
+      "readback_sha256": "dc73957a83d35f2ecc279bfcc5e3431780dfa41f26d6bad59b15272bec17f282"
+    },
+    {
+      "level": 3,
+      "lesson_id": 760,
+      "instance_id": 6810,
+      "segment": "common",
+      "prompt_id": 2121,
+      "prompt_code": "test02_l3_repair_20261116_c9e65bdc1d1b",
+      "version_id": 3284,
+      "readback_sha256": "c9e65bdc1d1b410ff5a6854544d9f10711ac2a2773b592984751958dcc9035bd"
+    },
+    {
+      "level": 3,
+      "lesson_id": 760,
+      "instance_id": 6810,
+      "segment": "template",
+      "prompt_id": 1888,
+      "prompt_code": "word_teach_image_l3l4-X-760-v1-22499",
+      "version_id": 3342,
+      "readback_sha256": "dc73957a83d35f2ecc279bfcc5e3431780dfa41f26d6bad59b15272bec17f282"
+    },
+    {
+      "level": 3,
+      "lesson_id": 759,
+      "instance_id": 6812,
+      "segment": "common",
+      "prompt_id": 2121,
+      "prompt_code": "test02_l3_repair_20261116_c9e65bdc1d1b",
+      "version_id": 3284,
+      "readback_sha256": "c9e65bdc1d1b410ff5a6854544d9f10711ac2a2773b592984751958dcc9035bd"
+    },
+    {
+      "level": 3,
+      "lesson_id": 759,
+      "instance_id": 6812,
+      "segment": "template",
+      "prompt_id": 1887,
+      "prompt_code": "word_teach_image_l3l4-X-759-v1-22484",
+      "version_id": 3341,
+      "readback_sha256": "dc73957a83d35f2ecc279bfcc5e3431780dfa41f26d6bad59b15272bec17f282"
+    },
+    {
+      "level": 3,
+      "lesson_id": 761,
+      "instance_id": 6813,
+      "segment": "common",
+      "prompt_id": 2121,
+      "prompt_code": "test02_l3_repair_20261116_c9e65bdc1d1b",
+      "version_id": 3284,
+      "readback_sha256": "c9e65bdc1d1b410ff5a6854544d9f10711ac2a2773b592984751958dcc9035bd"
+    },
+    {
+      "level": 3,
+      "lesson_id": 761,
+      "instance_id": 6813,
+      "segment": "template",
+      "prompt_id": 1886,
+      "prompt_code": "word_teach_image_l3l4-X-761-v1-22514",
+      "version_id": 3340,
+      "readback_sha256": "dc73957a83d35f2ecc279bfcc5e3431780dfa41f26d6bad59b15272bec17f282"
+    },
+    {
+      "level": 3,
+      "lesson_id": 760,
+      "instance_id": 6814,
+      "segment": "common",
+      "prompt_id": 2121,
+      "prompt_code": "test02_l3_repair_20261116_c9e65bdc1d1b",
+      "version_id": 3284,
+      "readback_sha256": "c9e65bdc1d1b410ff5a6854544d9f10711ac2a2773b592984751958dcc9035bd"
+    },
+    {
+      "level": 3,
+      "lesson_id": 760,
+      "instance_id": 6814,
+      "segment": "template",
+      "prompt_id": 1888,
+      "prompt_code": "word_teach_image_l3l4-X-760-v1-22499",
+      "version_id": 3342,
+      "readback_sha256": "dc73957a83d35f2ecc279bfcc5e3431780dfa41f26d6bad59b15272bec17f282"
+    },
+    {
+      "level": 3,
+      "lesson_id": 761,
+      "instance_id": 6839,
+      "segment": "common",
+      "prompt_id": 2122,
+      "prompt_code": "test02_l3_repair_20261116_a6fd8217ac95",
+      "version_id": 3285,
+      "readback_sha256": "a6fd8217ac9562911d3a5225dbfb85b5f3937b75474f12777c0895182692139e"
+    },
+    {
+      "level": 3,
+      "lesson_id": 761,
+      "instance_id": 6839,
+      "segment": "template",
+      "prompt_id": 1889,
+      "prompt_code": "sentence_frame_teach_rules-X-761-v1-22518",
+      "version_id": 3344,
+      "readback_sha256": "ac139bd0d9f771317e11e18b090c58db5b3085525a3c8758c905ee9b6b847a46"
+    },
+    {
+      "level": 3,
+      "lesson_id": 761,
+      "instance_id": 6839,
+      "segment": "step-step_0",
+      "prompt_id": 1890,
+      "prompt_code": "sentence_frame_teach_rules_frame-X-761-v1-22518",
+      "version_id": 3343,
+      "readback_sha256": "6c4e25a53e014e2a88701470820a7487c623d58b9eb673ad0e8488b11fac4571"
+    },
+    {
+      "level": 3,
+      "lesson_id": 761,
+      "instance_id": 6839,
+      "segment": "step-step_1",
+      "prompt_id": 1891,
+      "prompt_code": "sentence_frame_teach_rules_example-X-761-v1-22518",
+      "version_id": 3345,
+      "readback_sha256": "6b439dac083176ac45560823fe4c446b87e433905b04d57536b48664fa10950d"
+    },
+    {
+      "level": 3,
+      "lesson_id": 761,
+      "instance_id": 6839,
+      "segment": "step-step_2",
+      "prompt_id": 1891,
+      "prompt_code": "sentence_frame_teach_rules_example-X-761-v1-22518",
+      "version_id": 3345,
+      "readback_sha256": "6b439dac083176ac45560823fe4c446b87e433905b04d57536b48664fa10950d"
+    },
+    {
+      "level": 3,
+      "lesson_id": 759,
+      "instance_id": 6840,
+      "segment": "common",
+      "prompt_id": 2122,
+      "prompt_code": "test02_l3_repair_20261116_a6fd8217ac95",
+      "version_id": 3285,
+      "readback_sha256": "a6fd8217ac9562911d3a5225dbfb85b5f3937b75474f12777c0895182692139e"
+    },
+    {
+      "level": 3,
+      "lesson_id": 759,
+      "instance_id": 6840,
+      "segment": "template",
+      "prompt_id": 1892,
+      "prompt_code": "sentence_frame_teach_rules-X-759-v1-22488",
+      "version_id": 3346,
+      "readback_sha256": "ac139bd0d9f771317e11e18b090c58db5b3085525a3c8758c905ee9b6b847a46"
+    },
+    {
+      "level": 3,
+      "lesson_id": 759,
+      "instance_id": 6840,
+      "segment": "step-step_0",
+      "prompt_id": 1893,
+      "prompt_code": "sentence_frame_teach_rules_frame-X-759-v1-22488",
+      "version_id": 3347,
+      "readback_sha256": "6c4e25a53e014e2a88701470820a7487c623d58b9eb673ad0e8488b11fac4571"
+    },
+    {
+      "level": 3,
+      "lesson_id": 759,
+      "instance_id": 6840,
+      "segment": "step-step_1",
+      "prompt_id": 1894,
+      "prompt_code": "sentence_frame_teach_rules_example-X-759-v1-22488",
+      "version_id": 3348,
+      "readback_sha256": "6b439dac083176ac45560823fe4c446b87e433905b04d57536b48664fa10950d"
+    },
+    {
+      "level": 3,
+      "lesson_id": 759,
+      "instance_id": 6840,
+      "segment": "step-step_2",
+      "prompt_id": 1893,
+      "prompt_code": "sentence_frame_teach_rules_frame-X-759-v1-22488",
+      "version_id": 3347,
+      "readback_sha256": "6c4e25a53e014e2a88701470820a7487c623d58b9eb673ad0e8488b11fac4571"
+    },
+    {
+      "level": 3,
+      "lesson_id": 759,
+      "instance_id": 6840,
+      "segment": "step-step_3",
+      "prompt_id": 1894,
+      "prompt_code": "sentence_frame_teach_rules_example-X-759-v1-22488",
+      "version_id": 3348,
+      "readback_sha256": "6b439dac083176ac45560823fe4c446b87e433905b04d57536b48664fa10950d"
+    },
+    {
+      "level": 3,
+      "lesson_id": 759,
+      "instance_id": 6840,
+      "segment": "step-step_4",
+      "prompt_id": 1894,
+      "prompt_code": "sentence_frame_teach_rules_example-X-759-v1-22488",
+      "version_id": 3348,
+      "readback_sha256": "6b439dac083176ac45560823fe4c446b87e433905b04d57536b48664fa10950d"
+    },
+    {
+      "level": 3,
+      "lesson_id": 760,
+      "instance_id": 6842,
+      "segment": "common",
+      "prompt_id": 2122,
+      "prompt_code": "test02_l3_repair_20261116_a6fd8217ac95",
+      "version_id": 3285,
+      "readback_sha256": "a6fd8217ac9562911d3a5225dbfb85b5f3937b75474f12777c0895182692139e"
+    },
+    {
+      "level": 3,
+      "lesson_id": 760,
+      "instance_id": 6842,
+      "segment": "template",
+      "prompt_id": 1895,
+      "prompt_code": "sentence_frame_teach_rules-X-760-v1-22503",
+      "version_id": 3349,
+      "readback_sha256": "ac139bd0d9f771317e11e18b090c58db5b3085525a3c8758c905ee9b6b847a46"
+    },
+    {
+      "level": 3,
+      "lesson_id": 760,
+      "instance_id": 6842,
+      "segment": "step-step_0",
+      "prompt_id": 1896,
+      "prompt_code": "sentence_frame_teach_rules_frame-X-760-v1-22503",
+      "version_id": 3350,
+      "readback_sha256": "6c4e25a53e014e2a88701470820a7487c623d58b9eb673ad0e8488b11fac4571"
+    },
+    {
+      "level": 3,
+      "lesson_id": 760,
+      "instance_id": 6842,
+      "segment": "step-step_1",
+      "prompt_id": 1897,
+      "prompt_code": "sentence_frame_teach_rules_example-X-760-v1-22503",
+      "version_id": 3351,
+      "readback_sha256": "6b439dac083176ac45560823fe4c446b87e433905b04d57536b48664fa10950d"
+    },
+    {
+      "level": 3,
+      "lesson_id": 760,
+      "instance_id": 6842,
+      "segment": "step-step_2",
+      "prompt_id": 1896,
+      "prompt_code": "sentence_frame_teach_rules_frame-X-760-v1-22503",
+      "version_id": 3350,
+      "readback_sha256": "6c4e25a53e014e2a88701470820a7487c623d58b9eb673ad0e8488b11fac4571"
+    },
+    {
+      "level": 3,
+      "lesson_id": 760,
+      "instance_id": 6842,
+      "segment": "step-step_3",
+      "prompt_id": 1897,
+      "prompt_code": "sentence_frame_teach_rules_example-X-760-v1-22503",
+      "version_id": 3351,
+      "readback_sha256": "6b439dac083176ac45560823fe4c446b87e433905b04d57536b48664fa10950d"
+    },
+    {
+      "level": 3,
+      "lesson_id": 761,
+      "instance_id": 6857,
+      "segment": "common",
+      "prompt_id": 2123,
+      "prompt_code": "test02_l3_repair_20261116_e9fa5a089032",
+      "version_id": 3286,
+      "readback_sha256": "e9fa5a0890327b6217e95fa10fbc6fbd32498797011b844a9870e41ce796478d"
+    },
+    {
+      "level": 3,
+      "lesson_id": 761,
+      "instance_id": 6857,
+      "segment": "template",
+      "prompt_id": 1898,
+      "prompt_code": "ip_call_l1_rules-X-761-v1-22521",
+      "version_id": 3352,
+      "readback_sha256": "301068848d5c8ae2182619ebbb743f6521f3d20821a64e43438f360132e89183"
+    },
+    {
+      "level": 3,
+      "lesson_id": 761,
+      "instance_id": 6857,
+      "segment": "step-ipcall",
+      "prompt_id": 1900,
+      "prompt_code": "ip_call_l1_rules_step_ipcall-X-761-v1-22521",
+      "version_id": 3353,
+      "readback_sha256": "76e2772b6be26f04490800ca7880ee14c84a44cfa6a5432335978724f1ca35ac"
+    },
+    {
+      "level": 3,
+      "lesson_id": 759,
+      "instance_id": 6860,
+      "segment": "common",
+      "prompt_id": 2123,
+      "prompt_code": "test02_l3_repair_20261116_e9fa5a089032",
+      "version_id": 3286,
+      "readback_sha256": "e9fa5a0890327b6217e95fa10fbc6fbd32498797011b844a9870e41ce796478d"
+    },
+    {
+      "level": 3,
+      "lesson_id": 759,
+      "instance_id": 6860,
+      "segment": "template",
+      "prompt_id": 1901,
+      "prompt_code": "ip_call_l1_rules-X-759-v1-22491",
+      "version_id": 3354,
+      "readback_sha256": "301068848d5c8ae2182619ebbb743f6521f3d20821a64e43438f360132e89183"
+    },
+    {
+      "level": 3,
+      "lesson_id": 759,
+      "instance_id": 6860,
+      "segment": "step-ipcall",
+      "prompt_id": 1903,
+      "prompt_code": "ip_call_l1_rules_step_ipcall-X-759-v1-22491",
+      "version_id": 3355,
+      "readback_sha256": "76e2772b6be26f04490800ca7880ee14c84a44cfa6a5432335978724f1ca35ac"
+    },
+    {
+      "level": 3,
+      "lesson_id": 760,
+      "instance_id": 6862,
+      "segment": "common",
+      "prompt_id": 2123,
+      "prompt_code": "test02_l3_repair_20261116_e9fa5a089032",
+      "version_id": 3286,
+      "readback_sha256": "e9fa5a0890327b6217e95fa10fbc6fbd32498797011b844a9870e41ce796478d"
+    },
+    {
+      "level": 3,
+      "lesson_id": 760,
+      "instance_id": 6862,
+      "segment": "template",
+      "prompt_id": 1904,
+      "prompt_code": "ip_call_l1_rules-X-760-v1-22506",
+      "version_id": 3356,
+      "readback_sha256": "301068848d5c8ae2182619ebbb743f6521f3d20821a64e43438f360132e89183"
+    },
+    {
+      "level": 3,
+      "lesson_id": 760,
+      "instance_id": 6862,
+      "segment": "step-ipcall",
+      "prompt_id": 1906,
+      "prompt_code": "ip_call_l1_rules_step_ipcall-X-760-v1-22506",
+      "version_id": 3357,
+      "readback_sha256": "76e2772b6be26f04490800ca7880ee14c84a44cfa6a5432335978724f1ca35ac"
+    },
+    {
+      "level": 3,
+      "lesson_id": 761,
+      "instance_id": 6864,
+      "segment": "template",
+      "prompt_id": 1907,
+      "prompt_code": "wrapup_summary_video_rules-X-761-v1-22522",
+      "version_id": 3359,
+      "readback_sha256": "3efd1be368699a54caff17059aeee0e0dd096e81fcb9ca57c2c66ecec50c9c5a"
+    },
+    {
+      "level": 3,
+      "lesson_id": 759,
+      "instance_id": 6866,
+      "segment": "template",
+      "prompt_id": 1908,
+      "prompt_code": "wrapup_summary_video_rules-X-759-v1-22492",
+      "version_id": 3358,
+      "readback_sha256": "3efd1be368699a54caff17059aeee0e0dd096e81fcb9ca57c2c66ecec50c9c5a"
+    },
+    {
+      "level": 3,
+      "lesson_id": 760,
+      "instance_id": 6871,
+      "segment": "template",
+      "prompt_id": 1909,
+      "prompt_code": "wrapup_summary_video_rules-X-760-v1-22507",
+      "version_id": 3360,
+      "readback_sha256": "3efd1be368699a54caff17059aeee0e0dd096e81fcb9ca57c2c66ecec50c9c5a"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6904,
+      "segment": "common",
+      "prompt_id": 2124,
+      "prompt_code": "test02_l4_repair_20261116_5f073d8c4e4a",
+      "version_id": 3287,
+      "readback_sha256": "5f073d8c4e4ad2e0d7962404e3ee155d76f4ae718a04a6cda3ea0ad7fb4a21e3"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6904,
+      "segment": "template",
+      "prompt_id": 1910,
+      "prompt_code": "warmup_teaching_rules_l3l4-X-771-v1-24186",
+      "version_id": 3361,
+      "readback_sha256": "8f7d21311c9261a67bdb4ec6a115749e506c537c12be458ec07e085ca765a939"
+    },
+    {
+      "level": 4,
+      "lesson_id": 772,
+      "instance_id": 6905,
+      "segment": "common",
+      "prompt_id": 2124,
+      "prompt_code": "test02_l4_repair_20261116_5f073d8c4e4a",
+      "version_id": 3287,
+      "readback_sha256": "5f073d8c4e4ad2e0d7962404e3ee155d76f4ae718a04a6cda3ea0ad7fb4a21e3"
+    },
+    {
+      "level": 4,
+      "lesson_id": 772,
+      "instance_id": 6905,
+      "segment": "template",
+      "prompt_id": 1911,
+      "prompt_code": "warmup_teaching_rules_l3l4-X-772-v1-24201",
+      "version_id": 3362,
+      "readback_sha256": "8f7d21311c9261a67bdb4ec6a115749e506c537c12be458ec07e085ca765a939"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6908,
+      "segment": "common",
+      "prompt_id": 2124,
+      "prompt_code": "test02_l4_repair_20261116_5f073d8c4e4a",
+      "version_id": 3287,
+      "readback_sha256": "5f073d8c4e4ad2e0d7962404e3ee155d76f4ae718a04a6cda3ea0ad7fb4a21e3"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6908,
+      "segment": "template",
+      "prompt_id": 1912,
+      "prompt_code": "warmup_teaching_rules_l3l4-X-773-v1-24213",
+      "version_id": 3363,
+      "readback_sha256": "8f7d21311c9261a67bdb4ec6a115749e506c537c12be458ec07e085ca765a939"
+    },
+    {
+      "level": 4,
+      "lesson_id": 772,
+      "instance_id": 6921,
+      "segment": "common",
+      "prompt_id": 2125,
+      "prompt_code": "test02_l4_repair_20261116_08a59718e315",
+      "version_id": 3288,
+      "readback_sha256": "08a59718e31598af27bf7d7a94b4ddd086c519d32fe49a90d73ca22d50d9f429"
+    },
+    {
+      "level": 4,
+      "lesson_id": 772,
+      "instance_id": 6921,
+      "segment": "template",
+      "prompt_id": 1922,
+      "prompt_code": "reader_teach_rules-X-772-v1-24204",
+      "version_id": 3364,
+      "readback_sha256": "959063badb4b264ec3d3c8eddd59e4a4d107a7eb70df96facafcbd861e9e4a91"
+    },
+    {
+      "level": 4,
+      "lesson_id": 772,
+      "instance_id": 6921,
+      "segment": "step-page_0",
+      "prompt_id": 1924,
+      "prompt_code": "reader_teach_rules_cover-X-772-v1-24204",
+      "version_id": 3365,
+      "readback_sha256": "3720257aa9cfb5b9f0894a71c61912118c9bb2d2f5c026bdefd73c8f664b0cbe"
+    },
+    {
+      "level": 4,
+      "lesson_id": 772,
+      "instance_id": 6921,
+      "segment": "step-page_1",
+      "prompt_id": 1923,
+      "prompt_code": "reader_teach_rules_page-X-772-v1-24204",
+      "version_id": 3366,
+      "readback_sha256": "56f25f469c1bb6d3bfc9ea0e182c9162b24a3ba33c7addc3d3c77f980a4dbd2c"
+    },
+    {
+      "level": 4,
+      "lesson_id": 772,
+      "instance_id": 6921,
+      "segment": "step-page_2",
+      "prompt_id": 1923,
+      "prompt_code": "reader_teach_rules_page-X-772-v1-24204",
+      "version_id": 3366,
+      "readback_sha256": "56f25f469c1bb6d3bfc9ea0e182c9162b24a3ba33c7addc3d3c77f980a4dbd2c"
+    },
+    {
+      "level": 4,
+      "lesson_id": 772,
+      "instance_id": 6921,
+      "segment": "step-page_3",
+      "prompt_id": 1923,
+      "prompt_code": "reader_teach_rules_page-X-772-v1-24204",
+      "version_id": 3366,
+      "readback_sha256": "56f25f469c1bb6d3bfc9ea0e182c9162b24a3ba33c7addc3d3c77f980a4dbd2c"
+    },
+    {
+      "level": 4,
+      "lesson_id": 772,
+      "instance_id": 6921,
+      "segment": "step-page_4",
+      "prompt_id": 1923,
+      "prompt_code": "reader_teach_rules_page-X-772-v1-24204",
+      "version_id": 3366,
+      "readback_sha256": "56f25f469c1bb6d3bfc9ea0e182c9162b24a3ba33c7addc3d3c77f980a4dbd2c"
+    },
+    {
+      "level": 4,
+      "lesson_id": 772,
+      "instance_id": 6921,
+      "segment": "step-page_5",
+      "prompt_id": 1923,
+      "prompt_code": "reader_teach_rules_page-X-772-v1-24204",
+      "version_id": 3366,
+      "readback_sha256": "56f25f469c1bb6d3bfc9ea0e182c9162b24a3ba33c7addc3d3c77f980a4dbd2c"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6922,
+      "segment": "common",
+      "prompt_id": 2126,
+      "prompt_code": "test02_l4_repair_20261116_6981b5904100",
+      "version_id": 3289,
+      "readback_sha256": "6981b5904100c5cc0214afdfb05b478fc2091eeba711787251deaeced6dc59b9"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6922,
+      "segment": "template",
+      "prompt_id": 1925,
+      "prompt_code": "word_teach_image_l3l4-X-771-v1-24190",
+      "version_id": 3367,
+      "readback_sha256": "2b2761b764104675a3f1c81c0b46684dc97cf3ec080ae52dbdac5b4a327cfab8"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6923,
+      "segment": "common",
+      "prompt_id": 2126,
+      "prompt_code": "test02_l4_repair_20261116_6981b5904100",
+      "version_id": 3289,
+      "readback_sha256": "6981b5904100c5cc0214afdfb05b478fc2091eeba711787251deaeced6dc59b9"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6923,
+      "segment": "template",
+      "prompt_id": 1926,
+      "prompt_code": "word_teach_image_l3l4-X-773-v1-24217",
+      "version_id": 3368,
+      "readback_sha256": "2b2761b764104675a3f1c81c0b46684dc97cf3ec080ae52dbdac5b4a327cfab8"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6924,
+      "segment": "common",
+      "prompt_id": 2126,
+      "prompt_code": "test02_l4_repair_20261116_6981b5904100",
+      "version_id": 3289,
+      "readback_sha256": "6981b5904100c5cc0214afdfb05b478fc2091eeba711787251deaeced6dc59b9"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6924,
+      "segment": "template",
+      "prompt_id": 1925,
+      "prompt_code": "word_teach_image_l3l4-X-771-v1-24190",
+      "version_id": 3367,
+      "readback_sha256": "2b2761b764104675a3f1c81c0b46684dc97cf3ec080ae52dbdac5b4a327cfab8"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6925,
+      "segment": "common",
+      "prompt_id": 2126,
+      "prompt_code": "test02_l4_repair_20261116_6981b5904100",
+      "version_id": 3289,
+      "readback_sha256": "6981b5904100c5cc0214afdfb05b478fc2091eeba711787251deaeced6dc59b9"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6925,
+      "segment": "template",
+      "prompt_id": 1926,
+      "prompt_code": "word_teach_image_l3l4-X-773-v1-24217",
+      "version_id": 3368,
+      "readback_sha256": "2b2761b764104675a3f1c81c0b46684dc97cf3ec080ae52dbdac5b4a327cfab8"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6928,
+      "segment": "common",
+      "prompt_id": 2126,
+      "prompt_code": "test02_l4_repair_20261116_6981b5904100",
+      "version_id": 3289,
+      "readback_sha256": "6981b5904100c5cc0214afdfb05b478fc2091eeba711787251deaeced6dc59b9"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6928,
+      "segment": "template",
+      "prompt_id": 1925,
+      "prompt_code": "word_teach_image_l3l4-X-771-v1-24190",
+      "version_id": 3367,
+      "readback_sha256": "2b2761b764104675a3f1c81c0b46684dc97cf3ec080ae52dbdac5b4a327cfab8"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6929,
+      "segment": "common",
+      "prompt_id": 2126,
+      "prompt_code": "test02_l4_repair_20261116_6981b5904100",
+      "version_id": 3289,
+      "readback_sha256": "6981b5904100c5cc0214afdfb05b478fc2091eeba711787251deaeced6dc59b9"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6929,
+      "segment": "template",
+      "prompt_id": 1926,
+      "prompt_code": "word_teach_image_l3l4-X-773-v1-24217",
+      "version_id": 3368,
+      "readback_sha256": "2b2761b764104675a3f1c81c0b46684dc97cf3ec080ae52dbdac5b4a327cfab8"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6931,
+      "segment": "common",
+      "prompt_id": 2126,
+      "prompt_code": "test02_l4_repair_20261116_6981b5904100",
+      "version_id": 3289,
+      "readback_sha256": "6981b5904100c5cc0214afdfb05b478fc2091eeba711787251deaeced6dc59b9"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6931,
+      "segment": "template",
+      "prompt_id": 1925,
+      "prompt_code": "word_teach_image_l3l4-X-771-v1-24190",
+      "version_id": 3367,
+      "readback_sha256": "2b2761b764104675a3f1c81c0b46684dc97cf3ec080ae52dbdac5b4a327cfab8"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6933,
+      "segment": "common",
+      "prompt_id": 2126,
+      "prompt_code": "test02_l4_repair_20261116_6981b5904100",
+      "version_id": 3289,
+      "readback_sha256": "6981b5904100c5cc0214afdfb05b478fc2091eeba711787251deaeced6dc59b9"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6933,
+      "segment": "template",
+      "prompt_id": 1926,
+      "prompt_code": "word_teach_image_l3l4-X-773-v1-24217",
+      "version_id": 3368,
+      "readback_sha256": "2b2761b764104675a3f1c81c0b46684dc97cf3ec080ae52dbdac5b4a327cfab8"
+    },
+    {
+      "level": 4,
+      "lesson_id": 772,
+      "instance_id": 6942,
+      "segment": "common",
+      "prompt_id": 2126,
+      "prompt_code": "test02_l4_repair_20261116_6981b5904100",
+      "version_id": 3289,
+      "readback_sha256": "6981b5904100c5cc0214afdfb05b478fc2091eeba711787251deaeced6dc59b9"
+    },
+    {
+      "level": 4,
+      "lesson_id": 772,
+      "instance_id": 6942,
+      "segment": "template",
+      "prompt_id": 1927,
+      "prompt_code": "retell_rules-X-772-v1-24209",
+      "version_id": 3369,
+      "readback_sha256": "76422251f18f1edf0c1c49febb02a63fa244d05a4409d2346b544746cf50fd26"
+    },
+    {
+      "level": 4,
+      "lesson_id": 772,
+      "instance_id": 6946,
+      "segment": "template",
+      "prompt_id": 1928,
+      "prompt_code": "wrapup_summary_video_rules-X-772-v1-24210",
+      "version_id": 3370,
+      "readback_sha256": "ee931907c138f70a0c1c885f8e8e1658566485c5c18b8ac6494161c33cc10b53"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6954,
+      "segment": "common",
+      "prompt_id": 2125,
+      "prompt_code": "test02_l4_repair_20261116_08a59718e315",
+      "version_id": 3288,
+      "readback_sha256": "08a59718e31598af27bf7d7a94b4ddd086c519d32fe49a90d73ca22d50d9f429"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6954,
+      "segment": "template",
+      "prompt_id": 1929,
+      "prompt_code": "sentence_frame_teach_rules-X-771-v1-24194",
+      "version_id": 3371,
+      "readback_sha256": "ac139bd0d9f771317e11e18b090c58db5b3085525a3c8758c905ee9b6b847a46"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6954,
+      "segment": "step-step_0",
+      "prompt_id": 1930,
+      "prompt_code": "sentence_frame_teach_rules_frame-X-771-v1-24194",
+      "version_id": 3372,
+      "readback_sha256": "6c4e25a53e014e2a88701470820a7487c623d58b9eb673ad0e8488b11fac4571"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6954,
+      "segment": "step-step_1",
+      "prompt_id": 1931,
+      "prompt_code": "sentence_frame_teach_rules_example-X-771-v1-24194",
+      "version_id": 3373,
+      "readback_sha256": "eb7a2ed5a255188c7cb1f76c3c42a8bc4dccdc9441af4dae8079d17f216c79e3"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6954,
+      "segment": "step-step_2",
+      "prompt_id": 1931,
+      "prompt_code": "sentence_frame_teach_rules_example-X-771-v1-24194",
+      "version_id": 3373,
+      "readback_sha256": "eb7a2ed5a255188c7cb1f76c3c42a8bc4dccdc9441af4dae8079d17f216c79e3"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6954,
+      "segment": "step-step_3",
+      "prompt_id": 1930,
+      "prompt_code": "sentence_frame_teach_rules_frame-X-771-v1-24194",
+      "version_id": 3372,
+      "readback_sha256": "6c4e25a53e014e2a88701470820a7487c623d58b9eb673ad0e8488b11fac4571"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6954,
+      "segment": "step-step_4",
+      "prompt_id": 1931,
+      "prompt_code": "sentence_frame_teach_rules_example-X-771-v1-24194",
+      "version_id": 3373,
+      "readback_sha256": "eb7a2ed5a255188c7cb1f76c3c42a8bc4dccdc9441af4dae8079d17f216c79e3"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6954,
+      "segment": "step-step_5",
+      "prompt_id": 1931,
+      "prompt_code": "sentence_frame_teach_rules_example-X-771-v1-24194",
+      "version_id": 3373,
+      "readback_sha256": "eb7a2ed5a255188c7cb1f76c3c42a8bc4dccdc9441af4dae8079d17f216c79e3"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6963,
+      "segment": "common",
+      "prompt_id": 2127,
+      "prompt_code": "test02_l4_repair_20261116_9738f16309b2",
+      "version_id": 3290,
+      "readback_sha256": "9738f16309b2585e08f884698e610def7f000da23977f2fb0f477049b928d000"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6963,
+      "segment": "template",
+      "prompt_id": 1932,
+      "prompt_code": "ip_call_l1_rules-X-771-v1-24197",
+      "version_id": 3374,
+      "readback_sha256": "ef122387a657a9a4c4404549add738fd84f882fb8b85469d1475b8859561fb96"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6963,
+      "segment": "step-ipcall",
+      "prompt_id": 1934,
+      "prompt_code": "ip_call_l1_rules_step_ipcall-X-771-v1-24197",
+      "version_id": 3375,
+      "readback_sha256": "ea25b7c770c5a7372cb629df8285e98081a422c4ea5696b8c179c9e731ece1d9"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6964,
+      "segment": "common",
+      "prompt_id": 2125,
+      "prompt_code": "test02_l4_repair_20261116_08a59718e315",
+      "version_id": 3288,
+      "readback_sha256": "08a59718e31598af27bf7d7a94b4ddd086c519d32fe49a90d73ca22d50d9f429"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6964,
+      "segment": "template",
+      "prompt_id": 1935,
+      "prompt_code": "sentence_frame_teach_rules-X-773-v1-24221",
+      "version_id": 3376,
+      "readback_sha256": "ac139bd0d9f771317e11e18b090c58db5b3085525a3c8758c905ee9b6b847a46"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6964,
+      "segment": "step-step_0",
+      "prompt_id": 1936,
+      "prompt_code": "sentence_frame_teach_rules_frame-X-773-v1-24221",
+      "version_id": 3377,
+      "readback_sha256": "6c4e25a53e014e2a88701470820a7487c623d58b9eb673ad0e8488b11fac4571"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6964,
+      "segment": "step-step_1",
+      "prompt_id": 1937,
+      "prompt_code": "sentence_frame_teach_rules_example-X-773-v1-24221",
+      "version_id": 3378,
+      "readback_sha256": "eb7a2ed5a255188c7cb1f76c3c42a8bc4dccdc9441af4dae8079d17f216c79e3"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6964,
+      "segment": "step-step_2",
+      "prompt_id": 1936,
+      "prompt_code": "sentence_frame_teach_rules_frame-X-773-v1-24221",
+      "version_id": 3377,
+      "readback_sha256": "6c4e25a53e014e2a88701470820a7487c623d58b9eb673ad0e8488b11fac4571"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6964,
+      "segment": "step-step_3",
+      "prompt_id": 1937,
+      "prompt_code": "sentence_frame_teach_rules_example-X-773-v1-24221",
+      "version_id": 3378,
+      "readback_sha256": "eb7a2ed5a255188c7cb1f76c3c42a8bc4dccdc9441af4dae8079d17f216c79e3"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6964,
+      "segment": "step-step_4",
+      "prompt_id": 1936,
+      "prompt_code": "sentence_frame_teach_rules_frame-X-773-v1-24221",
+      "version_id": 3377,
+      "readback_sha256": "6c4e25a53e014e2a88701470820a7487c623d58b9eb673ad0e8488b11fac4571"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6964,
+      "segment": "step-step_5",
+      "prompt_id": 1937,
+      "prompt_code": "sentence_frame_teach_rules_example-X-773-v1-24221",
+      "version_id": 3378,
+      "readback_sha256": "eb7a2ed5a255188c7cb1f76c3c42a8bc4dccdc9441af4dae8079d17f216c79e3"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6964,
+      "segment": "step-step_6",
+      "prompt_id": 1937,
+      "prompt_code": "sentence_frame_teach_rules_example-X-773-v1-24221",
+      "version_id": 3378,
+      "readback_sha256": "eb7a2ed5a255188c7cb1f76c3c42a8bc4dccdc9441af4dae8079d17f216c79e3"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6964,
+      "segment": "step-step_7",
+      "prompt_id": 1936,
+      "prompt_code": "sentence_frame_teach_rules_frame-X-773-v1-24221",
+      "version_id": 3377,
+      "readback_sha256": "6c4e25a53e014e2a88701470820a7487c623d58b9eb673ad0e8488b11fac4571"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6964,
+      "segment": "step-step_8",
+      "prompt_id": 1937,
+      "prompt_code": "sentence_frame_teach_rules_example-X-773-v1-24221",
+      "version_id": 3378,
+      "readback_sha256": "eb7a2ed5a255188c7cb1f76c3c42a8bc4dccdc9441af4dae8079d17f216c79e3"
+    },
+    {
+      "level": 4,
+      "lesson_id": 771,
+      "instance_id": 6967,
+      "segment": "template",
+      "prompt_id": 1938,
+      "prompt_code": "wrapup_summary_video_rules-X-771-v1-24198",
+      "version_id": 3379,
+      "readback_sha256": "ee931907c138f70a0c1c885f8e8e1658566485c5c18b8ac6494161c33cc10b53"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6973,
+      "segment": "common",
+      "prompt_id": 2127,
+      "prompt_code": "test02_l4_repair_20261116_9738f16309b2",
+      "version_id": 3290,
+      "readback_sha256": "9738f16309b2585e08f884698e610def7f000da23977f2fb0f477049b928d000"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6973,
+      "segment": "template",
+      "prompt_id": 1939,
+      "prompt_code": "ip_call_l1_rules-X-773-v1-24224",
+      "version_id": 3380,
+      "readback_sha256": "ef122387a657a9a4c4404549add738fd84f882fb8b85469d1475b8859561fb96"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6973,
+      "segment": "step-ipcall",
+      "prompt_id": 1941,
+      "prompt_code": "ip_call_l1_rules_step_ipcall-X-773-v1-24224",
+      "version_id": 3381,
+      "readback_sha256": "ea25b7c770c5a7372cb629df8285e98081a422c4ea5696b8c179c9e731ece1d9"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 6976,
+      "segment": "template",
+      "prompt_id": 1942,
+      "prompt_code": "wrapup_summary_video_rules-X-773-v1-24225",
+      "version_id": 3382,
+      "readback_sha256": "ee931907c138f70a0c1c885f8e8e1658566485c5c18b8ac6494161c33cc10b53"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 7380,
+      "segment": "common",
+      "prompt_id": 2125,
+      "prompt_code": "test02_l4_repair_20261116_08a59718e315",
+      "version_id": 3288,
+      "readback_sha256": "08a59718e31598af27bf7d7a94b4ddd086c519d32fe49a90d73ca22d50d9f429"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 7380,
+      "segment": "template",
+      "prompt_id": 1935,
+      "prompt_code": "sentence_frame_teach_rules-X-773-v1-24221",
+      "version_id": 3376,
+      "readback_sha256": "ac139bd0d9f771317e11e18b090c58db5b3085525a3c8758c905ee9b6b847a46"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 7380,
+      "segment": "step-step_0",
+      "prompt_id": 1936,
+      "prompt_code": "sentence_frame_teach_rules_frame-X-773-v1-24221",
+      "version_id": 3377,
+      "readback_sha256": "6c4e25a53e014e2a88701470820a7487c623d58b9eb673ad0e8488b11fac4571"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 7380,
+      "segment": "step-step_1",
+      "prompt_id": 1937,
+      "prompt_code": "sentence_frame_teach_rules_example-X-773-v1-24221",
+      "version_id": 3378,
+      "readback_sha256": "eb7a2ed5a255188c7cb1f76c3c42a8bc4dccdc9441af4dae8079d17f216c79e3"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 7380,
+      "segment": "step-step_2",
+      "prompt_id": 1936,
+      "prompt_code": "sentence_frame_teach_rules_frame-X-773-v1-24221",
+      "version_id": 3377,
+      "readback_sha256": "6c4e25a53e014e2a88701470820a7487c623d58b9eb673ad0e8488b11fac4571"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 7380,
+      "segment": "step-step_3",
+      "prompt_id": 1937,
+      "prompt_code": "sentence_frame_teach_rules_example-X-773-v1-24221",
+      "version_id": 3378,
+      "readback_sha256": "eb7a2ed5a255188c7cb1f76c3c42a8bc4dccdc9441af4dae8079d17f216c79e3"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 7380,
+      "segment": "step-step_4",
+      "prompt_id": 1936,
+      "prompt_code": "sentence_frame_teach_rules_frame-X-773-v1-24221",
+      "version_id": 3377,
+      "readback_sha256": "6c4e25a53e014e2a88701470820a7487c623d58b9eb673ad0e8488b11fac4571"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 7380,
+      "segment": "step-step_5",
+      "prompt_id": 1937,
+      "prompt_code": "sentence_frame_teach_rules_example-X-773-v1-24221",
+      "version_id": 3378,
+      "readback_sha256": "eb7a2ed5a255188c7cb1f76c3c42a8bc4dccdc9441af4dae8079d17f216c79e3"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 7380,
+      "segment": "step-step_6",
+      "prompt_id": 1937,
+      "prompt_code": "sentence_frame_teach_rules_example-X-773-v1-24221",
+      "version_id": 3378,
+      "readback_sha256": "eb7a2ed5a255188c7cb1f76c3c42a8bc4dccdc9441af4dae8079d17f216c79e3"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 7380,
+      "segment": "step-step_7",
+      "prompt_id": 1936,
+      "prompt_code": "sentence_frame_teach_rules_frame-X-773-v1-24221",
+      "version_id": 3377,
+      "readback_sha256": "6c4e25a53e014e2a88701470820a7487c623d58b9eb673ad0e8488b11fac4571"
+    },
+    {
+      "level": 4,
+      "lesson_id": 773,
+      "instance_id": 7380,
+      "segment": "step-step_8",
+      "prompt_id": 1937,
+      "prompt_code": "sentence_frame_teach_rules_example-X-773-v1-24221",
+      "version_id": 3378,
+      "readback_sha256": "eb7a2ed5a255188c7cb1f76c3c42a8bc4dccdc9441af4dae8079d17f216c79e3"
+    },
+    {
+      "level": 5,
+      "lesson_id": 785,
+      "instance_id": 7005,
+      "segment": "common",
+      "prompt_id": 2128,
+      "prompt_code": "test02_l5_repair_20261116_68f32e2145f6",
+      "version_id": 3291,
+      "readback_sha256": "68f32e2145f693f48ce5d4a3b55b3d1ef55b721a64c89479ae6637b9420f358a"
+    },
+    {
+      "level": 5,
+      "lesson_id": 785,
+      "instance_id": 7005,
+      "segment": "template",
+      "prompt_id": 1943,
+      "prompt_code": "warmup_teaching_rules_l5l6-X-785-v1-26084",
+      "version_id": 3383,
+      "readback_sha256": "123023716441d2fce662a3841000d264f007edcb8efa190eceb044e871bb70ce"
+    },
+    {
+      "level": 5,
+      "lesson_id": 783,
+      "instance_id": 7006,
+      "segment": "common",
+      "prompt_id": 2128,
+      "prompt_code": "test02_l5_repair_20261116_68f32e2145f6",
+      "version_id": 3291,
+      "readback_sha256": "68f32e2145f693f48ce5d4a3b55b3d1ef55b721a64c89479ae6637b9420f358a"
+    },
+    {
+      "level": 5,
+      "lesson_id": 783,
+      "instance_id": 7006,
+      "segment": "template",
+      "prompt_id": 1944,
+      "prompt_code": "warmup_teaching_rules_l5l6-X-783-v1-26059",
+      "version_id": 3384,
+      "readback_sha256": "123023716441d2fce662a3841000d264f007edcb8efa190eceb044e871bb70ce"
+    },
+    {
+      "level": 5,
+      "lesson_id": 784,
+      "instance_id": 7007,
+      "segment": "common",
+      "prompt_id": 2128,
+      "prompt_code": "test02_l5_repair_20261116_68f32e2145f6",
+      "version_id": 3291,
+      "readback_sha256": "68f32e2145f693f48ce5d4a3b55b3d1ef55b721a64c89479ae6637b9420f358a"
+    },
+    {
+      "level": 5,
+      "lesson_id": 784,
+      "instance_id": 7007,
+      "segment": "template",
+      "prompt_id": 1945,
+      "prompt_code": "warmup_teaching_rules_l5l6-X-784-v1-26072",
+      "version_id": 3385,
+      "readback_sha256": "123023716441d2fce662a3841000d264f007edcb8efa190eceb044e871bb70ce"
+    },
+    {
+      "level": 5,
+      "lesson_id": 784,
+      "instance_id": 7021,
+      "segment": "common",
+      "prompt_id": 2129,
+      "prompt_code": "test02_l5_repair_20261116_55a03debe464",
+      "version_id": 3292,
+      "readback_sha256": "55a03debe4648b45655f274e4c43f17f4bcc94c28d33e1286178566300d2f803"
+    },
+    {
+      "level": 5,
+      "lesson_id": 784,
+      "instance_id": 7021,
+      "segment": "template",
+      "prompt_id": 1958,
+      "prompt_code": "reader_teach_rules-X-784-v1-26075",
+      "version_id": 3386,
+      "readback_sha256": "b1029e3888eb415e6854c4a18d7153334a11f5b6c47a467284fce5b152fd39fe"
+    },
+    {
+      "level": 5,
+      "lesson_id": 784,
+      "instance_id": 7021,
+      "segment": "step-page_0",
+      "prompt_id": 1960,
+      "prompt_code": "reader_teach_rules_cover-X-784-v1-26075",
+      "version_id": 3387,
+      "readback_sha256": "798703e0bee779c1ac284dad6e673860b47d0c3583537c54cfed22e7429ee58f"
+    },
+    {
+      "level": 5,
+      "lesson_id": 784,
+      "instance_id": 7021,
+      "segment": "step-page_1",
+      "prompt_id": 1959,
+      "prompt_code": "reader_teach_rules_page-X-784-v1-26075",
+      "version_id": 3389,
+      "readback_sha256": "e25564815d1e93710c73f44d38dd062b30e8758dad9c9366bfe4c042ab3e3d37"
+    },
+    {
+      "level": 5,
+      "lesson_id": 784,
+      "instance_id": 7021,
+      "segment": "step-page_2",
+      "prompt_id": 1959,
+      "prompt_code": "reader_teach_rules_page-X-784-v1-26075",
+      "version_id": 3389,
+      "readback_sha256": "e25564815d1e93710c73f44d38dd062b30e8758dad9c9366bfe4c042ab3e3d37"
+    },
+    {
+      "level": 5,
+      "lesson_id": 784,
+      "instance_id": 7021,
+      "segment": "step-page_3",
+      "prompt_id": 1959,
+      "prompt_code": "reader_teach_rules_page-X-784-v1-26075",
+      "version_id": 3389,
+      "readback_sha256": "e25564815d1e93710c73f44d38dd062b30e8758dad9c9366bfe4c042ab3e3d37"
+    },
+    {
+      "level": 5,
+      "lesson_id": 784,
+      "instance_id": 7021,
+      "segment": "step-page_4",
+      "prompt_id": 1959,
+      "prompt_code": "reader_teach_rules_page-X-784-v1-26075",
+      "version_id": 3389,
+      "readback_sha256": "e25564815d1e93710c73f44d38dd062b30e8758dad9c9366bfe4c042ab3e3d37"
+    },
+    {
+      "level": 5,
+      "lesson_id": 784,
+      "instance_id": 7021,
+      "segment": "step-page_5",
+      "prompt_id": 1959,
+      "prompt_code": "reader_teach_rules_page-X-784-v1-26075",
+      "version_id": 3389,
+      "readback_sha256": "e25564815d1e93710c73f44d38dd062b30e8758dad9c9366bfe4c042ab3e3d37"
+    },
+    {
+      "level": 5,
+      "lesson_id": 785,
+      "instance_id": 7023,
+      "segment": "common",
+      "prompt_id": 2130,
+      "prompt_code": "test02_l5_repair_20261116_2fa53e7f2037",
+      "version_id": 3293,
+      "readback_sha256": "2fa53e7f203748aa74f6513f14582c897cfe8062c8f28cb26b4225030a171644"
+    },
+    {
+      "level": 5,
+      "lesson_id": 785,
+      "instance_id": 7023,
+      "segment": "template",
+      "prompt_id": 1961,
+      "prompt_code": "word_teach_image_l5l6-X-785-v1-26087",
+      "version_id": 3388,
+      "readback_sha256": "0c3cf749202505196149f2e203d1e96e4664c0dd7a6e61222011cd7b4e6623f4"
+    },
+    {
+      "level": 5,
+      "lesson_id": 783,
+      "instance_id": 7024,
+      "segment": "common",
+      "prompt_id": 2130,
+      "prompt_code": "test02_l5_repair_20261116_2fa53e7f2037",
+      "version_id": 3293,
+      "readback_sha256": "2fa53e7f203748aa74f6513f14582c897cfe8062c8f28cb26b4225030a171644"
+    },
+    {
+      "level": 5,
+      "lesson_id": 783,
+      "instance_id": 7024,
+      "segment": "template",
+      "prompt_id": 1962,
+      "prompt_code": "word_teach_image_l5l6-X-783-v1-26062",
+      "version_id": 3390,
+      "readback_sha256": "017e2967fb6fa630d6deb20cb14bdef98f5f81a9bc3e745cfe6ee23bfd88b3e2"
+    },
+    {
+      "level": 5,
+      "lesson_id": 785,
+      "instance_id": 7027,
+      "segment": "common",
+      "prompt_id": 2130,
+      "prompt_code": "test02_l5_repair_20261116_2fa53e7f2037",
+      "version_id": 3293,
+      "readback_sha256": "2fa53e7f203748aa74f6513f14582c897cfe8062c8f28cb26b4225030a171644"
+    },
+    {
+      "level": 5,
+      "lesson_id": 785,
+      "instance_id": 7027,
+      "segment": "template",
+      "prompt_id": 1961,
+      "prompt_code": "word_teach_image_l5l6-X-785-v1-26087",
+      "version_id": 3388,
+      "readback_sha256": "0c3cf749202505196149f2e203d1e96e4664c0dd7a6e61222011cd7b4e6623f4"
+    },
+    {
+      "level": 5,
+      "lesson_id": 783,
+      "instance_id": 7028,
+      "segment": "common",
+      "prompt_id": 2130,
+      "prompt_code": "test02_l5_repair_20261116_2fa53e7f2037",
+      "version_id": 3293,
+      "readback_sha256": "2fa53e7f203748aa74f6513f14582c897cfe8062c8f28cb26b4225030a171644"
+    },
+    {
+      "level": 5,
+      "lesson_id": 783,
+      "instance_id": 7028,
+      "segment": "template",
+      "prompt_id": 1962,
+      "prompt_code": "word_teach_image_l5l6-X-783-v1-26062",
+      "version_id": 3390,
+      "readback_sha256": "017e2967fb6fa630d6deb20cb14bdef98f5f81a9bc3e745cfe6ee23bfd88b3e2"
+    },
+    {
+      "level": 5,
+      "lesson_id": 785,
+      "instance_id": 7032,
+      "segment": "common",
+      "prompt_id": 2130,
+      "prompt_code": "test02_l5_repair_20261116_2fa53e7f2037",
+      "version_id": 3293,
+      "readback_sha256": "2fa53e7f203748aa74f6513f14582c897cfe8062c8f28cb26b4225030a171644"
+    },
+    {
+      "level": 5,
+      "lesson_id": 785,
+      "instance_id": 7032,
+      "segment": "template",
+      "prompt_id": 1961,
+      "prompt_code": "word_teach_image_l5l6-X-785-v1-26087",
+      "version_id": 3388,
+      "readback_sha256": "0c3cf749202505196149f2e203d1e96e4664c0dd7a6e61222011cd7b4e6623f4"
+    },
+    {
+      "level": 5,
+      "lesson_id": 783,
+      "instance_id": 7033,
+      "segment": "common",
+      "prompt_id": 2130,
+      "prompt_code": "test02_l5_repair_20261116_2fa53e7f2037",
+      "version_id": 3293,
+      "readback_sha256": "2fa53e7f203748aa74f6513f14582c897cfe8062c8f28cb26b4225030a171644"
+    },
+    {
+      "level": 5,
+      "lesson_id": 783,
+      "instance_id": 7033,
+      "segment": "template",
+      "prompt_id": 1962,
+      "prompt_code": "word_teach_image_l5l6-X-783-v1-26062",
+      "version_id": 3390,
+      "readback_sha256": "017e2967fb6fa630d6deb20cb14bdef98f5f81a9bc3e745cfe6ee23bfd88b3e2"
+    },
+    {
+      "level": 5,
+      "lesson_id": 785,
+      "instance_id": 7035,
+      "segment": "common",
+      "prompt_id": 2130,
+      "prompt_code": "test02_l5_repair_20261116_2fa53e7f2037",
+      "version_id": 3293,
+      "readback_sha256": "2fa53e7f203748aa74f6513f14582c897cfe8062c8f28cb26b4225030a171644"
+    },
+    {
+      "level": 5,
+      "lesson_id": 785,
+      "instance_id": 7035,
+      "segment": "template",
+      "prompt_id": 1961,
+      "prompt_code": "word_teach_image_l5l6-X-785-v1-26087",
+      "version_id": 3388,
+      "readback_sha256": "0c3cf749202505196149f2e203d1e96e4664c0dd7a6e61222011cd7b4e6623f4"
+    },
+    {
+      "level": 5,
+      "lesson_id": 783,
+      "instance_id": 7038,
+      "segment": "common",
+      "prompt_id": 2130,
+      "prompt_code": "test02_l5_repair_20261116_2fa53e7f2037",
+      "version_id": 3293,
+      "readback_sha256": "2fa53e7f203748aa74f6513f14582c897cfe8062c8f28cb26b4225030a171644"
+    },
+    {
+      "level": 5,
+      "lesson_id": 783,
+      "instance_id": 7038,
+      "segment": "template",
+      "prompt_id": 1962,
+      "prompt_code": "word_teach_image_l5l6-X-783-v1-26062",
+      "version_id": 3390,
+      "readback_sha256": "017e2967fb6fa630d6deb20cb14bdef98f5f81a9bc3e745cfe6ee23bfd88b3e2"
+    },
+    {
+      "level": 5,
+      "lesson_id": 785,
+      "instance_id": 7039,
+      "segment": "common",
+      "prompt_id": 2130,
+      "prompt_code": "test02_l5_repair_20261116_2fa53e7f2037",
+      "version_id": 3293,
+      "readback_sha256": "2fa53e7f203748aa74f6513f14582c897cfe8062c8f28cb26b4225030a171644"
+    },
+    {
+      "level": 5,
+      "lesson_id": 785,
+      "instance_id": 7039,
+      "segment": "template",
+      "prompt_id": 1961,
+      "prompt_code": "word_teach_image_l5l6-X-785-v1-26087",
+      "version_id": 3388,
+      "readback_sha256": "0c3cf749202505196149f2e203d1e96e4664c0dd7a6e61222011cd7b4e6623f4"
+    },
+    {
+      "level": 5,
+      "lesson_id": 783,
+      "instance_id": 7040,
+      "segment": "common",
+      "prompt_id": 2130,
+      "prompt_code": "test02_l5_repair_20261116_2fa53e7f2037",
+      "version_id": 3293,
+      "readback_sha256": "2fa53e7f203748aa74f6513f14582c897cfe8062c8f28cb26b4225030a171644"
+    },
+    {
+      "level": 5,
+      "lesson_id": 783,
+      "instance_id": 7040,
+      "segment": "template",
+      "prompt_id": 1962,
+      "prompt_code": "word_teach_image_l5l6-X-783-v1-26062",
+      "version_id": 3390,
+      "readback_sha256": "017e2967fb6fa630d6deb20cb14bdef98f5f81a9bc3e745cfe6ee23bfd88b3e2"
+    },
+    {
+      "level": 5,
+      "lesson_id": 785,
+      "instance_id": 7041,
+      "segment": "common",
+      "prompt_id": 2130,
+      "prompt_code": "test02_l5_repair_20261116_2fa53e7f2037",
+      "version_id": 3293,
+      "readback_sha256": "2fa53e7f203748aa74f6513f14582c897cfe8062c8f28cb26b4225030a171644"
+    },
+    {
+      "level": 5,
+      "lesson_id": 785,
+      "instance_id": 7041,
+      "segment": "template",
+      "prompt_id": 1961,
+      "prompt_code": "word_teach_image_l5l6-X-785-v1-26087",
+      "version_id": 3388,
+      "readback_sha256": "0c3cf749202505196149f2e203d1e96e4664c0dd7a6e61222011cd7b4e6623f4"
+    },
+    {
+      "level": 5,
+      "lesson_id": 784,
+      "instance_id": 7051,
+      "segment": "common",
+      "prompt_id": 2130,
+      "prompt_code": "test02_l5_repair_20261116_2fa53e7f2037",
+      "version_id": 3293,
+      "readback_sha256": "2fa53e7f203748aa74f6513f14582c897cfe8062c8f28cb26b4225030a171644"
+    },
+    {
+      "level": 5,
+      "lesson_id": 784,
+      "instance_id": 7051,
+      "segment": "template",
+      "prompt_id": 1965,
+      "prompt_code": "retell_rules-X-784-v1-26080",
+      "version_id": 3391,
+      "readback_sha256": "bb139eb5575a3e7642106b9f53b4640f07dbde0cc005e4070e879389b9eedc4a"
+    },
+    {
+      "level": 5,
+      "lesson_id": 784,
+      "instance_id": 7055,
+      "segment": "template",
+      "prompt_id": 1966,
+      "prompt_code": "wrapup_summary_video_rules-X-784-v1-26081",
+      "version_id": 3392,
+      "readback_sha256": "4fec5fbfe2d74e62e85134049654356351d0402dd4193bfa1436aa22e2e9419a"
+    },
+    {
+      "level": 5,
+      "lesson_id": 783,
+      "instance_id": 7074,
+      "segment": "common",
+      "prompt_id": 2131,
+      "prompt_code": "test02_l5_repair_20261116_dfaed268f006",
+      "version_id": 3294,
+      "readback_sha256": "dfaed268f0061c14fc69800ea5e026202e1c9c0deae9a6d4367d0966e0654485"
+    },
+    {
+      "level": 5,
+      "lesson_id": 783,
+      "instance_id": 7074,
+      "segment": "template",
+      "prompt_id": 1971,
+      "prompt_code": "free_talk_rules-X-783-v1-26066",
+      "version_id": 3393,
+      "readback_sha256": "6f0488e2ae6090cf1204eaddaba15e925da62335acad3f654513e580a370ed16"
+    },
+    {
+      "level": 5,
+      "lesson_id": 785,
+      "instance_id": 7078,
+      "segment": "common",
+      "prompt_id": 2131,
+      "prompt_code": "test02_l5_repair_20261116_dfaed268f006",
+      "version_id": 3294,
+      "readback_sha256": "dfaed268f0061c14fc69800ea5e026202e1c9c0deae9a6d4367d0966e0654485"
+    },
+    {
+      "level": 5,
+      "lesson_id": 785,
+      "instance_id": 7078,
+      "segment": "template",
+      "prompt_id": 1973,
+      "prompt_code": "free_talk_rules-X-785-v1-26091",
+      "version_id": 3394,
+      "readback_sha256": "6f0488e2ae6090cf1204eaddaba15e925da62335acad3f654513e580a370ed16"
+    },
+    {
+      "level": 5,
+      "lesson_id": 783,
+      "instance_id": 7082,
+      "segment": "template",
+      "prompt_id": 1975,
+      "prompt_code": "wrapup_summary_video_rules-X-783-v1-26069",
+      "version_id": 3395,
+      "readback_sha256": "4fec5fbfe2d74e62e85134049654356351d0402dd4193bfa1436aa22e2e9419a"
+    },
+    {
+      "level": 5,
+      "lesson_id": 785,
+      "instance_id": 7086,
+      "segment": "template",
+      "prompt_id": 1977,
+      "prompt_code": "wrapup_summary_video_rules-X-785-v1-26094",
+      "version_id": 3396,
+      "readback_sha256": "4fec5fbfe2d74e62e85134049654356351d0402dd4193bfa1436aa22e2e9419a"
+    },
+    {
+      "level": 6,
+      "lesson_id": 795,
+      "instance_id": 7067,
+      "segment": "common",
+      "prompt_id": 2132,
+      "prompt_code": "test02_l6_repair_20261116_bb8ae8045ad0",
+      "version_id": 3295,
+      "readback_sha256": "bb8ae8045ad012ff5a8ff3716b5f65fac960e8338b96a13272cf41bc7ac4ae44"
+    },
+    {
+      "level": 6,
+      "lesson_id": 795,
+      "instance_id": 7067,
+      "segment": "template",
+      "prompt_id": 1981,
+      "prompt_code": "warmup_teaching_rules_l5l6-X-795-v1-30406",
+      "version_id": 3397,
+      "readback_sha256": "76485712572cea33391d545586f69775c1fab1da88dc551c386b068bebca86dc"
+    },
+    {
+      "level": 6,
+      "lesson_id": 795,
+      "instance_id": 7083,
+      "segment": "common",
+      "prompt_id": 2132,
+      "prompt_code": "test02_l6_repair_20261116_bb8ae8045ad0",
+      "version_id": 3295,
+      "readback_sha256": "bb8ae8045ad012ff5a8ff3716b5f65fac960e8338b96a13272cf41bc7ac4ae44"
+    },
+    {
+      "level": 6,
+      "lesson_id": 795,
+      "instance_id": 7083,
+      "segment": "template",
+      "prompt_id": 1985,
+      "prompt_code": "word_teach_image_l5l6-X-795-v1-30409",
+      "version_id": 3398,
+      "readback_sha256": "8c75d3a5fda157a359ac16003fe582bbc200bd7774af813bc79456b9c8734b78"
+    },
+    {
+      "level": 6,
+      "lesson_id": 795,
+      "instance_id": 7085,
+      "segment": "common",
+      "prompt_id": 2132,
+      "prompt_code": "test02_l6_repair_20261116_bb8ae8045ad0",
+      "version_id": 3295,
+      "readback_sha256": "bb8ae8045ad012ff5a8ff3716b5f65fac960e8338b96a13272cf41bc7ac4ae44"
+    },
+    {
+      "level": 6,
+      "lesson_id": 795,
+      "instance_id": 7085,
+      "segment": "template",
+      "prompt_id": 1985,
+      "prompt_code": "word_teach_image_l5l6-X-795-v1-30409",
+      "version_id": 3398,
+      "readback_sha256": "8c75d3a5fda157a359ac16003fe582bbc200bd7774af813bc79456b9c8734b78"
+    },
+    {
+      "level": 6,
+      "lesson_id": 795,
+      "instance_id": 7089,
+      "segment": "common",
+      "prompt_id": 2132,
+      "prompt_code": "test02_l6_repair_20261116_bb8ae8045ad0",
+      "version_id": 3295,
+      "readback_sha256": "bb8ae8045ad012ff5a8ff3716b5f65fac960e8338b96a13272cf41bc7ac4ae44"
+    },
+    {
+      "level": 6,
+      "lesson_id": 795,
+      "instance_id": 7089,
+      "segment": "template",
+      "prompt_id": 1985,
+      "prompt_code": "word_teach_image_l5l6-X-795-v1-30409",
+      "version_id": 3398,
+      "readback_sha256": "8c75d3a5fda157a359ac16003fe582bbc200bd7774af813bc79456b9c8734b78"
+    },
+    {
+      "level": 6,
+      "lesson_id": 796,
+      "instance_id": 7091,
+      "segment": "common",
+      "prompt_id": 2132,
+      "prompt_code": "test02_l6_repair_20261116_bb8ae8045ad0",
+      "version_id": 3295,
+      "readback_sha256": "bb8ae8045ad012ff5a8ff3716b5f65fac960e8338b96a13272cf41bc7ac4ae44"
+    },
+    {
+      "level": 6,
+      "lesson_id": 796,
+      "instance_id": 7091,
+      "segment": "template",
+      "prompt_id": 1986,
+      "prompt_code": "warmup_teaching_rules_l5l6-X-796-v1-30420",
+      "version_id": 3399,
+      "readback_sha256": "76485712572cea33391d545586f69775c1fab1da88dc551c386b068bebca86dc"
+    },
+    {
+      "level": 6,
+      "lesson_id": 795,
+      "instance_id": 7092,
+      "segment": "common",
+      "prompt_id": 2132,
+      "prompt_code": "test02_l6_repair_20261116_bb8ae8045ad0",
+      "version_id": 3295,
+      "readback_sha256": "bb8ae8045ad012ff5a8ff3716b5f65fac960e8338b96a13272cf41bc7ac4ae44"
+    },
+    {
+      "level": 6,
+      "lesson_id": 795,
+      "instance_id": 7092,
+      "segment": "template",
+      "prompt_id": 1985,
+      "prompt_code": "word_teach_image_l5l6-X-795-v1-30409",
+      "version_id": 3398,
+      "readback_sha256": "8c75d3a5fda157a359ac16003fe582bbc200bd7774af813bc79456b9c8734b78"
+    },
+    {
+      "level": 6,
+      "lesson_id": 795,
+      "instance_id": 7095,
+      "segment": "common",
+      "prompt_id": 2132,
+      "prompt_code": "test02_l6_repair_20261116_bb8ae8045ad0",
+      "version_id": 3295,
+      "readback_sha256": "bb8ae8045ad012ff5a8ff3716b5f65fac960e8338b96a13272cf41bc7ac4ae44"
+    },
+    {
+      "level": 6,
+      "lesson_id": 795,
+      "instance_id": 7095,
+      "segment": "template",
+      "prompt_id": 1985,
+      "prompt_code": "word_teach_image_l5l6-X-795-v1-30409",
+      "version_id": 3398,
+      "readback_sha256": "8c75d3a5fda157a359ac16003fe582bbc200bd7774af813bc79456b9c8734b78"
+    },
+    {
+      "level": 6,
+      "lesson_id": 797,
+      "instance_id": 7098,
+      "segment": "common",
+      "prompt_id": 2132,
+      "prompt_code": "test02_l6_repair_20261116_bb8ae8045ad0",
+      "version_id": 3295,
+      "readback_sha256": "bb8ae8045ad012ff5a8ff3716b5f65fac960e8338b96a13272cf41bc7ac4ae44"
+    },
+    {
+      "level": 6,
+      "lesson_id": 797,
+      "instance_id": 7098,
+      "segment": "template",
+      "prompt_id": 1987,
+      "prompt_code": "warmup_teaching_rules_l5l6-X-797-v1-30433",
+      "version_id": 3400,
+      "readback_sha256": "76485712572cea33391d545586f69775c1fab1da88dc551c386b068bebca86dc"
+    },
+    {
+      "level": 6,
+      "lesson_id": 796,
+      "instance_id": 7105,
+      "segment": "common",
+      "prompt_id": 2133,
+      "prompt_code": "test02_l6_repair_20261116_0f459a5b6675",
+      "version_id": 3296,
+      "readback_sha256": "0f459a5b6675ef56e5daf8d1792c20177c16ae09323fd25e59a7c860e1c1f3d6"
+    },
+    {
+      "level": 6,
+      "lesson_id": 796,
+      "instance_id": 7105,
+      "segment": "template",
+      "prompt_id": 1991,
+      "prompt_code": "reader_teach_rules-X-796-v1-30423",
+      "version_id": 3401,
+      "readback_sha256": "7bebc09a01b6ff68c6c3b6588515d5f0d5ebe8def801c560954ce686640677d7"
+    },
+    {
+      "level": 6,
+      "lesson_id": 796,
+      "instance_id": 7105,
+      "segment": "step-page_0",
+      "prompt_id": 1993,
+      "prompt_code": "reader_teach_rules_cover-X-796-v1-30423",
+      "version_id": 3402,
+      "readback_sha256": "de521f53d3fda86b63e43caaacea5422adc373d5f30461ce5c126bbd283cc475"
+    },
+    {
+      "level": 6,
+      "lesson_id": 796,
+      "instance_id": 7105,
+      "segment": "step-page_1",
+      "prompt_id": 1992,
+      "prompt_code": "reader_teach_rules_page-X-796-v1-30423",
+      "version_id": 3403,
+      "readback_sha256": "2ee53185962fce0d56618c9da035b0b701c18a96b9e462bb78ebc46de904b1f3"
+    },
+    {
+      "level": 6,
+      "lesson_id": 796,
+      "instance_id": 7105,
+      "segment": "step-page_2",
+      "prompt_id": 1992,
+      "prompt_code": "reader_teach_rules_page-X-796-v1-30423",
+      "version_id": 3403,
+      "readback_sha256": "2ee53185962fce0d56618c9da035b0b701c18a96b9e462bb78ebc46de904b1f3"
+    },
+    {
+      "level": 6,
+      "lesson_id": 796,
+      "instance_id": 7105,
+      "segment": "step-page_3",
+      "prompt_id": 1992,
+      "prompt_code": "reader_teach_rules_page-X-796-v1-30423",
+      "version_id": 3403,
+      "readback_sha256": "2ee53185962fce0d56618c9da035b0b701c18a96b9e462bb78ebc46de904b1f3"
+    },
+    {
+      "level": 6,
+      "lesson_id": 796,
+      "instance_id": 7105,
+      "segment": "step-page_4",
+      "prompt_id": 1992,
+      "prompt_code": "reader_teach_rules_page-X-796-v1-30423",
+      "version_id": 3403,
+      "readback_sha256": "2ee53185962fce0d56618c9da035b0b701c18a96b9e462bb78ebc46de904b1f3"
+    },
+    {
+      "level": 6,
+      "lesson_id": 796,
+      "instance_id": 7105,
+      "segment": "step-page_5",
+      "prompt_id": 1992,
+      "prompt_code": "reader_teach_rules_page-X-796-v1-30423",
+      "version_id": 3403,
+      "readback_sha256": "2ee53185962fce0d56618c9da035b0b701c18a96b9e462bb78ebc46de904b1f3"
+    },
+    {
+      "level": 6,
+      "lesson_id": 796,
+      "instance_id": 7105,
+      "segment": "step-page_6",
+      "prompt_id": 1992,
+      "prompt_code": "reader_teach_rules_page-X-796-v1-30423",
+      "version_id": 3403,
+      "readback_sha256": "2ee53185962fce0d56618c9da035b0b701c18a96b9e462bb78ebc46de904b1f3"
+    },
+    {
+      "level": 6,
+      "lesson_id": 796,
+      "instance_id": 7105,
+      "segment": "step-page_7",
+      "prompt_id": 1992,
+      "prompt_code": "reader_teach_rules_page-X-796-v1-30423",
+      "version_id": 3403,
+      "readback_sha256": "2ee53185962fce0d56618c9da035b0b701c18a96b9e462bb78ebc46de904b1f3"
+    },
+    {
+      "level": 6,
+      "lesson_id": 797,
+      "instance_id": 7108,
+      "segment": "common",
+      "prompt_id": 2132,
+      "prompt_code": "test02_l6_repair_20261116_bb8ae8045ad0",
+      "version_id": 3295,
+      "readback_sha256": "bb8ae8045ad012ff5a8ff3716b5f65fac960e8338b96a13272cf41bc7ac4ae44"
+    },
+    {
+      "level": 6,
+      "lesson_id": 797,
+      "instance_id": 7108,
+      "segment": "template",
+      "prompt_id": 1997,
+      "prompt_code": "word_teach_image_l5l6-X-797-v1-30436",
+      "version_id": 3404,
+      "readback_sha256": "bbf01d5c09cfb57cc5d84d2ecf0f8078d0e6e41dacbc3cef3af198aed2db5200"
+    },
+    {
+      "level": 6,
+      "lesson_id": 797,
+      "instance_id": 7112,
+      "segment": "common",
+      "prompt_id": 2132,
+      "prompt_code": "test02_l6_repair_20261116_bb8ae8045ad0",
+      "version_id": 3295,
+      "readback_sha256": "bb8ae8045ad012ff5a8ff3716b5f65fac960e8338b96a13272cf41bc7ac4ae44"
+    },
+    {
+      "level": 6,
+      "lesson_id": 797,
+      "instance_id": 7112,
+      "segment": "template",
+      "prompt_id": 1997,
+      "prompt_code": "word_teach_image_l5l6-X-797-v1-30436",
+      "version_id": 3404,
+      "readback_sha256": "bbf01d5c09cfb57cc5d84d2ecf0f8078d0e6e41dacbc3cef3af198aed2db5200"
+    },
+    {
+      "level": 6,
+      "lesson_id": 797,
+      "instance_id": 7115,
+      "segment": "common",
+      "prompt_id": 2132,
+      "prompt_code": "test02_l6_repair_20261116_bb8ae8045ad0",
+      "version_id": 3295,
+      "readback_sha256": "bb8ae8045ad012ff5a8ff3716b5f65fac960e8338b96a13272cf41bc7ac4ae44"
+    },
+    {
+      "level": 6,
+      "lesson_id": 797,
+      "instance_id": 7115,
+      "segment": "template",
+      "prompt_id": 1997,
+      "prompt_code": "word_teach_image_l5l6-X-797-v1-30436",
+      "version_id": 3404,
+      "readback_sha256": "bbf01d5c09cfb57cc5d84d2ecf0f8078d0e6e41dacbc3cef3af198aed2db5200"
+    },
+    {
+      "level": 6,
+      "lesson_id": 797,
+      "instance_id": 7116,
+      "segment": "common",
+      "prompt_id": 2132,
+      "prompt_code": "test02_l6_repair_20261116_bb8ae8045ad0",
+      "version_id": 3295,
+      "readback_sha256": "bb8ae8045ad012ff5a8ff3716b5f65fac960e8338b96a13272cf41bc7ac4ae44"
+    },
+    {
+      "level": 6,
+      "lesson_id": 797,
+      "instance_id": 7116,
+      "segment": "template",
+      "prompt_id": 1997,
+      "prompt_code": "word_teach_image_l5l6-X-797-v1-30436",
+      "version_id": 3404,
+      "readback_sha256": "bbf01d5c09cfb57cc5d84d2ecf0f8078d0e6e41dacbc3cef3af198aed2db5200"
+    },
+    {
+      "level": 6,
+      "lesson_id": 797,
+      "instance_id": 7119,
+      "segment": "common",
+      "prompt_id": 2132,
+      "prompt_code": "test02_l6_repair_20261116_bb8ae8045ad0",
+      "version_id": 3295,
+      "readback_sha256": "bb8ae8045ad012ff5a8ff3716b5f65fac960e8338b96a13272cf41bc7ac4ae44"
+    },
+    {
+      "level": 6,
+      "lesson_id": 797,
+      "instance_id": 7119,
+      "segment": "template",
+      "prompt_id": 1997,
+      "prompt_code": "word_teach_image_l5l6-X-797-v1-30436",
+      "version_id": 3404,
+      "readback_sha256": "bbf01d5c09cfb57cc5d84d2ecf0f8078d0e6e41dacbc3cef3af198aed2db5200"
+    },
+    {
+      "level": 6,
+      "lesson_id": 796,
+      "instance_id": 7127,
+      "segment": "common",
+      "prompt_id": 2132,
+      "prompt_code": "test02_l6_repair_20261116_bb8ae8045ad0",
+      "version_id": 3295,
+      "readback_sha256": "bb8ae8045ad012ff5a8ff3716b5f65fac960e8338b96a13272cf41bc7ac4ae44"
+    },
+    {
+      "level": 6,
+      "lesson_id": 796,
+      "instance_id": 7127,
+      "segment": "template",
+      "prompt_id": 1998,
+      "prompt_code": "retell_rules-X-796-v1-30429",
+      "version_id": 3405,
+      "readback_sha256": "8d10bea1a277fbc40c3ebf1adfa34eb6f2ef3d0c70b2909a0339d881c160c204"
+    },
+    {
+      "level": 6,
+      "lesson_id": 795,
+      "instance_id": 7128,
+      "segment": "common",
+      "prompt_id": 2134,
+      "prompt_code": "test02_l6_repair_20261116_6f47769bd630",
+      "version_id": 3297,
+      "readback_sha256": "6f47769bd6307a3c75f9e27adfe26928e10ae201a40fb6fa9b92e3dee36a33c3"
+    },
+    {
+      "level": 6,
+      "lesson_id": 795,
+      "instance_id": 7128,
+      "segment": "template",
+      "prompt_id": 1999,
+      "prompt_code": "free_talk_rules-X-795-v1-30414",
+      "version_id": 3406,
+      "readback_sha256": "84b56250ec721a642002e55945411f81f195ff04bedbc2d0aad5f5e8d8c203a0"
+    },
+    {
+      "level": 6,
+      "lesson_id": 796,
+      "instance_id": 7132,
+      "segment": "template",
+      "prompt_id": 2000,
+      "prompt_code": "wrapup_summary_video_rules-X-796-v1-30430",
+      "version_id": 3407,
+      "readback_sha256": "ba92c1ad591a1ff93cce46e601d4e6fbbc918a91b917fc1ad8b5e54dd6813ed5"
+    },
+    {
+      "level": 6,
+      "lesson_id": 795,
+      "instance_id": 7134,
+      "segment": "template",
+      "prompt_id": 2001,
+      "prompt_code": "wrapup_summary_video_rules-X-795-v1-30417",
+      "version_id": 3408,
+      "readback_sha256": "ba92c1ad591a1ff93cce46e601d4e6fbbc918a91b917fc1ad8b5e54dd6813ed5"
+    },
+    {
+      "level": 6,
+      "lesson_id": 797,
+      "instance_id": 7154,
+      "segment": "common",
+      "prompt_id": 2134,
+      "prompt_code": "test02_l6_repair_20261116_6f47769bd630",
+      "version_id": 3297,
+      "readback_sha256": "6f47769bd6307a3c75f9e27adfe26928e10ae201a40fb6fa9b92e3dee36a33c3"
+    },
+    {
+      "level": 6,
+      "lesson_id": 797,
+      "instance_id": 7154,
+      "segment": "template",
+      "prompt_id": 2002,
+      "prompt_code": "free_talk_rules-X-797-v1-30441",
+      "version_id": 3409,
+      "readback_sha256": "ceec805226e49335ae3894a2109aa75f99f9baaa69827619163c46df216511a7"
+    },
+    {
+      "level": 6,
+      "lesson_id": 797,
+      "instance_id": 7164,
+      "segment": "template",
+      "prompt_id": 2003,
+      "prompt_code": "wrapup_summary_video_rules-X-797-v1-30444",
+      "version_id": 3410,
+      "readback_sha256": "ba92c1ad591a1ff93cce46e601d4e6fbbc918a91b917fc1ad8b5e54dd6813ed5"
+    },
+    {
+      "level": 6,
+      "lesson_id": 795,
+      "instance_id": 7381,
+      "segment": "common",
+      "prompt_id": 2132,
+      "prompt_code": "test02_l6_repair_20261116_bb8ae8045ad0",
+      "version_id": 3295,
+      "readback_sha256": "bb8ae8045ad012ff5a8ff3716b5f65fac960e8338b96a13272cf41bc7ac4ae44"
+    },
+    {
+      "level": 6,
+      "lesson_id": 795,
+      "instance_id": 7381,
+      "segment": "template",
+      "prompt_id": 1985,
+      "prompt_code": "word_teach_image_l5l6-X-795-v1-30409",
+      "version_id": 3398,
+      "readback_sha256": "8c75d3a5fda157a359ac16003fe582bbc200bd7774af813bc79456b9c8734b78"
+    }
+  ],
+  "retained_limits": [
+    "Retained C7 Azure content_filter sample from the previous candidate was not retried; provider/runtime handling remains unverified.",
+    "Normal TEMPLATE_FINISH has no last-step guard in the inspected runtime source; prompt-only fixes are not a deterministic runtime guard.",
+    "Source-default forced-finish and silence mechanisms were not executed by this replay. Effective Nacos configuration and Test02 Dino handoff applicability remain unverified.",
+    "Any listed punctuation style findings remain open. No real-child, TTS, ASR, RTC or end-to-end App release acceptance."
+  ]
+}

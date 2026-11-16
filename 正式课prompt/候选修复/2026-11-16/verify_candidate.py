@@ -25,7 +25,7 @@ if (base/'manifest.json').exists():
  for mr in m['mapping_files']:
   for s in json.loads((root/mr['path']).read_text())['segments']:
    r=refs[s['baseline_path']];assert r['source_sha256']==s['baseline_source_sha256'];assert hashlib.sha256((base/r['path']).read_bytes()).hexdigest()==r['sha256']
-print('PASS',len(ids),'instances,',segments,'segments,',len(seen),'raw prompt files; candidate remains undeployed.')
+print('PASS',len(ids),'instances,',segments,'segments,',len(seen),'raw prompt files; frozen export verified. See publication receipt for current deployment status.')
 
 for ref in m["evidence_artifacts"]:
     p=(root/ref["path"]).resolve();assert p.is_relative_to(root)
