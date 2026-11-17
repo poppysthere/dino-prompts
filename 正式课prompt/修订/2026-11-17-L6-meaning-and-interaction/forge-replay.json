@@ -1,0 +1,1027 @@
+{
+  "summary": {
+    "baseline_cases": 15,
+    "candidate_cases": 39,
+    "candidate_replies": 86,
+    "candidate_automated_flags": {},
+    "baseline_automated_flags": {
+      "copy_cue": 9,
+      "excess_invitation": 2
+    },
+    "candidate_free_talk_revised_cases": 14
+  },
+  "baseline": [
+    {
+      "source": "baseline",
+      "instance": 7083,
+      "step": null,
+      "case": "meaning",
+      "child": [
+        "A polar bear's thick fur keeps it warm.",
+        "I think it helps the animal stay alive."
+      ],
+      "replies": [
+        "Look at the giraffe reaching the high leaves. What body feature helps it get the leaves? [STUDENT_TALK]",
+        "A polar bear's thick fur is an adaptation that keeps it warm. Say this sentence. A long neck is an adaptation that helps a giraffe eat leaves. [STUDENT_TALK]",
+        "An adaptation helps an animal stay alive in its environment. A polar bear's thick fur keeps it warm. [TEMPLATE_FINISH]"
+      ],
+      "issues": [
+        "copy_cue"
+      ],
+      "error": null,
+      "prompt_sha256": "90532cb3e24f127be17cb40a92b723c9c56a83fcea712346840b69c4de77fcd5",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "baseline",
+      "instance": 7089,
+      "step": null,
+      "case": "meaning",
+      "child": [
+        "Thick fur keeps a polar bear warm in the snow.",
+        "I think it helps the animal stay alive."
+      ],
+      "replies": [
+        "Look at the animals in their different environments. Say this phrase. Adapt to their environment. [STUDENT_TALK]",
+        "Thick fur helps a polar bear adapt to its cold environment. Say this phrase. Adapt to its environment. [STUDENT_TALK]",
+        "Yes. Thick fur helps a polar bear adapt to the cold and survive in the snow. [TEMPLATE_FINISH]"
+      ],
+      "issues": [
+        "copy_cue",
+        "copy_cue"
+      ],
+      "error": null,
+      "prompt_sha256": "1e173f7e8048f83d836dd36e15a021b6a1cb686e27c59b142dfeb3152fa15065",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "baseline",
+      "instance": 7112,
+      "step": null,
+      "case": "meaning",
+      "child": [
+        "I thought a school was where students go.",
+        "I think it helps the animal stay alive."
+      ],
+      "replies": [
+        "Look at the fish. What do you think school means here? [STUDENT_TALK]",
+        "That's right for students. Here, school means a group of fish. Repeat this sentence. A school of fish swims together in the sea. [STUDENT_TALK]",
+        "A school is a group of fish that swims together in the sea. Let's go on. [TEMPLATE_FINISH]"
+      ],
+      "issues": [
+        "copy_cue"
+      ],
+      "error": null,
+      "prompt_sha256": "c419a67a4421c813ca2227c713ac8d9465a0b16bbeee6d31ed7acfd1ca576f47",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "baseline",
+      "instance": 7116,
+      "step": null,
+      "case": "meaning",
+      "child": [
+        "A turtle can hide inside its shell.",
+        "I think it helps the animal stay alive."
+      ],
+      "replies": [
+        "Protect means keep safe. Repeat this sentence. A mother bear will protect her cubs. [STUDENT_TALK]",
+        "A turtle uses its shell to protect itself. Say this phrase. Protect itself. [STUDENT_TALK]",
+        "Yes, protecting itself can help an animal stay alive. A mother bear will protect her cubs. [TEMPLATE_FINISH]"
+      ],
+      "issues": [
+        "copy_cue",
+        "copy_cue"
+      ],
+      "error": null,
+      "prompt_sha256": "3fe745188c5c938cd1daf4064fdc9d9a02ea49e5af4459eee104f3fc5cbc001c",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "baseline",
+      "instance": 7105,
+      "step": "page_4",
+      "case": "meaning",
+      "child": [
+        "Their ears help them cool down."
+      ],
+      "replies": [
+        "Elephants use different body parts to survive in hot weather. Read this part aloud. [STUDENT_TALK]",
+        "Yes. Their big ears help them fan themselves when the weather is too hot. [NEXT_STEP]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "3c504727778ce410c1bca2a6b238b556031adcd6a1554702ed7bb186c8464954",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "baseline",
+      "instance": 7128,
+      "step": "free_talk_2",
+      "case": "meaning",
+      "child": [
+        "It hides inside its shell when it is scared."
+      ],
+      "replies": [
+        "Does this animal have a special body part? [STUDENT_TALK]",
+        "The shell helps the turtle stay safe when it is scared. Let's look at how it survives in its environment. [NEXT_STEP]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "744842a9fdfca5e80b95c27c23b90d7bfecfb323b16041bf47816275f202d73b",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "baseline",
+      "instance": 7154,
+      "step": "free_talk_4",
+      "case": "meaning",
+      "child": [
+        "It hides in its shell when it is scared."
+      ],
+      "replies": [
+        "This animal uses sharp quills to protect itself. How does it stay safe from danger? [STUDENT_TALK]",
+        "A shell helps a turtle stay safe. The porcupine protects itself with sharp quills. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "78cd47e64bf580f97a1b7c7073db5e9aac588859163d6cab2847594b347e71e8",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "baseline",
+      "instance": 7127,
+      "step": null,
+      "case": "retell",
+      "child": [
+        "Elephants use their ears to cool down.",
+        "Camels use fat from their humps when food is hard to find."
+      ],
+      "replies": [
+        "Look at the mind map for Structural Adaptations. Tell me what the passage is about, starting with any branch you choose. [STUDENT_TALK]",
+        "Elephants use their big ears to cool themselves in hot weather. What adaptations help camels survive in the hot, dry desert? [STUDENT_TALK]",
+        "Camels use fat from their humps as food when they cannot find food. What does their thick fur do in the desert? [STUDENT_TALK]"
+      ],
+      "issues": [
+        "excess_invitation"
+      ],
+      "error": null,
+      "prompt_sha256": "80cdefe1ae1d0c4f98e8e8e7475b79362a21d2ca5874894dfdb0c93ac83dd3dc",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "baseline",
+      "instance": 7083,
+      "step": null,
+      "case": "silence",
+      "child": [
+        "(silent)",
+        "(silent)"
+      ],
+      "replies": [
+        "A giraffe's long neck helps it reach high leaves. What word means a feature that helps an animal survive? [STUDENT_TALK]",
+        "Choose one word. Is it adaptation or behavior? [STUDENT_TALK]",
+        "The word is adaptation. A long neck is an adaptation that helps a giraffe eat leaves. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "90532cb3e24f127be17cb40a92b723c9c56a83fcea712346840b69c4de77fcd5",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "baseline",
+      "instance": 7089,
+      "step": null,
+      "case": "confusion",
+      "child": [
+        "Does it decide to change its body?",
+        "I get it."
+      ],
+      "replies": [
+        "Look at the camel, polar bear, and deer. How do they adapt to their different environments? [STUDENT_TALK]",
+        "No. An individual animal does not decide to change its body. Body adaptations develop over many generations. Say this. Animals adapt to their environment to survive. [STUDENT_TALK]",
+        "Right. Animals' bodies or behaviors help them survive in their environments. [TEMPLATE_FINISH]"
+      ],
+      "issues": [
+        "copy_cue"
+      ],
+      "error": null,
+      "prompt_sha256": "1e173f7e8048f83d836dd36e15a021b6a1cb686e27c59b142dfeb3152fa15065",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "baseline",
+      "instance": 7116,
+      "step": null,
+      "case": "mandarin",
+      "child": [
+        "海龟会躲进壳里保护自己。",
+        "It stays safe."
+      ],
+      "replies": [
+        "Look at the mother bear and her cubs. What is the mother bear doing for them? [STUDENT_TALK]",
+        "A turtle can hide in its shell to protect itself. Say this. A turtle can hide in its shell to protect itself. [STUDENT_TALK]",
+        "Its shell helps it stay safe. A turtle can protect itself by hiding in its shell. [TEMPLATE_FINISH]"
+      ],
+      "issues": [
+        "copy_cue"
+      ],
+      "error": null,
+      "prompt_sha256": "3fe745188c5c938cd1daf4064fdc9d9a02ea49e5af4459eee104f3fc5cbc001c",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "baseline",
+      "instance": 7127,
+      "step": null,
+      "case": "silence",
+      "child": [
+        "(silent)",
+        "(silent)"
+      ],
+      "replies": [
+        "Look at the mind map for Structural Adaptations. Retell the main idea and include what you remember about elephants or camels. [STUDENT_TALK]",
+        "Repeat this sentence. Animals have different body parts that help them survive. [STUDENT_TALK]",
+        "Structural adaptations are body changes that help animals survive. Elephants use their trunks to get food, their ears to cool down, and their feet to support their bodies. Camels' thick fur protects them from heat and cold, and fat in their humps provides food. [TEMPLATE_FINISH]"
+      ],
+      "issues": [
+        "copy_cue"
+      ],
+      "error": null,
+      "prompt_sha256": "80cdefe1ae1d0c4f98e8e8e7475b79362a21d2ca5874894dfdb0c93ac83dd3dc",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "baseline",
+      "instance": 7128,
+      "step": "free_talk_2",
+      "case": "silence",
+      "child": [
+        "(silent)",
+        "(silent)"
+      ],
+      "replies": [
+        "Does your favorite animal have anything special on its body? [STUDENT_TALK]",
+        "Think about its shell or feet. What special body part does it have? [STUDENT_TALK]",
+        "A turtle's shell is a special structural adaptation. It helps the turtle protect its body and survive danger. Let's go on. [NEXT_STEP]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "744842a9fdfca5e80b95c27c23b90d7bfecfb323b16041bf47816275f202d73b",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "baseline",
+      "instance": 7154,
+      "step": "free_talk_4",
+      "case": "stop",
+      "child": [
+        "I already answered. Can we move on?"
+      ],
+      "replies": [
+        "This porcupine has sharp quills. How do they protect it from danger? [STUDENT_TALK]",
+        "Of course. Sharp quills can hurt an animal that attacks the porcupine. They help keep the porcupine safe. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "78cd47e64bf580f97a1b7c7073db5e9aac588859163d6cab2847594b347e71e8",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "baseline",
+      "instance": 7154,
+      "step": "free_talk_4",
+      "case": "question",
+      "child": [
+        "Why does a turtle need a hard shell?",
+        "Maybe a bird could hurt it."
+      ],
+      "replies": [
+        "This animal has sharp quills. How do the quills protect it from danger? [STUDENT_TALK]",
+        "A turtle needs a hard shell to protect its body from attacks. Porcupines use sharp quills to protect themselves. How do the quills protect the porcupine from danger? [STUDENT_TALK]",
+        "A bird could be a threat. What do the sharp quills do to an attacking animal? [STUDENT_TALK]"
+      ],
+      "issues": [
+        "excess_invitation"
+      ],
+      "error": null,
+      "prompt_sha256": "78cd47e64bf580f97a1b7c7073db5e9aac588859163d6cab2847594b347e71e8",
+      "model": "gpt-5.6-luna"
+    }
+  ],
+  "candidate": [
+    {
+      "source": "candidate",
+      "instance": 7083,
+      "step": null,
+      "case": "meaning",
+      "child": [
+        "A polar bear's thick fur keeps it warm."
+      ],
+      "replies": [
+        "A giraffe's long neck is an adaptation that helps it reach leaves high in a tree. What adaptation could help a camel survive in a hot, dry desert? [STUDENT_TALK]",
+        "Right. Thick fur is an adaptation that helps a polar bear stay warm in its cold environment. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "c942a8e5465b38e9e144b30c035bb23e18ec8addd46baabd9e81b98fa8fa2103",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7085,
+      "step": null,
+      "case": "meaning",
+      "child": [
+        "Maybe its strong legs help it jump."
+      ],
+      "replies": [
+        "Structural means related to how an animal's body is built. A bird's wings are a structural feature that helps it fly. What body part helps a turtle stay safe? [STUDENT_TALK]",
+        "Strong legs are a structural feature because they are part of the body and help an animal move. A turtle's shell is a structural feature that helps protect it. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "441ddeff3ec370f99e5410e9352302ee59bf3dd7689e5920a23cb72640dd2e03",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7089,
+      "step": null,
+      "case": "meaning",
+      "child": [
+        "Thick fur keeps a polar bear warm in the snow."
+      ],
+      "replies": [
+        "Camels adapt to the desert environment to survive. Which animal adapts to a cold, snowy environment? [STUDENT_TALK]",
+        "Thick fur helps a polar bear adapt to its cold, snowy environment and survive. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "18dfc27d16794d1985672d2d709343bb85747a47d8e4d919c57e7054b3fb4583",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7092,
+      "step": null,
+      "case": "meaning",
+      "child": [
+        "It could hide somewhere warm until spring."
+      ],
+      "replies": [
+        "Camels can survive without water for many days. To survive means to stay alive. What might help a polar bear survive in a very cold place? [STUDENT_TALK]",
+        "Staying somewhere warm could help an animal survive the cold until spring. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "3e1cbe9e42bc538fae389b32d2ff104cece248321ca54944269b609d3aaa4c77",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7095,
+      "step": null,
+      "case": "meaning",
+      "child": [
+        "My rabbit hides when it hears a loud noise."
+      ],
+      "replies": [
+        "Hiding from danger is a kind of behavior. What behavior might a rabbit show when it sees a fox? [STUDENT_TALK]",
+        "Hiding when it hears a loud noise is a behavior that helps the rabbit stay safe. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "caf9c561f82b0f56b9ad14d62e4d31d6a85e953ccb193c42fe225dc6e9afe571",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7108,
+      "step": null,
+      "case": "meaning",
+      "child": [
+        "A zebra has stripes, so it is easy to recognize."
+      ],
+      "replies": [
+        "Sharp teeth are a characteristic of lions. What is one characteristic of another animal that helps describe it? [STUDENT_TALK]",
+        "Yes, stripes are a characteristic that helps people recognize zebras. A characteristic can be a typical feature or quality. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "1ce44d7be69e8d4d7c2defef02862a99631a53966b9c83cc55d9845dff31b808",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7112,
+      "step": null,
+      "case": "meaning",
+      "child": [
+        "I thought a school was where students go.",
+        "I think it helps the animal stay alive."
+      ],
+      "replies": [
+        "A school is a group of fish swimming together. A school of fish moves through the sea. Why might fish stay in a school instead of swimming alone? [STUDENT_TALK]",
+        "Yes, school usually means a place where students learn. It can also mean a group of fish swimming together. What other animals might move together in a group? [STUDENT_TALK]",
+        "Yes, moving in a school can help fish stay safe from predators. It also helps them find food together. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "1ce33ec3503ed204423b68bb1b6b40d87ad38fe15cca66a6f88af2962ccce3f8",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7115,
+      "step": null,
+      "case": "meaning",
+      "child": [
+        "It has to be quiet so the other animal will not hear it."
+      ],
+      "replies": [
+        "Lions hunt other animals for food. Imagine a fox looking for food at night. What might it hunt? [STUDENT_TALK]",
+        "Right. A fox may hunt quietly so its prey does not hear it and escape. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "ae0c13e5c761e4a0fa5017098202ee2cab4e6be6942aebf862c6bdbee366ba82",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7116,
+      "step": null,
+      "case": "meaning",
+      "child": [
+        "A turtle can hide inside its shell."
+      ],
+      "replies": [
+        "A mother bear will protect her cubs by keeping them safe from danger. What is one thing a person might protect? [STUDENT_TALK]",
+        "Yes, a turtle can protect itself by hiding inside its shell. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "7c5c8f306ebecb2297432f8274fd80d46c582c074d4c2aad038bb2261f754f12",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7119,
+      "step": null,
+      "case": "meaning",
+      "child": [
+        "Does a baby turtle have to learn where the ocean is?"
+      ],
+      "replies": [
+        "A sea turtle hatchling moves toward the ocean without being taught. This natural behavior is called instinct. What might a newborn animal do by instinct? [STUDENT_TALK]",
+        "No. A baby turtle is born with the instinct to move toward the ocean, even though it has not been taught. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "f55657b014d5aa8b4a7c425ccfa54d3c641bcc34670bacb5da0a4f2cdcd243d8",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7381,
+      "step": null,
+      "case": "meaning",
+      "child": [
+        "Owls sleep in the day and look for food at night."
+      ],
+      "replies": [
+        "Behavior means what an animal does. Hiding from danger is a kind of behavior. What behavior might a rabbit use when it sees a fox? [STUDENT_TALK]",
+        "Sleeping during the day and looking for food at night are owl behaviors. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "c1bdadc21457da0b5e8c620f05c685004ac21c1c078c28e0bc4c0475dff1c123",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7105,
+      "step": "page_0",
+      "case": "meaning",
+      "child": [
+        "A long neck might help it reach leaves."
+      ],
+      "replies": [
+        "Which body part looks most useful to one of these animals? [STUDENT_TALK]",
+        "Exactly. A giraffe's long neck helps it reach leaves high in the trees. This is a structural adaptation because a body part helps the animal live in its environment. [NEXT_STEP]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "4e34f268bbb5c0ccf0c53131444d7e6e8d77bfda989caea4867291ae307b90dc",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7105,
+      "step": "page_1",
+      "case": "meaning",
+      "child": [
+        "Big fins help a fish move through the water."
+      ],
+      "replies": [
+        "How do longer legs help the cheetah survive? [STUDENT_TALK]",
+        "Yes, bigger fins can help an animal swim faster and escape danger. The page also shows that body features can change over a very long time to help animals survive. [NEXT_STEP]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "f0e0963d3ea901334a61015c99c5a243a5e0120810d62f703e5bf1c4ddef19df",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7105,
+      "step": "page_2",
+      "case": "meaning",
+      "child": [
+        "Some features help animals get food, and others keep them safe.",
+        "I see how that helps now."
+      ],
+      "replies": [
+        "How might a cheetah's long legs help it catch food? [STUDENT_TALK]",
+        "Right. Some adaptations help animals catch food, while others help them avoid becoming food. What body feature helps the cheetah run quickly? [STUDENT_TALK]",
+        "Exactly. Structural adaptations can help an animal get food or stay safe from predators. [NEXT_STEP]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "1b2c43cebf3c541797f34b7fba6f9aaefc6c3fffd056ebbf7709e48d21dd5022",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7105,
+      "step": "page_3",
+      "case": "meaning",
+      "child": [
+        "An elephant can pick things up with its trunk."
+      ],
+      "replies": [
+        "What is one useful thing an elephant can do with its trunk? [STUDENT_TALK]",
+        "Right. Its trunk helps it pull and pick up food, and it can also smell and touch things. [NEXT_STEP]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "d8743a947816ef88959f7e2bc934e4b32a7b6c64c91c732a3e86852552cc076e",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7105,
+      "step": "page_4",
+      "case": "meaning",
+      "child": [
+        "Their ears help them cool down."
+      ],
+      "replies": [
+        "Why do elephants use their big ears when the weather is very hot? [STUDENT_TALK]",
+        "Right. Their big ears fan air over their bodies, which helps them cool down in hot weather. [NEXT_STEP]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "6f3bf9e28e8ec18752e41272b82538dc598f6245dbeb984711421c7d8354fc1d",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7105,
+      "step": "page_5",
+      "case": "meaning",
+      "child": [
+        "Thick fur helps camels live in the desert."
+      ],
+      "replies": [
+        "How does a camel's thick fur help it survive in the hot, dry desert? [STUDENT_TALK]",
+        "Thick fur is one of the adaptations that helps camels survive the desert's hot, dry weather. [NEXT_STEP]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "8ba0c5dc6d086cd2602179e416152289f69733e6537ea77dbfe64cf88a7d7932",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7105,
+      "step": "page_6",
+      "case": "meaning",
+      "child": [
+        "The fur helps them at night when the desert gets cold."
+      ],
+      "replies": [
+        "How does the camel's thick fur help it in the heat? [STUDENT_TALK]",
+        "Yes, the thick fur provides warmth during cold desert nights. It also protects the camel from the daytime heat. [NEXT_STEP]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "a6797672d9f5d540e996240fb0aac3ca8af4264a42b4869f3c51693e0bc6f00a",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7105,
+      "step": "page_7",
+      "case": "meaning",
+      "child": [
+        "The hump stores fat that the camel can use for energy."
+      ],
+      "replies": [
+        "How does a camel's hump help it survive in the desert? [STUDENT_TALK]",
+        "Right. The camel can use that stored fat as food, so it can survive for weeks without eating. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "608d3be4f8a38d348ba2637b43147605a63bbafc8c1d349ba12cbbe397ccacec",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7128,
+      "step": "free_talk_0",
+      "case": "meaning",
+      "child": [
+        "A turtle. I like its shell."
+      ],
+      "replies": [
+        "What is your favorite animal? [STUDENT_TALK]",
+        "A turtle is a great choice, and its shell is its most distinctive feature. [NEXT_STEP]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "e6e8773d29a536780a6217e55395d7ca8f7d863a87f730d7adfdf4ccc4688317",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7128,
+      "step": "free_talk_1",
+      "case": "meaning",
+      "child": [
+        "It has a round shell and short legs."
+      ],
+      "replies": [
+        "What does the turtle's shell look like? [STUDENT_TALK]",
+        "A round shell and short legs make the turtle easy to recognize. [NEXT_STEP]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "28f81f5434ba1f75d2688b094d6e21a9d2f884912546cace6e1c711202e50152",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7128,
+      "step": "free_talk_2",
+      "case": "meaning",
+      "child": [
+        "It hides inside its shell when it is scared."
+      ],
+      "replies": [
+        "What does the turtle's shell help it do? [STUDENT_TALK]",
+        "The shell protects the turtle when danger is near. [NEXT_STEP]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "c3015b27537be5c99059aad446cd2dcda252b4c60ca298309fc72542e8d2d99e",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7128,
+      "step": "free_talk_3",
+      "case": "meaning",
+      "child": [
+        "It swims to find food.",
+        "It can stay safe that way."
+      ],
+      "replies": [
+        "How does the turtle find food in its environment? [STUDENT_TALK]",
+        "Swimming helps the turtle reach food in the water. What might it eat there? [STUDENT_TALK]",
+        "Swimming can help the turtle stay safe while it looks for food. [NEXT_STEP]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "d01428e57f1f82c2ee9da09c10d86456a3aa5b105c4990866f120c2284a044f4",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7128,
+      "step": "free_talk_4",
+      "case": "meaning",
+      "child": [
+        "It looks for food in the water."
+      ],
+      "replies": [
+        "What does the turtle usually do every day? [STUDENT_TALK]",
+        "Looking for food in the water is part of the turtle's daily behavior. [NEXT_STEP]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "431afc6656b5257844b4d389cd97987e14f22e3e1a82f6e9974da69848ccd4aa",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7128,
+      "step": "free_talk_5",
+      "case": "meaning",
+      "child": [
+        "It might slow down in winter."
+      ],
+      "replies": [
+        "How might the turtle change its behavior in winter? [STUDENT_TALK]",
+        "Yes, colder weather can make a turtle less active, so it may slow down to save energy. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "bb03706d19c61ff3369294d74b5d7cd9cfb58aa223b14d75adf753e39dcf485a",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7154,
+      "step": "free_talk_0",
+      "case": "meaning",
+      "child": [
+        "I like tigers because they have stripes."
+      ],
+      "replies": [
+        "What is your favorite animal? [STUDENT_TALK]",
+        "Tigers' stripes help them blend into grass and shadows. [NEXT_STEP]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "9159731eb56a37c6c733e32289b727add830e0fa918a5c5d0ba4e1e9fae1ccc1",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7154,
+      "step": "free_talk_1",
+      "case": "meaning",
+      "child": [
+        "The stripes help it hide in tall grass."
+      ],
+      "replies": [
+        "Why do you think tigers have stripes? [STUDENT_TALK]",
+        "That camouflage helps a tiger get close to prey without being noticed. [NEXT_STEP]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "e17149549ab6fd5a510fc94e71021bcf9b95dff7c83b535c00373dbe585e9e3f",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7154,
+      "step": "free_talk_2",
+      "case": "meaning",
+      "child": [
+        "I think a turtle often lives alone."
+      ],
+      "replies": [
+        "Does a turtle usually live alone or in a group? [STUDENT_TALK]",
+        "A turtle can live alone rather than in a group. Its shell helps it stay safe when it is on its own. [NEXT_STEP]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "1a19fc222e353c3b06030dd994510d2365ab0bfbcb8a43a7f21ab44e5e16d069",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7154,
+      "step": "free_talk_3",
+      "case": "meaning",
+      "child": [
+        "A turtle can find small animals to eat in the water.",
+        "It can stay safe that way."
+      ],
+      "replies": [
+        "How might the turtle find food? [STUDENT_TALK]",
+        "Finding small animals in the water gives the turtle food. Does it hunt alone or with other turtles? [STUDENT_TALK]",
+        "Hunting in the water can help the turtle find food while staying safe. [NEXT_STEP]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "7738ad3ec8f517aa0833c19c483008f880b6e2c38aafb3d5d7b09b409813738f",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7154,
+      "step": "free_talk_4",
+      "case": "meaning",
+      "child": [
+        "It hides in its shell when it is scared."
+      ],
+      "replies": [
+        "What might the turtle do if a larger animal got close? [STUDENT_TALK]",
+        "Hiding in its shell protects the turtle's soft body from danger. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "0ffbfbcf1db9fd01110d17bb2262b74d34255f7aab59c3154e9a8713572e6927",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7127,
+      "step": null,
+      "case": "retell",
+      "child": [
+        "Elephants use their ears to cool down.",
+        "Camels use fat from their humps when food is hard to find."
+      ],
+      "replies": [
+        "Look at the mind map. Choose elephants or camels, and explain one body feature and how it helps the animal survive. [STUDENT_TALK]",
+        "Yes, their big ears help them cool down in hot weather. How do camels use their humps to survive in the desert? [STUDENT_TALK]",
+        "Right. Camels use the fat stored in their humps as food, so they can survive for weeks without eating. Both animals have body features that help them survive in their environments. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "aab8b8afa1255753ab7c4f0cd738f9bd96193a0d73a401c2e88a8a87ffd95373",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7083,
+      "step": null,
+      "case": "silence",
+      "child": [
+        "(silent)",
+        "(silent)"
+      ],
+      "replies": [
+        "A giraffe's long neck is an adaptation that helps it reach leaves high in a tree. How might thick fur help an animal in a cold place? [STUDENT_TALK]",
+        "Thick fur helps an animal stay warm. In a hot place, what might a thin coat help an animal do? [STUDENT_TALK]",
+        "A thin coat can help an animal release heat and stay cool in a hot place. That is an adaptation to its environment. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "c942a8e5465b38e9e144b30c035bb23e18ec8addd46baabd9e81b98fa8fa2103",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7089,
+      "step": null,
+      "case": "confusion",
+      "child": [
+        "Does it decide to change its body?",
+        "I get it."
+      ],
+      "replies": [
+        "Animals adapt to their environment to survive. A camel is adapted to the hot desert. What might help a polar bear adapt to a cold, snowy environment? [STUDENT_TALK]",
+        "No. An animal does not decide to change its body. Over many generations, helpful features can develop in a population. What body feature could help a polar bear live in the cold? [STUDENT_TALK]",
+        "Right. Animals do not choose these changes. Helpful features develop over many generations and help them survive. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "18dfc27d16794d1985672d2d709343bb85747a47d8e4d919c57e7054b3fb4583",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7116,
+      "step": null,
+      "case": "mandarin",
+      "child": [
+        "海龟会躲进壳里保护自己。"
+      ],
+      "replies": [
+        "A mother bear will protect her cubs by keeping them safe from danger. What could a helmet protect? [STUDENT_TALK]",
+        "Yes, a turtle can protect itself by hiding in its shell. Its shell keeps its body safe. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "7c5c8f306ebecb2297432f8274fd80d46c582c074d4c2aad038bb2261f754f12",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7105,
+      "step": "page_7",
+      "case": "help",
+      "child": [
+        "What does the hump do?"
+      ],
+      "replies": [
+        "How does the hump help a camel survive when there is little food? [STUDENT_TALK]",
+        "The hump stores fat, and the camel uses that fat as food when it cannot find food for weeks. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "608d3be4f8a38d348ba2637b43147605a63bbafc8c1d349ba12cbbe397ccacec",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7127,
+      "step": null,
+      "case": "silence",
+      "child": [
+        "(silent)",
+        "(silent)"
+      ],
+      "replies": [
+        "Look at the mind map. Choose elephants or camels, and explain one body feature and how it helps the animal survive. [STUDENT_TALK]",
+        "You can start with elephants. Their big ears help them cool down. What do camels use their humps for? [STUDENT_TALK]",
+        "Camels store fat in their humps and use it as food, so they can survive for weeks without eating. Elephants and camels have different body features that help them survive in their environments. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "aab8b8afa1255753ab7c4f0cd738f9bd96193a0d73a401c2e88a8a87ffd95373",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7128,
+      "step": "free_talk_2",
+      "case": "silence",
+      "child": [
+        "(silent)"
+      ],
+      "replies": [
+        "How does the turtle's shell help it stay safe? [STUDENT_TALK]",
+        "A turtle can pull its head and legs into its shell when danger is near. The shell protects its body. [NEXT_STEP]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "c3015b27537be5c99059aad446cd2dcda252b4c60ca298309fc72542e8d2d99e",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7154,
+      "step": "free_talk_4",
+      "case": "stop",
+      "child": [
+        "I already answered. Can we move on?"
+      ],
+      "replies": [
+        "What might the turtle do if a larger animal got close? [STUDENT_TALK]",
+        "Of course. The turtle's shell helps protect it from danger. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "0ffbfbcf1db9fd01110d17bb2262b74d34255f7aab59c3154e9a8713572e6927",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7154,
+      "step": "free_talk_4",
+      "case": "question",
+      "child": [
+        "Why does a turtle need a hard shell?"
+      ],
+      "replies": [
+        "What might the turtle do if a larger animal got close? [STUDENT_TALK]",
+        "A turtle needs a hard shell to protect its soft body from danger. It can pull its head and legs inside when a larger animal gets close. [TEMPLATE_FINISH]"
+      ],
+      "issues": [],
+      "error": null,
+      "prompt_sha256": "0ffbfbcf1db9fd01110d17bb2262b74d34255f7aab59c3154e9a8713572e6927",
+      "model": "gpt-5.6-luna"
+    }
+  ],
+  "interrupted": [
+    {
+      "source": "candidate",
+      "instance": 7089,
+      "step": null,
+      "case": "meaning",
+      "child": [
+        "Thick fur keeps a polar bear warm in the snow."
+      ],
+      "replies": [
+        "Camels adapt to the desert environment to survive. Which animal adapts to a cold, snowy environment? [STUDENT_TALK]"
+      ],
+      "issues": [
+        "model_error"
+      ],
+      "error": "Remote end closed connection without response",
+      "prompt_sha256": "18dfc27d16794d1985672d2d709343bb85747a47d8e4d919c57e7054b3fb4583",
+      "model": "gpt-5.6-luna"
+    },
+    {
+      "source": "candidate",
+      "instance": 7128,
+      "step": "free_talk_5",
+      "case": "meaning",
+      "child": [],
+      "replies": [],
+      "issues": [
+        "model_error"
+      ],
+      "error": "Remote end closed connection without response",
+      "prompt_sha256": "bb03706d19c61ff3369294d74b5d7cd9cfb58aa223b14d75adf753e39dcf485a",
+      "model": "gpt-5.6-luna"
+    }
+  ]
+}

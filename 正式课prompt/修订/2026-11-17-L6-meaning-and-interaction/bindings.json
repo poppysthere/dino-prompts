@@ -1,0 +1,199 @@
+{
+  "target": "Test02MCL1_6U1 / L6 / U1 / Lessons 1–3",
+  "source": "Live snapshot read from Test02",
+  "published": true,
+  "activities": [
+    {
+      "instance": 7083,
+      "lesson": 795,
+      "activity": "word_teach_image_l5l6",
+      "live_template_prompt_id": 1985,
+      "template_source": "vocabulary.md",
+      "live_common_prompt_id": 2132,
+      "common_source": "common-2132.md",
+      "revised_steps": []
+    },
+    {
+      "instance": 7085,
+      "lesson": 795,
+      "activity": "word_teach_image_l5l6",
+      "live_template_prompt_id": 1985,
+      "template_source": "vocabulary.md",
+      "live_common_prompt_id": 2132,
+      "common_source": "common-2132.md",
+      "revised_steps": []
+    },
+    {
+      "instance": 7089,
+      "lesson": 795,
+      "activity": "word_teach_image_l5l6",
+      "live_template_prompt_id": 1985,
+      "template_source": "vocabulary.md",
+      "live_common_prompt_id": 2132,
+      "common_source": "common-2132.md",
+      "revised_steps": []
+    },
+    {
+      "instance": 7092,
+      "lesson": 795,
+      "activity": "word_teach_image_l5l6",
+      "live_template_prompt_id": 1985,
+      "template_source": "vocabulary.md",
+      "live_common_prompt_id": 2132,
+      "common_source": "common-2132.md",
+      "revised_steps": []
+    },
+    {
+      "instance": 7095,
+      "lesson": 795,
+      "activity": "word_teach_image_l5l6",
+      "live_template_prompt_id": 1985,
+      "template_source": "vocabulary.md",
+      "live_common_prompt_id": 2132,
+      "common_source": "common-2132.md",
+      "revised_steps": []
+    },
+    {
+      "instance": 7105,
+      "lesson": 796,
+      "activity": "passage_teach",
+      "live_template_prompt_id": 1991,
+      "template_source": "reading-template.md",
+      "live_common_prompt_id": 2133,
+      "common_source": "common-2133.md",
+      "revised_steps": [
+        {
+          "code": "page_0",
+          "live_prompt_id": 1993,
+          "source": "reading-cover.md"
+        },
+        {
+          "code": "page_1",
+          "live_prompt_id": 1992,
+          "source": "reading-body.md"
+        },
+        {
+          "code": "page_2",
+          "live_prompt_id": 1992,
+          "source": "reading-body.md"
+        },
+        {
+          "code": "page_3",
+          "live_prompt_id": 1992,
+          "source": "reading-body.md"
+        },
+        {
+          "code": "page_4",
+          "live_prompt_id": 1992,
+          "source": "reading-body.md"
+        },
+        {
+          "code": "page_5",
+          "live_prompt_id": 1992,
+          "source": "reading-body.md"
+        },
+        {
+          "code": "page_6",
+          "live_prompt_id": 1992,
+          "source": "reading-body.md"
+        },
+        {
+          "code": "page_7",
+          "live_prompt_id": 1992,
+          "source": "reading-body.md"
+        }
+      ]
+    },
+    {
+      "instance": 7108,
+      "lesson": 797,
+      "activity": "word_teach_image_l5l6",
+      "live_template_prompt_id": 1997,
+      "template_source": "vocabulary.md",
+      "live_common_prompt_id": 2132,
+      "common_source": "common-2132.md",
+      "revised_steps": []
+    },
+    {
+      "instance": 7112,
+      "lesson": 797,
+      "activity": "word_teach_image_l5l6",
+      "live_template_prompt_id": 1997,
+      "template_source": "vocabulary.md",
+      "live_common_prompt_id": 2132,
+      "common_source": "common-2132.md",
+      "revised_steps": []
+    },
+    {
+      "instance": 7115,
+      "lesson": 797,
+      "activity": "word_teach_image_l5l6",
+      "live_template_prompt_id": 1997,
+      "template_source": "vocabulary.md",
+      "live_common_prompt_id": 2132,
+      "common_source": "common-2132.md",
+      "revised_steps": []
+    },
+    {
+      "instance": 7116,
+      "lesson": 797,
+      "activity": "word_teach_image_l5l6",
+      "live_template_prompt_id": 1997,
+      "template_source": "vocabulary.md",
+      "live_common_prompt_id": 2132,
+      "common_source": "common-2132.md",
+      "revised_steps": []
+    },
+    {
+      "instance": 7119,
+      "lesson": 797,
+      "activity": "word_teach_image_l5l6",
+      "live_template_prompt_id": 1997,
+      "template_source": "vocabulary.md",
+      "live_common_prompt_id": 2132,
+      "common_source": "common-2132.md",
+      "revised_steps": []
+    },
+    {
+      "instance": 7127,
+      "lesson": 796,
+      "activity": "retell_l6",
+      "live_template_prompt_id": 1998,
+      "template_source": "retell.md",
+      "live_common_prompt_id": 2132,
+      "common_source": "common-2132.md",
+      "revised_steps": []
+    },
+    {
+      "instance": 7128,
+      "lesson": 795,
+      "activity": "free_talk_images",
+      "live_template_prompt_id": 1999,
+      "template_source": "free-talk.md",
+      "live_common_prompt_id": 2134,
+      "common_source": "common-2134.md",
+      "revised_steps": []
+    },
+    {
+      "instance": 7154,
+      "lesson": 797,
+      "activity": "free_talk_images",
+      "live_template_prompt_id": 2002,
+      "template_source": "free-talk.md",
+      "live_common_prompt_id": 2134,
+      "common_source": "common-2134.md",
+      "revised_steps": []
+    },
+    {
+      "instance": 7381,
+      "lesson": 795,
+      "activity": "word_teach_image_l5l6",
+      "live_template_prompt_id": 1985,
+      "template_source": "vocabulary.md",
+      "live_common_prompt_id": 2132,
+      "common_source": "common-2132.md",
+      "revised_steps": []
+    }
+  ],
+  "release_receipt": "test02-release.json"
+}

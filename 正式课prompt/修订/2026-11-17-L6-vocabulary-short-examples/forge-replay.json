@@ -1,0 +1,132 @@
+[
+  {
+    "instance": 7083,
+    "answer": "Neck.",
+    "replies": [
+      "Adaptation means a feature that helps an animal live. A giraffe's long neck. A polar bear's thick fur. Which helps a giraffe reach high leaves, its neck or its tail? [STUDENT_TALK]",
+      "Right. A giraffe's long neck is an adaptation that helps it reach high leaves. [TEMPLATE_FINISH]"
+    ],
+    "issues": [],
+    "prompt_sha256": "8cd2cdb2d83d3604b20208245f48cfc6e8658dde1fc7e8490f9c336dc5d07210"
+  },
+  {
+    "instance": 7085,
+    "answer": "A body part.",
+    "replies": [
+      "Structural means about how a body is built. A bird's wings. A fish's fins. Is it about a body part or an action? [STUDENT_TALK]",
+      "Yes, structural describes how a body part is built. [TEMPLATE_FINISH]"
+    ],
+    "issues": [],
+    "prompt_sha256": "2cbf352bfa3b0b5bcdef2ec59938bf98b7f5b581819621ffb80f97f229dd013d"
+  },
+  {
+    "instance": 7089,
+    "answer": "The cold.",
+    "replies": [
+      "Adapt to means become better suited to a place. Adapt to the cold. Adapt to dry weather. Which fits snow, adapt to the cold or adapt to the heat? [STUDENT_TALK]",
+      "Yes, animals adapt to the cold in snowy places. [TEMPLATE_FINISH]"
+    ],
+    "issues": [],
+    "prompt_sha256": "e4b6230d5dfed84ea06cdec5764efdcdcc4b187a5dec55dfcd6a43dad465815a"
+  },
+  {
+    "instance": 7092,
+    "answer": "Stay alive.",
+    "replies": [
+      "Survive means stay alive. Survive the winter. Survive without food. Does survive mean stay alive or fall asleep? [STUDENT_TALK]",
+      "Yes, survive means stay alive. [TEMPLATE_FINISH]"
+    ],
+    "issues": [],
+    "prompt_sha256": "ad94030e977e83125727c1dda6acb2f661525293c248bdf58ac7a1c4bb9e1461"
+  },
+  {
+    "instance": 7095,
+    "answer": "Hiding.",
+    "replies": [
+      "Behavior means what an animal does. Hiding from danger. Sleeping during the day. Which is a behavior, hiding or having long ears? [STUDENT_TALK]",
+      "Yes, hiding is a behavior because it is something an animal does. [TEMPLATE_FINISH]"
+    ],
+    "issues": [],
+    "prompt_sha256": "1c9455b2d46e60b9e49e4bf9b3eecc8de9a759930aac3d98ded1728b7539075d"
+  },
+  {
+    "instance": 7108,
+    "answer": "Stripes.",
+    "replies": [
+      "Characteristic means a feature that helps describe something. A tiger's stripes. A giraffe's long neck. Which describes a tiger, stripes or spots? [STUDENT_TALK]",
+      "Yes, stripes are a characteristic of a tiger. [TEMPLATE_FINISH]"
+    ],
+    "issues": [],
+    "prompt_sha256": "85fc848367c863b70de883eba02dc1e21c97c9e8c616a680cae2307847c26402"
+  },
+  {
+    "instance": 7112,
+    "answer": "Many fish.",
+    "replies": [
+      "School means a group of fish. A school of small fish. A school swimming together. Is it one fish or many fish together? [STUDENT_TALK]",
+      "Right, many fish moving together make a school. [TEMPLATE_FINISH]"
+    ],
+    "issues": [],
+    "prompt_sha256": "80a1f9e2476e162d3463a55f8f1011ede173d40f4464e3b26c3b523c57061141"
+  },
+  {
+    "instance": 7115,
+    "answer": "Food.",
+    "replies": [
+      "Hunt means look for animals to eat. A lion hunts. Hunt for food. Is a lion looking for food or sleeping? [STUDENT_TALK]",
+      "Hunt means look for food. [TEMPLATE_FINISH]"
+    ],
+    "issues": [],
+    "prompt_sha256": "58adfdd7dac55ccb28bfff2689c5e220c8c27d4bf6fd3d511728c9f1d377d4c4"
+  },
+  {
+    "instance": 7116,
+    "answer": "Your head.",
+    "replies": [
+      "Protect means keep safe. Protect the cubs. A helmet protects your head. What does a helmet protect, your head or your foot? [STUDENT_TALK]",
+      "Right, protect means keep safe. [TEMPLATE_FINISH]"
+    ],
+    "issues": [],
+    "prompt_sha256": "b5afcfd6ff7807461b615162c9ef2e16b150910124b4141e246802b4f7c7677a"
+  },
+  {
+    "instance": 7119,
+    "answer": "Born ready.",
+    "replies": [
+      "Instinct is something an animal does without being taught. A hatchling heads to sea. A newborn cries. Is it born ready or taught later? [STUDENT_TALK]",
+      "Yes, instinct means being born ready to do something without being taught. [TEMPLATE_FINISH]"
+    ],
+    "issues": [],
+    "prompt_sha256": "85b040bddbf61f66cdc50f84b4449370cd3356ad7e8078a393c9d1c29e326809"
+  },
+  {
+    "instance": 7381,
+    "answer": "Hiding.",
+    "replies": [
+      "Behavior means what an animal does. Hiding from danger. Sleeping during the day. Which is a behavior, hiding or having long ears? [STUDENT_TALK]",
+      "Hiding is a behavior because it is something an animal does. [TEMPLATE_FINISH]"
+    ],
+    "issues": [],
+    "prompt_sha256": "d246c880444764070c9a2bf842e74c9d1f3ebb602729d4e0faa0071eb0bb2496"
+  },
+  {
+    "instance": 7083,
+    "answer": "(silent)",
+    "replies": [
+      "Adaptation means a feature that helps an animal live. A giraffe's long neck. A polar bear's thick fur. Which helps a giraffe reach high leaves, its neck or its tail? [STUDENT_TALK]",
+      "Think about the tall leaves. A giraffe's neck helps it reach them. An adaptation is a feature that helps an animal live. [TEMPLATE_FINISH]"
+    ],
+    "issues": [],
+    "prompt_sha256": "8cd2cdb2d83d3604b20208245f48cfc6e8658dde1fc7e8490f9c336dc5d07210"
+  },
+  {
+    "instance": 7112,
+    "answer": "Is it a classroom?",
+    "replies": [
+      "School means a group of fish. A school of small fish. A school swimming together. One fish or many fish together? [STUDENT_TALK]",
+      "Not here. In this picture, a school means many fish swimming together. [TEMPLATE_FINISH]"
+    ],
+    "issues": [],
+    "prompt_sha256": "80a1f9e2476e162d3463a55f8f1011ede173d40f4464e3b26c3b523c57061141"
+  }
+]

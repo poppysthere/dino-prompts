@@ -1,5 +1,7 @@
 # 正式课 prompt
 
+最新 L6 定向修订：[词汇初见短示例](修订/2026-11-17-L6-vocabulary-short-examples/README.md)已发布 Test02，覆盖 L6 Unit 1 Lessons 1 和 3 的 11 张词汇卡。[L6 词义与课堂互动](修订/2026-11-17-L6-meaning-and-interaction/README.md)保留上一轮的 Forge 回放和发布记录，以及当前的阅读、复述、自由对话和公共规则。
+
 最新定向修订：[L5 Lesson 2 Wrap Up](修订/2026-11-16-L5-Lesson2-wrapup/README.md)，已在 Test02 修正开课式的 Today we will learn，改为回顾已读内容。只替代 instance 7055 的模板规则，12 个场景检查通过并回读一致。
 
 此前定向修订：[L4 Lesson 2 阅读理解互动](修订/2026-11-16-L4-Lesson2-reading/README.md)，已发布 Test02 并核验 8 个绑定。此修订替代下述广泛修复中 instance 6921 的阅读规则，其他实例保持原发布版本。

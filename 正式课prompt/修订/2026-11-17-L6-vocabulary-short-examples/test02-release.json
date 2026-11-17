@@ -1,0 +1,40 @@
+{
+  "status": "published_verified",
+  "tree": "Test02MCL1_6U1",
+  "level": 6,
+  "unit": 1,
+  "lessons": [
+    1,
+    3
+  ],
+  "activities": [
+    7083,
+    7085,
+    7089,
+    7092,
+    7095,
+    7108,
+    7112,
+    7115,
+    7116,
+    7119,
+    7381
+  ],
+  "versions": [
+    {
+      "prompt_id": 1985,
+      "version_id": 3436,
+      "old_version_id": 3428
+    },
+    {
+      "prompt_id": 1997,
+      "version_id": 3437,
+      "old_version_id": 3432
+    }
+  ],
+  "other_l6_activities": 28,
+  "forge_debug_scenarios": 13,
+  "prompt_sha256": "377f66395e8712a58d0312477c9a475b36f40f99f44ac6782cdc82fe7f51ed5f",
+  "published_at": "2026-11-17T08:35:55.517379+00:00",
+  "live_classroom_tested": false
+}

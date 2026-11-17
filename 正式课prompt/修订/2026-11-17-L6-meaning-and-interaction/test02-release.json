@@ -1,0 +1,130 @@
+{
+  "status": "published_to_test02_for_manual_testing",
+  "tree_id": 998,
+  "tree_name": "Test02MCL1_6U1",
+  "published_at": "2026-11-17T08:29:32.268484+00:00",
+  "verified_activities": [
+    7083,
+    7085,
+    7089,
+    7092,
+    7095,
+    7105,
+    7108,
+    7112,
+    7115,
+    7116,
+    7119,
+    7127,
+    7128,
+    7154,
+    7381
+  ],
+  "unchanged_l6_activities": [
+    7067,
+    7072,
+    7080,
+    7091,
+    7096,
+    7098,
+    7100,
+    7102,
+    7107,
+    7113,
+    7121,
+    7125,
+    7130,
+    7132,
+    7134,
+    7135,
+    7137,
+    7139,
+    7140,
+    7147,
+    7158,
+    7164,
+    7167,
+    7168
+  ],
+  "verified_step_bindings": 8,
+  "lesson_prompt_versions": [
+    {
+      "promptId": 1985,
+      "versionId": 3428,
+      "previousVersionId": 3398,
+      "lessonId": 795,
+      "sha256": "6b1d9e632ee87d93ce1d2a0b66d6d19d77f61adab524ebfa290c66b45091f86c"
+    },
+    {
+      "promptId": 1991,
+      "versionId": 3429,
+      "previousVersionId": 3401,
+      "lessonId": 796,
+      "sha256": "dd7d64c4a9965e6f06abacfa9972b03afe9c1108a5dde508637f95cda9f0cd8a"
+    },
+    {
+      "promptId": 1993,
+      "versionId": 3430,
+      "previousVersionId": 3402,
+      "lessonId": 796,
+      "sha256": "fdd6e6acc2aa75fab77fba40835b47dfaa083eec95a3669543af38e175ef04cd"
+    },
+    {
+      "promptId": 1992,
+      "versionId": 3431,
+      "previousVersionId": 3403,
+      "lessonId": 796,
+      "sha256": "1c84acb477299cc295236aab83b55fe29a6fb2d6dd5985d20fc4222c00414731"
+    },
+    {
+      "promptId": 1997,
+      "versionId": 3432,
+      "previousVersionId": 3404,
+      "lessonId": 797,
+      "sha256": "6b1d9e632ee87d93ce1d2a0b66d6d19d77f61adab524ebfa290c66b45091f86c"
+    },
+    {
+      "promptId": 1998,
+      "versionId": 3433,
+      "previousVersionId": 3405,
+      "lessonId": 796,
+      "sha256": "b0a3cb192dff28a7084e34463451b88f7860ff846d2d77b60171fc365bc096e7"
+    },
+    {
+      "promptId": 1999,
+      "versionId": 3434,
+      "previousVersionId": 3406,
+      "lessonId": 795,
+      "sha256": "bfa83e6d8df376a4e791274e06ea63f98c7a72d98ec7a99439b99910fa6877dd"
+    },
+    {
+      "promptId": 2002,
+      "versionId": 3435,
+      "previousVersionId": 3409,
+      "lessonId": 797,
+      "sha256": "bfa83e6d8df376a4e791274e06ea63f98c7a72d98ec7a99439b99910fa6877dd"
+    }
+  ],
+  "new_common_prompts": [
+    {
+      "previousPromptId": 2132,
+      "promptId": 2143,
+      "promptCode": "test02_l6_meaning_20261117_2132_88dfb1baa7",
+      "versionId": 3425
+    },
+    {
+      "previousPromptId": 2133,
+      "promptId": 2144,
+      "promptCode": "test02_l6_meaning_20261117_2133_4652befd87",
+      "versionId": 3426
+    },
+    {
+      "previousPromptId": 2134,
+      "promptId": 2145,
+      "promptCode": "test02_l6_meaning_20261117_2134_829ad11f9d",
+      "versionId": 3427
+    }
+  ],
+  "readback_verified": true,
+  "classroom_tested": false
+}
